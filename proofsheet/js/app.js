@@ -53,9 +53,13 @@ Foundation.Abide.defaults.patterns = {
 /*********** ACTION *************************/
 $.getJSON('ontology_ui.json', function( data ) {
 	top.data = data;
+	var item = 'obo:GENEPIO_0001740'
+	if (location.hash > '' && $(location.hash.substr(0,5) =='#obo:' ).length>0) {
+		item = location.hash.substr(1)
+	}
 
 	$("#sidebar > ul").html(renderMenu('obo:OBI_0000658')).foundation() // Data specification
-	renderForm('obo:GENEPIO_0001740') // Line list object
+	renderForm(item) // Line list object
 	$("#modalTechnical").foundation()
 
 	//$('#sidebar > ul').foundation('down', $('#obo:OBI_0001741') ) ; //Doesn't work?!
@@ -64,6 +68,7 @@ $.getJSON('ontology_ui.json', function( data ) {
 
 function renderForm(entityId) {
 	console.log("Rendering entity ", entityId)
+
 	top.bag = {}
 	$("#content").empty().html('<form id="mainForm"  data-abide>'+ render(entityId, null, 0) + '</form>').foundation()
 	
@@ -71,6 +76,19 @@ function renderForm(entityId) {
 	$('input[placeholder="xmls:date"]').fdatepicker({format: formatD, disableDblClickSelection: true});
 	$('input[placeholder="xmls:dateTime"]').fdatepicker({format: formatD+formatT, disableDblClickSelection: true});
 	$('input[placeholder="xmls:dateTimeStamp"]').fdatepicker({format: formatD+formatT, disableDblClickSelection: true});
+
+	// Enable page annotation
+	var title = 'Ontology UI Proof Sheet: ' + entityId
+	if (top.data['specifications'][entityId]) 
+		title += top.data['specifications'][entityId]['uiLabel']
+	window.document.title = title
+
+	if(history.pushState) {
+		history.pushState(null, null, '#'+entityId);
+	}
+	else {
+		location.hash = '#'+entityId;
+	}
 
 }
 
@@ -83,8 +101,8 @@ function renderMenu(entityId, depth = 0 ) {
 			console.log("Node: " + entityId + " is a parent of itself and so is not re-rendered.")
 			return html
 		}
-
-		if (depth > 0) html = '<li><a><span onclick="renderForm(\''+entityId+'\')">'+entity['uiLabel']+'</span></a>' // id="'+entityId+'"
+		//  
+		if (depth > 0) html = '<li><a href="#' + entityId + '"><span onclick="renderForm(\''+entityId+'\')">'+entity['uiLabel']+'</span></a>' // id="'+entityId+'"
 		if ('members' in entity) {
 			for (var memberId in entity['members']) { // use "is-active" class ?
 				if (depth == 0) html += renderMenu(memberId, depth + 1)
@@ -315,7 +333,7 @@ function renderInteger(entity, label, minInclusive, maxInclusive) {
 function renderBoolean(entity) {
 html = '<div class="input-wrapper">\n'
 	html +=	'	<div class="switch small">\n'
-	html +=	'	  <input class="switch-input" id="smallSwitch" type="checkbox" name="'+entity['id']+'"' + entity['required']+ entity['disabled'] + '>\n'
+	html +=	'	  <input class="switch-input '+entity['id'] + '" id="smallSwitch" type="checkbox" name="'+entity['id']+'"' + entity['required']+ entity['disabled'] + '>\n'
 	html +=	'		<label class="switch-paddle" for="'+entity['id']+'">\n'
 	html +=	'	    <span class="show-for-sr">' + getLabel(entity) + '</span>\n'
 	html +=	'	  </label>\n'
@@ -332,7 +350,7 @@ function renderChoices(entity, label) {
 	html = '<div class="input-wrapper">\n' 
 	html +=		label
 	html +=	'	<div class="input-group">\n'
-	html +=	'		<select name="haha" placeholder="'+entity['datatype'] + '"  class="input-group-field '+entity['id'] + '"' + entity['required'] + entity['disabled'] + '>\n'
+	html +=	'		<select placeholder="'+entity['datatype'] + '"  class="input-group-field '+entity['id'] + '"' + entity['required'] + entity['disabled'] + '>\n'
 	html +=				renderChoice(top.data['picklists'][picklistId], 0)
 	html +=	'		</select>\n'
 	if ('lookup' in entity['features']) 
@@ -375,7 +393,7 @@ function renderChoice(entity, depth, type="select") {
 					case "select":
 
 					default:
-						html += '<option value="'+part['id']+'" class="'+depth+'" '+disabled+'>' + prefix + label + ' - ' + part['id'] + '</option>\n'
+						html += '<option value="'+part['id']+'" class="depth'+depth+'" '+disabled+'>' + prefix + label + ' - ' + part['id'] + '</option>\n'
 				}
 			}
 			html += kidHTML
@@ -411,7 +429,7 @@ function renderHelp(entity) {
 	definition = ('uiDefinition' in entity) ? 'UI definition:' + entity['uiDefinition'] + ' Original definition:' + definition : definition
 	if (definition > '')
 		// need div to be  [aria-describedby="exampleHelpText"] , and id below as  [id="exampleHelpText"]
-		return '	<p class="help-text" id="">'+ definition+'</p>\n'
+		return '	<p class="help-text '+entity['id'] + '" id="">'+ definition+'</p>\n'
   	return ''
  }
 

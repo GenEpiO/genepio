@@ -10,6 +10,7 @@ import json
 from pprint import pprint
 import optparse
 import sys
+import os
 
 import rdflib
 #import rdflib.plugins.sparql as sparql
@@ -73,13 +74,21 @@ class Ontology(object):
 		self.struct['picklists'] = {}
 
 
-	def __main__(self, main_ontology_file):
+	def __main__(self): #, main_ontology_file
 
 		(options, args) = self.get_command_line()
 
 		if options.code_version:
 			print CODE_VERSION
 			return CODE_VERSION
+
+		if not len(args):
+			stop_err('Please supply an OWL ontology file (in RDF format)')
+
+		main_ontology_file = args[0] #accepts relative path with file name
+		main_ontology_file = self.check_folder(main_ontology_file, "Ontology file")
+		if not os.path.isfile(main_ontology_file):
+			stop_err('Please check the OWL ontology file path')			
 
 		print "PROCESSING " + main_ontology_file + " ..."
 		# Load main ontology file into RDF graph
@@ -603,6 +612,25 @@ obo:GENEPIO_0001606 contact spec - person : all its parts should be fetched for 
 
 		return parser.parse_args()
 
+
+	def check_folder(self, file_path, message = "Directory for "):
+		"""
+		Ensures file folder path for a file exists.
+		It can be a relative path.
+		"""
+		if file_path != None:
+
+			path = os.path.normpath(file_path)
+			if not os.path.isdir(os.path.dirname(path)): 
+				# Not an absolute path, so try default folder where script launched from:
+				path = os.path.normpath(os.path.join(os.getcwd(), path) )
+				if not os.path.isdir(os.path.dirname(path)):
+					stop_err(message + "[" + path + "] does not exist!")			
+					
+			return path
+		return None
+
+
 	""" 
 	Add these PREFIXES to Protege Sparql query window if you want to test a query there:
 
@@ -898,5 +926,5 @@ obo:GENEPIO_0001606 contact spec - person : all its parts should be fetched for 
 if __name__ == '__main__':
 
 	genepio = Ontology()
-	genepio.__main__("../genepio.owl")
+	genepio.__main__()  # "../genepio.owl"
 

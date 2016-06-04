@@ -101,8 +101,8 @@ function renderMenu(entityId, depth = 0 ) {
 			console.log("Node: " + entityId + " is a parent of itself and so is not re-rendered.")
 			return html
 		}
-		//  
-		if (depth > 0) html = '<li><a href="#' + entityId + '"><span onclick="renderForm(\''+entityId+'\')">'+entity['uiLabel']+'</span></a>' // id="'+entityId+'"
+		
+		if (depth > 0) html = '<li><a href="#' + entityId + '" onclick="renderForm(\''+entityId+'\')"><span>'+entity['uiLabel']+'</span></a>' // id="'+entityId+'"
 		if ('members' in entity) {
 			for (var memberId in entity['members']) { // use "is-active" class ?
 				if (depth == 0) html += renderMenu(memberId, depth + 1)

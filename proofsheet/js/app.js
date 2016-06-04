@@ -83,13 +83,17 @@ function renderForm(entityId) {
 		title += top.data['specifications'][entityId]['uiLabel']
 	window.document.title = title
 
-	if(history.pushState) {
-		history.pushState(null, null, '#'+entityId);
+	try { //May fail if on http://htmlpreview.github.io/
+		if(history.pushState) {
+			history.pushState(null, null, '#'+entityId);
+		}
+		else {
+			location.hash = '#'+entityId;
+		}
 	}
-	else {
-		location.hash = '#'+entityId;
-	}
+	catch (e) {}
 
+	return false
 }
 
 function renderMenu(entityId, depth = 0 ) {

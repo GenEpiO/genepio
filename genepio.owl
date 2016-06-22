@@ -18,9 +18,9 @@
     <owl:Ontology rdf:about="http://purl.obolibrary.org/obo/genepio.owl">
         <owl:imports rdf:resource="http://purl.obolibrary.org/obo/IRIDA/imports/hardcoded.owl"/>
         <owl:imports rdf:resource="http://purl.obolibrary.org/obo/IRIDA/imports/NDF-RT_import.owl"/>
-        <owl:imports rdf:resource="http://purl.obolibrary.org/obo/IRIDA/imports/TYPON_import.owl"/>
-        <owl:imports rdf:resource="http://purl.obolibrary.org/obo/IRIDA/imports/NCBITaxon_import.owl"/>
         <owl:imports rdf:resource="http://purl.obolibrary.org/obo/IRIDA/imports/EO_import.owl"/>
+        <owl:imports rdf:resource="http://purl.obolibrary.org/obo/IRIDA/imports/NCBITaxon_import.owl"/>
+        <owl:imports rdf:resource="http://purl.obolibrary.org/obo/IRIDA/imports/TYPON_import.owl"/>
         <owl:imports rdf:resource="http://purl.obolibrary.org/obo/IRIDA/imports/MODEL_import.owl"/>
         <owl:imports rdf:resource="http://purl.obolibrary.org/obo/IRIDA/imports/ENVO_import.owl"/>
         <owl:imports rdf:resource="http://purl.obolibrary.org/obo/IRIDA/imports/GAZETTEER_import.owl"/>
@@ -2154,7 +2154,7 @@ Clusters passing filter are represented by PF in analysis reports. Clusters pass
         <obo:GENEPIO_0000004>Assembly status</obo:GENEPIO_0000004>
         <obo:GENEPIO_0000005>from within &quot;Finishing strategy&quot; in GROUP: MIxS</obo:GENEPIO_0000005>
         <obo:GENEPIO_0000008>GENEPIO</obo:GENEPIO_0000008>
-        <obo:IAO_0000112>standard draft or complete</obo:IAO_0000112>
+        <obo:IAO_0000112>standard draft or finished</obo:IAO_0000112>
         <obo:IAO_0000115 xml:lang="en">&quot;Attempting to convey the relative integrity and reliability of the data, six levels or terms have been proposed and applied to describe genome sequences.&quot;   See subclass choices.</obo:IAO_0000115>
         <obo:IAO_0000119>CITATION: Chain, P.S., Grafham, D.V., Fulton, R.S., Fitzgerald, M.G., Hostetler, J., Muzny, D., Ali, J., Birren, B., Bruce, D.C., Buhay, C., et al. (2009). Genomics. Genome project standards in a new era of sequencing. Science 326, 236-237.</obo:IAO_0000119>
         <rdfs:label xml:lang="en">assembly status</rdfs:label>
@@ -2176,7 +2176,6 @@ Clusters passing filter are represented by PF in analysis reports. Clusters pass
         <obo:GENEPIO_0000001>Assembly QC</obo:GENEPIO_0000001>
         <obo:GENEPIO_0000004>Coverage</obo:GENEPIO_0000004>
         <obo:GENEPIO_0000005>from within &quot;Finishing strategy&quot; in GROUP: MIxS</obo:GENEPIO_0000005>
-        <obo:GENEPIO_0000007>User Input</obo:GENEPIO_0000007>
         <obo:GENEPIO_0000008>GENEPIO</obo:GENEPIO_0000008>
         <obo:IAO_0000112>2x, 12x</obo:IAO_0000112>
         <obo:IAO_0000115>Coverage (read depth or depth) is the average number of reads representing a given nucleotide in the reconstructed sequence.</obo:IAO_0000115>
@@ -2206,11 +2205,11 @@ Clusters passing filter are represented by PF in analysis reports. Clusters pass
         </rdfs:subClassOf>
         <obo:GENEPIO_0000001>Assembly QC</obo:GENEPIO_0000001>
         <obo:GENEPIO_0000004>Number of Contigs</obo:GENEPIO_0000004>
-        <obo:GENEPIO_0000007>User Input</obo:GENEPIO_0000007>
         <obo:GENEPIO_0000008>GENEPIO</obo:GENEPIO_0000008>
         <obo:IAO_0000112>8, 20</obo:IAO_0000112>
-        <obo:IAO_0000115>A contig refers to any contiguous stretch of sequence data created by read overlap.</obo:IAO_0000115>
-        <obo:IAO_0000119>URI: http://en.wikipedia.org/wiki/Contig</obo:IAO_0000119>
+        <obo:IAO_0000114>http://purl.obolibrary.org/obo/IAO_0000428</obo:IAO_0000114>
+        <obo:IAO_0000115 xml:lang="en">A contig count is the count of contigs that belong to a sequence assembly.</obo:IAO_0000115>
+        <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
         <rdfs:label xml:lang="en">contig count</rdfs:label>
     </owl:Class>
     
@@ -3575,7 +3574,11 @@ Clusters passing filter are represented by PF in analysis reports. Clusters pass
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001278">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/IAO_0000577"/>
-        <rdfs:label>NCBI Accession ID</rdfs:label>
+        <obo:IAO_0000111 xml:lang="en">accession id</obo:IAO_0000111>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
+        <rdfs:label xml:lang="en">DDBJ/EMBL/GenBank accession identifier</rdfs:label>
+        <rdfs:seeAlso>http://www.ncbi.nlm.nih.gov/Sequin/acc.html</rdfs:seeAlso>
+        <rdfs:seeAlso>https://www.ncbi.nlm.nih.gov/books/NBK21091/table/ch18.T.refseq_accession_numbers_and_mole/</rdfs:seeAlso>
     </owl:Class>
     
 
@@ -4527,9 +4530,9 @@ http://www.ontobee.org/browser/rdf.php?o=DOID&amp;iri=http://purl.obolibrary.org
         </rdfs:subClassOf>
         <obo:GENEPIO_0000008 xml:lang="en">GENEPIO</obo:GENEPIO_0000008>
         <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000428"/>
-        <rdfs:comment xml:lang="en">As noted in Quast documentation: &quot; The total assembly size may increase (and in some cases exceeds the genome size) due to contaminants (see Chitsaz et al. (2011)), misassembled contigs, repeats, and hubs that contribute to multiple contigs. &quot;
-
-Is the assembly genome size simply defined as the sum of all lengths of contigs?</rdfs:comment>
+        <obo:IAO_0000115 xml:lang="en">The assembly genome size is the sum of all lengths of a sequence assembly&apos;s contigs.</obo:IAO_0000115>
+        <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
+        <rdfs:comment xml:lang="en">As noted in Quast documentation: &quot; The total assembly size may increase (and in some cases exceeds the genome size) due to contaminants (see Chitsaz et al. (2011)), misassembled contigs, repeats, and hubs that contribute to multiple contigs. &quot;</rdfs:comment>
         <rdfs:label xml:lang="en">assembly genome size</rdfs:label>
     </owl:Class>
     
@@ -4548,7 +4551,8 @@ Is the assembly genome size simply defined as the sum of all lengths of contigs?
         </rdfs:subClassOf>
         <obo:GENEPIO_0000008 xml:lang="en">GENEPIO</obo:GENEPIO_0000008>
         <obo:IAO_0000115 xml:lang="en">Identifier for a reference genome (used to build or compare an assembly)  that is used in the genome browsers and in the community</obo:IAO_0000115>
-        <rdfs:label xml:lang="en">reference genome identifier</rdfs:label>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
+        <rdfs:label xml:lang="en">reference genome name</rdfs:label>
     </owl:Class>
     
 
@@ -4572,13 +4576,14 @@ Is the assembly genome size simply defined as the sum of all lengths of contigs?
         </rdfs:subClassOf>
         <obo:GENEPIO_0000001 xml:lang="en">Assembly QC</obo:GENEPIO_0000001>
         <obo:GENEPIO_0000008 xml:lang="en">GENEPIO</obo:GENEPIO_0000008>
-        <obo:IAO_0000115 xml:lang="en">The &apos;genome size ratio&apos; is a comparison between a sample&apos;s genome assembly size and the size of a given reference genome. 
+        <obo:IAO_0000115 xml:lang="en">The &apos;genome size ratio&apos; is a ratio of a sample&apos;s genome assembly size and the size of a given reference genome. 
 
-The formula is simple:
+The formula:
 
 | (reference_genome_size - assembly_genome_size) | / reference_genome_size
 
-If the ratio is too far from a say 1/10 ratio (depending on the species in question) this indicates a bad assembly or a mis-identified sample.</obo:IAO_0000115>
+If the ratio is too far from a quality control ratio that depends on the species in question, this indicates a bad assembly or a mis-identified sample.</obo:IAO_0000115>
+        <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
         <rdfs:label xml:lang="en">genome size ratio</rdfs:label>
     </owl:Class>
     
@@ -4602,7 +4607,7 @@ If the ratio is too far from a say 1/10 ratio (depending on the species in quest
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:GENEPIO_0000001 xml:lang="en">Assembly QC</obo:GENEPIO_0000001>
-        <obo:GENEPIO_0000007 xml:lang="en">human input</obo:GENEPIO_0000007>
+        <obo:GENEPIO_0000007 xml:lang="en">user input</obo:GENEPIO_0000007>
         <obo:GENEPIO_0000008 xml:lang="en">GENEPIO</obo:GENEPIO_0000008>
         <obo:IAO_0000115 xml:lang="en">This is the upper acceptable limit of the &apos;genome size ratio&apos; with respect to a particular species.
 
@@ -4619,7 +4624,9 @@ For Salmonella a 0.1 variance in length between an assembly size and a reference
         <obo:GENEPIO_0000001 xml:lang="en">Assembly QC</obo:GENEPIO_0000001>
         <obo:GENEPIO_0000007 xml:lang="en">user input</obo:GENEPIO_0000007>
         <obo:GENEPIO_0000008 xml:lang="en">GENEPIO</obo:GENEPIO_0000008>
-        <obo:IAO_0000115 xml:lang="en">If a contig N50 length datum is less than a contig N50 length QC threshold, this is indicative of assembly problems (insufficient read depth) or a mismatched reference genome.</obo:IAO_0000115>
+        <obo:IAO_0000114 xml:lang="en">http://purl.obolibrary.org/obo/IAO_0000428</obo:IAO_0000114>
+        <obo:IAO_0000115 xml:lang="en">The contig N50 length QC threshold is a minimum length threshold that a contig N50 length datum should be above for good QC.  A lower length is indicative of assembly problems (insufficient read depth) or a mismatched reference genome.</obo:IAO_0000115>
+        <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
         <rdfs:label xml:lang="en">contig N50 length QC threshold</rdfs:label>
     </owl:Class>
     
@@ -4633,7 +4640,8 @@ For Salmonella a 0.1 variance in length between an assembly size and a reference
         <obo:GENEPIO_0000003 xml:lang="en">2000</obo:GENEPIO_0000003>
         <obo:GENEPIO_0000007 xml:lang="en">user input</obo:GENEPIO_0000007>
         <obo:GENEPIO_0000008 xml:lang="en">GENEPIO</obo:GENEPIO_0000008>
-        <obo:IAO_0000115 xml:lang="en">The contig N99 length QC threshold is the minimum length that a contig N99 length datum can be for satisfactory QC.  This threshold avoids having too many gene coding regions prematurely clipped inside short contigs.  An assembly having 1% or more of its content in less than 2Kbp chunks is cause for concern. Bacterial genes are generally about 1Kbp in length.</obo:IAO_0000115>
+        <obo:IAO_0000115 xml:lang="en">The contig N99 length QC threshold is the minimum length that a contig N99 or NG99 length datum can be for satisfactory QC.  This threshold avoids having too many gene coding regions prematurely clipped inside short contigs.  An assembly having 1% or more of its content in less than 2Kbp chunks is cause for concern. Bacterial genes are generally about 1Kbp in length.</obo:IAO_0000115>
+        <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
         <rdfs:label xml:lang="en">contig N99 length QC threshold</rdfs:label>
     </owl:Class>
     
@@ -4667,7 +4675,7 @@ For Salmonella a 0.1 variance in length between an assembly size and a reference
 
 A &quot;quality control measurement&quot; can be defined as a measurement that has some norm within a definable context, e.g. for a certain subspecies.  It may be a calculated quantity.
 
-A &quot;quality control metric&quot; places a measurement within an upper or lower bound or threshold beyond which an error situation may be indicated.
+A &quot;quality control metric&quot; is an upper or lower bound threshold that a measurement is compared to.  Surpassing the threshold may indicate an error situation.
 
 A &quot;measure&quot; can indicate an amount of activity, consumption, transformation, etc. but doesn&apos;t itself convey an over-stepping of bounds in the way that a metric does.</obo:IAO_0000115>
         <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
@@ -4698,7 +4706,9 @@ A &quot;measure&quot; can indicate an amount of activity, consumption, transform
         <obo:GENEPIO_0000001 xml:lang="en">Assembly QC</obo:GENEPIO_0000001>
         <obo:GENEPIO_0000007 xml:lang="en">calculation on contig_collection</obo:GENEPIO_0000007>
         <obo:GENEPIO_0000008 xml:lang="en">GENEPIO</obo:GENEPIO_0000008>
-        <obo:IAO_0000115 xml:lang="en">The N99 length definition is identical to the N50 definition except that the threshold for determining the contigs is 1% of the nucleotides ... Hmm.</obo:IAO_0000115>
+        <obo:IAO_0000114 xml:lang="en">http://purl.obolibrary.org/obo/IAO_0000428</obo:IAO_0000114>
+        <obo:IAO_0000115 xml:lang="en">The N99 length definition is identical to the N50 definition except that the threshold for determining the contigs is 1% of the nucleotides.  This contig basepair length can be compared to a minimum threshold to determine if gene annotation (where contigs greater than say 2000bp are necessary) would generally succeed.</obo:IAO_0000115>
+        <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
         <rdfs:label xml:lang="en">contig N99</rdfs:label>
     </owl:Class>
     
@@ -4709,9 +4719,12 @@ A &quot;measure&quot; can indicate an amount of activity, consumption, transform
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001571">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000093"/>
         <obo:GENEPIO_0000001 xml:lang="en">Assembly QC</obo:GENEPIO_0000001>
+        <obo:GENEPIO_0000007 xml:lang="en">user input</obo:GENEPIO_0000007>
+        <obo:IAO_0000114>http://purl.obolibrary.org/obo/IAO_0000428</obo:IAO_0000114>
         <obo:IAO_0000115 xml:lang="en">The upper threshold of contig counts that are acceptable in a genome assembly.  This may vary based on the overall genome length and depth of coverage.
 
 A large contig count may indicate insufficient read coverage.</obo:IAO_0000115>
+        <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
         <rdfs:label xml:lang="en">contig count QC threshold</rdfs:label>
     </owl:Class>
     
@@ -6300,6 +6313,7 @@ BioSample_contact_information&quot;</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001630">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001632"/>
+        <obo:GENEPIO_0000007 xml:lang="en">user input</obo:GENEPIO_0000007>
         <obo:IAO_0000111 xml:lang="en">contig pre-analysis minimum length QC threshold</obo:IAO_0000111>
         <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000123"/>
         <obo:IAO_0000115 xml:lang="en">A &apos;contig length QC threshold&apos; is an integer setting which can be applied by an algorithm to an array of assembly and annotation contig lengths to remove (filter out) all items less than the threshold value.  The reduced array is used for calculation of statistics.</obo:IAO_0000115>
@@ -6316,8 +6330,9 @@ BioSample_contact_information&quot;</rdfs:comment>
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001631">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001632"/>
         <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000428"/>
-        <obo:IAO_0000115 xml:lang="en">&quot;Note that N50 is calculated in the context of the assembly size rather than the genome size. Therefore, comparisons of N50 values derived from assemblies of significantly different lengths are usually not informative, even if for the same genome. To address this, the authors of the Assemblathon competition derived a new measure called NG50. The NG50 statistic is the same as N50 except that it is 50% of the known or estimated genome size that must be of the NG50 length or longer. This allows for meaningful comparisons between different assemblies. In the typical case that the assembly size is not more than the genome size, the NG50 statistic will not be more than the N50 statistic.&quot; - wikipedia</obo:IAO_0000115>
+        <obo:IAO_0000115 xml:lang="en">The NG50 length is the same as the N50 length except that the length of the reference genome is used in the calculation rather than the assembly genome size.</obo:IAO_0000115>
         <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
+        <rdfs:comment xml:lang="en">&quot;Note that N50 is calculated in the context of the assembly size rather than the genome size. Therefore, comparisons of N50 values derived from assemblies of significantly different lengths are usually not informative, even if for the same genome. To address this, the authors of the Assemblathon competition derived a new measure called NG50. The NG50 statistic is the same as N50 except that it is 50% of the known or estimated genome size that must be of the NG50 length or longer. This allows for meaningful comparisons between different assemblies. In the typical case that the assembly size is not more than the genome size, the NG50 statistic will not be more than the N50 statistic.&quot; - wikipedia</rdfs:comment>
         <rdfs:label xml:lang="en">contig NG50</rdfs:label>
     </owl:Class>
     
@@ -6347,6 +6362,8 @@ BioSample_contact_information&quot;</rdfs:comment>
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000123"/>
+        <obo:IAO_0000115 xml:lang="en">A contig length is the count of base pairs in a given assembly contig.</obo:IAO_0000115>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
         <rdfs:label xml:lang="en">contig length</rdfs:label>
     </owl:Class>
     
@@ -6356,7 +6373,9 @@ BioSample_contact_information&quot;</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001633">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000093"/>
-        <obo:IAO_0000115 xml:lang="en">&quot;L50 is the number of contigs equal to or longer than N50. In other words, L50, for example, is the minimal number of contigs that cover half the assembly.&quot;</obo:IAO_0000115>
+        <obo:GENEPIO_0000001>Assembly QC</obo:GENEPIO_0000001>
+        <obo:IAO_0000114>http://purl.obolibrary.org/obo/IAO_0000428</obo:IAO_0000114>
+        <obo:IAO_0000115 xml:lang="en">Contig L50 is the number of contigs equal to or longer than contig N50. The length of the assembly itself is used in the calculation.</obo:IAO_0000115>
         <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
         <obo:IAO_0000119 xml:lang="en">QUAST manual</obo:IAO_0000119>
         <rdfs:label xml:lang="en">contig L50</rdfs:label>
@@ -6368,7 +6387,10 @@ BioSample_contact_information&quot;</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001634">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000093"/>
-        <obo:IAO_0000115 xml:lang="en">&quot;LG50 is the number of contigs equal to or longer than NG50. In other words, LG50, for example, is the minimal number of contigs that cover half the assembly.&quot;</obo:IAO_0000115>
+        <obo:GENEPIO_0000001>Assembly QC</obo:GENEPIO_0000001>
+        <obo:IAO_0000114>http://purl.obolibrary.org/obo/IAO_0000428</obo:IAO_0000114>
+        <obo:IAO_0000115 xml:lang="en">LG50 is the number of assembly contigs equal to or longer than the NG50 contig. A reference genome length is used in the calculation.</obo:IAO_0000115>
+        <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
         <obo:IAO_0000119 xml:lang="en">QUAST manual</obo:IAO_0000119>
         <rdfs:label xml:lang="en">contig LG50</rdfs:label>
     </owl:Class>
@@ -8409,6 +8431,21 @@ Structured vouchers include institution-codes (and optional collection-codes) ta
     
 
 
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001771 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001771">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001632"/>
+        <obo:GENEPIO_0000001 xml:lang="en">Assembly QC</obo:GENEPIO_0000001>
+        <obo:GENEPIO_0000007 xml:lang="en">calculation on contig_collection</obo:GENEPIO_0000007>
+        <obo:GENEPIO_0000008 xml:lang="en">GENEPIO</obo:GENEPIO_0000008>
+        <obo:IAO_0000114 xml:lang="en">http://purl.obolibrary.org/obo/IAO_0000428</obo:IAO_0000114>
+        <obo:IAO_0000115 xml:lang="en">The NG99 length is the same as the N99 length except that the length of the reference genome is used in the calculation rather than the sum of assembly contig lengths.</obo:IAO_0000115>
+        <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
+        <rdfs:label xml:lang="en">contig NG99</rdfs:label>
+    </owl:Class>
+    
+
+
     <!-- http://purl.obolibrary.org/obo/GEO_000000005 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GEO_000000005">
@@ -8441,6 +8478,18 @@ Structured vouchers include institution-codes (and optional collection-codes) ta
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GEO_000000396">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001655"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GenEpiO_0001560 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GenEpiO_0001560">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/IAO_0000577"/>
+        <obo:IAO_0000115 xml:lang="en">A RefSeq accession identifier is an accession identifier for selected NCBI-curated genomic, transcript and protein sequences.  These identifiers are distinct from DDBJ/EMBL/GenBank identifiers.</obo:IAO_0000115>
+        <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
+        <rdfs:label xml:lang="en">RefSeq accession identifier</rdfs:label>
+        <rdfs:seeAlso>http://www.ncbi.nlm.nih.gov/refseq/about/</rdfs:seeAlso>
     </owl:Class>
     
 
@@ -8835,14 +8884,15 @@ Reagent, Phenotype, Other</rdfs:comment>
         <obo:GENEPIO_0000001 xml:lang="en">Assembly QC</obo:GENEPIO_0000001>
         <obo:GENEPIO_0000007 xml:lang="en">calculation on contig_collection</obo:GENEPIO_0000007>
         <obo:GENEPIO_0000008 xml:lang="en">GENEPIO</obo:GENEPIO_0000008>
-        <obo:IAO_0000115 xml:lang="en">As defined in the seminal 2001 paper on the human genome,  http://www.nature.com/nature/journal.../409860a0.html
+        <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
+        <obo:IAO_0000119 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.nature.com/nature/journal.../409860a0.html</obo:IAO_0000119>
+        <rdfs:comment xml:lang="en">As defined in the seminal 2001 paper on the human genome,  http://www.nature.com/nature/journal.../409860a0.html
 
 &quot;We used a statistic called the ‘N50 length’, defined as the largest length L such that 50% of all nucleotides are contained in contigs of size at least L.&quot;
 
 The above N50 definition indicates that a contig of exactly size L must exist. 
 
-In contrast the Broad Institute definition (https://www.broad.harvard.edu/crd/wiki/index.php/N50), which appears to originate from real number math, conveys that L can be a fictitious contig length calculated as the tie-breaking median of 2 central contig lengths a, b where a &gt; b.  We suggest that this case this is not pertinent to genomic contig length data.  The returned length should refer to an actual contig.</obo:IAO_0000115>
-        <obo:IAO_0000119 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.nature.com/nature/journal.../409860a0.html</obo:IAO_0000119>
+In contrast the Broad Institute definition (https://www.broad.harvard.edu/crd/wiki/index.php/N50), which appears to originate from real number math, conveys that L can be a fictitious contig length calculated as the tie-breaking median of 2 central contig lengths a, b where a &gt; b.  We suggest that this case this is not pertinent to genomic contig length data.  The returned length should refer to an actual contig.</rdfs:comment>
         <rdfs:comment xml:lang="en">Note that this definition differs from the Broad Institute example of an N50 algorithm (https://www.broadinstitute.org/crd/wiki/index.php/N50 and ), which is based more directly on the &quot;weighted median&quot; N50 statistic used outside the realm of bioinformatics.  In that interpretation there can exist a tie-breaking situation calculated as the average of the lengths of two neighbouring medians, yeilding a number that doesn&apos;t correspond to an observed contig length.  
 
 In the past, some authors have proposed and used the term &apos;L50&apos; to mean the length of the contig and used &apos;N50&apos; to convey its position N in the sorted list. Although the names are historically awkward, we discourage these alternate definitions.  

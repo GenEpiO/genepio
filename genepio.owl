@@ -18,9 +18,9 @@
     <owl:Ontology rdf:about="http://purl.obolibrary.org/obo/genepio.owl">
         <owl:imports rdf:resource="http://purl.obolibrary.org/obo/IRIDA/imports/hardcoded.owl"/>
         <owl:imports rdf:resource="http://purl.obolibrary.org/obo/IRIDA/imports/NDF-RT_import.owl"/>
-        <owl:imports rdf:resource="http://purl.obolibrary.org/obo/IRIDA/imports/EO_import.owl"/>
-        <owl:imports rdf:resource="http://purl.obolibrary.org/obo/IRIDA/imports/NCBITaxon_import.owl"/>
         <owl:imports rdf:resource="http://purl.obolibrary.org/obo/IRIDA/imports/TYPON_import.owl"/>
+        <owl:imports rdf:resource="http://purl.obolibrary.org/obo/IRIDA/imports/NCBITaxon_import.owl"/>
+        <owl:imports rdf:resource="http://purl.obolibrary.org/obo/IRIDA/imports/EO_import.owl"/>
         <owl:imports rdf:resource="http://purl.obolibrary.org/obo/IRIDA/imports/MODEL_import.owl"/>
         <owl:imports rdf:resource="http://purl.obolibrary.org/obo/IRIDA/imports/ENVO_import.owl"/>
         <owl:imports rdf:resource="http://purl.obolibrary.org/obo/IRIDA/imports/GAZETTEER_import.owl"/>
@@ -6362,7 +6362,7 @@ BioSample_contact_information&quot;</rdfs:comment>
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000123"/>
-        <obo:IAO_0000115 xml:lang="en">A contig length is the count of base pairs in a given assembly contig.</obo:IAO_0000115>
+        <obo:IAO_0000115 xml:lang="en">A contig length is the count of base pairs in a given sequence assembly contig.</obo:IAO_0000115>
         <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
         <rdfs:label xml:lang="en">contig length</rdfs:label>
     </owl:Class>
@@ -6389,10 +6389,9 @@ BioSample_contact_information&quot;</rdfs:comment>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000093"/>
         <obo:GENEPIO_0000001>Assembly QC</obo:GENEPIO_0000001>
         <obo:IAO_0000114>http://purl.obolibrary.org/obo/IAO_0000428</obo:IAO_0000114>
-        <obo:IAO_0000115 xml:lang="en">LG50 is the number of assembly contigs equal to or longer than the NG50 contig. A reference genome length is used in the calculation.</obo:IAO_0000115>
+        <obo:IAO_0000115 xml:lang="en">The LG99 count is like the L99 count except that the length of the reference genome is used in the calculation rather than the sum of assembly contig lengths.</obo:IAO_0000115>
         <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
-        <obo:IAO_0000119 xml:lang="en">QUAST manual</obo:IAO_0000119>
-        <rdfs:label xml:lang="en">contig LG50</rdfs:label>
+        <rdfs:label xml:lang="en">contig LG99</rdfs:label>
     </owl:Class>
     
 
@@ -8442,6 +8441,32 @@ Structured vouchers include institution-codes (and optional collection-codes) ta
         <obo:IAO_0000115 xml:lang="en">The NG99 length is the same as the N99 length except that the length of the reference genome is used in the calculation rather than the sum of assembly contig lengths.</obo:IAO_0000115>
         <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
         <rdfs:label xml:lang="en">contig NG99</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001773 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001773">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000093"/>
+        <obo:GENEPIO_0000001>Assembly QC</obo:GENEPIO_0000001>
+        <obo:IAO_0000114>http://purl.obolibrary.org/obo/IAO_0000428</obo:IAO_0000114>
+        <obo:IAO_0000115 xml:lang="en">Contig L50 is the number of contigs equal to or longer than contig N50. The length of the assembly itself is used in the calculation.</obo:IAO_0000115>
+        <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
+        <rdfs:label xml:lang="en">contig LG50</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001774 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001774">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000093"/>
+        <obo:GENEPIO_0000001>Assembly QC</obo:GENEPIO_0000001>
+        <obo:IAO_0000114>http://purl.obolibrary.org/obo/IAO_0000428</obo:IAO_0000114>
+        <obo:IAO_0000115 xml:lang="en">Contig L99 is the number of contigs equal to or longer than contig N99. The length of the assembly itself is used in the calculation.</obo:IAO_0000115>
+        <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
+        <rdfs:label xml:lang="en">contig L99</rdfs:label>
     </owl:Class>
     
 

@@ -261,6 +261,25 @@ obo:GENEPIO_0001606 contact spec - person : all its parts should be fetched for 
 			time with a different datatype it is assumed that this is a lower-level
 			definition overriding an inherited one.
 
+			The following constraints apply to the number or text of a particular datum value; they are about how many (including minimum and maximum limits) data values of a particular data type it takes - minimum sufficient criteria - to be considered an entity instance of the given ontology id.  The constraints don't necessarily reflect directly on how many items a user is actually submitting in a form or how many are held in a data store with respect to a datum that is claimed to be of the given ontology id type.  The real world of data can be incomplete - a form can be partly filled in, and returned-to later for completion.  However, these constraints can be used to VALIDATE whether an entity fulfills its overall definition.
+			
+			Note that all categorical pick lists inherit 'categorical measurement datum' datatype of exactly 1 xmls:anyURI .
+
+			Some examples:
+				Datum X "'has primitive value spec' exactly 1 xmls:anyURI"
+				is the same as:
+				Datum X "'has primitive value spec' owl:qualifiedCardinality 1 xmls:anyURI"
+				These cases are typical of any datums that have 'categorical measurement datum' as an ancestor.
+
+				Datum X "'has primitive value spec' owl:someValuesFrom xmls:anyURI"
+				This case can't be an ancestor of 'categorical measurement datum' since a datum can point to only one value (or structure of values).
+
+			To allow more than one item to be selected from a list or tree requires that the item is_a 'data representational model' that 'has value specification' [condition, e.g. > 0]   
+			
+			Currently sparql queries don't return a constraint property for a term that has only been marked with "has primitive value spec owl:someValuesFrom [data type]".  This default empty constraint case is currently being interpreted as
+			 - If categorical selection value, it is an optional selection.
+			 - If numeric or text, it is not required, but 1 field data entry is allowed.  Technically this may be challenged - it may be the default use of someValuesFrom should require at least one value entry, and perhaps more than one.
+
 			INPUTS
 				?id ?datatype 
 				?constraint like constraint': u'xmls:minInclusive'
@@ -287,13 +306,15 @@ obo:GENEPIO_0001606 contact spec - person : all its parts should be fetched for 
 				obj = {'constraint': myDict['constraint']}	
 
 				if 'expression' in myDict: 
-					if isinstance(myDict['expression'],basestring):	
+					if isinstance(myDict['expression'], basestring):	
 						obj['value'] = myDict['expression']
 					else:
 						obj.update(self.getBindings(myDict['expression']))
 
+				"""
 				# The use of "<" and ">" lead to minExcludes and maxExcludes constraints.
 				# Normalize these into minIncludes and maxIncludes so less UI hassle.
+				"""
 				constraint = obj['constraint']
 				if constraint == 'xmls:minExclusive':
 					obj['constraint'] = 'xmls:minInclusive'
@@ -302,10 +323,15 @@ obo:GENEPIO_0001606 contact spec - person : all its parts should be fetched for 
 					obj['constraint'] = 'xmls:maxInclusive'
 					obj['value'] = int(obj['value']) - 1
 
+				# Terms in pick lists are inheriting the 'categorical measurement datum' condition of having only 1 xmls:anyURI value.  Leave this implicit since an xmls:anyURI can't be anything else.  Catch this in the Sparql query instead?
+				
+				# A string term may also inherit "primitive value spec exactly 1 xsd:string" but this may be overridden with more specific constraints on how long the string is or its regex pattern content.
+				elif record['datatype'] == 'xmls:anyURI' and constraint == 'owl:qualifiedCardinality' and int(obj['value']) == 1:
+					continue
+
 				self.setDefault(record,'constraints', [])
 				self.getStruct(self.struct, struct, id, 'constraints').append(obj)
 
-			#f.fieldspec[struct][id] = record
 
 	def doUnits(self, table):
 		""" ####################################################################

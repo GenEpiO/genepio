@@ -169,7 +169,18 @@ function render(entityId, referrerId, depth, inherited) {
 	switch (entity['datatype']) {
 		case undefined: // Anonymous node
 			// Issue, nodes that inherit primitive data type not getting marked by that data type.
-			html += renderSection('<strong>Error: No datatype!</strong><ul><li>Hint: A picklist must be a subclass of "categorical tree specification".</li><li>Other fields need a "has primitive value spec" data type.</li></ul>')
+			html += renderSection('<strong>Error: No datatype for ' + entityId + '(' + getLabel(entity) + ') !</strong><ul><li>Hint: A picklist must be a subclass of "categorical tree specification".</li><li>Other fields need a "has primitive value spec" data type.</li></ul>')
+
+		case 'disjunction':
+			// Means at least one of following parts need to be included. 
+			var ids = getSort(entity['parts'], 'specifications') // "has value specification" parts. 
+			html += '<div class="callout"><label>Enter one of:</label>' 
+			for (var ptr in ids) { 
+				childId = ids[ptr]
+				html += render(childId, entityId, depth+1)
+			}
+			html += '</div>'
+			break;
 
 		case 'specification':
 			// Here we go up the hierarchy to render all inherited superclass 'has value specification' components.

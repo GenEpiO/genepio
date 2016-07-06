@@ -223,12 +223,6 @@ obo:GENEPIO_0001606 contact spec - person : all its parts should be fetched for 
 			self.setDefault(self.struct, struct, id, {'id': id} )
 			self.setDefault(self.struct, struct, id, 'part_of', [] )	
 
-			# BNodes have no name but have expression stuff.
-			if 'expression' in myDict: 
-				print "HAS LOGIC EXPRESSION: ", myDict
-				print
-
-				#obj.update(self.getBindings(myDict['expression']))
 
 			parentId = self.getParentId(myDict)
 			if parentId:
@@ -250,6 +244,27 @@ obo:GENEPIO_0001606 contact spec - person : all its parts should be fetched for 
 					self.setDefault(self.struct, struct, parentId, 'parts', id, [])
 					self.getStruct(self.struct, struct, parentId, 'parts', id).append(obj)
 
+
+					# BNodes have no name but have expression stuff.
+					if 'expression' in myDict: 
+						print "HAS LOGIC EXPRESSION: ", myDict
+						print
+						# E.g. HAS LOGIC EXPRESSION:  {'expression': {'datatype': 'disjunction', 'data': [u'sio:SIO_000661', u'sio:SIO_000662', u'sio:SIO_000663']}, u'cardinality': u'owl:maxQualifiedCardinality', u'limit': {'datatype': u'xmls:nonNegativeInteger', 'value': u'1'}, u'id': rdflib.term.BNode('N65c806e2db1c4f7db8b7b434bca58f78'), u'parent': u'obo:GENEPIO_0001623'}
+						expression = myDict['expression']
+						self.struct[struct][id]['datatype'] = expression['datatype']
+						self.struct[struct][id]['uiLabel'] = ''
+						self.struct[struct][id]['parts'] = {}
+						for ptr, partId in enumerate(expression['data']):
+							self.struct[struct][id]['parts'][partId] = []
+						"""
+						"constraints": [
+			                {
+			                    "datatype": "xmls:nonNegativeInteger",
+			                    "value": "1",
+			                    "constraint": "owl:qualifiedCardinality"
+			                }
+			            ]
+			            """
 
 	def doPrimitives(self, table):
 		""" ####################################################################
@@ -324,8 +339,8 @@ obo:GENEPIO_0001606 contact spec - person : all its parts should be fetched for 
 					obj['value'] = int(obj['value']) - 1
 
 				# Terms in pick lists are inheriting the 'categorical measurement datum' condition of having only 1 xmls:anyURI value.  Leave this implicit since an xmls:anyURI can't be anything else.  Catch this in the Sparql query instead?
-				
-				# A string term may also inherit "primitive value spec exactly 1 xsd:string" but this may be overridden with more specific constraints on how long the string is or its regex pattern content.
+
+				# A string term may also inherit "primitive value spec exactly 1 xsd:string" but this may be overridden with more specific expression constraints on how long the string is or its regex pattern content.
 				elif record['datatype'] == 'xmls:anyURI' and constraint == 'owl:qualifiedCardinality' and int(obj['value']) == 1:
 					continue
 

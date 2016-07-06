@@ -3082,10 +3082,11 @@ Clusters passing filter are represented by PF in analysis reports. Clusters pass
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001212">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001222"/>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001655"/>
+        <obo:GENEPIO_0000005>NCBI BioSample</obo:GENEPIO_0000005>
         <obo:GENEPIO_0000006 xml:lang="en">disease outcome</obo:GENEPIO_0000006>
         <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
         <rdfs:comment xml:lang="en">Note that this is closely related to OGMS_0000063 &quot;disease course&quot; that lists chronic, progressive, transient and accute processes.</rdfs:comment>
-        <rdfs:label xml:lang="en">host disease outcome datum</rdfs:label>
+        <rdfs:label xml:lang="en">host disease outcome</rdfs:label>
     </owl:Class>
     
 
@@ -4315,6 +4316,7 @@ In fact health status of people associated with an exposure event can change fro
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001534">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001229"/>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001655"/>
         <rdfs:label xml:lang="en">notification by</rdfs:label>
     </owl:Class>
     
@@ -4983,19 +4985,7 @@ applied, and to what field(s).</obo:IAO_0000115>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/OBI_0001938"/>
-                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/OBI_0001880"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/OBI_0001938"/>
                 <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/OBI_0001889"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/OBI_0001938"/>
-                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/OBI_0001903"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment>Right now there are issues with the logical prowess of this entity&apos;s parts.  The principal investigator is an entity, and the name, email address and organization  should be has_parts to a person with that role.  In fact name and contact info are generic to any homo sapien living, and even dead.  Such features should be inherited with any entity marked as a person. 
@@ -5086,12 +5076,6 @@ Damion</rdfs:comment>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/OBI_0001938"/>
                 <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/OBI_0001893"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/OBI_0001938"/>
-                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/PATO_0001995"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -5230,17 +5214,6 @@ BioSample_contact_information&quot;</rdfs:comment>
             </owl:Restriction>
         </owl:annotatedTarget>
         <oboInOwl:hasDbXref>NCBI BioSample:*collection_date</oboInOwl:hasDbXref>
-    </owl:Axiom>
-    <owl:Axiom>
-        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001581"/>
-        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/OBI_0001938"/>
-                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/PATO_0001995"/>
-            </owl:Restriction>
-        </owl:annotatedTarget>
-        <oboInOwl:hasDbXref>NCBI BioSample:host_health_state</oboInOwl:hasDbXref>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001581"/>
@@ -5941,6 +5914,7 @@ BioSample_contact_information&quot;</rdfs:comment>
                 <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/DOID_4"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <obo:GENEPIO_0000005>NCBI BioSample</obo:GENEPIO_0000005>
         <obo:GENEPIO_0000006 xml:lang="en">disease</obo:GENEPIO_0000006>
         <rdfs:label xml:lang="en">host disease datum</rdfs:label>
     </owl:Class>
@@ -6804,13 +6778,15 @@ BioSample_contact_information&quot;</rdfs:comment>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/OBI_0001938"/>
-                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/OBI_0001620"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/OBI_0001620"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/OBI_0001938"/>
-                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/OBI_0001621"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/OBI_0001621"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:label xml:lang="en">NCBI BioSample lat_lon specification</rdfs:label>
@@ -8744,7 +8720,8 @@ Structured vouchers include institution-codes (and optional collection-codes) ta
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001605"/>
-                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </rdf:Description>
@@ -8758,7 +8735,8 @@ Structured vouchers include institution-codes (and optional collection-codes) ta
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001605"/>
-                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </rdf:Description>
@@ -8789,6 +8767,14 @@ Structured vouchers include institution-codes (and optional collection-codes) ta
         <rdfs:comment xml:lang="en">Damion&apos;s note: There is an issue about &apos;country&apos; vs &apos;country name&apos;.  A country entity should have attribute or relationships to measurables - population, size, name, etc.  So e.g. &quot; &apos;country&apos; has_name some &apos;country name&apos; &quot;.
 
 Also note historical name issue (Myanmar vs Burma) and diplomatic name issue (Taiwan vs &quot;Republic of China&quot;).  Both point to needing a single entity with multiple names.</rdfs:comment>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/OBI_0001880 -->
+
+    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/OBI_0001880">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001655"/>
     </rdf:Description>
     
 
@@ -8837,7 +8823,13 @@ Reagent, Phenotype, Other</rdfs:comment>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/OBI_0001938"/>
-                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/OBI_0000245"/>
+                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/OBI_0001880"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/OBI_0001938"/>
+                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/OBI_0001903"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -8866,7 +8858,9 @@ Reagent, Phenotype, Other</rdfs:comment>
 
     <!-- http://purl.obolibrary.org/obo/OBI_0001893 -->
 
-    <owl:Class rdf:about="http://purl.obolibrary.org/obo/OBI_0001893"/>
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/OBI_0001893">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001655"/>
+    </owl:Class>
     
 
 
@@ -9494,12 +9488,7 @@ Discussions such as http://seqanswers.com/forums/showthread.php?t=2332 show the 
     <!-- http://purl.obolibrary.org/obo/IRIDA/IFM#IFM_0001516 -->
 
     <rdf:Description rdf:about="http://purl.obolibrary.org/obo/IRIDA/IFM#IFM_0001516">
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/OBI_0001938"/>
-                <owl:someValuesFrom rdf:resource="http://semanticscience.org/resource/SIO_000116"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
+        <rdfs:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000116"/>
     </rdf:Description>
     
 

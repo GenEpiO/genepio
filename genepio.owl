@@ -3085,6 +3085,7 @@ Clusters passing filter are represented by PF in analysis reports. Clusters pass
         <obo:GENEPIO_0000005>NCBI BioSample</obo:GENEPIO_0000005>
         <obo:GENEPIO_0000006 xml:lang="en">disease outcome</obo:GENEPIO_0000006>
         <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
+        <oboInOwl:hasDbXref>NCBI BIoSample:host_disease_outcome</oboInOwl:hasDbXref>
         <rdfs:comment xml:lang="en">Note that this is closely related to OGMS_0000063 &quot;disease course&quot; that lists chronic, progressive, transient and accute processes.</rdfs:comment>
         <rdfs:label xml:lang="en">host disease outcome</rdfs:label>
     </owl:Class>
@@ -3721,7 +3722,8 @@ Clusters passing filter are represented by PF in analysis reports. Clusters pass
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001605"/>
-                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:label xml:lang="en">sample history item</rdfs:label>
@@ -4667,6 +4669,9 @@ For Salmonella a 0.1 variance in length between an assembly size and a reference
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:GENEPIO_0000006 xml:lang="en">host taxonomy</obo:GENEPIO_0000006>
+        <obo:IAO_0000115 xml:lang="en">The natural (as opposed to laboratory) host to the organism from which the sample was obtained. Use the full taxonomic name, eg, &quot;Homo sapiens&quot;.</obo:IAO_0000115>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
+        <oboInOwl:hasDbXref>NCBI BioSample: host</oboInOwl:hasDbXref>
         <rdfs:label xml:lang="en">host organism taxonomy datum</rdfs:label>
     </owl:Class>
     
@@ -5582,7 +5587,23 @@ BioSample_contact_information&quot;</rdfs:comment>
                 <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/IDO_0000531"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <obo:IAO_0000115 xml:lang="en">Age of organism bearing a host role.</obo:IAO_0000115>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001605"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange>
+                    <rdfs:Datatype>
+                        <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"/>
+                        <owl:withRestrictions rdf:parseType="Collection">
+                            <rdf:Description>
+                                <xsd:maxExclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">130</xsd:maxExclusive>
+                            </rdf:Description>
+                        </owl:withRestrictions>
+                    </rdfs:Datatype>
+                </owl:onDataRange>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <obo:IAO_0000115 xml:lang="en">A host age is the age of a human or animal bearing a host role during some process or event.</obo:IAO_0000115>
         <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
         <rdfs:label xml:lang="en">host age</rdfs:label>
     </owl:Class>
@@ -5863,6 +5884,10 @@ BioSample_contact_information&quot;</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001614">
         <rdfs:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000136"/>
+        <obo:GENEPIO_0000005 xml:lang="en">NCBI BioSample</obo:GENEPIO_0000005>
+        <obo:IAO_0000115 xml:lang="en">A host description is a NCBI Biosample field containing additional information about the host that is not included in other defined vocabulary fields.</obo:IAO_0000115>
+        <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
+        <oboInOwl:hasDbXref>NCBI BioSample: host_description</oboInOwl:hasDbXref>
         <rdfs:label xml:lang="en">host description</rdfs:label>
     </owl:Class>
     
@@ -5872,8 +5897,11 @@ BioSample_contact_information&quot;</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001615">
         <rdfs:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000136"/>
-        <rdfs:comment xml:lang="en">Notes: Mandatory entry for clinical isolates. Additional information not included in other defined vocabulary fields, but not to include specific patient identifiers or other private information</rdfs:comment>
-        <rdfs:label xml:lang="en">host individuals details</rdfs:label>
+        <obo:GENEPIO_0000005 xml:lang="en">NCBI BioSample</obo:GENEPIO_0000005>
+        <obo:IAO_0000115 xml:lang="en">The host profile or identifiers text is the &quot;identification or description of the specific individual from which this sample was obtained&quot;.</obo:IAO_0000115>
+        <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
+        <oboInOwl:hasDbXref>NCBI BioSample: isolate</oboInOwl:hasDbXref>
+        <rdfs:label xml:lang="en">host profile or identifers</rdfs:label>
     </owl:Class>
     
 
@@ -5916,7 +5944,8 @@ BioSample_contact_information&quot;</rdfs:comment>
         </rdfs:subClassOf>
         <obo:GENEPIO_0000005>NCBI BioSample</obo:GENEPIO_0000005>
         <obo:GENEPIO_0000006 xml:lang="en">disease</obo:GENEPIO_0000006>
-        <rdfs:label xml:lang="en">host disease datum</rdfs:label>
+        <oboInOwl:hasDbXref xml:lang="en">NCBI BioSample:host_disease</oboInOwl:hasDbXref>
+        <rdfs:label xml:lang="en">host disease</rdfs:label>
     </owl:Class>
     
 
@@ -5926,6 +5955,10 @@ BioSample_contact_information&quot;</rdfs:comment>
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001618">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001689"/>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/OBI_0001930"/>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/PATO_0001894"/>
+        <obo:IAO_0000115 xml:lang="en">&apos;missing&apos; is a categorical choice recorded when a categorical variable value was known to be recorded in the past but the observed value cannot be located or retrieved.</obo:IAO_0000115>
+        <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
+        <oboInOwl:hasDbXref xml:lang="en">NCBI BioSample: missing</oboInOwl:hasDbXref>
         <rdfs:label xml:lang="en">missing</rdfs:label>
     </owl:Class>
     
@@ -5935,6 +5968,11 @@ BioSample_contact_information&quot;</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001619">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001206"/>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/OBI_0001930"/>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/PATO_0001894"/>
+        <obo:IAO_0000115 xml:lang="en">&apos;Not applicable&apos; is a categorical choice recorded when a categorical variable does not apply to a given context, as for example the measure of femur length for a patient with a missing limb.</obo:IAO_0000115>
+        <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
+        <oboInOwl:hasDbXref xml:lang="en">NCBI BioSample: not applicable</oboInOwl:hasDbXref>
         <rdfs:label xml:lang="en">not applicable</rdfs:label>
     </owl:Class>
     
@@ -5944,6 +5982,10 @@ BioSample_contact_information&quot;</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001620">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/OBI_0001930"/>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/PATO_0001894"/>
+        <obo:IAO_0000116 xml:lang="en">&apos;Not collected&apos; is a categorical choice recorded when a categorical variable was not measured with respect to some entity during some process.</obo:IAO_0000116>
+        <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
+        <oboInOwl:hasDbXref xml:lang="en">NCBI BioSample: not collected</oboInOwl:hasDbXref>
         <rdfs:label xml:lang="en">not collected</rdfs:label>
     </owl:Class>
     
@@ -6233,9 +6275,11 @@ BioSample_contact_information&quot;</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001625">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/IAO_0000300"/>
-        <obo:IAO_0000115 xml:lang="en">stage of disease at the time of sampling.</obo:IAO_0000115>
+        <obo:GENEPIO_0000005 xml:lang="en">NCBI BioSample</obo:GENEPIO_0000005>
+        <obo:IAO_0000115 xml:lang="en">A host disease stage is a measure of the acuteness of a host&apos;s diagnosed disease, if any, at the time of sampling.</obo:IAO_0000115>
+        <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
         <obo:IAO_0000412 xml:lang="en">http://www.ncbi.nlm.nih.gov/biosample/docs/attributes/</obo:IAO_0000412>
-        <oboInOwl:hasDbXref xml:lang="en">NCBI BioSample:disease_stage</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref xml:lang="en">NCBI BioSample: host_disease_stage</oboInOwl:hasDbXref>
         <rdfs:label xml:lang="en">host disease stage</rdfs:label>
     </owl:Class>
     
@@ -6883,7 +6927,8 @@ BioSample_contact_information&quot;</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001660">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/PATO_0001894"/>
-        <oboInOwl:hasDbXref xml:lang="en">NCBI BioSample: neuter</oboInOwl:hasDbXref>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
+        <oboInOwl:hasDbXref>NCBI BioSample: neuter</oboInOwl:hasDbXref>
         <rdfs:comment xml:lang="en">Not a PATO phenotypic sex catigorical value.</rdfs:comment>
         <rdfs:label xml:lang="en">neuter</rdfs:label>
     </owl:Class>
@@ -6894,8 +6939,11 @@ BioSample_contact_information&quot;</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001661">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/PATO_0001894"/>
+        <obo:GENEPIO_0000005>NCBI BioSample</obo:GENEPIO_0000005>
+        <obo:IAO_0000115 xml:lang="en">&apos;pooled male and female&apos; is a categorical value used when the male and female categories or levels of a factor are combined.</obo:IAO_0000115>
+        <obo:IAO_0000116 xml:lang="en">Not a PATO phenotypic sex catigorical value.</obo:IAO_0000116>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
         <oboInOwl:hasDbXref>NCBI BioSample: &apos;pooled male and female&apos;</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref xml:lang="en">Not a PATO phenotypic sex catigorical value.</oboInOwl:hasDbXref>
         <rdfs:label xml:lang="en">pooled male and female</rdfs:label>
     </owl:Class>
     
@@ -6904,8 +6952,14 @@ BioSample_contact_information&quot;</rdfs:comment>
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0001662 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001662">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/ExO_0000038"/>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/OBI_0001930"/>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/PATO_0001894"/>
+        <obo:IAO_0000115 xml:lang="en">&apos;Not determined&apos; is a categorical choice recorded when the act of collecting data on a given measurable has not otherwise been performed. It may indicate dificulty in assessing a category.</obo:IAO_0000115>
+        <obo:IAO_0000116 xml:lang="en">There is a need to define how this might be different from &apos;not collected&apos;</obo:IAO_0000116>
+        <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
         <oboInOwl:hasDbXref>NCBI BioSample: &apos;not determined&apos;</oboInOwl:hasDbXref>
+        <oboInOwl:hasExactSynonym xml:lang="en">undetermined</oboInOwl:hasExactSynonym>
         <rdfs:label xml:lang="en">not determined</rdfs:label>
     </owl:Class>
     
@@ -7487,67 +7541,78 @@ BioSample_contact_information&quot;</rdfs:comment>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/OBI_0001938"/>
-                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/ExO_0000038"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001567"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/OBI_0001938"/>
-                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001212"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001724"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/OBI_0001938"/>
-                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001567"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/OBI_0001141"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/OBI_0001938"/>
-                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001614"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/ExO_0000038"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/OBI_0001938"/>
-                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001615"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001212"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/OBI_0001938"/>
-                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001617"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001614"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/OBI_0001938"/>
-                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001625"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001615"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/OBI_0001938"/>
-                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001724"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001617"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/OBI_0001938"/>
-                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/OBI_0001141"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001625"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/OBI_0001938"/>
-                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/OBI_0001169"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/OBI_0001169"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/OBI_0001938"/>
-                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/PATO_0001894"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/PATO_0001894"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:label xml:lang="en">NCBI BioSample host specification</rdfs:label>
@@ -7558,73 +7623,8 @@ BioSample_contact_information&quot;</rdfs:comment>
         <owl:annotatedTarget>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/OBI_0001938"/>
-                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/ExO_0000038"/>
-            </owl:Restriction>
-        </owl:annotatedTarget>
-        <oboInOwl:hasDbXref>NCBI BioSample:host_health_state</oboInOwl:hasDbXref>
-    </owl:Axiom>
-    <owl:Axiom>
-        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001707"/>
-        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/OBI_0001938"/>
-                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001212"/>
-            </owl:Restriction>
-        </owl:annotatedTarget>
-        <oboInOwl:hasDbXref>NCBI BioSample:host_disease_outcome</oboInOwl:hasDbXref>
-    </owl:Axiom>
-    <owl:Axiom>
-        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001707"/>
-        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/OBI_0001938"/>
-                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001567"/>
-            </owl:Restriction>
-        </owl:annotatedTarget>
-        <oboInOwl:hasDbXref>NCBI BioSample: host</oboInOwl:hasDbXref>
-    </owl:Axiom>
-    <owl:Axiom>
-        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001707"/>
-        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/OBI_0001938"/>
-                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001614"/>
-            </owl:Restriction>
-        </owl:annotatedTarget>
-        <oboInOwl:hasDbXref>NCBI BioSample: host_description</oboInOwl:hasDbXref>
-    </owl:Axiom>
-    <owl:Axiom>
-        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001707"/>
-        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/OBI_0001938"/>
-                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001615"/>
-            </owl:Restriction>
-        </owl:annotatedTarget>
-        <oboInOwl:hasDbXref>NCBI BioSample: isolate</oboInOwl:hasDbXref>
-    </owl:Axiom>
-    <owl:Axiom>
-        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001707"/>
-        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/OBI_0001938"/>
-                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001617"/>
-            </owl:Restriction>
-        </owl:annotatedTarget>
-        <oboInOwl:hasDbXref>NCBI BioSample:host_disease</oboInOwl:hasDbXref>
-    </owl:Axiom>
-    <owl:Axiom>
-        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001707"/>
-        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/OBI_0001938"/>
-                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/OBI_0001141"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/OBI_0001141"/>
             </owl:Restriction>
         </owl:annotatedTarget>
         <oboInOwl:hasDbXref>NCBI BioSample:host_subject_id</oboInOwl:hasDbXref>
@@ -7635,10 +7635,11 @@ BioSample_contact_information&quot;</rdfs:comment>
         <owl:annotatedTarget>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/OBI_0001938"/>
-                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/OBI_0001169"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/ExO_0000038"/>
             </owl:Restriction>
         </owl:annotatedTarget>
-        <oboInOwl:hasDbXref>NCBI BioSample: host_age</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>NCBI BioSample:host_health_state</oboInOwl:hasDbXref>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001707"/>
@@ -7646,7 +7647,8 @@ BioSample_contact_information&quot;</rdfs:comment>
         <owl:annotatedTarget>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/OBI_0001938"/>
-                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/PATO_0001894"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/PATO_0001894"/>
             </owl:Restriction>
         </owl:annotatedTarget>
         <oboInOwl:hasDbXref>NCBI BioSample:host_sex</oboInOwl:hasDbXref>
@@ -8090,15 +8092,6 @@ Structured vouchers include institution-codes (and optional collection-codes) ta
     
 
 
-    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001743 -->
-
-    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001743">
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/ExO_0000038"/>
-        <rdfs:label xml:lang="en">undetermined</rdfs:label>
-    </owl:Class>
-    
-
-
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0001747 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001747">
@@ -8462,6 +8455,18 @@ Structured vouchers include institution-codes (and optional collection-codes) ta
     
 
 
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001775 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001775">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001610"/>
+        <obo:IAO_0000115 xml:lang="en">A sample host age is the age of the host at time given sample was taken.</obo:IAO_0000115>
+        <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
+        <oboInOwl:hasDbXref>NCBI BioSample: host_age</oboInOwl:hasDbXref>
+        <rdfs:label xml:lang="en">sample host age</rdfs:label>
+    </owl:Class>
+    
+
+
     <!-- http://purl.obolibrary.org/obo/GEO_000000005 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GEO_000000005">
@@ -8654,16 +8659,8 @@ Structured vouchers include institution-codes (and optional collection-codes) ta
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001605"/>
-                <owl:someValuesFrom>
-                    <rdfs:Datatype>
-                        <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"/>
-                        <owl:withRestrictions rdf:parseType="Collection">
-                            <rdf:Description>
-                                <xsd:maxExclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">120</xsd:maxExclusive>
-                            </rdf:Description>
-                        </owl:withRestrictions>
-                    </rdfs:Datatype>
-                </owl:someValuesFrom>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:GENEPIO_0000006 xml:lang="en">Age</obo:GENEPIO_0000006>
@@ -8686,7 +8683,7 @@ Structured vouchers include institution-codes (and optional collection-codes) ta
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001605"/>
-                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
                 <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -8989,7 +8986,9 @@ Discussions such as http://seqanswers.com/forums/showthread.php?t=2332 show the 
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/PATO_0001894">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001655"/>
-        <obo:GENEPIO_0000006 xml:lang="en">Sex</obo:GENEPIO_0000006>
+        <obo:GENEPIO_0000006 xml:lang="en">sex</obo:GENEPIO_0000006>
+        <obo:IAO_0000115 xml:lang="en">Phenotypic sex refers to an individual&apos;s sex as determined by their internal and external genitalia, expression of secondary sex characteristics, and behavior.</obo:IAO_0000115>
+        <obo:IAO_0000119>NCBI: http://www.ncbi.nlm.nih.gov/books/NBK10943/</obo:IAO_0000119>
     </owl:Class>
     
 
@@ -10095,6 +10094,20 @@ A second point is that identifiers listed here are types of identifiers, i.e. ar
     </rdf:Description>
     <rdf:Description rdf:about="http://purl.obolibrary.org/obo/NCBITaxon_9925">
         <obo:GENEPIO_0000006 xml:lang="en">domestic goat</obo:GENEPIO_0000006>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/PATO_0000383">
+        <oboInOwl:hasDbXref xml:lang="en">NCBI BioSample: female</oboInOwl:hasDbXref>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/PATO_0000384">
+        <oboInOwl:hasDbXref>NCBI BioSample: male</oboInOwl:hasDbXref>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/PATO_0001340">
+        <oboInOwl:hasExactSynonym xml:lang="en">intersex</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasDbXref>NCBI BioSample: intersex</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>NCBI BioSample: hermaphrodite</oboInOwl:hasDbXref>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/PATO_0001827">
+        <obo:IAO_0000116 xml:lang="en">This value is not present in NCBI BioSample host sex.</obo:IAO_0000116>
     </rdf:Description>
     <rdf:Description rdf:about="http://purl.obolibrary.org/obo/UO_0000036">
         <obo:GENEPIO_0000006 xml:lang="en">years</obo:GENEPIO_0000006>

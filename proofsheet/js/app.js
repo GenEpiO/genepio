@@ -70,7 +70,7 @@ function renderForm(entityId) {
 	console.log("Rendering entity ", entityId)
 
 	top.bag = {}
-	$("#content").empty().html('<form id="mainForm"  data-abide>'+ render(entityId, null, 0) + '</form>').foundation()
+	$("#content").empty().html('<form id="mainForm" data-abide>'+ render(entityId, null, 0) + renderButton('Preview Data Submission','previewData()') + '</form>').foundation()
 	
 	// Set up all date inputs; using http://foundation-datepicker.peterbeno.com/example.html
 	$('input[placeholder="xmls:date"]').fdatepicker({format: formatD, disableDblClickSelection: true});
@@ -120,6 +120,15 @@ function renderMenu(entityId, depth = 0 ) {
 	return html
 }
 
+function previewData() {
+	// The hierarchic form data must be converted into minimal JSON data packet for transmission back to server.
+	message = "The hierarchic form data must be converted into minimal JSON data packet for transmission back to server.\n\n"
+
+
+
+
+	alert (message)
+}
 
 function render(entityId, referrerId, depth, inherited) {
 	console.log("Render",entityId,referrerId,depth,inherited)
@@ -160,7 +169,7 @@ function render(entityId, referrerId, depth, inherited) {
 			entity['required'] = (requiredLabel.indexOf('required') >=0 ) ? ' required ' : ''
 		}
 		entity['features'] = getFeatures(entityId, referrerId)
-		// Currently showing "hidden" feature as disabled.
+		// Currently showing "hidden" feature fields as disabled.
 		entity['disabled'] = ('hidden' in entity['features']) ? ' disabled="disabled"' : '';
 
 	}
@@ -168,18 +177,36 @@ function render(entityId, referrerId, depth, inherited) {
 	
 	switch (entity['datatype']) {
 		case undefined: // Anonymous node
-			// Issue, nodes that inherit primitive data type not getting marked by that data type.
 			html += renderSection('<strong>Error: No datatype for ' + entityId + '(' + getLabel(entity) + ') !</strong><ul><li>Hint: A picklist must be a subclass of "categorical tree specification".</li><li>Other fields need a "has primitive value spec" data type.</li></ul>')
 
 		case 'disjunction':
 			// Means at least one of following parts need to be included. 
+			// More work to make that clear is needed - perhaps accordion box input.
 			var ids = getSort(entity['parts'], 'specifications') // "has value specification" parts. 
-			html += '<div class="callout"><label>Enter one of:</label>' 
+			//html += '<div class="callout"><label>Locale:</label>' 
+			html += '<div class="callout' +  entity['required']+ '">' + label
+			html += '<ul class="tabs" data-tabs id="example-tabs">'
+			content = '<div class="tabs-content" data-tabs-content="example-tabs">'
 			for (var ptr in ids) { 
 				childId = ids[ptr]
-				html += render(childId, entityId, depth+1)
+				childDomId = childId.replace(':','_')
+				child = top.data['specifications'][childId]
+				if (ptr == 0) {
+					tab_active = ' is-active '
+					aria = ' aria-selected="true" '
+				}
+				else {
+					tab_active = ''
+					aria = ''
+				}
+
+				html += '<li class="tabs-title'+tab_active+'"><a href="#panel_'+childDomId+'" ' + aria + '>' + getLabel(child) + '</a></li>'
+				content += '<div class="tabs-panel'+tab_active+'" id="panel_'+childDomId+'">'
+				content += 		render(childId, entityId, depth+1)
+				content += '</div>'		
 			}
-			html += '</div>'
+			content += '</div>'	
+			html += '</ul>' + content + '</div>'
 			break;
 
 		case 'specification':
@@ -279,6 +306,15 @@ function renderSection(text) {
 	html = '<div>\n'
 	html +=	'	<label>' + text + '</label>\n'
 	//html +=	'	<input type="text" placeholder="" />\n'
+	html +=	'</div>\n'
+
+	return html
+}
+
+
+function renderButton(text, buttonFunction) {
+	html = '<div>\n'
+	html +=	'	<input type="submit" class="button float-right" value="' + text + '" onclick="'+buttonFunction+'">\n'
 	html +=	'</div>\n'
 
 	return html
@@ -647,8 +683,10 @@ function getCardinality(entity, referrerId) {
 
 
 function getChoices(helper, entityId) {
-	// If user makes a selection, and then clicks "lookup", selection list tree will be extended/fetched?
-
+	/*
+	 If user makes a selection from a picklist, and the picklist has a "lookup" feature, i.e. a "More choices" button,
+	 They can then click that button and a dynamic fetch of subordinate items to the one the user has selected is performed., selection list tree will be extended/fetched?
+	*/
 	var select = $(helper).parent('div[class="input-group"]').find("select")
 	var term = select.val().split(":")[1]
 	var ontology = term.split("_")[0]

@@ -262,8 +262,6 @@ function render(entityId, referrerId, depth, inherited) {
 			break;
 	}
 		return html
-	
-
 }
 
 function renderSection(text) {
@@ -413,15 +411,12 @@ function renderUnits(entity) {
 		if (units.length == 1) 
 			return '<a class="input-group-label small">'+ label + '</a>\n'
 
-		// FOR FUTURE USE
-		var html ='<ul class="input-group-label button dropdown menu small" data-dropdown-menu>'
-		html += '	<li><a>'+ label + '</a>'
-		html += '	<ul class="menu">'
-		for (var ptr in units.slice(1)) {
+		var html ='<div class="input-group-button" style="font-weight:700;" ><select style="width:auto;cursor:pointer;">'
+		for (var ptr in units) { //.slice(1)
 			var unit = top.data['units'][units[ptr]]
-			html += '		<li>' + (unit['uiLabel'] ? unit['uiLabel'] : unit['label']) + '</li>'
+			html += '		<option value="'+ unit['id'] + '">' + (unit['uiLabel'] ? unit['uiLabel'] : unit['label']) + ' &nbsp;</option>'
 		}
-		html += '</ul></li></ul>\n'
+		html += '</select></div>\n'
 		return html
    	}
    	return ''

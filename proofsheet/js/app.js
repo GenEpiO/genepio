@@ -70,14 +70,15 @@ function renderForm(entityId) {
 	console.log("Rendering entity ", entityId)
 
 	top.bag = {}
-	$("#content").empty().html('<form id="mainForm" data-abide>'+ render(entityId, null, 0) + renderButton('Preview Data Submission','previewData()') + '</form>').foundation()
+	$("#content").empty().html('<form id="mainForm" data-abide>'+ render(entityId) + renderButton('Preview Data Submission','previewData()') + '</form>').foundation()
 	
 	// Set up all date inputs; using http://foundation-datepicker.peterbeno.com/example.html
 	$('input[placeholder="xmls:date"]').fdatepicker({format: formatD, disableDblClickSelection: true});
 	$('input[placeholder="xmls:dateTime"]').fdatepicker({format: formatD+formatT, disableDblClickSelection: true});
 	$('input[placeholder="xmls:dateTimeStamp"]').fdatepicker({format: formatD+formatT, disableDblClickSelection: true});
 
-	// Enable page annotation
+	// Enable page annotation by 3rd party tools by kicking browser to 
+	// understand that a #anchor and page title are different.
 	var title = 'Ontology UI Proof Sheet: ' + entityId
 	if (top.data['specifications'][entityId]) 
 		title += top.data['specifications'][entityId]['uiLabel']
@@ -122,22 +123,38 @@ function renderMenu(entityId, depth = 0 ) {
 
 function previewData() {
 	// The hierarchic form data must be converted into minimal JSON data packet for transmission back to server.
-	message = "The hierarchic form data must be converted into minimal JSON data packet for transmission back to server.\n\n"
+	message = "The hierarchic form data is converted into a minimal JSON data packet for transmission back to server.\n\n"
+	obj={}
 
+	$.each($("form").find("input:not(.button), select"), function(i,item) {
+		var focus = obj
+		var id = $(item).attr('id')
+		if (id) {
+			var path = $(item).attr('id').split('/')
+			for (var ptr in path) {
+				var item2 = path[ptr]
+				if (!(item2 in focus) ) focus[item2]={}
+				if (ptr == path.length-1) //If at end of path, make assignment
+					focus[item2] = $(item).val()
+				else
+					focus = focus[item2]
+			}
+		}
+	})
 
-
-
-	alert (message)
+	alert (message + JSON.stringify(obj, null, 2) )
 }
 
-function render(entityId, referrerId, depth, inherited) {
-	console.log("Render",entityId,referrerId,depth,inherited)
+function render(entityId, path = [], depth = 0, inherited = false, minimal = false) {
+
+	console.log("Render", path, entityId, depth, inherited)
 
 	if (!inherited) inherited = false
+	if (!minimal) minimal = false
 	var html = ''
 
 	if (depth > 20) {
-		console.log ("AWOL Loop? While rendering", entityId, referrerId )
+		console.log ("AWOL Loop? While rendering", path )
 		return html
 	}
 	// Prevents an item from being rendered in loop.
@@ -146,22 +163,28 @@ function render(entityId, referrerId, depth, inherited) {
 	//else top.bag[entityId] = true		
 
 	var entity = $.extend(true, {}, top.data['specifications'][entityId]) // clone entity so we can change it.
+
 	if (!entity) {
 		console.log("Node: " + entityId + " has no specification entry.")
 		return html
 	}
+	
+	entity['path'] = path.concat([entityId])
+	// Create a unique domId out of all the levels 
+	entity['domId'] = entity['path'].join('/0/')
 	if ('parent' in entity && parent['id'] == entityId) {
 		console.log("Node: " + entityId + " is a parent of itself and so cannot be re-rendered.")
 		return html
 	}
-
-	var label = '<label>' + getLabel(entity) + '</label>'
+	if (minimal) var label = ''
+	else var label = '<label>' + getLabel(entity) + '</label>'
 	// When this is a "has value specification" part of another entity, 
 	// that entity will indicate how many of this part are allowed.
 
 	entity['required'] = ''
 	entity['features'] = {}
-	if (referrerId) {
+	if (entity['path'].length > 1) {
+		referrerId = entity['path'].slice(-2)[0]
 		var cardinality = getCardinality(entity, referrerId)
 		if (cardinality.length) {
 			var requiredLabel = cardinality.join('.')
@@ -178,35 +201,10 @@ function render(entityId, referrerId, depth, inherited) {
 	switch (entity['datatype']) {
 		case undefined: // Anonymous node
 			html += renderSection('<strong>Error: No datatype for ' + entityId + '(' + getLabel(entity) + ') !</strong><ul><li>Hint: A picklist must be a subclass of "categorical tree specification".</li><li>Other fields need a "has primitive value spec" data type.</li></ul>')
+			break;
 
 		case 'disjunction':
-			// Means at least one of following parts need to be included. 
-			// More work to make that clear is needed - perhaps accordion box input.
-			var ids = getSort(entity['parts'], 'specifications') // "has value specification" parts. 
-			//html += '<div class="callout"><label>Locale:</label>' 
-			html += '<div class="callout' +  entity['required']+ '">' + label
-			html += '<ul class="tabs" data-tabs id="example-tabs">'
-			content = '<div class="tabs-content" data-tabs-content="example-tabs">'
-			for (var ptr in ids) { 
-				childId = ids[ptr]
-				childDomId = childId.replace(':','_')
-				child = top.data['specifications'][childId]
-				if (ptr == 0) {
-					tab_active = ' is-active '
-					aria = ' aria-selected="true" '
-				}
-				else {
-					tab_active = ''
-					aria = ''
-				}
-
-				html += '<li class="tabs-title'+tab_active+'"><a href="#panel_'+childDomId+'" ' + aria + '>' + getLabel(child) + '</a></li>'
-				content += '<div class="tabs-panel'+tab_active+'" id="panel_'+childDomId+'">'
-				content += 		render(childId, entityId, depth+1)
-				content += '</div>'		
-			}
-			content += '</div>'	
-			html += '</ul>' + content + '</div>'
+			html += renderDisjunction(entity, label, depth)
 			break;
 
 		case 'specification':
@@ -215,7 +213,7 @@ function render(entityId, referrerId, depth, inherited) {
 				var parentId = entity['parent']
 				if (parentId != 'obo:OBI_0000658') {//Top level spec.
 					//console.log('' + depth + ": Specification "+entityId+" inheriting: " + parentId)
-					html += render(parentId, null, depth-1, true)
+					html += render(parentId, [], depth-1, true)
 				}
 			}	
 
@@ -223,14 +221,14 @@ function render(entityId, referrerId, depth, inherited) {
 			for (var ptr in ids) { 
 				// Sort so fields within a group are consistenty orderd:
 				childId = ids[ptr]
-				html += render(childId, entityId, depth+1)
+				html += render(childId, entity['path'], depth+1)
 			}
 
 			if (inherited == false) {
-				var ids = getSort(entity['members'], 'specifications') //'is a' members.
+				var ids = getSort(entity['members'], 'specifications') //'is a' members, e.g. categorical lists or trees
 				for (var ptr in ids) { 
 					childId = ids[ptr]
-					html += render(childId, null, depth+1) // cardinality doesn't apply to subclasses.
+					html += render(childId, [], depth + 1) // cardinality doesn't apply to subclasses so no need to supply path.
 				}
 			}
 
@@ -299,7 +297,7 @@ function render(entityId, referrerId, depth, inherited) {
 			html += renderSection('UNRECOGNIZED: '+ entityId + ' [' + entity['datatype']  + ']' + label  )
 			break;
 	}
-		return html
+	return html
 }
 
 function renderSection(text) {
@@ -317,6 +315,39 @@ function renderButton(text, buttonFunction) {
 	html +=	'	<input type="submit" class="button float-right" value="' + text + '" onclick="'+buttonFunction+'">\n'
 	html +=	'</div>\n'
 
+	return html
+}
+
+function renderDisjunction(entity, label, depth) {
+	/* This entity was made up of 'has value specification some X or Y or Z ... 
+	Means at least one of the disjunction parts need to be included (more are allowed at moment). 
+	*/
+	var ids = getSort(entity['parts'], 'specifications') // "has value specification" parts. 
+
+	var html = '<div>' + label + '<div class="' +  entity['required']+ '">'
+	html += '<ul class="tabs" data-tabs id="example-tabs">'
+	content = '<div class="tabs-content" data-tabs-content="example-tabs">'
+	for (var ptr in ids) { 
+		childId = ids[ptr]
+		childDomId = childId.replace(':','_')
+		child = top.data['specifications'][childId]
+		if (ptr == 0) {
+			tab_active = ' is-active '
+			aria = ' aria-selected="true" '
+		}
+		else {
+			tab_active = ''
+			aria = ''
+		}
+
+		html += '<li class="tabs-title'+tab_active+'"><a href="#panel_'+childDomId+'" ' + aria + '>' + getLabel(child) + '</a></li>'
+		content += '<div class="tabs-panel'+tab_active+'" id="panel_'+childDomId+'" style="padding:5px">'
+		content += 		render(childId, entity['path'], depth+1, false, true )
+		content += '</div>'		
+	}
+	content += '</div>'	
+	html += '</ul>' + content + '</div></div>'
+	html +=	renderHelp(entity) + '<br/>\n'
 	return html
 }
 
@@ -338,7 +369,7 @@ function renderInput(entity, label) {
 	html = '<div class="input-wrapper">\n'
 	html +=		label
 	html +=	'	<div class="input-group">\n'
-	html +=	'		<input class="input-group-field '+entity['id']+'" type="text" ' + getStringConstraints(entity) + entity['required']+ entity['disabled']  +  ' placeholder="'+ entity['datatype']+ '" />\n'
+	html +=	'		<input class="input-group-field '+entity['id']+'" id="'+entity['domId']+'" type="text" ' + getStringConstraints(entity) + entity['required']+ entity['disabled']  +  ' placeholder="'+ entity['datatype']+ '" />\n'
     html += 		renderUnits(entity)
 	html +=	'	</div>\n'
 	html += ' 	</label>'
@@ -351,11 +382,11 @@ function renderInput(entity, label) {
 
 /* NUMERIC DATATYPES HANDLED HERE */
 function renderNumber(entity, label) {
-
+	// ADD DECIMAL/FLOAT VALIDATION
 	html = '<div class="input-wrapper">\n'
 	html +=		label
 	html +=	'	<div class="input-group">\n'
-	html +=	'		<input class="input-group-field '+entity['id']+'" type="text"' + entity['required']+ entity['disabled'] + 'placeholder="'+ entity['datatype']+'" />\n'
+	html +=	'		<input class="input-group-field '+entity['id']+'" id="'+entity['domId']+'" type="text"' + entity['required']+ entity['disabled'] + 'placeholder="'+ entity['datatype']+'" />\n'
     html += 		renderUnits(entity)
 	html +=	'	</div>\n'
 	html +=		renderHelp(entity)
@@ -369,7 +400,7 @@ function renderInteger(entity, label, minInclusive, maxInclusive) {
 	html = '<div class="input-wrapper">\n'
 	html +=		label
 	html +=	'	<div class="input-group">\n'
-	html +=	'		<input class="input-group-field '+entity['id']+'" type="number"' + entity['required'] + entity['disabled'] + getIntegerConstraints(entity, minInclusive, maxInclusive) + ' placeholder="'+ entity['datatype']+'" pattern="integer" />\n'
+	html +=	'		<input class="input-group-field '+entity['id']+'" id="'+entity['domId']+'" type="number"' + entity['required'] + entity['disabled'] + getIntegerConstraints(entity, minInclusive, maxInclusive) + ' placeholder="'+ entity['datatype']+'" pattern="integer" />\n'
     html += 		renderUnits(entity)
 	html +=	'	</div>\n'
 	html +=		renderHelp(entity)
@@ -382,7 +413,7 @@ function renderInteger(entity, label, minInclusive, maxInclusive) {
 function renderBoolean(entity) {
 html = '<div class="input-wrapper">\n'
 	html +=	'	<div class="switch small">\n'
-	html +=	'	  <input class="switch-input '+entity['id'] + '" id="smallSwitch" type="checkbox" name="'+entity['id']+'"' + entity['required']+ entity['disabled'] + '>\n'
+	html +=	'	  <input class="switch-input '+entity['id'] + '" id="'+entity['domId']+'" type="checkbox" name="'+entity['id']+'"' + entity['required']+ entity['disabled'] + '>\n'
 	html +=	'		<label class="switch-paddle" for="'+entity['id']+'">\n'
 	html +=	'	    <span class="show-for-sr">' + getLabel(entity) + '</span>\n'
 	html +=	'	  </label>\n'
@@ -399,7 +430,7 @@ function renderChoices(entity, label) {
 	html = '<div class="input-wrapper">\n' 
 	html +=		label
 	html +=	'	<div class="input-group">\n'
-	html +=	'		<select placeholder="'+entity['datatype'] + '"  class="input-group-field '+entity['id'] + '"' + entity['required'] + entity['disabled'] + '>\n'
+	html +=	'		<select placeholder="'+entity['datatype'] + '" class="input-group-field '+entity['id'] + '" id="'+entity['domId']+'"' + entity['required'] + entity['disabled'] + '>\n'
 	html +=				renderChoice(top.data['picklists'][picklistId], 0)
 	html +=	'		</select>\n'
 	if ('lookup' in entity['features']) 
@@ -451,14 +482,15 @@ function renderChoice(entity, depth, type="select") {
 }
 
 function renderUnits(entity) {
-	// Future: enable default unit (cm, mm, m, km etc.); allow user to select which unit data entry is in.
+	// User is presented with choice of data-entry units if available.
+	// Future: enable default unit/scale (cm, mm, m, km etc.); 
 	if ('units' in entity) {
 		var units = entity['units']
 		var label = getLabel(top.data['units'][units[0]])
 		if (units.length == 1) 
 			return '<a class="input-group-label small">'+ label + '</a>\n'
 
-		var html ='<div class="input-group-button" style="font-weight:700;" ><select style="width:auto;cursor:pointer;">'
+		var html ='<div class="input-group-button" style="font-weight:700;" ><select style="width:auto;cursor:pointer;" id="'+entity['domId']+'">'
 		for (var ptr in units) { //.slice(1)
 			var unit = top.data['units'][units[ptr]]
 			html += '		<option value="'+ unit['id'] + '">' + (unit['uiLabel'] ? unit['uiLabel'] : unit['label']) + ' &nbsp;</option>'
@@ -586,8 +618,8 @@ function getConstraints(entity) {
 				case 'xmls:totalDigits':
 
 				case 'xmls:length': // exact length
-				case 'xmls:minLength': // preserve|collapse|replace
-				case 'xmls:maxLength': // an allowed value.
+				case 'xmls:minLength': 
+				case 'xmls:maxLength': 
 					output[constraint] = parseInt(value)
 					break;
 
@@ -635,25 +667,25 @@ function getStringConstraints(entity) {
 
 function getCardinality(entity, referrerId) {
 	/* Each part comes with a cardinality qualifier that indicates how many of
-		that part can exist in an entity's data structure and by extension, on a form. 
-		NOTE: limits on the data range of numeric values is handled separately in the
-		constraints functions above.
+	that part can exist in an entity's data structure and by extension, on a form. 
+	NOTE: limits on the data range of numeric values is handled separately in the
+	constraints functions above.
 
-		EXPLANATION
-		In OWL/Protege it is often stated that entity A has relation B to entity C, 
+	EXPLANATION
+	In OWL/Protege it is often stated that entity A has relation B to entity C, 
 
-			e.g.: h-antigen 'has primitive value spec' some 'xsd:string'
-			
-		This is equivalent to the cardinality "min 1" aka "minQualifiedCardinality 1" 
-		or in plain english, "1 or more", which is ok in many logic scenarios as it
-		enforces the existence of at least one example.  The cardinality of "some" in
-		a user interface would on the face of it allow the user to add more than one 
-		of a particular item which is fine for things like multiple phone number and 
-		alternate email datums.
+		e.g.: h-antigen 'has primitive value spec' some 'xsd:string'
+		
+	This is equivalent to the cardinality "min 1" aka "minQualifiedCardinality 1" 
+	or in plain english, "1 or more", which is ok in many logic scenarios as it
+	enforces the existence of at least one example.  The cardinality of "some" in
+	a user interface would on the face of it allow the user to add more than one 
+	of a particular item which is fine for things like multiple phone number and 
+	alternate email datums.
 
-		However, if we're looking for one and only one datum of a certain type in an 
-		entity data structure, we actually need to say that entity A has exactly 
-		"owl:qualifiedCardinality 1" aka "exactly 1" of entity B, no less and no more.  
+	However, if we're looking for one and only one datum of a certain type in an 
+	entity data structure, we actually need to say that entity A has exactly 
+	"owl:qualifiedCardinality 1" aka "exactly 1" of entity B, no less and no more.  
 	*/
 	var constraints = []
 	var id = entity['id']

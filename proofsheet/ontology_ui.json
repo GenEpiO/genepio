@@ -96,16 +96,29 @@
             "parent": "obo:GENEPIO_0001680",
             "uiLabel": "IRIDA epidemiological case sepcification"
         },
-        "obo:SYMP_0000480": {
+        "obo:GENEPIO_0001569": {
             "datatype": "xmls:anyURI",
-            "id": "obo:SYMP_0000480",
-            "uiLabel": "nervous system symptom"
+            "id": "obo:GENEPIO_0001569",
+            "uiLabel": "pathogen.cl"
+        },
+        "obo:EO_0007285": {
+            "datatype": "xmls:anyURI",
+            "definition": "The treatment involving an exposure to the wet or the rainy season.",
+            "id": "obo:EO_0007285",
+            "uiLabel": "rainy season"
         },
         "obo:GENEPIO_0001657": {
             "part_of": [
                 "obo:GENEPIO_0001581"
             ],
             "parts": {
+                "N4e3368766ced4eb7a0d5dd7eb3381fab": [
+                    {
+                        "datatype": "xmls:nonNegativeInteger",
+                        "cardinality": "owl:qualifiedCardinality",
+                        "value": "1"
+                    }
+                ],
                 "obo:OBI_0001627": [
                     {
                         "datatype": "xmls:nonNegativeInteger",
@@ -113,14 +126,7 @@
                         "value": "1"
                     }
                 ],
-                "N8a578afe4d48438a9e502bf7a56cff2b": [
-                    {
-                        "datatype": "xmls:nonNegativeInteger",
-                        "cardinality": "owl:qualifiedCardinality",
-                        "value": "1"
-                    }
-                ],
-                "N074c0c69753e4b8998e54fccb2f97518": [
+                "N10130efe3c7743e7bafdceb3509da45b": [
                     {
                         "datatype": "xmls:nonNegativeInteger",
                         "cardinality": "owl:qualifiedCardinality",
@@ -201,10 +207,11 @@
             "id": "vcard:Child",
             "uiLabel": "child"
         },
-        "ifm:IFM_0001671": {
+        "obo:UBERON_0001969": {
             "datatype": "xmls:anyURI",
-            "id": "ifm:IFM_0001671",
-            "uiLabel": "phone type - home"
+            "definition": "The liquid component of blood, in which erythrocytes are suspended.",
+            "id": "obo:UBERON_0001969",
+            "uiLabel": "blood plasma"
         },
         "obo:NCBITaxon_590": {
             "datatype": "xmls:anyURI",
@@ -282,10 +289,23 @@
             "parent": "obo:GENEPIO_0001611",
             "uiLabel": "NCBI BioProject specification"
         },
-        "obo:ENVO_00003859": {
+        "obo:NCBITaxon_595": {
             "datatype": "xmls:anyURI",
-            "id": "obo:ENVO_00003859",
-            "uiLabel": "horse manure"
+            "id": "obo:NCBITaxon_595",
+            "uiLabel": "Salmonella enterica subsp. enterica serovar Infantis"
+        },
+        "N10130efe3c7743e7bafdceb3509da45b": {
+            "datatype": "disjunction",
+            "part_of": [
+                "obo:GENEPIO_0001657"
+            ],
+            "parts": {
+                "sio:SIO_000663": [],
+                "sio:SIO_000662": [],
+                "sio:SIO_000661": []
+            },
+            "id": "N10130efe3c7743e7bafdceb3509da45b",
+            "uiLabel": ""
         },
         "obo:DOID_18": {
             "datatype": "xmls:anyURI",
@@ -307,17 +327,16 @@
                 }
             ]
         },
-        "obo:ENVO_01000408": {
+        "obo:GENEPIO_0001654": {
             "datatype": "xmls:anyURI",
-            "definition": "An environmental zone is an environmental feature whose extent is determined by the presence or influence of one or more material entities or processes. An environmental zone may, itself, assume the role of an environmental feature.",
-            "id": "obo:ENVO_01000408",
-            "uiLabel": "environmental zone"
+            "id": "obo:GENEPIO_0001654",
+            "uiLabel": "categorical location datum"
         },
-        "obo:UBERON_0007311": {
+        "obo:DOID_4378": {
             "datatype": "xmls:anyURI",
-            "definition": "Matter ejected from the lungs, bronchi, and trachea, through the mouth.",
-            "id": "obo:UBERON_0007311",
-            "uiLabel": "sputum"
+            "definition": "A food allergy that is an allergy or hypersensitivity to dietary substances from peanuts causing an overreaction of the immune system which in a small percentage of people may lead to severe physical symptoms.",
+            "id": "obo:DOID_4378",
+            "uiLabel": "peanut allergy"
         },
         "obo:EO_0007286": {
             "datatype": "xmls:anyURI",
@@ -367,11 +386,6 @@
                     "constraint": "owl:qualifiedCardinality"
                 }
             ]
-        },
-        "obo:NCBITaxon_9986": {
-            "datatype": "xmls:anyURI",
-            "id": "obo:NCBITaxon_9986",
-            "uiLabel": "Oryctolagus cuniculus"
         },
         "obo:PATO_0000383": {
             "datatype": "xmls:anyURI",
@@ -450,7 +464,8 @@
             "datatype": "xmls:date",
             "part_of": [
                 "obo:GENEPIO_0001581",
-                "obo:GENEPIO_0001638"
+                "obo:GENEPIO_0001638",
+                "obo:GENEPIO_0001777"
             ],
             "uiLabel": "sample collection date",
             "id": "obo:GENEPIO_0001557",
@@ -472,12 +487,6 @@
             "id": "obo:GENEPIO_0001555",
             "uiLabel": "sexual"
         },
-        "obo:DOID_2945": {
-            "datatype": "xmls:anyURI",
-            "definition": "A viral infectious disease that results_in infection located_in respiratory tract, has_material_basis_in SARS coronavirus (SARS-CoV), which is transmitted_by droplet spread of respiratory secretions, transmitted_by ingestion of contaminated food, or transmitted_by fomites. The infection has_symptom fever, has_symptom headache, has_symptom body aches, has_symptom dry cough, and has_symptom hypoxia.",
-            "id": "obo:DOID_2945",
-            "uiLabel": "severe acute respiratory syndrome"
-        },
         "obo:ENVO_01000248": {
             "datatype": "xmls:anyURI",
             "definition": "A dense settlement biome is an anthropogenic terrestrial biome which is primarily used for human habitation, recreation, and industry within built structures with little other land use.",
@@ -490,10 +499,11 @@
             "id": "obo:ENVO_01000245",
             "uiLabel": "cropland biome"
         },
-        "obo:NCBITaxon_1365258": {
+        "obo:ENVO_01000247": {
             "datatype": "xmls:anyURI",
-            "id": "obo:NCBITaxon_1365258",
-            "uiLabel": "Escherichia coli 151_06"
+            "definition": "A rangeland biome is an anthropogenic terrestrial biome which is primarily used for the rearing and grazing of livestock.",
+            "id": "obo:ENVO_01000247",
+            "uiLabel": "rangeland biome"
         },
         "obo:ENVO_01000246": {
             "datatype": "xmls:anyURI",
@@ -546,11 +556,10 @@
             "parent": "obo:GENEPIO_0001741",
             "uiLabel": "generic range history record"
         },
-        "obo:OMIABIS_0001008": {
+        "obo:GENEPIO_0001733": {
             "datatype": "xmls:anyURI",
-            "definition": "A diagnosis that is the outcome of a diagnostic process targeting a second or additional health problem.",
-            "id": "obo:OMIABIS_0001008",
-            "uiLabel": "comorbidity"
+            "id": "obo:GENEPIO_0001733",
+            "uiLabel": "wild, avian"
         },
         "ifm:IFM_0001467": {
             "datatype": "specification",
@@ -590,9 +599,9 @@
             "datatype": "specification",
             "part_of": [
                 "ifm:IFM_0001477",
-                "ifm:IFM_0001509",
                 "ifm:IFM_0001522",
-                "ifm:IFM_0001507"
+                "ifm:IFM_0001507",
+                "ifm:IFM_0001509"
             ],
             "parts": {
                 "obo:UO_0000000": [
@@ -653,49 +662,10 @@
             "id": "ifm:IFM_0001504",
             "uiLabel": "geo coordinate"
         },
-        "obo:GENEPIO_0001638": {
-            "parts": {
-                "obo:GENEPIO_0001239": [
-                    {
-                        "datatype": "xmls:nonNegativeInteger",
-                        "cardinality": "owl:maxQualifiedCardinality",
-                        "value": "1"
-                    }
-                ],
-                "obo:GENEPIO_0001429": [
-                    {
-                        "datatype": "xmls:nonNegativeInteger",
-                        "cardinality": "owl:maxQualifiedCardinality",
-                        "value": "1"
-                    }
-                ],
-                "sio:SIO_000136": [
-                    {
-                        "datatype": "xmls:nonNegativeInteger",
-                        "cardinality": "owl:maxQualifiedCardinality",
-                        "value": "1"
-                    }
-                ],
-                "obo:GENEPIO_0001640": [
-                    {
-                        "datatype": "xmls:nonNegativeInteger",
-                        "cardinality": "owl:maxQualifiedCardinality",
-                        "value": "1"
-                    }
-                ],
-                "obo:GENEPIO_0001557": [
-                    {
-                        "datatype": "xmls:nonNegativeInteger",
-                        "cardinality": "owl:maxQualifiedCardinality",
-                        "value": "1"
-                    }
-                ]
-            },
-            "parent": "obo:GENEPIO_0001612",
-            "datatype": "specification",
-            "uiLabel": "General Information",
-            "id": "obo:GENEPIO_0001638",
-            "label": "general information specification"
+        "obo:GENEPIO_0001731": {
+            "datatype": "xmls:anyURI",
+            "id": "obo:GENEPIO_0001731",
+            "uiLabel": "clinical material (human)"
         },
         "ifm:IFM_0001502": {
             "definition": "Wikipedia: \"The significant figures of a number are digits that carry meaning contributing to its measurement resolution.\"\n\nDamion's notes: \n\nMeasurement precision is affected by number base.  Loss of a binary digit has a smaller impact on precision than loss of a decimal digit.\n\nAlso, A number could have negative significant digits.  1001, where the last digit is actually inaccurate due to rounding errors, could have significant digit of -1.",
@@ -764,40 +734,17 @@
             "id": "ifm:IFM_0001667",
             "uiLabel": "count"
         },
-        "obo:GENEPIO_0001736": {
-            "units": [
-                "obo:UO_0000196"
-            ],
-            "part_of": [
-                "obo:GENEPIO_0001624"
-            ],
-            "definition": "In chemistry, pH is a numeric scale used to specify the acidity or basicity(alkalinity) of an aqueous solution",
-            "datatype": "xmls:unsignedByte",
-            "uiLabel": "pH measurement",
-            "id": "obo:GENEPIO_0001736",
-            "constraints": [
-                {
-                    "datatype": "xmls:unsignedByte",
-                    "value": "0",
-                    "constraint": "xmls:minInclusive"
-                },
-                {
-                    "datatype": "xmls:unsignedByte",
-                    "value": "14",
-                    "constraint": "xmls:maxInclusive"
-                }
-            ]
+        "obo:DOID_863": {
+            "datatype": "xmls:anyURI",
+            "definition": "A disease of anatomical entity that is located_in the central nervous system or located_in the peripheral nervous system.",
+            "id": "obo:DOID_863",
+            "uiLabel": "nervous system disease"
         },
-        "sio:SIO_000811": {
-            "datatype": "xmls:string",
-            "uiLabel": "URL",
-            "id": "sio:SIO_000811",
-            "constraints": [
-                {
-                    "value": "url",
-                    "constraint": "xmls:pattern"
-                }
-            ]
+        "obo:ENVO_00000023": {
+            "datatype": "xmls:anyURI",
+            "definition": "Linear body of water flowing on the Earth's surface.",
+            "id": "obo:ENVO_00000023",
+            "uiLabel": "stream"
         },
         "ifm:IFM_0001508": {
             "datatype": "specification",
@@ -923,11 +870,10 @@
             "id": "obo:SYMP_0000892",
             "uiLabel": "sensation perception"
         },
-        "obo:DOID_4377": {
+        "obo:GENEPIO_0001735": {
             "datatype": "xmls:anyURI",
-            "definition": "A food allergy that is an allergy or hypersensitivity to dietary substances from the yolk or whites of eggs, causing an overreaction of the immune system which may lead to severe physical symptoms.",
-            "id": "obo:DOID_4377",
-            "uiLabel": "egg allergy"
+            "id": "obo:GENEPIO_0001735",
+            "uiLabel": "clinical material (human) - invasive"
         },
         "obo:NCBITaxon_1637": {
             "datatype": "xmls:anyURI",
@@ -949,11 +895,6 @@
             "uiLabel": "dog",
             "id": "obo:NCBITaxon_9615",
             "label": "Canis lupus familiaris"
-        },
-        "obo:GENEPIO_0001192": {
-            "datatype": "xmls:anyURI",
-            "id": "obo:GENEPIO_0001192",
-            "uiLabel": "clinical analytic datum"
         },
         "obo:GENEPIO_0001237": {
             "datatype": "xmls:anyURI",
@@ -1002,11 +943,10 @@
             "id": "obo:SYMP_0000597",
             "uiLabel": "head and neck symptom"
         },
-        "obo:EO_0007285": {
-            "datatype": "xmls:anyURI",
-            "definition": "The treatment involving an exposure to the wet or the rainy season.",
-            "id": "obo:EO_0007285",
-            "uiLabel": "rainy season"
+        "obo:GENEPIO_0001126": {
+            "datatype": "xmls:date",
+            "id": "obo:GENEPIO_0001126",
+            "uiLabel": "lifespan history item"
         },
         "obo:GENEPIO_0001239": {
             "definition": "sample category is a categorical choice meant for NCBI BioSample sample_category required field.",
@@ -1024,6 +964,11 @@
             "definition": "Organism has a symbiotic relationship with host",
             "id": "obo:GENEPIO_0001238",
             "uiLabel": "symbiotic role"
+        },
+        "obo:SYMP_0000480": {
+            "datatype": "xmls:anyURI",
+            "id": "obo:SYMP_0000480",
+            "uiLabel": "nervous system symptom"
         },
         "obo:DOID_3660": {
             "datatype": "xmls:anyURI",
@@ -1081,6 +1026,12 @@
             "id": "obo:SYMP_0000567",
             "uiLabel": "general symptom"
         },
+        "obo:SYMP_0000040": {
+            "datatype": "xmls:anyURI",
+            "definition": "A urinary system symptom characterized by the presence of blood or blood cells in the urine.",
+            "id": "obo:SYMP_0000040",
+            "uiLabel": "hematuria"
+        },
         "obo:ENVO_00000067": {
             "datatype": "xmls:anyURI",
             "definition": "Naturally formed, subterranean open area or chamber.",
@@ -1120,6 +1071,7 @@
             "datatype": "xmls:anyURI",
             "definition": "DNA sequencing is a sequencing process which uses deoxyribonucleic acid as input and results in a the creation of DNA sequence information artifact using a DNA sequencer instrument.",
             "part_of": [
+                "obo:GENEPIO_0001777",
                 "obo:GENEPIO_0001658"
             ],
             "id": "obo:OBI_0000626",
@@ -1161,10 +1113,12 @@
             "id": "obo:GENEPIO_0001588",
             "uiLabel": "other"
         },
-        "obo:GENEPIO_0001594": {
+        "obo:GEO_000000008": {
+            "definition": "An aggregate of governmental organizations that is not itself a geopolitical dependency and whose members are only geopolitical dependencies that have some feature in common.",
             "datatype": "xmls:anyURI",
-            "id": "obo:GENEPIO_0001594",
-            "uiLabel": "analysis"
+            "constraints": [],
+            "id": "obo:GEO_000000008",
+            "uiLabel": "aggregate of dependencies"
         },
         "obo:GENEPIO_0001426": {
             "datatype": "specification",
@@ -1186,10 +1140,10 @@
             "parent": "obo:GENEPIO_0001741",
             "uiLabel": "lab test record"
         },
-        "obo:NCBITaxon_9685": {
+        "obo:NCBITaxon_991919": {
             "datatype": "xmls:anyURI",
-            "id": "obo:NCBITaxon_9685",
-            "uiLabel": "Felis catus"
+            "id": "obo:NCBITaxon_991919",
+            "uiLabel": "Escherichia coli O145:NM"
         },
         "obo:GENEPIO_0001581": {
             "datatype": "specification",
@@ -1295,8 +1249,9 @@
         "obo:GENEPIO_0001429": {
             "datatype": "xmls:string",
             "part_of": [
-                "obo:GENEPIO_0001581",
-                "obo:GENEPIO_0001638"
+                "obo:GENEPIO_0001777",
+                "obo:GENEPIO_0001638",
+                "obo:GENEPIO_0001581"
             ],
             "uiLabel": "strain",
             "id": "obo:GENEPIO_0001429",
@@ -1308,16 +1263,15 @@
                 }
             ]
         },
-        "obo:ENVO_00000121": {
+        "obo:GENEPIO_0001585": {
             "datatype": "xmls:anyURI",
-            "id": "obo:ENVO_00000121",
-            "uiLabel": "artificial channel"
+            "id": "obo:GENEPIO_0001585",
+            "uiLabel": "environment"
         },
-        "obo:DOID_2355": {
+        "obo:GENEPIO_0001584": {
             "datatype": "xmls:anyURI",
-            "definition": "A hematopoietic system disease that is characterized by a decrease in the normal number of red blood cells.",
-            "id": "obo:DOID_2355",
-            "uiLabel": "anemia"
+            "id": "obo:GENEPIO_0001584",
+            "uiLabel": "multispecies"
         },
         "obo:GENEPIO_0001587": {
             "datatype": "xmls:anyURI",
@@ -1376,10 +1330,18 @@
             "id": "obo:NCBITaxon_9091",
             "uiLabel": "Coturnix coturnix"
         },
-        "obo:GENEPIO_0001040": {
-            "datatype": "xmls:anyURI",
-            "id": "obo:GENEPIO_0001040",
-            "uiLabel": "vegetarian"
+        "obo:OBI_0001885": {
+            "datatype": "specification",
+            "definition": "An organization that provides a service to store and distribute specimens",
+            "parts": {
+                "obo:GENEPIO_0001642": [
+                    {
+                        "cardinality": "owl:someValuesFrom"
+                    }
+                ]
+            },
+            "id": "obo:OBI_0001885",
+            "uiLabel": "specimen repository organization"
         },
         "obo:OBI_0001141": {
             "definition": "a CRID symbol used to distinguish one individual organism from another.",
@@ -1407,14 +1369,10 @@
             "id": "obo:GENEPIO_0001043",
             "uiLabel": "special diet"
         },
-        "obo:GENEPIO_0000069": {
-            "datatype": "xmls:date",
-            "definition": "date the sequencing run was performed",
-            "part_of": [
-                "obo:GENEPIO_0001465"
-            ],
-            "id": "obo:GENEPIO_0000069",
-            "uiLabel": "sequencing run date"
+        "sio:SIO_010059": {
+            "datatype": "xmls:anyURI",
+            "id": "sio:SIO_010059",
+            "uiLabel": "dead"
         },
         "obo:OBI_0001880": {
             "datatype": "xmls:anyURI",
@@ -1491,10 +1449,11 @@
             "id": "obo:UBERON_0001988",
             "uiLabel": "feces"
         },
-        "obo:GENEPIO_0001069": {
+        "obo:TRANS_0000012": {
             "datatype": "xmls:anyURI",
-            "id": "obo:GENEPIO_0001069",
-            "uiLabel": "rural backpacking"
+            "definition": "Vehicle-borne ingestion transmission is an indirect vehicle-borne transmission process during which the pathogen is indirectly transferred from a reservoir, source or host to another host by ingestion of fluids or foods or food products including: food, water, milk, or meat products.",
+            "id": "obo:TRANS_0000012",
+            "uiLabel": "vehicle-born ingestion"
         },
         "obo:IDO_0000569": {
             "datatype": "xmls:anyURI",
@@ -1503,10 +1462,10 @@
             "id": "obo:IDO_0000569",
             "label": "asymptomatic host of infectious agent"
         },
-        "obo:NCBITaxon_species": {
+        "obo:GENEPIO_0001192": {
             "datatype": "xmls:anyURI",
-            "id": "obo:NCBITaxon_species",
-            "uiLabel": "species"
+            "id": "obo:GENEPIO_0001192",
+            "uiLabel": "clinical analytic datum"
         },
         "obo:GENEPIO_0001193": {
             "datatype": "xmls:anyURI",
@@ -1549,11 +1508,6 @@
             "id": "obo:SYMP_0000183",
             "uiLabel": "muscle symptom"
         },
-        "obo:GENEPIO_0001582": {
-            "datatype": "xmls:anyURI",
-            "id": "obo:GENEPIO_0001582",
-            "uiLabel": "monoisolate"
-        },
         "obo:SYMP_0000628": {
             "datatype": "xmls:anyURI",
             "id": "obo:SYMP_0000628",
@@ -1569,6 +1523,12 @@
             "datatype": "xmls:date",
             "id": "obo:GENEPIO_0001491",
             "uiLabel": "isolate history item"
+        },
+        "obo:DOID_2355": {
+            "datatype": "xmls:anyURI",
+            "definition": "A hematopoietic system disease that is characterized by a decrease in the normal number of red blood cells.",
+            "id": "obo:DOID_2355",
+            "uiLabel": "anemia"
         },
         "obo:GENEPIO_0001490": {
             "datatype": "xmls:date",
@@ -1696,11 +1656,10 @@
             "parent": "obo:GENEPIO_0001741",
             "uiLabel": "quality control record"
         },
-        "obo:GENEPIO_0001767": {
+        "obo:NCBITaxon_9103": {
             "datatype": "xmls:anyURI",
-            "definition": "Improved high quality draft: in which data is either reviewed by people or machines to some extent to indicate that most of the genetic data is assembled correctly, but some errors may still be present.",
-            "id": "obo:GENEPIO_0001767",
-            "uiLabel": "3 - improved high quality draft"
+            "id": "obo:NCBITaxon_9103",
+            "uiLabel": "Meleagris gallopavo"
         },
         "obo:GENEPIO_0001766": {
             "datatype": "xmls:anyURI",
@@ -1738,13 +1697,10 @@
             "id": "obo:ENVO_00003861",
             "uiLabel": "industrial building"
         },
-        "obo:GENEPIO_0001064": {
+        "obo:ENVO_00003860": {
             "datatype": "xmls:anyURI",
-            "part_of": [
-                "obo:GENEPIO_0001470"
-            ],
-            "id": "obo:GENEPIO_0001064",
-            "uiLabel": "travel mode"
+            "id": "obo:ENVO_00003860",
+            "uiLabel": "pig manure"
         },
         "obo:ENVO_00003863": {
             "datatype": "xmls:anyURI",
@@ -1789,12 +1745,6 @@
                     "constraint": "owl:qualifiedCardinality"
                 }
             ]
-        },
-        "obo:ENVO_00002000": {
-            "datatype": "xmls:anyURI",
-            "definition": "The part of an elevation or depression between the relatively flat surrounding area and the peak of a mount or the bottom of a depression.",
-            "id": "obo:ENVO_00002000",
-            "uiLabel": "slope"
         },
         "obo:DOID_0050117": {
             "datatype": "xmls:anyURI",
@@ -1924,8 +1874,8 @@
         "obo:GENEPIO_0001567": {
             "definition": "The natural (as opposed to laboratory) host to the organism from which the sample was obtained. Use the full taxonomic name, eg, \"Homo sapiens\".",
             "part_of": [
-                "obo:GENEPIO_0001613",
-                "obo:GENEPIO_0001707"
+                "obo:GENEPIO_0001707",
+                "obo:GENEPIO_0001613"
             ],
             "datatype": "xmls:anyURI",
             "label": "host organism taxonomy datum",
@@ -2004,10 +1954,10 @@
             "id": "obo:GENEPIO_0001603",
             "uiLabel": "array"
         },
-        "obo:GENEPIO_0001569": {
+        "obo:GENEPIO_0001600": {
             "datatype": "xmls:anyURI",
-            "id": "obo:GENEPIO_0001569",
-            "uiLabel": "pathogen.cl"
+            "id": "obo:GENEPIO_0001600",
+            "uiLabel": "maps"
         },
         "obo:GENEPIO_0001601": {
             "datatype": "xmls:anyURI",
@@ -2192,17 +2142,15 @@
             "id": "obo:NCBITaxon_2157",
             "uiLabel": "Archaea"
         },
-        "obo:ENVO_01000247": {
+        "obo:NCBITaxon_1365258": {
             "datatype": "xmls:anyURI",
-            "definition": "A rangeland biome is an anthropogenic terrestrial biome which is primarily used for the rearing and grazing of livestock.",
-            "id": "obo:ENVO_01000247",
-            "uiLabel": "rangeland biome"
+            "id": "obo:NCBITaxon_1365258",
+            "uiLabel": "Escherichia coli 151_06"
         },
-        "obo:SYMP_0000523": {
+        "obo:NCBITaxon_genus": {
             "datatype": "xmls:anyURI",
-            "definition": "Anorexia is a nutrition, metabolism, and development symptom characterized by a loss of appetite especially when prolonged.",
-            "id": "obo:SYMP_0000523",
-            "uiLabel": "anorexia"
+            "id": "obo:NCBITaxon_genus",
+            "uiLabel": "genus"
         },
         "obo:SYMP_0000522": {
             "datatype": "xmls:anyURI",
@@ -2263,10 +2211,17 @@
                 }
             ]
         },
-        "obo:GENEPIO_0001267": {
+        "ifm:IFM_0000025": {
+            "part_of": [
+                "ifm:IFM_0001504"
+            ],
+            "id": "ifm:IFM_0000025",
+            "uiLabel": "longitude"
+        },
+        "obo:GENEPIO_0001056": {
             "datatype": "xmls:anyURI",
-            "id": "obo:GENEPIO_0001267",
-            "uiLabel": "plant rinse"
+            "id": "obo:GENEPIO_0001056",
+            "uiLabel": "pet treat"
         },
         "obo:GENEPIO_0001302": {
             "datatype": "specification",
@@ -2276,6 +2231,7 @@
         },
         "obo:GENEPIO_0001468": {
             "part_of": [
+                "obo:GENEPIO_0001777",
                 "sio:SIO_001027"
             ],
             "parts": {
@@ -2441,27 +2397,38 @@
             "id": "obo:NCBITaxon_1078032",
             "uiLabel": "Escherichia coli O45:H2"
         },
-        "obo:GENEPIO_0001030": {
+        "vcard:Acquaintance": {
             "datatype": "xmls:anyURI",
-            "id": "obo:GENEPIO_0001030",
-            "uiLabel": "party"
+            "id": "vcard:Acquaintance",
+            "uiLabel": "acquaintance"
         },
-        "obo:UBERON_0000922": {
+        "obo:IDO_0000531": {
             "datatype": "xmls:anyURI",
-            "definition": "Anatomical entity that comprises the organism in the early stages of growth and differentiation that are characterized by cleavage, the laying down of fundamental tissues, and the formation of primitive organs and organ systems. For example, for mammals, the process would begin with zygote formation and end with birth. For insects, the process would begin at zygote formation and end with larval hatching. For plant zygotic embryos, this would be from zygote formation to the end of seed dormancy. For plant vegetative embryos, this would be from the initial determination of the cell or group of cells to form an embryo until the point when the embryo becomes independent of the parent plant.",
-            "id": "obo:UBERON_0000922",
-            "uiLabel": "embryo"
+            "definition": "An organism bearing a host role.",
+            "id": "obo:IDO_0000531",
+            "uiLabel": "host"
+        },
+        "N4e3368766ced4eb7a0d5dd7eb3381fab": {
+            "datatype": "disjunction",
+            "part_of": [
+                "obo:GENEPIO_0001657"
+            ],
+            "parts": {
+                "ifm:IFM_0001675": [],
+                "obo:ENVO_00000856": []
+            },
+            "id": "N4e3368766ced4eb7a0d5dd7eb3381fab",
+            "uiLabel": ""
         },
         "obo:SYMP_0000001": {
             "datatype": "xmls:anyURI",
             "id": "obo:SYMP_0000001",
             "uiLabel": "abdominal cramp"
         },
-        "obo:ENVO_01001305": {
+        "obo:GENEPIO_0001033": {
             "datatype": "xmls:anyURI",
-            "definition": "A vegetated area is a geographic feature which has ground cover dominated by plant communities.",
-            "id": "obo:ENVO_01001305",
-            "uiLabel": "vegetated area"
+            "id": "obo:GENEPIO_0001033",
+            "uiLabel": "potluck"
         },
         "obo:SYMP_0000411": {
             "datatype": "xmls:anyURI",
@@ -2473,6 +2440,11 @@
             "id": "obo:SYMP_0000410",
             "uiLabel": "neurological and physiological symptom"
         },
+        "obo:GENEPIO_0001629": {
+            "datatype": "xmls:anyURI",
+            "id": "obo:GENEPIO_0001629",
+            "uiLabel": "sample body source"
+        },
         "obo:ENVO_00000191": {
             "datatype": "xmls:anyURI",
             "id": "obo:ENVO_00000191",
@@ -2481,8 +2453,8 @@
         "efo:EFO_0004953": {
             "datatype": "xmls:date",
             "part_of": [
-                "obo:GENEPIO_0001259",
-                "obo:GENEPIO_0001468"
+                "obo:GENEPIO_0001468",
+                "obo:GENEPIO_0001259"
             ],
             "id": "efo:EFO_0004953",
             "uiLabel": "date of diagnosis"
@@ -2497,8 +2469,8 @@
             "datatype": "xmls:anyURI",
             "definition": "A governmental organization with a defined territory on which it exercises internal and external sovereignty, a permanent population, a government, and the capacity to enter into relations with other sovereign states.",
             "part_of": [
-                "obo:GENEPIO_0001623",
-                "obo:GENEPIO_0001679"
+                "obo:GENEPIO_0001679",
+                "obo:GENEPIO_0001623"
             ],
             "id": "obo:GEO_000000396",
             "uiLabel": "sovereign state"
@@ -2514,10 +2486,11 @@
             "id": "obo:EO_0007037",
             "uiLabel": "spring season"
         },
-        "obo:GENEPIO_0001009": {
+        "obo:EO_0007036": {
             "datatype": "xmls:anyURI",
-            "id": "obo:GENEPIO_0001009",
-            "uiLabel": "restaurant"
+            "definition": "The treatment involving an exposure to the summer season.",
+            "id": "obo:EO_0007036",
+            "uiLabel": "summer season"
         },
         "obo:EO_0007035": {
             "datatype": "xmls:anyURI",
@@ -2547,10 +2520,11 @@
             "id": "obo:SYMP_0000387",
             "uiLabel": "head symptom"
         },
-        "obo:SYMP_0000386": {
+        "obo:OAE_0000633": {
             "datatype": "xmls:anyURI",
-            "id": "obo:SYMP_0000386",
-            "uiLabel": "mouth symptom"
+            "definition": "a serious AE that is suspected to put the patient at substantial risk of dying at the time of the adverse event, or that the use or continued use of the device or other medical product might have resulted in the death of the patient.",
+            "id": "obo:OAE_0000633",
+            "uiLabel": "life-threating AE"
         },
         "obo:GENEPIO_0000029": {
             "units": [
@@ -2692,12 +2666,6 @@
             "id": "obo:DOID_77",
             "uiLabel": "gastrointestinal system disease"
         },
-        "obo:PATO_0000047": {
-            "datatype": "xmls:anyURI",
-            "definition": "An organismal quality inhering in a bearer by virtue of the bearer's ability to undergo sexual reproduction in order to differentiate the individuals or types involved.",
-            "id": "obo:PATO_0000047",
-            "uiLabel": "biological sex"
-        },
         "obo:ENVO_00002018": {
             "datatype": "xmls:anyURI",
             "definition": "Wastewater that is contaminated with feces or urine,",
@@ -2716,25 +2684,25 @@
                 }
             ]
         },
-        "obo:UBERON_2000084": {
+        "obo:ENVO_00002011": {
             "datatype": "xmls:anyURI",
-            "definition": "Nutrient store for embryonic development in the form of semicrystalline phospholipoprotein and contained within yolk granules. Kimmel et al, 1995.",
-            "id": "obo:UBERON_2000084",
-            "uiLabel": "yolk"
+            "id": "obo:ENVO_00002011",
+            "uiLabel": "fresh water"
         },
         "obo:GENEPIO_0001646": {
             "datatype": "xmls:anyURI",
             "id": "obo:GENEPIO_0001646",
             "uiLabel": "past"
         },
-        "obo:NCBITaxon_48409": {
+        "obo:GENEPIO_0001647": {
             "datatype": "xmls:anyURI",
-            "id": "obo:NCBITaxon_48409",
-            "uiLabel": "Salmonella enterica subsp. enterica serovar Virchow"
+            "id": "obo:GENEPIO_0001647",
+            "uiLabel": "original submission"
         },
         "obo:GENEPIO_0001644": {
             "datatype": "xmls:string",
             "part_of": [
+                "obo:GENEPIO_0001777",
                 "obo:GENEPIO_0001641"
             ],
             "id": "obo:GENEPIO_0001644",
@@ -2826,21 +2794,25 @@
             "id": "obo:NCBITaxon_28901",
             "uiLabel": "Salmonella enterica"
         },
-        "obo:UBERON_0006314": {
+        "obo:GENEPIO_0001648": {
             "datatype": "xmls:anyURI",
-            "definition": "Liquid components of living organisms. includes fluids that are excreted or secreted from the body as well as body water that normally is not.",
-            "id": "obo:UBERON_0006314",
-            "uiLabel": "bodily fluid"
+            "part_of": [
+                "obo:GENEPIO_0001650"
+            ],
+            "parts": {
+                "obo:GENEPIO_0001642": [
+                    {
+                        "cardinality": "owl:someValuesFrom"
+                    }
+                ]
+            },
+            "id": "obo:GENEPIO_0001648",
+            "uiLabel": "NCBI Contributing organization / project"
         },
         "obo:GENEPIO_0001649": {
             "datatype": "xmls:anyURI",
             "id": "obo:GENEPIO_0001649",
             "uiLabel": "food - liquid"
-        },
-        "obo:SYMP_0000229": {
-            "datatype": "xmls:anyURI",
-            "id": "obo:SYMP_0000229",
-            "uiLabel": "bloody stool"
         },
         "sio:SIO_001319": {
             "part_of": [
@@ -2870,19 +2842,6 @@
             "definition": "A landform sunken or depressed below the surrounding area.",
             "id": "obo:ENVO_00000309",
             "uiLabel": "depression"
-        },
-        "N074c0c69753e4b8998e54fccb2f97518": {
-            "datatype": "disjunction",
-            "part_of": [
-                "obo:GENEPIO_0001657"
-            ],
-            "parts": {
-                "sio:SIO_000663": [],
-                "sio:SIO_000662": [],
-                "sio:SIO_000661": []
-            },
-            "id": "N074c0c69753e4b8998e54fccb2f97518",
-            "uiLabel": ""
         },
         "obo:CHEBI_33281": {
             "datatype": "xmls:anyURI",
@@ -2917,10 +2876,10 @@
             "id": "obo:NCBITaxon_404399",
             "uiLabel": "Escherichia coli O26"
         },
-        "obo:SYMP_0000177": {
+        "obo:GENEPIO_0001727": {
             "datatype": "xmls:anyURI",
-            "id": "obo:SYMP_0000177",
-            "uiLabel": "weakness"
+            "id": "obo:GENEPIO_0001727",
+            "uiLabel": "swab - meat"
         },
         "typon:MLVA": {
             "datatype": "specification",
@@ -2929,24 +2888,21 @@
             "parent": "obo:GENEPIO_0001688",
             "uiLabel": "MLVA"
         },
+        "obo:GENEPIO_0001664": {
+            "datatype": "xmls:anyURI",
+            "id": "obo:GENEPIO_0001664",
+            "uiLabel": "infection details"
+        },
         "obo:DOID_12716": {
             "datatype": "xmls:anyURI",
             "definition": "A respiratory failure that is characterized by deficiency of the surfactant coating the inner surface of the lungs, by failure of the lungs to expand and contract properly during breathing with resulting collapse, and by the accumulation of a protein-containing film lining the alveoli and their ducts.",
             "id": "obo:DOID_12716",
             "uiLabel": "newborn respiratory distress syndrome"
         },
-        "ifm:IFM_0001668": {
-            "datatype": "xmls:string",
-            "definition": "This is the leading FSA (Forward Sortation Area) 3 character portion of a full 6 character postal code.  It can be used to limit the geographic granularity of a postal code.",
-            "uiLabel": "Canada postal code FSA",
-            "id": "ifm:IFM_0001668",
-            "constraints": [
-                {
-                    "datatype": "xmls:nonNegativeInteger",
-                    "value": "1",
-                    "constraint": "owl:qualifiedCardinality"
-                }
-            ]
+        "obo:GENEPIO_0001599": {
+            "datatype": "xmls:anyURI",
+            "id": "obo:GENEPIO_0001599",
+            "uiLabel": "expression"
         },
         "obo:NCBITaxon_404394": {
             "datatype": "xmls:anyURI",
@@ -2969,10 +2925,11 @@
             "id": "ndf-rt:N0000000787",
             "uiLabel": "Chronic Disease [Disease/Finding]"
         },
-        "obo:NCBITaxon_genus": {
+        "obo:SYMP_0000523": {
             "datatype": "xmls:anyURI",
-            "id": "obo:NCBITaxon_genus",
-            "uiLabel": "genus"
+            "definition": "Anorexia is a nutrition, metabolism, and development symptom characterized by a loss of appetite especially when prolonged.",
+            "id": "obo:SYMP_0000523",
+            "uiLabel": "anorexia"
         },
         "obo:GENEPIO_0001486": {
             "datatype": "xmls:date",
@@ -3015,11 +2972,15 @@
             ]
         },
         "obo:OBI_0001621": {
-            "definition": "A measurement datum that is the measure of the longitude coordinate of a site.",
+            "units": [
+                "obo:UO_0000185"
+            ],
             "part_of": [
                 "obo:GENEPIO_0001623",
+                "obo:GENEPIO_0001777",
                 "obo:GENEPIO_0001656"
             ],
+            "definition": "A measurement datum that is the measure of the longitude coordinate of a site.",
             "datatype": "xmls:decimal",
             "uiLabel": "longitude coordinate measurement datum",
             "id": "obo:OBI_0001621",
@@ -3036,8 +2997,9 @@
                 "obo:UO_0000185"
             ],
             "part_of": [
-                "obo:GENEPIO_0001656",
-                "obo:GENEPIO_0001623"
+                "obo:GENEPIO_0001777",
+                "obo:GENEPIO_0001623",
+                "obo:GENEPIO_0001656"
             ],
             "definition": "A measurement datum that is the measure of the latitude coordinate of a site.",
             "datatype": "xmls:decimal",
@@ -3054,8 +3016,8 @@
         "obo:OBI_0001622": {
             "definition": "A textual entity that denotes an investigation.",
             "part_of": [
-                "obo:GENEPIO_0001430",
-                "obo:GENEPIO_0001579"
+                "obo:GENEPIO_0001579",
+                "obo:GENEPIO_0001430"
             ],
             "parts": {
                 "ifm:IFM_0000024": [
@@ -3088,10 +3050,11 @@
             "id": "obo:ENVO_01000254",
             "uiLabel": "environmental system"
         },
-        "obo:GENEPIO_0001599": {
+        "obo:ENVO_00000139": {
             "datatype": "xmls:anyURI",
-            "id": "obo:GENEPIO_0001599",
-            "uiLabel": "expression"
+            "definition": "A ditch that supplies water to surrounding land.",
+            "id": "obo:ENVO_00000139",
+            "uiLabel": "irrigation ditch"
         },
         "obo:ENVO_01000252": {
             "datatype": "xmls:anyURI",
@@ -3103,10 +3066,21 @@
             "id": "obo:ENVO_01000253",
             "uiLabel": "freshwater river biome"
         },
+        "sio:SIO_000811": {
+            "datatype": "xmls:string",
+            "uiLabel": "URL",
+            "id": "sio:SIO_000811",
+            "constraints": [
+                {
+                    "value": "url",
+                    "constraint": "xmls:pattern"
+                }
+            ]
+        },
         "ifm:IFM_0001478": {
             "part_of": [
-                "ifm:IFM_0001512",
-                "ifm:IFM_0001508"
+                "ifm:IFM_0001508",
+                "ifm:IFM_0001512"
             ],
             "id": "ifm:IFM_0001478",
             "uiLabel": "angular coordinate"
@@ -3166,18 +3140,10 @@
             "id": "obo:GENEPIO_0001725",
             "uiLabel": "temperature - average daily"
         },
-        "obo:OMP_0000207": {
-            "datatype": "xmls:string",
-            "definition": "A microbial phenotype that is distinguished by the presence a specific surface antigen.",
-            "uiLabel": "serotype phenotype",
-            "id": "obo:OMP_0000207",
-            "constraints": [
-                {
-                    "datatype": "xmls:nonNegativeInteger",
-                    "value": "1",
-                    "constraint": "owl:qualifiedCardinality"
-                }
-            ]
+        "obo:GENEPIO_0001595": {
+            "datatype": "xmls:anyURI",
+            "id": "obo:GENEPIO_0001595",
+            "uiLabel": "assembly"
         },
         "vcard:Parent": {
             "datatype": "xmls:anyURI",
@@ -3197,17 +3163,22 @@
                 }
             ]
         },
-        "obo:EO_0007036": {
-            "datatype": "xmls:anyURI",
-            "definition": "The treatment involving an exposure to the summer season.",
-            "id": "obo:EO_0007036",
-            "uiLabel": "summer season"
+        "ifm:IFM_0001670": {
+            "datatype": "xmls:string",
+            "uiLabel": "Canada postal code",
+            "id": "ifm:IFM_0001670",
+            "constraints": [
+                {
+                    "datatype": "xmls:nonNegativeInteger",
+                    "value": "1",
+                    "constraint": "owl:qualifiedCardinality"
+                }
+            ]
         },
-        "obo:UBERON_0001969": {
+        "ifm:IFM_0001671": {
             "datatype": "xmls:anyURI",
-            "definition": "The liquid component of blood, in which erythrocytes are suspended.",
-            "id": "obo:UBERON_0001969",
-            "uiLabel": "blood plasma"
+            "id": "ifm:IFM_0001671",
+            "uiLabel": "phone type - home"
         },
         "ifm:IFM_0001672": {
             "datatype": "xmls:anyURI",
@@ -3307,30 +3278,88 @@
             "id": "obo:GENEPIO_0001732",
             "uiLabel": "environmental (swab or sampling)"
         },
-        "obo:GENEPIO_0001733": {
+        "obo:BTO_0000818": {
             "datatype": "xmls:anyURI",
-            "id": "obo:GENEPIO_0001733",
-            "uiLabel": "wild, avian"
+            "definition": "The series of articulated vertebrae, separated by intervertebral disks and held together by muscles and tendons, that extends from the cranium to the coccyx or the end of the tail, encasing the spinal cord and forming the supporting axis of the body; the spine.",
+            "id": "obo:BTO_0000818",
+            "uiLabel": "spinal column"
         },
         "obo:GENEPIO_0001639": {
             "datatype": "xmls:string",
             "part_of": [
-                "obo:GENEPIO_0001621",
-                "obo:GENEPIO_0001581"
+                "obo:GENEPIO_0001581",
+                "obo:GENEPIO_0001621"
             ],
             "id": "obo:GENEPIO_0001639",
             "uiLabel": "sample title"
         },
-        "obo:GENEPIO_0001731": {
-            "datatype": "xmls:anyURI",
-            "id": "obo:GENEPIO_0001731",
-            "uiLabel": "clinical material (human)"
+        "obo:GENEPIO_0001638": {
+            "parts": {
+                "obo:GENEPIO_0001239": [
+                    {
+                        "datatype": "xmls:nonNegativeInteger",
+                        "cardinality": "owl:maxQualifiedCardinality",
+                        "value": "1"
+                    }
+                ],
+                "obo:GENEPIO_0001429": [
+                    {
+                        "datatype": "xmls:nonNegativeInteger",
+                        "cardinality": "owl:maxQualifiedCardinality",
+                        "value": "1"
+                    }
+                ],
+                "sio:SIO_000136": [
+                    {
+                        "datatype": "xmls:nonNegativeInteger",
+                        "cardinality": "owl:maxQualifiedCardinality",
+                        "value": "1"
+                    }
+                ],
+                "obo:GENEPIO_0001640": [
+                    {
+                        "datatype": "xmls:nonNegativeInteger",
+                        "cardinality": "owl:maxQualifiedCardinality",
+                        "value": "1"
+                    }
+                ],
+                "obo:GENEPIO_0001557": [
+                    {
+                        "datatype": "xmls:nonNegativeInteger",
+                        "cardinality": "owl:maxQualifiedCardinality",
+                        "value": "1"
+                    }
+                ]
+            },
+            "parent": "obo:GENEPIO_0001612",
+            "datatype": "specification",
+            "uiLabel": "General Information",
+            "id": "obo:GENEPIO_0001638",
+            "label": "general information specification"
         },
-        "obo:DOID_863": {
-            "datatype": "xmls:anyURI",
-            "definition": "A disease of anatomical entity that is located_in the central nervous system or located_in the peripheral nervous system.",
-            "id": "obo:DOID_863",
-            "uiLabel": "nervous system disease"
+        "obo:GENEPIO_0001736": {
+            "units": [
+                "obo:UO_0000196"
+            ],
+            "part_of": [
+                "obo:GENEPIO_0001624"
+            ],
+            "definition": "In chemistry, pH is a numeric scale used to specify the acidity or basicity(alkalinity) of an aqueous solution",
+            "datatype": "xmls:unsignedByte",
+            "uiLabel": "pH measurement",
+            "id": "obo:GENEPIO_0001736",
+            "constraints": [
+                {
+                    "datatype": "xmls:unsignedByte",
+                    "value": "0",
+                    "constraint": "xmls:minInclusive"
+                },
+                {
+                    "datatype": "xmls:unsignedByte",
+                    "value": "14",
+                    "constraint": "xmls:maxInclusive"
+                }
+            ]
         },
         "ifm:IFM_0000020": {
             "datatype": "xmls:string",
@@ -3349,10 +3378,11 @@
             "id": "obo:GENEPIO_0001734",
             "uiLabel": "domesticated, avian"
         },
-        "obo:GENEPIO_0001735": {
+        "obo:DOID_4377": {
             "datatype": "xmls:anyURI",
-            "id": "obo:GENEPIO_0001735",
-            "uiLabel": "clinical material (human) - invasive"
+            "definition": "A food allergy that is an allergy or hypersensitivity to dietary substances from the yolk or whites of eggs, causing an overreaction of the immune system which may lead to severe physical symptoms.",
+            "id": "obo:DOID_4377",
+            "uiLabel": "egg allergy"
         },
         "obo:OBI_0000925": {
             "datatype": "xmls:anyURI",
@@ -3444,18 +3474,10 @@
             "id": "obo:NCBITaxon_314145",
             "uiLabel": "Laurasiatheria"
         },
-        "N19ca14a2243f4822aa471dd2275f7888": {
-            "datatype": "disjunction",
-            "part_of": [
-                "obo:GENEPIO_0001623"
-            ],
-            "parts": {
-                "sio:SIO_000663": [],
-                "sio:SIO_000662": [],
-                "sio:SIO_000661": []
-            },
-            "id": "N19ca14a2243f4822aa471dd2275f7888",
-            "uiLabel": ""
+        "obo:GENEPIO_0001267": {
+            "datatype": "xmls:anyURI",
+            "id": "obo:GENEPIO_0001267",
+            "uiLabel": "plant rinse"
         },
         "obo:GENEPIO_0001228": {
             "datatype": "xmls:anyURI",
@@ -3475,11 +3497,6 @@
             "id": "obo:GENEPIO_0001729",
             "uiLabel": "swab - tissue"
         },
-        "obo:SYMP_0000312": {
-            "datatype": "xmls:anyURI",
-            "id": "obo:SYMP_0000312",
-            "uiLabel": "joint symptom"
-        },
         "obo:SYMP_0000420": {
             "datatype": "xmls:anyURI",
             "definition": "Bloating is a digestive system symptom involving the accumulation of gas in the digestive tract and resulting in abdominal distension.",
@@ -3497,10 +3514,11 @@
             "id": "obo:ENVO_00003884",
             "uiLabel": "farmyard manure"
         },
-        "vcard:Acquaintance": {
+        "obo:PATO_0000047": {
             "datatype": "xmls:anyURI",
-            "id": "vcard:Acquaintance",
-            "uiLabel": "acquaintance"
+            "definition": "An organismal quality inhering in a bearer by virtue of the bearer's ability to undergo sexual reproduction in order to differentiate the individuals or types involved.",
+            "id": "obo:PATO_0000047",
+            "uiLabel": "biological sex"
         },
         "obo:SYMP_0000458": {
             "datatype": "xmls:anyURI",
@@ -3577,11 +3595,10 @@
             "id": "obo:GENEPIO_0001297",
             "uiLabel": "physical location type"
         },
-        "mesh:D000830": {
+        "obo:NCBITaxon_9606": {
             "datatype": "xmls:anyURI",
-            "definition": "no definition at source",
-            "id": "mesh:D000830",
-            "uiLabel": "animal, laboratory"
+            "id": "obo:NCBITaxon_9606",
+            "uiLabel": "Homo sapiens"
         },
         "obo:GENEPIO_0001689": {
             "datatype": "xmls:anyURI",
@@ -3593,6 +3610,7 @@
             "definition": "Data representational model is an information content entity of the  relationships between data items. A data representational model is encoded in a data format specification such as for cytoscape or biopax.",
             "id": "obo:OBI_0000658",
             "members": {
+                "obo:GENEPIO_0001777": [],
                 "obo:GENEPIO_0001741": [],
                 "obo:GENEPIO_0001680": [],
                 "obo:GENEPIO_0001611": [],
@@ -3676,11 +3694,10 @@
             "id": "ifm:IFM_0000015",
             "uiLabel": "number"
         },
-        "obo:ENVO_00000139": {
+        "obo:SYMP_0000229": {
             "datatype": "xmls:anyURI",
-            "definition": "A ditch that supplies water to surrounding land.",
-            "id": "obo:ENVO_00000139",
-            "uiLabel": "irrigation ditch"
+            "id": "obo:SYMP_0000229",
+            "uiLabel": "bloody stool"
         },
         "obo:GENEPIO_0001596": {
             "datatype": "xmls:anyURI",
@@ -3699,10 +3716,10 @@
             "id": "ifm:IFM_0000019",
             "uiLabel": "latitude"
         },
-        "obo:GENEPIO_0001595": {
+        "obo:SYMP_0000355": {
             "datatype": "xmls:anyURI",
-            "id": "obo:GENEPIO_0001595",
-            "uiLabel": "assembly"
+            "id": "obo:SYMP_0000355",
+            "uiLabel": "poor feeding"
         },
         "obo:GENEPIO_0001592": {
             "datatype": "xmls:anyURI",
@@ -3724,6 +3741,12 @@
             "id": "obo:GENEPIO_0001591",
             "uiLabel": "whole"
         },
+        "obo:ENVO_00000873": {
+            "datatype": "xmls:anyURI",
+            "definition": "A biome that applies to the freshwater realm.",
+            "id": "obo:ENVO_00000873",
+            "uiLabel": "freshwater biome"
+        },
         "obo:NCBITaxon_33554": {
             "datatype": "xmls:anyURI",
             "id": "obo:NCBITaxon_33554",
@@ -3734,11 +3757,10 @@
             "id": "obo:ENVO_00000002",
             "uiLabel": "anthropogenic geographic feature"
         },
-        "mesh:D000835": {
+        "obo:SYMP_0000312": {
             "datatype": "xmls:anyURI",
-            "definition": "Animals considered to be wild or feral or not adapted for domestic use. It does not include wild animals in zoos for which ANIMALS, ZOO is available.",
-            "id": "mesh:D000835",
-            "uiLabel": "animal, wild"
+            "id": "obo:SYMP_0000312",
+            "uiLabel": "joint symptom"
         },
         "obo:ENVO_00000000": {
             "datatype": "xmls:anyURI",
@@ -3758,15 +3780,16 @@
                 }
             ]
         },
-        "obo:NCBITaxon_9606": {
+        "mesh:D000830": {
             "datatype": "xmls:anyURI",
-            "id": "obo:NCBITaxon_9606",
-            "uiLabel": "Homo sapiens"
+            "definition": "no definition at source",
+            "id": "mesh:D000830",
+            "uiLabel": "animal, laboratory"
         },
-        "obo:SYMP_0000355": {
+        "obo:DOID_1679": {
             "datatype": "xmls:anyURI",
-            "id": "obo:SYMP_0000355",
-            "uiLabel": "poor feeding"
+            "id": "obo:DOID_1679",
+            "uiLabel": "cystitis"
         },
         "obo:STATO_0000047": {
             "datatype": "xmls:nonNegativeInteger",
@@ -3791,9 +3814,9 @@
             "datatype": "xmls:anyURI",
             "definition": "A disease is a disposition (i) to undergo pathological processes that (ii) exists in an organism because of one or more disorders in that organism.",
             "part_of": [
-                "obo:GENEPIO_0001193",
                 "obo:GENEPIO_0001617",
-                "obo:GENEPIO_0001468"
+                "obo:GENEPIO_0001468",
+                "obo:GENEPIO_0001193"
             ],
             "id": "obo:DOID_4",
             "uiLabel": "disease (DOID)"
@@ -3869,21 +3892,25 @@
                 }
             ]
         },
-        "obo:DOID_0050589": {
+        "obo:OBI_0001896": {
             "datatype": "xmls:anyURI",
-            "definition": "An intestinal disease characterized by inflammation located_in all parts of digestive tract.",
-            "id": "obo:DOID_0050589",
-            "uiLabel": "inflammatory bowel disease"
+            "definition": "A plan specification which indicates the assay type used to obtain data.",
+            "part_of": [
+                "obo:GENEPIO_0001579"
+            ],
+            "id": "obo:OBI_0001896",
+            "uiLabel": "investigation assay specification"
         },
         "obo:GENEPIO_0001070": {
             "datatype": "xmls:anyURI",
             "id": "obo:GENEPIO_0001070",
             "uiLabel": "visiting relative/friends"
         },
-        "obo:GENEPIO_0001072": {
+        "obo:DOID_104": {
             "datatype": "xmls:anyURI",
-            "id": "obo:GENEPIO_0001072",
-            "uiLabel": "unsure"
+            "definition": "A disease by infectious agent that results_in infection, has_material_basis_in Bacteria.",
+            "id": "obo:DOID_104",
+            "uiLabel": "bacterial infectious disease"
         },
         "obo:GENEPIO_0001175": {
             "datatype": "xmls:anyURI",
@@ -3926,10 +3953,11 @@
             "id": "obo:GENEPIO_0001171",
             "uiLabel": "organism role"
         },
-        "obo:GENEPIO_0001172": {
+        "obo:BTO_0004070": {
             "datatype": "xmls:anyURI",
-            "id": "obo:GENEPIO_0001172",
-            "uiLabel": "isolate organism role"
+            "definition": "A mixture that consists largely of decayed organic matter and is used for fertilizing and conditioning land.",
+            "id": "obo:BTO_0004070",
+            "uiLabel": "compost"
         },
         "obo:GENEPIO_0001682": {
             "datatype": "xmls:anyURI",
@@ -3961,10 +3989,14 @@
             },
             "uiLabel": "IRIDA specification"
         },
-        "obo:GENEPIO_0001681": {
+        "obo:GENEPIO_0000071": {
             "datatype": "xmls:anyURI",
-            "id": "obo:GENEPIO_0001681",
-            "uiLabel": "categorical sequencing datum"
+            "definition": "Defined by sequencing method and instrumentation.",
+            "part_of": [
+                "obo:GENEPIO_0001658"
+            ],
+            "id": "obo:GENEPIO_0000071",
+            "uiLabel": "sequencing platform"
         },
         "obo:GENEPIO_0001686": {
             "datatype": "specification",
@@ -4122,21 +4154,20 @@
             "id": "sio:SIO_000501",
             "uiLabel": "polygon edge"
         },
-        "obo:ENVO_01000179": {
+        "obo:ENVO_00001995": {
             "datatype": "xmls:anyURI",
-            "definition": "A desert biome is a terrestrial biome which loses more liquid water by evapotranspiration than is supplied by precipitation and includes communities adapted to these conditions.",
-            "id": "obo:ENVO_01000179",
-            "uiLabel": "desert biome"
+            "definition": "A rock is a naturally occurring solid aggregate of one or more minerals or mineraloids.",
+            "id": "obo:ENVO_00001995",
+            "uiLabel": "rock"
         },
         "eo:EO:0000016": {
             "datatype": "xmls:anyURI",
             "id": "eo:EO:0000016"
         },
-        "obo:DOID_104": {
+        "obo:GENEPIO_0001750": {
             "datatype": "xmls:anyURI",
-            "definition": "A disease by infectious agent that results_in infection, has_material_basis_in Bacteria.",
-            "id": "obo:DOID_104",
-            "uiLabel": "bacterial infectious disease"
+            "id": "obo:GENEPIO_0001750",
+            "uiLabel": "purified chromosome"
         },
         "obo:ENVO_01000177": {
             "datatype": "xmls:anyURI",
@@ -4156,21 +4187,27 @@
             "id": "obo:ENVO_01000175",
             "uiLabel": "woodland biome"
         },
-        "obo:GENEPIO_0001751": {
+        "obo:ENVO_00000508": {
             "datatype": "xmls:anyURI",
-            "id": "obo:GENEPIO_0001751",
-            "uiLabel": "targeted locus/loci"
+            "definition": "A step-like feature between higher and lower ground: a relatively flat or gently inclined shelf of earth, backed and fronted by steep slopes or manmade detaining walls.",
+            "id": "obo:ENVO_00000508",
+            "uiLabel": "terrace"
+        },
+        "obo:UBERON_0000922": {
+            "datatype": "xmls:anyURI",
+            "definition": "Anatomical entity that comprises the organism in the early stages of growth and differentiation that are characterized by cleavage, the laying down of fundamental tissues, and the formation of primitive organs and organ systems. For example, for mammals, the process would begin with zygote formation and end with birth. For insects, the process would begin at zygote formation and end with larval hatching. For plant zygotic embryos, this would be from zygote formation to the end of seed dormancy. For plant vegetative embryos, this would be from the initial determination of the cell or group of cells to form an embryo until the point when the embryo becomes independent of the parent plant.",
+            "id": "obo:UBERON_0000922",
+            "uiLabel": "embryo"
         },
         "obo:ENVO_00002127": {
             "datatype": "xmls:anyURI",
             "id": "obo:ENVO_00002127",
             "uiLabel": "stream sediment"
         },
-        "obo:ENVO_00000873": {
+        "obo:NCBITaxon_54736": {
             "datatype": "xmls:anyURI",
-            "definition": "A biome that applies to the freshwater realm.",
-            "id": "obo:ENVO_00000873",
-            "uiLabel": "freshwater biome"
+            "id": "obo:NCBITaxon_54736",
+            "uiLabel": "Salmonella bongori"
         },
         "obo:GENEPIO_0001774": {
             "datatype": "xmls:unsignedShort",
@@ -4196,13 +4233,13 @@
             "constraints": [
                 {
                     "datatype": "xmls:nonNegativeInteger",
-                    "value": 129,
-                    "constraint": "xmls:maxInclusive"
+                    "value": "1",
+                    "constraint": "owl:qualifiedCardinality"
                 },
                 {
                     "datatype": "xmls:nonNegativeInteger",
-                    "value": "1",
-                    "constraint": "owl:qualifiedCardinality"
+                    "value": 129,
+                    "constraint": "xmls:maxInclusive"
                 }
             ]
         },
@@ -4262,14 +4299,15 @@
             "id": "obo:OBI_0001891",
             "label": "sequencing facility organization"
         },
-        "obo:OBI_0001896": {
+        "obo:SYMP_0000386": {
             "datatype": "xmls:anyURI",
-            "definition": "A plan specification which indicates the assay type used to obtain data.",
-            "part_of": [
-                "obo:GENEPIO_0001579"
-            ],
-            "id": "obo:OBI_0001896",
-            "uiLabel": "investigation assay specification"
+            "id": "obo:SYMP_0000386",
+            "uiLabel": "mouth symptom"
+        },
+        "obo:GENEPIO_0001071": {
+            "datatype": "xmls:anyURI",
+            "id": "obo:GENEPIO_0001071",
+            "uiLabel": "tour"
         },
         "vcf:C25251": {
             "datatype": "xmls:anyURI",
@@ -4293,23 +4331,10 @@
             "id": "obo:SYMP_0019177",
             "uiLabel": "fatigue"
         },
-        "obo:ENVO_00000086": {
+        "obo:GENEPIO_0001072": {
             "datatype": "xmls:anyURI",
-            "definition": "A region of general uniform slope, comparatively level, and of considerable extent.",
-            "id": "obo:ENVO_00000086",
-            "uiLabel": "plain"
-        },
-        "obo:ENVO_01000018": {
-            "datatype": "xmls:anyURI",
-            "definition": "Gravel is an environmental material which is composed of pieces of rock that are at least two millimeters (2mm) in its largest dimension and no more than 75 millimeters.",
-            "id": "obo:ENVO_01000018",
-            "uiLabel": "gravel"
-        },
-        "obo:OAE_0000633": {
-            "datatype": "xmls:anyURI",
-            "definition": "a serious AE that is suspected to put the patient at substantial risk of dying at the time of the adverse event, or that the use or continued use of the device or other medical product might have resulted in the death of the patient.",
-            "id": "obo:OAE_0000633",
-            "uiLabel": "life-threating AE"
+            "id": "obo:GENEPIO_0001072",
+            "uiLabel": "unsure"
         },
         "obo:GENEPIO_0001570": {
             "units": [
@@ -4446,9 +4471,9 @@
         },
         "obo:GENEPIO_0001677": {
             "part_of": [
+                "obo:GENEPIO_0001740",
                 "obo:GENEPIO_0001683",
-                "obo:GENEPIO_0001613",
-                "obo:GENEPIO_0001740"
+                "obo:GENEPIO_0001613"
             ],
             "parts": {
                 "obo:GENEPIO_0001679": [
@@ -4548,10 +4573,10 @@
             "id": "obo:CHMO_0002743",
             "label": "matrix"
         },
-        "obo:GENEPIO_0001126": {
-            "datatype": "xmls:date",
-            "id": "obo:GENEPIO_0001126",
-            "uiLabel": "lifespan history item"
+        "obo:ENVO_00003031": {
+            "datatype": "xmls:anyURI",
+            "id": "obo:ENVO_00003031",
+            "uiLabel": "animal manure"
         },
         "obo:NCBITaxon_397454": {
             "datatype": "xmls:anyURI",
@@ -4564,16 +4589,28 @@
             "id": "obo:BTO_0001481",
             "uiLabel": "plant"
         },
-        "obo:BTO_0004070": {
+        "obo:GENEPIO_0001172": {
             "datatype": "xmls:anyURI",
-            "definition": "A mixture that consists largely of decayed organic matter and is used for fertilizing and conditioning land.",
-            "id": "obo:BTO_0004070",
-            "uiLabel": "compost"
+            "id": "obo:GENEPIO_0001172",
+            "uiLabel": "isolate organism role"
         },
         "obo:ENVO_00005747": {
             "datatype": "xmls:anyURI",
             "id": "obo:ENVO_00005747",
             "uiLabel": "compost soil"
+        },
+        "ifm:IFM_0001668": {
+            "datatype": "xmls:string",
+            "definition": "This is the leading FSA (Forward Sortation Area) 3 character portion of a full 6 character postal code.  It can be used to limit the geographic granularity of a postal code.",
+            "uiLabel": "Canada postal code FSA",
+            "id": "ifm:IFM_0001668",
+            "constraints": [
+                {
+                    "datatype": "xmls:nonNegativeInteger",
+                    "value": "1",
+                    "constraint": "owl:qualifiedCardinality"
+                }
+            ]
         },
         "obo:STATO_0000064": {
             "datatype": "xmls:nonNegativeInteger",
@@ -4658,8 +4695,8 @@
         "ifm:IFM_0001444": {
             "datatype": "xmls:dateTime",
             "part_of": [
-                "ifm:IFM_0000026",
-                "ifm:IFM_0001468"
+                "ifm:IFM_0001468",
+                "ifm:IFM_0000026"
             ],
             "uiLabel": "datetime range start",
             "id": "ifm:IFM_0001444",
@@ -4678,10 +4715,21 @@
             "id": "ifm:IFM_0001524",
             "uiLabel": "plane"
         },
-        "obo:GENEPIO_0001660": {
-            "datatype": "xmls:anyURI",
-            "id": "obo:GENEPIO_0001660",
-            "uiLabel": "neuter"
+        "obo:GENEPIO_0000090": {
+            "definition": "Assembly method refers to how the reads were assembled into contigs for which either a de novo or mapping (reference based) strategy is used.",
+            "part_of": [
+                "obo:GENEPIO_0001777"
+            ],
+            "datatype": "xmls:string",
+            "uiLabel": "assembly method",
+            "id": "obo:GENEPIO_0000090",
+            "constraints": [
+                {
+                    "datatype": "xmls:nonNegativeInteger",
+                    "value": "1",
+                    "constraint": "owl:qualifiedCardinality"
+                }
+            ]
         },
         "ifm:IFM_0001526": {
             "definition": "Wikipedia:  A spheroid, or ellipsoid of revolution, is a quadric surface obtained by rotating an ellipse about one of its principal axes; in other words, an ellipsoid with two equal semi-diameters.",
@@ -4742,14 +4790,10 @@
                 }
             ]
         },
-        "obo:GENEPIO_0000071": {
+        "obo:GENEPIO_0001681": {
             "datatype": "xmls:anyURI",
-            "definition": "Defined by sequencing method and instrumentation.",
-            "part_of": [
-                "obo:GENEPIO_0001658"
-            ],
-            "id": "obo:GENEPIO_0000071",
-            "uiLabel": "sequencing platform"
+            "id": "obo:GENEPIO_0001681",
+            "uiLabel": "categorical sequencing datum"
         },
         "obo:GENEPIO_0001707": {
             "part_of": [
@@ -4880,15 +4924,30 @@
             "id": "obo:GENEPIO_0001709",
             "uiLabel": "categorical test datum"
         },
-        "obo:GENEPIO_0001708": {
-            "datatype": "xmls:anyURI",
-            "id": "obo:GENEPIO_0001708",
-            "uiLabel": "food - solid"
+        "obo:GENEPIO_0000093": {
+            "definition": "A contig count is the count of contigs that belong to a sequence assembly.",
+            "part_of": [
+                "obo:GENEPIO_0001764"
+            ],
+            "datatype": "xmls:unsignedShort",
+            "uiLabel": "contig count",
+            "id": "obo:GENEPIO_0000093",
+            "constraints": [
+                {
+                    "datatype": "xmls:nonNegativeInteger",
+                    "value": "1",
+                    "constraint": "owl:qualifiedCardinality"
+                }
+            ]
         },
-        "obo:NCBITaxon_1045010": {
-            "datatype": "xmls:anyURI",
-            "id": "obo:NCBITaxon_1045010",
-            "uiLabel": "Escherichia coli O157"
+        "obo:GENEPIO_0000077": {
+            "datatype": "xmls:string",
+            "definition": "numerical identifier for sample.\n\nDamion proposes to add: \"derived from sequencer\"",
+            "part_of": [
+                "obo:GENEPIO_0001777"
+            ],
+            "id": "obo:GENEPIO_0000077",
+            "uiLabel": "sample ID"
         },
         "obo:GENEPIO_0001259": {
             "datatype": "specification",
@@ -4981,6 +5040,23 @@
             "id": "obo:NCBITaxon_10239",
             "uiLabel": "Viruses"
         },
+        "obo:ENVO_00000121": {
+            "datatype": "xmls:anyURI",
+            "id": "obo:ENVO_00000121",
+            "uiLabel": "artificial channel"
+        },
+        "Nf00d9b921e3d4e9c883a2657338d415e": {
+            "datatype": "disjunction",
+            "part_of": [
+                "obo:GENEPIO_0001623"
+            ],
+            "parts": {
+                "ifm:IFM_0001675": [],
+                "obo:ENVO_00000856": []
+            },
+            "id": "Nf00d9b921e3d4e9c883a2657338d415e",
+            "uiLabel": ""
+        },
         "bibo:interviewer": {
             "datatype": "xmls:anyURI",
             "id": "bibo:interviewer",
@@ -4992,10 +5068,10 @@
             "id": "obo:NCBITaxon_6447",
             "label": "Mollusca"
         },
-        "obo:NCBITaxon_149539": {
+        "obo:GENEPIO_0001009": {
             "datatype": "xmls:anyURI",
-            "id": "obo:NCBITaxon_149539",
-            "uiLabel": "Salmonella enterica subsp. enterica serovar Enteritidis"
+            "id": "obo:GENEPIO_0001009",
+            "uiLabel": "restaurant"
         },
         "obo:GENEPIO_0000079": {
             "definition": "descriptive identifier for sample",
@@ -5105,28 +5181,17 @@
                 }
             ]
         },
-        "obo:GENEPIO_0001600": {
+        "obo:ENVO_00002000": {
             "datatype": "xmls:anyURI",
-            "id": "obo:GENEPIO_0001600",
-            "uiLabel": "maps"
+            "definition": "The part of an elevation or depression between the relatively flat surrounding area and the peak of a mount or the bottom of a depression.",
+            "id": "obo:ENVO_00002000",
+            "uiLabel": "slope"
         },
         "obo:ENVO_00002001": {
             "datatype": "xmls:anyURI",
             "definition": "Water that has been adversely affected in quality by anthropogenic influence.",
             "id": "obo:ENVO_00002001",
             "uiLabel": "waste water"
-        },
-        "ifm:IFM_0001670": {
-            "datatype": "xmls:string",
-            "uiLabel": "Canada postal code",
-            "id": "ifm:IFM_0001670",
-            "constraints": [
-                {
-                    "datatype": "xmls:nonNegativeInteger",
-                    "value": "1",
-                    "constraint": "owl:qualifiedCardinality"
-                }
-            ]
         },
         "obo:NCBITaxon_9913": {
             "datatype": "xmls:anyURI",
@@ -5157,27 +5222,27 @@
             "id": "sio:SIO_001012",
             "uiLabel": "healthy"
         },
-        "obo:ENVO_00001995": {
+        "obo:ENVO_01000179": {
             "datatype": "xmls:anyURI",
-            "definition": "A rock is a naturally occurring solid aggregate of one or more minerals or mineraloids.",
-            "id": "obo:ENVO_00001995",
-            "uiLabel": "rock"
+            "definition": "A desert biome is a terrestrial biome which loses more liquid water by evapotranspiration than is supplied by precipitation and includes communities adapted to these conditions.",
+            "id": "obo:ENVO_01000179",
+            "uiLabel": "desert biome"
         },
         "obo:GENEPIO_0001031": {
             "datatype": "xmls:anyURI",
             "id": "obo:GENEPIO_0001031",
             "uiLabel": "wedding"
         },
-        "obo:IDO_0000531": {
+        "obo:GENEPIO_0001030": {
             "datatype": "xmls:anyURI",
-            "definition": "An organism bearing a host role.",
-            "id": "obo:IDO_0000531",
-            "uiLabel": "host"
+            "id": "obo:GENEPIO_0001030",
+            "uiLabel": "party"
         },
-        "obo:GENEPIO_0001033": {
+        "obo:ENVO_01001305": {
             "datatype": "xmls:anyURI",
-            "id": "obo:GENEPIO_0001033",
-            "uiLabel": "potluck"
+            "definition": "A vegetated area is a geographic feature which has ground cover dominated by plant communities.",
+            "id": "obo:ENVO_01001305",
+            "uiLabel": "vegetated area"
         },
         "obo:GENEPIO_0001032": {
             "datatype": "xmls:anyURI",
@@ -5356,6 +5421,12 @@
                 }
             ]
         },
+        "obo:ENVO_01000408": {
+            "datatype": "xmls:anyURI",
+            "definition": "An environmental zone is an environmental feature whose extent is determined by the presence or influence of one or more material entities or processes. An environmental zone may, itself, assume the role of an environmental feature.",
+            "id": "obo:ENVO_01000408",
+            "uiLabel": "environmental zone"
+        },
         "obo:SYMP_0000260": {
             "datatype": "xmls:anyURI",
             "id": "obo:SYMP_0000260",
@@ -5425,17 +5496,11 @@
             "uiLabel": "PFGE secondary test"
         },
         "obo:GENEPIO_0000042": {
-            "datatype": "xmls:integer",
+            "datatype": "xmls:positiveInteger",
             "definition": "Stream order is a measure of the relative size of streams (The smallest tributaries are referred to as first-order streams, while the largest river in the world, the Amazon, is a twelfth-order waterway).",
             "uiLabel": "stream order categorical measurement datum",
             "id": "obo:GENEPIO_0000042",
-            "constraints": [
-                {
-                    "datatype": "xmls:integer",
-                    "value": "12",
-                    "constraint": "xmls:maxInclusive"
-                }
-            ]
+            "constraints": []
         },
         "obo:GENEPIO_0000041": {
             "units": [
@@ -5578,16 +5643,17 @@
             "id": "obo:UBERON_0001153",
             "uiLabel": "caecum"
         },
-        "obo:ENVO_00001998": {
+        "obo:ENVO_01000174": {
             "datatype": "xmls:anyURI",
-            "definition": "Soil is an environmental material which is primarily composed of minerals, varying proportions of sand, silt, and clay, organic material such as humus, gases, liquids, and a broad range of resident micro- and macroorganisms.",
-            "id": "obo:ENVO_00001998",
-            "uiLabel": "soil"
+            "definition": "A forest biome is a terrestrial biome which includes, across its entire spatial extent, densely packed vegetation which strongly limits light penetration to the forest floor.",
+            "id": "obo:ENVO_01000174",
+            "uiLabel": "forest biome"
         },
-        "obo:GENEPIO_0001654": {
+        "obo:ENVO_01000018": {
             "datatype": "xmls:anyURI",
-            "id": "obo:GENEPIO_0001654",
-            "uiLabel": "categorical location datum"
+            "definition": "Gravel is an environmental material which is composed of pieces of rock that are at least two millimeters (2mm) in its largest dimension and no more than 75 millimeters.",
+            "id": "obo:ENVO_01000018",
+            "uiLabel": "gravel"
         },
         "obo:DOID_11976": {
             "datatype": "xmls:anyURI",
@@ -5595,11 +5661,11 @@
             "id": "obo:DOID_11976",
             "uiLabel": "botulism"
         },
-        "obo:BTO_0000818": {
+        "mesh:D000835": {
             "datatype": "xmls:anyURI",
-            "definition": "The series of articulated vertebrae, separated by intervertebral disks and held together by muscles and tendons, that extends from the cranium to the coccyx or the end of the tail, encasing the spinal cord and forming the supporting axis of the body; the spine.",
-            "id": "obo:BTO_0000818",
-            "uiLabel": "spinal column"
+            "definition": "Animals considered to be wild or feral or not adapted for domestic use. It does not include wild animals in zoos for which ANIMALS, ZOO is available.",
+            "id": "mesh:D000835",
+            "uiLabel": "animal, wild"
         },
         "obo:SYMP_0000891": {
             "datatype": "xmls:anyURI",
@@ -5622,9 +5688,9 @@
         "obo:GENEPIO_0001535": {
             "definition": "This is a subset of OBI investigation identifier.  It pertains only to NCBI Biosample projects",
             "part_of": [
-                "obo:GENEPIO_0001579",
+                "obo:GENEPIO_0001621",
                 "obo:GENEPIO_0001581",
-                "obo:GENEPIO_0001621"
+                "obo:GENEPIO_0001579"
             ],
             "datatype": "xmls:string",
             "uiLabel": "NCBI BioProject ID",
@@ -5694,11 +5760,6 @@
             "id": "obo:FIX_0000278",
             "uiLabel": "redox potential"
         },
-        "sio:SIO_010059": {
-            "datatype": "xmls:anyURI",
-            "id": "sio:SIO_010059",
-            "uiLabel": "dead"
-        },
         "obo:NCBITaxon_816": {
             "datatype": "xmls:anyURI",
             "id": "obo:NCBITaxon_816",
@@ -5716,13 +5777,6 @@
                     "constraint": "owl:maxQualifiedCardinality"
                 }
             ]
-        },
-        "obo:GEO_000000008": {
-            "definition": "An aggregate of governmental organizations that is not itself a geopolitical dependency and whose members are only geopolitical dependencies that have some feature in common.",
-            "datatype": "xmls:anyURI",
-            "constraints": [],
-            "id": "obo:GEO_000000008",
-            "uiLabel": "group of dependencies"
         },
         "ifm:IFM_0001487": {
             "datatype": "xmls:dateTime",
@@ -5810,11 +5864,6 @@
                 }
             ]
         },
-        "obo:GENEPIO_0001071": {
-            "datatype": "xmls:anyURI",
-            "id": "obo:GENEPIO_0001071",
-            "uiLabel": "tour"
-        },
         "obo:ENVO_0010001": {
             "datatype": "xmls:anyURI",
             "definition": "Anthropogenic material in or on which organisms may live.",
@@ -5826,10 +5875,24 @@
             "id": "obo:NCBITaxon_244317",
             "uiLabel": "Escherichia coli O128:H2"
         },
-        "obo:DOID_1679": {
+        "N3aa6b7803cd44d0aa2af7b1f7472a0c6": {
+            "datatype": "disjunction",
+            "part_of": [
+                "obo:GENEPIO_0001623"
+            ],
+            "parts": {
+                "sio:SIO_000663": [],
+                "sio:SIO_000662": [],
+                "sio:SIO_000661": []
+            },
+            "id": "N3aa6b7803cd44d0aa2af7b1f7472a0c6",
+            "uiLabel": ""
+        },
+        "obo:GENEPIO_0001618": {
             "datatype": "xmls:anyURI",
-            "id": "obo:DOID_1679",
-            "uiLabel": "cystitis"
+            "definition": "'missing' is a categorical choice recorded when a categorical variable value was known to be recorded in the past but the observed value cannot be located or retrieved.",
+            "id": "obo:GENEPIO_0001618",
+            "uiLabel": "missing"
         },
         "obo:ENVO_00002186": {
             "datatype": "xmls:anyURI",
@@ -5959,7 +6022,14 @@
                         "value": "1"
                     }
                 ],
-                "N875c4ceafcb6441782d78e99f3b0f991": [
+                "N3aa6b7803cd44d0aa2af7b1f7472a0c6": [
+                    {
+                        "datatype": "xmls:nonNegativeInteger",
+                        "cardinality": "owl:maxQualifiedCardinality",
+                        "value": "1"
+                    }
+                ],
+                "Nf00d9b921e3d4e9c883a2657338d415e": [
                     {
                         "datatype": "xmls:nonNegativeInteger",
                         "cardinality": "owl:maxQualifiedCardinality",
@@ -5967,13 +6037,6 @@
                     }
                 ],
                 "sio:SIO_000767": [
-                    {
-                        "datatype": "xmls:nonNegativeInteger",
-                        "cardinality": "owl:maxQualifiedCardinality",
-                        "value": "1"
-                    }
-                ],
-                "N19ca14a2243f4822aa471dd2275f7888": [
                     {
                         "datatype": "xmls:nonNegativeInteger",
                         "cardinality": "owl:maxQualifiedCardinality",
@@ -6118,8 +6181,8 @@
         "obo:GENEPIO_0001625": {
             "definition": "A host disease stage is a measure of the acuteness of a host's diagnosed disease, if any, at the time of sampling.",
             "part_of": [
-                "obo:GENEPIO_0001707",
-                "obo:GENEPIO_0001613"
+                "obo:GENEPIO_0001613",
+                "obo:GENEPIO_0001707"
             ],
             "datatype": "xmls:string",
             "uiLabel": "host disease stage",
@@ -6154,21 +6217,17 @@
             "id": "obo:GENEPIO_0001747",
             "uiLabel": "reagent"
         },
-        "obo:GENEPIO_0001629": {
+        "obo:ENVO_00000086": {
             "datatype": "xmls:anyURI",
-            "id": "obo:GENEPIO_0001629",
-            "uiLabel": "sample body source"
+            "definition": "A region of general uniform slope, comparatively level, and of considerable extent.",
+            "id": "obo:ENVO_00000086",
+            "uiLabel": "plain"
         },
         "obo:DOID_850": {
             "datatype": "xmls:anyURI",
             "definition": "A lower respiratory tract disease in which the function of the lungs is adversely affected by narrowing or blockage of the airways resulting in poor air flow, a loss of elasticity in the lungs that produces a decrease in the total volume of air that the lungs are able to hold, and clotting, scarring, or inflammation of the blood vessels that affect the ability of the lungs to take up oxygen and to release carbon dioxide.",
             "id": "obo:DOID_850",
             "uiLabel": "lung disease"
-        },
-        "obo:GENEPIO_0001743": {
-            "datatype": "xmls:anyURI",
-            "id": "obo:GENEPIO_0001743",
-            "uiLabel": "undetermined"
         },
         "obo:GENEPIO_0001741": {
             "datatype": "specification",
@@ -6262,10 +6321,83 @@
             "id": "obo:NCBITaxon_108619",
             "uiLabel": "Salmonella enterica subsp. enterica serovar Newport"
         },
-        "obo:NCBITaxon_54736": {
-            "datatype": "xmls:anyURI",
-            "id": "obo:NCBITaxon_54736",
-            "uiLabel": "Salmonella bongori"
+        "obo:GENEPIO_0001777": {
+            "datatype": "specification",
+            "parts": {
+                "obo:OBI_0000626": [
+                    {
+                        "datatype": "xmls:nonNegativeInteger",
+                        "cardinality": "owl:maxQualifiedCardinality",
+                        "value": "1"
+                    }
+                ],
+                "obo:GENEPIO_0001644": [
+                    {
+                        "datatype": "xmls:nonNegativeInteger",
+                        "cardinality": "owl:maxQualifiedCardinality",
+                        "value": "1"
+                    }
+                ],
+                "obo:OBI_0001621": [
+                    {
+                        "datatype": "xmls:nonNegativeInteger",
+                        "cardinality": "owl:maxQualifiedCardinality",
+                        "value": "1"
+                    }
+                ],
+                "obo:GENEPIO_0001557": [
+                    {
+                        "datatype": "xmls:nonNegativeInteger",
+                        "cardinality": "owl:maxQualifiedCardinality",
+                        "value": "1"
+                    }
+                ],
+                "obo:GENEPIO_0000077": [
+                    {
+                        "datatype": "xmls:nonNegativeInteger",
+                        "cardinality": "owl:maxQualifiedCardinality",
+                        "value": "1"
+                    }
+                ],
+                "obo:GENEPIO_0001468": [
+                    {
+                        "datatype": "xmls:nonNegativeInteger",
+                        "cardinality": "owl:minQualifiedCardinality",
+                        "value": "0"
+                    }
+                ],
+                "obo:GENEPIO_0000094": [
+                    {
+                        "datatype": "xmls:nonNegativeInteger",
+                        "cardinality": "owl:maxQualifiedCardinality",
+                        "value": "1"
+                    }
+                ],
+                "obo:GENEPIO_0001429": [
+                    {
+                        "datatype": "xmls:nonNegativeInteger",
+                        "cardinality": "owl:maxQualifiedCardinality",
+                        "value": "1"
+                    }
+                ],
+                "obo:GENEPIO_0000090": [
+                    {
+                        "datatype": "xmls:nonNegativeInteger",
+                        "cardinality": "owl:maxQualifiedCardinality",
+                        "value": "1"
+                    }
+                ],
+                "obo:OBI_0001620": [
+                    {
+                        "datatype": "xmls:nonNegativeInteger",
+                        "cardinality": "owl:maxQualifiedCardinality",
+                        "value": "1"
+                    }
+                ]
+            },
+            "id": "obo:GENEPIO_0001777",
+            "parent": "obo:OBI_0000658",
+            "uiLabel": "BCCDC-Oxford Tuberculosis"
         },
         "obo:NCBITaxon_59201": {
             "datatype": "xmls:anyURI",
@@ -6278,15 +6410,20 @@
             "id": "obo:OBI_0000938",
             "uiLabel": "categorical measurement datum"
         },
-        "obo:NCBITaxon_991919": {
+        "obo:NCBITaxon_9685": {
             "datatype": "xmls:anyURI",
-            "id": "obo:NCBITaxon_991919",
-            "uiLabel": "Escherichia coli O145:NM"
+            "id": "obo:NCBITaxon_9685",
+            "uiLabel": "Felis catus"
         },
         "obo:GENEPIO_0001541": {
             "datatype": "xmls:anyURI",
             "id": "obo:GENEPIO_0001541",
             "uiLabel": "parent-guardian role"
+        },
+        "obo:NCBITaxon_species": {
+            "datatype": "xmls:anyURI",
+            "id": "obo:NCBITaxon_species",
+            "uiLabel": "species"
         },
         "obo:GENEPIO_0001219": {
             "datatype": "xmls:anyURI",
@@ -6315,17 +6452,12 @@
             "id": "obo:NCBITaxon_33090",
             "uiLabel": "Viridiplantae"
         },
-        "obo:GENEPIO_0001750": {
-            "datatype": "xmls:anyURI",
-            "id": "obo:GENEPIO_0001750",
-            "uiLabel": "purified chromosome"
-        },
         "sio:SIO_000767": {
             "definition": "A postal code is a geographic coordinate composed of a series of letters and/or digits appended to a postal address for the purpose of sorting mail.",
             "part_of": [
+                "obo:GENEPIO_0001679",
                 "obo:GENEPIO_0001623",
-                "obo:GENEPIO_0001581",
-                "obo:GENEPIO_0001679"
+                "obo:GENEPIO_0001581"
             ],
             "datatype": "xmls:string",
             "uiLabel": "postal code",
@@ -6347,8 +6479,8 @@
         "obo:GENEPIO_0001212": {
             "datatype": "xmls:anyURI",
             "part_of": [
-                "obo:GENEPIO_0001613",
-                "obo:GENEPIO_0001707"
+                "obo:GENEPIO_0001707",
+                "obo:GENEPIO_0001613"
             ],
             "uiLabel": "disease outcome",
             "id": "obo:GENEPIO_0001212",
@@ -6382,16 +6514,10 @@
             "id": "obo:UBERON_0000178",
             "uiLabel": "blood"
         },
-        "obo:GENEPIO_0001727": {
+        "obo:GENEPIO_0001582": {
             "datatype": "xmls:anyURI",
-            "id": "obo:GENEPIO_0001727",
-            "uiLabel": "swab - meat"
-        },
-        "obo:BTO_0001762": {
-            "datatype": "xmls:anyURI",
-            "definition": "A newborn child; especially: a child less than a month old.",
-            "id": "obo:BTO_0001762",
-            "uiLabel": "neonate"
+            "id": "obo:GENEPIO_0001582",
+            "uiLabel": "monoisolate"
         },
         "obo:GENEPIO_0001711": {
             "datatype": "xmls:anyURI",
@@ -6404,10 +6530,11 @@
             "id": "obo:DOID_0050354",
             "uiLabel": "infant botulism"
         },
-        "obo:GENEPIO_0001585": {
+        "obo:DOID_8577": {
             "datatype": "xmls:anyURI",
-            "id": "obo:GENEPIO_0001585",
-            "uiLabel": "environment"
+            "definition": "A colitis that is predominantly confined to the mucosa located_in colon and includes characteristic ulcers, or open sores.",
+            "id": "obo:DOID_8577",
+            "uiLabel": "ulcerative colitis"
         },
         "obo:UBERON_0000174": {
             "datatype": "xmls:anyURI",
@@ -6421,16 +6548,16 @@
             "id": "obo:DOID_0050352",
             "uiLabel": "foodborne botulism"
         },
-        "obo:GENEPIO_0001584": {
+        "obo:NCBITaxon_991913": {
             "datatype": "xmls:anyURI",
-            "id": "obo:GENEPIO_0001584",
-            "uiLabel": "multispecies"
+            "id": "obo:NCBITaxon_991913",
+            "uiLabel": "Escherichia coli O103:H25"
         },
-        "obo:SYMP_0000504": {
+        "obo:NCBITaxon_8839": {
             "datatype": "xmls:anyURI",
-            "definition": "Headache is a pain characterized by a pain in the head.",
-            "id": "obo:SYMP_0000504",
-            "uiLabel": "headache"
+            "uiLabel": "duck / mallard",
+            "id": "obo:NCBITaxon_8839",
+            "label": "Anas platyrhynchos"
         },
         "obo:NCBITaxon_991915": {
             "datatype": "xmls:anyURI",
@@ -6452,28 +6579,19 @@
             "id": "obo:GENEPIO_0001037",
             "uiLabel": "food related exposure"
         },
-        "vcf:C68615": {
-            "definition": "The calendar date on which a person was born.",
+        "obo:GENEPIO_0001286": {
+            "datatype": "xmls:anyURI",
             "part_of": [
-                "obo:GENEPIO_0001467",
-                "obo:GENEPIO_0001226"
+                "obo:GENEPIO_0001740"
             ],
-            "datatype": "xmls:dateTime",
-            "uiLabel": "date of birth",
-            "id": "vcf:C68615",
-            "constraints": [
-                {
-                    "datatype": "xmls:nonNegativeInteger",
-                    "value": "1",
-                    "constraint": "owl:maxQualifiedCardinality"
-                }
-            ]
+            "id": "obo:GENEPIO_0001286",
+            "uiLabel": "health authority"
         },
         "obo:GENEPIO_0001287": {
             "part_of": [
+                "sio:SIO_001027",
                 "obo:GENEPIO_0001678",
-                "obo:GENEPIO_0001740",
-                "sio:SIO_001027"
+                "obo:GENEPIO_0001740"
             ],
             "parts": {
                 "obo:FLU_0000976": [
@@ -6507,12 +6625,6 @@
             "definition": "A significant accumulation of water which is part of a marine biome.",
             "id": "obo:ENVO_00001999",
             "uiLabel": "marine water body"
-        },
-        "obo:SYMP_0019145": {
-            "datatype": "xmls:anyURI",
-            "definition": "Vomiting is a digestive system symptom characterized by throwing up the stomach contents.",
-            "id": "obo:SYMP_0019145",
-            "uiLabel": "vomiting"
         },
         "obo:GENEPIO_0001289": {
             "datatype": "xmls:string",
@@ -6581,17 +6693,11 @@
                 }
             ]
         },
-        "N875c4ceafcb6441782d78e99f3b0f991": {
-            "datatype": "disjunction",
-            "part_of": [
-                "obo:GENEPIO_0001623"
-            ],
-            "parts": {
-                "ifm:IFM_0001675": [],
-                "obo:ENVO_00000856": []
-            },
-            "id": "N875c4ceafcb6441782d78e99f3b0f991",
-            "uiLabel": ""
+        "obo:DOID_2945": {
+            "datatype": "xmls:anyURI",
+            "definition": "A viral infectious disease that results_in infection located_in respiratory tract, has_material_basis_in SARS coronavirus (SARS-CoV), which is transmitted_by droplet spread of respiratory secretions, transmitted_by ingestion of contaminated food, or transmitted_by fomites. The infection has_symptom fever, has_symptom headache, has_symptom body aches, has_symptom dry cough, and has_symptom hypoxia.",
+            "id": "obo:DOID_2945",
+            "uiLabel": "severe acute respiratory syndrome"
         },
         "obo:SYMP_0000332": {
             "datatype": "xmls:anyURI",
@@ -6603,10 +6709,11 @@
             "id": "obo:ENVO_00003032",
             "uiLabel": "fresh animal manure"
         },
-        "obo:ENVO_00003031": {
+        "obo:ENVO_00001998": {
             "datatype": "xmls:anyURI",
-            "id": "obo:ENVO_00003031",
-            "uiLabel": "animal manure"
+            "definition": "Soil is an environmental material which is primarily composed of minerals, varying proportions of sand, silt, and clay, organic material such as humus, gases, liquids, and a broad range of resident micro- and macroorganisms.",
+            "id": "obo:ENVO_00001998",
+            "uiLabel": "soil"
         },
         "obo:SYMP_0000020": {
             "datatype": "xmls:anyURI",
@@ -6631,21 +6738,17 @@
             "id": "obo:SYMP_0000342",
             "uiLabel": "slurred speech"
         },
-        "obo:NCBITaxon_991913": {
-            "datatype": "xmls:anyURI",
-            "id": "obo:NCBITaxon_991913",
-            "uiLabel": "Escherichia coli O103:H25"
-        },
         "obo:ERO_0001965": {
             "datatype": "xmls:anyURI",
             "definition": "A role that inheres in a material that is input as the subject of interest in a scientific technique - either as an entity about which data is generated in an assay or study, or an entity that is transformed or modified in a material processing technique (e.g. the source from which a biological sample is taken)",
             "id": "obo:ERO_0001965",
             "uiLabel": "experimental subject role"
         },
-        "obo:ENVO_00002011": {
+        "obo:UBERON_2000084": {
             "datatype": "xmls:anyURI",
-            "id": "obo:ENVO_00002011",
-            "uiLabel": "fresh water"
+            "definition": "Nutrient store for embryonic development in the form of semicrystalline phospholipoprotein and contained within yolk granules. Kimmel et al, 1995.",
+            "id": "obo:UBERON_2000084",
+            "uiLabel": "yolk"
         },
         "obo:ENVO_00000428": {
             "datatype": "xmls:anyURI",
@@ -6655,6 +6758,11 @@
             ],
             "id": "obo:ENVO_00000428",
             "uiLabel": "biome"
+        },
+        "obo:GENEPIO_0001660": {
+            "datatype": "xmls:anyURI",
+            "id": "obo:GENEPIO_0001660",
+            "uiLabel": "neuter"
         },
         "obo:NCBITaxon_8782": {
             "datatype": "xmls:anyURI",
@@ -6666,16 +6774,15 @@
             "id": "obo:GENEPIO_0001068",
             "uiLabel": "mission work"
         },
-        "obo:TRANS_0000012": {
+        "obo:GENEPIO_0001069": {
             "datatype": "xmls:anyURI",
-            "definition": "Vehicle-borne ingestion transmission is an indirect vehicle-borne transmission process during which the pathogen is indirectly transferred from a reservoir, source or host to another host by ingestion of fluids or foods or food products including: food, water, milk, or meat products.",
-            "id": "obo:TRANS_0000012",
-            "uiLabel": "vehicle-born ingestion"
+            "id": "obo:GENEPIO_0001069",
+            "uiLabel": "rural backpacking"
         },
-        "obo:GENEPIO_0001647": {
+        "obo:NCBITaxon_48409": {
             "datatype": "xmls:anyURI",
-            "id": "obo:GENEPIO_0001647",
-            "uiLabel": "original submission"
+            "id": "obo:NCBITaxon_48409",
+            "uiLabel": "Salmonella enterica subsp. enterica serovar Virchow"
         },
         "obo:GENEPIO_0001062": {
             "datatype": "xmls:anyURI",
@@ -6721,11 +6828,13 @@
             "id": "obo:GENEPIO_0001067",
             "uiLabel": "business"
         },
-        "obo:SYMP_0000040": {
+        "obo:GENEPIO_0001064": {
             "datatype": "xmls:anyURI",
-            "definition": "A urinary system symptom characterized by the presence of blood or blood cells in the urine.",
-            "id": "obo:SYMP_0000040",
-            "uiLabel": "hematuria"
+            "part_of": [
+                "obo:GENEPIO_0001470"
+            ],
+            "id": "obo:GENEPIO_0001064",
+            "uiLabel": "travel mode"
         },
         "obo:GENEPIO_0001065": {
             "datatype": "xmls:anyURI",
@@ -6808,17 +6917,16 @@
             "id": "obo:GENEPIO_0001473",
             "uiLabel": "exposure history item"
         },
+        "obo:ENVO_00000117": {
+            "datatype": "xmls:anyURI",
+            "definition": "An intentional planting of a crop, on a large scale, usually for uses other than cereal production or pasture. The term is currently most often used for plantings of trees and shrubs. The term tends also to be used for plantings maintained on economic bases other than that of subsistence farming.",
+            "id": "obo:ENVO_00000117",
+            "uiLabel": "plantation"
+        },
         "obo:ENVO_00000519": {
             "datatype": "xmls:anyURI",
             "id": "obo:ENVO_00000519",
             "uiLabel": "agricultural terrace"
-        },
-        "ifm:IFM_0000025": {
-            "part_of": [
-                "ifm:IFM_0001504"
-            ],
-            "id": "ifm:IFM_0000025",
-            "uiLabel": "longitude"
         },
         "obo:ENVO_00000106": {
             "datatype": "xmls:anyURI",
@@ -6826,23 +6934,17 @@
             "id": "obo:ENVO_00000106",
             "uiLabel": "grassland"
         },
+        "obo:SYMP_0000504": {
+            "datatype": "xmls:anyURI",
+            "definition": "Headache is a pain characterized by a pain in the head.",
+            "id": "obo:SYMP_0000504",
+            "uiLabel": "headache"
+        },
         "obo:ENVO_00000109": {
             "datatype": "xmls:anyURI",
             "definition": "Land having a cover of trees, shrubs, or both.",
             "id": "obo:ENVO_00000109",
             "uiLabel": "woodland"
-        },
-        "N8a578afe4d48438a9e502bf7a56cff2b": {
-            "datatype": "disjunction",
-            "part_of": [
-                "obo:GENEPIO_0001657"
-            ],
-            "parts": {
-                "ifm:IFM_0001675": [],
-                "obo:ENVO_00000856": []
-            },
-            "id": "N8a578afe4d48438a9e502bf7a56cff2b",
-            "uiLabel": ""
         },
         "obo:UBERON_0006866": {
             "datatype": "xmls:anyURI",
@@ -6850,15 +6952,15 @@
             "id": "obo:UBERON_0006866",
             "uiLabel": "terminal part of digestive tract"
         },
+        "obo:ENVO_00003859": {
+            "datatype": "xmls:anyURI",
+            "id": "obo:ENVO_00003859",
+            "uiLabel": "horse manure"
+        },
         "obo:ENVO_00002030": {
             "datatype": "xmls:anyURI",
             "id": "obo:ENVO_00002030",
             "uiLabel": "aquatic biome"
-        },
-        "obo:NCBITaxon_595": {
-            "datatype": "xmls:anyURI",
-            "id": "obo:NCBITaxon_595",
-            "uiLabel": "Salmonella enterica subsp. enterica serovar Infantis"
         },
         "obo:ENVO_01000180": {
             "datatype": "xmls:anyURI",
@@ -6887,25 +6989,22 @@
             "id": "obo:GENEPIO_0001748",
             "uiLabel": "transcriptome"
         },
-        "obo:GENEPIO_0001648": {
+        "obo:UBERON_0006314": {
             "datatype": "xmls:anyURI",
-            "part_of": [
-                "obo:GENEPIO_0001650"
-            ],
-            "parts": {
-                "obo:GENEPIO_0001642": [
-                    {
-                        "cardinality": "owl:someValuesFrom"
-                    }
-                ]
-            },
-            "id": "obo:GENEPIO_0001648",
-            "uiLabel": "NCBI Contributing organization / project"
+            "definition": "Liquid components of living organisms. includes fluids that are excreted or secreted from the body as well as body water that normally is not.",
+            "id": "obo:UBERON_0006314",
+            "uiLabel": "bodily fluid"
         },
         "obo:NCBITaxon_149385": {
             "datatype": "xmls:anyURI",
             "id": "obo:NCBITaxon_149385",
             "uiLabel": "Salmonella enterica subsp. enterica serovar Hadar"
+        },
+        "obo:DOID_0050589": {
+            "datatype": "xmls:anyURI",
+            "definition": "An intestinal disease characterized by inflammation located_in all parts of digestive tract.",
+            "id": "obo:DOID_0050589",
+            "uiLabel": "inflammatory bowel disease"
         },
         "obo:TRANS_0000007": {
             "datatype": "xmls:anyURI",
@@ -6954,22 +7053,11 @@
             "id": "obo:UBERON_0001836",
             "uiLabel": "saliva"
         },
-        "obo:OBI_0001167": {
-            "units": [
-                "obo:UO_0000036"
-            ],
-            "uiLabel": "Age",
-            "definition": "A time measurement datum that is the result of measurement of age of an organism",
-            "datatype": "xmls:nonNegativeInteger",
-            "label": "age measurement datum",
-            "id": "obo:OBI_0001167",
-            "constraints": [
-                {
-                    "datatype": "xmls:nonNegativeInteger",
-                    "value": "1",
-                    "constraint": "owl:qualifiedCardinality"
-                }
-            ]
+        "obo:BTO_0001762": {
+            "datatype": "xmls:anyURI",
+            "definition": "A newborn child; especially: a child less than a month old.",
+            "id": "obo:BTO_0001762",
+            "uiLabel": "neonate"
         },
         "obo:GENEPIO_0001547": {
             "datatype": "xmls:anyURI",
@@ -6979,8 +7067,8 @@
         "obo:OBI_0001169": {
             "definition": "An age measurement datum that is the result of the measurement of the age of an organism since birth, the process of emergence and separation of offspring from the mother.",
             "part_of": [
-                "obo:GENEPIO_0001707",
-                "obo:GENEPIO_0001613"
+                "obo:GENEPIO_0001613",
+                "obo:GENEPIO_0001707"
             ],
             "datatype": "xmls:nonNegativeInteger",
             "label": "age since birth measurement datum",
@@ -7017,10 +7105,21 @@
             "id": "obo:ENVO_00005749",
             "uiLabel": "farm soil"
         },
-        "obo:GENEPIO_0001664": {
-            "datatype": "xmls:anyURI",
-            "id": "obo:GENEPIO_0001664",
-            "uiLabel": "infection details"
+        "obo:GENEPIO_0000094": {
+            "definition": "Name/version of the assembly provided by the submitter that is used in the genome browsers and in the community",
+            "part_of": [
+                "obo:GENEPIO_0001777"
+            ],
+            "datatype": "xmls:string",
+            "uiLabel": "assembly name (identifier)",
+            "id": "obo:GENEPIO_0000094",
+            "constraints": [
+                {
+                    "datatype": "xmls:nonNegativeInteger",
+                    "value": "1",
+                    "constraint": "owl:qualifiedCardinality"
+                }
+            ]
         },
         "obo:GENEPIO_0001665": {
             "datatype": "xmls:anyURI",
@@ -7065,21 +7164,10 @@
             "id": "obo:GENEPIO_0001662",
             "uiLabel": "not determined"
         },
-        "obo:GENEPIO_0000093": {
-            "definition": "A contig count is the count of contigs that belong to a sequence assembly.",
-            "part_of": [
-                "obo:GENEPIO_0001764"
-            ],
-            "datatype": "xmls:unsignedShort",
-            "uiLabel": "contig count",
-            "id": "obo:GENEPIO_0000093",
-            "constraints": [
-                {
-                    "datatype": "xmls:nonNegativeInteger",
-                    "value": "1",
-                    "constraint": "owl:qualifiedCardinality"
-                }
-            ]
+        "obo:GENEPIO_0001663": {
+            "datatype": "xmls:anyURI",
+            "id": "obo:GENEPIO_0001663",
+            "uiLabel": "swimming / wading"
         },
         "obo:ENVO_00002264": {
             "datatype": "xmls:anyURI",
@@ -7087,18 +7175,27 @@
             "id": "obo:ENVO_00002264",
             "uiLabel": "waste material"
         },
-        "obo:OBI_0001885": {
-            "datatype": "specification",
-            "definition": "An organization that provides a service to store and distribute specimens",
-            "parts": {
-                "obo:GENEPIO_0001642": [
-                    {
-                        "cardinality": "owl:someValuesFrom"
-                    }
-                ]
-            },
-            "id": "obo:OBI_0001885",
-            "uiLabel": "specimen repository organization"
+        "obo:GENEPIO_0001040": {
+            "datatype": "xmls:anyURI",
+            "id": "obo:GENEPIO_0001040",
+            "uiLabel": "vegetarian"
+        },
+        "obo:OBI_0001167": {
+            "units": [
+                "obo:UO_0000036"
+            ],
+            "uiLabel": "Age",
+            "definition": "A time measurement datum that is the result of measurement of age of an organism",
+            "datatype": "xmls:nonNegativeInteger",
+            "label": "age measurement datum",
+            "id": "obo:OBI_0001167",
+            "constraints": [
+                {
+                    "datatype": "xmls:nonNegativeInteger",
+                    "value": "1",
+                    "constraint": "owl:qualifiedCardinality"
+                }
+            ]
         },
         "obo:DOID_365": {
             "datatype": "xmls:anyURI",
@@ -7115,21 +7212,24 @@
             "id": "obo:OBI_0001884",
             "uiLabel": "specimen-based scope of investigation specification"
         },
+        "obo:GENEPIO_0001245": {
+            "datatype": "xmls:anyURI",
+            "id": "obo:GENEPIO_0001245",
+            "uiLabel": "patient sample"
+        },
         "ndf-rt:N0000000302": {
             "datatype": "xmls:anyURI",
             "id": "ndf-rt:N0000000302",
             "uiLabel": "Acute Disease [Disease/Finding]"
         },
-        "obo:NCBITaxon_8839": {
-            "datatype": "xmls:anyURI",
-            "uiLabel": "duck / mallard",
-            "id": "obo:NCBITaxon_8839",
-            "label": "Anas platyrhynchos"
-        },
-        "obo:GENEPIO_0001044": {
-            "datatype": "xmls:anyURI",
-            "id": "obo:GENEPIO_0001044",
-            "uiLabel": "water related exposure"
+        "obo:GENEPIO_0000069": {
+            "datatype": "xmls:date",
+            "definition": "date the sequencing run was performed",
+            "part_of": [
+                "obo:GENEPIO_0001465"
+            ],
+            "id": "obo:GENEPIO_0000069",
+            "uiLabel": "sequencing run date"
         },
         "obo:GENEPIO_0001548": {
             "datatype": "xmls:anyURI",
@@ -7159,8 +7259,8 @@
         "ifm:IFM_0001510": {
             "datatype": "specification",
             "part_of": [
-                "obo:GENEPIO_0001338",
-                "ifm:IFM_0001504"
+                "ifm:IFM_0001504",
+                "obo:GENEPIO_0001338"
             ],
             "parts": {
                 "ifm:IFM_0001504": [
@@ -7348,6 +7448,12 @@
                 }
             ]
         },
+        "obo:UBERON_0007311": {
+            "datatype": "xmls:anyURI",
+            "definition": "Matter ejected from the lungs, bronchi, and trachea, through the mouth.",
+            "id": "obo:UBERON_0007311",
+            "uiLabel": "sputum"
+        },
         "obo:GENEPIO_0001575": {
             "datatype": "xmls:anyURI",
             "id": "obo:GENEPIO_0001575",
@@ -7396,10 +7502,11 @@
             "id": "obo:GENEPIO_0001247",
             "uiLabel": "animal sample"
         },
-        "obo:GENEPIO_0001245": {
+        "obo:OMIABIS_0001008": {
             "datatype": "xmls:anyURI",
-            "id": "obo:GENEPIO_0001245",
-            "uiLabel": "patient sample"
+            "definition": "A diagnosis that is the outcome of a diagnostic process targeting a second or additional health problem.",
+            "id": "obo:OMIABIS_0001008",
+            "uiLabel": "comorbidity"
         },
         "obo:NCBITaxon_376725": {
             "datatype": "xmls:anyURI",
@@ -7415,6 +7522,16 @@
             "datatype": "xmls:anyURI",
             "id": "obo:GENEPIO_0001249",
             "uiLabel": "food sample"
+        },
+        "obo:GENEPIO_0001594": {
+            "datatype": "xmls:anyURI",
+            "id": "obo:GENEPIO_0001594",
+            "uiLabel": "analysis"
+        },
+        "obo:SYMP_0000177": {
+            "datatype": "xmls:anyURI",
+            "id": "obo:SYMP_0000177",
+            "uiLabel": "weakness"
         },
         "obo:OBI_0001508": {
             "definition": "A time measurement datum when an observation is made or a sample is taken from a material as measured from some reference point.",
@@ -7432,12 +7549,6 @@
                 }
             ]
         },
-        "obo:ENVO_01000174": {
-            "datatype": "xmls:anyURI",
-            "definition": "A forest biome is a terrestrial biome which includes, across its entire spatial extent, densely packed vegetation which strongly limits light penetration to the forest floor.",
-            "id": "obo:ENVO_01000174",
-            "uiLabel": "forest biome"
-        },
         "obo:UBERON_0000948": {
             "datatype": "xmls:anyURI",
             "definition": "A myogenic muscular circulatory organ found in the vertebrate cardiovascular system composed of chambers of cardiac muscle. It is the primary circulatory organ.",
@@ -7450,28 +7561,17 @@
             "id": "obo:UBERON_0000945",
             "uiLabel": "stomach"
         },
-        "obo:DOID_13148": {
-            "datatype": "xmls:anyURI",
-            "definition": "A cystitis characterized by a sudden onset or severe symptoms.",
-            "id": "obo:DOID_13148",
-            "uiLabel": "acute cystitis"
-        },
         "obo:SYMP_0000570": {
             "datatype": "xmls:anyURI",
             "definition": "Diarrhea is a feces and droppng symptom involving the abnormally frequent intestinal evacuations with more or less fluid stools.",
             "id": "obo:SYMP_0000570",
             "uiLabel": "diarrhea"
         },
-        "obo:GENEPIO_0000077": {
-            "datatype": "xmls:string",
-            "definition": "numerical identifier for sample.\n\nDamion proposes to add: \"derived from sequencer\"",
-            "id": "obo:GENEPIO_0000077",
-            "uiLabel": "sample ID"
-        },
-        "obo:NCBITaxon_363569": {
+        "obo:SYMP_0019145": {
             "datatype": "xmls:anyURI",
-            "id": "obo:NCBITaxon_363569",
-            "uiLabel": "Salmonella enterica subsp. enterica serovar Javiana"
+            "definition": "Vomiting is a digestive system symptom characterized by throwing up the stomach contents.",
+            "id": "obo:SYMP_0019145",
+            "uiLabel": "vomiting"
         },
         "obo:ENVO_00000078": {
             "datatype": "xmls:anyURI",
@@ -7523,11 +7623,6 @@
             "definition": "Derived as a result of a primary condition; not direct or immediate; of second rank or importance or value.",
             "id": "vcf:C25667",
             "uiLabel": "secondary"
-        },
-        "obo:GENEPIO_0001663": {
-            "datatype": "xmls:anyURI",
-            "id": "obo:GENEPIO_0001663",
-            "uiLabel": "swimming / wading"
         },
         "obo:GENEPIO_0001430": {
             "definition": "A line list is a collection of suspected or known disease outbreak cases.  It can also include details about healthy patients associated with an exposure event (picnic, concert etc.) who have been interviewed in order to compare food intake, assess risk factors, etc.  \n\nIn fact health status of people associated with an exposure event can change from healthy or unknown status, to ill patient.",
@@ -7665,10 +7760,10 @@
                 }
             ]
         },
-        "obo:GENEPIO_0001028": {
+        "obo:GENEPIO_0001183": {
             "datatype": "xmls:anyURI",
-            "id": "obo:GENEPIO_0001028",
-            "uiLabel": "camping"
+            "id": "obo:GENEPIO_0001183",
+            "uiLabel": "Taxonomy"
         },
         "obo:SYMP_0000610": {
             "datatype": "xmls:anyURI",
@@ -7680,6 +7775,11 @@
             "datatype": "xmls:anyURI",
             "id": "obo:GENEPIO_0001019",
             "uiLabel": "kiosk"
+        },
+        "obo:NCBITaxon_363569": {
+            "datatype": "xmls:anyURI",
+            "id": "obo:NCBITaxon_363569",
+            "uiLabel": "Salmonella enterica subsp. enterica serovar Javiana"
         },
         "obo:OBI_0001617": {
             "datatype": "xmls:string",
@@ -7728,10 +7828,11 @@
             "id": "obo:UBERON_0004765",
             "uiLabel": "skeletal element"
         },
-        "obo:GENEPIO_0001015": {
+        "obo:TRANS_0000008": {
             "datatype": "xmls:anyURI",
-            "id": "obo:GENEPIO_0001015",
-            "uiLabel": "hot tub"
+            "definition": "Droplet spread transmission is a direct transmission process during which the pathogen is transmitted from a reservoir, source or host to another host by spray of aerosols over a short distance, spray from sneezing, coughing or talking.",
+            "id": "obo:TRANS_0000008",
+            "uiLabel": "droplet spread"
         },
         "obo:OBI_0001628": {
             "datatype": "xmls:string",
@@ -7766,15 +7867,29 @@
             "id": "obo:GENEPIO_0001057",
             "uiLabel": "pet food (raw)"
         },
-        "obo:GENEPIO_0001056": {
+        "obo:DOID_13148": {
             "datatype": "xmls:anyURI",
-            "id": "obo:GENEPIO_0001056",
-            "uiLabel": "pet treat"
+            "definition": "A cystitis characterized by a sudden onset or severe symptoms.",
+            "id": "obo:DOID_13148",
+            "uiLabel": "acute cystitis"
         },
         "vcard:Address": {
             "datatype": "xmls:string",
             "uiLabel": "address",
             "id": "vcard:Address",
+            "constraints": [
+                {
+                    "datatype": "xmls:nonNegativeInteger",
+                    "value": "1",
+                    "constraint": "owl:qualifiedCardinality"
+                }
+            ]
+        },
+        "obo:OMP_0000207": {
+            "datatype": "xmls:string",
+            "definition": "A microbial phenotype that is distinguished by the presence a specific surface antigen.",
+            "uiLabel": "serotype phenotype",
+            "id": "obo:OMP_0000207",
             "constraints": [
                 {
                     "datatype": "xmls:nonNegativeInteger",
@@ -7804,9 +7919,9 @@
             "datatype": "xmls:anyURI",
             "definition": "The condition of an organism in all aspects (e.g., functional or metabolic efficiency).",
             "part_of": [
-                "obo:GENEPIO_0001707",
+                "obo:GENEPIO_0001259",
                 "obo:GENEPIO_0000026",
-                "obo:GENEPIO_0001259"
+                "obo:GENEPIO_0001707"
             ],
             "id": "obo:ExO_0000038",
             "uiLabel": "health status"
@@ -7839,22 +7954,10 @@
                 }
             ]
         },
-        "obo:ENVO_00000508": {
-            "datatype": "xmls:anyURI",
-            "definition": "A step-like feature between higher and lower ground: a relatively flat or gently inclined shelf of earth, backed and fronted by steep slopes or manmade detaining walls.",
-            "id": "obo:ENVO_00000508",
-            "uiLabel": "terrace"
-        },
         "obo:GENEPIO_0001720": {
             "datatype": "xmls:anyURI",
             "id": "obo:GENEPIO_0001720",
             "uiLabel": "swab - food contact surface"
-        },
-        "obo:ENVO_00000856": {
-            "datatype": "xmls:anyURI",
-            "definition": "Incorporated populated place.",
-            "id": "obo:ENVO_00000856",
-            "uiLabel": "city"
         },
         "obo:ENVO_00000395": {
             "datatype": "xmls:anyURI",
@@ -7862,22 +7965,28 @@
             "id": "obo:ENVO_00000395",
             "uiLabel": "channel"
         },
-        "obo:DOID_8577": {
+        "obo:ENVO_00000856": {
             "datatype": "xmls:anyURI",
-            "definition": "A colitis that is predominantly confined to the mucosa located_in colon and includes characteristic ulcers, or open sores.",
-            "id": "obo:DOID_8577",
-            "uiLabel": "ulcerative colitis"
-        },
-        "obo:DOID_4378": {
-            "datatype": "xmls:anyURI",
-            "definition": "A food allergy that is an allergy or hypersensitivity to dietary substances from peanuts causing an overreaction of the immune system which in a small percentage of people may lead to severe physical symptoms.",
-            "id": "obo:DOID_4378",
-            "uiLabel": "peanut allergy"
+            "definition": "Incorporated populated place.",
+            "id": "obo:ENVO_00000856",
+            "uiLabel": "city"
         },
         "obo:DOID_1247": {
             "datatype": "xmls:anyURI",
             "id": "obo:DOID_1247",
             "uiLabel": "blood coagulation disease"
+        },
+        "sio:SIO_000116": {
+            "datatype": "xmls:string",
+            "uiLabel": "name",
+            "id": "sio:SIO_000116",
+            "constraints": [
+                {
+                    "datatype": "xmls:nonNegativeInteger",
+                    "value": "1",
+                    "constraint": "owl:qualifiedCardinality"
+                }
+            ]
         },
         "obo:SYMP_0019180": {
             "datatype": "xmls:anyURI",
@@ -7890,6 +7999,11 @@
             "definition": "A disease existing at birth, or developping during the first month after birth.",
             "id": "obo:CVDO_0000597",
             "uiLabel": "congenital disease"
+        },
+        "obo:NCBITaxon_149539": {
+            "datatype": "xmls:anyURI",
+            "id": "obo:NCBITaxon_149539",
+            "uiLabel": "Salmonella enterica subsp. enterica serovar Enteritidis"
         },
         "obo:UBERON_0001268": {
             "datatype": "xmls:anyURI",
@@ -7963,8 +8077,8 @@
         "obo:GENEPIO_0001615": {
             "definition": "The host profile or identifiers text is the \"identification or description of the specific individual from which this sample was obtained\".",
             "part_of": [
-                "obo:GENEPIO_0001613",
-                "obo:GENEPIO_0001707"
+                "obo:GENEPIO_0001707",
+                "obo:GENEPIO_0001613"
             ],
             "datatype": "xmls:string",
             "uiLabel": "host profile or identifers",
@@ -8068,7 +8182,7 @@
         },
         "obo:GENEPIO_0001613": {
             "parts": {
-                "obo:PATO_0001894": [
+                "obo:GENEPIO_0001212": [
                     {
                         "datatype": "xmls:nonNegativeInteger",
                         "cardinality": "owl:maxQualifiedCardinality",
@@ -8096,19 +8210,11 @@
                         "value": "1"
                     }
                 ],
-                "obo:GENEPIO_0001567": [
+                "obo:PATO_0001894": [
                     {
                         "datatype": "xmls:nonNegativeInteger",
                         "cardinality": "owl:maxQualifiedCardinality",
                         "value": "1"
-                    },
-                    {
-                        "feature": "lookup",
-                        "criteria": "lookup"
-                    },
-                    {
-                        "feature": "lookup",
-                        "criteria": "lookup"
                     }
                 ],
                 "obo:GENEPIO_0001615": [
@@ -8139,11 +8245,19 @@
                         "value": "1"
                     }
                 ],
-                "obo:GENEPIO_0001212": [
+                "obo:GENEPIO_0001567": [
                     {
                         "datatype": "xmls:nonNegativeInteger",
                         "cardinality": "owl:maxQualifiedCardinality",
                         "value": "1"
+                    },
+                    {
+                        "feature": "lookup",
+                        "criteria": "lookup"
+                    },
+                    {
+                        "feature": "lookup",
+                        "criteria": "lookup"
                     }
                 ],
                 "obo:GENEPIO_0001427": [
@@ -8269,11 +8383,10 @@
             "id": "obo:GENEPIO_0001619",
             "uiLabel": "not applicable"
         },
-        "obo:GENEPIO_0001618": {
+        "obo:GENEPIO_0001751": {
             "datatype": "xmls:anyURI",
-            "definition": "'missing' is a categorical choice recorded when a categorical variable value was known to be recorded in the past but the observed value cannot be located or retrieved.",
-            "id": "obo:GENEPIO_0001618",
-            "uiLabel": "missing"
+            "id": "obo:GENEPIO_0001751",
+            "uiLabel": "targeted locus/loci"
         },
         "obo:GENEPIO_0001752": {
             "datatype": "xmls:anyURI",
@@ -8285,17 +8398,21 @@
             "id": "obo:GENEPIO_0001753",
             "uiLabel": "exome"
         },
-        "obo:ENVO_00000114": {
+        "obo:SYMP_0000244": {
             "datatype": "xmls:anyURI",
-            "definition": "An area of land, usually relatively small, enclosed or otherwise and used for agricultural purposes.",
-            "id": "obo:ENVO_00000114",
-            "uiLabel": "agricultural field"
+            "id": "obo:SYMP_0000244",
+            "uiLabel": "alteration of appetite"
         },
         "obo:DOID_14115": {
             "datatype": "xmls:anyURI",
             "definition": "A commensal bacterial infectious disease that results_in infection, has_material_basis_in Streptococcus pyogenes or has_material_basis_in Staphylococcus aureus , which produce toxins that are absorbed systemically and produce the systemic manifestations. The infection has_symptom fever, has_symptom rash, has_symptom hypotension, has_symptom multiorgan failure, has_symptom desquamation, has_symptom vomiting, has_symptom diarrhea, has_symptom headache, and has_symptom nonfocal neurologic abnormalities.",
             "id": "obo:DOID_14115",
             "uiLabel": "toxic shock syndrome"
+        },
+        "obo:GENEPIO_0001044": {
+            "datatype": "xmls:anyURI",
+            "id": "obo:GENEPIO_0001044",
+            "uiLabel": "water related exposure"
         },
         "obo:DOID_331": {
             "datatype": "xmls:anyURI",
@@ -8380,11 +8497,11 @@
             "id": "obo:NCBITaxon_1549675",
             "uiLabel": "Galloanserae"
         },
-        "obo:ENVO_00000447": {
+        "obo:ENVO_00000111": {
             "datatype": "xmls:anyURI",
-            "definition": "An aquatic biome that comprises systems of open-ocean and unprotected coastal habitats, characterized by exposure to wave action, tidal fluctuation, and ocean currents as well as systems that largely resemble these. Water in the marine biome is generally within the salinity range of seawater: 30 to 38 ppt.",
-            "id": "obo:ENVO_00000447",
-            "uiLabel": "marine biome"
+            "definition": "An area with a high density of trees. A small forest may be called a wood.",
+            "id": "obo:ENVO_00000111",
+            "uiLabel": "forest"
         },
         "obo:ENVO_00000091": {
             "datatype": "xmls:anyURI",
@@ -8399,7 +8516,7 @@
                 "obo:GENEPIO_0001707"
             ],
             "datatype": "xmls:anyURI",
-            "uiLabel": "Sex",
+            "uiLabel": "sex",
             "id": "obo:PATO_0001894",
             "label": "phenotypic sex"
         },
@@ -8466,13 +8583,22 @@
             "id": "obo:BTO_0000155",
             "uiLabel": "bronchoalveolar lavage"
         },
-        "obo:GENEPIO_0001286": {
-            "datatype": "xmls:anyURI",
+        "vcf:C68615": {
+            "definition": "The calendar date on which a person was born.",
             "part_of": [
-                "obo:GENEPIO_0001740"
+                "obo:GENEPIO_0001226",
+                "obo:GENEPIO_0001467"
             ],
-            "id": "obo:GENEPIO_0001286",
-            "uiLabel": "health authority"
+            "datatype": "xmls:dateTime",
+            "uiLabel": "date of birth",
+            "id": "vcf:C68615",
+            "constraints": [
+                {
+                    "datatype": "xmls:nonNegativeInteger",
+                    "value": "1",
+                    "constraint": "owl:maxQualifiedCardinality"
+                }
+            ]
         },
         "ifm:IFM_0001669": {
             "datatype": "xmls:string",
@@ -8658,10 +8784,11 @@
             "id": "obo:GENEPIO_0001047",
             "uiLabel": "bottled"
         },
-        "obo:NCBITaxon_9103": {
+        "obo:GENEPIO_0001767": {
             "datatype": "xmls:anyURI",
-            "id": "obo:NCBITaxon_9103",
-            "uiLabel": "Meleagris gallopavo"
+            "definition": "Improved high quality draft: in which data is either reviewed by people or machines to some extent to indicate that most of the genetic data is assembled correctly, but some errors may still be present.",
+            "id": "obo:GENEPIO_0001767",
+            "uiLabel": "3 - improved high quality draft"
         },
         "obo:SYMP_0000030": {
             "datatype": "xmls:anyURI",
@@ -8691,16 +8818,15 @@
             "id": "obo:ENVO_00000022",
             "uiLabel": "river"
         },
-        "obo:ENVO_00000023": {
+        "obo:NCBITaxon_9986": {
             "datatype": "xmls:anyURI",
-            "definition": "Linear body of water flowing on the Earth's surface.",
-            "id": "obo:ENVO_00000023",
-            "uiLabel": "stream"
+            "id": "obo:NCBITaxon_9986",
+            "uiLabel": "Oryctolagus cuniculus"
         },
-        "obo:GENEPIO_0001183": {
+        "obo:GENEPIO_0001028": {
             "datatype": "xmls:anyURI",
-            "id": "obo:GENEPIO_0001183",
-            "uiLabel": "Taxonomy"
+            "id": "obo:GENEPIO_0001028",
+            "uiLabel": "camping"
         },
         "obo:ENVO_00000026": {
             "datatype": "xmls:anyURI",
@@ -8814,11 +8940,10 @@
                 }
             ]
         },
-        "obo:TRANS_0000008": {
+        "obo:GENEPIO_0001015": {
             "datatype": "xmls:anyURI",
-            "definition": "Droplet spread transmission is a direct transmission process during which the pathogen is transmitted from a reservoir, source or host to another host by spray of aerosols over a short distance, spray from sneezing, coughing or talking.",
-            "id": "obo:TRANS_0000008",
-            "uiLabel": "droplet spread"
+            "id": "obo:GENEPIO_0001015",
+            "uiLabel": "hot tub"
         },
         "obo:GENEPIO_0001014": {
             "datatype": "xmls:anyURI",
@@ -8851,10 +8976,11 @@
             "id": "obo:SYMP_0000146",
             "uiLabel": "feces and droppings symptom"
         },
-        "obo:SYMP_0000244": {
+        "obo:ENVO_00000114": {
             "datatype": "xmls:anyURI",
-            "id": "obo:SYMP_0000244",
-            "uiLabel": "alteration of appetite"
+            "definition": "An area of land, usually relatively small, enclosed or otherwise and used for agricultural purposes.",
+            "id": "obo:ENVO_00000114",
+            "uiLabel": "agricultural field"
         },
         "obo:ENVO_01000617": {
             "datatype": "xmls:anyURI",
@@ -8862,11 +8988,10 @@
             "id": "obo:ENVO_01000617",
             "uiLabel": "lentic water body"
         },
-        "obo:ENVO_00000117": {
+        "obo:GENEPIO_0001708": {
             "datatype": "xmls:anyURI",
-            "definition": "An intentional planting of a crop, on a large scale, usually for uses other than cereal production or pasture. The term is currently most often used for plantings of trees and shrubs. The term tends also to be used for plantings maintained on economic bases other than that of subsistence farming.",
-            "id": "obo:ENVO_00000117",
-            "uiLabel": "plantation"
+            "id": "obo:GENEPIO_0001708",
+            "uiLabel": "food - solid"
         },
         "obo:ENVO_00000446": {
             "datatype": "xmls:anyURI",
@@ -8874,11 +8999,11 @@
             "id": "obo:ENVO_00000446",
             "uiLabel": "terrestrial biome"
         },
-        "obo:ENVO_00000111": {
+        "obo:ENVO_00000447": {
             "datatype": "xmls:anyURI",
-            "definition": "An area with a high density of trees. A small forest may be called a wood.",
-            "id": "obo:ENVO_00000111",
-            "uiLabel": "forest"
+            "definition": "An aquatic biome that comprises systems of open-ocean and unprotected coastal habitats, characterized by exposure to wave action, tidal fluctuation, and ocean currents as well as systems that largely resemble these. Water in the marine biome is generally within the salinity range of seawater: 30 to 38 ppt.",
+            "id": "obo:ENVO_00000447",
+            "uiLabel": "marine biome"
         },
         "obo:ENVO_00000112": {
             "datatype": "xmls:anyURI",
@@ -8940,22 +9065,10 @@
                 }
             ]
         },
-        "sio:SIO_000116": {
-            "datatype": "xmls:string",
-            "uiLabel": "name",
-            "id": "sio:SIO_000116",
-            "constraints": [
-                {
-                    "datatype": "xmls:nonNegativeInteger",
-                    "value": "1",
-                    "constraint": "owl:qualifiedCardinality"
-                }
-            ]
-        },
-        "obo:ENVO_00003860": {
+        "obo:NCBITaxon_1045010": {
             "datatype": "xmls:anyURI",
-            "id": "obo:ENVO_00003860",
-            "uiLabel": "pig manure"
+            "id": "obo:NCBITaxon_1045010",
+            "uiLabel": "Escherichia coli O157"
         }
     },
     "units": {
@@ -9059,7 +9172,6 @@
                 "obo:ENVO_00010483": [],
                 "obo:ENVO_01000254": [],
                 "obo:CHMO_0002743": [],
-                "obo:PATO_0001894": [],
                 "obo:EO_0007027": [],
                 "obo:GENEPIO_0000071": [],
                 "obo:GENEPIO_0001648": [],
@@ -9102,6 +9214,7 @@
                 "obo:OBI_0001880": [],
                 "obo:GENEPIO_0001206": [],
                 "obo:GENEPIO_0001537": [],
+                "obo:PATO_0001894": [],
                 "ifm:IFM_0001449": [],
                 "obo:GENEPIO_0001297": [],
                 "obo:GENEPIO_0001196": [],
@@ -10615,17 +10728,17 @@
             "uiLabel": "province",
             "id": "sio:SIO_000661",
             "members": {
-                "obo:GAZ_00002564": [],
-                "obo:GAZ_00002562": [],
-                "obo:GAZ_00002569": [],
-                "obo:GAZ_00002561": [],
-                "obo:GAZ_00002565": [],
-                "obo:GAZ_00002563": [],
-                "obo:GAZ_00002567": [],
                 "obo:GAZ_00002570": [],
+                "obo:GAZ_00002562": [],
                 "obo:GAZ_00002572": [],
+                "obo:GAZ_00002563": [],
                 "obo:GAZ_00002566": [],
-                "obo:GAZ_00002571": []
+                "obo:GAZ_00002567": [],
+                "obo:GAZ_00002571": [],
+                "obo:GAZ_00002564": [],
+                "obo:GAZ_00002565": [],
+                "obo:GAZ_00002561": [],
+                "obo:GAZ_00002569": []
             },
             "member_of": [
                 "obo:GENEPIO_0001655",
@@ -10846,14 +10959,13 @@
                 "obo:SYMP_0000892"
             ]
         },
-        "obo:GAZ_00002564": {
-            "definition": "A prairie province in Canada. Saskatchewan is bounded on the west by Alberta, on the north by the Northwest Territories, on the east by Manitoba, and on the south by the States of Montana and North Dakota. It is divided into 18 census divisions according to Statistics Canada.",
-            "member_of": [
-                "sio:SIO_000661"
-            ],
+        "obo:GEO_000000036": {
             "datatype": "xmls:anyURI",
-            "id": "obo:GAZ_00002564",
-            "uiLabel": "Province of Saskatchewan"
+            "uiLabel": "Armenia",
+            "id": "obo:GEO_000000036",
+            "member_of": [
+                "obo:GEO_000000396"
+            ]
         },
         "obo:GAZ_00002565": {
             "definition": "A Canadian province located on Canada's southeastern coast. The province's mainland is the Nova Scotia peninsula surrounded by the Atlantic Ocean, including numerous bays and estuaries. No where in Nova Scotia is more than 67 km from the ocean. Cape Breton Island, a large island to the northeast of the Nova Scotia mainland, is also part of the province, as is Sable Island.",
@@ -10987,200 +11099,200 @@
             "uiLabel": "sovereign state",
             "id": "obo:GEO_000000396",
             "members": {
-                "obo:GEO_000000041": [],
-                "obo:GEO_000000231": [],
-                "obo:GEO_000000139": [],
-                "obo:GEO_000000269": [],
-                "obo:GEO_000000048": [],
-                "obo:GEO_000000180": [],
-                "obo:GEO_000000179": [],
-                "obo:GEO_000000243": [],
-                "obo:GEO_000000130": [],
-                "obo:GEO_000000144": [],
-                "obo:GEO_000000207": [],
-                "obo:GEO_000000142": [],
-                "obo:GEO_000000147": [],
-                "obo:GEO_000000201": [],
-                "obo:GEO_000000249": [],
-                "obo:GEO_000000071": [],
-                "obo:GEO_000000149": [],
-                "obo:GEO_000000044": [],
-                "obo:GEO_000000275": [],
-                "obo:GEO_000000093": [],
-                "obo:GEO_000000160": [],
-                "obo:GEO_000000274": [],
-                "obo:GEO_000000219": [],
-                "obo:GEO_000000222": [],
-                "obo:GEO_000000210": [],
-                "obo:GEO_000000158": [],
-                "obo:GEO_000000171": [],
-                "obo:GEO_000000176": [],
-                "obo:GEO_000000065": [],
-                "obo:GEO_000000060": [],
-                "obo:GEO_000000227": [],
-                "obo:GEO_000000225": [],
-                "obo:GEO_000000208": [],
-                "obo:GEO_000000161": [],
-                "obo:GEO_000000090": [],
-                "obo:GEO_000000235": [],
-                "obo:GEO_000000199": [],
-                "obo:GEO_000000215": [],
-                "obo:GEO_000000273": [],
-                "obo:GEO_000000095": [],
-                "obo:GEO_000000075": [],
-                "obo:GEO_000000236": [],
-                "obo:GEO_000000131": [],
-                "obo:GEO_000000054": [],
-                "obo:GEO_000000268": [],
-                "obo:GEO_000000028": [],
-                "obo:GEO_000000087": [],
-                "obo:GEO_000000226": [],
-                "obo:GEO_000000140": [],
-                "obo:GEO_000000183": [],
-                "obo:GEO_000000234": [],
-                "obo:GEO_000000096": [],
-                "obo:GEO_000000186": [],
-                "obo:GEO_000000059": [],
-                "obo:GEO_000000102": [],
-                "obo:GEO_000000175": [],
-                "obo:GEO_000000110": [],
-                "obo:GEO_000000153": [],
-                "obo:GEO_000000068": [],
-                "obo:GEO_000000252": [],
-                "obo:GEO_000000043": [],
-                "obo:GEO_000000126": [],
-                "obo:GEO_000000047": [],
-                "obo:GEO_000000178": [],
-                "obo:GEO_000000168": [],
-                "obo:GEO_000000092": [],
                 "obo:GEO_000000051": [],
-                "obo:GEO_000000030": [],
-                "obo:GEO_000000196": [],
-                "obo:GEO_000000086": [],
-                "obo:GEO_000000247": [],
-                "obo:GEO_000000137": [],
-                "obo:GEO_000000264": [],
-                "obo:GEO_000000070": [],
+                "obo:GEO_000000131": [],
+                "obo:GEO_000000140": [],
                 "obo:GEO_000000127": [],
-                "obo:GEO_000000058": [],
-                "obo:GEO_000000034": [],
-                "obo:GEO_000000080": [],
-                "obo:GEO_000000085": [],
-                "obo:GEO_000000172": [],
-                "obo:GEO_000000166": [],
-                "obo:GEO_000000094": [],
-                "obo:GEO_000000262": [],
-                "obo:GEO_000000163": [],
-                "obo:GEO_000000064": [],
-                "obo:GEO_000000174": [],
-                "obo:GEO_000000197": [],
-                "obo:GEO_000000143": [],
-                "obo:GEO_000000077": [],
-                "obo:GEO_000000056": [],
-                "obo:GEO_000000040": [],
-                "obo:GEO_000000259": [],
-                "obo:GEO_000000089": [],
-                "obo:GEO_000000198": [],
-                "obo:GEO_000000267": [],
-                "obo:GEO_000000124": [],
-                "obo:GEO_000000049": [],
-                "obo:GEO_000000088": [],
-                "obo:GEO_000000221": [],
-                "obo:GEO_000000162": [],
-                "obo:GEO_000000216": [],
-                "obo:GEO_000000125": [],
-                "obo:GEO_000000062": [],
-                "obo:GEO_000000091": [],
-                "obo:GEO_000000052": [],
-                "obo:GEO_000000184": [],
-                "obo:GEO_000000150": [],
-                "obo:GEO_000000159": [],
-                "obo:GEO_000000266": [],
-                "obo:GEO_000000036": [],
-                "obo:GEO_000000237": [],
-                "obo:GEO_000000045": [],
-                "obo:GEO_000000253": [],
-                "obo:GEO_000000212": [],
-                "obo:GEO_000000046": [],
-                "obo:GEO_000000024": [],
-                "obo:GEO_000000211": [],
-                "obo:GEO_000000128": [],
-                "obo:GEO_000000079": [],
-                "obo:GEO_000000169": [],
-                "obo:GEO_000000177": [],
-                "obo:GEO_000000082": [],
-                "obo:GEO_000000042": [],
-                "obo:GEO_000000103": [],
-                "obo:GEO_000000157": [],
-                "obo:GEO_000000146": [],
-                "obo:GEO_000000185": [],
-                "obo:GEO_000000238": [],
-                "obo:GEO_000000133": [],
-                "obo:GEO_000000035": [],
-                "obo:GEO_000000263": [],
-                "obo:GEO_000000245": [],
-                "obo:GEO_000000112": [],
-                "obo:GEO_000000244": [],
-                "obo:GEO_000000109": [],
-                "obo:GEO_000000055": [],
-                "obo:GEO_000000129": [],
-                "obo:GEO_000000081": [],
-                "obo:GEO_000000224": [],
-                "obo:GEO_000000134": [],
-                "obo:GEO_000000165": [],
-                "obo:GEO_000000145": [],
-                "obo:GEO_000000148": [],
-                "obo:GEO_000000233": [],
-                "obo:GEO_000000039": [],
-                "obo:GEO_000000270": [],
-                "obo:GEO_000000098": [],
-                "obo:GEO_000000132": [],
-                "obo:GEO_000000067": [],
-                "obo:GEO_000000084": [],
-                "obo:GEO_000000220": [],
-                "obo:GEO_000000117": [],
-                "obo:GEO_000000256": [],
-                "obo:GEO_000000111": [],
-                "obo:GEO_000000113": [],
-                "obo:GEO_000000248": [],
-                "obo:GEO_000000097": [],
-                "obo:GEO_000000783": [],
-                "obo:GEO_000000063": [],
-                "obo:GEO_000000061": [],
-                "obo:GEO_000000191": [],
-                "obo:GEO_000000200": [],
-                "obo:GEO_000000152": [],
-                "obo:GEO_000000260": [],
-                "obo:GEO_000000204": [],
-                "obo:GEO_000000138": [],
-                "obo:GEO_000000246": [],
-                "obo:GEO_000000155": [],
-                "obo:GEO_000000232": [],
-                "obo:GEO_000000154": [],
-                "obo:GEO_000000206": [],
-                "obo:GEO_000000031": [],
-                "obo:GEO_000000194": [],
-                "obo:GEO_000000135": [],
-                "obo:GEO_000000254": [],
-                "obo:GEO_000000170": [],
-                "obo:GEO_000000027": [],
-                "obo:GEO_000000242": [],
-                "obo:GEO_000000223": [],
-                "obo:GEO_000000230": [],
-                "obo:GEO_000000123": [],
-                "obo:GEO_000000151": [],
-                "obo:GEO_000000104": [],
-                "obo:GEO_000000261": [],
-                "obo:GEO_000000255": [],
-                "obo:GEO_000000115": [],
-                "obo:GEO_000000203": [],
-                "obo:GEO_000000258": [],
-                "obo:GEO_000000076": [],
-                "obo:GEO_000000120": [],
-                "obo:GEO_000000156": [],
-                "obo:GEO_000000241": [],
                 "obo:GEO_000000195": [],
-                "obo:GEO_000000228": []
+                "obo:GEO_000000196": [],
+                "obo:GEO_000000149": [],
+                "obo:GEO_000000103": [],
+                "obo:GEO_000000248": [],
+                "obo:GEO_000000110": [],
+                "obo:GEO_000000028": [],
+                "obo:GEO_000000097": [],
+                "obo:GEO_000000156": [],
+                "obo:GEO_000000093": [],
+                "obo:GEO_000000259": [],
+                "obo:GEO_000000145": [],
+                "obo:GEO_000000096": [],
+                "obo:GEO_000000224": [],
+                "obo:GEO_000000157": [],
+                "obo:GEO_000000126": [],
+                "obo:GEO_000000162": [],
+                "obo:GEO_000000113": [],
+                "obo:GEO_000000183": [],
+                "obo:GEO_000000236": [],
+                "obo:GEO_000000142": [],
+                "obo:GEO_000000049": [],
+                "obo:GEO_000000133": [],
+                "obo:GEO_000000130": [],
+                "obo:GEO_000000222": [],
+                "obo:GEO_000000075": [],
+                "obo:GEO_000000087": [],
+                "obo:GEO_000000263": [],
+                "obo:GEO_000000275": [],
+                "obo:GEO_000000137": [],
+                "obo:GEO_000000226": [],
+                "obo:GEO_000000243": [],
+                "obo:GEO_000000139": [],
+                "obo:GEO_000000041": [],
+                "obo:GEO_000000077": [],
+                "obo:GEO_000000261": [],
+                "obo:GEO_000000208": [],
+                "obo:GEO_000000144": [],
+                "obo:GEO_000000231": [],
+                "obo:GEO_000000138": [],
+                "obo:GEO_000000232": [],
+                "obo:GEO_000000128": [],
+                "obo:GEO_000000219": [],
+                "obo:GEO_000000179": [],
+                "obo:GEO_000000084": [],
+                "obo:GEO_000000247": [],
+                "obo:GEO_000000200": [],
+                "obo:GEO_000000082": [],
+                "obo:GEO_000000063": [],
+                "obo:GEO_000000237": [],
+                "obo:GEO_000000154": [],
+                "obo:GEO_000000039": [],
+                "obo:GEO_000000089": [],
+                "obo:GEO_000000256": [],
+                "obo:GEO_000000042": [],
+                "obo:GEO_000000109": [],
+                "obo:GEO_000000159": [],
+                "obo:GEO_000000046": [],
+                "obo:GEO_000000244": [],
+                "obo:GEO_000000034": [],
+                "obo:GEO_000000269": [],
+                "obo:GEO_000000268": [],
+                "obo:GEO_000000030": [],
+                "obo:GEO_000000115": [],
+                "obo:GEO_000000068": [],
+                "obo:GEO_000000165": [],
+                "obo:GEO_000000160": [],
+                "obo:GEO_000000085": [],
+                "obo:GEO_000000227": [],
+                "obo:GEO_000000067": [],
+                "obo:GEO_000000176": [],
+                "obo:GEO_000000216": [],
+                "obo:GEO_000000191": [],
+                "obo:GEO_000000204": [],
+                "obo:GEO_000000148": [],
+                "obo:GEO_000000245": [],
+                "obo:GEO_000000178": [],
+                "obo:GEO_000000095": [],
+                "obo:GEO_000000234": [],
+                "obo:GEO_000000091": [],
+                "obo:GEO_000000062": [],
+                "obo:GEO_000000059": [],
+                "obo:GEO_000000135": [],
+                "obo:GEO_000000150": [],
+                "obo:GEO_000000783": [],
+                "obo:GEO_000000071": [],
+                "obo:GEO_000000258": [],
+                "obo:GEO_000000238": [],
+                "obo:GEO_000000027": [],
+                "obo:GEO_000000249": [],
+                "obo:GEO_000000155": [],
+                "obo:GEO_000000215": [],
+                "obo:GEO_000000090": [],
+                "obo:GEO_000000211": [],
+                "obo:GEO_000000117": [],
+                "obo:GEO_000000168": [],
+                "obo:GEO_000000040": [],
+                "obo:GEO_000000054": [],
+                "obo:GEO_000000052": [],
+                "obo:GEO_000000152": [],
+                "obo:GEO_000000174": [],
+                "obo:GEO_000000206": [],
+                "obo:GEO_000000172": [],
+                "obo:GEO_000000185": [],
+                "obo:GEO_000000024": [],
+                "obo:GEO_000000143": [],
+                "obo:GEO_000000198": [],
+                "obo:GEO_000000220": [],
+                "obo:GEO_000000201": [],
+                "obo:GEO_000000088": [],
+                "obo:GEO_000000151": [],
+                "obo:GEO_000000273": [],
+                "obo:GEO_000000044": [],
+                "obo:GEO_000000197": [],
+                "obo:GEO_000000163": [],
+                "obo:GEO_000000076": [],
+                "obo:GEO_000000086": [],
+                "obo:GEO_000000061": [],
+                "obo:GEO_000000274": [],
+                "obo:GEO_000000153": [],
+                "obo:GEO_000000223": [],
+                "obo:GEO_000000055": [],
+                "obo:GEO_000000264": [],
+                "obo:GEO_000000177": [],
+                "obo:GEO_000000123": [],
+                "obo:GEO_000000102": [],
+                "obo:GEO_000000203": [],
+                "obo:GEO_000000065": [],
+                "obo:GEO_000000125": [],
+                "obo:GEO_000000036": [],
+                "obo:GEO_000000092": [],
+                "obo:GEO_000000184": [],
+                "obo:GEO_000000225": [],
+                "obo:GEO_000000161": [],
+                "obo:GEO_000000270": [],
+                "obo:GEO_000000064": [],
+                "obo:GEO_000000169": [],
+                "obo:GEO_000000253": [],
+                "obo:GEO_000000047": [],
+                "obo:GEO_000000260": [],
+                "obo:GEO_000000207": [],
+                "obo:GEO_000000170": [],
+                "obo:GEO_000000079": [],
+                "obo:GEO_000000252": [],
+                "obo:GEO_000000081": [],
+                "obo:GEO_000000070": [],
+                "obo:GEO_000000246": [],
+                "obo:GEO_000000233": [],
+                "obo:GEO_000000132": [],
+                "obo:GEO_000000166": [],
+                "obo:GEO_000000242": [],
+                "obo:GEO_000000031": [],
+                "obo:GEO_000000221": [],
+                "obo:GEO_000000186": [],
+                "obo:GEO_000000120": [],
+                "obo:GEO_000000134": [],
+                "obo:GEO_000000124": [],
+                "obo:GEO_000000254": [],
+                "obo:GEO_000000112": [],
+                "obo:GEO_000000035": [],
+                "obo:GEO_000000111": [],
+                "obo:GEO_000000212": [],
+                "obo:GEO_000000158": [],
+                "obo:GEO_000000094": [],
+                "obo:GEO_000000146": [],
+                "obo:GEO_000000228": [],
+                "obo:GEO_000000045": [],
+                "obo:GEO_000000104": [],
+                "obo:GEO_000000266": [],
+                "obo:GEO_000000210": [],
+                "obo:GEO_000000262": [],
+                "obo:GEO_000000080": [],
+                "obo:GEO_000000199": [],
+                "obo:GEO_000000255": [],
+                "obo:GEO_000000241": [],
+                "obo:GEO_000000098": [],
+                "obo:GEO_000000058": [],
+                "obo:GEO_000000235": [],
+                "obo:GEO_000000129": [],
+                "obo:GEO_000000180": [],
+                "obo:GEO_000000060": [],
+                "obo:GEO_000000056": [],
+                "obo:GEO_000000171": [],
+                "obo:GEO_000000267": [],
+                "obo:GEO_000000043": [],
+                "obo:GEO_000000194": [],
+                "obo:GEO_000000048": [],
+                "obo:GEO_000000147": [],
+                "obo:GEO_000000175": [],
+                "obo:GEO_000000230": []
             },
             "member_of": [
                 "obo:GENEPIO_0001655"
@@ -12091,6 +12203,14 @@
                 "obo:GEO_000000396"
             ]
         },
+        "obo:GEO_000000139": {
+            "datatype": "xmls:anyURI",
+            "uiLabel": "Jamaica",
+            "id": "obo:GEO_000000139",
+            "member_of": [
+                "obo:GEO_000000396"
+            ]
+        },
         "obo:GENEPIO_0001698": {
             "uiLabel": "serotype 4b",
             "id": "obo:GENEPIO_0001698",
@@ -12584,10 +12704,10 @@
                 "obo:GENEPIO_0001655"
             ]
         },
-        "obo:GEO_000000139": {
+        "obo:GEO_000000142": {
             "datatype": "xmls:anyURI",
-            "uiLabel": "Jamaica",
-            "id": "obo:GEO_000000139",
+            "uiLabel": "Jordan",
+            "id": "obo:GEO_000000142",
             "member_of": [
                 "obo:GEO_000000396"
             ]
@@ -13007,14 +13127,6 @@
                 "obo:GENEPIO_0001171"
             ]
         },
-        "obo:GEO_000000036": {
-            "datatype": "xmls:anyURI",
-            "uiLabel": "Armenia",
-            "id": "obo:GEO_000000036",
-            "member_of": [
-                "obo:GEO_000000396"
-            ]
-        },
         "ndf-rt:N0000181035": {
             "uiLabel": "Remission, Spontaneous [Disease/Finding]",
             "id": "ndf-rt:N0000181035",
@@ -13247,7 +13359,7 @@
                 "obo:GENEPIO_0001655"
             ],
             "id": "obo:GEO_000000008",
-            "uiLabel": "group of dependencies"
+            "uiLabel": "aggregate of dependencies"
         },
         "obo:GAZ_00002572": {
             "definition": "A Canadian province consisting of an island of the same name. It is divided into 3 counties.",
@@ -14084,13 +14196,6 @@
                 "obo:GENEPIO_0001286"
             ]
         },
-        "obo:GENEPIO_0001743": {
-            "uiLabel": "undetermined",
-            "id": "obo:GENEPIO_0001743",
-            "member_of": [
-                "obo:ExO_0000038"
-            ]
-        },
         "vcard:Parent": {
             "uiLabel": "parent",
             "id": "vcard:Parent",
@@ -14384,14 +14489,6 @@
             },
             "member_of": [
                 "obo:GENEPIO_0001655"
-            ]
-        },
-        "obo:GEO_000000142": {
-            "datatype": "xmls:anyURI",
-            "uiLabel": "Jordan",
-            "id": "obo:GEO_000000142",
-            "member_of": [
-                "obo:GEO_000000396"
             ]
         },
         "obo:SYMP_0000480": {
@@ -14801,7 +14898,7 @@
             ],
             "datatype": "xmls:anyURI",
             "id": "obo:GEO_000000127",
-            "uiLabel": "Vatican City State"
+            "uiLabel": "Holy See"
         },
         "obo:ENVO_00000519": {
             "uiLabel": "agricultural terrace",
@@ -15040,6 +15137,7 @@
             "uiLabel": "not determined",
             "id": "obo:GENEPIO_0001662",
             "member_of": [
+                "obo:ExO_0000038",
                 "obo:PATO_0001894"
             ]
         },
@@ -15801,12 +15899,12 @@
                 "obo:OAE_0000633": [],
                 "obo:CVDO_0000597": [],
                 "sio:SIO_001012": [],
+                "obo:GENEPIO_0001662": [],
                 "obo:GENEPIO_0001547": [],
                 "obo:GENEPIO_0001548": [],
                 "obo:GENEPIO_0001549": [],
                 "obo:GENEPIO_0001550": [],
-                "sio:SIO_000954": [],
-                "obo:GENEPIO_0001743": []
+                "sio:SIO_000954": []
             },
             "member_of": [
                 "obo:GENEPIO_0001655"
@@ -15993,6 +16091,15 @@
             "member_of": [
                 "obo:GENEPIO_0001636"
             ]
+        },
+        "obo:GAZ_00002564": {
+            "definition": "A prairie province in Canada. Saskatchewan is bounded on the west by Alberta, on the north by the Northwest Territories, on the east by Manitoba, and on the south by the States of Montana and North Dakota. It is divided into 18 census divisions according to Statistics Canada.",
+            "member_of": [
+                "sio:SIO_000661"
+            ],
+            "datatype": "xmls:anyURI",
+            "id": "obo:GAZ_00002564",
+            "uiLabel": "Province of Saskatchewan"
         },
         "obo:GEO_000000154": {
             "datatype": "xmls:anyURI",
@@ -16239,7 +16346,7 @@
             "member_of": [
                 "obo:GENEPIO_0001655"
             ],
-            "uiLabel": "Sex",
+            "uiLabel": "sex",
             "id": "obo:PATO_0001894",
             "label": "phenotypic sex"
         },

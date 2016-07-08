@@ -817,7 +817,8 @@ obo:GENEPIO_0001606 contact spec - person : all its parts should be fetched for 
 		# in order for it to have the 'xmls:anyURI' datatype.
 		# This list is dumped into the specifications tree; subordinate items
 		# are placed in the picklists tree.
-		# These items go into 'specification' table
+		#
+		# These root nodes for categorical pick lists go into 'specifications' table
 
 		'categoricals': rdflib.plugins.sparql.prepareQuery("""
 			SELECT DISTINCT ?id ?datatype

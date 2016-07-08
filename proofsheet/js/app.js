@@ -128,8 +128,8 @@ function renderMenu(entityId, depth = 0 ) {
 
 function getEntityData() {
 	// The hierarchic form data must be converted into minimal JSON data packet for transmission back to server.
-	message = "The hierarchic form data is converted into a minimal JSON data packet for transmission back to server.\n\n"
-	obj={}
+	// ISSUE: fields like temperature that have a unit field with selections. Has to be broken up. 
+	var obj = {}
 
 	$.each($("form").find("input:not(.button), select"), function(i,item) {
 		var focus = obj
@@ -138,7 +138,7 @@ function getEntityData() {
 			var path = id.split('/')
 			for (var ptr in path) {
 				var item2 = path[ptr]
-				if (!(item2 in focus) ) focus[item2]={}
+				if (!(item2 in focus) ) focus[item2] = {}
 				if (ptr == path.length-1) //If at end of path, make assignment
 					focus[item2] = $(item).val()
 				else
@@ -147,26 +147,30 @@ function getEntityData() {
 		}
 	})
 
-	alert (message + JSON.stringify(obj, null, 2) )
-}
+	setModalCode(obj, "The hierarchic form data is converted into a minimal JSON data packet for transmission back to server.")
 
+}
 
 function getEntitySpecification(entityId) {
 	/* The entity form is defined by 1 encompassing entity and its parts which are 
 	defined in top.data components: specification, picklists and units 
 	*/
-	message = "The entity form is defined by 1 encompassing entity and its parts - which are items within the JSON specification file's specifications, picklists and units components.\n\n"
 
-	var spec = getEntitySpec({'specifications':{}, 'picklists':{}, 'units':{}	}, entityId)
+	setModalCode(getEntitySpec(null, entityId), "The entity form is defined by 1 encompassing entity and its parts - which are items within the JSON specification file's specifications, picklists and units components.")
 
-	message += JSON.stringify(spec, null, 2) 
-
-	console.log(message)
-	alert (message)
 }
 
 
-function getEntitySpec(spec, entityId, inherited = false) {
+function setModalCode(obj, header) {
+
+	$("#modalEntity >div.row").html('<p><strong>' + header + '</strong></p>\n<pre style="white-space: pre-wrap;">' + JSON.stringify(obj, null, 2) +'</pre>\n' )
+	$("#modalEntity").foundation().foundation('open')
+
+}
+
+function getEntitySpec(spec, entityId = null, inherited = false) {
+	if (spec == null)
+		spec = {'specifications':{}, 'picklists':{}, 'units':{} }
 
 	// A spec entity may also be a root element in picklist
 	// FUTURE: MAY WANT TO MERGE THESE?
@@ -202,7 +206,6 @@ function getEntitySpecItems(spec, entity, type, table, inherited = false) {
 			for (var ptr in entity[type]) {
 				var partId = entity[type][ptr]
 				spec[table][partId] = top.data[table][partId]
-				console.log(partId, top.data[table][partId]) 
 				getEntitySpec(spec, partId)
 			}
 		else
@@ -556,14 +559,15 @@ function renderChoice(entity, depth, type="select") {
 
 function renderUnits(entity) {
 	// User is presented with choice of data-entry units if available.
-	// Future: enable default unit/scale (cm, mm, m, km etc.); 
+	// Future: enable default unit/scale (cm, mm, m, km etc.) by placing that unit first in selection list
+	// ISSUE: server has to unparse unit associated with particular input via some kind of name/unit syntax.
 	if ('units' in entity) {
 		var units = entity['units']
 		var label = getLabel(top.data['units'][units[0]])
 		if (units.length == 1) 
 			return '<a class="input-group-label small">'+ label + '</a>\n'
 
-		var html ='<div class="input-group-button" style="font-weight:700;" ><select style="width:auto;cursor:pointer;" id="'+entity['domId']+'">'
+		var html ='<div class="input-group-button" style="font-weight:700;" ><select style="width:auto;cursor:pointer;" id="'+entity['domId']+'-obo:IAO_0000039">'
 		for (var ptr in units) { //.slice(1)
 			var unit = top.data['units'][units[ptr]]
 			html += '		<option value="'+ unit['id'] + '">' + (unit['uiLabel'] ? unit['uiLabel'] : unit['label']) + ' &nbsp;</option>'

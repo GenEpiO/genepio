@@ -18,9 +18,9 @@
     <owl:Ontology rdf:about="http://purl.obolibrary.org/obo/genepio.owl">
         <owl:imports rdf:resource="http://purl.obolibrary.org/obo/IRIDA/imports/hardcoded.owl"/>
         <owl:imports rdf:resource="http://purl.obolibrary.org/obo/IRIDA/imports/NDF-RT_import.owl"/>
-        <owl:imports rdf:resource="http://purl.obolibrary.org/obo/IRIDA/imports/EO_import.owl"/>
-        <owl:imports rdf:resource="http://purl.obolibrary.org/obo/IRIDA/imports/NCBITaxon_import.owl"/>
         <owl:imports rdf:resource="http://purl.obolibrary.org/obo/IRIDA/imports/TYPON_import.owl"/>
+        <owl:imports rdf:resource="http://purl.obolibrary.org/obo/IRIDA/imports/NCBITaxon_import.owl"/>
+        <owl:imports rdf:resource="http://purl.obolibrary.org/obo/IRIDA/imports/EO_import.owl"/>
         <owl:imports rdf:resource="http://purl.obolibrary.org/obo/IRIDA/imports/MODEL_import.owl"/>
         <owl:imports rdf:resource="http://purl.obolibrary.org/obo/IRIDA/imports/ENVO_import.owl"/>
         <owl:imports rdf:resource="http://purl.obolibrary.org/obo/IRIDA/imports/GAZETTEER_import.owl"/>
@@ -1909,14 +1909,13 @@
         <rdfs:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000675"/>
         <obo:GENEPIO_0000001>Sequencing</obo:GENEPIO_0000001>
         <obo:GENEPIO_0000004>Sample ID</obo:GENEPIO_0000004>
-        <obo:GENEPIO_0000005>Derived from Illumina Sample Sheet</obo:GENEPIO_0000005>
+        <obo:GENEPIO_0000005>Derived from Illumina Sample Sheet specification:  http://support.illumina.com/content/dam/illumina-support/documents/documentation/system_documentation/miseq/miseq-sample-sheet-quick-ref-guide-15028392-j.pdf</obo:GENEPIO_0000005>
         <obo:GENEPIO_0000007>Extracted from Sample Sheet</obo:GENEPIO_0000007>
         <obo:GENEPIO_0000008>GENEPIO</obo:GENEPIO_0000008>
         <obo:IAO_0000112>1,2,3 etc</obo:IAO_0000112>
-        <obo:IAO_0000115 xml:lang="en">numerical identifier for sample.
-
-Damion proposes to add: &quot;derived from sequencer&quot;</obo:IAO_0000115>
-        <obo:IAO_0000119>GROUP: IRIDA Ontology (Emma)</obo:IAO_0000119>
+        <obo:IAO_0000115 xml:lang="en">A sample ID is an alphanumeric identifier for a sample.  In bioinformatics processing this identifier is assigned to a sample in order to track it through the process of sequencing and analysis.</obo:IAO_0000115>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
+        <oboInOwl:hasDbXref>Illumina SampleSheet: Sample_ID</oboInOwl:hasDbXref>
         <rdfs:label>sample ID</rdfs:label>
     </owl:Class>
     
@@ -5756,7 +5755,7 @@ BioSample_contact_information&quot;</rdfs:comment>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/OBI_0001938"/>
                 <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/OBI_0001169"/>
+                <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001775"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -5861,7 +5860,7 @@ BioSample_contact_information&quot;</rdfs:comment>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/OBI_0001938"/>
                 <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/OBI_0001169"/>
+                <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001775"/>
             </owl:Restriction>
         </owl:annotatedTarget>
         <obo:GENEPIO_0000006 xml:lang="en">Host age</obo:GENEPIO_0000006>
@@ -6920,6 +6919,8 @@ BioSample_contact_information&quot;</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001659">
         <rdfs:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000675"/>
+        <obo:IAO_0000115>A case ID is a unique identifier associated with a particular episode of care for an individual or animal.</obo:IAO_0000115>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
         <rdfs:label xml:lang="en">case ID</rdfs:label>
     </owl:Class>
     
@@ -8461,10 +8462,10 @@ Structured vouchers include institution-codes (and optional collection-codes) ta
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001775">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001610"/>
-        <obo:IAO_0000115 xml:lang="en">A sample host age is the age of the host at time given sample was taken.</obo:IAO_0000115>
+        <obo:IAO_0000115 xml:lang="en">The age of the host at the date a given sample was extracted.</obo:IAO_0000115>
         <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
         <oboInOwl:hasDbXref>NCBI BioSample: host_age</oboInOwl:hasDbXref>
-        <rdfs:label xml:lang="en">sample host age</rdfs:label>
+        <rdfs:label xml:lang="en">host age at date of sampling</rdfs:label>
     </owl:Class>
     
 
@@ -9793,12 +9794,14 @@ In physical problems, the choice of origin is often arbitrary, meaning any choic
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001605"/>
-                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:comment xml:lang="en">A &apos;unique identifier&apos; is claimed to be unique locally, but does not claim to have global uniqueness. .
+        <obo:IAO_0000115 xml:lang="en">A &apos;unique identifier&apos; is an identifier that is unique locally within some database or agency, but is not necessarily unique globally. 
 
-A second point is that identifiers listed here are types of identifiers, i.e. are a more abstract entity, and are not logically associated with particular organizations.  Identifiers of particular types associated with particular organizations are listed under &apos;Centrally registered identifier symbol&apos;.</rdfs:comment>
+Listed here are more abstract types of identifiers that are not exclusive to a particular organization.  Identifiers of particular types associated with particular organizations are listed under &apos;Centrally registered identifier symbol&apos;.</obo:IAO_0000115>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
     </owl:Class>
     
 

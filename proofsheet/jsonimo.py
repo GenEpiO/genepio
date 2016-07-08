@@ -102,7 +102,7 @@ class Ontology(object):
 		self.doSpecParts(self.doQueryTable('spec_parts' ) )	
 		self.doPrimitives(self.doQueryTable('inherited') )		
 		self.doPrimitives(self.doQueryTable('primitives') )
-		self.doPrimitives(self.doQueryTable('categoricals') )
+		self.doPrimitives(self.doQueryTable('categoricals') ) #SHOULD BE GOING TO picklists?
 		self.doUnits(self.doQueryTable('units') )
 
 		# Categorical tree specification
@@ -327,8 +327,8 @@ obo:GENEPIO_0001606 contact spec - person : all its parts should be fetched for 
 						obj.update(self.getBindings(myDict['expression']))
 
 				"""
-				# The use of "<" and ">" lead to minExcludes and maxExcludes constraints.
-				# Normalize these into minIncludes and maxIncludes so less UI hassle.
+				The use of "<" and ">" lead to minExcludes and maxExcludes constraints.
+				Normalize these into minIncludes and maxIncludes so less UI hassle.
 				"""
 				constraint = obj['constraint']
 				if constraint == 'xmls:minExclusive':
@@ -340,8 +340,9 @@ obo:GENEPIO_0001606 contact spec - person : all its parts should be fetched for 
 
 				# Terms in pick lists are inheriting the 'categorical measurement datum' condition of having only 1 xmls:anyURI value.  Leave this implicit since an xmls:anyURI can't be anything else.  Catch this in the Sparql query instead?
 
-				# A string term may also inherit "primitive value spec exactly 1 xsd:string" but this may be overridden with more specific expression constraints on how long the string is or its regex pattern content.
-				elif record['datatype'] == 'xmls:anyURI' and constraint == 'owl:qualifiedCardinality' and int(obj['value']) == 1:
+				# Other terms A string term may also inherit "primitive value spec exactly 1 xsd:string" but this may be overridden with more specific expression constraints on how long the string is or its regex pattern content.
+				# ,'xmls:date','xmls:time','xmls:dateTime','xmls:dateTimeStamp'
+				elif record['datatype'] in ['xmls:anyURI'] and constraint == 'owl:qualifiedCardinality' and int(obj['value']) == 1:
 					continue
 
 				self.setDefault(record,'constraints', [])
@@ -779,6 +780,8 @@ obo:GENEPIO_0001606 contact spec - person : all its parts should be fetched for 
 		#   The difference between this and above "primitives" query is that this one 
 		#	returns descendant datums.  Run it first to calculate inheritances; then run 
 		#	"primitives" to override inherited values with more specific ones.
+		# 
+		#	HAndle much simpler inheritance of categoricals in 'categoricals' query below
 
 		'inherited': rdflib.plugins.sparql.prepareQuery("""
 
@@ -788,7 +791,7 @@ obo:GENEPIO_0001606 contact spec - person : all its parts should be fetched for 
 				?restriction owl:onProperty ?hasPvaluespec. 
 				?datum rdfs:subClassOf/rdfs:subClassOf+ ?restriction.
 
-				{?restriction owl:someValuesFrom ?datatype. FILTER (?datatype != xmls:anyURI)} 
+				{?restriction owl:someValuesFrom ?datatype.} 
 				UNION {?restriction owl:someValuesFrom ?datatypeObj. 
 					?datatypeObj owl:onDatatype ?datatype.
 					?datatypeObj owl:withRestrictions*/rdf:rest*/rdf:first ?restrictColl.
@@ -803,6 +806,7 @@ obo:GENEPIO_0001606 contact spec - person : all its parts should be fetched for 
 					?dataRangeObj owl:withRestrictions*/rdf:rest*/rdf:first ?restrictColl.
 					?restrictColl ?constraint ?expression.
 					 } 
+				 FILTER (?datatype != xmls:anyURI)
 			 } order by ?datatype
 	 """, initNs = namespace),
 
@@ -813,6 +817,8 @@ obo:GENEPIO_0001606 contact spec - person : all its parts should be fetched for 
 		# in order for it to have the 'xmls:anyURI' datatype.
 		# This list is dumped into the specifications tree; subordinate items
 		# are placed in the picklists tree.
+		# These items go into 'specification' table
+
 		'categoricals': rdflib.plugins.sparql.prepareQuery("""
 			SELECT DISTINCT ?id ?datatype
 			WHERE { 

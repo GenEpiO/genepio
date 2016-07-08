@@ -5,7 +5,6 @@ After ajax load of ontology_ui.json, top.data contains:
 	@context
 	specifications
 	units
-	field_units
 	picklists
 }
 */
@@ -69,10 +68,16 @@ $.getJSON('ontology_ui.json', function( data ) {
 function renderForm(entityId) {
 	console.log("Rendering entity ", entityId)
 
-	top.bag = {}
-	$("#content").empty().html('<form id="mainForm" data-abide>'+ render(entityId) + renderButton('Preview Data Submission','previewData()') + '</form>').foundation()
+	//top.bag = {} // For catching entity in a loop.
+	form_html = '<form id="mainForm" data-abide>'
+	form_html += 	render(entityId)
+	form_html += 	renderButton('View Entity Specification','getEntitySpecification(\''+entityId+'\')')
+	form_html += 	renderButton('Preview Data Submission','getEntityData()') 
+	form_html += '</form>'
+
+	$("#content").empty().html(form_html).foundation()
 	
-	// Set up all date inputs; using http://foundation-datepicker.peterbeno.com/example.html
+	// Set up UI widget for all date inputs; using http://foundation-datepicker.peterbeno.com/example.html
 	$('input[placeholder="xmls:date"]').fdatepicker({format: formatD, disableDblClickSelection: true});
 	$('input[placeholder="xmls:dateTime"]').fdatepicker({format: formatD+formatT, disableDblClickSelection: true});
 	$('input[placeholder="xmls:dateTimeStamp"]').fdatepicker({format: formatD+formatT, disableDblClickSelection: true});
@@ -121,7 +126,7 @@ function renderMenu(entityId, depth = 0 ) {
 	return html
 }
 
-function previewData() {
+function getEntityData() {
 	// The hierarchic form data must be converted into minimal JSON data packet for transmission back to server.
 	message = "The hierarchic form data is converted into a minimal JSON data packet for transmission back to server.\n\n"
 	obj={}
@@ -130,7 +135,7 @@ function previewData() {
 		var focus = obj
 		var id = $(item).attr('id')
 		if (id) {
-			var path = $(item).attr('id').split('/')
+			var path = id.split('/')
 			for (var ptr in path) {
 				var item2 = path[ptr]
 				if (!(item2 in focus) ) focus[item2]={}
@@ -144,6 +149,74 @@ function previewData() {
 
 	alert (message + JSON.stringify(obj, null, 2) )
 }
+
+
+function getEntitySpecification(entityId) {
+	/* The entity form is defined by 1 encompassing entity and its parts which are 
+	defined in top.data components: specification, picklists and units 
+	*/
+	message = "The entity form is defined by 1 encompassing entity and its parts - which are items within the JSON specification file's specifications, picklists and units components.\n\n"
+
+	var spec = getEntitySpec({'specifications':{}, 'picklists':{}, 'units':{}	}, entityId)
+
+	message += JSON.stringify(spec, null, 2) 
+
+	console.log(message)
+	alert (message)
+}
+
+
+function getEntitySpec(spec, entityId, inherited = false) {
+
+	// A spec entity may also be a root element in picklist
+	// FUTURE: MAY WANT TO MERGE THESE?
+	if (entityId in top.data['picklists'] && inherited == false) {
+		var picklistSpec = top.data['picklists'][entityId]
+		spec['picklists'][entityId] = picklistSpec
+		getEntitySpecItems(spec, picklistSpec, 'members', 'picklists')
+	}
+
+	if (entityId in top.data['specifications']) {
+		var entity = top.data['specifications'][entityId]
+		if (entity) {
+			spec['specifications'][entityId] = entity
+			
+			if (inherited == true) {
+				//Entity inherits 'part_of' ancestors' parts. 
+				var parentId = entity['parent']
+				if (parentId != 'obo:OBI_0000658') //Top level spec.
+					getEntitySpec(spec, parentId, true)
+			}
+
+			getEntitySpecItems(spec, entity, 'parts', 'specifications')
+			getEntitySpecItems(spec, entity, 'units', 'units')
+		}
+	}
+
+	return spec
+}
+
+function getEntitySpecItems(spec, entity, type, table, inherited = false) {
+	if (type in entity) {
+		if (table == 'units') //WHY?
+			for (var ptr in entity[type]) {
+				var partId = entity[type][ptr]
+				spec[table][partId] = top.data[table][partId]
+				console.log(partId, top.data[table][partId]) 
+				getEntitySpec(spec, partId)
+			}
+		else
+			for (var partId in entity[type]) {
+				spec[table][partId] = top.data[table][partId]
+				getEntitySpec(spec, partId)
+			}
+
+	}
+
+}
+
+/*********************** FORM PART RENDERING **********************/
+
 
 function render(entityId, path = [], depth = 0, inherited = false, minimal = false) {
 
@@ -228,7 +301,7 @@ function render(entityId, path = [], depth = 0, inherited = false, minimal = fal
 				var ids = getSort(entity['members'], 'specifications') //'is a' members, e.g. categorical lists or trees
 				for (var ptr in ids) { 
 					childId = ids[ptr]
-					html += render(childId, [], depth + 1) // cardinality doesn't apply to subclasses so no need to supply path.
+					html += render(childId, [], depth + 1) // cardinality lookup doesn't apply to categorical pick-lists so no need to supply path.
 				}
 			}
 
@@ -312,7 +385,7 @@ function renderSection(text) {
 
 function renderButton(text, buttonFunction) {
 	html = '<div>\n'
-	html +=	'	<input type="submit" class="button float-right" value="' + text + '" onclick="'+buttonFunction+'">\n'
+	html +=	'	<input type="submit" class="button float-center" value="' + text + '" onclick="'+buttonFunction+'">\n'
 	html +=	'</div>\n'
 
 	return html

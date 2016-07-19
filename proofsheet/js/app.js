@@ -252,8 +252,10 @@ function render(entityId, path = [], depth = 0, inherited = false, minimal = fal
 		console.log("Node: " + entityId + " is a parent of itself and so cannot be re-rendered.")
 		return html
 	}
-	if (minimal) var label = ''
-	else var label = '<label>' + getLabel(entity) + '</label>'
+	var label = ''
+	if (!minimal) {
+		label = '<label>' + renderLabel(entity) + '</label>'
+	}
 	// When this is a "has value specification" part of another entity, 
 	// that entity will indicate how many of this part are allowed.
 
@@ -276,7 +278,7 @@ function render(entityId, path = [], depth = 0, inherited = false, minimal = fal
 	
 	switch (entity['datatype']) {
 		case undefined: // Anonymous node
-			html += renderSection('<strong>Error: No datatype for ' + entityId + '(' + getLabel(entity) + ') !</strong><ul><li>Hint: A picklist must be a subclass of "categorical tree specification".</li><li>Other fields need a "has primitive value spec" data type.</li></ul>')
+			html += renderSection('<strong>Error: No datatype for ' + entityId + '(' + renderLabel(entity) + ') !</strong><ul><li>Hint: A picklist must be a subclass of "categorical tree specification".</li><li>Other fields need a "has primitive value spec" data type.</li></ul>')
 			break;
 
 		case 'disjunction':
@@ -416,7 +418,7 @@ function renderDisjunction(entity, label, depth) {
 			aria = ''
 		}
 
-		html += '<li class="tabs-title'+tab_active+'"><a href="#panel_'+childDomId+'" ' + aria + '>' + getLabel(child) + '</a></li>'
+		html += '<li class="tabs-title'+tab_active+'"><a href="#panel_'+childDomId+'" ' + aria + '>' + renderLabel(child) + '</a></li>'
 		content += '<div class="tabs-panel'+tab_active+'" id="panel_'+childDomId+'" style="padding:5px">'
 		content += 		render(childId, entity['path'], depth+1, false, true )
 		content += '</div>'		
@@ -450,6 +452,7 @@ function renderInput(entity, label) {
 	html +=	'	</div>\n'
 	html += ' 	</label>'
 	html +=		renderHelp(entity)
+	//html += 	renderContext(entity)
 	html +=	'</div>\n'
 
 	return html
@@ -491,7 +494,7 @@ html = '<div class="input-wrapper">\n'
 	html +=	'	<div class="switch small">\n'
 	html +=	'	  <input class="switch-input '+entity['id'] + '" id="'+entity['domId']+'" type="checkbox" name="'+entity['id']+'"' + entity['required']+ entity['disabled'] + '>\n'
 	html +=	'		<label class="switch-paddle" for="'+entity['id']+'">\n'
-	html +=	'	    <span class="show-for-sr">' + getLabel(entity) + '</span>\n'
+	html +=	'	    <span class="show-for-sr">' + renderLabel(entity) + '</span>\n'
 	html +=	'	  </label>\n'
 	html +=		renderHelp(entity)
 	html +=	'	</div>\n'
@@ -563,7 +566,7 @@ function renderUnits(entity) {
 	// ISSUE: server has to unparse unit associated with particular input via some kind of name/unit syntax.
 	if ('units' in entity) {
 		var units = entity['units']
-		var label = getLabel(top.data['units'][units[0]])
+		var label = renderLabel(top.data['units'][units[0]])
 		if (units.length == 1) 
 			return '<a class="input-group-label small">'+ label + '</a>\n'
 
@@ -589,16 +592,48 @@ function renderHelp(entity) {
  }
 
 
+function renderContext(entity) {
+	var found = false
+	var html = ''
+	var selections = ''
+	var properties = ['hasDbXref','hasSynonym','hasExactSynonym','hasNarrowSynonym']
+	for (ptr in properties) {
+		var item = properties[ptr]
+		if (item in entity) {
+			found = true
+			for (var ptr2 in entity[item])
+				selections += '<li style="white-space:nowrap;padding:5px">' + item + ':' + entity[item][ptr2] + '</li>'
+		}
+	}
+	if (found == true) {
+		html += '<ul class="dropdown menu" data-dropdown-menu style="display:inline;">'
+		html += 	'<li><a style="margin:0;padding:5px 0 0 20px"></a><ul class="menu">'
+		html +=  	selections
+		html += 	'</ul></li>'
+		html += '</ul>'
+	}
+	return html
+}
+
+
+function renderLabel(entity) {
+	if ('label' in entity && entity['label'] != entity['uiLabel'])
+		label = entity['label'] + ' - '
+	else
+		label = ''
+	var html = '<span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover="false" title="' + label + entity['id']+'">'
+	html += entity['uiLabel']
+	html += '</span>'
+	html += renderContext(entity)
+	return html
+
+
+}
+
+
 /************************** UTILITIES ************************/
 
 
-function getLabel(entity) {
-	label = ('label' in entity && entity['label'] != entity['uiLabel']) ? entity['label'] + ' - ': ''
-		return '<span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover="false" title="' + label + entity['id']+'">'+entity['uiLabel']+'</span>'
-	
-	return entity['uiLabel']
-
-}
 
 function getSort(members, myList) { // an object with entity ids as keys
 	/* Complicated by the fact that some items, like individuals, may not have uiLabel.

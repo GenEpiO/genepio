@@ -19,11 +19,20 @@ import rdfextras; rdfextras.registerplugins() # so we can Graph.query()
 # Do this, otherwise a warning appears on stdout: No handlers could be found for logger "rdflib.term"
 import logging; logging.basicConfig(level=logging.ERROR) 
 
-try:
-    from collections import OrderedDict
-except ImportError:
-    from ordereddict import OrderedDict
+try: #Python 2.7
+	from collections import OrderedDict
+except ImportError: # Python 2.6
+	from ordereddict import OrderedDict
 
+"""
+FOR LOADING JSON AND PRESERVING ORDERED DICT SORTING. NOT RELEVANT YET.
+try:	
+	import simplejson as json
+except ImportError: # Python 2.6
+    import json
+
+... rulefileobj =  json.load(rules_handle, object_pairs_hook=OrderedDict)
+"""
 
 CODE_VERSION = '0.0.2'
 
@@ -67,7 +76,8 @@ class Ontology(object):
 			'vcf':'http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#',
 			'eo':'http://epidemiology_ontology.owl#',
 			'bibo':'http://purl.org/ontology/bibo/',
-			'efo':'http://www.ebi.ac.uk/efo/'
+			'efo':'http://www.ebi.ac.uk/efo/',
+			'oboInOwl': 'http://www.geneontology.org/formats/oboInOwl#'
 		}
 		self.struct['specifications'] = {}
 		self.struct['units'] = {}
@@ -114,8 +124,8 @@ class Ontology(object):
 		self.doUIFeatures(self.doQueryTable('feature_annotations'), 'feature_annotations')
 		self.doLabels(['specifications','units','picklists'])
 
-		# DO NOT USE sort_keys=True or piclists etc. OrderedDict() sort order won't be saved.
-		#print json.dumps(self.struct,  sort_keys=False, indent=4, separators=(',', ': '))
+		# DO NOT USE sort_keys=True on piclists etc. because this overrides OrderedDict() sort order.
+		# BUT NEED TO IMPLEMENT json ordereddict sorting patch.
 
 		with (open('./ontology_ui.json','w')) as output_handle:
 			output_handle.write(json.dumps(self.struct,  sort_keys=False, indent=4, separators=(',', ': ')))
@@ -149,6 +159,8 @@ class Ontology(object):
 		            "prefLabel": "contact specification - patient"
 		            }
 		        }
+			
+			MERGING WITH PICKLIST ....
 
 		"""
 		struct = 'specifications'
@@ -176,8 +188,6 @@ class Ontology(object):
 			picklist one recursively reads through a picklist node's members.
 			A given term may belong to a number of piclists, e.g. "other" category.
 
-			FUTURE: allow member links to have attributes?
-
 		"""
 		struct = 'picklists'
 		# Fashion complete picklists (flat list) of items, with parent(s) of each item, and members.
@@ -195,8 +205,6 @@ class Ontology(object):
 			self.setDefault(self.struct, struct, parentId, {'id': parentId} )
 			self.setDefault(self.struct, struct, parentId, 'members', OrderedDict())
 			self.setStruct(self.struct, struct, parentId, 'members', id, [])
-			# tried to use an ordereddict with .update({id:{}}) but that didn't implement order.
-			#myDict['datatype'] = 'xmls:anyURI' # OR ?
 
 
 	def doSpecParts(self, table):
@@ -208,8 +216,6 @@ class Ontology(object):
 
 			INPUTS
 				?parent ?id ?cardinality ?limit
-
-obo:GENEPIO_0001606 contact spec - person : all its parts should be fetched for subordinates.
 
 		"""
 		struct = 'specifications'
@@ -236,7 +242,6 @@ obo:GENEPIO_0001606 contact spec - person : all its parts should be fetched for 
 
 					obj = {'cardinality': myDict['cardinality']}
 					if 'limit' in myDict: 
-						#print "Limit", myDict['limit']
 						obj.update(self.getBindings(myDict['limit']))
 
 					# First time children list populated with this id's content:
@@ -244,27 +249,18 @@ obo:GENEPIO_0001606 contact spec - person : all its parts should be fetched for 
 					self.setDefault(self.struct, struct, parentId, 'parts', id, [])
 					self.getStruct(self.struct, struct, parentId, 'parts', id).append(obj)
 
-
 					# BNodes have no name but have expression stuff.
 					if 'expression' in myDict: 
+						# E.g. HAS LOGIC EXPRESSION:  {'expression': {'datatype': 'disjunction', 'data': [u'sio:SIO_000661', u'sio:SIO_000662', u'sio:SIO_000663']}, u'cardinality': u'owl:maxQualifiedCardinality', u'limit': {'datatype': u'xmls:nonNegativeInteger', 'value': u'1'}, u'id': rdflib.term.BNode('N65c806e2db1c4f7db8b7b434bca58f78'), u'parent': u'obo:GENEPIO_0001623'}
 						print "HAS LOGIC EXPRESSION: ", myDict
 						print
-						# E.g. HAS LOGIC EXPRESSION:  {'expression': {'datatype': 'disjunction', 'data': [u'sio:SIO_000661', u'sio:SIO_000662', u'sio:SIO_000663']}, u'cardinality': u'owl:maxQualifiedCardinality', u'limit': {'datatype': u'xmls:nonNegativeInteger', 'value': u'1'}, u'id': rdflib.term.BNode('N65c806e2db1c4f7db8b7b434bca58f78'), u'parent': u'obo:GENEPIO_0001623'}
 						expression = myDict['expression']
 						self.struct[struct][id]['datatype'] = expression['datatype']
-						self.struct[struct][id]['uiLabel'] = ''
+						self.struct[struct][id]['uiLabel'] = '' #
 						self.struct[struct][id]['parts'] = {}
 						for ptr, partId in enumerate(expression['data']):
-							self.struct[struct][id]['parts'][partId] = []
-						"""
-						"constraints": [
-			                {
-			                    "datatype": "xmls:nonNegativeInteger",
-			                    "value": "1",
-			                    "constraint": "owl:qualifiedCardinality"
-			                }
-			            ]
-			            """
+							self.struct[struct][id]['parts'][partId] = [] # So far logical expression parts have no further info.
+
 
 	def doPrimitives(self, table):
 		""" ####################################################################
@@ -376,11 +372,12 @@ obo:GENEPIO_0001606 contact spec - person : all its parts should be fetched for 
 				})
 
 
+
 	def doUIFeatures(self, table, table_name):
 		""" ####################################################################
 			User Interface Features
 
-			FOR NOW JUST HIDDEN FEATURE (In features query).
+			FOR NOW JUST HIDDEN FEATURE (In features query) is provided.
 			"obo:GENEPIO_0001746" is the annotation property that marks as hidden
 			the relation between a part (form field or specification) and its parent.
 			In the future ?criteria may	contain a user type or other expression.  
@@ -413,7 +410,7 @@ obo:GENEPIO_0001606 contact spec - person : all its parts should be fetched for 
 					self.setDefault(entity, myList, OrderedDict())
 					self.setDefault(entity, myList, id,[])
 					feature = myDict['feature']
-					# Using plain english term for feature unless motivation to keep onto ids arises.
+					# Providing plain english term for feature unless motivation to keep onto ids arises.
 					if feature == 'obo:GENEPIO_0001746':
 						feature = 'hidden'
 					elif feature == 'obo:GENEPIO_0001763':
@@ -433,33 +430,60 @@ obo:GENEPIO_0001606 contact spec - person : all its parts should be fetched for 
 
 	def doLabels(self, list):
 		""" ####################################################################
-		For given list of entity dictionaries, augment each dictionary with onto
-		term label and definition.
+			For given list of entity dictionaries, augment each dictionary with onto
+			term label and definition.
+			ALSO lookup 
+				synonyms = ?datum ?synonym ?exactSynonym ?narrowSynonym
+				rdfs:DbXRefs = reference
 
-		INPUTS
-			?label ?definition ?uiLabel ?uiDefinition
+			FUTURE: handle multi-lingual content
+
+			INPUTS
+				?label ?definition ?uiLabel ?uiDefinition
 		"""
 
-		# Add preferred label and definition
+		# Add preferred label and definition for items in each table
 		for table in list:
 			for id in self.struct[table]:
 				self.doALabel(table, id)
+				uriID = rdflib.URIRef(self.expandId(id))
+				dbreferences = self.graph.query(self.queries['dbreferences'], initBindings = {'datum': uriID })
+				if len(dbreferences):
+					dbxrefList = self.setDefault(self.struct, table, id, 'hasDbXref', [])		
+					for row in dbreferences:
+						dbxrefList.append(row['dbXref'])
+
+				synonyms = self.graph.query(self.queries['synonyms'], initBindings={'datum': uriID })
+				if len(synonyms):	
+					for row in synonyms: #(datum, synonym, exactSynonym, narrowSynonym) 
+						for field in ['Synonym','ExactSynonym','NarrowSynonym']:
+							# ISSUE: Not Multilingual yet.  Can have {language: french} or {language: Scottish Gaelic} etc. at end. 
+							if row[field]: 
+								synonymTypeList = self.setDefault(self.struct, table, id, 'has' + field, [])
+								phrases = str(row[field]).strip().replace(',','\n').split('\n')
+								for phrase in phrases:
+									synonymTypeList.append( phrase.strip())
 
 
 	def doALabel(self, table, id):
-		idRef = rdflib.URIRef(self.expandId(id) )
-		rows = self.graph.query(self.queries['labels'],	initBindings={'datum': idRef } )
-		for row in rows: # Only one row returned.
+		"""
+			In order to do a sparql query to get back the label fields for an item, we have to supply
+			the query with initBindings which includes the binding for [prefix]:id so query can
+			succeed for that item.  E.g. GENEPIO:GENEPIO_12345 -> purl.obolibrary.org/obo/GENEPIO/GENEPIO_12345
+		"""
+		rows = self.graph.query(self.queries['labels'],	initBindings={'datum': rdflib.URIRef(self.expandId(id) ) } )
+		for row in rows: # Only one row returned per idRef.
 			myDict = row.asdict()	
 			self.doLabel(myDict)
-			self.struct[table][id].update(myDict) #Adds new text items.
+			self.struct[table][id].update(myDict) #Adds new text items to given id's structure
 
 
 	def doLabel(self, myDict):
 		""" 
-		For reference (e.g. a mouseover that gives a formal definition) we may want the original label.
-		But the uiLabel should be a preferred label if available, or a copy of label if not so that form
-		can just display that.
+			All items have and need a rdfs:Label, but this might not be what we want to display to users.
+			We will however always show rdfs:Label to users on mouseover of item
+			If no uiLabel, uiLabel is created as a copy of Label
+			Then uiLabel always exists, and is displayed on form.
 		"""
 		if not 'uiLabel' in myDict: 
 			if not 'label' in myDict: # a data maintenance issue
@@ -478,9 +502,9 @@ obo:GENEPIO_0001606 contact spec - person : all its parts should be fetched for 
 		return obj
 
 	def getParentId(self, myDict):
-		if not 'parent' in myDict: return None
-		return str(myDict['parent']) # Sometimes binary nodes are returned
-
+		if 'parent' in myDict: 
+			return str(myDict['parent']) # Sometimes binary nodes are returned
+		return None
 
 	def setStruct(self, focus,*args):
 		value = args[-1]
@@ -493,20 +517,25 @@ obo:GENEPIO_0001606 contact spec - person : all its parts should be fetched for 
 
 
 	def setDefault(self, focus,*args):
-		""" Same as setStruct() but won't create path; it will only use existing path.
+		""" 
+			Same as setStruct() but won't create path; it will only use existing path.
 		"""
 		if not focus:
 			print ( "ERROR: in setDefault(), no focus for setting: %s" % str(args[0:-1]) )
 			return None
+
 		value = args[-1]
 		for ptr, arg in enumerate(args[0:-1]):
 			#arg = str(arg) # binary nodes are objects
 			if not arg: stop_err( "ERROR: in setDefault(), an argument isn't set: %s" % str(args[0:-1]) ) 
 			if ptr == len(args)-2:
 				if not arg in focus:
-					focus[arg] = value 
+					focus[arg] = value
+				return focus[arg]
+
 			elif not arg in focus: 
 				print ( "ERROR: in setDefault(), couldn't find %s" % str(args[0:-1]) )
+				return False
 			else:
 				focus = focus[arg]
 
@@ -562,10 +591,9 @@ obo:GENEPIO_0001606 contact spec - person : all its parts should be fetched for 
 
 
 	def doQueryTable(self, query_name, initBinds = {}):
-		""" 
+		"""
 		Given a sparql 1.1 query, returns a list of objects, one for each row result
-		 - Simplifies XML/RDF URI http://... reference down to a known ontology entity code.
-		 - For 
+		Simplifies XML/RDF URI http://... reference down to a known ontology entity code defined in 
 		"""
 
 		query = self.queries[query_name]
@@ -589,8 +617,9 @@ obo:GENEPIO_0001606 contact spec - person : all its parts should be fetched for 
 
 			for column in rowdict:
 
+				# Each value has a datatype defined by RDF Parser: URIRef, Literal, BNode
 				value = rowdict[column]
-				valType = type(value)
+				valType = type(value) 
 				if valType is rdflib.term.URIRef : 
 					newrowdict[column] = self.extractId(value)  # a plain string
 
@@ -615,13 +644,17 @@ obo:GENEPIO_0001606 contact spec - person : all its parts should be fetched for 
 					newrowdict[column] = literal
 
 				elif valType is rdflib.term.BNode:
-
-					# Convert a variety of structures into something simple.
-					# E.g. "(province or state or territory)" is the expression that BNode id is associated with.
-					# A binary node often holds logical expressions like
-					# <owl:someValuesFrom> <owl:Class> <owl:unionOf rdf:parseType="Collection">
-                    #   <rdf:Description rdf:about="&resource;SIO_000661"/> <rdf:Description rdf:about="&resource;SIO_000662"/> ...
-
+					"""
+					Convert a variety of BNode structures into something simple.
+					E.g. "(province or state or territory)" is a BNode structure coded like
+					 	<owl:someValuesFrom> 
+							<owl:Class>
+								<owl:unionOf rdf:parseType="Collection">
+                    			   <rdf:Description rdf:about="&resource;SIO_000661"/> 
+                    			   <rdf:Description rdf:about="&resource;SIO_000662"/>
+                    			   ...
+                    """
+                    # Here we fetch list of items in disjunction
 					disjunction = self.graph.query(
 						"SELECT ?id WHERE {?datum owl:unionOf/rdf:rest*/rdf:first ?id}", 
 						initBindings={'datum': value} )		
@@ -777,9 +810,9 @@ obo:GENEPIO_0001606 contact spec - person : all its parts should be fetched for 
 	
 		##################################################################
 		# 
-		#   The difference between this and above "primitives" query is that this one 
-		#	returns descendant datums.  Run it first to calculate inheritances; then run 
-		#	"primitives" to override inherited values with more specific ones.
+		#   The difference between this and below "primitives" query is that this one 
+		#	returns descendant datums.  Run inherited query first to calculate inheritances; 
+		#	then run "primitives" to override inherited values with more specific ones.
 		# 
 		#	HAndle much simpler inheritance of categoricals in 'categoricals' query below
 
@@ -873,13 +906,6 @@ obo:GENEPIO_0001606 contact spec - person : all its parts should be fetched for 
 		""", initNs = namespace),
 
 
-		# SIMILIES ################################################################
-		# Picklist items need to be augmented with simile information in order for type-as-you-go inputs to filter appropriate phrases
-		#
-
-
-
-
 		# ################################################################
 		# UI FEATURES
 		# A picklist item or form input or specification can be hidden or required or
@@ -967,7 +993,36 @@ obo:GENEPIO_0001606 contact spec - person : all its parts should be fetched for 
 				OPTIONAL {?datum obo:GENEPIO_0000006 ?uiLabel.} 
 				OPTIONAL {?datum obo:GENEPIO_0001745 ?uiDefinition.}
 			}
+		""", initNs = namespace),
+
+		# ################################################################
+		# oboInOwl:hasDbXref (an annotation property) cross references to other terminology databases 
+		'dbreferences': rdflib.plugins.sparql.prepareQuery("""
+
+			SELECT DISTINCT ?dbXref
+			WHERE {  
+				{?datum rdf:type owl:Class} UNION {?datum rdf:type owl:NamedIndividual}.
+				?datum oboInOwl:hasDbXref ?dbXref.
+			}
+		""", initNs = namespace),
+
+
+		# ################################################################
+		# oboInOwl:hasSynonym
+		# Picklist items need to be augmented with synonyms in order for 
+		# type-as-you-go inputs to return appropriately filtered phrases
+
+		'synonyms': rdflib.plugins.sparql.prepareQuery("""
+
+			SELECT DISTINCT ?datum ?Synonym ?ExactSynonym ?NarrowSynonym
+			WHERE {  
+				{?datum rdf:type owl:Class} UNION {?datum rdf:type owl:NamedIndividual}.
+				{?datum oboInOwl:hasSynonym ?Synonym.} 
+				UNION {?datum oboInOwl:hasExactSynonym ?ExactSynonym.}
+				UNION {?datum oboInOwl:hasNarrowSynonym ?NarrowSynonym.}
+			}
 		""", initNs = namespace)
+
 
 }
 

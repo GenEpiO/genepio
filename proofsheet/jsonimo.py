@@ -63,7 +63,7 @@ class Ontology(object):
 		self.struct = OrderedDict()
 		# JSON-LD @context markup, and as well its used for a prefix encoding table.
 		self.struct['@context'] = {		#JSON-LD markup
-			'ifm':'http://purl.obolibrary.org/obo/IRIDA/IFM#',  # Must be ordered 1st or obo usurps.
+			'ifm':'http://purl.obolibrary.org/obo/GENEPIO/IFM#',  # Must be ordered 1st or obo usurps.
 			'obo':'http://purl.obolibrary.org/obo/',
 			'owl':'http://www.w3.org/2002/07/owl/',
 			'evs':'http://ncicb.nci.nih.gov/xml/owl/EVS/',

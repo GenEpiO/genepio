@@ -879,8 +879,6 @@ class Ontology(object):
 				?id rdf:type ?parent.
 				?parent rdfs:subClassOfTLR*/rdfs:subClassOf+ ?categorical_root.
 
-				#OPTIONAL {?id oboInOwl:hasDbXref ?xref}.
-				#OPTIONAL {?id oboInOwl:hasExactSynonym ?synonym}.
 				#OPTIONAL {?id rdfs:subClassOfTLR ?GEO}.
 
 			}

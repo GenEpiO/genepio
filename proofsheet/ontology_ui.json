@@ -40,12 +40,16 @@
             "parts": {
                 "obo:GENEPIO_0001651": [
                     {
-                        "cardinality": "owl:someValuesFrom"
+                        "datatype": "xmls:nonNegativeInteger",
+                        "cardinality": "owl:maxQualifiedCardinality",
+                        "value": "1"
                     }
                 ],
                 "obo:OBI_0001616": [
                     {
-                        "cardinality": "owl:someValuesFrom"
+                        "datatype": "xmls:nonNegativeInteger",
+                        "cardinality": "owl:maxQualifiedCardinality",
+                        "value": "1"
                     }
                 ],
                 "obo:GENEPIO_0001641": [
@@ -57,27 +61,37 @@
                 ],
                 "obo:GENEPIO_0001648": [
                     {
-                        "cardinality": "owl:someValuesFrom"
+                        "datatype": "xmls:nonNegativeInteger",
+                        "cardinality": "owl:maxQualifiedCardinality",
+                        "value": "1"
                     }
                 ],
                 "obo:GENEPIO_0001721": [
                     {
-                        "cardinality": "owl:someValuesFrom"
+                        "datatype": "xmls:nonNegativeInteger",
+                        "cardinality": "owl:maxQualifiedCardinality",
+                        "value": "1"
                     }
                 ],
                 "obo:GENEPIO_0001706": [
                     {
-                        "cardinality": "owl:someValuesFrom"
+                        "datatype": "xmls:nonNegativeInteger",
+                        "cardinality": "owl:maxQualifiedCardinality",
+                        "value": "1"
                     }
                 ],
                 "obo:GENEPIO_0001723": [
                     {
-                        "cardinality": "owl:someValuesFrom"
+                        "datatype": "xmls:nonNegativeInteger",
+                        "cardinality": "owl:maxQualifiedCardinality",
+                        "value": "1"
                     }
                 ],
                 "obo:GENEPIO_0001722": [
                     {
-                        "cardinality": "owl:someValuesFrom"
+                        "datatype": "xmls:nonNegativeInteger",
+                        "cardinality": "owl:maxQualifiedCardinality",
+                        "value": "1"
                     }
                 ]
             },
@@ -102,7 +116,7 @@
                 "obo:GENEPIO_0001581"
             ],
             "parts": {
-                "N11975d53178c4404b49c492540de78b3": [
+                "N1648b9fba2c842b6a8d8ae2c96cf06be": [
                     {
                         "datatype": "xmls:nonNegativeInteger",
                         "cardinality": "owl:qualifiedCardinality",
@@ -116,7 +130,7 @@
                         "value": "1"
                     }
                 ],
-                "N6a639237dd384207bc5682490b7cb7c6": [
+                "Nc4a317a34a2d44b7ba6d491bf7d2af3a": [
                     {
                         "datatype": "xmls:nonNegativeInteger",
                         "cardinality": "owl:qualifiedCardinality",
@@ -263,8 +277,8 @@
         },
         "obo:GENEPIO_0001559": {
             "part_of": [
-                "obo:GENEPIO_0001430",
-                "obo:GENEPIO_0001778"
+                "obo:GENEPIO_0001778",
+                "obo:GENEPIO_0001430"
             ],
             "datatype": "xmls:string",
             "hasDbXref": [
@@ -290,10 +304,27 @@
             "id": "obo:GENEPIO_0001495",
             "uiLabel": "outbreak date"
         },
-        "obo:GENEPIO_0001494": {
-            "datatype": "xmls:date",
-            "id": "obo:GENEPIO_0001494",
-            "uiLabel": "notification date"
+        "obo:GENEPIO_0001791": {
+            "datatype": "specification",
+            "parts": {
+                "obo:GENEPIO_0001644": [
+                    {
+                        "datatype": "xmls:nonNegativeInteger",
+                        "cardinality": "owl:maxQualifiedCardinality",
+                        "value": "1"
+                    }
+                ],
+                "obo:GENEPIO_0001642": [
+                    {
+                        "datatype": "xmls:nonNegativeInteger",
+                        "cardinality": "owl:maxQualifiedCardinality",
+                        "value": "1"
+                    }
+                ]
+            },
+            "id": "obo:GENEPIO_0001791",
+            "parent": "obo:GENEPIO_0001641",
+            "uiLabel": "'isolate identifier specification'"
         },
         "obo:GENEPIO_0001557": {
             "datatype": "xmls:date",
@@ -384,9 +415,9 @@
         "ifm:IFM_0001506": {
             "datatype": "specification",
             "part_of": [
+                "ifm:IFM_0001509",
                 "ifm:IFM_0001522",
                 "ifm:IFM_0001477",
-                "ifm:IFM_0001509",
                 "ifm:IFM_0001507"
             ],
             "parts": {
@@ -494,12 +525,18 @@
             "id": "ifm:IFM_0001500",
             "uiLabel": "area calculation"
         },
-        "ifm:IFM_0001501": {
-            "part_of": [
-                "ifm:IFM_0001512"
-            ],
-            "id": "ifm:IFM_0001501",
-            "uiLabel": "radius"
+        "ifm:IFM_0001668": {
+            "datatype": "xmls:string",
+            "definition": "This is the leading FSA (Forward Sortation Area) 3 character portion of a full 6 character postal code.  It can be used to limit the geographic granularity of a postal code.",
+            "uiLabel": "Canada postal code FSA",
+            "id": "ifm:IFM_0001668",
+            "constraints": [
+                {
+                    "datatype": "xmls:nonNegativeInteger",
+                    "value": "1",
+                    "constraint": "owl:qualifiedCardinality"
+                }
+            ]
         },
         "ifm:IFM_0001667": {
             "datatype": "specification",
@@ -603,8 +640,8 @@
         "sio:SIO_000136": {
             "datatype": "xmls:string",
             "part_of": [
-                "obo:GENEPIO_0001638",
-                "obo:GENEPIO_0001581"
+                "obo:GENEPIO_0001581",
+                "obo:GENEPIO_0001638"
             ],
             "uiLabel": "description",
             "id": "sio:SIO_000136",
@@ -690,8 +727,8 @@
         "obo:GENEPIO_0001239": {
             "definition": "sample category is a categorical choice meant for NCBI BioSample sample_category required field.",
             "part_of": [
-                "obo:GENEPIO_0001638",
-                "obo:GENEPIO_0001581"
+                "obo:GENEPIO_0001581",
+                "obo:GENEPIO_0001638"
             ],
             "datatype": "xmls:anyURI",
             "uiLabel": "pathogen type",
@@ -731,8 +768,8 @@
             "datatype": "xmls:anyURI",
             "definition": "A portion of environmental material is a fiat object which forms the medium or part of the medium of an environmental system.",
             "part_of": [
-                "obo:GENEPIO_0001609",
-                "obo:GENEPIO_0001581"
+                "obo:GENEPIO_0001581",
+                "obo:GENEPIO_0001609"
             ],
             "id": "obo:ENVO_00010483",
             "uiLabel": "environmental material"
@@ -864,8 +901,8 @@
             "datatype": "xmls:string",
             "part_of": [
                 "obo:GENEPIO_0001581",
-                "obo:GENEPIO_0001777",
-                "obo:GENEPIO_0001638"
+                "obo:GENEPIO_0001638",
+                "obo:GENEPIO_0001777"
             ],
             "uiLabel": "strain",
             "id": "obo:GENEPIO_0001429",
@@ -1094,6 +1131,11 @@
             "id": "obo:GENEPIO_0001764",
             "parent": "obo:GENEPIO_0001741",
             "uiLabel": "quality control record"
+        },
+        "obo:GENEPIO_0001494": {
+            "datatype": "xmls:date",
+            "id": "obo:GENEPIO_0001494",
+            "uiLabel": "notification date"
         },
         "obo:STATO_0000190": {
             "datatype": "xmls:nonNegativeInteger",
@@ -1341,8 +1383,8 @@
         "obo:NCBITaxon_2": {
             "datatype": "xmls:anyURI",
             "part_of": [
-                "obo:GENEPIO_0001787",
-                "obo:GENEPIO_0001788"
+                "obo:GENEPIO_0001788",
+                "obo:GENEPIO_0001787"
             ],
             "id": "obo:NCBITaxon_2",
             "uiLabel": "Bacteria <prokaryote>"
@@ -1378,8 +1420,8 @@
             "datatype": "xmls:anyURI",
             "part_of": [
                 "obo:GENEPIO_0001783",
-                "obo:GENEPIO_0001679",
-                "obo:GENEPIO_0001786"
+                "obo:GENEPIO_0001786",
+                "obo:GENEPIO_0001679"
             ],
             "uiLabel": "city (SIO)",
             "id": "sio:SIO_000665",
@@ -1537,8 +1579,8 @@
         },
         "obo:GENEPIO_0001464": {
             "part_of": [
-                "obo:GENEPIO_0001470",
-                "obo:GENEPIO_0001678"
+                "obo:GENEPIO_0001678",
+                "obo:GENEPIO_0001470"
             ],
             "parts": {
                 "obo:GENEPIO_0001488": [
@@ -1582,8 +1624,8 @@
         "efo:EFO_0004953": {
             "datatype": "xmls:date",
             "part_of": [
-                "obo:GENEPIO_0001259",
-                "obo:GENEPIO_0001468"
+                "obo:GENEPIO_0001468",
+                "obo:GENEPIO_0001259"
             ],
             "id": "efo:EFO_0004953",
             "uiLabel": "date of diagnosis"
@@ -1592,8 +1634,8 @@
             "datatype": "xmls:anyURI",
             "definition": "A governmental organization with a defined territory on which it exercises internal and external sovereignty, a permanent population, a government, and the capacity to enter into relations with other sovereign states.",
             "part_of": [
-                "obo:GENEPIO_0001679",
-                "obo:GENEPIO_0001623"
+                "obo:GENEPIO_0001623",
+                "obo:GENEPIO_0001679"
             ],
             "id": "obo:GEO_000000396",
             "uiLabel": "sovereign state"
@@ -1631,8 +1673,8 @@
         "obo:GENEPIO_0000020": {
             "definition": "date the strain was isolated",
             "part_of": [
-                "obo:GENEPIO_0001778",
-                "obo:GENEPIO_0001465"
+                "obo:GENEPIO_0001465",
+                "obo:GENEPIO_0001778"
             ],
             "datatype": "xmls:date",
             "hasDbXref": [
@@ -1725,7 +1767,7 @@
         "obo:GENEPIO_0001644": {
             "datatype": "xmls:string",
             "part_of": [
-                "obo:GENEPIO_0001641",
+                "obo:GENEPIO_0001791",
                 "obo:GENEPIO_0001777"
             ],
             "uiLabel": "isolate ID",
@@ -1740,28 +1782,30 @@
         },
         "obo:GENEPIO_0001645": {
             "datatype": "xmls:anyURI",
-            "definition": "This list of options describes the status or role of a particular identifier. Identifiers may be replaced over time, or particular objects may have a number of identifiers.",
+            "definition": "An identifier status describes the principle role of an identifier assigned to an entity by its curator or handler. An entity may have a number of identifiers assigned to it over time.  An identifier may be phased-out over time as can happen when transferred to another curator.",
             "part_of": [
                 "obo:GENEPIO_0001641"
             ],
             "id": "obo:GENEPIO_0001645",
-            "uiLabel": "curator isolate status"
+            "uiLabel": "identifier status"
         },
         "obo:GENEPIO_0001642": {
             "datatype": "xmls:anyURI",
+            "definition": "The curator organization name is the name of an organization that manages a given repository of entities (samples, isolates, sequences ...)",
             "part_of": [
                 "obo:OBI_0001885",
+                "obo:GENEPIO_0001648",
                 "obo:GENEPIO_0001641",
-                "obo:GENEPIO_0001648"
+                "obo:GENEPIO_0001791"
             ],
             "id": "obo:GENEPIO_0001642",
-            "uiLabel": "specimen curator organization name"
+            "uiLabel": "categorical curator organization name"
         },
         "obo:GENEPIO_0001640": {
             "datatype": "xmls:anyURI",
             "part_of": [
-                "obo:GENEPIO_0001740",
-                "obo:GENEPIO_0001638"
+                "obo:GENEPIO_0001638",
+                "obo:GENEPIO_0001740"
             ],
             "id": "obo:GENEPIO_0001640",
             "uiLabel": "organism (species)"
@@ -1771,7 +1815,7 @@
                 "obo:GENEPIO_0001650"
             ],
             "parts": {
-                "obo:GENEPIO_0001644": [
+                "sio:SIO_000675": [
                     {
                         "datatype": "xmls:nonNegativeInteger",
                         "cardinality": "owl:maxQualifiedCardinality",
@@ -1793,10 +1837,12 @@
                     }
                 ]
             },
-            "parent": "obo:OBI_0000658",
+            "members": {
+                "obo:GENEPIO_0001791": []
+            },
             "datatype": "specification",
             "id": "obo:GENEPIO_0001641",
-            "uiLabel": "isolate identifier specification"
+            "uiLabel": "identifier specification"
         },
         "obo:GENEPIO_0001648": {
             "datatype": "xmls:anyURI",
@@ -1851,6 +1897,18 @@
                 }
             ]
         },
+        "vcard:Address": {
+            "datatype": "xmls:string",
+            "uiLabel": "address",
+            "id": "vcard:Address",
+            "constraints": [
+                {
+                    "datatype": "xmls:nonNegativeInteger",
+                    "value": "1",
+                    "constraint": "owl:qualifiedCardinality"
+                }
+            ]
+        },
         "ifm:IFM_0001669": {
             "datatype": "xmls:string",
             "uiLabel": "USA zip code",
@@ -1863,6 +1921,18 @@
                 }
             ]
         },
+        "N9a310ceda7f94f299d0052eac0dccb96": {
+            "datatype": "disjunction",
+            "part_of": [
+                "obo:GENEPIO_0001623"
+            ],
+            "parts": {
+                "ifm:IFM_0001675": [],
+                "obo:ENVO_00000856": []
+            },
+            "id": "N9a310ceda7f94f299d0052eac0dccb96",
+            "uiLabel": ""
+        },
         "typon:MLVA": {
             "datatype": "specification",
             "definition": "MLVA stands for Multilocus Variable Number of Tandem Repeats Analysis. This method can be performed by three distinct methodologies: by running the amplified locus in a gel , using a capilary electrophoresis apparatus or sequencing the resulting amplified fragment. The first two infer the number of repeats on each locus indirectly by the fragment size.",
@@ -1870,18 +1940,12 @@
             "parent": "obo:GENEPIO_0001688",
             "uiLabel": "MLVA"
         },
-        "ifm:IFM_0001668": {
-            "datatype": "xmls:string",
-            "definition": "This is the leading FSA (Forward Sortation Area) 3 character portion of a full 6 character postal code.  It can be used to limit the geographic granularity of a postal code.",
-            "uiLabel": "Canada postal code FSA",
-            "id": "ifm:IFM_0001668",
-            "constraints": [
-                {
-                    "datatype": "xmls:nonNegativeInteger",
-                    "value": "1",
-                    "constraint": "owl:qualifiedCardinality"
-                }
-            ]
+        "ifm:IFM_0001501": {
+            "part_of": [
+                "ifm:IFM_0001512"
+            ],
+            "id": "ifm:IFM_0001501",
+            "uiLabel": "radius"
         },
         "obo:OBI_0001628": {
             "datatype": "xmls:string",
@@ -1947,9 +2011,9 @@
                 "obo:UO_0000185"
             ],
             "part_of": [
+                "obo:GENEPIO_0001777",
                 "obo:GENEPIO_0001623",
-                "obo:GENEPIO_0001656",
-                "obo:GENEPIO_0001777"
+                "obo:GENEPIO_0001656"
             ],
             "definition": "A measurement datum that is the measure of the longitude coordinate of a site.",
             "datatype": "xmls:decimal",
@@ -1968,9 +2032,9 @@
                 "obo:UO_0000185"
             ],
             "part_of": [
-                "obo:GENEPIO_0001777",
                 "obo:GENEPIO_0001656",
-                "obo:GENEPIO_0001623"
+                "obo:GENEPIO_0001623",
+                "obo:GENEPIO_0001777"
             ],
             "definition": "A measurement datum that is the measure of the latitude coordinate of a site.",
             "datatype": "xmls:decimal",
@@ -1987,8 +2051,8 @@
         "obo:OBI_0001622": {
             "definition": "A textual entity that denotes an investigation.",
             "part_of": [
-                "obo:GENEPIO_0001430",
-                "obo:GENEPIO_0001579"
+                "obo:GENEPIO_0001579",
+                "obo:GENEPIO_0001430"
             ],
             "parts": {
                 "ifm:IFM_0000024": [
@@ -2021,8 +2085,8 @@
         },
         "ifm:IFM_0001478": {
             "part_of": [
-                "ifm:IFM_0001508",
-                "ifm:IFM_0001512"
+                "ifm:IFM_0001512",
+                "ifm:IFM_0001508"
             ],
             "id": "ifm:IFM_0001478",
             "uiLabel": "angular coordinate"
@@ -2035,13 +2099,13 @@
             "constraints": [
                 {
                     "datatype": "xmls:decimal",
-                    "value": "-90.0",
-                    "constraint": "xmls:minInclusive"
+                    "value": "90.0",
+                    "constraint": "xmls:maxInclusive"
                 },
                 {
                     "datatype": "xmls:decimal",
-                    "value": "90.0",
-                    "constraint": "xmls:maxInclusive"
+                    "value": "-90.0",
+                    "constraint": "xmls:minInclusive"
                 }
             ]
         },
@@ -2179,8 +2243,8 @@
         "obo:GENEPIO_0001639": {
             "datatype": "xmls:string",
             "part_of": [
-                "obo:GENEPIO_0001621",
-                "obo:GENEPIO_0001581"
+                "obo:GENEPIO_0001581",
+                "obo:GENEPIO_0001621"
             ],
             "uiLabel": "sample title",
             "id": "obo:GENEPIO_0001639",
@@ -2250,13 +2314,13 @@
             "constraints": [
                 {
                     "datatype": "xmls:unsignedByte",
-                    "value": "14",
-                    "constraint": "xmls:maxInclusive"
+                    "value": "0",
+                    "constraint": "xmls:minInclusive"
                 },
                 {
                     "datatype": "xmls:unsignedByte",
-                    "value": "0",
-                    "constraint": "xmls:minInclusive"
+                    "value": "14",
+                    "constraint": "xmls:maxInclusive"
                 }
             ]
         },
@@ -2267,24 +2331,6 @@
             ],
             "id": "obo:GENEPIO_0001737",
             "uiLabel": "precipitation"
-        },
-        "obo:GENEPIO_0001780": {
-            "part_of": [
-                "obo:GENEPIO_0001778"
-            ],
-            "datatype": "xmls:string",
-            "hasDbXref": [
-                "PFGE-Blnl-pattern"
-            ],
-            "uiLabel": "PFGE Blnl pattern",
-            "id": "obo:GENEPIO_0001780",
-            "constraints": [
-                {
-                    "datatype": "xmls:nonNegativeInteger",
-                    "value": "1",
-                    "constraint": "owl:qualifiedCardinality"
-                }
-            ]
         },
         "obo:GENEPIO_0001224": {
             "datatype": "xmls:date",
@@ -2404,8 +2450,6 @@
             "id": "obo:OBI_0000658",
             "members": {
                 "obo:GENEPIO_0001755": [],
-                "obo:GENEPIO_0001641": [],
-                "obo:GENEPIO_0001622": [],
                 "obo:GENEPIO_0001743": []
             },
             "uiLabel": "data representational model"
@@ -2746,19 +2790,6 @@
             "id": "obo:GENEPIO_0001171",
             "uiLabel": "organism role"
         },
-        "N6a639237dd384207bc5682490b7cb7c6": {
-            "datatype": "disjunction",
-            "part_of": [
-                "obo:GENEPIO_0001657"
-            ],
-            "parts": {
-                "sio:SIO_000663": [],
-                "sio:SIO_000662": [],
-                "sio:SIO_000661": []
-            },
-            "id": "N6a639237dd384207bc5682490b7cb7c6",
-            "uiLabel": ""
-        },
         "obo:GENEPIO_0001683": {
             "parts": {
                 "obo:GENEPIO_0001677": [
@@ -2784,18 +2815,14 @@
             },
             "uiLabel": "IRIDA model"
         },
-        "Nae8f94d46f4446e2af71636d4d68da2c": {
-            "datatype": "disjunction",
+        "obo:GENEPIO_0000071": {
+            "datatype": "xmls:anyURI",
+            "definition": "Defined by sequencing method and instrumentation.",
             "part_of": [
-                "obo:GENEPIO_0001623"
+                "obo:GENEPIO_0001658"
             ],
-            "parts": {
-                "sio:SIO_000663": [],
-                "sio:SIO_000662": [],
-                "sio:SIO_000661": []
-            },
-            "id": "Nae8f94d46f4446e2af71636d4d68da2c",
-            "uiLabel": ""
+            "id": "obo:GENEPIO_0000071",
+            "uiLabel": "sequencing platform"
         },
         "obo:GENEPIO_0001686": {
             "datatype": "specification",
@@ -2922,8 +2949,8 @@
         "obo:GENEPIO_0000079": {
             "definition": "descriptive identifier for sample",
             "part_of": [
-                "obo:GENEPIO_0001778",
-                "obo:GENEPIO_0001621"
+                "obo:GENEPIO_0001621",
+                "obo:GENEPIO_0001778"
             ],
             "datatype": "xmls:string",
             "uiLabel": "sample name (identifier)",
@@ -3059,27 +3086,27 @@
                 "obo:UO_0000036"
             ],
             "part_of": [
-                "obo:GENEPIO_0001778",
-                "obo:GENEPIO_0001613"
+                "obo:GENEPIO_0001613",
+                "obo:GENEPIO_0001778"
             ],
             "definition": "The age of the host at the date a given sample was extracted.",
             "datatype": "xmls:nonNegativeInteger",
             "uiLabel": "host age at date of sampling",
             "hasDbXref": [
-                "NCBI BioSample: host_age",
-                "PulseNet: PatientAge"
+                "PulseNet: PatientAge",
+                "NCBI BioSample: host_age"
             ],
             "id": "obo:GENEPIO_0001775",
             "constraints": [
                 {
                     "datatype": "xmls:nonNegativeInteger",
-                    "value": 129,
-                    "constraint": "xmls:maxInclusive"
+                    "value": "1",
+                    "constraint": "owl:qualifiedCardinality"
                 },
                 {
                     "datatype": "xmls:nonNegativeInteger",
-                    "value": "1",
-                    "constraint": "owl:qualifiedCardinality"
+                    "value": 129,
+                    "constraint": "xmls:maxInclusive"
                 }
             ]
         },
@@ -3267,8 +3294,8 @@
         "obo:OBI_0001891": {
             "definition": "An organization that provides sequence determination service",
             "part_of": [
-                "obo:GENEPIO_0001658",
-                "obo:GENEPIO_0001622"
+                "obo:GENEPIO_0001622",
+                "obo:GENEPIO_0001658"
             ],
             "uiLabel": "sequencing facility",
             "id": "obo:OBI_0001891",
@@ -3310,7 +3337,7 @@
             ]
         },
         "obo:GENEPIO_0001572": {
-            "definition": "Indicates how the knowledge derived from the project can be\napplied, and to what field(s).",
+            "definition": "Indicates how the knowledge derived from the project can be applied, and to what field(s).",
             "part_of": [
                 "obo:GENEPIO_0001579"
             ],
@@ -3402,9 +3429,9 @@
         },
         "obo:GENEPIO_0001677": {
             "part_of": [
+                "obo:GENEPIO_0001740",
                 "obo:GENEPIO_0001613",
-                "obo:GENEPIO_0001683",
-                "obo:GENEPIO_0001740"
+                "obo:GENEPIO_0001683"
             ],
             "parts": {
                 "obo:GENEPIO_0001679": [
@@ -3594,15 +3621,6 @@
                 }
             ]
         },
-        "obo:GENEPIO_0000071": {
-            "datatype": "xmls:anyURI",
-            "definition": "Defined by sequencing method and instrumentation.",
-            "part_of": [
-                "obo:GENEPIO_0001658"
-            ],
-            "id": "obo:GENEPIO_0000071",
-            "uiLabel": "sequencing platform"
-        },
         "obo:GENEPIO_0001707": {
             "part_of": [
                 "obo:GENEPIO_0001581"
@@ -3786,7 +3804,7 @@
             },
             "id": "obo:GENEPIO_0001257",
             "parent": "obo:GENEPIO_0001741",
-            "uiLabel": "exposure statistics record"
+            "uiLabel": "exposure group statistics record"
         },
         "obo:GENEPIO_0001251": {
             "datatype": "xmls:anyURI",
@@ -4172,9 +4190,9 @@
         "obo:GENEPIO_0001535": {
             "definition": "This is a subset of OBI investigation identifier.  It pertains only to NCBI Biosample projects",
             "part_of": [
+                "obo:GENEPIO_0001579",
                 "obo:GENEPIO_0001581",
-                "obo:GENEPIO_0001621",
-                "obo:GENEPIO_0001579"
+                "obo:GENEPIO_0001621"
             ],
             "datatype": "xmls:string",
             "uiLabel": "NCBI BioProject ID",
@@ -4188,11 +4206,12 @@
             ]
         },
         "obo:GENEPIO_0001536": {
-            "datatype": "xmls:nonNegativeInteger",
+            "definition": "The count of individuals or animals for which no health status is available on a certain date/time from a group that was likely exposed to a pathogen.",
             "part_of": [
                 "obo:GENEPIO_0001257"
             ],
-            "uiLabel": "exposure contact unknown health status count",
+            "datatype": "xmls:nonNegativeInteger",
+            "uiLabel": "exposure group unknown health status count",
             "id": "obo:GENEPIO_0001536",
             "constraints": [
                 {
@@ -4441,14 +4460,14 @@
                         "value": "1"
                     }
                 ],
-                "N0ca272b7bee24699a0874ecdc2592fde": [
+                "N9a310ceda7f94f299d0052eac0dccb96": [
                     {
                         "datatype": "xmls:nonNegativeInteger",
                         "cardinality": "owl:maxQualifiedCardinality",
                         "value": "1"
                     }
                 ],
-                "Nae8f94d46f4446e2af71636d4d68da2c": [
+                "N795f23645d86489d9059f2194a19dc2b": [
                     {
                         "datatype": "xmls:nonNegativeInteger",
                         "cardinality": "owl:maxQualifiedCardinality",
@@ -4637,6 +4656,8 @@
                 "obo:GENEPIO_0001680": [],
                 "obo:GENEPIO_0001611": [],
                 "obo:GENEPIO_0001778": [],
+                "obo:GENEPIO_0001641": [],
+                "obo:GENEPIO_0001622": [],
                 "obo:GENEPIO_0001776": []
             },
             "uiLabel": "public health data model"
@@ -4649,8 +4670,8 @@
                 "obo:GENEPIO_0001468": [],
                 "ifm:IFM_0001467": [],
                 "obo:GENEPIO_0001470": [],
-                "obo:GENEPIO_0001464": [],
                 "obo:GENEPIO_0001257": [],
+                "obo:GENEPIO_0001464": [],
                 "ifm:IFM_0001468": [],
                 "obo:GENEPIO_0001259": [],
                 "obo:GENEPIO_0001471": [],
@@ -4767,9 +4788,9 @@
         "sio:SIO_000767": {
             "definition": "A postal code is a geographic coordinate composed of a series of letters and/or digits appended to a postal address for the purpose of sorting mail.",
             "part_of": [
-                "obo:GENEPIO_0001679",
+                "obo:GENEPIO_0001581",
                 "obo:GENEPIO_0001623",
-                "obo:GENEPIO_0001581"
+                "obo:GENEPIO_0001679"
             ],
             "datatype": "xmls:string",
             "uiLabel": "postal code",
@@ -4784,8 +4805,8 @@
         },
         "obo:GENEPIO_0001212": {
             "part_of": [
-                "obo:GENEPIO_0001613",
-                "obo:GENEPIO_0001707"
+                "obo:GENEPIO_0001707",
+                "obo:GENEPIO_0001613"
             ],
             "datatype": "xmls:anyURI",
             "hasDbXref": [
@@ -4794,18 +4815,6 @@
             "uiLabel": "disease outcome",
             "label": "host disease outcome",
             "id": "obo:GENEPIO_0001212"
-        },
-        "N11975d53178c4404b49c492540de78b3": {
-            "datatype": "disjunction",
-            "part_of": [
-                "obo:GENEPIO_0001657"
-            ],
-            "parts": {
-                "ifm:IFM_0001675": [],
-                "obo:ENVO_00000856": []
-            },
-            "id": "N11975d53178c4404b49c492540de78b3",
-            "uiLabel": ""
         },
         "obo:GENEPIO_0001286": {
             "datatype": "xmls:anyURI",
@@ -4817,9 +4826,9 @@
         },
         "obo:GENEPIO_0001287": {
             "part_of": [
+                "obo:GENEPIO_0001678",
                 "obo:GENEPIO_0001740",
-                "sio:SIO_001027",
-                "obo:GENEPIO_0001678"
+                "sio:SIO_001027"
             ],
             "parts": {
                 "obo:GENEPIO_0001789": [
@@ -4887,11 +4896,12 @@
             "uiLabel": "general activity"
         },
         "obo:GENEPIO_0001442": {
-            "datatype": "xmls:nonNegativeInteger",
+            "definition": "The count of healthy individuals or animals on a certain date/time from a group that was likely exposed to a pathogen",
             "part_of": [
                 "obo:GENEPIO_0001257"
             ],
-            "uiLabel": "exposure contact healthy count",
+            "datatype": "xmls:nonNegativeInteger",
+            "uiLabel": "exposure group healthy count",
             "id": "obo:GENEPIO_0001442",
             "constraints": [
                 {
@@ -4902,11 +4912,12 @@
             ]
         },
         "obo:GENEPIO_0001443": {
-            "datatype": "xmls:nonNegativeInteger",
+            "definition": "The count of ill individuals or animals on a certain date/time from a group that was likely exposed to a pathogen",
             "part_of": [
                 "obo:GENEPIO_0001257"
             ],
-            "uiLabel": "exposure contact ill count",
+            "datatype": "xmls:nonNegativeInteger",
+            "uiLabel": "exposure group ill count",
             "id": "obo:GENEPIO_0001443",
             "constraints": [
                 {
@@ -5084,10 +5095,16 @@
                 }
             ]
         },
-        "vcard:Address": {
+        "obo:GENEPIO_0001780": {
+            "part_of": [
+                "obo:GENEPIO_0001778"
+            ],
             "datatype": "xmls:string",
-            "uiLabel": "address",
-            "id": "vcard:Address",
+            "hasDbXref": [
+                "PFGE-Blnl-pattern"
+            ],
+            "uiLabel": "PFGE Blnl pattern",
+            "id": "obo:GENEPIO_0001780",
             "constraints": [
                 {
                     "datatype": "xmls:nonNegativeInteger",
@@ -5325,6 +5342,19 @@
             "id": "sio:SIO_000505",
             "uiLabel": "polygon"
         },
+        "N795f23645d86489d9059f2194a19dc2b": {
+            "datatype": "disjunction",
+            "part_of": [
+                "obo:GENEPIO_0001623"
+            ],
+            "parts": {
+                "sio:SIO_000663": [],
+                "sio:SIO_000662": [],
+                "sio:SIO_000661": []
+            },
+            "id": "N795f23645d86489d9059f2194a19dc2b",
+            "uiLabel": ""
+        },
         "vcard:streetAddress": {
             "datatype": "xmls:string",
             "part_of": [
@@ -5484,14 +5514,14 @@
         "obo:GENEPIO_0001719": {
             "definition": "An integer and character referring to a pattern of opaque or confluent lysis caused by a panel of bacteriophage infections e.g. 14a.",
             "part_of": [
-                "obo:GENEPIO_0001622",
-                "obo:GENEPIO_0001778"
+                "obo:GENEPIO_0001778",
+                "obo:GENEPIO_0001622"
             ],
             "parent": "obo:GENEPIO_0001688",
             "datatype": "xmls:string",
             "hasDbXref": [
-                "SNOMED: http://www.snomedbrowser.com/Codes/Details/272405002",
-                "PulseNet: Phagetype"
+                "PulseNet: Phagetype",
+                "SNOMED: http://www.snomedbrowser.com/Codes/Details/272405002"
             ],
             "uiLabel": "phage type specification",
             "members": {
@@ -5513,7 +5543,7 @@
             "uiLabel": "sample material"
         },
         "obo:GENEPIO_0001579": {
-            "datatype": "specification",
+            "definition": "The NCBI BioProject model includes all datums associated with the current NCBI BioProject specification.",
             "parts": {
                 "obo:OBI_0001892": [
                     {
@@ -5579,8 +5609,9 @@
                     }
                 ]
             },
-            "id": "obo:GENEPIO_0001579",
             "parent": "obo:GENEPIO_0001611",
+            "datatype": "specification",
+            "id": "obo:GENEPIO_0001579",
             "uiLabel": "NCBI BioProject model"
         },
         "obo:OBI_0001508": {
@@ -5717,9 +5748,9 @@
             "datatype": "xmls:anyURI",
             "definition": "The condition of an organism in all aspects (e.g., functional or metabolic efficiency).",
             "part_of": [
+                "obo:GENEPIO_0001707",
                 "obo:GENEPIO_0001259",
-                "obo:GENEPIO_0000026",
-                "obo:GENEPIO_0001707"
+                "obo:GENEPIO_0000026"
             ],
             "id": "obo:ExO_0000038",
             "uiLabel": "health status"
@@ -5788,23 +5819,11 @@
                 }
             ]
         },
-        "N0ca272b7bee24699a0874ecdc2592fde": {
-            "datatype": "disjunction",
-            "part_of": [
-                "obo:GENEPIO_0001623"
-            ],
-            "parts": {
-                "ifm:IFM_0001675": [],
-                "obo:ENVO_00000856": []
-            },
-            "id": "N0ca272b7bee24699a0874ecdc2592fde",
-            "uiLabel": ""
-        },
         "obo:GENEPIO_0001615": {
             "definition": "The host profile or identifiers text is the \"identification or description of the specific individual from which this sample was obtained\".",
             "part_of": [
-                "obo:GENEPIO_0001707",
-                "obo:GENEPIO_0001613"
+                "obo:GENEPIO_0001613",
+                "obo:GENEPIO_0001707"
             ],
             "datatype": "xmls:string",
             "uiLabel": "host profile or identifers",
@@ -5823,8 +5842,8 @@
         "obo:GENEPIO_0001614": {
             "definition": "A host description is a NCBI Biosample field containing additional information about the host that is not included in other defined vocabulary fields.",
             "part_of": [
-                "obo:GENEPIO_0001613",
-                "obo:GENEPIO_0001707"
+                "obo:GENEPIO_0001707",
+                "obo:GENEPIO_0001613"
             ],
             "datatype": "xmls:string",
             "uiLabel": "host description",
@@ -5842,8 +5861,8 @@
         },
         "obo:GENEPIO_0001617": {
             "part_of": [
-                "obo:GENEPIO_0001707",
-                "obo:GENEPIO_0001613"
+                "obo:GENEPIO_0001613",
+                "obo:GENEPIO_0001707"
             ],
             "parts": {
                 "obo:DOID_4": [
@@ -6080,6 +6099,18 @@
             },
             "uiLabel": "IRIDA BioSample model"
         },
+        "N1648b9fba2c842b6a8d8ae2c96cf06be": {
+            "datatype": "disjunction",
+            "part_of": [
+                "obo:GENEPIO_0001657"
+            ],
+            "parts": {
+                "ifm:IFM_0001675": [],
+                "obo:ENVO_00000856": []
+            },
+            "id": "N1648b9fba2c842b6a8d8ae2c96cf06be",
+            "uiLabel": ""
+        },
         "obo:GENEPIO_0001755": {
             "datatype": "specification",
             "id": "obo:GENEPIO_0001755",
@@ -6158,9 +6189,9 @@
         "obo:PATO_0001894": {
             "definition": "Phenotypic sex refers to an individual's sex as determined by their internal and external genitalia, expression of secondary sex characteristics, and behavior.",
             "part_of": [
-                "obo:GENEPIO_0001613",
+                "obo:GENEPIO_0001778",
                 "obo:GENEPIO_0001707",
-                "obo:GENEPIO_0001778"
+                "obo:GENEPIO_0001613"
             ],
             "datatype": "xmls:anyURI",
             "uiLabel": "sex",
@@ -6171,8 +6202,11 @@
             "label": "phenotypic sex"
         },
         "sio:SIO_000675": {
-            "datatype": "xmls:string",
             "definition": "A 'unique identifier' is an identifier that is unique locally within some database or agency, but is not necessarily unique globally. \n\nListed here are more abstract types of identifiers that are not exclusive to a particular organization.  Identifiers of particular types associated with particular organizations are listed under 'Centrally registered identifier symbol'.",
+            "part_of": [
+                "obo:GENEPIO_0001641"
+            ],
+            "datatype": "xmls:string",
             "uiLabel": "unique identifier",
             "id": "sio:SIO_000675",
             "constraints": [
@@ -6194,8 +6228,8 @@
         "vcf:C68615": {
             "definition": "The calendar date on which a person was born.",
             "part_of": [
-                "obo:GENEPIO_0001226",
-                "obo:GENEPIO_0001467"
+                "obo:GENEPIO_0001467",
+                "obo:GENEPIO_0001226"
             ],
             "datatype": "xmls:dateTime",
             "uiLabel": "date of birth",
@@ -6409,8 +6443,8 @@
         "obo:OBI_0001616": {
             "definition": "A CRID symbol denotes a specimen and used to distinguish one specimen from another in an investigation.",
             "part_of": [
-                "obo:GENEPIO_0001621",
-                "obo:GENEPIO_0001650"
+                "obo:GENEPIO_0001650",
+                "obo:GENEPIO_0001621"
             ],
             "datatype": "xmls:string",
             "uiLabel": "specimen identifier",
@@ -6451,6 +6485,19 @@
                     "constraint": "owl:qualifiedCardinality"
                 }
             ]
+        },
+        "Nc4a317a34a2d44b7ba6d491bf7d2af3a": {
+            "datatype": "disjunction",
+            "part_of": [
+                "obo:GENEPIO_0001657"
+            ],
+            "parts": {
+                "sio:SIO_000663": [],
+                "sio:SIO_000662": [],
+                "sio:SIO_000661": []
+            },
+            "id": "Nc4a317a34a2d44b7ba6d491bf7d2af3a",
+            "uiLabel": ""
         }
     },
     "units": {
@@ -6538,6 +6585,9 @@
     "picklists": {
         "obo:GENEPIO_0001653": {
             "uiLabel": "previous identifier",
+            "hasExactSynonym": [
+                "past"
+            ],
             "id": "obo:GENEPIO_0001653",
             "member_of": [
                 "obo:GENEPIO_0001645"
@@ -6562,10 +6612,10 @@
                 "obo:GENEPIO_0001271": [],
                 "obo:GENEPIO_0001175": [],
                 "obo:GENEPIO_0000091": [],
+                "obo:GENEPIO_0001642": [],
                 "sio:SIO_000665": [],
                 "obo:OMIABIS_0001008": [],
                 "sio:SIO_000664": [],
-                "obo:GENEPIO_0001645": [],
                 "obo:GENEPIO_0001205": [],
                 "obo:DOID_4": [],
                 "obo:GENEPIO_0001048": [],
@@ -6583,6 +6633,7 @@
                 "obo:GENEPIO_0001212": [],
                 "obo:GENEPIO_0001567": [],
                 "obo:GENEPIO_0001275": [],
+                "obo:GENEPIO_0001645": [],
                 "obo:GENEPIO_0001543": [],
                 "obo:OBI_0001896": [],
                 "sio:SIO_010057": [],
@@ -6610,7 +6661,6 @@
                 "obo:GENEPIO_0001637": [],
                 "obo:GEO_000000396": [],
                 "obo:OBI_0001892": [],
-                "obo:GENEPIO_0001642": [],
                 "obo:OBI_0001884": [],
                 "sio:SIO_000662": [],
                 "obo:SYMP_0000462": [],
@@ -7735,10 +7785,10 @@
                 "obo:GEO_000000396"
             ]
         },
-        "obo:GEO_000000194": {
+        "obo:GEO_000000208": {
             "datatype": "xmls:anyURI",
-            "uiLabel": "Oman",
-            "id": "obo:GEO_000000194",
+            "uiLabel": "Republic of Moldova",
+            "id": "obo:GEO_000000208",
             "member_of": [
                 "obo:GEO_000000396"
             ]
@@ -8117,16 +8167,16 @@
             "uiLabel": "province",
             "id": "sio:SIO_000661",
             "members": {
-                "obo:GAZ_00002564": [],
-                "obo:GAZ_00002565": [],
                 "obo:GAZ_00002571": [],
-                "obo:GAZ_00002561": [],
-                "obo:GAZ_00002566": [],
-                "obo:GAZ_00002570": [],
-                "obo:GAZ_00002562": [],
-                "obo:GAZ_00002572": [],
                 "obo:GAZ_00002569": [],
                 "obo:GAZ_00002567": [],
+                "obo:GAZ_00002562": [],
+                "obo:GAZ_00002566": [],
+                "obo:GAZ_00002564": [],
+                "obo:GAZ_00002565": [],
+                "obo:GAZ_00002572": [],
+                "obo:GAZ_00002561": [],
+                "obo:GAZ_00002570": [],
                 "obo:GAZ_00002563": []
             },
             "member_of": [
@@ -8351,20 +8401,13 @@
                 "obo:SYMP_0000892"
             ]
         },
-        "obo:GAZ_00002564": {
-            "definition": "A prairie province in Canada. Saskatchewan is bounded on the west by Alberta, on the north by the Northwest Territories, on the east by Manitoba, and on the south by the States of Montana and North Dakota. It is divided into 18 census divisions according to Statistics Canada.",
-            "member_of": [
-                "sio:SIO_000661"
-            ],
+        "obo:GEO_000000036": {
             "datatype": "xmls:anyURI",
-            "hasExactSynonym": [
-                "Saskatchewan"
-            ],
-            "hasDbXref": [
-                "ISO3166-2:CA-SK"
-            ],
-            "id": "obo:GAZ_00002564",
-            "uiLabel": "Province of Saskatchewan"
+            "uiLabel": "Armenia",
+            "id": "obo:GEO_000000036",
+            "member_of": [
+                "obo:GEO_000000396"
+            ]
         },
         "obo:GAZ_00002565": {
             "definition": "A Canadian province located on Canada's southeastern coast. The province's mainland is the Nova Scotia peninsula surrounded by the Atlantic Ocean, including numerous bays and estuaries. No where in Nova Scotia is more than 67 km from the ocean. Cape Breton Island, a large island to the northeast of the Nova Scotia mainland, is also part of the province, as is Sable Island.",
@@ -8373,10 +8416,10 @@
             ],
             "datatype": "xmls:anyURI",
             "hasExactSynonym": [
+                "Nouvelle-Ecosse {language: French}",
+                "Nova Scotia",
                 "Novia Scotia",
                 "Nove Scotia",
-                "Nova Scotia",
-                "Nouvelle-Ecosse {language: French}",
                 "Alba Nuadh {language: Scottish Gaelic}"
             ],
             "hasDbXref": [
@@ -8423,9 +8466,9 @@
             "datatype": "xmls:anyURI",
             "hasExactSynonym": [
                 "Colombie-Britannique {language: French}",
+                "British Columbia",
                 "BC",
-                "B.C.",
-                "British Columbia"
+                "B.C."
             ],
             "hasDbXref": [
                 "ISO3166-2:CA-BC"
@@ -8524,200 +8567,200 @@
             "uiLabel": "sovereign state",
             "id": "obo:GEO_000000396",
             "members": {
-                "obo:GEO_000000163": [],
-                "obo:GEO_000000219": [],
-                "obo:GEO_000000196": [],
-                "obo:GEO_000000097": [],
-                "obo:GEO_000000165": [],
-                "obo:GEO_000000260": [],
-                "obo:GEO_000000153": [],
-                "obo:GEO_000000235": [],
-                "obo:GEO_000000103": [],
-                "obo:GEO_000000043": [],
-                "obo:GEO_000000154": [],
-                "obo:GEO_000000186": [],
-                "obo:GEO_000000185": [],
-                "obo:GEO_000000031": [],
-                "obo:GEO_000000245": [],
-                "obo:GEO_000000246": [],
-                "obo:GEO_000000248": [],
-                "obo:GEO_000000062": [],
-                "obo:GEO_000000230": [],
-                "obo:GEO_000000123": [],
-                "obo:GEO_000000085": [],
-                "obo:GEO_000000169": [],
-                "obo:GEO_000000080": [],
-                "obo:GEO_000000087": [],
-                "obo:GEO_000000056": [],
-                "obo:GEO_000000124": [],
-                "obo:GEO_000000222": [],
-                "obo:GEO_000000157": [],
-                "obo:GEO_000000081": [],
-                "obo:GEO_000000109": [],
-                "obo:GEO_000000039": [],
-                "obo:GEO_000000255": [],
-                "obo:GEO_000000060": [],
-                "obo:GEO_000000171": [],
-                "obo:GEO_000000111": [],
-                "obo:GEO_000000065": [],
-                "obo:GEO_000000144": [],
-                "obo:GEO_000000035": [],
-                "obo:GEO_000000112": [],
-                "obo:GEO_000000138": [],
-                "obo:GEO_000000115": [],
-                "obo:GEO_000000113": [],
-                "obo:GEO_000000166": [],
-                "obo:GEO_000000170": [],
-                "obo:GEO_000000223": [],
+                "obo:GEO_000000197": [],
                 "obo:GEO_000000242": [],
-                "obo:GEO_000000092": [],
-                "obo:GEO_000000783": [],
-                "obo:GEO_000000261": [],
-                "obo:GEO_000000128": [],
-                "obo:GEO_000000049": [],
-                "obo:GEO_000000089": [],
-                "obo:GEO_000000036": [],
-                "obo:GEO_000000180": [],
-                "obo:GEO_000000179": [],
-                "obo:GEO_000000275": [],
-                "obo:GEO_000000207": [],
-                "obo:GEO_000000086": [],
-                "obo:GEO_000000156": [],
-                "obo:GEO_000000139": [],
-                "obo:GEO_000000095": [],
-                "obo:GEO_000000088": [],
-                "obo:GEO_000000151": [],
-                "obo:GEO_000000134": [],
-                "obo:GEO_000000135": [],
-                "obo:GEO_000000040": [],
-                "obo:GEO_000000063": [],
                 "obo:GEO_000000146": [],
-                "obo:GEO_000000061": [],
-                "obo:GEO_000000231": [],
-                "obo:GEO_000000184": [],
                 "obo:GEO_000000160": [],
-                "obo:GEO_000000133": [],
-                "obo:GEO_000000148": [],
-                "obo:GEO_000000211": [],
-                "obo:GEO_000000253": [],
-                "obo:GEO_000000051": [],
-                "obo:GEO_000000152": [],
-                "obo:GEO_000000232": [],
-                "obo:GEO_000000178": [],
-                "obo:GEO_000000084": [],
-                "obo:GEO_000000140": [],
-                "obo:GEO_000000262": [],
-                "obo:GEO_000000058": [],
-                "obo:GEO_000000077": [],
-                "obo:GEO_000000203": [],
-                "obo:GEO_000000241": [],
-                "obo:GEO_000000162": [],
-                "obo:GEO_000000059": [],
-                "obo:GEO_000000147": [],
-                "obo:GEO_000000256": [],
-                "obo:GEO_000000096": [],
-                "obo:GEO_000000247": [],
-                "obo:GEO_000000194": [],
-                "obo:GEO_000000221": [],
-                "obo:GEO_000000126": [],
-                "obo:GEO_000000024": [],
-                "obo:GEO_000000212": [],
-                "obo:GEO_000000052": [],
-                "obo:GEO_000000208": [],
-                "obo:GEO_000000047": [],
-                "obo:GEO_000000254": [],
-                "obo:GEO_000000176": [],
-                "obo:GEO_000000224": [],
-                "obo:GEO_000000094": [],
-                "obo:GEO_000000117": [],
-                "obo:GEO_000000183": [],
-                "obo:GEO_000000263": [],
-                "obo:GEO_000000064": [],
-                "obo:GEO_000000228": [],
                 "obo:GEO_000000199": [],
-                "obo:GEO_000000028": [],
-                "obo:GEO_000000079": [],
-                "obo:GEO_000000075": [],
-                "obo:GEO_000000161": [],
-                "obo:GEO_000000266": [],
-                "obo:GEO_000000249": [],
-                "obo:GEO_000000244": [],
-                "obo:GEO_000000046": [],
-                "obo:GEO_000000042": [],
-                "obo:GEO_000000269": [],
-                "obo:GEO_000000204": [],
-                "obo:GEO_000000216": [],
-                "obo:GEO_000000268": [],
-                "obo:GEO_000000090": [],
-                "obo:GEO_000000200": [],
-                "obo:GEO_000000206": [],
-                "obo:GEO_000000252": [],
-                "obo:GEO_000000045": [],
-                "obo:GEO_000000191": [],
-                "obo:GEO_000000237": [],
-                "obo:GEO_000000091": [],
-                "obo:GEO_000000104": [],
-                "obo:GEO_000000227": [],
-                "obo:GEO_000000177": [],
-                "obo:GEO_000000145": [],
-                "obo:GEO_000000226": [],
-                "obo:GEO_000000168": [],
+                "obo:GEO_000000095": [],
+                "obo:GEO_000000261": [],
+                "obo:GEO_000000142": [],
+                "obo:GEO_000000043": [],
                 "obo:GEO_000000150": [],
-                "obo:GEO_000000274": [],
-                "obo:GEO_000000048": [],
-                "obo:GEO_000000067": [],
+                "obo:GEO_000000047": [],
+                "obo:GEO_000000148": [],
+                "obo:GEO_000000036": [],
                 "obo:GEO_000000233": [],
-                "obo:GEO_000000071": [],
-                "obo:GEO_000000198": [],
-                "obo:GEO_000000110": [],
-                "obo:GEO_000000129": [],
-                "obo:GEO_000000159": [],
-                "obo:GEO_000000234": [],
-                "obo:GEO_000000215": [],
-                "obo:GEO_000000068": [],
-                "obo:GEO_000000076": [],
-                "obo:GEO_000000258": [],
-                "obo:GEO_000000236": [],
-                "obo:GEO_000000264": [],
-                "obo:GEO_000000238": [],
-                "obo:GEO_000000102": [],
-                "obo:GEO_000000093": [],
-                "obo:GEO_000000243": [],
-                "obo:GEO_000000172": [],
-                "obo:GEO_000000098": [],
-                "obo:GEO_000000270": [],
-                "obo:GEO_000000125": [],
-                "obo:GEO_000000267": [],
-                "obo:GEO_000000158": [],
-                "obo:GEO_000000174": [],
-                "obo:GEO_000000131": [],
+                "obo:GEO_000000171": [],
+                "obo:GEO_000000067": [],
+                "obo:GEO_000000120": [],
+                "obo:GEO_000000161": [],
+                "obo:GEO_000000222": [],
+                "obo:GEO_000000094": [],
+                "obo:GEO_000000082": [],
+                "obo:GEO_000000060": [],
+                "obo:GEO_000000091": [],
+                "obo:GEO_000000103": [],
+                "obo:GEO_000000246": [],
+                "obo:GEO_000000253": [],
+                "obo:GEO_000000156": [],
+                "obo:GEO_000000254": [],
+                "obo:GEO_000000045": [],
+                "obo:GEO_000000054": [],
+                "obo:GEO_000000256": [],
+                "obo:GEO_000000080": [],
                 "obo:GEO_000000195": [],
                 "obo:GEO_000000027": [],
+                "obo:GEO_000000152": [],
+                "obo:GEO_000000112": [],
+                "obo:GEO_000000208": [],
+                "obo:GEO_000000113": [],
+                "obo:GEO_000000097": [],
+                "obo:GEO_000000110": [],
+                "obo:GEO_000000228": [],
+                "obo:GEO_000000049": [],
+                "obo:GEO_000000183": [],
+                "obo:GEO_000000064": [],
+                "obo:GEO_000000087": [],
+                "obo:GEO_000000204": [],
+                "obo:GEO_000000200": [],
+                "obo:GEO_000000238": [],
+                "obo:GEO_000000232": [],
+                "obo:GEO_000000196": [],
+                "obo:GEO_000000275": [],
+                "obo:GEO_000000162": [],
+                "obo:GEO_000000260": [],
+                "obo:GEO_000000159": [],
+                "obo:GEO_000000203": [],
+                "obo:GEO_000000071": [],
+                "obo:GEO_000000128": [],
+                "obo:GEO_000000258": [],
                 "obo:GEO_000000201": [],
-                "obo:GEO_000000175": [],
-                "obo:GEO_000000044": [],
-                "obo:GEO_000000225": [],
-                "obo:GEO_000000143": [],
-                "obo:GEO_000000120": [],
-                "obo:GEO_000000030": [],
+                "obo:GEO_000000185": [],
+                "obo:GEO_000000176": [],
+                "obo:GEO_000000065": [],
+                "obo:GEO_000000124": [],
+                "obo:GEO_000000042": [],
+                "obo:GEO_000000263": [],
                 "obo:GEO_000000137": [],
-                "obo:GEO_000000127": [],
-                "obo:GEO_000000210": [],
-                "obo:GEO_000000142": [],
-                "obo:GEO_000000220": [],
-                "obo:GEO_000000034": [],
+                "obo:GEO_000000177": [],
+                "obo:GEO_000000079": [],
+                "obo:GEO_000000098": [],
+                "obo:GEO_000000126": [],
+                "obo:GEO_000000145": [],
+                "obo:GEO_000000076": [],
+                "obo:GEO_000000028": [],
                 "obo:GEO_000000070": [],
-                "obo:GEO_000000054": [],
-                "obo:GEO_000000055": [],
-                "obo:GEO_000000132": [],
-                "obo:GEO_000000155": [],
-                "obo:GEO_000000130": [],
-                "obo:GEO_000000082": [],
-                "obo:GEO_000000273": [],
-                "obo:GEO_000000041": [],
+                "obo:GEO_000000175": [],
+                "obo:GEO_000000109": [],
+                "obo:GEO_000000237": [],
+                "obo:GEO_000000127": [],
+                "obo:GEO_000000244": [],
+                "obo:GEO_000000154": [],
+                "obo:GEO_000000151": [],
+                "obo:GEO_000000048": [],
+                "obo:GEO_000000040": [],
+                "obo:GEO_000000234": [],
+                "obo:GEO_000000061": [],
+                "obo:GEO_000000089": [],
+                "obo:GEO_000000157": [],
+                "obo:GEO_000000179": [],
+                "obo:GEO_000000035": [],
+                "obo:GEO_000000215": [],
+                "obo:GEO_000000133": [],
+                "obo:GEO_000000034": [],
+                "obo:GEO_000000166": [],
+                "obo:GEO_000000249": [],
+                "obo:GEO_000000206": [],
+                "obo:GEO_000000075": [],
+                "obo:GEO_000000088": [],
+                "obo:GEO_000000264": [],
+                "obo:GEO_000000268": [],
+                "obo:GEO_000000267": [],
+                "obo:GEO_000000269": [],
+                "obo:GEO_000000224": [],
+                "obo:GEO_000000255": [],
+                "obo:GEO_000000102": [],
+                "obo:GEO_000000207": [],
+                "obo:GEO_000000077": [],
+                "obo:GEO_000000143": [],
+                "obo:GEO_000000058": [],
                 "obo:GEO_000000149": [],
-                "obo:GEO_000000197": [],
-                "obo:GEO_000000259": []
+                "obo:GEO_000000178": [],
+                "obo:GEO_000000111": [],
+                "obo:GEO_000000266": [],
+                "obo:GEO_000000134": [],
+                "obo:GEO_000000270": [],
+                "obo:GEO_000000059": [],
+                "obo:GEO_000000068": [],
+                "obo:GEO_000000174": [],
+                "obo:GEO_000000170": [],
+                "obo:GEO_000000186": [],
+                "obo:GEO_000000259": [],
+                "obo:GEO_000000090": [],
+                "obo:GEO_000000131": [],
+                "obo:GEO_000000247": [],
+                "obo:GEO_000000220": [],
+                "obo:GEO_000000211": [],
+                "obo:GEO_000000180": [],
+                "obo:GEO_000000212": [],
+                "obo:GEO_000000062": [],
+                "obo:GEO_000000093": [],
+                "obo:GEO_000000056": [],
+                "obo:GEO_000000081": [],
+                "obo:GEO_000000139": [],
+                "obo:GEO_000000052": [],
+                "obo:GEO_000000216": [],
+                "obo:GEO_000000153": [],
+                "obo:GEO_000000274": [],
+                "obo:GEO_000000123": [],
+                "obo:GEO_000000262": [],
+                "obo:GEO_000000104": [],
+                "obo:GEO_000000230": [],
+                "obo:GEO_000000140": [],
+                "obo:GEO_000000024": [],
+                "obo:GEO_000000158": [],
+                "obo:GEO_000000031": [],
+                "obo:GEO_000000245": [],
+                "obo:GEO_000000092": [],
+                "obo:GEO_000000132": [],
+                "obo:GEO_000000273": [],
+                "obo:GEO_000000210": [],
+                "obo:GEO_000000144": [],
+                "obo:GEO_000000030": [],
+                "obo:GEO_000000191": [],
+                "obo:GEO_000000085": [],
+                "obo:GEO_000000219": [],
+                "obo:GEO_000000046": [],
+                "obo:GEO_000000225": [],
+                "obo:GEO_000000138": [],
+                "obo:GEO_000000084": [],
+                "obo:GEO_000000041": [],
+                "obo:GEO_000000252": [],
+                "obo:GEO_000000044": [],
+                "obo:GEO_000000115": [],
+                "obo:GEO_000000168": [],
+                "obo:GEO_000000221": [],
+                "obo:GEO_000000147": [],
+                "obo:GEO_000000194": [],
+                "obo:GEO_000000055": [],
+                "obo:GEO_000000063": [],
+                "obo:GEO_000000129": [],
+                "obo:GEO_000000783": [],
+                "obo:GEO_000000165": [],
+                "obo:GEO_000000117": [],
+                "obo:GEO_000000169": [],
+                "obo:GEO_000000248": [],
+                "obo:GEO_000000226": [],
+                "obo:GEO_000000184": [],
+                "obo:GEO_000000135": [],
+                "obo:GEO_000000125": [],
+                "obo:GEO_000000086": [],
+                "obo:GEO_000000235": [],
+                "obo:GEO_000000223": [],
+                "obo:GEO_000000236": [],
+                "obo:GEO_000000130": [],
+                "obo:GEO_000000051": [],
+                "obo:GEO_000000163": [],
+                "obo:GEO_000000241": [],
+                "obo:GEO_000000039": [],
+                "obo:GEO_000000243": [],
+                "obo:GEO_000000231": [],
+                "obo:GEO_000000155": [],
+                "obo:GEO_000000198": [],
+                "obo:GEO_000000096": [],
+                "obo:GEO_000000172": [],
+                "obo:GEO_000000227": []
             },
             "member_of": [
                 "obo:GENEPIO_0001655"
@@ -9031,13 +9074,6 @@
                 "obo:ENVO_00002006"
             ]
         },
-        "obo:GENEPIO_0001646": {
-            "uiLabel": "past",
-            "id": "obo:GENEPIO_0001646",
-            "member_of": [
-                "obo:GENEPIO_0001645"
-            ]
-        },
         "obo:GENEPIO_0001647": {
             "uiLabel": "original submission",
             "id": "obo:GENEPIO_0001647",
@@ -9046,12 +9082,11 @@
             ]
         },
         "obo:GENEPIO_0001645": {
-            "definition": "This list of options describes the status or role of a particular identifier. Identifiers may be replaced over time, or particular objects may have a number of identifiers.",
-            "uiLabel": "curator isolate status",
+            "definition": "An identifier status describes the principle role of an identifier assigned to an entity by its curator or handler. An entity may have a number of identifiers assigned to it over time.  An identifier may be phased-out over time as can happen when transferred to another curator.",
+            "uiLabel": "identifier status",
             "id": "obo:GENEPIO_0001645",
             "members": {
                 "obo:GENEPIO_0001647": [],
-                "obo:GENEPIO_0001646": [],
                 "obo:GENEPIO_0001653": [],
                 "vcf:C25251": [],
                 "vcf:C25667": []
@@ -9061,7 +9096,8 @@
             ]
         },
         "obo:GENEPIO_0001642": {
-            "uiLabel": "specimen curator organization name",
+            "definition": "The curator organization name is the name of an organization that manages a given repository of entities (samples, isolates, sequences ...)",
+            "uiLabel": "categorical curator organization name",
             "id": "obo:GENEPIO_0001642",
             "members": {
                 "obo:GENEPIO_0001643": []
@@ -9642,6 +9678,14 @@
                 "obo:GEO_000000396"
             ]
         },
+        "obo:GEO_000000139": {
+            "datatype": "xmls:anyURI",
+            "uiLabel": "Jamaica",
+            "id": "obo:GEO_000000139",
+            "member_of": [
+                "obo:GEO_000000396"
+            ]
+        },
         "obo:GENEPIO_0001698": {
             "uiLabel": "serotype 4b",
             "id": "obo:GENEPIO_0001698",
@@ -10130,10 +10174,10 @@
                 "obo:GENEPIO_0001655"
             ]
         },
-        "obo:GEO_000000139": {
+        "obo:GEO_000000142": {
             "datatype": "xmls:anyURI",
-            "uiLabel": "Jamaica",
-            "id": "obo:GEO_000000139",
+            "uiLabel": "Jordan",
+            "id": "obo:GEO_000000142",
             "member_of": [
                 "obo:GEO_000000396"
             ]
@@ -10395,7 +10439,7 @@
             ]
         },
         "obo:GENEPIO_0001572": {
-            "definition": "Indicates how the knowledge derived from the project can be\napplied, and to what field(s).",
+            "definition": "Indicates how the knowledge derived from the project can be applied, and to what field(s).",
             "member_of": [
                 "obo:GENEPIO_0001655"
             ],
@@ -10562,14 +10606,6 @@
             },
             "member_of": [
                 "obo:GENEPIO_0001171"
-            ]
-        },
-        "obo:GEO_000000036": {
-            "datatype": "xmls:anyURI",
-            "uiLabel": "Armenia",
-            "id": "obo:GEO_000000036",
-            "member_of": [
-                "obo:GEO_000000396"
             ]
         },
         "ndf-rt:N0000181035": {
@@ -10816,9 +10852,9 @@
             ],
             "datatype": "xmls:anyURI",
             "hasExactSynonym": [
-                "Prince Edward Island",
+                "Ile-du-Prince-Edouard {language: French}",
                 "Prince Edward Isles",
-                "Ile-du-Prince-Edouard {language: French}"
+                "Prince Edward Island"
             ],
             "hasDbXref": [
                 "ISO3166-2:CA-PE"
@@ -11635,14 +11671,6 @@
                 "obo:PATO_0001894"
             ]
         },
-        "obo:GEO_000000208": {
-            "datatype": "xmls:anyURI",
-            "uiLabel": "Republic of Moldova",
-            "id": "obo:GEO_000000208",
-            "member_of": [
-                "obo:GEO_000000396"
-            ]
-        },
         "obo:GENEPIO_0001749": {
             "uiLabel": "proteome",
             "id": "obo:GENEPIO_0001749",
@@ -11987,14 +12015,6 @@
             },
             "member_of": [
                 "obo:GENEPIO_0001655"
-            ]
-        },
-        "obo:GEO_000000142": {
-            "datatype": "xmls:anyURI",
-            "uiLabel": "Jordan",
-            "id": "obo:GEO_000000142",
-            "member_of": [
-                "obo:GEO_000000396"
             ]
         },
         "obo:SYMP_0000480": {
@@ -12407,7 +12427,7 @@
             ],
             "datatype": "xmls:anyURI",
             "id": "obo:GEO_000000127",
-            "uiLabel": "Holy See"
+            "uiLabel": "Vatican City State"
         },
         "obo:ENVO_00000519": {
             "uiLabel": "agricultural terrace",
@@ -12476,7 +12496,7 @@
             ]
         },
         "vcard:Spouse": {
-            "uiLabel": "spouse",
+            "uiLabel": "spouse role",
             "id": "vcard:Spouse",
             "member_of": [
                 "obo:GENEPIO_0001251",
@@ -13609,6 +13629,14 @@
                 "obo:ExO_0000038"
             ]
         },
+        "obo:GEO_000000194": {
+            "datatype": "xmls:anyURI",
+            "uiLabel": "Oman",
+            "id": "obo:GEO_000000194",
+            "member_of": [
+                "obo:GEO_000000396"
+            ]
+        },
         "obo:UBERON_0001268": {
             "definition": "Transudate contained in the peritoneal cavity.",
             "uiLabel": "peritoneal fluid",
@@ -13616,6 +13644,21 @@
             "member_of": [
                 "obo:GENEPIO_0001636"
             ]
+        },
+        "obo:GAZ_00002564": {
+            "definition": "A prairie province in Canada. Saskatchewan is bounded on the west by Alberta, on the north by the Northwest Territories, on the east by Manitoba, and on the south by the States of Montana and North Dakota. It is divided into 18 census divisions according to Statistics Canada.",
+            "member_of": [
+                "sio:SIO_000661"
+            ],
+            "datatype": "xmls:anyURI",
+            "hasExactSynonym": [
+                "Saskatchewan"
+            ],
+            "hasDbXref": [
+                "ISO3166-2:CA-SK"
+            ],
+            "id": "obo:GAZ_00002564",
+            "uiLabel": "Province of Saskatchewan"
         },
         "obo:GEO_000000154": {
             "datatype": "xmls:anyURI",
@@ -13703,6 +13746,7 @@
             "id": "obo:GENEPIO_0001618"
         },
         "obo:GENEPIO_0001752": {
+            "definition": "clone-end sequencing project",
             "uiLabel": "clone ends",
             "id": "obo:GENEPIO_0001752",
             "member_of": [
@@ -13710,6 +13754,7 @@
             ]
         },
         "obo:GENEPIO_0001753": {
+            "definition": "exome resequencing project",
             "uiLabel": "exome",
             "id": "obo:GENEPIO_0001753",
             "member_of": [
@@ -13926,8 +13971,8 @@
             ],
             "datatype": "xmls:anyURI",
             "hasExactSynonym": [
-                "Newfoundland and Labrador",
                 "New Foundland",
+                "Newfoundland and Labrador",
                 "Newfoudland",
                 "Terre-Neuve-et-Labrador {language: French}"
             ],

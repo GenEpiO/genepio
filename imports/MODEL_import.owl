@@ -318,9 +318,14 @@
     <!-- http://purl.obolibrary.org/obo/IAO_0000429 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/IAO_0000429">
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0001557"/>
-        <rdfs:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000675"/>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/IAO_0000577"/>
     </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/IAO_0000577 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/IAO_0000577"/>
     
 
 
@@ -568,7 +573,7 @@ See http://www.w3.org/2003/01/geo/wgs84_pos</rdfs:comment>
     <!-- http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0000020 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0000020">
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0001559"/>
+        <rdfs:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_001319"/>
         <IFM:regExDisplayFormat rdf:datatype="http://www.w3.org/2001/XMLSchema#string">($area) $central-$station</IFM:regExDisplayFormat>
         <IFM:regExValidate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">/^(:&lt;area&gt;(\([0-9]{3})\)|[0-9]{3})(:&lt;sep&gt;[- ])?(:&lt;central&gt;\d{3})\2(:&lt;station&gt;\d{4})$/, $area $central $station</IFM:regExValidate>
         <rdfs:label xml:lang="en">phone number (North America)</rdfs:label>
@@ -581,7 +586,7 @@ See http://www.w3.org/2003/01/geo/wgs84_pos</rdfs:comment>
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0000024">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0001550"/>
         <rdfs:comment xml:lang="en">Subclasses here are types of string that have a particular syntactic structure or constraint to them that should be expressable using regular expressions.</rdfs:comment>
-        <rdfs:label xml:lang="en">string</rdfs:label>
+        <rdfs:label xml:lang="en">set of unordered strings</rdfs:label>
     </owl:Class>
     
 
@@ -1496,13 +1501,12 @@ A distance metric becomes possible if the items have units, e.g. 5cm or 10degree
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0001550">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0001528"/>
-        <rdfs:comment xml:lang="en">An unordered set has no intrinsic (semantic) ordering to its members.  The set can have a very large or infinite (open-ended) number of values.  
-
-Strings are only indirectly ordered insofar as they can be sorted by character.  That one email address or name comes before another is arbitrary.  Only numbers are directly ordered.
-
+        <rdfs:comment xml:lang="en">The set can have a very large or infinite (open-ended) number of values.  
 Because the elements are essentially open-ended, we can only offer a lookup-as-you-type function for selecting past-used items.
 
-Use &quot;Categorical&quot; for unordered sets where items are finite, pre-defined and not too numerous.</rdfs:comment>
+Use &quot;Categorical&quot; for unordered sets where items are finite, pre-defined and not too numerous.
+
+Strings are only indirectly ordered insofar as strings can be sorted by character - but this requires picking apar the name strings, an examination which has no inherent semantic relation to the things being named.  That one email address or name comes before another is arbitrary.  Only numbers are directly ordered.</rdfs:comment>
         <rdfs:label xml:lang="en">unordered set</rdfs:label>
     </owl:Class>
     
@@ -1520,7 +1524,7 @@ Use &quot;Categorical&quot; for unordered sets where items are finite, pre-defin
     <!-- http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0001553 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0001553">
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0001551"/>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/IAO_0000300"/>
         <IFM:regExValidate>/^([a-zAA-Z0-9 _-&apos;)*$/</IFM:regExValidate>
         <rdfs:label xml:lang="en">alphanumeric phrase</rdfs:label>
     </owl:Class>
@@ -1532,15 +1536,6 @@ Use &quot;Categorical&quot; for unordered sets where items are finite, pre-defin
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0001557">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0000024"/>
         <rdfs:label xml:lang="en">non-lingual</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0001559 -->
-
-    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0001559">
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0001557"/>
-        <rdfs:label xml:lang="en">phone number</rdfs:label>
     </owl:Class>
     
 
@@ -1637,19 +1632,9 @@ Use &quot;Categorical&quot; for unordered sets where items are finite, pre-defin
     
 
 
-    <!-- http://semanticscience.org/resource/SIO_000115 -->
-
-    <owl:Class rdf:about="http://semanticscience.org/resource/SIO_000115">
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0001550"/>
-    </owl:Class>
-    
-
-
     <!-- http://semanticscience.org/resource/SIO_000116 -->
 
-    <owl:Class rdf:about="http://semanticscience.org/resource/SIO_000116">
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0001551"/>
-    </owl:Class>
+    <owl:Class rdf:about="http://semanticscience.org/resource/SIO_000116"/>
     
 
 
@@ -1820,12 +1805,6 @@ One could create &quot;state name&quot; as an ontology term, etc.  Organizing st
     
 
 
-    <!-- http://semanticscience.org/resource/SIO_000675 -->
-
-    <owl:Class rdf:about="http://semanticscience.org/resource/SIO_000675"/>
-    
-
-
     <!-- http://semanticscience.org/resource/SIO_000767 -->
 
     <owl:Class rdf:about="http://semanticscience.org/resource/SIO_000767">
@@ -1843,12 +1822,17 @@ One could create &quot;state name&quot; as an ontology term, etc.  Organizing st
                 </owl:intersectionOf>
             </owl:Class>
         </owl:equivalentClass>
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0001557"/>
         <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A postal code is a geographic coordinate composed of a series of letters and/or digits appended to a postal address for the purpose of sorting mail.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
         <terms:description xml:lang="en">A postal code is a geographic coordinate composed of a series of letters and/or digits appended to a postal address for the purpose of sorting mail.</terms:description>
         <rdfs:label xml:lang="en">postal code</rdfs:label>
     </owl:Class>
+    
+
+
+    <!-- http://semanticscience.org/resource/SIO_001319 -->
+
+    <owl:Class rdf:about="http://semanticscience.org/resource/SIO_001319"/>
     
 
 

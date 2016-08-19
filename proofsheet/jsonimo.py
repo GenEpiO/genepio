@@ -1,9 +1,17 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-# Author: Damion Dooley
-# 
-# 
-# RDFLib sparql ISSUE: Doing a binding x on a (?x as ?y) expression bug leads to no such field being output.
+
+""" 
+****************************************************
+	
+ Author: Damion Dooley
+
+ 
+ RDFLib sparql ISSUE: Doing a binding x on a (?x as ?y) expression bug leads to no such field being output.
+
+**************************************************** 
+""" 
+	
 
 import re
 import json

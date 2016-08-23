@@ -278,7 +278,7 @@ function render(entityId, path = [], depth = 0, inherited = false, minimal = fal
 	
 	switch (entity['datatype']) {
 		case undefined: // Anonymous node
-			html += renderSection('<strong>Error: No datatype for ' + entityId + '(' + renderLabel(entity) + ') !</strong><ul><li>Hint: A picklist must be a subclass of "categorical tree specification".</li><li>Other fields need a "has primitive value spec" data type.</li></ul>')
+			html += renderSection('<strong>Error: No datatype for ' + entityId + '(' + renderLabel(entity) + ') !</strong><ul><li>Hint: A picklist must be a subclass of "categorical tree specification".</li><li>Other fields need a "has primitive value spec" data type.</li><li>or was this in an include file that failed to load?</li></ul>')
 			break;
 
 		case 'disjunction':
@@ -617,6 +617,8 @@ function renderContext(entity) {
 
 
 function renderLabel(entity) {
+	if (!entity)
+		return 'ERROR: Entity not defined'
 	if ('label' in entity && entity['label'] != entity['uiLabel'])
 		label = entity['label'] + ' - '
 	else

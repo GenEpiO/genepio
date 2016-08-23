@@ -491,14 +491,15 @@ class Ontology(object):
 			All items have and need a rdfs:Label, but this might not be what we want to display to users.
 			We will however always show rdfs:Label to users on mouseover of item
 			If no uiLabel, uiLabel is created as a copy of Label
-			Then uiLabel always exists, and is displayed on form.
+			Then uiLabel always exists, and is displayed on form. "label" itself isn't needed anymore, if it is the same as uiLabel
 		"""
 		if not 'uiLabel' in myDict: 
 			if not 'label' in myDict: # a data maintenance issue
 				myDict['label'] = '[no label]'
 				
 			myDict['uiLabel'] = myDict['label']
-		if myDict['label'] == myDict['uiLabel']: myDict.pop('label')
+		if 'label' in myDict:
+			if myDict['label'] == myDict['uiLabel']: myDict.pop('label')
 
 	############################## UTILITIES ###########################
 
@@ -592,8 +593,12 @@ class Ontology(object):
 
 		for result_row in imports: # a rdflib.query.ResultRow
 			file = result_row.import_file.rsplit('/',1)[1]
-			try:				
-				self.graph.parse("../imports/" + file)			
+			try:
+				if os.path.isfile( "../imports/" + file):
+					self.graph.parse("../imports/" + file)	
+				else:
+					print ('WARNING:' + "../imports/" + file + " could not be loaded!  Does its ontology include purl have a corresponding local file? \n")
+
 			except rdflib.exceptions.ParserError as e:
 				print (file + " needs to be in RDF OWL format!")			
 

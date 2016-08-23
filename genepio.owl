@@ -2824,6 +2824,7 @@ Clusters passing filter are represented by PF in analysis reports. Clusters pass
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0001075 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001075">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001704"/>
         <rdfs:subClassOf rdf:resource="http://snomed.info/sct/260820006"/>
         <rdfs:subClassOf>
             <owl:Restriction>
@@ -2851,6 +2852,7 @@ Clusters passing filter are represented by PF in analysis reports. Clusters pass
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001076">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001075"/>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001704"/>
+        <oboInOwl:hasDbXref>Snomed: Concept 260827009</oboInOwl:hasDbXref>
         <rdfs:label>o-antigen</rdfs:label>
     </owl:Class>
     
@@ -2860,7 +2862,7 @@ Clusters passing filter are represented by PF in analysis reports. Clusters pass
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001077">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001075"/>
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001704"/>
+        <oboInOwl:hasDbXref>Snomed: Concept 260823008</oboInOwl:hasDbXref>
         <rdfs:label>h-antigen</rdfs:label>
     </owl:Class>
     
@@ -2879,6 +2881,19 @@ Clusters passing filter are represented by PF in analysis reports. Clusters pass
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001080">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001079"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000136"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/NCBITaxon_590"/>
+                            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/sep_00042"/>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:label xml:lang="en">serovar salmonella</rdfs:label>
     </owl:Class>
     
@@ -2898,8 +2913,9 @@ Clusters passing filter are represented by PF in analysis reports. Clusters pass
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001082">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001080"/>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001639"/>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001704"/>
-        <rdfs:label xml:lang="en">serovar salmonella code</rdfs:label>
+        <rdfs:label xml:lang="en">salmonella antigenic formula</rdfs:label>
     </owl:Class>
     
 
@@ -6578,6 +6594,18 @@ Also a person would have a host identifier only AFTER they have been diagnosed a
     
 
 
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001639 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001639">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/IAO_0000300"/>
+        <obo:IAO_0000115 xml:lang="en">An antigenic formula is a string composed of codes representing categorized results of tests performed on various viral, bacterial or immune cell surface antigens.</obo:IAO_0000115>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
+        <rdfs:label xml:lang="en">antigenic formula</rdfs:label>
+        <rdfs:seeAlso>http://medical-dictionary.thefreedictionary.com/antigen</rdfs:seeAlso>
+    </owl:Class>
+    
+
+
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0001640 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001640">
@@ -7213,6 +7241,13 @@ Also a person would have a host identifier only AFTER they have been diagnosed a
                 <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001470"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/OBI_0001938"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001637"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <obo:GENEPIO_0000006 xml:lang="en">Epidemiology</obo:GENEPIO_0000006>
         <rdfs:label xml:lang="en">case epidemiology model</rdfs:label>
     </owl:Class>
@@ -7325,7 +7360,7 @@ Also a person would have a host identifier only AFTER they have been diagnosed a
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/OBI_0001938"/>
                 <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001677"/>
+                <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001679"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -7361,6 +7396,7 @@ Also a person would have a host identifier only AFTER they have been diagnosed a
                 </owl:someValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <oboInOwl:hasDbXref>Snomed: Concept 260824002</oboInOwl:hasDbXref>
         <rdfs:label xml:lang="en">k-antigen</rdfs:label>
     </owl:Class>
     

@@ -19,7 +19,6 @@
      xmlns:dc="http://purl.org/dc/elements/1.1/">
     <owl:Ontology rdf:about="http://purl.obolibrary.org/obo/genepio.owl">
         <owl:imports rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/imports/ERO_import.owl"/>
-                <owl:imports rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/imports/EFO_import.owl"/>
         <owl:imports rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/imports/ontology-metadata.owl"/>
         <owl:imports rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/imports/EO_import.owl"/>
         <owl:imports rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/imports/TYPON_import.owl"/>
@@ -28,15 +27,17 @@
         <owl:imports rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/imports/STATO_import.owl"/>
         <owl:imports rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/imports/IDO_import.owl"/>
         <owl:imports rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/imports/SYMP_import.owl"/>
+        <owl:imports rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/imports/OBI_import.owl"/>
         <owl:imports rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/imports/PATO_import.owl"/>
         <owl:imports rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/imports/UBERON_import.owl"/>
         <owl:imports rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/imports/NCBITaxon_import.owl"/>
+        <owl:imports rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/imports/EFO_import.owl"/>
         <owl:imports rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/imports/NDF-RT_import.owl"/>
         <owl:imports rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/imports/CHEBI_import.owl"/>
         <owl:imports rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/imports/GEO_import.owl"/>
         <owl:imports rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/imports/UO_import.owl"/>
         <owl:imports rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/imports/hardcoded.owl"/>
-        <owl:imports rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/imports/OBI_import.owl"/>
+        <owl:imports rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/imports/RO_import.owl"/>
         <owl:imports rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/imports/GAZETTEER_IRIDA_import.owl"/>
         <owl:imports rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/imports/EVS_import.owl"/>
         <owl:imports rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/imports/CHMO_import.owl"/>
@@ -250,6 +251,18 @@
     
 
 
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001739 -->
+
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001739">
+        <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/RO_0002083"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+        <obo:GENEPIO_0000006 xml:lang="en">after</obo:GENEPIO_0000006>
+        <obo:IAO_0000115 xml:lang="en">t1 after t2 iff:= t2 before_or_simulataneous_with t1 and not (t1 simultaeous_with t2)</obo:IAO_0000115>
+        <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://purl.obolibrary.org/obo/IAO_0000039 -->
 
     <rdf:Description rdf:about="http://purl.obolibrary.org/obo/IAO_0000039">
@@ -263,6 +276,14 @@
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/OBI_0001938">
         <rdfs:comment xml:lang="en">Damion comments: In GenEpiO, If an entity has more than one value specification (in a conjunction), then it means the entitiy is a complex entity that can have a value for each specification.  Minimum data requirements can be spelled out using some, min 1, max 10 etc. restrictions.</rdfs:comment>
     </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/RO_0002083 -->
+
+    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/RO_0002083">
+        <obo:IAO_0000115 xml:lang="en">t1 before t2 iff:= t1 before_or_simulataneous_with t2 and not (t1 simultaeous_with t2)</obo:IAO_0000115>
+    </rdf:Description>
     
 
 
@@ -13453,7 +13474,6 @@ In physical problems, the choice of origin is often arbitrary, meaning any choic
     </rdf:Description>
     <rdf:Description rdf:about="http://purl.obolibrary.org/obo/PATO_0002390">
         <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000428"/>
-        <obo:IAO_0000115 xml:lang="en">A length quality which is equal to the length of any straight line segment that passes from the center of a circle to any endpoint on the circular boundary. The radius is half of the diameter.</obo:IAO_0000115>
     </rdf:Description>
     <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0000016">
         <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000428"/>

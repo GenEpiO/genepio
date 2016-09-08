@@ -79,6 +79,12 @@
     
 
 
+    <!-- http://purl.obolibrary.org/obo/IAO_0000116 -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.obolibrary.org/obo/IAO_0000116"/>
+    
+
+
     <!-- http://purl.obolibrary.org/obo/IAO_0000118 -->
 
     <owl:AnnotationProperty rdf:about="http://purl.obolibrary.org/obo/IAO_0000118"/>
@@ -307,6 +313,12 @@
     
 
 
+    <!-- http://purl.obolibrary.org/obo/GEO_000000788 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GEO_000000788"/>
+    
+
+
     <!-- http://purl.obolibrary.org/obo/IAO_0000300 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/IAO_0000300">
@@ -332,7 +344,7 @@
     <!-- http://purl.obolibrary.org/obo/OBI_0000181 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/OBI_0000181">
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0001667"/>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/STATO_0000047"/>
     </owl:Class>
     
 
@@ -382,6 +394,15 @@
     
 
 
+    <!-- http://purl.obolibrary.org/obo/PATO_0002390 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/PATO_0002390">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0001481"/>
+        <rdfs:label xml:lang="en">radius</rdfs:label>
+    </owl:Class>
+    
+
+
     <!-- http://purl.obolibrary.org/obo/PR_000000001 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/PR_000000001"/>
@@ -391,6 +412,12 @@
     <!-- http://purl.obolibrary.org/obo/SO_0000149 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/SO_0000149"/>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/STATO_0000010 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/STATO_0000010"/>
     
 
 
@@ -547,11 +574,6 @@
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0000019">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0001478"/>
         <owl:disjointWith rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0000025"/>
-        <IFM:regExDisplayFormat xml:lang="en">/^(\d(\.\d+)?)$/, &apos;+\1&apos;</IFM:regExDisplayFormat>
-        <IFM:regExNormalize xml:lang="en">/^[N+](:&lt;lat&gt;\d(\.\d+)?)$/, $lat
-/^S(:&lt;lat&gt;\d(\.\d+)?)$/,  &apos;-&apos; + $lat</IFM:regExNormalize>
-        <IFM:regExValidate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">/^(:&lt;lat&gt;[-S+N])?(:&lt;degree&gt;[1-8]?[0-9](:&lt;decimal&gt;\.\d{1,6})?)$/, $lat$degree.$decimal
-/^(:&lt;lat&gt;[-S+N])?(:&lt;degree&gt;90(:&lt;decimal&gt;\.0{1,6})?))$/, $lat$degree.$decimal</IFM:regExValidate>
         <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">See http://www.csgnetwork.com/gpscoordconv.html
 
 See http://www.geomidpoint.com/latlon.html
@@ -587,8 +609,6 @@ See http://www.w3.org/2003/01/geo/wgs84_pos</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0000025">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0001478"/>
-        <IFM:regExValidate xml:lang="en">/^(:&lt;long&gt;[-W+E])?(:&lt;degree&gt;(1[0-7]|[1-9])?[0-9])(:&lt;decimal&gt;\.\d{1,6})?)$/, $long$degree.$decimal
-/^(:&lt;long&gt;[-W+E])?(:&lt;degree&gt;180(:&lt;decimal&gt;\.0{1,6})?)$,$long$degree.$decimal</IFM:regExValidate>
         <rdfs:label xml:lang="en">longitude</rdfs:label>
     </owl:Class>
     
@@ -793,7 +813,7 @@ See http://www.w3.org/2003/01/geo/wgs84_pos</rdfs:comment>
                 <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0001506"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:comment xml:lang="en">~= interval data (Damion)</rdfs:comment>
+        <rdfs:comment xml:lang="en">Damion Dooley&apos;s note: This should cover all interval data</rdfs:comment>
         <rdfs:label xml:lang="en">1D coordinate</rdfs:label>
     </owl:Class>
     
@@ -896,7 +916,7 @@ See http://www.w3.org/2003/01/geo/wgs84_pos</rdfs:comment>
                 <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/UO_0000001"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:comment xml:lang="en">A coordinate composed of the offset from the origin of the dimension to some point</rdfs:comment>
+        <rdfs:comment xml:lang="en">A coordinate composed of a given dimension and the offset from the origin of the dimension to some point</rdfs:comment>
         <rdfs:label xml:lang="en">linear coordinate</rdfs:label>
     </owl:Class>
     
@@ -913,9 +933,7 @@ See http://www.w3.org/2003/01/geo/wgs84_pos</rdfs:comment>
                 <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:comment xml:lang="en">As mentioned here:
-http://www.datypic.com/sc/xsd11/t-xsd_dateTimeStamp.html
-We could change this to dateTimeStamp if we need to enforce a time zone.</rdfs:comment>
+        <obo:IAO_0000116 xml:lang="en">As mentioned here: http://www.datypic.com/sc/xsd11/t-xsd_dateTimeStamp.html , we could change this to dateTimeStamp if we need to enforce a time zone?</obo:IAO_0000116>
         <rdfs:comment xml:lang="en">Some dates don&apos;t belong to a range other than the overall timeline.
 
 Other dates associated with a process fall within a range that has a start and end bound.</rdfs:comment>
@@ -973,15 +991,6 @@ Note: area could be derived from radius unit, e.g. pi*r^2 from polar coordinate 
     
 
 
-    <!-- http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0001501 -->
-
-    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0001501">
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0001481"/>
-        <rdfs:label xml:lang="en">radius</rdfs:label>
-    </owl:Class>
-    
-
-
     <!-- http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0001502 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0001502">
@@ -1029,6 +1038,13 @@ Also, A number could have negative significant digits.  1001, where the last dig
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/OBI_0001938"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/GEO_000000788"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/OBI_0001938"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
                 <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0000019"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -1039,31 +1055,7 @@ Also, A number could have negative significant digits.  1001, where the last dig
                 <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0000025"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/OBI_0001938"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0001510"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:label xml:lang="en">geo coordinate</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0001505 -->
-
-    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0001505">
-        <owl:equivalentClass rdf:resource="http://semanticscience.org/resource/SIO_000320"/>
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0001662"/>
-        <rdfs:comment xml:lang="en">Outstanding issue: How to attach units to each dimension?  This depends on the instance of the problem involving a dimension?
-
-Linear offset can be decimal or integer or complex etc.
-  - Can have a unit: meter, kilometer, foot, light-year
-
-Angular offset can be radians or degrees.
- - units?</rdfs:comment>
-        <rdfs:label xml:lang="en">n-dimensional coordinate system</rdfs:label>
     </owl:Class>
     
 
@@ -1071,7 +1063,7 @@ Angular offset can be radians or degrees.
     <!-- http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0001506 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0001506">
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0001505"/>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/STATO_0000010"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/OBI_0001938"/>
@@ -1087,7 +1079,7 @@ Angular offset can be radians or degrees.
     <!-- http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0001507 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0001507">
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0001505"/>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/STATO_0000010"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/OBI_0001938"/>
@@ -1100,28 +1092,10 @@ Angular offset can be radians or degrees.
     
 
 
-    <!-- http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0001508 -->
-
-    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0001508">
-        <owl:equivalentClass rdf:resource="http://semanticscience.org/resource/SIO_000327"/>
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0001507"/>
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0001512"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/OBI_0001938"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0001478"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:label xml:lang="en">2D radial coordinate system</rdfs:label>
-    </owl:Class>
-    
-
-
     <!-- http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0001509 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0001509">
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0001505"/>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/STATO_0000010"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/OBI_0001938"/>
@@ -1134,50 +1108,14 @@ Angular offset can be radians or degrees.
     
 
 
-    <!-- http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0001510 -->
-
-    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0001510">
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0001509"/>
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0001512"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/OBI_0001938"/>
-                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
-                <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0001504"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/OBI_0001938"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0001526"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:comment xml:lang="en">This coordinate can overlay onto a particular spheroid entity&apos;s surface.
-
-Note however that it would have to reference the particulars of a spheroid - its &quot;radius = fn(lat,long)&quot; formula - in order to yeild any distance metrics.</rdfs:comment>
-        <rdfs:label xml:lang="en">geographic coordinate system</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0001511 -->
-
-    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0001511">
-        <rdfs:comment xml:lang="en">A coordinate composed of offsets from origin in each dimension</rdfs:comment>
-        <rdfs:label xml:lang="en">cartesian coordinate system</rdfs:label>
-    </owl:Class>
-    
-
-
     <!-- http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0001512 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0001512">
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0001505"/>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/STATO_0000010"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/OBI_0001938"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
                 <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0001478"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -1185,7 +1123,7 @@ Note however that it would have to reference the particulars of a spheroid - its
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/OBI_0001938"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0001501"/>
+                <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/PATO_0002390"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">A coordinate system composed of a radius from the origin of one dimension combined with angular offsets from the origins of the remaining dimensions.</rdfs:comment>
@@ -1214,7 +1152,7 @@ Note however that it would have to reference the particulars of a spheroid - its
                 <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0001523"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:comment xml:lang="en">A set of points in n &gt; 2 dimensions that exist in a 2-dimensional cross-section.</rdfs:comment>
+        <rdfs:comment xml:lang="en">Damion Dooley&apos;s note: A set of points in n &gt; 2 dimensions that exist in a 2-dimensional cross-section.</rdfs:comment>
         <rdfs:label xml:lang="en">points in 2 dimensions</rdfs:label>
     </owl:Class>
     
@@ -1263,18 +1201,6 @@ Note however that it would have to reference the particulars of a spheroid - its
         </rdfs:subClassOf>
         <rdfs:label xml:lang="en">named area on Earth</rdfs:label>
     </owl:Class>
-    <owl:Axiom>
-        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0001516"/>
-        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/OBI_0001938"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onClass rdf:resource="http://semanticscience.org/resource/SIO_000503"/>
-            </owl:Restriction>
-        </owl:annotatedTarget>
-        <rdfs:comment xml:lang="en">In future, other ways of defining a surface area can be allowed, e.g. circumference.</rdfs:comment>
-    </owl:Axiom>
     
 
 
@@ -1329,9 +1255,9 @@ Note however that it would have to reference the particulars of a spheroid - its
                 <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0001507"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:comment xml:lang="en">This data type is for an item that can map to a point, line, set or area on a surface (2 dimensional space) or to the surface itself.  It can be a slice of a higher dimensional space.
+        <obo:IAO_0000115 xml:lang="en">This data type is for an item that can map to a point, line, set or area on a surface (2 dimensional space) or to the surface itself.  It can be a slice of a higher dimensional space.
 
-It can be defined by a cartesian or radial coordinate system.</rdfs:comment>
+It can be defined by a cartesian or radial coordinate system.</obo:IAO_0000115>
         <rdfs:label xml:lang="en">2D space</rdfs:label>
     </owl:Class>
     
@@ -1341,9 +1267,9 @@ It can be defined by a cartesian or radial coordinate system.</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0001524">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0001523"/>
-        <rdfs:comment xml:lang="en">Wikipedia: &quot;In mathematics, a plane is a flat, two-dimensional surface. A plane is the two-dimensional analogue of a point (zero dimensions), a line (one dimension) and three-dimensional space. Planes can arise as subspaces of some higher-dimensional space, as with the walls of a room, or they may enjoy an independent existence in their own right, as in the setting of Euclidean geometry.&quot;
+        <obo:IAO_0000115 xml:lang="en">Wikipedia: &quot;In mathematics, a plane is a flat, two-dimensional surface. A plane is the two-dimensional analogue of a point (zero dimensions), a line (one dimension) and three-dimensional space. Planes can arise as subspaces of some higher-dimensional space, as with the walls of a room, or they may enjoy an independent existence in their own right, as in the setting of Euclidean geometry.&quot;
 
-&quot;When working exclusively in two-dimensional Euclidean space, the definite article is used, so, the plane refers to the whole space.&quot;</rdfs:comment>
+&quot;When working exclusively in two-dimensional Euclidean space, the definite article is used, so, the plane refers to the whole space.&quot;</obo:IAO_0000115>
         <rdfs:label xml:lang="en">plane</rdfs:label>
     </owl:Class>
     
@@ -1508,7 +1434,7 @@ Strings are only indirectly ordered insofar as strings can be sorted by characte
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0001551">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0000024"/>
-        <rdfs:label xml:lang="en">lingual</rdfs:label>
+        <rdfs:label xml:lang="en">lingual set</rdfs:label>
     </owl:Class>
     
 
@@ -1527,7 +1453,7 @@ Strings are only indirectly ordered insofar as strings can be sorted by characte
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0001557">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0000024"/>
-        <rdfs:label xml:lang="en">non-lingual</rdfs:label>
+        <rdfs:label xml:lang="en">non-lingual set</rdfs:label>
     </owl:Class>
     
 
@@ -1535,24 +1461,7 @@ Strings are only indirectly ordered insofar as strings can be sorted by characte
     <!-- http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0001662 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0001662">
-        <rdfs:label xml:lang="en">abstract n-dimensional specification</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0001667 -->
-
-    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0001667">
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0001481"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/OBI_0001938"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0000017"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:comment xml:lang="en">Damion note: A count is an observation or measurable, rather than a calculated result.  Allow for hypotheticals too!</rdfs:comment>
-        <rdfs:label xml:lang="en">count</rdfs:label>
+        <rdfs:label xml:lang="en">immaterial n-dimensional entity</rdfs:label>
     </owl:Class>
     
 
@@ -1627,61 +1536,6 @@ Strings are only indirectly ordered insofar as strings can be sorted by characte
     <!-- http://semanticscience.org/resource/SIO_000116 -->
 
     <owl:Class rdf:about="http://semanticscience.org/resource/SIO_000116"/>
-    
-
-
-    <!-- http://semanticscience.org/resource/SIO_000320 -->
-
-    <owl:Class rdf:about="http://semanticscience.org/resource/SIO_000320">
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0001662"/>
-        <obo:IAO_0000412 rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
-        <terms:description xml:lang="en">A coordinate system is a specification for spatial location that uses a set of numbers, or coordinates, to uniquely determine the position of a point or other geometric element.</terms:description>
-        <rdfs:label xml:lang="en">coordinate system</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://semanticscience.org/resource/SIO_000321 -->
-
-    <owl:Class rdf:about="http://semanticscience.org/resource/SIO_000321">
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0001507"/>
-        <obo:IAO_0000412 rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
-        <terms:description xml:lang="en">A Cartesian coordinate system specifies each point uniquely in a plane by a pair of numerical coordinates, which are the signed distances from the point to two fixed perpendicular directed lines, measured in the same unit of length.</terms:description>
-        <rdfs:label xml:lang="en">cartesian coordinate system</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://semanticscience.org/resource/SIO_000327 -->
-
-    <owl:Class rdf:about="http://semanticscience.org/resource/SIO_000327">
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0001507"/>
-        <obo:IAO_0000412 rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
-        <terms:description xml:lang="en">A polar coordinate system is a two-dimensional coordinate system in which each point on a plane is determined by a distance from a fixed point and an angle from a fixed direction.</terms:description>
-        <rdfs:label xml:lang="en">polar coordinate system</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://semanticscience.org/resource/SIO_000329 -->
-
-    <owl:Class rdf:about="http://semanticscience.org/resource/SIO_000329">
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0001509"/>
-        <obo:IAO_0000412 rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
-        <terms:description xml:lang="en">A cylindrical coordinate system is a three-dimensional coordinate system that specifies point positions by the distance from a chosen reference axis, the direction from the axis relative to a chosen reference direction, and the distance from a chosen reference plane perpendicular to the axis.</terms:description>
-        <rdfs:label xml:lang="en">cylindrical coordinate system</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://semanticscience.org/resource/SIO_000330 -->
-
-    <owl:Class rdf:about="http://semanticscience.org/resource/SIO_000330">
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0001509"/>
-        <obo:IAO_0000412 rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
-        <terms:description xml:lang="en">A spherical coordinate system is a coordinate system for three-dimensional space where the position of a point is specified by three numbers: the radial distance of that point from a fixed origin, its polar angle measured from a fixed zenith direction, and the azimuth angle of its orthogonal projection on a reference plane that passes through the origin and is orthogonal to the zenith, measured from a fixed reference direction on that plane.</terms:description>
-        <rdfs:label xml:lang="en">spherical coordinate system</rdfs:label>
-    </owl:Class>
     
 
 

@@ -1,0 +1,299 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY foaf "http://xmlns.com/foaf/0.1/" >
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY obo "http://purl.obolibrary.org/obo/" >
+    <!ENTITY dc "http://purl.org/dc/elements/1.1/" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY oboInOwl "http://www.geneontology.org/formats/oboInOwl#" >
+    <!ENTITY apollo_sv "http://purl.obolibrary.org/obo/apollo_sv.owl/" >
+]>
+
+<rdf:RDF xmlns="http://purl.obolibrary.org/obo/GENEPIO/imports/APOLLO_SV_import.owl#"
+     xml:base="http://purl.obolibrary.org/obo/GENEPIO/imports/APOLLO_SV_import.owl"
+     xmlns:obo="http://purl.obolibrary.org/obo/"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:apollo_sv="&obo;apollo_sv.owl/"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <owl:Ontology rdf:about="http://purl.obolibrary.org/obo/GENEPIO/imports/APOLLO_SV_import.owl"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.obolibrary.org/obo/IAO_0000115">
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">definition</rdfs:label>
+        <rdfs:label xml:lang="en">definition</rdfs:label>
+        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000122"/>
+    </owl:AnnotationProperty>
+    <owl:AnnotationProperty rdf:about="http://purl.obolibrary.org/obo/IAO_0000412">
+        <rdfs:label xml:lang="en">imported from</rdfs:label>
+    </owl:AnnotationProperty>
+    <owl:AnnotationProperty rdf:about="http://purl.obolibrary.org/obo/IAO_0000114">
+        <rdfs:label xml:lang="en">has curation status</rdfs:label>
+    </owl:AnnotationProperty>
+    <owl:AnnotationProperty rdf:about="http://purl.obolibrary.org/obo/IAO_0000119">
+        <rdfs:label xml:lang="en">definition source</rdfs:label>
+        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000122"/>
+    </owl:AnnotationProperty>
+    <owl:AnnotationProperty rdf:about="http://purl.obolibrary.org/obo/IAO_0000111">
+        <rdfs:label xml:lang="en">editor preferred term</rdfs:label>
+    </owl:AnnotationProperty>
+    
+
+    <!-- http://www.w3.org/2000/01/rdf-schema#comment -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2000/01/rdf-schema#comment"/>
+    
+
+
+    <!-- http://www.w3.org/2000/01/rdf-schema#label -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2000/01/rdf-schema#label"/>
+    
+
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+
+
+    <!-- http://purl.obolibrary.org/obo/APOLLO_SV_00000173 -->
+
+    <owl:Class rdf:about="&obo;APOLLO_SV_00000173">
+        <rdfs:label xml:lang="en">census</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;IAO_0000100"/>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&obo;IAO_0000100"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&obo;BFO_0000051"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="&obo;APOLLO_SV_00000032"/>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="&obo;IAO_0000136"/>
+                                        <owl:someValuesFrom>
+                                            <owl:Class>
+                                                <owl:intersectionOf rdf:parseType="Collection">
+                                                    <rdf:Description rdf:about="&obo;BFO_0000001"/>
+                                                    <owl:Restriction>
+                                                        <owl:onProperty rdf:resource="&obo;BFO_0000108"/>
+                                                        <owl:someValuesFrom rdf:resource="&obo;BFO_0000038"/>
+                                                    </owl:Restriction>
+                                                    <owl:Restriction>
+                                                        <owl:onProperty rdf:resource="&obo;RO_0001025"/>
+                                                        <owl:someValuesFrom rdf:resource="&obo;BFO_0000006"/>
+                                                    </owl:Restriction>
+                                                </owl:intersectionOf>
+                                            </owl:Class>
+                                        </owl:someValuesFrom>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <apollo_sv:APOLLO_SV_0000040 rdf:datatype="&xsd;string">CensusData</apollo_sv:APOLLO_SV_0000040>
+        <obo:IAO_0000117 xml:lang="en">Mathias Brochhausen</obo:IAO_0000117>
+        <obo:IAO_0000115 xml:lang="en">The count of a specific entity in a specified region at a specified time.</obo:IAO_0000115>
+    </owl:Class>
+    
+
+    <!-- http://purl.obolibrary.org/obo/APOLLO_SV_00000032 -->
+
+    <owl:Class rdf:about="&obo;APOLLO_SV_00000032">
+        <rdfs:label xml:lang="en">count</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&obo;IAO_0000027"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&obo;OBI_0000312"/>
+                        <owl:someValuesFrom rdf:resource="&obo;APOLLO_SV_00000033"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="&obo;IAO_0000109"/>
+        <apollo_sv:APOLLO_SV_0000040 rdf:datatype="&xsd;string">count</apollo_sv:APOLLO_SV_0000040>
+        <obo:IAO_0000115 xml:lang="en">A measurement datum that is the output of counting.</obo:IAO_0000115>
+        <obo:IAO_0000117>Mathias Brochhausen</obo:IAO_0000117>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/APOLLO_SV_00000018 -->
+
+    <owl:Class rdf:about="&obo;APOLLO_SV_00000018">
+        <rdfs:label xml:lang="en">count of simulated susceptible population</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;APOLLO_SV_00000032"/>
+        <obo:IAO_0000117>Mathias Brochhausen</obo:IAO_0000117>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/APOLLO_SV_00000019 -->
+
+    <owl:Class rdf:about="&obo;APOLLO_SV_00000019">
+        <rdfs:label xml:lang="en">count of simulated exposed population</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;APOLLO_SV_00000032"/>
+        <obo:IAO_0000117>Mathias Brochhausen</obo:IAO_0000117>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/APOLLO_SV_00000020 -->
+
+    <owl:Class rdf:about="&obo;APOLLO_SV_00000020">
+        <rdfs:label xml:lang="en">count of simulated contagious population</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;APOLLO_SV_00000032"/>
+        <obo:IAO_0000117>Mathias Brochhausen</obo:IAO_0000117>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/APOLLO_SV_00000021 -->
+
+    <owl:Class rdf:about="&obo;APOLLO_SV_00000021">
+        <rdfs:label xml:lang="en">count of simulated resistant population</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;APOLLO_SV_00000032"/>
+        <obo:IAO_0000117>Mathias Brochhausen</obo:IAO_0000117>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/APOLLO_SV_00000022 -->
+
+    <owl:Class rdf:about="&obo;APOLLO_SV_00000022">
+        <rdfs:label xml:lang="en">count of simulated population</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;APOLLO_SV_00000032"/>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&obo;APOLLO_SV_00000032"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&obo;IAO_0000136"/>
+                        <owl:someValuesFrom rdf:resource="&obo;APOLLO_SV_00000031"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <obo:IAO_0000117>Mathias Brochhausen</obo:IAO_0000117>
+        <rdfs:comment xml:lang="en">MW: I know this causes problems with our set-theoretic definition.  Unfortunately the compartmental models produce fractional counts at each of their time steps, including the final step.  
+
+Any ideas?  I’ve considered and rejected allowing individual organisms to be fractional.  Perhaps if we just replace the term “cardinality” in the definition with ‘computed size’
+</rdfs:comment>
+        <obo:IAO_0000115 xml:lang="en">The count of (simulated organisms) in a simulated population.</obo:IAO_0000115>
+    </owl:Class>
+    
+    <!-- http://purl.obolibrary.org/obo/APOLLO_SV_00000098 -->
+
+    <owl:Class rdf:about="&obo;APOLLO_SV_00000098">
+        <rdfs:label xml:lang="en">count of contagious population</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;APOLLO_SV_00000032"/>
+        <obo:IAO_0000115 xml:lang="en">The count of individuals in a contagious population (empirical or virtual).</obo:IAO_0000115>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/APOLLO_SV_00000099 -->
+
+    <owl:Class rdf:about="&obo;APOLLO_SV_00000099">
+        <rdfs:label xml:lang="en">count of resistant population</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;APOLLO_SV_00000032"/>
+        <obo:IAO_0000115 xml:lang="en">The count of individuals in a resistant population (empirical or virtual).</obo:IAO_0000115>
+    </owl:Class>
+    
+
+
+
+    <!-- http://purl.obolibrary.org/obo/APOLLO_SV_00000497 -->
+
+    <owl:Class rdf:about="&obo;APOLLO_SV_00000497">
+        <rdfs:label xml:lang="en">count of disease cases</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;APOLLO_SV_00000032"/>
+        <apollo_sv:APOLLO_SV_0000040 rdf:datatype="&xsd;string">CaseCount</apollo_sv:APOLLO_SV_0000040>
+        <obo:IAO_0000117>Matthew Diller</obo:IAO_0000117>
+        <obo:IAO_0000117>William R. Hogan</obo:IAO_0000117>
+        <obo:IAO_0000115 xml:lang="en">A count of individuals in a population who meet the criteria of some case definition during some time interval.</obo:IAO_0000115>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/APOLLO_SV_00000498 -->
+
+    <owl:Class rdf:about="&obo;APOLLO_SV_00000498">
+        <rdfs:label xml:lang="en">count of cases in an epidemic</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;APOLLO_SV_00000497"/>
+        <apollo_sv:APOLLO_SV_0000040 rdf:datatype="&xsd;string">EpidemicCaseCounts</apollo_sv:APOLLO_SV_0000040>
+        <obo:IAO_0000115 xml:lang="en">A count of disease cases in an infected population that meet the case definition criteria within a particular epidemic interval.</obo:IAO_0000115>
+        <obo:IAO_0000117>William R. Hogan</obo:IAO_0000117>
+        <obo:IAO_0000117>Matthew Diller</obo:IAO_0000117>
+    </owl:Class>
+
+
+
+    <!-- http://purl.obolibrary.org/obo/APOLLO_SV_00000240 -->
+
+    <owl:Class rdf:about="&obo;APOLLO_SV_00000240">
+        <rdfs:label xml:lang="en">census reference date</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;IAO_0000030"/>
+        <obo:IAO_0000600 xml:lang="en">A information content entity that specifies the date of a census.</obo:IAO_0000600>
+        <obo:IAO_0000117 xml:lang="en">Mathias Brochhausen</obo:IAO_0000117>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/APOLLO_SV_00000153 -->
+
+    <owl:Class rdf:about="&obo;APOLLO_SV_00000153">
+        <rdfs:label xml:lang="en">population census</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&obo;APOLLO_SV_00000173"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&obo;IAO_0000136"/>
+                        <owl:someValuesFrom rdf:resource="&obo;PCO_0000001"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&obo;OBI_0000312"/>
+                        <owl:someValuesFrom rdf:resource="&obo;APOLLO_SV_00000152"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&obo;OBI_0000312"/>
+                        <owl:allValuesFrom rdf:resource="&obo;APOLLO_SV_00000152"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="&obo;APOLLO_SV_00000173"/>
+        <obo:IAO_0000115 xml:lang="en">The outcome of a population survey.</obo:IAO_0000115>
+    </owl:Class>
+    
+
+
+</rdf:RDF>

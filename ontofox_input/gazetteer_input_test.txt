@@ -1,22 +1,25 @@
 [URI of the OWL(RDF/XML) output file]
-http://purl.obolibrary.org/obo/GENEPIO/imports/IDO_import.owl
+http://purl.obolibrary.org/obo/GENEPIO/imports/GAZETTEER_import.owl
 
 [Source ontology]
-IDO
+GAZ
 
 [Low level source term URIs]
-http://purl.obolibrary.org/obo/IDO_0000531 # host
-http://purl.obolibrary.org/obo/IDO_0000629 # host role
-http://purl.obolibrary.org/obo/IDO_0000569 # asymptomatic
+
+# UNITED STATES OF AMERICA
+# Most underlings aren't getting picked up because they are all operating with "located in" rather than "is a"
+
+http://purl.obolibrary.org/obo/GAZ_00002459 # USA (incl. Alaska, Hawaii, unincorporated territory)
+http://purl.obolibrary.org/obo/GAZ_00003956 # Unincorporated Territory (USA)
+includeAllChildren
+
+http://purl.obolibrary.org/obo/GAZ_00002521 # State of Alaska
+#subClassOf http://purl.obolibrary.org/obo/GENEPIO_0001811
+
 
 [Top level source term URIs and target direct superclass URIs]
-http://purl.obolibrary.org/obo/IDO_0000531
-#subClassOf http://purl.obolibrary.org/obo/OBI_0100026
-http://purl.obolibrary.org/obo/IDO_0000629
-#subClassOf http://purl.obolibrary.org/obo/BFO_0000023
+http://purl.obolibrary.org/obo/GAZ_00000448 # geographic location
 
-http://purl.obolibrary.org/obo/IDO_0000509 # organism population
-includeAllChildren
 
 [Source term retrieval setting]
 includeAllIntermediates
@@ -24,6 +27,7 @@ includeAllIntermediates
 [Source annotation URIs]
 http://www.w3.org/2000/01/rdf-schema#label
 http://www.w3.org/2000/01/rdf-schema#comment
+
 
 http://purl.obolibrary.org/obo/IAO_0000111 # editor prefered label
 http://purl.obolibrary.org/obo/IAO_0000114 # curation status
@@ -38,5 +42,10 @@ http://www.geneontology.org/formats/oboInOwl#hasNarrowSynonym
 http://www.geneontology.org/formats/oboInOwl#hasBroadSynonym
 http://www.geneontology.org/formats/oboInOwl#inSubset
 http://www.geneontology.org/formats/oboInOwl#hasAlternativeId
+
+#http://purl.obolibrary.org/obo/RO_0001025 #located in
+#mapTo http://www.w3.org/2000/01/rdf-schema#subClassOf
+#http://www.w3.org/2002/07/owl#NamedIndividual
+#mapTo http://www.w3.org/2002/07/owl#Class
 
 [Source annotation URIs to be excluded]

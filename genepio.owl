@@ -3880,10 +3880,11 @@ Clusters passing filter are represented by PF in analysis reports. Clusters pass
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001655"/>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/OBI_0000245"/>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/OBI_0000938"/>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0001516"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://semanticscience.org/resource/SIO_000093"/>
-                <owl:someValuesFrom rdf:resource="http://semanticscience.org/resource/SIO_000661"/>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0001025"/>
+                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/GEO_000000005"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">This list would be customized to include organizations local to the IRIDA software installation.  It is an example of a set of ontology terms that would best be organized by a central authority if  federated installations need to share investigator contact info for example.</rdfs:comment>
@@ -6172,12 +6173,12 @@ Also a person would have a host identifier only AFTER they have been diagnosed a
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0001618 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001618">
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001689"/>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001850"/>
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/PATO_0001894"/>
-        <obo:IAO_0000115 xml:lang="en">&apos;missing&apos; is a categorical choice recorded when a measurement value was known to be recorded in the past but the observed value cannot be located or retrieved.</obo:IAO_0000115>
+        <obo:GENEPIO_0000005 xml:lang="en">INSDC term (top level)</obo:GENEPIO_0000005>
+        <obo:IAO_0000115 xml:lang="en">&apos;missing&apos; is a categorical choice recorded when a measurement value was known to be recorded in the past but the observed value cannot be located or retrieved for some reason.</obo:IAO_0000115>
         <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
-        <oboInOwl:hasDbXref xml:lang="en">NCBI BioSample: missing</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001666"/>
+        <oboInOwl:hasDbXref rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001835"/>
         <rdfs:label xml:lang="en">missing</rdfs:label>
     </owl:Class>
     
@@ -6187,24 +6188,39 @@ Also a person would have a host identifier only AFTER they have been diagnosed a
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001619">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001850"/>
+        <obo:GENEPIO_0000005 xml:lang="en">INSDC term (top level)</obo:GENEPIO_0000005>
         <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000428"/>
         <obo:IAO_0000115 xml:lang="en">&apos;Not applicable&apos; is a categorical choice recorded when a measurable datum does not apply to a given context, as for example the measure of femur length for a patient with a missing limb.</obo:IAO_0000115>
         <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
-        <oboInOwl:hasDbXref xml:lang="en">NCBI BioSample: not applicable</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001666"/>
+        <oboInOwl:hasDbXref rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001835"/>
         <rdfs:label xml:lang="en">not applicable</rdfs:label>
     </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001619"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001666"/>
+        <obo:IAO_0000115 xml:lang="en">Indicates that information is inappropriate to report, can indicate that the standard itself fails to model or represent the information appropriately</obo:IAO_0000115>
+    </owl:Axiom>
     
 
 
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0001620 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001620">
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001850"/>
-        <obo:IAO_0000116 xml:lang="en">&apos;Not collected&apos; is a categorical choice recorded when a datum was not measured with respect to some entity during some process.</obo:IAO_0000116>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001618"/>
+        <obo:IAO_0000115 xml:lang="en">&apos;Not collected&apos; is a categorical choice recorded when a datum was not measured with respect to some entity during some process.</obo:IAO_0000115>
         <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
-        <oboInOwl:hasDbXref xml:lang="en">NCBI BioSample: not collected</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001666"/>
+        <oboInOwl:hasDbXref rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001835"/>
         <rdfs:label xml:lang="en">not collected</rdfs:label>
     </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001620"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001666"/>
+        <obo:IAO_0000115 xml:lang="en">Information of an expected format was not given because it has not been collected</obo:IAO_0000115>
+    </owl:Axiom>
     
 
 
@@ -7131,13 +7147,12 @@ Any categorical tree specification datum may have a &quot;categorical value spec
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0001662 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001662">
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001850"/>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001618"/>
         <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000428"/>
-        <obo:IAO_0000115 xml:lang="en">&apos;Not determined&apos; is a categorical choice recorded while the data for a given measurable datum has not finished being collected, is awaiting a conclusion, or has not yet been communicated.</obo:IAO_0000115>
+        <obo:IAO_0000115 xml:lang="en">&apos;In process&apos; is a categorical choice recorded while the data for a given measurable datum has not finished being collected, is awaiting a conclusion, or has not yet been communicated.</obo:IAO_0000115>
         <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
-        <oboInOwl:hasDbXref>NCBI BioSample: not determined</oboInOwl:hasDbXref>
         <oboInOwl:hasExactSynonym xml:lang="en">undetermined</oboInOwl:hasExactSynonym>
-        <rdfs:label xml:lang="en">not determined</rdfs:label>
+        <rdfs:label xml:lang="en">in process</rdfs:label>
     </owl:Class>
     
 
@@ -7178,6 +7193,19 @@ Any categorical tree specification datum may have a &quot;categorical value spec
     
 
 
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001666 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001666">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/MI_0489"/>
+        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000120"/>
+        <obo:IAO_0000115 xml:lang="en">The International Nucleotide Sequence Database Collaboration (INSDC) is a long-standing foundational initiative that operates between DDBJ, EMBL-EBI and NCBI. INSDC covers the spectrum of data raw reads, though alignments and assemblies to functional annotation, enriched with contextual information relating to samples and experimental configurations.</obo:IAO_0000115>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
+        <oboInOwl:hasDbXref>INSDC</oboInOwl:hasDbXref>
+        <rdfs:label xml:lang="en">International Nucleotide Database Collaboration (INSDC)</rdfs:label>
+    </owl:Class>
+    
+
+
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0001667 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001667">
@@ -7186,6 +7214,22 @@ Any categorical tree specification datum may have a &quot;categorical value spec
         <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
         <rdfs:label xml:lang="en">outcome of pregnancy associated with illness</rdfs:label>
     </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001668 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001668">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001618"/>
+        <oboInOwl:hasDbXref rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001666"/>
+        <rdfs:label xml:lang="en">not provided</rdfs:label>
+    </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001668"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001666"/>
+        <obo:IAO_0000115 xml:lang="en">Information of an expected format was not given, a value may be given at the later stage.</obo:IAO_0000115>
+    </owl:Axiom>
     
 
 
@@ -9434,6 +9478,25 @@ Generally de-identified data should include HIPAA patient privacy fields as indi
     
 
 
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001810 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001810">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001618"/>
+        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000120"/>
+        <obo:IAO_0000115 xml:lang="en">&apos;restricted access&apos; is a categorical choice recorded when the data for a given measurable datum is available but not shared publicly because of information privacy concerns.</obo:IAO_0000115>
+        <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
+        <oboInOwl:hasDbXref rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001666"/>
+        <rdfs:label xml:lang="en">restricted access</rdfs:label>
+    </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001810"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001666"/>
+        <obo:IAO_0000115 xml:lang="en">Information exists but can not be released openly because of privacy concerns.</obo:IAO_0000115>
+    </owl:Axiom>
+    
+
+
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0001811 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001811">
@@ -9893,13 +9956,15 @@ Generally de-identified data should include HIPAA patient privacy fields as indi
         <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000428"/>
         <obo:IAO_0000115 xml:lang="en">A datum status is the state of a measurable datum - whether it has been collected or determined, etc. - at some point in time (by default, the last known state) during a measurement process.
 
-A datum&apos;s information privacy constraints are defined elsewhere by way of the &quot;data protection role&quot;.
+A datum&apos;s information privacy constraints can be defined mainly by way of the &quot;data protection role&quot;.
 
-The datum status&apos;s given states (missing, recorded, etc.) may be accompanied by values that they are represented as in 3rd party databases by using the hasDbXref relation, e.g. &quot;hasDbXref &apos;NCBI Biosample: &apos;not collected&apos;&quot; 
+The datum status&apos;s given states (missing, recorded, etc.) may be accompanied by values that they are represented as in 3rd party databases by using the &quot;has database crossreference&quot; hasDbXref relation, e.g. &quot;hasDbXref &apos;NCBI Biosample: &apos;not collected&apos;&quot; 
 
-Note that a given datum&apos;s status value should not be mistaken for one of its datum values. A tricky example is that a hospital may report a patent&apos;s health status as &quot;not determined&quot;. Here they are reporting the metadata state of the datum, rather than the value of the datum, which may later be &quot;critical&quot; etc.</obo:IAO_0000115>
+Note that a given datum&apos;s status value is metadata, i.e. a statement about a particular datum in the case where no actual data entry or categorical choice for that datum has been made.</obo:IAO_0000115>
         <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
         <rdfs:label xml:lang="en">datum status</rdfs:label>
+        <rdfs:seeAlso xml:lang="en">INSDC missing value reporting terms:
+http://www.ebi.ac.uk/ena/about/missing-values-reporting</rdfs:seeAlso>
     </owl:Class>
     
 
@@ -9909,7 +9974,7 @@ Note that a given datum&apos;s status value should not be mistaken for one of it
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001851">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001850"/>
         <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000428"/>
-        <obo:IAO_0000115 xml:lang="en">A recorded datum is known to be available for retrieval.</obo:IAO_0000115>
+        <obo:IAO_0000115 xml:lang="en">A recorded datum is known to be available for retrieval. Any datum that has a recorded value has this for its metadata &quot;datum status&quot;</obo:IAO_0000115>
         <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
         <rdfs:label xml:lang="en">recorded</rdfs:label>
     </owl:Class>
@@ -9922,6 +9987,7 @@ Note that a given datum&apos;s status value should not be mistaken for one of it
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/ExO_0000038"/>
         <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000428"/>
         <obo:IAO_0000115 xml:lang="en">Patient is awaiting physician and/or assessment.</obo:IAO_0000115>
+        <obo:IAO_0000116 xml:lang="en">Very similar to &apos;datum status&apos; &apos;in process&apos; status.</obo:IAO_0000116>
         <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
         <oboInOwl:hasDbXref rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001837"/>
         <rdfs:label xml:lang="en">undetermined</rdfs:label>
@@ -9966,6 +10032,8 @@ Note that a given datum&apos;s status value should not be mistaken for one of it
         <owl:equivalentClass rdf:resource="http://semanticscience.org/resource/SIO_000664"/>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001655"/>
         <rdfs:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000415"/>
+        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000122"/>
+        <oboInOwl:hasSynonym xml:lang="en">country</oboInOwl:hasSynonym>
     </owl:Class>
     
 
@@ -10021,8 +10089,7 @@ Alternate definition: A geographic coordinate system is a 2 dimensional coordina
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001605"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </rdf:Description>
@@ -10335,7 +10402,7 @@ Depending on its context, hasDbXref annotations may point directly to metadata f
                 <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/GEO_000000396"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:comment xml:lang="en">Damion&apos;s note: There is an issue about &apos;country&apos; vs &apos;country name&apos;.  A country entity should have attribute or relationships to measurables - population, size, name, etc.  So e.g. &quot; &apos;country&apos; has_name some &apos;country name&apos; &quot;.
+        <rdfs:comment xml:lang="en">Damion Dooley&apos;s note: A &apos;sovereign state&apos; entity should have attribute or relationships to measurables - population, size, name, etc.  So e.g. &quot; &apos;country name&apos; inheres in some &apos;sovereign state&apos;&quot;.
 
 Also note historical name issue (Myanmar vs Burma) and diplomatic name issue (Taiwan vs &quot;Republic of China&quot;).  Both point to needing a single entity with multiple names.</rdfs:comment>
     </rdf:Description>
@@ -10713,41 +10780,41 @@ Angular offset can be radians or degrees.</rdfs:comment>
 
     <!-- http://purl.obolibrary.org/obo/STATO_0000013 -->
 
-    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/STATO_0000013">
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/STATO_0000013">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0001507"/>
-    </rdf:Description>
+    </owl:Class>
     
 
 
     <!-- http://purl.obolibrary.org/obo/STATO_0000015 -->
 
-    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/STATO_0000015">
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/STATO_0000015">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0001509"/>
-    </rdf:Description>
+    </owl:Class>
     
 
 
     <!-- http://purl.obolibrary.org/obo/STATO_0000016 -->
 
-    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/STATO_0000016">
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/STATO_0000016">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0001512"/>
-    </rdf:Description>
+    </owl:Class>
     
 
 
     <!-- http://purl.obolibrary.org/obo/STATO_0000022 -->
 
-    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/STATO_0000022">
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/STATO_0000022">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0001506"/>
-    </rdf:Description>
+    </owl:Class>
     
 
 
     <!-- http://purl.obolibrary.org/obo/STATO_0000024 -->
 
-    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/STATO_0000024">
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/STATO_0000024">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/IFM#IFM_0001509"/>
-    </rdf:Description>
+    </owl:Class>
     
 
 
@@ -11460,21 +11527,8 @@ In physical problems, the choice of origin is often arbitrary, meaning any choic
     <!-- http://semanticscience.org/resource/SIO_000664 -->
 
     <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_000664">
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001655"/>
         <rdfs:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000415"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://semanticscience.org/resource/SIO_000093"/>
-                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001338"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
     </rdf:Description>
-    <owl:Axiom>
-        <owl:annotatedSource rdf:resource="http://semanticscience.org/resource/SIO_000664"/>
-        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001655"/>
-        <obo:GENEPIO_0001763>lookup</obo:GENEPIO_0001763>
-    </owl:Axiom>
     
 
 
@@ -12128,19 +12182,67 @@ In physical problems, the choice of origin is often arbitrary, meaning any choic
     
 
 
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001367 -->
+
+    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001367">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001286"/>
+        <obo:RO_0001025 rdf:resource="http://purl.obolibrary.org/obo/GAZ_00002562"/>
+        <obo:RO_0002351 rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001368"/>
+        <obo:RO_0002351 rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001369"/>
+        <obo:RO_0002351 rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001370"/>
+        <obo:RO_0002351 rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001372"/>
+        <obo:RO_0002351 rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001373"/>
+        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000428"/>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
+        <rdfs:comment xml:lang="en">Damion Dooley&apos;s note: Here we are exploring the use of individuals/instances to describe local picklists for GenEpiO driven software.</rdfs:comment>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001368 -->
+
+    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001368">
+        <obo:RO_0002350 rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001367"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001369 -->
+
+    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001369">
+        <obo:RO_0002350 rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001367"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001370 -->
+
+    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001370">
+        <obo:RO_0002350 rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001367"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001372 -->
+
+    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001372">
+        <obo:RO_0002350 rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001367"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001373 -->
+
+    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001373">
+        <obo:RO_0002350 rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001367"/>
+    </rdf:Description>
+    
+
+
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0001589 -->
 
     <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001589">
         <rdfs:label xml:lang="en">United Nations</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001744 -->
-
-    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001744">
-        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001286"/>
-        <rdfs:label xml:lang="en">BC Fraser Valley Health Authority</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -12192,8 +12294,8 @@ In physical problems, the choice of origin is often arbitrary, meaning any choic
     <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GAZ_00003092">
         <rdfs:seeAlso>http://www.census.gov/econ/census/help/geography/regions_and_divisions.html</rdfs:seeAlso>
         <obo:IAO_0000119 xml:lang="en">United States Census Bureau</obo:IAO_0000119>
-        <obo:IAO_0000115 xml:lang="en">Census Regions and Divisions are groupings of States that subdivide the United States.</obo:IAO_0000115>
         <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
+        <obo:IAO_0000115 xml:lang="en">Census Regions and Divisions are groupings of States that subdivide the United States.</obo:IAO_0000115>
         <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000122"/>
     </rdf:Description>
     <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GAZ_00003093">

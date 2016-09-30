@@ -12,4 +12,4 @@ Soon we will have these key documents ready for consortium and public review:
 
 ## IRIDA ontology
 
-The Integrated Rapid Infectious Disease Analysis project (IRIDA, http://www.irida.ca) uses **genepio.owl** for most of its ontology. The **ifm.owl** and its dependent, **ifm_irida.owl** are highly experimental and not synchronized with the latest GenEpiO.  IFM stands for Interface Model Ontology, and this is our own effort to add information required to draft a user interface to present GenEpiO entity information for reporting and editing.  The ifm_irida.owl file adds IRIDA specific information to the user interface.
+The Integrated Rapid Infectious Disease Analysis project (IRIDA, http://www.irida.ca) uses **genepio.owl** for most of its ontology.

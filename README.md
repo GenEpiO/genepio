@@ -29,8 +29,8 @@ There are a number of ways to explore GenEpio's content:
   
 - An [introductory slideshow](https://github.com/GenEpiO/genepio/blob/gh-pages/GenEpiOConsortiumSlideDeckSept2016.pdf) is available.
 
-##Note that GenEpiO is under development (many terms have a curation status of "requires discussion") and its existing
-  content requires a few more editing passes for proper description of terms.##
+**Note that GenEpiO is under development (many terms have a curation status of "requires discussion") and its existing
+  content requires a few more editing passes for proper description of terms.**
           
 The [Wiki](https://github.com/GenEpiO/genepio/wiki) tab contains many details about getting involved in our Consortium; the [Issues](https://github.com/GenEpiO/genepio/issues) tab dives deep into particular design and implementation questions being resolved.
 

@@ -1,6 +1,6 @@
 ## GenEpiO
 
-The Genomic Epidemiology Application Ontology describes the genomics, laboratory, clinical and epidemiological contextual information required to support data sharing and integration for foodborne infectious disease surveillance and outbreak investigations.</h2>
+This is the GitHub repository for the Genomic Epidemiology Application Ontology project.</h2>
 
 ##Our Mission
           

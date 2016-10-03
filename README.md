@@ -6,7 +6,7 @@ Recognizing that GenEpiO encompasses many domains, we have formed a consortium f
 
 ##Check it out!
 
-There are a number of ways to explore GenEpio's content:
+There are a number of ways to explore GenEpiO's content:
 
 - GenEpiO on the [EBI Ontology Lookup Service](https://www.ebi.ac.uk/ols/ontologies/genepio) provides 
     a convenient way browse its hierarchy and search for terms.</li>

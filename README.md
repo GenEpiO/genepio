@@ -1,11 +1,5 @@
-## GenEpiO
-
 This is the GitHub repository for the Genomic Epidemiology Application Ontology project.</h2>
 
-##Our Mission
-          
-To increase the global interoperability of genomic epidemiology contextual information (genomics metadata, lab, clinical and epidemiology data) to support data sharing and integration for foodborne infectious disease surveillance outbreak investigations, as well as other public health activities. To achieve consensus and wide adoption, and to develop GenEpiO according to best practices, the consortium embraces collaborative development and open use/open source technology.
-   
 ##GenEpiO Consortium
 
 Recognizing that GenEpiO encompasses many domains, we have formed a consortium for enhancing its content via interested parties that need particular domain terminology. For more information on how to get involved, see the [GenEpiO Consortium](https://github.com/GenEpiO/genepio/wiki/GenEpiO-Consortium) Wiki page.
@@ -41,4 +35,4 @@ Stay in touch - to view the consortium's new email list, go to https://groups.go
 
 ## IRIDA ontology
 
-The Integrated Rapid Infectious Disease Analysis project (IRIDA, http://www.irida.ca) uses **genepio.owl** for most of its ontology.
+The Integrated Rapid Infectious Disease Analysis project (IRIDA, http://www.irida.ca) will be using **genepio.owl** for its application ontology.

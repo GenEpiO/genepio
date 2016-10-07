@@ -478,7 +478,6 @@ I believe time dependency relations (conditions) don&apos;t imply existence by t
         <owl:annotatedSource rdf:resource="http://evs.nci.nih.gov/ftp1/NDF-RT/NDF-RT.owl#N0000003449"/>
         <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
         <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001837"/>
-        <obo:IAO_0000115 xml:lang="en">Critical - Vital signs are unstable and not within normal limits. Patient may be unconscious. Indicators are unfavorable.</obo:IAO_0000115>
         <rdfs:label xml:lang="en">critical</rdfs:label>
     </owl:Axiom>
     <owl:Axiom>
@@ -630,6 +629,7 @@ I believe time dependency relations (conditions) don&apos;t imply existence by t
                 <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000428"/>
     </rdf:Description>
     
 
@@ -928,6 +928,15 @@ I believe time dependency relations (conditions) don&apos;t imply existence by t
     <rdf:Description rdf:about="http://purl.obolibrary.org/obo/EO_0007027">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001626"/>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001655"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/ERO_0001642 -->
+
+    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/ERO_0001642">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000071"/>
+        <oboInOwl:hasDbXref>NCBI SRA: ION_TORRENT</oboInOwl:hasDbXref>
     </rdf:Description>
     
 
@@ -2201,12 +2210,14 @@ I believe time dependency relations (conditions) don&apos;t imply existence by t
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001681"/>
         <obo:GENEPIO_0000001>Sequencing</obo:GENEPIO_0000001>
         <obo:GENEPIO_0000004>Platform</obo:GENEPIO_0000004>
-        <obo:GENEPIO_0000005>Standard Term</obo:GENEPIO_0000005>
+        <obo:GENEPIO_0000005>https://www.ncbi.nlm.nih.gov/books/NBK54984/table/SRA_Glossary_BK.T._platform_descriptor_t/</obo:GENEPIO_0000005>
         <obo:GENEPIO_0000007>User Input</obo:GENEPIO_0000007>
         <obo:GENEPIO_0000008>GENEPIO</obo:GENEPIO_0000008>
         <obo:IAO_0000112>Illumina (MiSeq, HiSeq), PacBio, Ion Torrent, (Roche 454), SOLiD ABI</obo:IAO_0000112>
+        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000428"/>
         <obo:IAO_0000115>Defined by sequencing method and instrumentation.</obo:IAO_0000115>
         <obo:IAO_0000119>GROUP: IRIDA Ontology (Emma)</obo:IAO_0000119>
+        <oboInOwl:hasDbXref>NCBI SRA: PLATFORM</oboInOwl:hasDbXref>
         <rdfs:label>sequencing platform</rdfs:label>
     </owl:Class>
     
@@ -2536,7 +2547,9 @@ Clusters passing filter are represented by PF in analysis reports. Clusters pass
         <obo:GENEPIO_0000005>from within &quot;Finishing strategy&quot; in GROUP: MIxS</obo:GENEPIO_0000005>
         <obo:GENEPIO_0000008>GENEPIO</obo:GENEPIO_0000008>
         <obo:IAO_0000112>standard draft or finished</obo:IAO_0000112>
+        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000428"/>
         <obo:IAO_0000115 xml:lang="en">&quot;Attempting to convey the relative integrity and reliability of the data, six levels or terms have been proposed and applied to describe genome sequences.&quot;   See subclass choices.</obo:IAO_0000115>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
         <obo:IAO_0000119>CITATION: Chain, P.S., Grafham, D.V., Fulton, R.S., Fitzgerald, M.G., Hostetler, J., Muzny, D., Ali, J., Birren, B., Bruce, D.C., Buhay, C., et al. (2009). Genomics. Genome project standards in a new era of sequencing. Science 326, 236-237.</obo:IAO_0000119>
         <rdfs:label xml:lang="en">assembly status</rdfs:label>
     </owl:Class>
@@ -2558,9 +2571,11 @@ Clusters passing filter are represented by PF in analysis reports. Clusters pass
         <obo:GENEPIO_0000004>Coverage</obo:GENEPIO_0000004>
         <obo:GENEPIO_0000005>from within &quot;Finishing strategy&quot; in GROUP: MIxS</obo:GENEPIO_0000005>
         <obo:GENEPIO_0000008>GENEPIO</obo:GENEPIO_0000008>
-        <obo:IAO_0000112>2x, 12x</obo:IAO_0000112>
+        <obo:IAO_0000112 rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">30</obo:IAO_0000112>
+        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000428"/>
         <obo:IAO_0000115>Coverage (read depth or depth) is the average number of reads representing a given nucleotide in the reconstructed sequence.</obo:IAO_0000115>
         <obo:IAO_0000119>URI: http://en.wikipedia.org/wiki/Shotgun_sequencing</obo:IAO_0000119>
+        <rdfs:comment xml:lang="en">Damion Dooley&apos;s note: Wikipedia defines calculation with: &quot;the length of the original genome (G), the number of reads(N), and the average read length(L) as N * L/G&quot;</rdfs:comment>
         <rdfs:label>read coverage</rdfs:label>
     </owl:Class>
     
@@ -5003,15 +5018,16 @@ In fact health status of people associated with an exposure event can change fro
         </rdfs:subClassOf>
         <obo:GENEPIO_0000001 xml:lang="en">Assembly QC</obo:GENEPIO_0000001>
         <obo:GENEPIO_0000008 xml:lang="en">GENEPIO</obo:GENEPIO_0000008>
-        <obo:IAO_0000115 xml:lang="en">The &apos;genome size ratio&apos; is a ratio of a sample&apos;s genome assembly size and the size of a given reference genome. 
+        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000428"/>
+        <obo:IAO_0000115 xml:lang="en">The &apos;genome size delta ratio&apos; is a ratio of the difference between a sample&apos;s genome assembly size and the size of a given reference genome, over the reference genome size. 
 
 The formula:
 
 | (reference_genome_size - assembly_genome_size) | / reference_genome_size
 
-If the ratio is too far from a quality control ratio that depends on the species in question, this indicates a bad assembly or a mis-identified sample.</obo:IAO_0000115>
+This yeilds a decimal / percentage ranging from 0 = exact length, to say .1 which is equivalent to a 10% variance.  If the ratio is too far from a quality control ratio that depends on the species in question, this indicates a bad assembly or a mis-identified sample.</obo:IAO_0000115>
         <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
-        <rdfs:label xml:lang="en">genome size ratio</rdfs:label>
+        <rdfs:label xml:lang="en">genome size delta ratio</rdfs:label>
     </owl:Class>
     
 
@@ -5036,10 +5052,11 @@ If the ratio is too far from a quality control ratio that depends on the species
         <obo:GENEPIO_0000001 xml:lang="en">Assembly QC</obo:GENEPIO_0000001>
         <obo:GENEPIO_0000007 xml:lang="en">user input</obo:GENEPIO_0000007>
         <obo:GENEPIO_0000008 xml:lang="en">GENEPIO</obo:GENEPIO_0000008>
-        <obo:IAO_0000115 xml:lang="en">This is the upper acceptable limit of the &apos;genome size ratio&apos; with respect to a particular species.
+        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000428"/>
+        <obo:IAO_0000115 xml:lang="en">This is the upper acceptable limit of the &apos;genome size delta ratio&apos; with respect to a particular species.
 
-For Salmonella a 0.1 variance in length between an assembly size and a reference genome size may be acceptable.  For E-coli a more generous 0.3 or .4 variance should be allowed, given the pathogenic subspecies’ highly dynamic genome.</obo:IAO_0000115>
-        <rdfs:label xml:lang="en">genome size ratio QC threshold</rdfs:label>
+For Salmonella a 0.10 variance in length between an assembly size and a reference genome size may be acceptable.  For E-coli a more generous 0.30 or .40 variance should be allowed, given the pathogenic subspecies’ highly dynamic genome.</obo:IAO_0000115>
+        <rdfs:label xml:lang="en">genome size delta ratio QC threshold</rdfs:label>
     </owl:Class>
     
 
@@ -5067,6 +5084,7 @@ For Salmonella a 0.1 variance in length between an assembly size and a reference
         <obo:GENEPIO_0000003 xml:lang="en">2000</obo:GENEPIO_0000003>
         <obo:GENEPIO_0000007 xml:lang="en">user input</obo:GENEPIO_0000007>
         <obo:GENEPIO_0000008 xml:lang="en">GENEPIO</obo:GENEPIO_0000008>
+        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000428"/>
         <obo:IAO_0000115 xml:lang="en">The contig N99 length QC threshold is the minimum length that a contig N99 or NG99 length datum can be for satisfactory QC.  This threshold avoids having too many gene coding regions prematurely clipped inside short contigs.  An assembly having 1% or more of its content in less than 2Kbp chunks is cause for concern. Bacterial genes are generally about 1Kbp in length.</obo:IAO_0000115>
         <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
         <rdfs:label xml:lang="en">contig N99 length QC threshold</rdfs:label>
@@ -5414,6 +5432,55 @@ A large contig count may indicate insufficient read coverage.</obo:IAO_0000115>
                 <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/OBI_0001889"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/OBI_0001938"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001807"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/OBI_0001938"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001921"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/OBI_0001938"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001940"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/OBI_0001938"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001965"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/OBI_0001938"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001973"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/OBI_0001938"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001994"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/OBI_0001938"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001995"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000428"/>
         <rdfs:comment xml:lang="en">Damion&apos;s comment: Right now there are issues with the organization of this entity&apos;s parts.  The principal investigator is an entity, and the name, email address and organization should be has_parts to a person with that role.  In fact name and contact info are generic to any homo sapien living and dead.  Such features should be inherited with any entity marked as a person.</rdfs:comment>
         <rdfs:label xml:lang="en">NCBI SRA model</rdfs:label>
@@ -5595,7 +5662,7 @@ BioSample_contact_information&quot;</rdfs:comment>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/OBI_0001884"/>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/OBI_0001892"/>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/OBI_0001899"/>
-        <rdfs:label xml:lang="en">other</rdfs:label>
+        <rdfs:label xml:lang="en">other material</rdfs:label>
     </owl:Class>
     
 
@@ -6291,12 +6358,6 @@ Also a person would have a host identifier only AFTER they have been diagnosed a
         <oboInOwl:hasDbXref rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001835"/>
         <rdfs:label xml:lang="en">not applicable</rdfs:label>
     </owl:Class>
-    <owl:Axiom>
-        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001619"/>
-        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
-        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001666"/>
-        <obo:IAO_0000115 xml:lang="en">Indicates that information is inappropriate to report, can indicate that the standard itself fails to model or represent the information appropriately</obo:IAO_0000115>
-    </owl:Axiom>
     
 
 
@@ -6310,12 +6371,6 @@ Also a person would have a host identifier only AFTER they have been diagnosed a
         <oboInOwl:hasDbXref rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001835"/>
         <rdfs:label xml:lang="en">not collected</rdfs:label>
     </owl:Class>
-    <owl:Axiom>
-        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001620"/>
-        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
-        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001666"/>
-        <obo:IAO_0000115 xml:lang="en">Information of an expected format was not given because it has not been collected</obo:IAO_0000115>
-    </owl:Axiom>
     
 
 
@@ -7319,12 +7374,6 @@ Any categorical tree specification datum may have a &quot;categorical value spec
         <oboInOwl:hasDbXref rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001666"/>
         <rdfs:label xml:lang="en">not provided</rdfs:label>
     </owl:Class>
-    <owl:Axiom>
-        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001668"/>
-        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
-        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001666"/>
-        <obo:IAO_0000115 xml:lang="en">Information of an expected format was not given, a value may be given at the later stage.</obo:IAO_0000115>
-    </owl:Axiom>
     
 
 
@@ -8751,6 +8800,7 @@ Structured vouchers include institution-codes (and optional collection-codes) ta
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001765">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000091"/>
         <obo:IAO_0000115 xml:lang="en">Standard draft: describing the minimum information needed for submission to a public database.</obo:IAO_0000115>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
         <rdfs:label xml:lang="en">1 - standard draft</rdfs:label>
     </owl:Class>
     
@@ -8761,6 +8811,7 @@ Structured vouchers include institution-codes (and optional collection-codes) ta
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001766">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000091"/>
         <obo:IAO_0000115 xml:lang="en">High quality draft: describing sequences with little to no manual review.</obo:IAO_0000115>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
         <rdfs:label xml:lang="en">2 - high quality draft</rdfs:label>
     </owl:Class>
     
@@ -8771,6 +8822,7 @@ Structured vouchers include institution-codes (and optional collection-codes) ta
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001767">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000091"/>
         <obo:IAO_0000115 xml:lang="en">Improved high quality draft: in which data is either reviewed by people or machines to some extent to indicate that most of the genetic data is assembled correctly, but some errors may still be present.</obo:IAO_0000115>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
         <rdfs:label xml:lang="en">3 - improved high quality draft</rdfs:label>
     </owl:Class>
     
@@ -8781,6 +8833,7 @@ Structured vouchers include institution-codes (and optional collection-codes) ta
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001768">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000091"/>
         <obo:IAO_0000115 xml:lang="en">Annotation-directed improvement: in which genetic information in various gene regions is represented as accurately as possible.</obo:IAO_0000115>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
         <rdfs:label xml:lang="en">4 - annotation-directed improvement</rdfs:label>
     </owl:Class>
     
@@ -8791,6 +8844,7 @@ Structured vouchers include institution-codes (and optional collection-codes) ta
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001769">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000091"/>
         <obo:IAO_0000115 xml:lang="en">Non-contiguous finished: which includes sequences that have been reviewed by both people and machines and would be considered complete except for “recalcitrant regions” that are proving problematic for genome closure.</obo:IAO_0000115>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
         <rdfs:label xml:lang="en">5 - non-contiguous finished</rdfs:label>
     </owl:Class>
     
@@ -8801,6 +8855,7 @@ Structured vouchers include institution-codes (and optional collection-codes) ta
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001770">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000091"/>
         <obo:IAO_0000115 xml:lang="en">Finished: which describes un-gapped complete sequences that have minimal errors, if any. The biology of the microbe will determine whether this finished genome consists of more than one chromosome.</obo:IAO_0000115>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
         <rdfs:label xml:lang="en">6 - finished</rdfs:label>
     </owl:Class>
     
@@ -9600,12 +9655,6 @@ Generally de-identified data should include HIPAA patient privacy fields as indi
         <oboInOwl:hasDbXref rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001666"/>
         <rdfs:label xml:lang="en">restricted access</rdfs:label>
     </owl:Class>
-    <owl:Axiom>
-        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001810"/>
-        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
-        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001666"/>
-        <obo:IAO_0000115 xml:lang="en">Information exists but can not be released openly because of privacy concerns.</obo:IAO_0000115>
-    </owl:Axiom>
     
 
 
@@ -10294,6 +10343,804 @@ http://www.ebi.ac.uk/ena/about/missing-values-reporting</rdfs:seeAlso>
     
 
 
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001921 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001921">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001655"/>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001681"/>
+        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000428"/>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
+        <oboInOwl:hasDbXref>NCBI SRA: INSTRUMENT_MODEL</oboInOwl:hasDbXref>
+        <rdfs:label xml:lang="en">instrument model</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001923 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001923">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000071"/>
+        <oboInOwl:hasDbXref>NCBI SRA: ILLUMINA</oboInOwl:hasDbXref>
+        <rdfs:label xml:lang="en">Illumina platform</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001924 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001924">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000071"/>
+        <oboInOwl:hasDbXref>NCBI SRA: COMPLETE_GENOMICS</oboInOwl:hasDbXref>
+        <rdfs:comment>Damion Dooley&apos;s note: This platform is in-house and not a product per se. Complete Genomics states: &quot;Complete Genomics’ sequencing platform employs high-density DNA nanoarrays that are populated with DNA nanoballs (DNBs™). Base identification is performed using an unchained ligation-based read technology known as combinatorial probe-anchor ligation (cPAL™). The sequencing instrumentation is custom-developed to support this process. Details are described in our Science publication  (Drmanac et al., 2010).&quot;</rdfs:comment>
+        <rdfs:label xml:lang="en">Complete Genomics platform</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001926 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001926">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000071"/>
+        <oboInOwl:hasDbXref>NCBI SRA: LS454</oboInOwl:hasDbXref>
+        <rdfs:label xml:lang="en">Roche LS454 platform</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001927 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001927">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000071"/>
+        <oboInOwl:hasDbXref>NCBI SRA: PACBIO_SMRT</oboInOwl:hasDbXref>
+        <rdfs:label xml:lang="en">PacBio platform</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001928 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001928">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/OBI_0000696"/>
+        <oboInOwl:hasDbXref>NCBI SRA: AB SOLiD 4hq</oboInOwl:hasDbXref>
+        <rdfs:label xml:lang="en">SOLiD 4hq System</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001929 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001929">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/OBI_0000696"/>
+        <oboInOwl:hasDbXref>NCBI SRA: AB SOLiD 5500</oboInOwl:hasDbXref>
+        <rdfs:label xml:lang="en">SOLiD 5500</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001930 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001930">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/OBI_0000696"/>
+        <oboInOwl:hasDbXref>NCBI SRA: AB SOLiD 5500xl</oboInOwl:hasDbXref>
+        <rdfs:label xml:lang="en">SOLiD 5500xl</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001931 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001931">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/OBI_0000696"/>
+        <oboInOwl:hasDbXref>NCBI SRA: AB SOLiD PI System</oboInOwl:hasDbXref>
+        <rdfs:label xml:lang="en">SOLiD PI System</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001932 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001932">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/OBI_0000696"/>
+        <oboInOwl:hasDbXref>NCBI SRA: AB SOLiD System 2.0</oboInOwl:hasDbXref>
+        <rdfs:label xml:lang="en">SOLiD System 2.0</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001933 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001933">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/OBI_0000696"/>
+        <oboInOwl:hasDbXref>NCBI SRA: AB SOLiD System 3.0</oboInOwl:hasDbXref>
+        <rdfs:label xml:lang="en">SOLiD System 3.0</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001935 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001935">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001921"/>
+        <oboInOwl:hasDbXref>NCBI SRA: Ion Torrent PGM</oboInOwl:hasDbXref>
+        <rdfs:label xml:lang="en">Ion Torrent PGM</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001936 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001936">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001937"/>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/OBI_0400103"/>
+        <oboInOwl:hasDbXref>NCBI SRA: 454 GS FLX Titanium</oboInOwl:hasDbXref>
+        <rdfs:label xml:lang="en">454 Genome Sequencer FLX Titanium</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001937 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001937">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001921"/>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/OBI_0400103"/>
+        <oboInOwl:hasDbXref>NCBI SRA: 454 GS</oboInOwl:hasDbXref>
+        <rdfs:label xml:lang="en">454 Genome Sequencer</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001938 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001938">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001937"/>
+        <oboInOwl:hasDbXref>NCBI SRA: 454 GS Junior</oboInOwl:hasDbXref>
+        <rdfs:label xml:lang="en">454 Genome Sequencer Junior</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001939 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001939">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001921"/>
+        <rdfs:label xml:lang="en">Illumina HiSeq Sequencer</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001940 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001940">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001655"/>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001681"/>
+        <obo:GENEPIO_0000005>https://www.ncbi.nlm.nih.gov/books/NBK54984/table/SRA_Glossary_BK.T._library_descriptor_te/?report=objectonly</obo:GENEPIO_0000005>
+        <obo:IAO_0000115 xml:lang="en">Whether any method was used to select for or against, enrich, or screen the material being sequenced.</obo:IAO_0000115>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
+        <oboInOwl:hasDbXref>NCBI SRA: LIBRARY_SELECTION</oboInOwl:hasDbXref>
+        <rdfs:label xml:lang="en">library selection</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001941 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001941">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001940"/>
+        <obo:IAO_0000115 xml:lang="en">Selection of methylated DNA fragments using an antibody raised against 5-methylcytosine or 5-methylcytidine (m5C).</obo:IAO_0000115>
+        <oboInOwl:hasDbXref>NCBI SRA: 5-methylcytidine antibody</oboInOwl:hasDbXref>
+        <rdfs:label xml:lang="en">5-methylcytidine antibody method</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001942 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001942">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001940"/>
+        <obo:IAO_0000115 xml:lang="en">Cap-analysis gene expression.</obo:IAO_0000115>
+        <oboInOwl:hasDbXref>NCBI SRA: CAGE</oboInOwl:hasDbXref>
+        <rdfs:label xml:lang="en">CAGE method</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001943 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001943">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001940"/>
+        <obo:IAO_0000115 xml:lang="en">Cot-filtered highly repetitive genomic DNA</obo:IAO_0000115>
+        <oboInOwl:hasDbXref>NCBI SRA: CF-H</oboInOwl:hasDbXref>
+        <rdfs:label xml:lang="en">CF-H method</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001944 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001944">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001940"/>
+        <obo:IAO_0000115 xml:lang="en">Cot-filtered moderately repetitive genomic DNA</obo:IAO_0000115>
+        <oboInOwl:hasDbXref>NCBI SRA: CF-M</oboInOwl:hasDbXref>
+        <rdfs:label xml:lang="en">CF-M method</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001945 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001945">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001940"/>
+        <obo:IAO_0000115 xml:lang="en">Cot-filtered single/low-copy genomic DNA</obo:IAO_0000115>
+        <oboInOwl:hasDbXref>NCBI SRA: CF-S</oboInOwl:hasDbXref>
+        <rdfs:label xml:lang="en">CF-S method</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001946 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001946">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001940"/>
+        <obo:IAO_0000115 xml:lang="en">Cot-filtered theoretical single-copy genomic DNA</obo:IAO_0000115>
+        <oboInOwl:hasDbXref>NCBI SRA: CF-T</oboInOwl:hasDbXref>
+        <rdfs:label xml:lang="en">CF-T method</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001947 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001947">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001940"/>
+        <obo:IAO_0000115 xml:lang="en">Chromatin immunoprecipitation</obo:IAO_0000115>
+        <oboInOwl:hasDbXref>NCBI SRA: ChIP</oboInOwl:hasDbXref>
+        <rdfs:label xml:lang="en">ChIP method</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001948 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001948">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001940"/>
+        <obo:IAO_0000115 xml:lang="en">Deoxyribonuclease (MNase) digestion</obo:IAO_0000115>
+        <oboInOwl:hasDbXref>NCBI SRA: DNAse</oboInOwl:hasDbXref>
+        <rdfs:label xml:lang="en">DNAse method</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001949 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001949">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001940"/>
+        <obo:IAO_0000115 xml:lang="en">Hypo-methylated partial restriction digest</obo:IAO_0000115>
+        <oboInOwl:hasDbXref>NCBI SRA: HMPR</oboInOwl:hasDbXref>
+        <rdfs:label xml:lang="en">HMPR method</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001950 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001950">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001940"/>
+        <obo:IAO_0000115 xml:lang="en">Selection by hybridization in array or solution.</obo:IAO_0000115>
+        <oboInOwl:hasDbXref>NCBI SRA: Hybrid Selection</oboInOwl:hasDbXref>
+        <rdfs:label xml:lang="en">Hybrid Selection method</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001951 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001951">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001940"/>
+        <obo:IAO_0000115 xml:lang="en">Enrichment by methyl-CpG binding domain.</obo:IAO_0000115>
+        <oboInOwl:hasDbXref>NCBI SRA: MBD2 protein methyl-CpG binding domain</oboInOwl:hasDbXref>
+        <rdfs:label xml:lang="en">MBD2 protein methyl-CpG binding domain method</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001952 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001952">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001940"/>
+        <obo:IAO_0000115 xml:lang="en">Methyl Filtrated</obo:IAO_0000115>
+        <oboInOwl:hasDbXref>NCBI SRA: MF</oboInOwl:hasDbXref>
+        <rdfs:label xml:lang="en">MF method</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001953 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001953">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001940"/>
+        <obo:IAO_0000115 xml:lang="en">Micrococcal Nuclease (MNase) digestion</obo:IAO_0000115>
+        <oboInOwl:hasDbXref>NCBI SRA: MNase</oboInOwl:hasDbXref>
+        <rdfs:label xml:lang="en">MNase method</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001954 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001954">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001940"/>
+        <obo:IAO_0000115 xml:lang="en">Methylation Spanning Linking Library</obo:IAO_0000115>
+        <oboInOwl:hasDbXref>NCBI SRA: MSLL</oboInOwl:hasDbXref>
+        <rdfs:label xml:lang="en">MSLL method</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001955 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001955">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001940"/>
+        <obo:IAO_0000115 xml:lang="en">Source material was selected by designed primers.</obo:IAO_0000115>
+        <oboInOwl:hasDbXref>NCBI SRA: PCR</oboInOwl:hasDbXref>
+        <rdfs:label xml:lang="en">PCR method</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001956 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001956">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001940"/>
+        <obo:IAO_0000115 xml:lang="en">Rapid Amplification of cDNA Ends.</obo:IAO_0000115>
+        <oboInOwl:hasDbXref>NCBI SRA: RACE</oboInOwl:hasDbXref>
+        <rdfs:label xml:lang="en">RACE method</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001957 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001957">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001940"/>
+        <obo:IAO_0000115 xml:lang="en">Source material was selected by randomly generated primers.</obo:IAO_0000115>
+        <oboInOwl:hasDbXref>NCBI SRA: RANDOM PCR</oboInOwl:hasDbXref>
+        <rdfs:label xml:lang="en">RANDOM PCR method</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001958 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001958">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001940"/>
+        <obo:IAO_0000115 xml:lang="en">Random selection by shearing or other method.</obo:IAO_0000115>
+        <oboInOwl:hasDbXref>NCBI SRA: RANDOM</oboInOwl:hasDbXref>
+        <rdfs:label xml:lang="en">RANDOM method</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001959 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001959">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001940"/>
+        <obo:IAO_0000115 xml:lang="en">Source material was selected by reverse transcription PCR</obo:IAO_0000115>
+        <oboInOwl:hasDbXref>NCBI SRA: RT-PCR</oboInOwl:hasDbXref>
+        <rdfs:label xml:lang="en">RT-PCR method</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001960 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001960">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001940"/>
+        <obo:IAO_0000115 xml:lang="en">Reproducible genomic subsets, often generated by restriction fragment size selection, containing a manageable number of loci to facilitate re-sampling.</obo:IAO_0000115>
+        <oboInOwl:hasDbXref>NCBI SRA: Reduced Representation</oboInOwl:hasDbXref>
+        <rdfs:label xml:lang="en">Reduced Representation method</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001961 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001961">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001940"/>
+        <obo:IAO_0000115 xml:lang="en">DNA fractionation using restriction enzymes.</obo:IAO_0000115>
+        <oboInOwl:hasDbXref>NCBI SRA: Restriction Digest</oboInOwl:hasDbXref>
+        <rdfs:label xml:lang="en">Restriction Digest method</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001962 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001962">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001940"/>
+        <obo:IAO_0000115 xml:lang="en">PolyA selection or enrichment for messenger RNA (mRNA). complementary DNA.</obo:IAO_0000115>
+        <oboInOwl:hasDbXref>NCBI SRA: cDNA</oboInOwl:hasDbXref>
+        <rdfs:label xml:lang="en">cDNA method</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001963 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001963">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001940"/>
+        <obo:IAO_0000115 xml:lang="en">Physical selection of size appropriate targets.</obo:IAO_0000115>
+        <oboInOwl:hasDbXref>NCBI SRA: size fractionation</oboInOwl:hasDbXref>
+        <rdfs:label xml:lang="en">size fractionation method</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001964 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001964">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001940"/>
+        <obo:IAO_0000115 xml:lang="en">Other library enrichment, screening, or selection process.</obo:IAO_0000115>
+        <oboInOwl:hasDbXref>NCBI SRA: other</oboInOwl:hasDbXref>
+        <rdfs:label xml:lang="en">other library method</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001965 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001965">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001681"/>
+        <obo:GENEPIO_0000005>https://www.ncbi.nlm.nih.gov/books/NBK54984/table/SRA_Glossary_BK.T._library_descriptor_te/?report=objectonly</obo:GENEPIO_0000005>
+        <obo:IAO_0000115 xml:lang="en">The LIBRARY_SOURCE specifies the type of source material that is being sequenced.</obo:IAO_0000115>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
+        <oboInOwl:hasDbXref>NCBI SRA: LIBRARY_SOURCE</oboInOwl:hasDbXref>
+        <rdfs:label xml:lang="en">library source</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001966 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001966">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001965"/>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
+        <obo:IAO_0000117 xml:lang="en">Genomic DNA (includes PCR products from genomic DNA).</obo:IAO_0000117>
+        <oboInOwl:hasDbXref>NCBI SRA: GENOMIC</oboInOwl:hasDbXref>
+        <rdfs:label xml:lang="en">genomic source</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001967 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001967">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001965"/>
+        <obo:IAO_0000115 xml:lang="en">Mixed material from metagenome.</obo:IAO_0000115>
+        <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
+        <oboInOwl:hasDbXref>NCBI SRA: METAGENOMIC</oboInOwl:hasDbXref>
+        <rdfs:label xml:lang="en">metagenomic source</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001968 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001968">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001965"/>
+        <obo:IAO_0000115 xml:lang="en">Transcription products from community targets</obo:IAO_0000115>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
+        <oboInOwl:hasDbXref>NCBI SRA: METATRANSCRIPTOMIC</oboInOwl:hasDbXref>
+        <rdfs:label xml:lang="en">metatranscriptomic source</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001969 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001969">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001965"/>
+        <obo:IAO_0000115 xml:lang="en">Other, unspecified, or unknown library source material.</obo:IAO_0000115>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
+        <oboInOwl:hasDbXref>NCBI SRA: OTHER</oboInOwl:hasDbXref>
+        <rdfs:label xml:lang="en">other library source</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001970 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001970">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001965"/>
+        <obo:IAO_0000115 xml:lang="en">Synthetic DNA.</obo:IAO_0000115>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
+        <oboInOwl:hasDbXref>NCBI SRA: SYNTHETIC</oboInOwl:hasDbXref>
+        <rdfs:label xml:lang="en">synthetic source</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001971 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001971">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001965"/>
+        <obo:IAO_0000115 xml:lang="en">Transcription products or non genomic DNA (EST, cDNA, RT-PCR, screened libraries).</obo:IAO_0000115>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
+        <oboInOwl:hasDbXref>NCBI SRA: TRANSCRIPTOMIC</oboInOwl:hasDbXref>
+        <rdfs:label xml:lang="en">transcriptomic source</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001972 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001972">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001965"/>
+        <obo:IAO_0000115 xml:lang="en">Viral RNA.</obo:IAO_0000115>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
+        <oboInOwl:hasDbXref>NCBI SRA: VIRAL RNA</oboInOwl:hasDbXref>
+        <rdfs:label xml:lang="en">viral RNA source</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001973 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001973">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001681"/>
+        <obo:IAO_0000115 xml:lang="en">Sequencing technique intended for this library.</obo:IAO_0000115>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
+        <obo:IAO_0000119>https://www.ncbi.nlm.nih.gov/books/NBK54984/table/SRA_Glossary_BK.T._library_descriptor_te/?report=objectonly</obo:IAO_0000119>
+        <rdfs:label xml:lang="en">library strategy</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001974 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001974">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001973"/>
+        <obo:IAO_0000115 xml:lang="en">Sequencing of overlapping or distinct PCR or RT-PCR products. For example, metagenomic community profiling using SSU rRNA</obo:IAO_0000115>
+        <oboInOwl:hasDbXref>NCBI SRA: AMPLICON</oboInOwl:hasDbXref>
+        <rdfs:label xml:lang="en">amplicon strategy</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001975 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001975">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001973"/>
+        <obo:IAO_0000115 xml:lang="en">MethylC-seq. Sequencing following treatment of DNA with bisulfite to convert cytosine residues to uracil depending on methylation status.</obo:IAO_0000115>
+        <oboInOwl:hasDbXref>NCBI SRA: Bisulfite-Seq</oboInOwl:hasDbXref>
+        <rdfs:label xml:lang="en">Bisulfite-Seq strategy</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001976 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001976">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001973"/>
+        <oboInOwl:hasDbXref xml:lang="en">Clone end (5&apos;, 3&apos;, or both) sequencing.</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>NCBI SRA: CLONEEND</oboInOwl:hasDbXref>
+        <rdfs:label xml:lang="en">clone end strategy</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001977 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001977">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001973"/>
+        <oboInOwl:hasDbXref xml:lang="en">Genomic clone based (hierarchical) sequencing.</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>NCBI SRA: CLONE</oboInOwl:hasDbXref>
+        <rdfs:label xml:lang="en">clone strategy</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001978 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001978">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001973"/>
+        <oboInOwl:hasDbXref xml:lang="en">Concatenated Tag Sequencing</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>NCBI SRA: CTS</oboInOwl:hasDbXref>
+        <rdfs:label xml:lang="en">CTS strategy</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001979 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001979">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001973"/>
+        <oboInOwl:hasDbXref xml:lang="en">Direct sequencing of chromatin immunoprecipitates.</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>NCBI SRA: ChIP-Seq</oboInOwl:hasDbXref>
+        <rdfs:label xml:lang="en">ChIP-Seq strategy</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001980 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001980">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001973"/>
+        <oboInOwl:hasDbXref>NCBI SRA: DNase-Hypersensitivity</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref xml:lang="en">Sequencing of hypersensitive sites, or segments of open chromatin that are more readily cleaved by DNaseI.</oboInOwl:hasDbXref>
+        <rdfs:label xml:lang="en">DNase-Hypersensitivity strategy</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001981 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001981">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001973"/>
+        <oboInOwl:hasDbXref>NCBI SRA: EST</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref xml:lang="en">Single pass sequencing of cDNA templates</oboInOwl:hasDbXref>
+        <rdfs:label xml:lang="en">EST strategy</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001982 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001982">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001973"/>
+        <oboInOwl:hasDbXref>NCBI SRA: FINISHING</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref xml:lang="en">Sequencing intended to finish (close) gaps in existing coverage.</oboInOwl:hasDbXref>
+        <rdfs:label xml:lang="en">finishing strategy</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001983 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001983">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001973"/>
+        <oboInOwl:hasDbXref xml:lang="en">Full-length sequencing of cDNA templates</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>NCBI SRA: FL-cDNA</oboInOwl:hasDbXref>
+        <rdfs:label xml:lang="en">FL-cDNA strategy</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001984 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001984">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001973"/>
+        <oboInOwl:hasDbXref xml:lang="en">Direct sequencing of methylated fractions sequencing strategy.</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>NCBI SRA: MBD-Seq</oboInOwl:hasDbXref>
+        <rdfs:label xml:lang="en">MBD-Seq strategy</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001985 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001985">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001973"/>
+        <oboInOwl:hasDbXref xml:lang="en">Direct sequencing following MNase digestion.</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>NCBI SRA: MNase-Seq</oboInOwl:hasDbXref>
+        <rdfs:label xml:lang="en">MNase-Seq strategy</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001986 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001986">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001973"/>
+        <oboInOwl:hasDbXref xml:lang="en">Methylation-Sensitive Restriction Enzyme Sequencing strategy.</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>NCBI SRA: MRE-Seq</oboInOwl:hasDbXref>
+        <rdfs:label xml:lang="en">MRE-Seq strategy</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001987 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001987">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001973"/>
+        <oboInOwl:hasDbXref xml:lang="en">Methylated DNA Immunoprecipitation Sequencing strategy.</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>NCBI SRA: MeDIP-Seq</oboInOwl:hasDbXref>
+        <rdfs:label xml:lang="en">MeDIP-Seq strategy</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001988 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001988">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001973"/>
+        <oboInOwl:hasDbXref xml:lang="en">Library strategy not listed.</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>NCBI SRA: OTHER</oboInOwl:hasDbXref>
+        <rdfs:label xml:lang="en">other library strategy</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001989 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001989">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001973"/>
+        <oboInOwl:hasDbXref>NCBI SRA: POOLCLONE</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref xml:lang="en">Shotgun of pooled clones (usually BACs and Fosmids).</oboInOwl:hasDbXref>
+        <rdfs:label xml:lang="en">pool clone strategy</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001990 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001990">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001973"/>
+        <oboInOwl:hasDbXref>NCBI SRA: RNA-Seq</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref xml:lang="en">Random sequencing of whole transcriptome.</oboInOwl:hasDbXref>
+        <rdfs:label xml:lang="en">RNA-Seq strategy</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001991 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001991">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001973"/>
+        <oboInOwl:hasDbXref>NCBI SRA: WCS</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref xml:lang="en">Random sequencing of a whole chromosome or other replicon isolated from a genome.</oboInOwl:hasDbXref>
+        <rdfs:label xml:lang="en">WCS strategy</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001992 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001992">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001973"/>
+        <oboInOwl:hasDbXref>NCBI SRA: WGS</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref xml:lang="en">Random sequencing of the whole genome.</oboInOwl:hasDbXref>
+        <rdfs:label xml:lang="en">WGS strategy</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001993 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001993">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001973"/>
+        <oboInOwl:hasDbXref>NCBI SRA: WXS</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref xml:lang="en">Random sequencing of exonic regions selected from the genome.</oboInOwl:hasDbXref>
+        <rdfs:label xml:lang="en">WXS strategy</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001994 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001994">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/IAO_0000300"/>
+        <obo:IAO_0000115 xml:lang="en">Free form text describing the protocol by which the sequencing library was constructed.</obo:IAO_0000115>
+        <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
+        <obo:IAO_0000119 xml:lang="en">https://www.ncbi.nlm.nih.gov/books/NBK54984/table/SRA_Glossary_BK.T._library_descriptor_te/?report=objectonly</obo:IAO_0000119>
+        <oboInOwl:hasDbXref>NCBI SRA: LIBRARY_CONSTRUCTION_PROTOCOL</oboInOwl:hasDbXref>
+        <rdfs:label xml:lang="en">library construction protocol</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001995 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001995">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/IAO_0000300"/>
+        <obo:IAO_0000115 xml:lang="en">The submitter&apos;s name for this library.</obo:IAO_0000115>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
+        <obo:IAO_0000119 xml:lang="en">https://www.ncbi.nlm.nih.gov/books/NBK54984/table/SRA_Glossary_BK.T._library_descriptor_te/?report=objectonly</obo:IAO_0000119>
+        <oboInOwl:hasDbXref xml:lang="en">NCBI SRA: LIBRARY_NAME</oboInOwl:hasDbXref>
+        <rdfs:label xml:lang="en">library name</rdfs:label>
+    </owl:Class>
+    
+
+
     <!-- http://purl.obolibrary.org/obo/GEO_000000005 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GEO_000000005">
@@ -10523,14 +11370,6 @@ Depending on its context, hasDbXref annotations may point directly to metadata f
     
 
 
-    <!-- http://purl.obolibrary.org/obo/OBI_0000181 -->
-
-    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/OBI_0000181">
-        <owl:equivalentClass rdf:resource="http://purl.obolibrary.org/obo/PCO_0000001"/>
-    </rdf:Description>
-    
-
-
     <!-- http://purl.obolibrary.org/obo/OBI_0000245 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/OBI_0000245"/>
@@ -10541,6 +11380,69 @@ Depending on its context, hasDbXref annotations may point directly to metadata f
 
     <rdf:Description rdf:about="http://purl.obolibrary.org/obo/OBI_0000626">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001655"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/OBI_0000689 -->
+
+    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/OBI_0000689">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001937"/>
+        <oboInOwl:hasDbXref>NCBI SRA: 454 GS 20</oboInOwl:hasDbXref>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/OBI_0000696 -->
+
+    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/OBI_0000696">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001921"/>
+        <oboInOwl:hasDbXref>NCBI SRA: AB SOLiD System</oboInOwl:hasDbXref>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/OBI_0000697 -->
+
+    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/OBI_0000697">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000071"/>
+        <oboInOwl:hasDbXref>NCBI SRA: HELICOS</oboInOwl:hasDbXref>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/OBI_0000702 -->
+
+    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/OBI_0000702">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001937"/>
+        <oboInOwl:hasDbXref>NCBI SRA: 454 GS FLX</oboInOwl:hasDbXref>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/OBI_0000703 -->
+
+    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/OBI_0000703">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001921"/>
+        <oboInOwl:hasDbXref>NCBI SRA: Illumina Genome Analyzer II</oboInOwl:hasDbXref>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/OBI_0000706 -->
+
+    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/OBI_0000706">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000071"/>
+        <oboInOwl:hasDbXref>NCBI SRA: ABI_SOLID</oboInOwl:hasDbXref>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/OBI_0000717 -->
+
+    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/OBI_0000717">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001921"/>
+        <oboInOwl:hasDbXref>NCBI SRA: Helicos HeliScope</oboInOwl:hasDbXref>
     </rdf:Description>
     
 
@@ -10829,14 +11731,13 @@ Also note historical name issue (Myanmar vs Burma) and diplomatic name issue (Ta
         <obo:GENEPIO_0000008 xml:lang="en">GENEPIO</obo:GENEPIO_0000008>
         <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
         <obo:IAO_0000119 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.nature.com/nature/journal.../409860a0.html</obo:IAO_0000119>
-        <rdfs:comment xml:lang="en">As defined in the seminal 2001 paper on the human genome,  http://www.nature.com/nature/journal.../409860a0.html
+        <rdfs:comment xml:lang="en">Damion Dooley&apos;s note: this definition differs from the Broad Institute example of an N50 algorithm (https://www.broadinstitute.org/crd/wiki/index.php/N50 and ), which is based more directly on the &quot;weighted median&quot; N50 statistic used outside the realm of bioinformatics.  In that interpretation there can exist a tie-breaking situation calculated as the average of the lengths of two neighbouring medians, yeilding a number that doesn&apos;t correspond to an observed contig length.  We suggest that this case this is not pertinent to genomic contig length data.  The returned length should refer to an actual contig.
+
+As defined in the seminal 2001 paper on the human genome,  http://www.nature.com/nature/journal.../409860a0.html
 
 &quot;We used a statistic called the ‘N50 length’, defined as the largest length L such that 50% of all nucleotides are contained in contigs of size at least L.&quot;
 
-The above N50 definition indicates that a contig of exactly size L must exist. 
-
-In contrast the Broad Institute definition (https://www.broad.harvard.edu/crd/wiki/index.php/N50), which appears to originate from real number math, conveys that L can be a fictitious contig length calculated as the tie-breaking median of 2 central contig lengths a, b where a &gt; b.  We suggest that this case this is not pertinent to genomic contig length data.  The returned length should refer to an actual contig.</rdfs:comment>
-        <rdfs:comment xml:lang="en">Note that this definition differs from the Broad Institute example of an N50 algorithm (https://www.broadinstitute.org/crd/wiki/index.php/N50 and ), which is based more directly on the &quot;weighted median&quot; N50 statistic used outside the realm of bioinformatics.  In that interpretation there can exist a tie-breaking situation calculated as the average of the lengths of two neighbouring medians, yeilding a number that doesn&apos;t correspond to an observed contig length.  
+The above N50 definition indicates that a contig of exactly size L must exist.
 
 In the past, some authors have proposed and used the term &apos;L50&apos; to mean the length of the contig and used &apos;N50&apos; to convey its position N in the sorted list. Although the names are historically awkward, we discourage these alternate definitions.  
 
@@ -10844,6 +11745,73 @@ The &quot;Assemblathon paper&quot; (http://genome.cshlp.org/content/21/12/2224) 
 
 Discussions such as http://seqanswers.com/forums/showthread.php?t=2332 show the lack of clarity that has arisen here.</rdfs:comment>
     </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/OBI_0002001 -->
+
+    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/OBI_0002001">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001939"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/OBI_0002002 -->
+
+    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/OBI_0002002">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001939"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/OBI_0002003 -->
+
+    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/OBI_0002003">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001921"/>
+        <oboInOwl:hasDbXref>NCBI SRA: Illumina MiSeq</oboInOwl:hasDbXref>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/OBI_0002012 -->
+
+    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/OBI_0002012">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001921"/>
+        <oboInOwl:hasDbXref>NCBI SRA: PacBio RS</oboInOwl:hasDbXref>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/OBI_0002021 -->
+
+    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/OBI_0002021">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001921"/>
+        <oboInOwl:hasDbXref>NCBI SRA: Illumina NextSeq</oboInOwl:hasDbXref>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/OBI_0002022 -->
+
+    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/OBI_0002022">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001939"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/OBI_0002048 -->
+
+    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/OBI_0002048">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001939"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/OBI_0002049 -->
+
+    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/OBI_0002049">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001939"/>
+    </rdf:Description>
     
 
 
@@ -10950,12 +11918,6 @@ Discussions such as http://seqanswers.com/forums/showthread.php?t=2332 show the 
         <oboInOwl:hasDbXref xml:lang="en">NCBI BioSample:host_sex</oboInOwl:hasDbXref>
         <oboInOwl:hasDbXref>PulseNet: PatientSex</oboInOwl:hasDbXref>
     </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/PCO_0000001 -->
-
-    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/PCO_0000001"/>
     
 
 
@@ -12293,14 +13255,14 @@ Angular offset can be radians or degrees.</rdfs:comment>
 
     <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001367">
         <rdf:type rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001286"/>
+        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000428"/>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
         <obo:RO_0001025 rdf:resource="http://purl.obolibrary.org/obo/GAZ_00002562"/>
         <obo:RO_0002351 rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001368"/>
         <obo:RO_0002351 rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001369"/>
         <obo:RO_0002351 rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001370"/>
         <obo:RO_0002351 rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001372"/>
         <obo:RO_0002351 rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001373"/>
-        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000428"/>
-        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
         <rdfs:comment xml:lang="en">Damion Dooley&apos;s note: Here we are exploring the use of individuals/instances to describe local picklists for GenEpiO driven software.</rdfs:comment>
     </rdf:Description>
     
@@ -12449,8 +13411,8 @@ Angular offset can be radians or degrees.</rdfs:comment>
         <obo:GENEPIO_1919 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">/^(:&lt;lat&gt;[-S+N])?(:&lt;degree&gt;[1-8]?[0-9](:&lt;decimal&gt;\.\d{1,6})?)$/, $lat$degree.$decimal
 /^(:&lt;lat&gt;[-S+N])?(:&lt;degree&gt;90(:&lt;decimal&gt;\.0{1,6})?))$/, $lat$degree.$decimal</obo:GENEPIO_1919>
         <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
-        <obo:IAO_0000115 xml:lang="en">A decimal latitude measurement in degrees</obo:IAO_0000115>
         <obo:GENEPIO_1921 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">/^(\d(\.\d+)?)$/, &apos;+\1&apos;</obo:GENEPIO_1921>
+        <obo:IAO_0000115 xml:lang="en">A decimal latitude measurement in degrees</obo:IAO_0000115>
         <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000428"/>
         <obo:GENEPIO_0001920 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">/^[N+](:&lt;lat&gt;\d(\.\d+)?)$/, $lat
 /^S(:&lt;lat&gt;\d(\.\d+)?)$/,  &apos;-&apos; + $lat</obo:GENEPIO_0001920>
@@ -12540,6 +13502,18 @@ Angular offset can be radians or degrees.</rdfs:comment>
     </rdf:Description>
     <rdf:Description rdf:about="http://purl.obolibrary.org/obo/NCBITaxon_9925">
         <obo:GENEPIO_0000006 xml:lang="en">domestic goat</obo:GENEPIO_0000006>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/OBI_0002000">
+        <oboInOwl:hasDbXref>NCBI SRA: Illumina Genome Analyzer IIx</oboInOwl:hasDbXref>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/OBI_0002007">
+        <oboInOwl:hasDbXref>NCBI SRA: AB SOLiD 3 Plus System</oboInOwl:hasDbXref>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/OBI_0002024">
+        <oboInOwl:hasDbXref>NCBI SRA: AB SOLiD 4 System</oboInOwl:hasDbXref>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/OBI_0002027">
+        <oboInOwl:hasDbXref>NCBI SRA: Illumina Genome Analyzer IIe</oboInOwl:hasDbXref>
     </rdf:Description>
     <rdf:Description rdf:about="http://purl.obolibrary.org/obo/PATO_0000383">
         <oboInOwl:hasDbXref xml:lang="en">NCBI BioSample: female</oboInOwl:hasDbXref>

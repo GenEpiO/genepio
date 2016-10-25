@@ -491,13 +491,13 @@ function renderInteger(entity, label, minInclusive, maxInclusive) {
 
 function renderBoolean(entity) {
 html = '<div class="input-wrapper">\n'
-	html +=	'	<div class="switch small">\n'
-	html +=	'	  <input class="switch-input '+entity['id'] + '" id="'+entity['domId']+'" type="checkbox" name="'+entity['id']+'"' + entity['required']+ entity['disabled'] + '>\n'
-	html +=	'		<label class="switch-paddle" for="'+entity['id']+'">\n'
-	html +=	'	    <span class="show-for-sr">' + renderLabel(entity) + '</span>\n'
-	html +=	'	  </label>\n'
-	html +=		renderHelp(entity)
+	html +=	'	<div class="switch small" style="float:left;margin-right:10px;margin-bottom:0">\n'
+	html +=	'	  <input id="'+entity['domId']+'" class="switch-input" type="checkbox" name="'+entity['id']+'"' + entity['required']+ entity['disabled'] + '/>\n' //class="switch-input '+entity['id'] + '" 
+	html +=	'		<label class = "switch-paddle" for="'+entity['domId']+'"></label>\n'
 	html +=	'	</div>\n'
+	html +=	'	<span>' + entity['uiLabel'] + '</span>\n'  // 
+	html +=	'	<br/><br/>' + renderHelp(entity)
+	html +=	'</div>\n'
 	return html
 }
 

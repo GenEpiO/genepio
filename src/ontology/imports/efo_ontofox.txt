@@ -1,0 +1,89 @@
+[URI of the OWL(RDF/XML) output file]
+http://purl.obolibrary.org/obo/GENEPIO/imports/efo_import.owl
+
+[Source ontology]
+EFO
+
+[Low level source term URIs]
+
+http://www.ebi.ac.uk/efo/EFO_0000433 # duration
+
+http://www.ebi.ac.uk/efo/EFO_0000246 # age
+includeAllChildren
+http://www.ebi.ac.uk/efo/EFO_0001444 # measurement
+http://www.ebi.ac.uk/efo/EFO_0000689 # sampling time
+http://www.ebi.ac.uk/efo/EFO_0000724 # timepoint
+includeAllChildren
+http://www.ebi.ac.uk/efo/EFO_0004949 # clinical time point
+includeAllChildren
+
+http://www.ebi.ac.uk/efo/EFO_0002950 # pregnancy
+
+http://www.ebi.ac.uk/efo/EFO_0000719 # temporal measurement
+
+http://www.ebi.ac.uk/efo/EFO_0001799 # ethnic group
+includeAllChildren
+http://www.ebi.ac.uk/efo/EFO_0004561 # African
+includeAllChildren
+http://www.ebi.ac.uk/efo/EFO_0003152 # Asian
+includeAllChildren
+http://www.ebi.ac.uk/efo/EFO_0003157 # Chinese
+includeAllChildren
+
+
+
+[Top level source term URIs and target direct superclass URIs]
+http://www.ebi.ac.uk/efo/EFO_0000719
+
+[Source term retrieval setting]
+includeAllIntermediates
+
+
+
+
+[Source annotation URIs]
+http://www.w3.org/2000/01/rdf-schema#label
+http://www.w3.org/2000/01/rdf-schema#comment
+
+http://purl.obolibrary.org/obo/IAO_0000111 # editor prefered label
+http://purl.obolibrary.org/obo/IAO_0000114 # curation status
+http://purl.obolibrary.org/obo/IAO_0000115 # definition
+http://purl.obolibrary.org/obo/IAO_0000117 # term editor
+http://purl.obolibrary.org/obo/IAO_0000119 # definition source
+http://purl.obolibrary.org/obo/OBI_0001886 # NIAID GSCID-BRC alternative term
+
+http://www.geneontology.org/formats/oboInOwl#hasDbXref
+http://www.geneontology.org/formats/oboInOwl#hasExactSynonym
+http://www.geneontology.org/formats/oboInOwl#hasNarrowSynonym
+http://www.geneontology.org/formats/oboInOwl#hasBroadSynonym
+http://www.geneontology.org/formats/oboInOwl#inSubset
+http://www.geneontology.org/formats/oboInOwl#hasAlternativeId
+
+http://www.ebi.ac.uk/efo/alternative_term hasExactSynonym
+mapTo http://www.geneontology.org/formats/oboInOwl#hasExactSynonym
+
+http://www.ebi.ac.uk/efo/SNOMEDCT_definition_citation
+mapTo http://www.geneontology.org/formats/oboInOwl#hasDbXref
+http://www.ebi.ac.uk/efo/MSH_definition_citation
+mapTo http://www.geneontology.org/formats/oboInOwl#hasDbXref
+http://www.ebi.ac.uk/efo/NCI_Thesaurus_definition_citation
+mapTo http://www.geneontology.org/formats/oboInOwl#hasDbXref
+http://www.ebi.ac.uk/efo/NIFSTD_definition_citation
+mapTo http://www.geneontology.org/formats/oboInOwl#hasDbXref
+
+http://www.ebi.ac.uk/efo/definition_editor
+mapTo http://purl.obolibrary.org/obo/IAO_0000117 # term editor
+
+# definition
+http://www.ebi.ac.uk/efo/definition
+mapTo http://purl.obolibrary.org/obo/IAO_0000115
+
+# definition source
+http://www.ebi.ac.uk/efo/definition_citation
+mapTo http://purl.obolibrary.org/obo/IAO_0000119 
+
+# Trying to block efo import of "definition" annotation. DOESN'T WORK!!!!!!!
+[Source annotation URIs to be excluded]  
+http://www.w3.org/2002/07/owl#AnnotationProperty
+http://www.w3.org/2000/01/rdf-schema#subPropertyOf
+http://www.ebi.ac.uk/efo/definition

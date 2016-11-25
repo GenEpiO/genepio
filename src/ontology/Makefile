@@ -11,9 +11,9 @@ all: all_imports $(ONT).owl
 test: all
 prepare_release: all 
 	cp $(ONT).owl $(RELEASEDIR) &&\
-	cp imports/*{owl} $(RELEASEDIR)/imports &&\
-	git add $(RELEASEDIR)/imports/*{owl} &&\
-	(test -f subsets/*owl && cp subsets/*{owl} $(RELEASEDIR)/subsets && git add $(RELEASEDIR)/subsets/* || echo "no subsets") &&\
+	cp imports/*.owl $(RELEASEDIR)/imports/ &&\
+	git add $(RELEASEDIR)/imports/*.owl &&\
+	(test -f subsets/*.owl && cp subsets/*.owl $(RELEASEDIR)/subsets && git add $(RELEASEDIR)/subsets/* || echo "no subsets") &&\
 	echo "Release files are now in $(RELEASEDIR) - now you should commit, push and make a release on github"
 
 #Annotates genepio.owl ( $(ONT).owl ) file with release
@@ -30,7 +30,7 @@ IMPORTS_OWL = $(patsubst %, imports/%_import.owl,$(IMPORTS))
 # Make this target to regenerate ALL
 all_imports: $(IMPORTS_OWL)
 
-# Only fetches .owl if it doesn't exist or if .txt is later.
+# Only fetches .owl if it doesn't exist or if .txt has later timestamp.
 imports/%_import.owl: imports/%_ontofox.txt
 	curl -s -F file=@imports/$*_ontofox.txt -o $@ http://ontofox.hegroup.org/service.php
 

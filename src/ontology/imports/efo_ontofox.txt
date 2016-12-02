@@ -6,7 +6,7 @@ EFO
 
 [Low level source term URIs]
 http://purl.obolibrary.org/obo/GO_0000003 # reproductive process
-http://purl.obolibrary.org/obo/GO_0008150 # biological process
+
 
 http://www.ebi.ac.uk/efo/EFO_0000246 # age
 includeAllChildren
@@ -76,13 +76,18 @@ includeAllChildren
 http://www.ebi.ac.uk/efo/EFO_0004951 # alive at endpoint
 http://www.ebi.ac.uk/efo/EFO_0004952 # disease recurrence
 
-
+#http://www.ebi.ac.uk/efo/EFO_0001444 #measurement , problem- this brings in ancestors.
 
 [Top level source term URIs and target direct superclass URIs]
-http://www.ebi.ac.uk/efo/EFO_0001444
+
+http://www.ebi.ac.uk/efo/EFO_0000719 # temporal measurement
+http://www.ebi.ac.uk/efo/EFO_0001799 # ethnic group
+http://purl.obolibrary.org/obo/GO_0008150 # biological process
+http://purl.obolibrary.org/obo/IAO_0000030 # information content entity
+http://www.ebi.ac.uk/efo/EFO_0001444 # copies this one and only parent so we can control its placement
 
 [Source term retrieval setting]
-
+includeAllIntermediates
 
 [Source annotation URIs]
 
@@ -114,7 +119,11 @@ http://www.ifomis.org/bfo/1.1/snap#MaterialEntity
 mapTo http://purl.obolibrary.org/obo/BFO_0000040 
 
 http://www.ifomis.org/bfo/1.1/span#ProcessualEntity
-mapTo http://purl.obolibrary.org/obo/BFO_0000015 
+mapTo http://purl.obolibrary.org/obo/BFO_0000015
+
+#Doesn't work  #measurement --> measurement data item
+#http://www.ebi.ac.uk/efo/EFO_0001444
+#mapTo http://purl.obolibrary.org/obo/IAO_0000109
 
 http://www.w3.org/2000/01/rdf-schema#subClassOf
 

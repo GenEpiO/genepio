@@ -7,6 +7,7 @@ OBI
 [Low level source term URIs]
 
 http://purl.obolibrary.org/obo/IAO_0000030 # information entity
+http://purl.obolibrary.org/obo/IAO_0000007 # action specification
 http://purl.obolibrary.org/obo/IAO_0000100 # data set
 
 http://purl.obolibrary.org/obo/BFO_0000006 # Spatial region
@@ -23,11 +24,15 @@ http://purl.obolibrary.org/obo/BFO_0000027 # Object aggregate
 http://purl.obolibrary.org/obo/OBI_0000066 # investigation
 
 http://purl.obolibrary.org/obo/OBI_0000312 # is_specified_output_of
+http://purl.obolibrary.org/obo/OBI_0000293 # has_specified_input
 http://purl.obolibrary.org/obo/OBI_0000295 # is_specified_input_of
-
+http://purl.obolibrary.org/obo/OBI_0000299 # has_specified_output
 http://purl.obolibrary.org/obo/OBI_0000740 # material sample role
 
+http://purl.obolibrary.org/obo/OBI_0000299 # has_specified_output
+
 http://purl.obolibrary.org/obo/OBI_0000658 # data representational model
+http://purl.obolibrary.org/obo/OBI_0000679 # average value
 http://purl.obolibrary.org/obo/OBI_0001615 # investigation description                   *NCBI BioProject: Project Description
 http://purl.obolibrary.org/obo/OBI_0001622 # investigation title                         *NCBI BioProject: Project Title
 http://purl.obolibrary.org/obo/OBI_0001628 # investigation identifier                    *NCBI BioProject: Project ID  | NCBI SRA
@@ -78,7 +83,7 @@ http://purl.obolibrary.org/obo/OBI_0000427 # enzyme
 http://purl.obolibrary.org/obo/OBI_0000732 # 	restriction enzyme
 http://purl.obolibrary.org/obo/OBI_0000718 # pathogen role
 http://purl.obolibrary.org/obo/OBI_0000893 # real time polymerase chain reaction assay
-http://purl.obolibrary.org/obo/OBI_0000973 # sequence_data
+http://purl.obolibrary.org/obo/OBI_0000973 # sequence_data Missing definition?
 http://purl.obolibrary.org/obo/OBI_0001177 # RNA sequencing
 http://purl.obolibrary.org/obo/OBI_0001508 # sampling time measurement datum
 
@@ -138,14 +143,14 @@ http://purl.obolibrary.org/obo/OBI_0000696 #   AB SOLiD System
 includeAllChildren
 
 # INDIVIDUALS
-
-http://purl.obolibrary.org/obo/OBI_0000776 # Applied Biosystems (AB)
+# PROBLEM: THESE are being imported with an rdf:type rdf:resource="...ERRORX"
+#http://purl.obolibrary.org/obo/OBI_0000776 # Applied Biosystems (AB)
 # Complete Genomics
-http://purl.obolibrary.org/obo/OBI_0000757 # Helicos
-http://purl.obolibrary.org/obo/OBI_0000759 # Illumina
-http://purl.obolibrary.org/obo/OBI_0000752 # Thermo (Thermo-Fischer : Ion Torrent)
-http://purl.obolibrary.org/obo/OBI_0001856 # PacBio
-http://purl.obolibrary.org/obo/OBI_0000758 # Roche (LS454)
+#http://purl.obolibrary.org/obo/OBI_0000757 # Helicos
+#http://purl.obolibrary.org/obo/OBI_0000759 # Illumina
+#http://purl.obolibrary.org/obo/OBI_0000752 # Thermo (Thermo-Fischer : Ion Torrent)
+#http://purl.obolibrary.org/obo/OBI_0001856 # PacBio
+#http://purl.obolibrary.org/obo/OBI_0000758 # Roche (LS454)
 
 [Top level source term URIs and target direct superclass URIs]
 http://purl.obolibrary.org/obo/BFO_0000001 #entity
@@ -173,3 +178,12 @@ http://www.geneontology.org/formats/oboInOwl#inSubset
 http://www.geneontology.org/formats/oboInOwl#hasAlternativeId
 
 [Source annotation URIs to be excluded]
+http://org.semanticweb.owlapi/error#Error1 # hide some errors coming through on sequencer organization records.
+http://org.semanticweb.owlapi/error#Error2
+http://org.semanticweb.owlapi/error#Error3
+http://org.semanticweb.owlapi/error#Error4
+http://org.semanticweb.owlapi/error#Error5
+http://org.semanticweb.owlapi/error#Error6
+http://org.semanticweb.owlapi/error#Error7
+http://org.semanticweb.owlapi/error#Error8
+http://org.semanticweb.owlapi/error#Error9

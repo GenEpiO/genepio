@@ -22,8 +22,8 @@ $(ONT).owl: $(SRC)
 
 # ALL OWL imports: apollo_sv chebi chmo doid efo envo eo ero evs fix gazetteer geo hardcoded hp ido irida model ncbitaxon ndf-rt oae obi ontology-metadata pato ro sio so stato symp typon uberon uo
 # ALL OntoFox imports: brenda chebi chmo doid efo envo eo ero fix gazetteer geo hp ido ncbitaxon ndf-rt oae obi pato ro sio so stato uberon uo
-# Ontofox can't import apollo_sv at moment.
-IMPORTS = brenda chebi chmo doid efo envo eo ero fix gazetteer geo hp ido ncbitaxon ndf-rt oae obi pato ro sio so stato uberon uo
+# Ontofox can't import apollo_sv at moment - yeilds empty ontology file.
+IMPORTS = brenda chebi chmo doid efo envo eo ero gazetteer geo hp ido ncbitaxon ndf-rt oae obi pato ro sio so stato uberon uo
 # bfo ro envo uberon chebi
 IMPORTS_OWL = $(patsubst %, imports/%_import.owl,$(IMPORTS))
 
@@ -33,6 +33,11 @@ all_imports: $(IMPORTS_OWL)
 # Only fetches .owl if it doesn't exist or if .txt has later timestamp.
 imports/%_import.owl: imports/%_ontofox.txt
 	curl -s -F file=@imports/$*_ontofox.txt -o $@ http://ontofox.hegroup.org/service.php
+	$(ROBOT) reduce -i $@ -r ELK -s true --xml-entities -o $@
+	# All annotations are manually curated in the ontology-metadata.owl file
+	# owLAPI ERROR: it is parsing 1 line commented out annotations - so make this last
+	sed -i '.bak' 's/<owl:AnnotationProperty[^>]*\/>/<!-- & -->/; s/<\/owl:AnnotationProperty>/& -->/; s/<owl:AnnotationProperty[^>]*">/<!-- &/;' $@
+
 
 # Use ROBOT, driven entirely by terms lists NOT from source ontology
 #imports/%_import.owl: mirror/%.owl imports/%_terms.txt

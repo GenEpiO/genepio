@@ -35,7 +35,7 @@ imports/%_import.owl: imports/%_ontofox.txt
 	curl -s -F file=@imports/$*_ontofox.txt -o $@ http://ontofox.hegroup.org/service.php
 	$(ROBOT) reduce -i $@ -r ELK -s true --xml-entities -o $@
 	# All annotations are manually curated in the ontology-metadata.owl file
-	# owLAPI ERROR: it is parsing 1 line commented out annotations - so make this last
+	# Because OWLAPI is parsing 1 line commented out annotations, make this last:
 	sed -i '.bak' 's/<owl:AnnotationProperty[^>]*\/>/<!-- & -->/; s/<\/owl:AnnotationProperty>/& -->/; s/<owl:AnnotationProperty[^>]*">/<!-- &/;' $@
 
 

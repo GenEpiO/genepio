@@ -23,7 +23,9 @@ $(ONT).owl: $(SRC)
 # ALL OWL imports: apollo_sv chebi chmo doid efo envo eo ero evs fix gazetteer geo hardcoded hp ido irida model ncbitaxon ndf-rt oae obi ontology-metadata pato ro sio so stato symp typon uberon uo
 # ALL OntoFox imports: brenda chebi chmo doid efo envo eo ero fix gazetteer geo hp ido ncbitaxon ndf-rt oae obi pato ro sio so stato uberon uo
 # Ontofox can't import apollo_sv at moment - yeilds empty ontology file.
-IMPORTS = brenda chebi chmo doid efo envo eo ero gazetteer geo hp ido ncbitaxon ndf-rt oae obi pato ro sio so stato uberon uo
+# Ontofox can't import geo either - the ids are ahead of what ontofox's geo ontology has?
+# Ontofox ido import is bringing in BFO root tree when it shouldn't.
+IMPORTS = brenda chebi chmo doid efo envo eo ero gazetteer hp ncbitaxon ndf-rt oae obi pato ro sio so stato uberon uo
 # bfo ro envo uberon chebi
 IMPORTS_OWL = $(patsubst %, imports/%_import.owl,$(IMPORTS))
 

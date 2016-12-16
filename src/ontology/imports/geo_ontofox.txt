@@ -1,29 +1,29 @@
 [URI of the OWL(RDF/XML) output file]
 http://purl.obolibrary.org/obo/GENEPIO/imports/geo_import.owl
+# CURRENTLY NOT USING THIS FILE.  ONTOFOX DOESN'T RECOGNIZE THESE RECENT IDS.  
+# MakeFile uses manually compiled geo_import.owl
 
 [Source ontology]
 GEO
 
 [Low level source term URIs]
-http://purl.obolibrary.org/obo/GEO_000000004 # subnationalentity
-includeAllChildren
-http://purl.obolibrary.org/obo/GEO_000000400 # governmental organization
-includeAllChildren
-http://purl.obolibrary.org/obo/GEO_000000004 # subnational entity
-includeAllChildren
-http://purl.obolibrary.org/obo/GEO_000000391 # geopoli organization
-includeAllChildren
-http://purl.obolibrary.org/obo/GEO_000000788 # geodetic datum
-http://purl.obolibrary.org/obo/GEO_000000372 # geographical region
 
+http://purl.obolibrary.org/obo/GEO_000000400 # governmental organization, subclass of OBI_0000245 organization
+includeAllChildren
+http://purl.obolibrary.org/obo/GEO_000000004 	# subnationalentity, subclass of GEO_000000400
+includeAllChildren
+http://purl.obolibrary.org/obo/GEO_000000391 # geopoli organization, subclass of OBI_0000245 organization
+includeAllChildren
+
+http://purl.obolibrary.org/obo/GEO_000000788 # geodetic datum
+http://purl.obolibrary.org/obo/GEO_000000372 # geographical region, subclass of GEO_000000370
+http://purl.obolibrary.org/obo/GEO_000000370 # geographical entity, subclass of BFO_0000040 material entity
 # RELATIONS
 
 [Top level source term URIs and target direct superclass URIs]
-http://purl.obolibrary.org/obo/BFO_0000001
-
 
 [Source term retrieval setting]
-includeAllIntermediates
+#includeAllIntermediates
 
 [Source annotation URIs]
 http://www.w3.org/2000/01/rdf-schema#label

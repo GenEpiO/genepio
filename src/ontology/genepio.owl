@@ -32,10 +32,10 @@
      xmlns:foaf="http://xmlns.com/foaf/0.1/"
      xmlns:dc="http://purl.org/dc/elements/1.1/">
     <owl:Ontology rdf:about="&obo;genepio.owl">
-        <owl:versionIRI rdf:resource="&obo;genepio/releases/2016-12-06/genepio.owl"/>
+        <owl:versionIRI rdf:resource="&obo;genepio/releases/2016-12-16/genepio.owl"/>
         <owl:imports rdf:resource="&obo;GENEPIO/imports/pato_import.owl"/>
-        <owl:imports rdf:resource="&obo;GENEPIO/imports/oae_import.owl"/>
         <owl:imports rdf:resource="&obo;GENEPIO/imports/chebi_import.owl"/>
+        <owl:imports rdf:resource="&obo;GENEPIO/imports/oae_import.owl"/>
         <owl:imports rdf:resource="&obo;GENEPIO/imports/ncbitaxon_import.owl"/>
         <owl:imports rdf:resource="&obo;GENEPIO/imports/sio_import.owl"/>
         <owl:imports rdf:resource="&obo;GENEPIO/imports/evs_import.owl"/>
@@ -230,13 +230,17 @@
 
     <!-- http://www.w3.org/2000/01/rdf-schema#label -->
 
-    <owl:AnnotationProperty rdf:about="&rdfs;label"/>
+    <owl:AnnotationProperty rdf:about="&rdfs;label">
+        <rdfs:label>label</rdfs:label>
+    </owl:AnnotationProperty>
     
 
 
     <!-- http://www.w3.org/2000/01/rdf-schema#seeAlso -->
 
-    <owl:AnnotationProperty rdf:about="&rdfs;seeAlso"/>
+    <owl:AnnotationProperty rdf:about="&rdfs;seeAlso">
+        <rdfs:label>see also</rdfs:label>
+    </owl:AnnotationProperty>
     
 
 
@@ -876,34 +880,34 @@ I believe time dependency relations (conditions) don&apos;t imply existence by t
     
 
 
-    <!-- http://purl.obolibrary.org/obo/BFO_0000001 -->
-
-    <rdf:Description rdf:about="&obo;BFO_0000001">
-        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
-    </rdf:Description>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/BFO_0000005 -->
-
-    <rdf:Description rdf:about="&obo;BFO_0000005">
-        <rdfs:subClassOf rdf:resource="&obo;BFO_0000002"/>
-    </rdf:Description>
-    
-
-
     <!-- http://purl.obolibrary.org/obo/BFO_0000006 -->
 
-    <rdf:Description rdf:about="&obo;BFO_0000006">
+    <owl:Class rdf:about="&obo;BFO_0000006">
         <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0001884"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/BFO_0000008 -->
+
+    <rdf:Description rdf:about="&obo;BFO_0000008">
+        <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0001859"/>
     </rdf:Description>
     
 
 
-    <!-- http://purl.obolibrary.org/obo/BFO_0000031 -->
+    <!-- http://purl.obolibrary.org/obo/BFO_0000019 -->
 
-    <rdf:Description rdf:about="&obo;BFO_0000031">
-        <rdfs:subClassOf rdf:resource="&obo;BFO_0000005"/>
+    <rdf:Description rdf:about="&obo;BFO_0000019">
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;anyURI">http://purl.obolibrary.org/obo/PATO_0000001</oboInOwl:hasDbXref>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/BFO_0000023 -->
+
+    <rdf:Description rdf:about="&obo;BFO_0000023">
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;anyURI">http://purl.obolibrary.org/obo/CHEBI_50906</oboInOwl:hasDbXref>
     </rdf:Description>
     
 
@@ -1248,14 +1252,6 @@ I believe time dependency relations (conditions) don&apos;t imply existence by t
     
 
 
-    <!-- http://purl.obolibrary.org/obo/CHEBI_50906 -->
-
-    <rdf:Description rdf:about="&obo;CHEBI_50906">
-        <rdfs:subClassOf rdf:resource="&obo;BFO_0000017"/>
-    </rdf:Description>
-    
-
-
     <!-- http://purl.obolibrary.org/obo/CHEBI_5195 -->
 
     <rdf:Description rdf:about="&obo;CHEBI_5195">
@@ -1456,6 +1452,7 @@ I believe time dependency relations (conditions) don&apos;t imply existence by t
 
     <rdf:Description rdf:about="&obo;DOID_3044">
         <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0001205"/>
+        <rdfs:subClassOf rdf:resource="&obo;OBI_1110049"/>
     </rdf:Description>
     
 
@@ -1466,6 +1463,7 @@ I believe time dependency relations (conditions) don&apos;t imply existence by t
         <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0001655"/>
         <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0002018"/>
         <oboInOwl:hasDbXref>NCBI BioSample:host_disease</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;anyURI">http://purl.obolibrary.org/obo/OGMS_0000031</oboInOwl:hasDbXref>
     </rdf:Description>
     
 
@@ -2102,6 +2100,30 @@ I believe time dependency relations (conditions) don&apos;t imply existence by t
 
     <rdf:Description rdf:about="&obo;EO_0007286">
         <rdfs:subClassOf rdf:resource="&obo;EO_0007027"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/ERO_0000833 -->
+
+    <rdf:Description rdf:about="&obo;ERO_0000833">
+        <rdfs:subClassOf rdf:resource="&obo;OBI_0000070"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/ERO_0001183 -->
+
+    <rdf:Description rdf:about="&obo;ERO_0001183">
+        <rdfs:subClassOf rdf:resource="&obo;OBI_0000626"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/ERO_0001286 -->
+
+    <rdf:Description rdf:about="&obo;ERO_0001286">
+        <rdfs:subClassOf rdf:resource="&obo;ERO_0000833"/>
     </rdf:Description>
     
 
@@ -7522,7 +7544,7 @@ Clusters passing filter are represented by PF in analysis reports. Clusters pass
         <obo:IAO_0000114 rdf:resource="&obo;IAO_0000428"/>
         <obo:IAO_0000115 xml:lang="en">A host datum is a datum that pertains to infection-related information about an organism (animal or human) who is likely bearing a pathogen</obo:IAO_0000115>
         <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
-        <rdfs:label xml:lang="en">patient as host datum</rdfs:label>
+        <rdfs:label xml:lang="en">patient as host role datum</rdfs:label>
     </owl:Class>
     
 
@@ -7826,6 +7848,9 @@ Clusters passing filter are represented by PF in analysis reports. Clusters pass
 
     <owl:Class rdf:about="&obo;GENEPIO_0001262">
         <rdfs:subClassOf rdf:resource="&obo;UBERON_0006314"/>
+        <obo:IAO_0000114 rdf:resource="&obo;IAO_0000428"/>
+        <obo:IAO_0000115 xml:lang="en">[WHICH DEFINITION?] See http://medical-dictionary.thefreedictionary.com/aspirate</obo:IAO_0000115>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
         <rdfs:label xml:lang="en">fluid - aspirate</rdfs:label>
     </owl:Class>
     
@@ -7940,7 +7965,7 @@ Clusters passing filter are represented by PF in analysis reports. Clusters pass
                 <owl:someValuesFrom rdf:resource="&obo;GEO_000000005"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:comment xml:lang="en">This list would be customized to include organizations local to the IRIDA software installation.  It is an example of a set of ontology terms that would best be organized by a central authority if  federated installations need to share investigator contact info for example.</rdfs:comment>
+        <rdfs:comment xml:lang="en">This list would be customized to include organizations local to an application&apos;s software installation.  It is an example of a set of ontology terms that would best be organized by a central authority if  federated installations need to share investigator contact info for example.</rdfs:comment>
         <rdfs:label xml:lang="en">health authority</rdfs:label>
     </owl:Class>
     
@@ -11115,7 +11140,7 @@ a data protection role would be inherited from a user&apos;s relation to an enti
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000114 rdf:resource="&obo;IAO_0000428"/>
-        <obo:IAO_0000115 xml:lang="en">A categorical tree specification datum is a categorical value specification which takes its value (ideally) from the ontology identifier of any one of its subclass items; these may be organized in a hierarchy. Further constraints on whether a hierarchy&apos;s superclass items are selectable may be stated. (The categorical tree specification datum may be allowed to hold its own identifier, this entails no further information bearing content.)
+        <obo:IAO_0000115 xml:lang="en">A categorical tree specification datum is a categorical value specification which takes its value from the ontology identifier of any one of its subclass items; these may be organized in a hierarchy. Further constraints on whether a hierarchy&apos;s superclass items are selectable may be stated. (The categorical tree specification datum may be allowed to hold its own identifier, this entails no further information bearing content.)
 
 Any categorical tree specification datum may have a &quot;categorical value specification&quot; metadata state that indicates it doesn&apos;t have a value for a variety of reasons.</obo:IAO_0000115>
         <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
@@ -11393,7 +11418,7 @@ Any categorical tree specification datum may have a &quot;categorical value spec
         </rdfs:subClassOf>
         <obo:IAO_0000114 rdf:resource="&obo;IAO_0000428"/>
         <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
-        <rdfs:comment xml:lang="en">Damion Dooley&apos;s note: This is a good example of a contentious term.  AHA calls for it never to be used, since the common phrase &quot;critical but stable&quot; is misleading by the very nature of &quot;critical&quot;.  The NHS however has it as one of its central terms.</rdfs:comment>
+        <rdfs:comment xml:lang="en">Damion Dooley&apos;s note: This is a contentious term.  AHA calls for it never to be used, since the common phrase &quot;critical but stable&quot; is misleading by the very nature of &quot;critical&quot;.  The NHS however has it as one of its central terms.  The use of &quot;stable&quot; also points to a health trend, rather than a state. A separate &quot;health status trend datum&quot; has been set up to capture this.</rdfs:comment>
         <rdfs:label xml:lang="en">stable</rdfs:label>
         <rdfs:seeAlso xml:lang="en">http://purl.obolibrary.org/obo/GENEPIO_0002026</rdfs:seeAlso>
     </owl:Class>
@@ -12017,13 +12042,6 @@ Any categorical tree specification datum may have a &quot;categorical value spec
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;OBI_0001938"/>
                 <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onClass rdf:resource="&obo;GENEPIO_0001610"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;OBI_0001938"/>
-                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
                 <owl:onClass rdf:resource="&obo;GENEPIO_0001614"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -12046,6 +12064,13 @@ Any categorical tree specification datum may have a &quot;categorical value spec
                 <owl:onProperty rdf:resource="&obo;OBI_0001938"/>
                 <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
                 <owl:onClass rdf:resource="&obo;GENEPIO_0001724"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;OBI_0001938"/>
+                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="&obo;GENEPIO_0001775"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -16007,7 +16032,7 @@ http://www.ebi.ac.uk/ena/about/missing-values-reporting</rdfs:seeAlso>
         <obo:IAO_0000114 rdf:resource="&obo;IAO_0000428"/>
         <obo:IAO_0000115 xml:lang="en">A clinical datum is a datum that pertains to the health situation or history of an individual.</obo:IAO_0000115>
         <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
-        <rdfs:label xml:lang="en">patient datum</rdfs:label>
+        <rdfs:label xml:lang="en">patient role datum</rdfs:label>
     </owl:Class>
     
 
@@ -16147,11 +16172,11 @@ http://www.ebi.ac.uk/ena/about/missing-values-reporting</rdfs:seeAlso>
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0002027 -->
 
     <owl:Class rdf:about="&obo;GENEPIO_0002027">
-        <rdfs:subClassOf rdf:resource="&obo;STATO_0000087"/>
-        <obo:IAO_0000114 rdf:resource="&obo;IAO_0000428"/>
+        <rdfs:subClassOf rdf:resource="&obo;STATO_0000228"/>
         <obo:IAO_0000115 xml:lang="en">An ordinal variable is a categorical variable whose values have sequential order, but no distance metric between them.</obo:IAO_0000115>
         <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
         <rdfs:label xml:lang="en">ordinal variable</rdfs:label>
+        <owl:deprecated></owl:deprecated>
     </owl:Class>
     
 
@@ -16808,6 +16833,15 @@ Alternate definition: A geographic coordinate system is a 2 dimensional coordina
     
 
 
+    <!-- http://purl.obolibrary.org/obo/HP_0012830 -->
+
+    <rdf:Description rdf:about="&obo;HP_0012830">
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000019"/>
+        <obo:GENEPIO_0000006 xml:lang="en">position of phenotype abnormality</obo:GENEPIO_0000006>
+    </rdf:Description>
+    
+
+
     <!-- http://purl.obolibrary.org/obo/IAO_0000007 -->
 
     <rdf:Description rdf:about="&obo;IAO_0000007">
@@ -16890,7 +16924,6 @@ Alternate definition: A geographic coordinate system is a 2 dimensional coordina
     <!-- http://purl.obolibrary.org/obo/IAO_0000577 -->
 
     <rdf:Description rdf:about="&obo;IAO_0000577">
-        <rdfs:subClassOf rdf:resource="&obo;IAO_0000028"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;GENEPIO_0001605"/>
@@ -17311,6 +17344,7 @@ Depending on its context, hasDbXref annotations may point directly to metadata f
     <!-- http://purl.obolibrary.org/obo/OBI_0000626 -->
 
     <rdf:Description rdf:about="&obo;OBI_0000626">
+        <rdfs:subClassOf rdf:resource="&obo;ERO_0001286"/>
         <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0001655"/>
     </rdf:Description>
     
@@ -17482,6 +17516,12 @@ Depending on its context, hasDbXref annotations may point directly to metadata f
 
     <rdf:Description rdf:about="&obo;OBI_0001616">
         <rdfs:subClassOf rdf:resource="&obo;IAO_0000577"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;IAO_0000136"/>
+                <owl:someValuesFrom rdf:resource="&obo;OBI_0100051"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
     </rdf:Description>
     
 
@@ -17722,22 +17762,6 @@ Also note historical name issue (Myanmar vs Burma) and diplomatic name issue (Ta
     
 
 
-    <!-- http://purl.obolibrary.org/obo/OBI_0001903 -->
-
-    <rdf:Description rdf:about="&obo;OBI_0001903">
-        <rdfs:subClassOf rdf:resource="&obo;IAO_0000429"/>
-    </rdf:Description>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/OBI_0001933 -->
-
-    <rdf:Description rdf:about="&obo;OBI_0001933">
-        <rdfs:subClassOf rdf:resource="&obo;IAO_0000030"/>
-    </rdf:Description>
-    
-
-
     <!-- http://purl.obolibrary.org/obo/OBI_0001941 -->
 
     <owl:Class rdf:about="&obo;OBI_0001941">
@@ -17859,6 +17883,14 @@ Also note historical name issue (Myanmar vs Burma) and diplomatic name issue (Ta
     
 
 
+    <!-- http://purl.obolibrary.org/obo/OMP_0000274 -->
+
+    <rdf:Description rdf:about="&obo;OMP_0000274">
+        <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0001432"/>
+    </rdf:Description>
+    
+
+
     <!-- http://purl.obolibrary.org/obo/OMRSE_00000013 -->
 
     <owl:Class rdf:about="&obo;OMRSE_00000013">
@@ -17873,9 +17905,9 @@ Also note historical name issue (Myanmar vs Burma) and diplomatic name issue (Ta
 
     <!-- http://purl.obolibrary.org/obo/PATO_0000047 -->
 
-    <rdf:Description rdf:about="&obo;PATO_0000047">
+    <owl:Class rdf:about="&obo;PATO_0000047">
         <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0001170"/>
-    </rdf:Description>
+    </owl:Class>
     
 
 
@@ -17889,9 +17921,9 @@ Also note historical name issue (Myanmar vs Burma) and diplomatic name issue (Ta
 
     <!-- http://purl.obolibrary.org/obo/PATO_0001585 -->
 
-    <rdf:Description rdf:about="&obo;PATO_0001585">
+    <owl:Class rdf:about="&obo;PATO_0001585">
         <rdfs:subClassOf rdf:resource="&obo;IAO_0000032"/>
-    </rdf:Description>
+    </owl:Class>
     
 
 
@@ -18104,21 +18136,34 @@ Angular offset can be radians or degrees.</rdfs:comment>
     
 
 
+    <!-- http://purl.obolibrary.org/obo/STATO_0000069 -->
+
+    <rdf:Description rdf:about="&obo;STATO_0000069">
+        <rdfs:subClassOf rdf:resource="&obo;STATO_0000047"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/STATO_0000087 -->
+
+    <rdf:Description rdf:about="&obo;STATO_0000087">
+        <rdfs:subClassOf rdf:resource="&obo;STATO_0000252"/>
+    </rdf:Description>
+    
+
+
     <!-- http://purl.obolibrary.org/obo/STATO_0000090 -->
 
     <rdf:Description rdf:about="&obo;STATO_0000090">
-        <rdfs:subClassOf>
-            <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&obo;GENEPIO_0001655"/>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="&obo;has_subclass"/>
-                        <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:minQualifiedCardinality>
-                        <owl:onClass rdf:resource="&obo;BFO_0000001"/>
-                    </owl:Restriction>
-                </owl:intersectionOf>
-            </owl:Class>
-        </rdfs:subClassOf>
+        <rdfs:subClassOf rdf:resource="&obo;STATO_0000087"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/STATO_0000184 -->
+
+    <rdf:Description rdf:about="&obo;STATO_0000184">
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000141"/>
     </rdf:Description>
     
 
@@ -18131,10 +18176,34 @@ Angular offset can be radians or degrees.</rdfs:comment>
     
 
 
+    <!-- http://purl.obolibrary.org/obo/STATO_0000221 -->
+
+    <rdf:Description rdf:about="&obo;STATO_0000221">
+        <rdfs:subClassOf rdf:resource="&obo;STATO_0000258"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/STATO_0000228 -->
+
+    <rdf:Description rdf:about="&obo;STATO_0000228">
+        <rdfs:subClassOf rdf:resource="&obo;STATO_0000252"/>
+    </rdf:Description>
+    
+
+
     <!-- http://purl.obolibrary.org/obo/STATO_0000232 -->
 
-    <rdf:Description rdf:about="&obo;STATO_0000232">
+    <owl:Class rdf:about="&obo;STATO_0000232">
         <rdfs:subClassOf rdf:resource="&obo;STATO_0000047"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/STATO_0000251 -->
+
+    <rdf:Description rdf:about="&obo;STATO_0000251">
+        <rdfs:subClassOf rdf:resource="&obo;STATO_0000258"/>
     </rdf:Description>
     
 
@@ -18142,12 +18211,21 @@ Angular offset can be radians or degrees.</rdfs:comment>
     <!-- http://purl.obolibrary.org/obo/STATO_0000252 -->
 
     <rdf:Description rdf:about="&obo;STATO_0000252">
+        <rdfs:subClassOf rdf:resource="&obo;STATO_0000258"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;IAO_0000136"/>
                 <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0001655"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/STATO_0000258 -->
+
+    <rdf:Description rdf:about="&obo;STATO_0000258">
+        <obo:GENEPIO_0000006 xml:lang="en">variable type</obo:GENEPIO_0000006>
     </rdf:Description>
     
 
@@ -18794,7 +18872,6 @@ Angular offset can be radians or degrees.</rdfs:comment>
     <!-- http://semanticscience.org/resource/SIO_000767 -->
 
     <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_000767">
-        <rdfs:subClassOf rdf:resource="&obo;BFO_0000040"/>
         <rdfs:subClassOf rdf:resource="&obo;IAO_0000577"/>
         <rdfs:comment xml:lang="en">Damion&apos;s note: issue is that postal code is a more general concept.  Need specific postal code of country for data entry.</rdfs:comment>
     </rdf:Description>
@@ -19017,6 +19094,7 @@ Angular offset can be radians or degrees.</rdfs:comment>
 
     <rdf:Description rdf:about="http://www.ebi.ac.uk/efo/EFO_0000246">
         <rdfs:subClassOf rdf:resource="http://www.ebi.ac.uk/efo/EFO_0000719"/>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;anyURI">http://purl.obolibrary.org/obo/PATO_0000011</oboInOwl:hasDbXref>
     </rdf:Description>
     
 

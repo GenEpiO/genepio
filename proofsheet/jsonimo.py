@@ -242,7 +242,7 @@ class Ontology(object):
 			if parentId:
 		
 				if parentId == id:
-					print 'WARNING: an entity mistakenly "has value specification" of itself: %s ' % id
+					print 'WARNING: an entity mistakenly "Has Part" of itself: %s ' % id
 				else:
 
 					self.setDefault(self.struct, struct, parentId, {'id': parentId, 'datatype': 'specification'} )
@@ -293,7 +293,7 @@ class Ontology(object):
 				Datum X "'has primitive value spec' owl:someValuesFrom xmls:anyURI"
 				This case can't be an ancestor of 'categorical measurement datum' since a datum can point to only one value (or structure of values).
 
-			To allow more than one item to be selected from a list or tree requires that the item is_a 'data representational model' that 'has value specification' [condition, e.g. > 0]   
+			To allow more than one item to be selected from a list or tree requires that the item is_a 'data representational model' that 'Has Part' [condition, e.g. > 0]   
 			
 			Currently sparql queries don't return a constraint property for a term that has only been marked with "has primitive value spec owl:someValuesFrom [data type]".  This default empty constraint case is currently being interpreted as
 			 - If categorical selection value, it is an optional selection.
@@ -393,8 +393,8 @@ class Ontology(object):
 			categorical choice in data value?) This raises the difference between 
 			local disuse for a choice, vs. global possibility that it exists in data.
 
-			The difference between "part" and "member": "member" is reserved for "is a" relationships
-			"part" is reserved for "has value specification" relations.
+			The difference between "part" and "member": "member" is reserved for "is a" relationships.
+			"part" is reserved for "Has Part" relations.
 
 			Features get added onto existing parent-child member or part lists.  
 			parent's list must have child already established?
@@ -759,7 +759,7 @@ class Ontology(object):
 
 			SELECT DISTINCT ?parent (?datum as ?id) ?cardinality ?limit
 			WHERE { 	
-				BIND (obo:OBI_0001938 as ?has_value_spec). 
+				BIND (obo:BFO_0000051 as ?has_value_spec). 
 
 				?restriction owl:onProperty ?has_value_spec.
 				?parent rdfs:subClassOf ?restriction. 
@@ -937,7 +937,7 @@ class Ontology(object):
 	    #	    <owl:annotatedProperty rdf:resource="&rdfs;subClassOf"/>
 	    #	    <owl:annotatedTarget>
 	    #	        <owl:Restriction>
-	    #	            <owl:onProperty rdf:resource="&obo;OBI_0001938"/>
+	    #	            <owl:onProperty rdf:resource="&obo;BFO_0000051"/>
 	    #	            <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0001287"/>
 	    #	        </owl:Restriction>
 	    #	    </owl:annotatedTarget>
@@ -960,7 +960,7 @@ class Ontology(object):
 
 		# ################################################################
 		# UI FEATURES
-		# A "has value specification" link can be annotated with a "UI preferred feature"
+		# A "Has Part" link can be annotated with a "UI preferred feature"
 		# Add this to list of features above.
 		# FUTURE: a feature may be qualified by user's user type.
 	    #
@@ -983,7 +983,7 @@ class Ontology(object):
 				?axiom rdf:type owl:Axiom.
 				?axiom owl:annotatedSource ?referrer.
 				?axiom owl:annotatedTarget ?restriction. ?restriction rdf:type owl:Restriction.
-				?restriction owl:onProperty obo:OBI_0001938.
+				?restriction owl:onProperty obo:BFO_0000051.
 				?restriction (owl:onClass|owl:qualifiedCardinality | owl:minQualifiedCardinality | owl:maxQualifiedCardinality | owl:someValuesFrom) ?id
 				FILTER(isURI(?id))
 				?axiom (obo:GENEPIO_0001746|obo:GENEPIO_0001763) ?criteria.  #UI preferred hidden | UI_preferred feature

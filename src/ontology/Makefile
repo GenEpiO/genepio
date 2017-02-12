@@ -38,7 +38,7 @@ imports/%_import.owl: imports/%_ontofox.txt
 	$(ROBOT) reduce -i $@ -r ELK -s true --xml-entities -o $@
 	# All annotations are manually curated in the ontology-metadata.owl file
 	# Because OWLAPI is parsing 1 line commented out annotations, make this step last:
-	# Error trap the sed command - on Macs we need the '.bak' after -i to avoid a parsing error; while on other linux it fails
+	# In sed command on Macs we need the '.bak' after -i to avoid a parsing error
 	sed -i '.bak' 's/<owl:AnnotationProperty[^>]*\/>/<!-- & -->/; s/<\/owl:AnnotationProperty>/& -->/; s/<owl:AnnotationProperty[^>]*">/<!-- &/;' $@ ||	sed -i 's/<owl:AnnotationProperty[^>]*\/>/<!-- & -->/; s/<\/owl:AnnotationProperty>/& -->/; s/<owl:AnnotationProperty[^>]*">/<!-- &/;' $@
 
 

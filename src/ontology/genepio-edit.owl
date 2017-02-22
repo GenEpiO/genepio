@@ -5,9 +5,11 @@
      xmlns:oboInOwl="http://www.geneontology.org/formats/oboInOwl#"
      xmlns:apollo_sv="http://purl.obolibrary.org/obo/apollo_sv.owl/"
      xmlns:resource="http://semanticscience.org/resource/"
+     xmlns:patterns="http://www.co-ode.org/patterns#"
      xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:NCBITaxon="http://purl.obolibrary.org/obo/NCBITaxon#"
      xmlns:efo="http://www.ebi.ac.uk/efo/"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:terms="http://purl.org/dc/terms/"
@@ -27,8 +29,8 @@
         <owl:imports rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/imports/obi_import.owl"/>
         <owl:imports rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/imports/ndf-rt_import.owl"/>
         <owl:imports rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/imports/ido_import.owl"/>
-        <owl:imports rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/imports/efo_import.owl"/>
         <owl:imports rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/imports/uberon_import.owl"/>
+        <owl:imports rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/imports/efo_import.owl"/>
         <owl:imports rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/imports/model_import.owl"/>
         <owl:imports rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/imports/typon_import.owl"/>
         <owl:imports rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/imports/eo_import.owl"/>
@@ -40,6 +42,7 @@
         <owl:imports rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/imports/ro_import.owl"/>
         <owl:imports rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/imports/irida_import.owl"/>
         <owl:imports rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/imports/ero_import.owl"/>
+        <owl:imports rdf:resource="http://http://purl.obolibrary.org/obo/GENEPIO/imports/foodon_import.owl"/>
         <owl:imports rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/imports/hardcoded.owl"/>
         <owl:imports rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/imports/chmo_import.owl"/>
         <owl:imports rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/imports/doid_import.owl"/>
@@ -1813,7 +1816,6 @@ I believe time dependency relations (conditions) don&apos;t imply existence by t
     <!-- http://purl.obolibrary.org/obo/ENVO_00002173 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/ENVO_00002173">
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/ENVO_00000073"/>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001297"/>
     </owl:Class>
     
@@ -1896,7 +1898,7 @@ I believe time dependency relations (conditions) don&apos;t imply existence by t
     <!-- http://purl.obolibrary.org/obo/ENVO_00003864 -->
 
     <rdf:Description rdf:about="http://purl.obolibrary.org/obo/ENVO_00003864">
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/ENVO_00003861"/>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001009"/>
     </rdf:Description>
     
 
@@ -1928,7 +1930,6 @@ I believe time dependency relations (conditions) don&apos;t imply existence by t
                 <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/STATO_0000087"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <oboInOwl:hasDbXref xml:lang="en">NCBI BioSample:*isolation_source</oboInOwl:hasDbXref>
         <rdfs:seeAlso xml:lang="en">http://purl.obolibrary.org/obo/GENEPIO_0000030</rdfs:seeAlso>
     </owl:Class>
     
@@ -2186,6 +2187,14 @@ I believe time dependency relations (conditions) don&apos;t imply existence by t
         <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
         <rdfs:label xml:lang="en">symptom onset date</rdfs:label>
     </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/FOODON_03490100 -->
+
+    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/FOODON_03490100">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001655"/>
+    </rdf:Description>
     
 
 
@@ -5436,7 +5445,7 @@ specifichost</oboInOwl:hasRelatedSynonym>
         <obo:IAO_0000115>name of body site where the sample was obtained from, such as a specific organ or tissue (tongue, lung etc...). For Foundational Model of Anatomy Ontology (FMA) (v 3.1) terms, please see http://purl.bioontology.org/ontology/FMA</obo:IAO_0000115>
         <obo:IAO_0000119>GROUP: MIxS</obo:IAO_0000119>
         <oboInOwl:inSubset>GENEPIO</oboInOwl:inSubset>
-        <rdfs:label xml:lang="en">host body (anatomical) site</rdfs:label>
+        <rdfs:label xml:lang="en">specimen source body (anatomical) site</rdfs:label>
     </owl:Class>
     
 
@@ -5509,36 +5518,68 @@ specifichost</oboInOwl:hasRelatedSynonym>
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0000027 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0000027">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000097"/>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001421"/>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/IAO_0000300"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002351"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/ENVO_00010483"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002351"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000028"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002351"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001297"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <obo:GENEPIO_0000001>Environmental Isolate</obo:GENEPIO_0000001>
-        <obo:GENEPIO_0000004>Isolation source</obo:GENEPIO_0000004>
-        <obo:GENEPIO_0000005>BioSample</obo:GENEPIO_0000005>
-        <obo:GENEPIO_0000007>User Input</obo:GENEPIO_0000007>
         <obo:IAO_0000112>sediment, chicken feces, cheese</obo:IAO_0000112>
         <obo:IAO_0000115>Describes the physical, environmental and/or local geographical source of the biological sample from which the sample was derived.</obo:IAO_0000115>
-        <obo:IAO_0000119>Biosample</obo:IAO_0000119>
-        <oboInOwl:inSubset>GENEPIO</oboInOwl:inSubset>
-        <rdfs:label>sample source</rdfs:label>
+        <obo:IAO_0000119>NCBI Biosample</obo:IAO_0000119>
+        <rdfs:label xml:lang="en">specimen source context</rdfs:label>
     </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000027"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000097"/>
+        <obo:IAO_0000115 xml:lang="en">Describes the physical, environmental and/or local geographical source of the biological sample from which the sample was derived.</obo:IAO_0000115>
+        <oboInOwl:hasAlternativeId>isolation_source</oboInOwl:hasAlternativeId>
+        <rdfs:label xml:lang="en">isolation source</rdfs:label>
+    </owl:Axiom>
     
 
 
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0000028 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0000028">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000105"/>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001635"/>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001655"/>
         <obo:GENEPIO_0000001>Pathogen Isolate</obo:GENEPIO_0000001>
-        <obo:GENEPIO_0000004>Host body product</obo:GENEPIO_0000004>
-        <obo:GENEPIO_0000005>GROUP: MIxS</obo:GENEPIO_0000005>
-        <obo:GENEPIO_0000007>User Input</obo:GENEPIO_0000007>
         <obo:IAO_0000112>feces, cerebral spinal fluid (CSF)</obo:IAO_0000112>
-        <obo:IAO_0000115>substance produced by the body, e.g. stool, mucus, where the sample was obtained from. For Foundational Model of Anatomy Ontology (FMA) (v 3.1) terms, please see http://purl.bioontology.org/ontology/FMA</obo:IAO_0000115>
-        <obo:IAO_0000119>GROUP: MIxS</obo:IAO_0000119>
-        <oboInOwl:inSubset>GENEPIO</oboInOwl:inSubset>
-        <rdfs:label xml:lang="en">host body product</rdfs:label>
+        <obo:IAO_0000115 xml:lang="en">substance produced by the body, e.g. stool, mucus, where the sample was obtained from.</obo:IAO_0000115>
+        <rdfs:label xml:lang="en">specimen source body product</rdfs:label>
     </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000028"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000105"/>
+        <obo:IAO_0000115 xml:lang="en">substance produced by the body, e.g. stool, mucus, where the sample was obtained from</obo:IAO_0000115>
+        <oboInOwl:hasAlternativeId xml:lang="en">host_body_product</oboInOwl:hasAlternativeId>
+        <oboInOwl:inSubset>host-associated</oboInOwl:inSubset>
+        <oboInOwl:inSubset>human-associated</oboInOwl:inSubset>
+        <rdfs:label xml:lang="en">host body product</rdfs:label>
+    </owl:Axiom>
     
 
 
@@ -5570,15 +5611,8 @@ specifichost</oboInOwl:hasRelatedSynonym>
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0000030">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000097"/>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000105"/>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001655"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002350"/>
-                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/STATO_0000087"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002351"/>
@@ -5595,6 +5629,14 @@ specifichost</oboInOwl:hasRelatedSynonym>
         <oboInOwl:inSubset>GENEPIO</oboInOwl:inSubset>
         <rdfs:label>environmental source material</rdfs:label>
     </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000030"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000105"/>
+        <obo:IAO_0000115 xml:lang="en">The environmental material level refers to the material that was displaced by the sample, or material in which a sample was embedded, prior to the sampling event. Environmental material terms are generally mass nouns. Examples include: air, soil, or water. EnvO (v 2013-06-14) terms can be found via the link: www.environmentontology.org/Browse-EnvO</obo:IAO_0000115>
+        <oboInOwl:hasAlternativeId>env_material</oboInOwl:hasAlternativeId>
+        <rdfs:label xml:lang="en">environment (material)</rdfs:label>
+    </owl:Axiom>
     
 
 
@@ -6954,7 +6996,7 @@ Clusters passing filter are represented by PF in analysis reports. Clusters pass
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0000099 -->
 
     <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0000099">
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000079"/>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/OBI_0001616"/>
     </rdf:Description>
     
 
@@ -7078,7 +7120,7 @@ Clusters passing filter are represented by PF in analysis reports. Clusters pass
         <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000428"/>
         <obo:IAO_0000115 xml:lang="en">A Description of whether the specimen source organism appeared healthy, sick or deceased at the time of sampling. If sick or deceased, additional details should be provided in project-specific fields.</obo:IAO_0000115>
         <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
-        <rdfs:label xml:lang="en">health status - GSCID-BRC</rdfs:label>
+        <rdfs:label xml:lang="en">specimen source health status - GSCID-BRC</rdfs:label>
     </owl:Class>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000110"/>
@@ -7133,7 +7175,7 @@ Clusters passing filter are represented by PF in analysis reports. Clusters pass
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000428"/>
-        <obo:IAO_0000115 xml:lang="en">Specimen category is a categorical variable that indicates the broad source of a sample.</obo:IAO_0000115>
+        <obo:IAO_0000115 xml:lang="en">Specimen category is a categorical variable that broadly indicates the source of a specimen in order for data processing systems like NCBI&apos;s biosample submission portal to anticipate other fields related to the source. Currently this distinguishes between &quot;clinical or host associated&quot; specimens and &quot;environmental/food or other pathogen&quot; specimens.</obo:IAO_0000115>
         <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
         <rdfs:label xml:lang="en">specimen category</rdfs:label>
     </owl:Class>
@@ -7277,10 +7319,135 @@ Syntax: urrently is free text, but ISO3166 standard abbreviations would be accep
     
 
 
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0000119 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0000119">
+        <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C103180"/>
+        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000122"/>
+        <obo:IAO_0000115 xml:lang="en">The Darwin Core is body of standards. It includes a glossary of terms (in other contexts these might be called properties, elements, fields, columns, attributes, or concepts) intended to facilitate the sharing of information about biological diversity by providing reference definitions, examples, and commentaries.</obo:IAO_0000115>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
+        <obo:IAO_0000119 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://tdwg.github.io/dwc/terms/index.htm</obo:IAO_0000119>
+        <rdfs:label xml:lang="en">Darwin Core Terms</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0000120 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0000120">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/IAO_0000416"/>
+        <rdfs:label xml:lang="en">travel history item</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0000121 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0000121">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000120"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001605"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="en">travel start date</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0000122 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0000122">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000120"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001739"/>
+                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000121"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001605"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="en">travel end date</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0000123 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0000123">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001058"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002350"/>
+                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/STATO_0000090"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000428"/>
+        <obo:IAO_0000115 xml:lang="en">Infection aquired during travel is a boolean datum indicating a diagnosis of a traveller&apos;s infection during a given trip.</obo:IAO_0000115>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
+        <rdfs:label xml:lang="en">infection aquired during travel</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0000124 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0000124">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001743"/>
+        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000428"/>
+        <obo:IAO_0000115 xml:lang="en">This is a British Columbia Centre for Disease Control model of the datums involved in an epidemiology investigation</obo:IAO_0000115>
+        <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
+        <rdfs:label xml:lang="en">BCCDC epidemiology model</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0000125 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0000125">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000124"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002351"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001058"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="en">BCCDC exposure model</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0000126 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0000126">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000124"/>
+        <rdfs:label xml:lang="en">BCCDC epi case food model</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0000127 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0000127">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001058"/>
+        <rdfs:label xml:lang="en">food(s) brought back from travel</rdfs:label>
+    </owl:Class>
+    
+
+
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0001009 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001009">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001297"/>
+        <obo:IAO_0000115 xml:lang="en">A restaurant or an eatery, is a business which prepares and serves food and drinks to customers in exchange for money.</obo:IAO_0000115>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
+        <obo:IAO_0000119>https://en.wikipedia.org/wiki/Restaurant</obo:IAO_0000119>
         <rdfs:label xml:lang="en">restaurant</rdfs:label>
     </owl:Class>
     
@@ -7317,6 +7484,9 @@ Syntax: urrently is free text, but ISO3166 standard abbreviations would be accep
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001016">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001009"/>
+        <obo:IAO_0000115 xml:lang="en">A cafeteria is a type of food service location in which there is little or no waiting staff table service, whether a restaurant or within an institution such as a large office building or school.</obo:IAO_0000115>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
+        <obo:IAO_0000119>https://en.wikipedia.org/wiki/Cafeteria</obo:IAO_0000119>
         <rdfs:label xml:lang="en">cafeteria</rdfs:label>
     </owl:Class>
     
@@ -7325,8 +7495,10 @@ Syntax: urrently is free text, but ISO3166 standard abbreviations would be accep
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0001017 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001017">
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001009"/>
-        <rdfs:label xml:lang="en">bakery</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.geneontology.org/formats/oboInOwl#ObsoleteClass"/>
+        <obo:IAO_0100001 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://purl.obolibrary.org/obo/ENVO_00003864</obo:IAO_0100001>
+        <rdfs:label xml:lang="en">bakery (deprecated)</rdfs:label>
+        <owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
     </owl:Class>
     
 
@@ -7335,7 +7507,10 @@ Syntax: urrently is free text, but ISO3166 standard abbreviations would be accep
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001018">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001009"/>
-        <rdfs:label xml:lang="en">deli</rdfs:label>
+        <obo:IAO_0000115 xml:lang="en">A delicatessen or deli is a retail establishment that sells a selection of unusual or foreign prepared foods.</obo:IAO_0000115>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
+        <obo:IAO_0000119>https://en.wikipedia.org/wiki/Delicatessen</obo:IAO_0000119>
+        <rdfs:label xml:lang="en">delicatessen</rdfs:label>
     </owl:Class>
     
 
@@ -7344,7 +7519,9 @@ Syntax: urrently is free text, but ISO3166 standard abbreviations would be accep
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001019">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001009"/>
-        <rdfs:label xml:lang="en">kiosk</rdfs:label>
+        <obo:IAO_0000115 xml:lang="en">A food kiosk is a kiosk (a booth with an open window on one side) that sells food.</obo:IAO_0000115>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
+        <rdfs:label xml:lang="en">food kiosk</rdfs:label>
     </owl:Class>
     
 
@@ -7353,6 +7530,8 @@ Syntax: urrently is free text, but ISO3166 standard abbreviations would be accep
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001020">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/ENVO_00002222"/>
+        <obo:IAO_0000115 xml:lang="en">A grocery store is a retail store that primarily sells food.</obo:IAO_0000115>
+        <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
         <rdfs:label xml:lang="en">grocery store</rdfs:label>
     </owl:Class>
     
@@ -7362,6 +7541,8 @@ Syntax: urrently is free text, but ISO3166 standard abbreviations would be accep
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001021">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/ENVO_00002222"/>
+        <obo:IAO_0000115 xml:lang="en">A specialty/ethnic food store is a store specializing in a particular variety of food or food of cultural / regional origin.</obo:IAO_0000115>
+        <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
         <rdfs:label xml:lang="en">specialty/ethnic store</rdfs:label>
     </owl:Class>
     
@@ -7371,6 +7552,8 @@ Syntax: urrently is free text, but ISO3166 standard abbreviations would be accep
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001022">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/ENVO_00002222"/>
+        <obo:IAO_0000115 xml:lang="en">A market, or marketplace, is a location where people regularly gather for the purchase and sale of provisions, livestock, and other goods</obo:IAO_0000115>
+        <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
         <rdfs:label xml:lang="en">market</rdfs:label>
     </owl:Class>
     
@@ -7380,7 +7563,10 @@ Syntax: urrently is free text, but ISO3166 standard abbreviations would be accep
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001024">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001009"/>
-        <rdfs:label xml:lang="en">take out</rdfs:label>
+        <obo:IAO_0000115 xml:lang="en">A restaurant providing prepared meals or other food items that the purchaser intends to eat elsewhere</obo:IAO_0000115>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
+        <obo:IAO_0000119 xml:lang="en">https://en.wikipedia.org/wiki/Take-out</obo:IAO_0000119>
+        <rdfs:label xml:lang="en">take out restaurant</rdfs:label>
     </owl:Class>
     
 
@@ -7470,6 +7656,9 @@ Syntax: urrently is free text, but ISO3166 standard abbreviations would be accep
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001035">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001297"/>
+        <obo:IAO_0000115 xml:lang="en">A long term care facility provides a type of residential care. It is a place of residence for people who require continual nursing care and have significant difficulty coping with the required activities of daily living.</obo:IAO_0000115>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
+        <obo:IAO_0000119>https://en.wikipedia.org/wiki/Nursing_home_care</obo:IAO_0000119>
         <rdfs:label xml:lang="en">long term care facility</rdfs:label>
     </owl:Class>
     
@@ -7618,7 +7807,10 @@ Syntax: urrently is free text, but ISO3166 standard abbreviations would be accep
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001058">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001229"/>
-        <rdfs:label xml:lang="en">travel</rdfs:label>
+        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000428"/>
+        <obo:IAO_0000115 xml:lang="en">an epidemiology travel datum is a datum regarding a particular human&apos;s travel trip destination, mode, and motivation, with respect to an epidemiology investigation.</obo:IAO_0000115>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
+        <rdfs:label xml:lang="en">epidemiology case travel datum</rdfs:label>
     </owl:Class>
     
 
@@ -7627,7 +7819,7 @@ Syntax: urrently is free text, but ISO3166 standard abbreviations would be accep
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001059">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001064"/>
-        <rdfs:label xml:lang="en">boat / cruise</rdfs:label>
+        <rdfs:label xml:lang="en">boat / cruise travel</rdfs:label>
     </owl:Class>
     
 
@@ -7636,7 +7828,7 @@ Syntax: urrently is free text, but ISO3166 standard abbreviations would be accep
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001060">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001064"/>
-        <rdfs:label xml:lang="en">train</rdfs:label>
+        <rdfs:label xml:lang="en">train travel</rdfs:label>
     </owl:Class>
     
 
@@ -7645,7 +7837,7 @@ Syntax: urrently is free text, but ISO3166 standard abbreviations would be accep
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001061">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001064"/>
-        <rdfs:label xml:lang="en">bus</rdfs:label>
+        <rdfs:label xml:lang="en">bus travel</rdfs:label>
     </owl:Class>
     
 
@@ -7654,7 +7846,7 @@ Syntax: urrently is free text, but ISO3166 standard abbreviations would be accep
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001062">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001064"/>
-        <rdfs:label xml:lang="en">car</rdfs:label>
+        <rdfs:label xml:lang="en">car travel</rdfs:label>
     </owl:Class>
     
 
@@ -7663,7 +7855,7 @@ Syntax: urrently is free text, but ISO3166 standard abbreviations would be accep
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001063">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001064"/>
-        <rdfs:label xml:lang="en">airline</rdfs:label>
+        <rdfs:label xml:lang="en">airline travel</rdfs:label>
     </owl:Class>
     
 
@@ -7673,6 +7865,9 @@ Syntax: urrently is free text, but ISO3166 standard abbreviations would be accep
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001064">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001058"/>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001655"/>
+        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000428"/>
+        <obo:IAO_0000115 xml:lang="en">A travel mode is a type of transportation which a given human has used while travelling on a particular trip.</obo:IAO_0000115>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
         <rdfs:label xml:lang="en">travel mode</rdfs:label>
     </owl:Class>
     
@@ -7683,6 +7878,9 @@ Syntax: urrently is free text, but ISO3166 standard abbreviations would be accep
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001065">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001058"/>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001655"/>
+        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000428"/>
+        <obo:IAO_0000115 xml:lang="en">A travel reason is a motivation for traveling on a particular trip expressed by the traveller.</obo:IAO_0000115>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
         <rdfs:label xml:lang="en">travel reason</rdfs:label>
     </owl:Class>
     
@@ -7692,7 +7890,7 @@ Syntax: urrently is free text, but ISO3166 standard abbreviations would be accep
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001066">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001065"/>
-        <rdfs:label xml:lang="en">pleasure</rdfs:label>
+        <rdfs:label xml:lang="en">travel for pleasure</rdfs:label>
     </owl:Class>
     
 
@@ -7701,7 +7899,7 @@ Syntax: urrently is free text, but ISO3166 standard abbreviations would be accep
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001067">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001065"/>
-        <rdfs:label xml:lang="en">business</rdfs:label>
+        <rdfs:label xml:lang="en">business activity</rdfs:label>
     </owl:Class>
     
 
@@ -7710,7 +7908,7 @@ Syntax: urrently is free text, but ISO3166 standard abbreviations would be accep
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001068">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001065"/>
-        <rdfs:label xml:lang="en">mission work</rdfs:label>
+        <rdfs:label xml:lang="en">religious missionairy activity</rdfs:label>
     </owl:Class>
     
 
@@ -7719,7 +7917,7 @@ Syntax: urrently is free text, but ISO3166 standard abbreviations would be accep
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001069">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001066"/>
-        <rdfs:label xml:lang="en">rural backpacking</rdfs:label>
+        <rdfs:label xml:lang="en">rural backpacking activity</rdfs:label>
     </owl:Class>
     
 
@@ -7737,7 +7935,7 @@ Syntax: urrently is free text, but ISO3166 standard abbreviations would be accep
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001071">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001066"/>
-        <rdfs:label xml:lang="en">tour</rdfs:label>
+        <rdfs:label xml:lang="en">travel tour</rdfs:label>
     </owl:Class>
     
 
@@ -7746,7 +7944,7 @@ Syntax: urrently is free text, but ISO3166 standard abbreviations would be accep
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001072">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001065"/>
-        <rdfs:label xml:lang="en">unsure</rdfs:label>
+        <rdfs:label xml:lang="en">unsure of travel reason</rdfs:label>
     </owl:Class>
     
 
@@ -8207,6 +8405,7 @@ Syntax: urrently is free text, but ISO3166 standard abbreviations would be accep
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000428"/>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
         <rdfs:label xml:lang="en">lifespan history record</rdfs:label>
     </owl:Class>
     
@@ -8255,6 +8454,7 @@ Syntax: urrently is free text, but ISO3166 standard abbreviations would be accep
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001236">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001741"/>
         <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000428"/>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
         <rdfs:label xml:lang="en">sample entity</rdfs:label>
     </owl:Class>
     
@@ -8443,6 +8643,7 @@ Syntax: urrently is free text, but ISO3166 standard abbreviations would be accep
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000428"/>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
         <rdfs:label xml:lang="en">health state record</rdfs:label>
     </owl:Class>
     
@@ -8616,6 +8817,7 @@ Syntax: urrently is free text, but ISO3166 standard abbreviations would be accep
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000428"/>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
         <rdfs:label xml:lang="en">symptom record</rdfs:label>
     </owl:Class>
     <owl:Axiom>
@@ -8667,6 +8869,7 @@ Syntax: urrently is free text, but ISO3166 standard abbreviations would be accep
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001293">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001741"/>
         <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000428"/>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
         <rdfs:label xml:lang="en">sequence record</rdfs:label>
     </owl:Class>
     
@@ -8687,6 +8890,7 @@ Syntax: urrently is free text, but ISO3166 standard abbreviations would be accep
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001302">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001741"/>
         <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000428"/>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
         <rdfs:label xml:lang="en">lab test history record</rdfs:label>
     </owl:Class>
     
@@ -8722,7 +8926,10 @@ Syntax: urrently is free text, but ISO3166 standard abbreviations would be accep
                 <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:label xml:lang="en">sample history item</rdfs:label>
+        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000428"/>
+        <obo:IAO_0000115 xml:lang="en">A specimen history item is a time-related datum about a particular specimen</obo:IAO_0000115>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
+        <rdfs:label xml:lang="en">specimen history item</rdfs:label>
     </owl:Class>
     
 
@@ -8768,6 +8975,7 @@ Syntax: urrently is free text, but ISO3166 standard abbreviations would be accep
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001424">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001741"/>
         <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000428"/>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
         <rdfs:comment xml:lang="en">ISSUE: lab test results are appropriate to lab test types.  Logic around that?</rdfs:comment>
         <rdfs:label xml:lang="en">lab test record</rdfs:label>
     </owl:Class>
@@ -8794,9 +9002,8 @@ Syntax: urrently is free text, but ISO3166 standard abbreviations would be accep
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001426">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001741"/>
         <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000428"/>
-        <rdfs:comment xml:lang="en">The input filter on suspected pathogen, etc inputs yeilds container ids that are found either in clinical patient records reported to be suspect, or lab test results.  Consequently it is a container object that points to either patient records, lab tests or both.
-
-Issue: Interviewers can be talking to other people at an outbreak_event who might or might not have had illness, to compare food intake etc.  These often won&apos;t have a Container ID, but are of interest on the list?</rdfs:comment>
+        <obo:IAO_0000115 xml:lang="en">A container id is an identifier that refers to a container object about a patient specimen. Container ids are referenced in clinical patient records reported to be suspect, or lab test results.</obo:IAO_0000115>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
         <rdfs:label xml:lang="en">container record</rdfs:label>
     </owl:Class>
     
@@ -8816,10 +9023,18 @@ Issue: Interviewers can be talking to other people at an outbreak_event who migh
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0001429 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001429">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000097"/>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/IAO_0000577"/>
-        <oboInOwl:hasDbXref>NCBI BioSample:*strain</oboInOwl:hasDbXref>
         <rdfs:label xml:lang="en">strain identifier</rdfs:label>
     </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001429"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000097"/>
+        <obo:IAO_0000115 xml:lang="en">microbial or eukaryotic strain name</obo:IAO_0000115>
+        <oboInOwl:hasAlternativeId>strain</oboInOwl:hasAlternativeId>
+        <rdfs:label xml:lang="en">strain</rdfs:label>
+    </owl:Axiom>
     
 
 
@@ -8870,9 +9085,10 @@ Issue: Interviewers can be talking to other people at an outbreak_event who migh
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000428"/>
-        <obo:IAO_0000115 xml:lang="en">A line list is a collection of suspected or known disease outbreak cases.  It can also include details about healthy patients associated with an exposure event (picnic, concert etc.) who have been interviewed in order to compare food intake, assess risk factors, etc.  
+        <obo:IAO_0000115 xml:lang="en">A line list is a collection of suspected or known disease outbreak cases.  It may also include details about healthy patients associated with an exposure event (picnic, concert etc.) who have been interviewed in order to compare food intake, assess risk factors, etc.  
 
-In fact health status of people associated with an exposure event can change from healthy or unknown status, to ill patient.</obo:IAO_0000115>
+Note that the health status of people associated with an exposure event can change from healthy or unknown status, to ill patient.</obo:IAO_0000115>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
         <rdfs:label xml:lang="en">line list object</rdfs:label>
     </owl:Class>
     
@@ -8950,6 +9166,7 @@ In fact health status of people associated with an exposure event can change fro
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000428"/>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
         <rdfs:comment xml:lang="en">An exposure can be narrowed down to a single date, or can be reasoned to exist with a lower and/or upper bound date.  A single date exposure has lower and upper bound dates set as the same value.</rdfs:comment>
         <rdfs:label xml:lang="en">exposure history record</rdfs:label>
     </owl:Class>
@@ -9003,6 +9220,7 @@ In fact health status of people associated with an exposure event can change fro
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000428"/>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
         <rdfs:label xml:lang="en">isolate history record</rdfs:label>
     </owl:Class>
     
@@ -9013,6 +9231,7 @@ In fact health status of people associated with an exposure event can change fro
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001466">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001741"/>
         <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000428"/>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
         <rdfs:comment xml:lang="en">An outbreak date may have an official start, but because it might be ongoing, it may not have an end (yet).</rdfs:comment>
         <rdfs:label xml:lang="en">outbreak history record</rdfs:label>
     </owl:Class>
@@ -9045,6 +9264,7 @@ In fact health status of people associated with an exposure event can change fro
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000428"/>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
         <rdfs:comment xml:lang="en">Needs to cover the various pregnancy events</rdfs:comment>
         <rdfs:label xml:lang="en">pregnancy history record</rdfs:label>
     </owl:Class>
@@ -9070,6 +9290,7 @@ In fact health status of people associated with an exposure event can change fro
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000428"/>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
         <rdfs:comment xml:lang="en">Issue: a diagnosis is a set of diseases, each of which can be marked primary or secondary &quot;Illness causality&quot; with respect to a particular case?  Requires a relation annotation.</rdfs:comment>
         <rdfs:label xml:lang="en">diagnosis record</rdfs:label>
     </owl:Class>
@@ -9149,6 +9370,7 @@ In fact health status of people associated with an exposure event can change fro
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000428"/>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
         <rdfs:label xml:lang="en">exposure event record</rdfs:label>
     </owl:Class>
     
@@ -9173,6 +9395,7 @@ In fact health status of people associated with an exposure event can change fro
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000428"/>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
         <rdfs:label xml:lang="en">hospitalization event record</rdfs:label>
     </owl:Class>
     
@@ -9368,7 +9591,7 @@ In fact health status of people associated with an exposure event can change fro
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001532"/>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001655"/>
         <rdfs:comment xml:lang="en">This will also point to food ontology</rdfs:comment>
-        <rdfs:label xml:lang="en">food type</rdfs:label>
+        <rdfs:label xml:lang="en">food product type</rdfs:label>
     </owl:Class>
     
 
@@ -9710,14 +9933,22 @@ For Salmonella a 0.10 variance in length between an assembly size and a referenc
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001567">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000015"/>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000097"/>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001222"/>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001655"/>
-        <obo:GENEPIO_0000006 xml:lang="en">host taxonomy</obo:GENEPIO_0000006>
         <obo:IAO_0000115 xml:lang="en">The natural (as opposed to laboratory) host to the organism from which the sample was obtained. Use the full taxonomic name, eg, &quot;Homo sapiens&quot;.</obo:IAO_0000115>
         <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
-        <oboInOwl:hasDbXref>NCBI BioSample: host</oboInOwl:hasDbXref>
-        <rdfs:label xml:lang="en">host organism taxonomy datum</rdfs:label>
+        <obo:IAO_0000119 rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001835"/>
+        <rdfs:label xml:lang="en">specimen source taxonomy</rdfs:label>
     </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001567"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000097"/>
+        <obo:IAO_0000115 xml:lang="en">The natural (as opposed to laboratory) host to the organism from which the sample was obtained. Use the full taxonomic name, eg, &quot;Homo sapiens&quot;.</obo:IAO_0000115>
+        <oboInOwl:hasAlternativeId>host</oboInOwl:hasAlternativeId>
+        <rdfs:label xml:lang="en">host</rdfs:label>
+    </owl:Axiom>
     
 
 
@@ -9757,7 +9988,7 @@ A &quot;measure&quot; can indicate an amount of activity, consumption, transform
                 <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001835"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:label xml:lang="en">clinical</rdfs:label>
+        <rdfs:label xml:lang="en">clinical or host associated</rdfs:label>
     </owl:Class>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001569"/>
@@ -10328,7 +10559,7 @@ BioSample_contact_information&quot;</rdfs:comment>
                 <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001835"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:label xml:lang="en">environmental</rdfs:label>
+        <rdfs:label xml:lang="en">environmental/food/other</rdfs:label>
     </owl:Class>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001590"/>
@@ -10976,9 +11207,7 @@ BioSample_contact_information&quot;</rdfs:comment>
         <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
         <rdfs:comment xml:lang="en">This varies in its type (numeric or string) and its central repository depending on its context (use in a particular application/instance).
 
-GSCID-BRC Note: &quot;Host&quot; is not the preferred term since some specimens may lack any detectable pathogen
-
-A person would have a host identifier only AFTER they have been diagnosed as having a pathogen.  So not quite like a health care personal identifier, which implies less.</rdfs:comment>
+Note: GSCID-BRC specification states &quot; &apos;Host&apos; is not the preferred term since some specimens may lack any detectable pathogen&quot;. In other words, a person would technically (logically) only have a host identifier AFTER they have been diagnosed as having a pathogen.  A health care personal identifier, or a case identifier would be better than a more ephemeral &quot;host id&quot;</rdfs:comment>
         <rdfs:label xml:lang="en">specimen source identifier</rdfs:label>
     </owl:Class>
     <owl:Axiom>
@@ -11655,6 +11884,7 @@ or https://www.ncbi.nlm.nih.gov/mesh/1000067</rdfs:comment>
         </rdfs:subClassOf>
         <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000428"/>
         <obo:IAO_0000115 xml:lang="en">An identifier moe3l indicates an identifier, the organization it has been issued by, and the status of the identifier - whether it is a primary one, active or archaic.</obo:IAO_0000115>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
         <rdfs:label xml:lang="en">identifier model</rdfs:label>
     </owl:Class>
     
@@ -11880,6 +12110,7 @@ or https://www.ncbi.nlm.nih.gov/mesh/1000067</rdfs:comment>
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0001656 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001656">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000097"/>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001611"/>
         <rdfs:subClassOf>
             <owl:Restriction>
@@ -11896,10 +12127,17 @@ or https://www.ncbi.nlm.nih.gov/mesh/1000067</rdfs:comment>
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000428"/>
-        <oboInOwl:hasDbXref xml:lang="en">NCBI BioSample:*lat_lon</oboInOwl:hasDbXref>
         <rdfs:comment xml:lang="en">Both latitude and longitude are merged into one resulting field</rdfs:comment>
         <rdfs:label xml:lang="en">NCBI BioSample lat_lon model</rdfs:label>
     </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001656"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000097"/>
+        <obo:IAO_0000115 xml:lang="en">The geographical coordinates of the location where the sample was collected. Specify as degrees latitude and longitude in format &quot;d[d.dddd] N|S d[dd.dddd] W|E&quot;, eg, 38.98 N 77.11 W</obo:IAO_0000115>
+        <oboInOwl:hasAlternativeId>lat_lon</oboInOwl:hasAlternativeId>
+        <rdfs:label xml:lang="en">latitude and longitude</rdfs:label>
+    </owl:Axiom>
     
 
 
@@ -12978,7 +13216,7 @@ or https://www.ncbi.nlm.nih.gov/mesh/1000067</rdfs:comment>
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0001722 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001722">
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000079"/>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/OBI_0001616"/>
         <obo:IAO_0000115>Composite of “institution code:collection code:specimen id” e.g. UAM:Mamm:52179. These codes are controlled vocabulary identifiers for tracking specimens in sample collections. 
 Structured vouchers include institution-codes (and optional collection-codes) taken from a controlled vocabulary maintained by the INSDC that denotes the museum or herbarium collection where the specimen resides, please visit: http://www.insdc.org/controlled-vocabulary-specimenvoucher-qualifier.</obo:IAO_0000115>
         <oboInOwl:hasDbXref>NCBI BioSample: specimen_voucher</oboInOwl:hasDbXref>
@@ -13295,6 +13533,7 @@ specifichost</oboInOwl:hasRelatedSynonym>
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000428"/>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
         <rdfs:label xml:lang="en">line list row record</rdfs:label>
     </owl:Class>
     
@@ -13609,6 +13848,7 @@ specifichost</oboInOwl:hasRelatedSynonym>
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000428"/>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
         <rdfs:label xml:lang="en">quality control record</rdfs:label>
     </owl:Class>
     
@@ -13985,7 +14225,7 @@ specifichost</oboInOwl:hasRelatedSynonym>
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0001781 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001781">
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000079"/>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/OBI_0001616"/>
         <obo:IAO_0000115 xml:lang="en">This is an identifier code for a sample registered with the Canadian &quot;National Laboratory for Enteric Pathogens&quot; (NLEP)</obo:IAO_0000115>
         <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
         <obo:IAO_0000119 xml:lang="en">Pulsenet spreadsheet.</obo:IAO_0000119>
@@ -14017,6 +14257,7 @@ specifichost</oboInOwl:hasRelatedSynonym>
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0001783 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001783">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000108"/>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001058"/>
         <rdfs:subClassOf>
             <owl:Restriction>
@@ -14025,9 +14266,17 @@ specifichost</oboInOwl:hasRelatedSynonym>
                 <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/ENVO_00000856"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <oboInOwl:hasDbXref>PulseNet: Traveled_To</oboInOwl:hasDbXref>
-        <rdfs:label xml:lang="en">travel city</rdfs:label>
+        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000428"/>
+        <obo:IAO_0000115 xml:lang="en">A travel destination is a destination city (or populated place of some scale) which a given human has travelled to on a particular trip.</obo:IAO_0000115>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
+        <rdfs:label xml:lang="en">travel destination</rdfs:label>
     </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001783"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000108"/>
+        <oboInOwl:hasAlternativeId>Traveled_To</oboInOwl:hasAlternativeId>
+    </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001783"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
@@ -14350,10 +14599,18 @@ Generally de-identified data should include HIPAA patient privacy fields as indi
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0001797 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001797">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000097"/>
         <rdfs:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000116"/>
-        <oboInOwl:hasDbXref>NCBI BioSample: collected_by</oboInOwl:hasDbXref>
         <rdfs:label xml:lang="en">collected by</rdfs:label>
     </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001797"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000097"/>
+        <obo:IAO_0000115 xml:lang="en">Name of persons or institute who collected the sample</obo:IAO_0000115>
+        <oboInOwl:hasAlternativeId>collected_by</oboInOwl:hasAlternativeId>
+        <rdfs:label xml:lang="en">collected by</rdfs:label>
+    </owl:Axiom>
     
 
 
@@ -14446,7 +14703,7 @@ Generally de-identified data should include HIPAA patient privacy fields as indi
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0001807 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001807">
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000079"/>
+        <rdfs:subClassOf rdf:resource="http://www.geneontology.org/formats/oboInOwl#ObsoleteClass"/>
         <obo:IAO_0100001 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://purl.obolibrary.org/obo/OBI_0001616</obo:IAO_0100001>
         <rdfs:label xml:lang="en">NCBI BioSample ID - deprecated</rdfs:label>
         <owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
@@ -14457,7 +14714,7 @@ Generally de-identified data should include HIPAA patient privacy fields as indi
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0001808 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001808">
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000079"/>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/OBI_0001616"/>
         <obo:IAO_0000115 xml:lang="en">Alternative sample name (identifier)</obo:IAO_0000115>
         <oboInOwl:hasDbXref>NCBI BioSample:sample_title</oboInOwl:hasDbXref>
         <rdfs:label xml:lang="en">NCBI BioSample title</rdfs:label>
@@ -15395,6 +15652,7 @@ http://www.ebi.ac.uk/ena/about/missing-values-reporting</rdfs:seeAlso>
     <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001892">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001741"/>
         <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000428"/>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
     </rdf:Description>
     
 
@@ -15404,6 +15662,7 @@ http://www.ebi.ac.uk/ena/about/missing-values-reporting</rdfs:seeAlso>
     <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001893">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001741"/>
         <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000428"/>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
     </rdf:Description>
     
 
@@ -18418,27 +18677,47 @@ Depending on its context, hasDbXref annotations may point directly to metadata f
     <!-- http://purl.obolibrary.org/obo/OBI_0001479 -->
 
     <rdf:Description rdf:about="http://purl.obolibrary.org/obo/OBI_0001479">
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000003"/>
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001835"/>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000097"/>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000105"/>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/OBI_0100051"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002351"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000025"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002351"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000028"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <obo:GENEPIO_0000006 xml:lang="en">specimen source substance</obo:GENEPIO_0000006>
+        <obo:IAO_0000116>Damion Dooley Feb 21, 2017: OBI has gone ahead and added a variety of terms like &quot;blood specimen&quot; and &quot;colon specimen&quot; etc. While techically correct – mapping over to UBERON terms indirectly through the logic &quot;derives from some [uberon term]&quot;, this is a combination bomb.  Rather than just having a list of &quot;source body part&quot; as we do now which doesn&apos;t add a whole slew of other terms to the ontology. I may raise this on OBI discussion list after other items on to do list).</obo:IAO_0000116>
     </rdf:Description>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/OBI_0001479"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000003"/>
-        <obo:IAO_0000115 xml:lang="en">substance produced by the body, e.g. stool, mucus, where the sample was obtained from</obo:IAO_0000115>
-        <oboInOwl:hasAlternativeId xml:lang="en">host_body_product</oboInOwl:hasAlternativeId>
-        <oboInOwl:inSubset>host-associated</oboInOwl:inSubset>
-        <rdfs:label xml:lang="en">host body product</rdfs:label>
-    </owl:Axiom>
-    <owl:Axiom>
-        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/OBI_0001479"/>
-        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001835"/>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000097"/>
         <obo:IAO_0000115 xml:lang="en">Type of tissue the initial sample was taken from.</obo:IAO_0000115>
         <oboInOwl:hasAlternativeId>host_tissue_sampled</oboInOwl:hasAlternativeId>
         <rdfs:comment xml:lang="en">Controlled vocabulary: BRENDA, http://bioportal.bioontology.org/ontologies/1005</rdfs:comment>
         <rdfs:label xml:lang="en">host tissue sampled</rdfs:label>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/OBI_0001479"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000105"/>
+        <obo:IAO_0000115 xml:lang="en">substance produced by the body, e.g. stool, mucus, where the sample was obtained from</obo:IAO_0000115>
+        <obo:IAO_0000116 xml:lang="en">Damion Dooley Feb 21, 2017: This is a combination of MIxS terms as noted by GSCID-BRC: body habitat, body site, body product
+They request that source ontology be FMA , not BRENDA OR UBERON!!!
+
+What is &quot;body habitat&quot;????</obo:IAO_0000116>
+        <oboInOwl:hasAlternativeId xml:lang="en">host_body_product</oboInOwl:hasAlternativeId>
+        <oboInOwl:inSubset>host-associated</oboInOwl:inSubset>
+        <rdfs:label xml:lang="en">host body product</rdfs:label>
     </owl:Axiom>
     
 
@@ -18447,13 +18726,6 @@ Depending on its context, hasDbXref annotations may point directly to metadata f
 
     <rdf:Description rdf:about="http://purl.obolibrary.org/obo/OBI_0001508">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001356"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001605"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
     </rdf:Description>
     
 
@@ -18510,6 +18782,7 @@ Depending on its context, hasDbXref annotations may point directly to metadata f
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:GENEPIO_0001763>required</obo:GENEPIO_0001763>
+        <oboInOwl:hasSynonym xml:lang="en">sample identifier</oboInOwl:hasSynonym>
     </rdf:Description>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/OBI_0001616"/>
@@ -20300,8 +20573,7 @@ Angular offset can be radians or degrees.</rdfs:comment>
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000428"/>
-        <obo:IAO_0000115 xml:lang="en">A medical health record is a record of a single patient&apos;s medical history.</obo:IAO_0000115>
-        <obo:IAO_0000412 xml:lang="en">http://semanticscience.org/resource/SIO_001027</obo:IAO_0000412>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
         <rdfs:label xml:lang="en">medical health record (history / timeline)</rdfs:label>
     </owl:Class>
     
@@ -20418,6 +20690,14 @@ Angular offset can be radians or degrees.</rdfs:comment>
 
     <rdf:Description rdf:about="http://www.bioassayontology.org/bao#BAO_0002628">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/OBI_0000245"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.ebi.ac.uk/ancestro/ancestro_0004 -->
+
+    <rdf:Description rdf:about="http://www.ebi.ac.uk/ancestro/ancestro_0004">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001655"/>
     </rdf:Description>
     
 

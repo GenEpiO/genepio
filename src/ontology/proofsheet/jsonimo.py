@@ -42,7 +42,7 @@ except ImportError: # Python 2.6
 ... rulefileobj =  json.load(rules_handle, object_pairs_hook=OrderedDict)
 """
 
-CODE_VERSION = '0.0.2'
+CODE_VERSION = '0.0.3'
 
 def stop_err( msg, exit_code=1 ):
 	sys.stderr.write("%s\n" % msg)
@@ -696,7 +696,7 @@ class Ontology(object):
 			epilog="""  """)
 		
 		# Standard code version identifier.
-		parser.add_option('-v', '--version', dest='code_version', default=False, action='store_true', help='Return version of field_json.py code.')
+		parser.add_option('-v', '--version', dest='code_version', default=False, action='store_true', help='Return version of this code.')
 
 		return parser.parse_args()
 

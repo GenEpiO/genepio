@@ -541,8 +541,11 @@ function renderChoice(entity, depth, type="select") {
 				// Currently showing "hidden" feature as disabled.
 				var disabled = getFeature(entity['id'], memberId, 'hidden') ? ' disabled="disabled"' : '';
 				var kidHTML = renderChoice(part, depth+1)
+				var label = part['uiLabel']
+				if ('label' in part && part['label'] != label)
+					label = label + ' (' + part['label'] + ')'
 				// Some extra pizaz for capitalizing labels that appear at 1st depth in hierarchic lists with descendants.
-				var label = (depth == 0 && (kidHTML.length > 0)) ? part['uiLabel'].toUpperCase() : part['uiLabel']
+				var label = (depth == 0 && (kidHTML.length > 0)) ? label.toUpperCase() : label
 				switch (type) {
 
 					case "checkbox": // future

@@ -42,7 +42,7 @@ except ImportError: # Python 2.6
 ... rulefileobj =  json.load(rules_handle, object_pairs_hook=OrderedDict)
 """
 
-CODE_VERSION = '0.0.2'
+CODE_VERSION = '0.0.3'
 
 def stop_err( msg, exit_code=1 ):
 	sys.stderr.write("%s\n" % msg)
@@ -696,7 +696,7 @@ class Ontology(object):
 			epilog="""  """)
 		
 		# Standard code version identifier.
-		parser.add_option('-v', '--version', dest='code_version', default=False, action='store_true', help='Return version of field_json.py code.')
+		parser.add_option('-v', '--version', dest='code_version', default=False, action='store_true', help='Return version of this code.')
 
 		return parser.parse_args()
 
@@ -759,9 +759,9 @@ class Ontology(object):
 
 			SELECT DISTINCT ?parent (?datum as ?id) ?cardinality ?limit
 			WHERE { 	
-				BIND (obo:BFO_0000051 as ?has_value_spec). 
+				BIND (obo:RO_0002351 as ?has_member). 
 
-				?restriction owl:onProperty ?has_value_spec.
+				?restriction owl:onProperty ?has_member.
 				?parent rdfs:subClassOf ?restriction. 
 
 				{?restriction owl:onClass ?datum.
@@ -937,7 +937,7 @@ class Ontology(object):
 	    #	    <owl:annotatedProperty rdf:resource="&rdfs;subClassOf"/>
 	    #	    <owl:annotatedTarget>
 	    #	        <owl:Restriction>
-	    #	            <owl:onProperty rdf:resource="&obo;BFO_0000051"/>
+	    #	            <owl:onProperty rdf:resource="&obo;RO_0002351"/>
 	    #	            <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0001287"/>
 	    #	        </owl:Restriction>
 	    #	    </owl:annotatedTarget>
@@ -983,7 +983,7 @@ class Ontology(object):
 				?axiom rdf:type owl:Axiom.
 				?axiom owl:annotatedSource ?referrer.
 				?axiom owl:annotatedTarget ?restriction. ?restriction rdf:type owl:Restriction.
-				?restriction owl:onProperty obo:BFO_0000051.
+				?restriction owl:onProperty obo:RO_0002351.
 				?restriction (owl:onClass|owl:qualifiedCardinality | owl:minQualifiedCardinality | owl:maxQualifiedCardinality | owl:someValuesFrom) ?id
 				FILTER(isURI(?id))
 				?axiom (obo:GENEPIO_0001746|obo:GENEPIO_0001763) ?criteria.  #UI preferred hidden | UI_preferred feature

@@ -36,7 +36,7 @@
      xmlns:foaf="http://xmlns.com/foaf/0.1/"
      xmlns:dc="http://purl.org/dc/elements/1.1/">
     <owl:Ontology rdf:about="&obo;genepio.owl">
-        <owl:versionIRI rdf:resource="&obo;genepio/releases/2017-03-22/genepio.owl"/>
+        <owl:versionIRI rdf:resource="&obo;genepio/releases/2017-04-02/genepio.owl"/>
         <owl:imports rdf:resource="&obo;GENEPIO/imports/pato_import.owl"/>
         <owl:imports rdf:resource="&obo;GENEPIO/imports/chebi_import.owl"/>
         <owl:imports rdf:resource="&obo;GENEPIO/imports/ncbitaxon_import.owl"/>
@@ -349,6 +349,15 @@ I believe time dependency relations (conditions) don&apos;t imply existence by t
     <!-- http://purl.obolibrary.org/obo/RO_0002350 -->
 
     <owl:ObjectProperty rdf:about="&obo;RO_0002350"/>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/RO_0002351 -->
+
+    <owl:ObjectProperty rdf:about="&obo;RO_0002351">
+        <rdf:type rdf:resource="&owl;IrreflexiveProperty"/>
+        <rdfs:label xml:lang="en">has member</rdfs:label>
+    </owl:ObjectProperty>
     
 
 
@@ -5957,6 +5966,7 @@ https://www.niaid.nih.gov/research/human-pathogen-and-vector-sequencing-metadata
     <owl:Class rdf:about="&obo;GENEPIO_0000027">
         <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0000097"/>
         <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0001421"/>
+        <rdfs:subClassOf rdf:resource="&obo;IAO_0000300"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;RO_0002351"/>
@@ -6004,7 +6014,7 @@ https://www.niaid.nih.gov/research/human-pathogen-and-vector-sequencing-metadata
         <obo:GENEPIO_0000001>Pathogen Isolate</obo:GENEPIO_0000001>
         <obo:IAO_0000112>feces, cerebral spinal fluid (CSF)</obo:IAO_0000112>
         <obo:IAO_0000115 xml:lang="en">substance produced by the body, e.g. stool, mucus, where the sample was obtained from.</obo:IAO_0000115>
-        <rdfs:label xml:lang="en">specimen source body product</rdfs:label>
+        <rdfs:label xml:lang="en">subject body product</rdfs:label>
     </owl:Class>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="&obo;GENEPIO_0000028"/>
@@ -7440,7 +7450,6 @@ Clusters passing filter are represented by PF in analysis reports. Clusters pass
 
     <owl:Class rdf:about="&obo;GENEPIO_0000097">
         <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0000106"/>
-        <rdfs:subClassOf rdf:resource="&obo;IAO_0000300"/>
         <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
         <rdfs:label xml:lang="en">NCBI BioSample data item</rdfs:label>
     </owl:Class>
@@ -7579,7 +7588,7 @@ Clusters passing filter are represented by PF in analysis reports. Clusters pass
         <obo:IAO_0000114 rdf:resource="&obo;IAO_0000428"/>
         <obo:IAO_0000115 xml:lang="en">A Description of whether the specimen source organism appeared healthy, sick or deceased at the time of sampling. If sick or deceased, additional details should be provided in project-specific fields.</obo:IAO_0000115>
         <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
-        <rdfs:label xml:lang="en">specimen source health status - GSCID-BRC</rdfs:label>
+        <rdfs:label xml:lang="en">subject health status - GSCID-BRC</rdfs:label>
     </owl:Class>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="&obo;GENEPIO_0000110"/>
@@ -7679,11 +7688,11 @@ This requires different labels/values than the NCBI BioSample options:
         <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0000111"/>
         <obo:IAO_0000112>days, weeks, months, years</obo:IAO_0000112>
         <obo:IAO_0000114 rdf:resource="&obo;IAO_0000428"/>
-        <obo:IAO_0000115 xml:lang="en">Age unit of the individual organism (host) from which the initial specimen was obtained. Span of time unit between birth or hatching and time of specimen collection.</obo:IAO_0000115>
+        <obo:IAO_0000115 xml:lang="en">Age unit of the age measurement of a subject (individual organism).</obo:IAO_0000115>
         <obo:IAO_0000116 xml:lang="en">Damion Dooley Feb 20, 2017: GSCID-BRC calls for an explicit field here whereas NCBI Biosample and MIxS don&apos;t.</obo:IAO_0000116>
         <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
         <obo:IAO_0000119>NIAID GSCID-BRC metadata working group</obo:IAO_0000119>
-        <rdfs:label xml:lang="en">specimen source age - unit</rdfs:label>
+        <rdfs:label xml:lang="en">subject age - unit</rdfs:label>
     </owl:Class>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="&obo;GENEPIO_0000114"/>
@@ -8691,6 +8700,9 @@ Syntax: urrently is free text, but ISO3166 standard abbreviations would be accep
 
     <owl:Class rdf:about="&obo;GENEPIO_0001029">
         <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0001444"/>
+        <obo:IAO_0000114 rdf:resource="&obo;IAO_0000428"/>
+        <obo:IAO_0000115 xml:lang="en">A social gathering is a type of event in which a collection of humans intentionally gathers together on a temporary basis to engage socially.</obo:IAO_0000115>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
         <rdfs:label xml:lang="en">social gathering</rdfs:label>
     </owl:Class>
     
@@ -13310,6 +13322,7 @@ or https://www.ncbi.nlm.nih.gov/mesh/1000067</rdfs:comment>
 
     <owl:Class rdf:about="&obo;GENEPIO_0001625">
         <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0000097"/>
+        <rdfs:subClassOf rdf:resource="&obo;IAO_0000300"/>
         <obo:IAO_0000115 xml:lang="en">A subject disease stage is a measure of the acuteness of a subject organism&apos;s diagnosed disease, if any, at a given time in an investigation, study or specimen extraction event.</obo:IAO_0000115>
         <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
         <obo:IAO_0000119 rdf:datatype="&xsd;anyURI">http://purl.obolibrary.org/obo/GENEPIO_0001835</obo:IAO_0000119>
@@ -13571,7 +13584,7 @@ or https://www.ncbi.nlm.nih.gov/mesh/1000067</rdfs:comment>
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0001639 -->
 
     <owl:Class rdf:about="&obo;GENEPIO_0001639">
-        <rdfs:subClassOf rdf:resource="&obo;IAO_0000300"/>
+        <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0001704"/>
         <obo:IAO_0000115 xml:lang="en">An antigenic formula is a string composed of codes representing categorized results of tests performed on various viral, bacterial or immune cell surface antigens.</obo:IAO_0000115>
         <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
         <rdfs:label xml:lang="en">antigenic formula</rdfs:label>
@@ -14015,6 +14028,8 @@ or https://www.ncbi.nlm.nih.gov/mesh/1000067</rdfs:comment>
 
     <owl:Class rdf:about="&obo;GENEPIO_0001660">
         <rdfs:subClassOf rdf:resource="&obo;PATO_0001894"/>
+        <owl:disjointWith rdf:resource="&obo;PATO_0000383"/>
+        <owl:disjointWith rdf:resource="&obo;PATO_0000384"/>
         <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
         <oboInOwl:hasDbXref>NCBI BioSample: neuter</oboInOwl:hasDbXref>
         <rdfs:comment xml:lang="en">Not a PATO phenotypic sex catigorical value.</rdfs:comment>
@@ -14026,6 +14041,19 @@ or https://www.ncbi.nlm.nih.gov/mesh/1000067</rdfs:comment>
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0001661 -->
 
     <owl:Class rdf:about="&obo;GENEPIO_0001661">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&obo;PATO_0001894"/>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&obo;PATO_0000383"/>
+                            <rdf:Description rdf:about="&obo;PATO_0000384"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="&obo;PATO_0001894"/>
         <obo:GENEPIO_0000005>NCBI BioSample</obo:GENEPIO_0000005>
         <obo:IAO_0000115 xml:lang="en">&apos;pooled male and female&apos; is a categorical value used when the male and female categories or levels of a factor are combined.</obo:IAO_0000115>
@@ -16535,6 +16563,7 @@ Generally de-identified data should include HIPAA patient privacy fields as indi
     <owl:Class rdf:about="&obo;GENEPIO_0001808">
         <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0000097"/>
         <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0001073"/>
+        <rdfs:subClassOf rdf:resource="&obo;IAO_0000300"/>
         <obo:IAO_0000112 xml:lang="en">1) Escherichia coli O104:H4 str. C227-11 clinical isolate 2010_333_NC-6
 2) CD8+ T cells from female TSG6-knockout BALB/c mouse
 3) Human metagenome isolated from urine of healthy female</obo:IAO_0000112>
@@ -19673,8 +19702,8 @@ http://www.ebi.ac.uk/ena/about/missing-values-reporting</rdfs:seeAlso>
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0002048 -->
 
     <owl:Class rdf:about="&obo;GENEPIO_0002048">
+        <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0001704"/>
         <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0002036"/>
-        <rdfs:subClassOf rdf:resource="&obo;IAO_0000300"/>
         <rdfs:label xml:lang="en">antibiotic resistant plasmid type</rdfs:label>
     </owl:Class>
     
@@ -20788,6 +20817,7 @@ What is &quot;body habitat&quot;????</obo:IAO_0000116>
     <rdf:Description rdf:about="&obo;OBI_0001615">
         <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0000103"/>
         <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0000112"/>
+        <rdfs:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000136"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;RO_0000052"/>
@@ -21620,6 +21650,41 @@ Often a value specification may need to allow for a &quot;data item state&quot; 
 
     <rdf:Description rdf:about="&obo;PATO_0000146">
         <rdfs:comment xml:lang="en">Damion&apos;s Note: Future use might prefer: CMO_0000015 body temperature.</rdfs:comment>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/PATO_0000383 -->
+
+    <rdf:Description rdf:about="&obo;PATO_0000383">
+        <oboInOwl:hasDbXref xml:lang="en">NCBI BioSample: female</oboInOwl:hasDbXref>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/PATO_0000384 -->
+
+    <rdf:Description rdf:about="&obo;PATO_0000384">
+        <oboInOwl:hasDbXref>NCBI BioSample: male</oboInOwl:hasDbXref>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/PATO_0001340 -->
+
+    <rdf:Description rdf:about="&obo;PATO_0001340">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&obo;PATO_0000383"/>
+                    <rdf:Description rdf:about="&obo;PATO_0000384"/>
+                    <rdf:Description rdf:about="&obo;PATO_0001894"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <oboInOwl:hasDbXref>NCBI BioSample: hermaphrodite</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>NCBI BioSample: intersex</oboInOwl:hasDbXref>
+        <oboInOwl:hasExactSynonym xml:lang="en">intersex</oboInOwl:hasExactSynonym>
     </rdf:Description>
     
 
@@ -23578,19 +23643,8 @@ Note that this file contains examples of cities, provinces, states, territories,
     <rdf:Description rdf:about="&obo;OBI_0002027">
         <oboInOwl:hasDbXref>NCBI SRA: Illumina Genome Analyzer IIe</oboInOwl:hasDbXref>
     </rdf:Description>
-    <rdf:Description rdf:about="&obo;PATO_0000383">
-        <oboInOwl:hasDbXref xml:lang="en">NCBI BioSample: female</oboInOwl:hasDbXref>
-    </rdf:Description>
-    <rdf:Description rdf:about="&obo;PATO_0000384">
-        <oboInOwl:hasDbXref>NCBI BioSample: male</oboInOwl:hasDbXref>
-    </rdf:Description>
     <rdf:Description rdf:about="&obo;PATO_0000460">
         <obo:IAO_0000114 rdf:resource="&obo;IAO_0000122"/>
-    </rdf:Description>
-    <rdf:Description rdf:about="&obo;PATO_0001340">
-        <oboInOwl:hasExactSynonym xml:lang="en">intersex</oboInOwl:hasExactSynonym>
-        <oboInOwl:hasDbXref>NCBI BioSample: intersex</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref>NCBI BioSample: hermaphrodite</oboInOwl:hasDbXref>
     </rdf:Description>
     <rdf:Description rdf:about="&obo;PATO_0001827">
         <obo:IAO_0000116 xml:lang="en">This value is not present in NCBI BioSample host sex.</obo:IAO_0000116>

@@ -23,6 +23,7 @@
         <owl:imports rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/imports/chebi_import.owl"/>
         <owl:imports rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/imports/ncbitaxon_import.owl"/>
         <owl:imports rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/imports/sio_import.owl"/>
+        <owl:imports rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/imports/public_health_lab_epi_import.owl"/>
         <owl:imports rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/imports/evs_import.owl"/>
         <owl:imports rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/imports/ontology-metadata.owl"/>
         <owl:imports rdf:resource="http://purl.obolibrary.org/obo/GENEPIO/imports/gazetteer_import.owl"/>
@@ -746,6 +747,12 @@ I believe time dependency relations (conditions) don&apos;t imply existence by t
     <!-- http://purl.obolibrary.org/obo/APOLLO_SV_00000153 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/APOLLO_SV_00000153">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000051"/>
+                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/APOLLO_SV_00000240"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000051"/>
@@ -5640,8 +5647,8 @@ https://www.niaid.nih.gov/research/human-pathogen-and-vector-sequencing-metadata
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0000009 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0000009">
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/OBI_0001892"/>
-        <rdfs:label xml:lang="en">other objective</rdfs:label>
+        <obo:IAO_0000115 xml:lang="en"></obo:IAO_0000115>
+        <rdfs:label xml:lang="en">other</rdfs:label>
     </owl:Class>
     
 
@@ -5665,9 +5672,19 @@ https://www.niaid.nih.gov/research/human-pathogen-and-vector-sequencing-metadata
                 <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <obo:GENEPIO_0000006 xml:lang="en">other</obo:GENEPIO_0000006>
+        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000122"/>
+        <obo:IAO_0000115 xml:lang="en">Other: specify the sample scope that was used.</obo:IAO_0000115>
+        <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
         <obo:IAO_0000119>https://www.ncbi.nlm.nih.gov/books/NBK54364/</obo:IAO_0000119>
         <rdfs:label xml:lang="en">other specimen scope</rdfs:label>
     </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000011"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/OBI_0001884"/>
+        <oboInOwl:hasAlternativeId>other</oboInOwl:hasAlternativeId>
+    </owl:Axiom>
     
 
 
@@ -5675,9 +5692,25 @@ https://www.niaid.nih.gov/research/human-pathogen-and-vector-sequencing-metadata
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0000012">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/OBI_0001882"/>
-        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000123"/>
-        <rdfs:label xml:lang="en">other material</rdfs:label>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001605"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <obo:GENEPIO_0000006 xml:lang="en">other</obo:GENEPIO_0000006>
+        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000122"/>
+        <obo:IAO_0000115 xml:lang="en">Other: specify the material that was used.</obo:IAO_0000115>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
+        <obo:IAO_0000119 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.ncbi.nlm.nih.gov/books/NBK54364/</obo:IAO_0000119>
+        <rdfs:label xml:lang="en">other material derived from specimen</rdfs:label>
     </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000012"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/OBI_0001882"/>
+        <oboInOwl:hasAlternativeId>Other</oboInOwl:hasAlternativeId>
+    </owl:Axiom>
     
 
 
@@ -5685,9 +5718,25 @@ https://www.niaid.nih.gov/research/human-pathogen-and-vector-sequencing-metadata
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0000013">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/OBI_0001899"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001605"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <obo:GENEPIO_0000006 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000122"/>
+        <obo:GENEPIO_0000006 xml:lang="en">other</obo:GENEPIO_0000006>
         <obo:IAO_0000115 xml:lang="en">&quot;other capture type&quot; is a free text description provided to indicate a target capture specification not covered by the other types.</obo:IAO_0000115>
+        <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
+        <obo:IAO_0000119 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.ncbi.nlm.nih.gov/books/NBK54364/</obo:IAO_0000119>
         <rdfs:label xml:lang="en">other capture type</rdfs:label>
     </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000013"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/OBI_0001899"/>
+        <oboInOwl:hasAlternativeId>Other</oboInOwl:hasAlternativeId>
+    </owl:Axiom>
     
 
 
@@ -5695,8 +5744,25 @@ https://www.niaid.nih.gov/research/human-pathogen-and-vector-sequencing-metadata
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0000014">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/OBI_0001896"/>
-        <rdfs:label xml:lang="en">other method</rdfs:label>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001605"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <obo:GENEPIO_0000006 xml:lang="en">other</obo:GENEPIO_0000006>
+        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000122"/>
+        <obo:IAO_0000115 xml:lang="en">specify the project method</obo:IAO_0000115>
+        <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
+        <obo:IAO_0000119 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.ncbi.nlm.nih.gov/books/NBK54364/</obo:IAO_0000119>
+        <rdfs:label xml:lang="en">other project method</rdfs:label>
     </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000014"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/OBI_0001896"/>
+        <oboInOwl:hasAlternativeId>other</oboInOwl:hasAlternativeId>
+    </owl:Axiom>
     
 
 
@@ -7497,6 +7563,8 @@ Clusters passing filter are represented by PF in analysis reports. Clusters pass
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0000103">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000106"/>
+        <obo:IAO_0000116 xml:lang="en">An NCBI BioProject data item is a datum within the NCBI BioProject standard collection</obo:IAO_0000116>
+        <obo:IAO_0000116 xml:lang="en">NCBI lists project data type and other controlled vocabulary fields at : https://www.ncbi.nlm.nih.gov/books/NBK54364/</obo:IAO_0000116>
         <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
         <rdfs:label xml:lang="en">NCBI BioProject data item</rdfs:label>
     </owl:Class>
@@ -7605,9 +7673,11 @@ Clusters passing filter are represented by PF in analysis reports. Clusters pass
                 <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/OBI_0100051"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000428"/>
         <obo:IAO_0000115 xml:lang="en">A Core Sample item is a field in the GSCID/BRC Project and Sample Application Core Sample Standard</obo:IAO_0000115>
+        <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
+        <obo:IAO_0000119 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.niaid.nih.gov/research/dmid-metadata-standards-core-sample</obo:IAO_0000119>
         <rdfs:label xml:lang="en">GSCID-BRC Core Sample item</rdfs:label>
-        <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.niaid.nih.gov/research/dmid-metadata-standards-core-sample</rdfs:seeAlso>
     </owl:Class>
     
 
@@ -7616,9 +7686,11 @@ Clusters passing filter are represented by PF in analysis reports. Clusters pass
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0000112">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000077"/>
+        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000428"/>
         <obo:IAO_0000115 xml:lang="en">A Core Project item is a field in the GSCID/BRC Project and Sample Application Core Project Standard.</obo:IAO_0000115>
+        <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
+        <obo:IAO_0000119>https://www.niaid.nih.gov/research/dmid-metadata-standards-core-project</obo:IAO_0000119>
         <rdfs:label xml:lang="en">GSCID-BRC Core Project item</rdfs:label>
-        <rdfs:seeAlso>https://www.niaid.nih.gov/research/dmid-metadata-standards-core-project</rdfs:seeAlso>
     </owl:Class>
     
 
@@ -8185,7 +8257,9 @@ Syntax: urrently is free text, but ISO3166 standard abbreviations would be accep
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0000156">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000103"/>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001655"/>
         <obo:IAO_0000115 xml:lang="en">A general label indicating the primary study goal. These are only relevant for Primary submission projects (not Umbrella projects).</obo:IAO_0000115>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
         <rdfs:label xml:lang="en">project data type</rdfs:label>
     </owl:Class>
     
@@ -8195,10 +8269,18 @@ Syntax: urrently is free text, but ISO3166 standard abbreviations would be accep
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0000157">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000156"/>
-        <obo:IAO_0000115 xml:lang="en">genome assembly project utilizing already existing sequence data including data that was submitted by a different group</obo:IAO_0000115>
-        <oboInOwl:hasDbXref>NCBI Biosample:assembly</oboInOwl:hasDbXref>
+        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000122"/>
+        <obo:IAO_0000115 xml:lang="en">Genome assembly project utilizing already existing sequence data including data that was submitted by a different group</obo:IAO_0000115>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
+        <obo:IAO_0000119 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.ncbi.nlm.nih.gov/books/NBK54364/</obo:IAO_0000119>
         <rdfs:label xml:lang="en">assembly project</rdfs:label>
     </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000157"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000156"/>
+        <oboInOwl:hasAlternativeId>assembly</oboInOwl:hasAlternativeId>
+    </owl:Axiom>
     
 
 
@@ -8206,9 +8288,18 @@ Syntax: urrently is free text, but ISO3166 standard abbreviations would be accep
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0000158">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000156"/>
+        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000122"/>
         <obo:IAO_0000115 xml:lang="en">clone-end sequencing project</obo:IAO_0000115>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
+        <obo:IAO_0000119 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.ncbi.nlm.nih.gov/books/NBK54364/</obo:IAO_0000119>
         <rdfs:label xml:lang="en">clone ends project</rdfs:label>
     </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000158"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000156"/>
+        <oboInOwl:hasAlternativeId>clone ends</oboInOwl:hasAlternativeId>
+    </owl:Axiom>
     
 
 
@@ -8216,14 +8307,17 @@ Syntax: urrently is free text, but ISO3166 standard abbreviations would be accep
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0000159">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000156"/>
+        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000122"/>
         <obo:IAO_0000115 xml:lang="en">DNA methylation, histone modification, chromatin accessibility datasets</obo:IAO_0000115>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
+        <obo:IAO_0000119 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.ncbi.nlm.nih.gov/books/NBK54364/</obo:IAO_0000119>
         <rdfs:label xml:lang="en">epigenomics project</rdfs:label>
     </owl:Class>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000159"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
         <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000156"/>
-        <oboInOwl:hasDbXref>NCBI Biosample: epigenomics</oboInOwl:hasDbXref>
+        <oboInOwl:hasAlternativeId>epigenomics</oboInOwl:hasAlternativeId>
     </owl:Axiom>
     
 
@@ -8232,15 +8326,17 @@ Syntax: urrently is free text, but ISO3166 standard abbreviations would be accep
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0000160">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000156"/>
+        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000122"/>
         <obo:IAO_0000115 xml:lang="en">exome resequencing project</obo:IAO_0000115>
-        <oboInOwl:hasDbXref rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001836"/>
-        <rdfs:label xml:lang="en">exome project</rdfs:label>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
+        <obo:IAO_0000119 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.ncbi.nlm.nih.gov/books/NBK54364/</obo:IAO_0000119>
+        <rdfs:label xml:lang="en">exome resequencing project</rdfs:label>
     </owl:Class>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000160"/>
-        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
-        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001836"/>
-        <rdf:value>exome</rdf:value>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000156"/>
+        <oboInOwl:hasAlternativeId>exome</oboInOwl:hasAlternativeId>
     </owl:Axiom>
     
 
@@ -8249,10 +8345,18 @@ Syntax: urrently is free text, but ISO3166 standard abbreviations would be accep
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0000161">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000156"/>
+        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000122"/>
         <obo:IAO_0000115 xml:lang="en">A whole, or partial, genome sequencing project (with or without a genome assembly)</obo:IAO_0000115>
-        <oboInOwl:hasDbXref rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001836"/>
-        <rdfs:label xml:lang="en">genome sequencing</rdfs:label>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
+        <obo:IAO_0000119 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.ncbi.nlm.nih.gov/books/NBK54364/</obo:IAO_0000119>
+        <rdfs:label xml:lang="en">genome sequencing project</rdfs:label>
     </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000161"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000156"/>
+        <oboInOwl:hasAlternativeId>genome sequencing</oboInOwl:hasAlternativeId>
+    </owl:Axiom>
     
 
 
@@ -8729,7 +8833,7 @@ Syntax: urrently is free text, but ISO3166 standard abbreviations would be accep
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001032">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001029"/>
-        <rdfs:label xml:lang="en">shower</rdfs:label>
+        <rdfs:label xml:lang="en">baby shower</rdfs:label>
     </owl:Class>
     
 
@@ -8991,15 +9095,16 @@ Syntax: urrently is free text, but ISO3166 standard abbreviations would be accep
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001054">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000097"/>
         <rdfs:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000136"/>
-        <obo:IAO_0000115 xml:lang="en">A subject passage history is a record of a subject&apos;s fecal defecations and passage method - normal or diarrhea - involved.</obo:IAO_0000115>
+        <obo:IAO_0000115 xml:lang="en">An isolate passage history is a record of the cyclic growth process that led to it, including number of times its was put through the process, and the method used.</obo:IAO_0000115>
         <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
         <obo:IAO_0000119 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://purl.obolibrary.org/obo/GENEPIO_0001835</obo:IAO_0000119>
-        <rdfs:label xml:lang="en">subject passage history</rdfs:label>
+        <rdfs:label xml:lang="en">isolate passage history</rdfs:label>
     </owl:Class>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001054"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
         <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000097"/>
+        <obo:IAO_0000115 xml:lang="en">Number of passages and passage method</obo:IAO_0000115>
         <oboInOwl:hasAlternativeId>passage_history</oboInOwl:hasAlternativeId>
         <rdfs:label xml:lang="en">passage history</rdfs:label>
     </owl:Axiom>
@@ -9635,6 +9740,258 @@ Syntax: urrently is free text, but ISO3166 standard abbreviations would be accep
         <rdfs:label xml:lang="en">NCBI Antibiogram drug test model</rdfs:label>
         <rdfs:seeAlso>http://the-vet.net/DVMWiz/Vetlibrary/Lab-%20Microbiology%20Guide%20to%20Interpreting%20MIC.htm</rdfs:seeAlso>
     </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001101 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001101">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001473"/>
+        <obo:IAO_0000115 xml:lang="en">A date-time datum that marks the predicted start of possible human or animal exposure to a pathogen agent, directly or indirectly, based on a suspected pathogen and first symptom date-time.</obo:IAO_0000115>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
+        <rdfs:label xml:lang="en">predicted exposure start</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001102 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001102">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001473"/>
+        <obo:IAO_0000115 xml:lang="en">A date-time datum that marks the predicted end of possible human or animal exposure to a pathogen agent, directly or indirectly, based on a suspected pathogen and first symptom date-time.</obo:IAO_0000115>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
+        <rdfs:label xml:lang="en">predicted exposure end</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001103 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001103">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000156"/>
+        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000122"/>
+        <obo:IAO_0000115 xml:lang="en">Map: - project that results in non-sequence map data such as genetic map, radiation hybrid map, cytogenetic map, optical map, and etc.</obo:IAO_0000115>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
+        <obo:IAO_0000119 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.ncbi.nlm.nih.gov/books/NBK54364/</obo:IAO_0000119>
+        <rdfs:label xml:lang="en">map project</rdfs:label>
+    </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001103"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000156"/>
+        <oboInOwl:hasAlternativeId>map</oboInOwl:hasAlternativeId>
+    </owl:Axiom>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001104 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001104">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000156"/>
+        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000122"/>
+        <obo:IAO_0000115 xml:lang="en">Metagenome: sequence analysis of environmental samples</obo:IAO_0000115>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
+        <obo:IAO_0000119 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.ncbi.nlm.nih.gov/books/NBK54364/</obo:IAO_0000119>
+        <rdfs:label xml:lang="en">metagenome project</rdfs:label>
+    </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001104"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000156"/>
+        <oboInOwl:hasAlternativeId>metagenome</oboInOwl:hasAlternativeId>
+    </owl:Axiom>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001105 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001105">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000156"/>
+        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000122"/>
+        <obo:IAO_0000115 xml:lang="en">Metagenome assembly: a genome assembly generated from sequenced environmental samples</obo:IAO_0000115>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
+        <obo:IAO_0000119 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.ncbi.nlm.nih.gov/books/NBK54364/</obo:IAO_0000119>
+        <rdfs:label xml:lang="en">metagenome assembly project</rdfs:label>
+    </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001105"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000156"/>
+        <oboInOwl:hasAlternativeId>metagenome assembly</oboInOwl:hasAlternativeId>
+    </owl:Axiom>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001106 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001106">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000156"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001605"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000122"/>
+        <obo:IAO_0000115 xml:lang="en">Other: a free text description is provided to indicate Other data type</obo:IAO_0000115>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
+        <obo:IAO_0000119 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.ncbi.nlm.nih.gov/books/NBK54364/</obo:IAO_0000119>
+        <rdfs:label xml:lang="en">other project data type</rdfs:label>
+    </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001106"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000156"/>
+        <oboInOwl:hasAlternativeId>other</oboInOwl:hasAlternativeId>
+    </owl:Axiom>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001107 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001107">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000156"/>
+        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000122"/>
+        <obo:IAO_0000115 xml:lang="en">Phenotype or Genotype: project correlating phenotype and genotype</obo:IAO_0000115>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
+        <obo:IAO_0000119 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.ncbi.nlm.nih.gov/books/NBK54364/</obo:IAO_0000119>
+        <rdfs:label xml:lang="en">phenotype or genotype project</rdfs:label>
+    </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001107"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000156"/>
+        <oboInOwl:hasAlternativeId>phenotype or genotype</oboInOwl:hasAlternativeId>
+    </owl:Axiom>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001108 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001108">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000156"/>
+        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000122"/>
+        <obo:IAO_0000115 xml:lang="en">Proteome: large scale proteomics experiment including mass spec. analysis</obo:IAO_0000115>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
+        <obo:IAO_0000119 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.ncbi.nlm.nih.gov/books/NBK54364/</obo:IAO_0000119>
+        <rdfs:label xml:lang="en">proteome project</rdfs:label>
+    </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001108"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000156"/>
+        <oboInOwl:hasAlternativeId>proteome</oboInOwl:hasAlternativeId>
+    </owl:Axiom>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001109 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001109">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000156"/>
+        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000122"/>
+        <obo:IAO_0000115 xml:lang="en">Random Survey: sequence generated from a random sampling of the collected sample; not intended to be comprehensive sampling of the material.</obo:IAO_0000115>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
+        <obo:IAO_0000119 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.ncbi.nlm.nih.gov/books/NBK54364/</obo:IAO_0000119>
+        <rdfs:label xml:lang="en">random survey project</rdfs:label>
+    </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001109"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000156"/>
+        <oboInOwl:hasAlternativeId>random survey</oboInOwl:hasAlternativeId>
+    </owl:Axiom>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001110 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001110">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000156"/>
+        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000122"/>
+        <obo:IAO_0000115 xml:lang="en">Targeted locus (loci): project to sequence specific loci, such as a 16S rRNA sequencing</obo:IAO_0000115>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
+        <obo:IAO_0000119 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.ncbi.nlm.nih.gov/books/NBK54364/</obo:IAO_0000119>
+        <rdfs:label xml:lang="en">targeted locus (loci) project</rdfs:label>
+    </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001110"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000156"/>
+        <oboInOwl:hasAlternativeId>targeted locus (loci)</oboInOwl:hasAlternativeId>
+    </owl:Axiom>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001111 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001111">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000156"/>
+        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000122"/>
+        <obo:IAO_0000115 xml:lang="en">Transcriptome or Gene expression: large scale RNA sequencing or expression analysis. Includes cDNA, EST, RNA_seq, and microarray.</obo:IAO_0000115>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
+        <obo:IAO_0000119 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.ncbi.nlm.nih.gov/books/NBK54364/</obo:IAO_0000119>
+        <rdfs:label xml:lang="en">transcriptome or gene expression</rdfs:label>
+    </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001111"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000156"/>
+        <oboInOwl:hasAlternativeId>transcriptome or gene expression</oboInOwl:hasAlternativeId>
+    </owl:Axiom>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001112 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001112">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000156"/>
+        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000122"/>
+        <obo:IAO_0000115 xml:lang="en">Variation: project with a primary goal of identifying large or small sequence variation across populations.</obo:IAO_0000115>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
+        <obo:IAO_0000119 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.ncbi.nlm.nih.gov/books/NBK54364/</obo:IAO_0000119>
+        <rdfs:label xml:lang="en">variation project</rdfs:label>
+    </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001112"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000156"/>
+        <oboInOwl:hasAlternativeId>variation</oboInOwl:hasAlternativeId>
+    </owl:Axiom>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001114 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001114">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/OBI_0001892"/>
+        <obo:GENEPIO_0000006 xml:lang="en">phenotype</obo:GENEPIO_0000006>
+        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000122"/>
+        <obo:IAO_0000115 xml:lang="en">Phenotype: phenotypic measurements for submission to dbGaP</obo:IAO_0000115>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
+        <obo:IAO_0000119 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.ncbi.nlm.nih.gov/books/NBK54364/</obo:IAO_0000119>
+        <rdfs:label xml:lang="en">phenotype project objective</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001115 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001115">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/OBI_0001882"/>
+        <obo:GENEPIO_0000006 xml:lang="en">genome</obo:GENEPIO_0000006>
+        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000122"/>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
+        <obo:IAO_0000119 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.ncbi.nlm.nih.gov/books/NBK54364/</obo:IAO_0000119>
+        <rdfs:label xml:lang="en">genome material from specimen</rdfs:label>
+    </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001115"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/OBI_0001882"/>
+        <obo:IAO_0000115 xml:lang="en">NCBI BioSample: Genome: a whole genome initiative (a specific sub-cellular molecule is not experimentally isolated). May be only the nuclear genome. Use for DNA of a metagenome sample.</obo:IAO_0000115>
+        <oboInOwl:hasAlternativeId>Genome</oboInOwl:hasAlternativeId>
+    </owl:Axiom>
     
 
 
@@ -11061,9 +11418,9 @@ Note that the health status of people associated with an exposure event can chan
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001487">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001473"/>
-        <obo:IAO_0000115 xml:lang="en">A date-time entity that marks the end of possible human or animal exposure to a pathogen agent, directly or indirectly.</obo:IAO_0000115>
+        <obo:IAO_0000115 xml:lang="en">A date-time datum that marks the end of possible human or animal exposure to a pathogen agent, directly or indirectly.</obo:IAO_0000115>
         <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
-        <rdfs:label xml:lang="en">exposure end</rdfs:label>
+        <rdfs:label xml:lang="en">exposure event end</rdfs:label>
     </owl:Class>
     
 
@@ -11073,11 +11430,17 @@ Note that the health status of people associated with an exposure event can chan
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001488">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000108"/>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001473"/>
-        <obo:IAO_0000115 xml:lang="en">A date-time entity that marks the start of possible human or animal exposure to a pathogen agent, directly or indirectly.</obo:IAO_0000115>
+        <obo:IAO_0000115 xml:lang="en">A date-time datum that marks the start of a human or animal exposure event to a suspected pathogen agent, directly or indirectly.</obo:IAO_0000115>
         <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
-        <oboInOwl:hasDbXref>PulseNet: Exposure</oboInOwl:hasDbXref>
-        <rdfs:label xml:lang="en">exposure start</rdfs:label>
+        <obo:IAO_0000600 xml:lang="en">This datum is NOT predicted as a function of pathogen and first symptom date.</obo:IAO_0000600>
+        <rdfs:label xml:lang="en">exposure event start</rdfs:label>
     </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001488"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000108"/>
+        <oboInOwl:hasAlternativeId>Exposure</oboInOwl:hasAlternativeId>
+    </owl:Axiom>
     
 
 
@@ -11741,9 +12104,11 @@ A large contig count may indicate insufficient read coverage.</obo:IAO_0000115>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000112"/>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001655"/>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001705"/>
+        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000122"/>
         <obo:IAO_0000115 xml:lang="en">Indicates how the knowledge derived from the project can be applied, and to what field(s).</obo:IAO_0000115>
+        <obo:IAO_0000116 xml:lang="en">Damion Dooley&apos;s note: NAIAD GRCID-BRC has Project Relevance map to OBO Foundry   Study Design (http://purl.obolibrary.org/obo/OBI_0500000) but this is a bit of a stretch.</obo:IAO_0000116>
         <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
-        <obo:IAO_0000119>NIAID GSCID-BRC</obo:IAO_0000119>
+        <obo:IAO_0000119 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.niaid.nih.gov/research/dmid-metadata-standards-core-project</obo:IAO_0000119>
         <rdfs:label xml:lang="en">project relevance</rdfs:label>
     </owl:Class>
     <owl:Axiom>
@@ -11768,7 +12133,7 @@ A large contig count may indicate insufficient read coverage.</obo:IAO_0000115>
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001573">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001572"/>
-        <rdfs:label xml:lang="en">agricultural</rdfs:label>
+        <rdfs:label xml:lang="en">agricultural project relevance</rdfs:label>
     </owl:Class>
     
 
@@ -11777,7 +12142,7 @@ A large contig count may indicate insufficient read coverage.</obo:IAO_0000115>
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001574">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001572"/>
-        <rdfs:label xml:lang="en">medical</rdfs:label>
+        <rdfs:label xml:lang="en">medical knowledge relevance</rdfs:label>
     </owl:Class>
     
 
@@ -11786,7 +12151,7 @@ A large contig count may indicate insufficient read coverage.</obo:IAO_0000115>
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001575">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001572"/>
-        <rdfs:label xml:lang="en">industrial</rdfs:label>
+        <rdfs:label xml:lang="en">industrial processing relevance</rdfs:label>
     </owl:Class>
     
 
@@ -11795,7 +12160,7 @@ A large contig count may indicate insufficient read coverage.</obo:IAO_0000115>
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001576">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001572"/>
-        <rdfs:label xml:lang="en">evolution</rdfs:label>
+        <rdfs:label xml:lang="en">evolution modelling relevance</rdfs:label>
     </owl:Class>
     
 
@@ -11804,7 +12169,7 @@ A large contig count may indicate insufficient read coverage.</obo:IAO_0000115>
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001577">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001572"/>
-        <rdfs:label xml:lang="en">environmental</rdfs:label>
+        <rdfs:label xml:lang="en">environmental project relevance</rdfs:label>
     </owl:Class>
     
 
@@ -11813,7 +12178,7 @@ A large contig count may indicate insufficient read coverage.</obo:IAO_0000115>
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001578">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001572"/>
-        <rdfs:label xml:lang="en">model organism</rdfs:label>
+        <rdfs:label xml:lang="en">model organism relevance</rdfs:label>
     </owl:Class>
     
 
@@ -12172,19 +12537,19 @@ BioSample_contact_information&quot;</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001582">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/OBI_0001884"/>
+        <obo:GENEPIO_0000006 xml:lang="en">monoisolate</obo:GENEPIO_0000006>
+        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000122"/>
         <obo:IAO_0000115 xml:lang="en">A monoisolate sample scope involves specimens from a single animal, cultured cell-line, inbred population, or possibly a heterogeneous population when a single genome assembly is generated from a pooled sample because multiple individuals are needed to collect enough material and an inbred line is not available; however, this situation is not preferred.</obo:IAO_0000115>
         <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
-        <obo:IAO_0000118>monoisolate</obo:IAO_0000118>
         <obo:IAO_0000119>https://www.ncbi.nlm.nih.gov/books/NBK54364/</obo:IAO_0000119>
         <obo:OBI_0001886>monoisolate</obo:OBI_0001886>
-        <oboInOwl:hasAlternativeId>monoisolate</oboInOwl:hasAlternativeId>
         <rdfs:label xml:lang="en">monoisolate sample scope</rdfs:label>
     </owl:Class>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001582"/>
-        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000118"/>
-        <owl:annotatedTarget>monoisolate</owl:annotatedTarget>
-        <oboInOwl:hasDbXref rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001836"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/OBI_0001884"/>
+        <oboInOwl:hasAlternativeId>monoisolate</oboInOwl:hasAlternativeId>
     </owl:Axiom>
     
 
@@ -12193,12 +12558,20 @@ BioSample_contact_information&quot;</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001583">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/OBI_0001884"/>
+        <obo:GENEPIO_0000006 xml:lang="en">multiisolate</obo:GENEPIO_0000006>
+        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000122"/>
         <obo:IAO_0000115 xml:lang="en">A multiisolate sample scope contains multiple individuals that represent distinct specimen collections, a population (representative of a species).</obo:IAO_0000115>
         <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
         <obo:IAO_0000119 xml:lang="en">https://www.ncbi.nlm.nih.gov/books/NBK54364/</obo:IAO_0000119>
         <obo:IAO_0000600 xml:lang="en">This is often used for variation or phenotype and genotype studies. This should not be used when multiple genomes will be annotated. Eventually, multiple locus_tag prefixes will be able to be assigned to a single multiisolate genome sequencing project, but currently only a single prefix can be registered per project. Therefore, individual monoisolate projects need to be registered when more than one genome will be annotated.</obo:IAO_0000600>
-        <rdfs:label xml:lang="en">multiisolate</rdfs:label>
+        <rdfs:label xml:lang="en">multiisolate sample scope</rdfs:label>
     </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001583"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/OBI_0001884"/>
+        <oboInOwl:hasAlternativeId>multiisolate</oboInOwl:hasAlternativeId>
+    </owl:Axiom>
     
 
 
@@ -12206,11 +12579,19 @@ BioSample_contact_information&quot;</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001584">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/OBI_0001884"/>
+        <obo:GENEPIO_0000006 xml:lang="en">multispecies</obo:GENEPIO_0000006>
+        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000122"/>
         <obo:IAO_0000115 xml:lang="en">A multi-species sample scope involves a sample representing multiple species.</obo:IAO_0000115>
         <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
         <obo:IAO_0000119>https://www.ncbi.nlm.nih.gov/books/NBK54364/</obo:IAO_0000119>
-        <rdfs:label xml:lang="en">multispecies</rdfs:label>
+        <rdfs:label xml:lang="en">multispecies sample scope</rdfs:label>
     </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001584"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/OBI_0001884"/>
+        <oboInOwl:hasAlternativeId>multispecies</oboInOwl:hasAlternativeId>
+    </owl:Axiom>
     
 
 
@@ -12218,12 +12599,19 @@ BioSample_contact_information&quot;</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001585">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/OBI_0001884"/>
+        <obo:GENEPIO_0000006 xml:lang="en">environment</obo:GENEPIO_0000006>
+        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000122"/>
         <obo:IAO_0000115 xml:lang="en">An environment sample scope indicates that the species content of the sample is not known. Generally, nucleic acid is directly isolated from an environmental sample for analysis. This is used for metagenome studies.</obo:IAO_0000115>
         <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
-        <obo:IAO_0000118 xml:lang="en">environment</obo:IAO_0000118>
         <obo:IAO_0000119>https://www.ncbi.nlm.nih.gov/books/NBK54364/</obo:IAO_0000119>
         <rdfs:label xml:lang="en">environment sample scope</rdfs:label>
     </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001585"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/OBI_0001884"/>
+        <oboInOwl:hasAlternativeId>environment</oboInOwl:hasAlternativeId>
+    </owl:Axiom>
     
 
 
@@ -12231,10 +12619,18 @@ BioSample_contact_information&quot;</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001586">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/OBI_0001884"/>
+        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000122"/>
         <obo:IAO_0000115 xml:lang="en">A synthetic sample scope involves a sample synthesized in a laboratory.</obo:IAO_0000115>
+        <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
         <obo:IAO_0000119>https://www.ncbi.nlm.nih.gov/books/NBK54364/</obo:IAO_0000119>
-        <rdfs:label xml:lang="en">synthetic</rdfs:label>
+        <rdfs:label xml:lang="en">synthetic sample scope</rdfs:label>
     </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001586"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/OBI_0001884"/>
+        <oboInOwl:hasAlternativeId>synthetic</oboInOwl:hasAlternativeId>
+    </owl:Axiom>
     
 
 
@@ -12242,7 +12638,8 @@ BioSample_contact_information&quot;</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001587">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/OBI_0001884"/>
-        <obo:IAO_0000119>https://www.ncbi.nlm.nih.gov/books/NBK54364/</obo:IAO_0000119>
+        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000428"/>
+        <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
         <rdfs:label xml:lang="en">single cell</rdfs:label>
     </owl:Class>
     
@@ -12252,8 +12649,25 @@ BioSample_contact_information&quot;</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001588">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/OBI_0001892"/>
-        <rdfs:label xml:lang="en">other</rdfs:label>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001605"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <obo:GENEPIO_0000006 xml:lang="en">other</obo:GENEPIO_0000006>
+        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000122"/>
+        <obo:IAO_0000115 xml:lang="en">Other project objective: specify an objective not listed above</obo:IAO_0000115>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
+        <obo:IAO_0000119 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.ncbi.nlm.nih.gov/books/NBK54364/</obo:IAO_0000119>
+        <rdfs:label xml:lang="en">other project objective</rdfs:label>
     </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001588"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/OBI_0001892"/>
+        <oboInOwl:hasAlternativeId>other</oboInOwl:hasAlternativeId>
+    </owl:Axiom>
     
 
 
@@ -12304,9 +12718,19 @@ BioSample_contact_information&quot;</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001591">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/OBI_0001899"/>
-        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000123"/>
-        <rdfs:label xml:lang="en">whole genome</rdfs:label>
+        <obo:GENEPIO_0000006 xml:lang="en">whole</obo:GENEPIO_0000006>
+        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000122"/>
+        <obo:IAO_0000115 xml:lang="en">Whole: the project makes use of the whole sample material (most common case). Use this for whole genome sequencing studies, transcriptome studies that are not targeting specific loci, epigenetic studies of a genome, and metagenomes or unbiased transcriptome studies of metagenomes.</obo:IAO_0000115>
+        <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
+        <obo:IAO_0000119 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.ncbi.nlm.nih.gov/books/NBK54364/</obo:IAO_0000119>
+        <rdfs:label xml:lang="en">whole genomic data capture</rdfs:label>
     </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001591"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/OBI_0001899"/>
+        <oboInOwl:hasAlternativeId>Whole</oboInOwl:hasAlternativeId>
+    </owl:Axiom>
     
 
 
@@ -12314,8 +12738,19 @@ BioSample_contact_information&quot;</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001592">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/OBI_0001892"/>
-        <rdfs:label xml:lang="en">raw sequence reads</rdfs:label>
+        <obo:GENEPIO_0000006 xml:lang="en">raw sequence reads</obo:GENEPIO_0000006>
+        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000122"/>
+        <obo:IAO_0000115 xml:lang="en">A raw sequence reads project objective has the goal of submission of raw reads to SRA or Trace repositories</obo:IAO_0000115>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
+        <obo:IAO_0000119 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.ncbi.nlm.nih.gov/books/NBK54364/</obo:IAO_0000119>
+        <rdfs:label xml:lang="en">raw sequence read objective</rdfs:label>
     </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001592"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/OBI_0001892"/>
+        <oboInOwl:hasAlternativeId>raw sequence reads</oboInOwl:hasAlternativeId>
+    </owl:Axiom>
     
 
 
@@ -12323,8 +12758,19 @@ BioSample_contact_information&quot;</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001593">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/OBI_0001892"/>
-        <rdfs:label xml:lang="en">sequence</rdfs:label>
+        <obo:GENEPIO_0000006 xml:lang="en">sequence</obo:GENEPIO_0000006>
+        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000122"/>
+        <obo:IAO_0000115 xml:lang="en">A sequence project objective has a goal of submission of sequence data to standard archival sequence databases (yielding accession.version identifiers; e.g., whole genome shotgun, cDNA sequences, transcript shotgun assemblies)</obo:IAO_0000115>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
+        <obo:IAO_0000119 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.ncbi.nlm.nih.gov/books/NBK54364/</obo:IAO_0000119>
+        <rdfs:label xml:lang="en">sequence project objective</rdfs:label>
     </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001593"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/OBI_0001892"/>
+        <oboInOwl:hasAlternativeId>sequence</oboInOwl:hasAlternativeId>
+    </owl:Axiom>
     
 
 
@@ -12332,8 +12778,20 @@ BioSample_contact_information&quot;</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001594">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/OBI_0001892"/>
-        <rdfs:label xml:lang="en">analysis</rdfs:label>
+        <obo:GENEPIO_0000006 xml:lang="en">analysis</obo:GENEPIO_0000006>
+        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000122"/>
+        <obo:IAO_0000115 xml:lang="en">An &quot;analysis project objective&quot; indicates there was an other analysis not otherwise indicated, includes submission of BAM files.</obo:IAO_0000115>
+        <obo:IAO_0000116 xml:lang="en">This defn. could be a negation of the &quot;not otherwise indicated&quot;.</obo:IAO_0000116>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
+        <obo:IAO_0000119 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.ncbi.nlm.nih.gov/books/NBK54364/</obo:IAO_0000119>
+        <rdfs:label xml:lang="en">analysis objective</rdfs:label>
     </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001594"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/OBI_0001892"/>
+        <oboInOwl:hasAlternativeId>analysis</oboInOwl:hasAlternativeId>
+    </owl:Axiom>
     
 
 
@@ -12341,8 +12799,19 @@ BioSample_contact_information&quot;</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001595">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/OBI_0001892"/>
-        <rdfs:label xml:lang="en">assembly</rdfs:label>
+        <obo:GENEPIO_0000006 xml:lang="en">assembly</obo:GENEPIO_0000006>
+        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000122"/>
+        <obo:IAO_0000115 xml:lang="en">submission of genome assembly (AGP data)</obo:IAO_0000115>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
+        <obo:IAO_0000119 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.ncbi.nlm.nih.gov/books/NBK54364/</obo:IAO_0000119>
+        <rdfs:label xml:lang="en">assembly objective</rdfs:label>
     </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001595"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/OBI_0001892"/>
+        <oboInOwl:hasAlternativeId>assembly</oboInOwl:hasAlternativeId>
+    </owl:Axiom>
     
 
 
@@ -12350,8 +12819,19 @@ BioSample_contact_information&quot;</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001596">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/OBI_0001892"/>
-        <rdfs:label xml:lang="en">annotation</rdfs:label>
+        <obo:GENEPIO_0000006 xml:lang="en">annotation</obo:GENEPIO_0000006>
+        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000122"/>
+        <obo:IAO_0000115 xml:lang="en">sequence annotation data</obo:IAO_0000115>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
+        <obo:IAO_0000119 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.ncbi.nlm.nih.gov/books/NBK54364/</obo:IAO_0000119>
+        <rdfs:label xml:lang="en">sequence annotation objective</rdfs:label>
     </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001596"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/OBI_0001892"/>
+        <oboInOwl:hasAlternativeId>annotation</oboInOwl:hasAlternativeId>
+    </owl:Axiom>
     
 
 
@@ -12359,8 +12839,19 @@ BioSample_contact_information&quot;</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001597">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/OBI_0001892"/>
-        <rdfs:label xml:lang="en">variation</rdfs:label>
+        <obo:GENEPIO_0000006 xml:lang="en">sequence variation</obo:GENEPIO_0000006>
+        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000122"/>
+        <obo:IAO_0000115 xml:lang="en">Variation: identification of sequence variation data for submission to dbSNP or dbVAR</obo:IAO_0000115>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
+        <obo:IAO_0000119 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.ncbi.nlm.nih.gov/books/NBK54364/</obo:IAO_0000119>
+        <rdfs:label xml:lang="en">sequence variation project objective</rdfs:label>
     </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001597"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/OBI_0001892"/>
+        <oboInOwl:hasAlternativeId>variation</oboInOwl:hasAlternativeId>
+    </owl:Axiom>
     
 
 
@@ -12368,8 +12859,19 @@ BioSample_contact_information&quot;</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001598">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/OBI_0001892"/>
-        <rdfs:label xml:lang="en">epigenetic markers</rdfs:label>
+        <obo:GENEPIO_0000006 xml:lang="en">epigenetic markers</obo:GENEPIO_0000006>
+        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000122"/>
+        <obo:IAO_0000115 xml:lang="en">DNA methylation, histone modification, chromatin accessibility datasets</obo:IAO_0000115>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
+        <obo:IAO_0000119 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.ncbi.nlm.nih.gov/books/NBK54364/</obo:IAO_0000119>
+        <rdfs:label xml:lang="en">epigenetic markers objective</rdfs:label>
     </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001598"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/OBI_0001892"/>
+        <oboInOwl:hasAlternativeId>epigenetic markers</oboInOwl:hasAlternativeId>
+    </owl:Axiom>
     
 
 
@@ -12377,8 +12879,19 @@ BioSample_contact_information&quot;</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001599">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/OBI_0001892"/>
-        <rdfs:label xml:lang="en">expression</rdfs:label>
+        <obo:GENEPIO_0000006 xml:lang="en">expression</obo:GENEPIO_0000006>
+        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000122"/>
+        <obo:IAO_0000115 xml:lang="en">Expression: assays of transcript or protein existence or abundance</obo:IAO_0000115>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
+        <obo:IAO_0000119 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.ncbi.nlm.nih.gov/books/NBK54364/</obo:IAO_0000119>
+        <rdfs:label xml:lang="en">transcript or protein expression objective</rdfs:label>
     </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001599"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/OBI_0001892"/>
+        <oboInOwl:hasAlternativeId>expression</oboInOwl:hasAlternativeId>
+    </owl:Axiom>
     
 
 
@@ -12386,8 +12899,19 @@ BioSample_contact_information&quot;</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001600">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/OBI_0001892"/>
-        <rdfs:label xml:lang="en">maps</rdfs:label>
+        <obo:GENEPIO_0000006 xml:lang="en">maps</obo:GENEPIO_0000006>
+        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000122"/>
+        <obo:IAO_0000115 xml:lang="en">Maps: non-sequence based map data; e.g., genetic, radiation hybrid, cytogenetic, etc.</obo:IAO_0000115>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
+        <obo:IAO_0000119 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.ncbi.nlm.nih.gov/books/NBK54364/</obo:IAO_0000119>
+        <rdfs:label xml:lang="en">mapping objective</rdfs:label>
     </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001600"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/OBI_0001892"/>
+        <oboInOwl:hasAlternativeId>maps</oboInOwl:hasAlternativeId>
+    </owl:Axiom>
     
 
 
@@ -12395,9 +12919,11 @@ BioSample_contact_information&quot;</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001601">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/OBI_0001882"/>
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/OBI_0001892"/>
         <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000123"/>
-        <rdfs:label xml:lang="en">phenotype</rdfs:label>
+        <obo:IAO_0000115 xml:lang="en">phenotypic descriptive data.</obo:IAO_0000115>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
+        <obo:IAO_0000119 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.ncbi.nlm.nih.gov/books/NBK54364/</obo:IAO_0000119>
+        <rdfs:label xml:lang="en">phenotypic observation data from specimen</rdfs:label>
     </owl:Class>
     
 
@@ -12406,8 +12932,19 @@ BioSample_contact_information&quot;</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001602">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/OBI_0001896"/>
-        <rdfs:label xml:lang="en">sequencing</rdfs:label>
+        <obo:GENEPIO_0000006 xml:lang="en">select sequence if any sequence data is generated from this project.</obo:GENEPIO_0000006>
+        <obo:GENEPIO_0000006 xml:lang="en">sequencing</obo:GENEPIO_0000006>
+        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000122"/>
+        <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
+        <obo:IAO_0000119 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.ncbi.nlm.nih.gov/books/NBK54364/</obo:IAO_0000119>
+        <rdfs:label xml:lang="en">sequencing project method</rdfs:label>
     </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001602"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/OBI_0001896"/>
+        <oboInOwl:hasAlternativeId>sequence</oboInOwl:hasAlternativeId>
+    </owl:Axiom>
     
 
 
@@ -12415,8 +12952,19 @@ BioSample_contact_information&quot;</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001603">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/OBI_0001896"/>
-        <rdfs:label xml:lang="en">array</rdfs:label>
+        <obo:GENEPIO_0000006 xml:lang="en">array</obo:GENEPIO_0000006>
+        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000122"/>
+        <obo:IAO_0000115 xml:lang="en">select Array if that is the primary method and no sequence data is submitted</obo:IAO_0000115>
+        <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
+        <obo:IAO_0000119 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.ncbi.nlm.nih.gov/books/NBK54364/</obo:IAO_0000119>
+        <rdfs:label xml:lang="en">array project method</rdfs:label>
     </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001603"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/OBI_0001896"/>
+        <oboInOwl:hasAlternativeId>array</oboInOwl:hasAlternativeId>
+    </owl:Axiom>
     
 
 
@@ -12424,8 +12972,19 @@ BioSample_contact_information&quot;</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001604">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/OBI_0001896"/>
-        <rdfs:label xml:lang="en">mass spectrometry</rdfs:label>
+        <obo:GENEPIO_0000006 xml:lang="en">mass spectrometry</obo:GENEPIO_0000006>
+        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000122"/>
+        <obo:IAO_0000115 xml:lang="en">select Mass Spectrometry if that is the primary method</obo:IAO_0000115>
+        <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
+        <obo:IAO_0000119 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.ncbi.nlm.nih.gov/books/NBK54364/</obo:IAO_0000119>
+        <rdfs:label xml:lang="en">mass spectrometry project method</rdfs:label>
     </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001604"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/OBI_0001896"/>
+        <oboInOwl:hasAlternativeId>mass spectrometry</oboInOwl:hasAlternativeId>
+    </owl:Axiom>
     
 
 
@@ -15431,9 +15990,19 @@ specifichost</oboInOwl:hasRelatedSynonym>
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001747">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/OBI_0001882"/>
-        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000123"/>
-        <rdfs:label xml:lang="en">reagent</rdfs:label>
+        <obo:GENEPIO_0000006 xml:lang="en">reagent</obo:GENEPIO_0000006>
+        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000122"/>
+        <obo:IAO_0000115 xml:lang="en">Reagent: material studied was obtained by chemical reaction, precipitation.</obo:IAO_0000115>
+        <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
+        <obo:IAO_0000119 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.ncbi.nlm.nih.gov/books/NBK54364/</obo:IAO_0000119>
+        <rdfs:label xml:lang="en">reagent derived material from specimen</rdfs:label>
     </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001747"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/OBI_0001882"/>
+        <oboInOwl:hasAlternativeId>Reagent</oboInOwl:hasAlternativeId>
+    </owl:Axiom>
     
 
 
@@ -15441,9 +16010,19 @@ specifichost</oboInOwl:hasRelatedSynonym>
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001748">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/OBI_0001882"/>
-        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000123"/>
-        <rdfs:label xml:lang="en">transcriptome</rdfs:label>
+        <obo:GENEPIO_0000006 xml:lang="en">transcriptome</obo:GENEPIO_0000006>
+        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000122"/>
+        <obo:IAO_0000115 xml:lang="en">Transcriptome: transcript and/or expression data.</obo:IAO_0000115>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
+        <obo:IAO_0000119 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.ncbi.nlm.nih.gov/books/NBK54364/</obo:IAO_0000119>
+        <rdfs:label xml:lang="en">transcriptome data from specimen</rdfs:label>
     </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001748"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/OBI_0001882"/>
+        <oboInOwl:hasAlternativeId>Transcriptome</oboInOwl:hasAlternativeId>
+    </owl:Axiom>
     
 
 
@@ -15451,9 +16030,19 @@ specifichost</oboInOwl:hasRelatedSynonym>
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001749">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/OBI_0001882"/>
-        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000123"/>
-        <rdfs:label xml:lang="en">proteome</rdfs:label>
+        <obo:GENEPIO_0000006>proteome</obo:GENEPIO_0000006>
+        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000122"/>
+        <obo:IAO_0000115 xml:lang="en">Proteome material is protein or peptide sequences.</obo:IAO_0000115>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
+        <obo:IAO_0000119 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.ncbi.nlm.nih.gov/books/NBK54364/</obo:IAO_0000119>
+        <rdfs:label xml:lang="en">proteome data derived from specimen</rdfs:label>
     </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001749"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/OBI_0001882"/>
+        <oboInOwl:hasAlternativeId>Proteome</oboInOwl:hasAlternativeId>
+    </owl:Axiom>
     
 
 
@@ -15461,9 +16050,19 @@ specifichost</oboInOwl:hasRelatedSynonym>
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001750">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/OBI_0001882"/>
-        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000123"/>
-        <rdfs:label xml:lang="en">purified chromosome</rdfs:label>
+        <obo:GENEPIO_0000006>purified chromosome</obo:GENEPIO_0000006>
+        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000122"/>
+        <obo:IAO_0000115 xml:lang="en">Purified chromosome: one or more chromosomes or replicons were experimentally purified.</obo:IAO_0000115>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
+        <obo:IAO_0000119 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.ncbi.nlm.nih.gov/books/NBK54364/</obo:IAO_0000119>
+        <rdfs:label xml:lang="en">purified chromosome from specimen</rdfs:label>
     </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001750"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/OBI_0001882"/>
+        <oboInOwl:hasAlternativeId>purified chromosome</oboInOwl:hasAlternativeId>
+    </owl:Axiom>
     
 
 
@@ -15471,9 +16070,19 @@ specifichost</oboInOwl:hasRelatedSynonym>
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001751">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/OBI_0001899"/>
-        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000123"/>
-        <rdfs:label xml:lang="en">targeted locus/loci</rdfs:label>
+        <obo:GENEPIO_0000006 xml:lang="en">targeted locus/loci</obo:GENEPIO_0000006>
+        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000122"/>
+        <obo:IAO_0000115 xml:lang="en">TargetedLocusLoci: capturing specific loci (gene, genomic region, bar code standard).</obo:IAO_0000115>
+        <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
+        <obo:IAO_0000119 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.ncbi.nlm.nih.gov/books/NBK54364/</obo:IAO_0000119>
+        <rdfs:label xml:lang="en">Targeted Locus Loci data capture</rdfs:label>
     </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001751"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/OBI_0001899"/>
+        <oboInOwl:hasAlternativeId>TargetedLocusLoci</oboInOwl:hasAlternativeId>
+    </owl:Axiom>
     
 
 
@@ -15481,11 +16090,19 @@ specifichost</oboInOwl:hasRelatedSynonym>
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001752">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/OBI_0001899"/>
-        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000123"/>
-        <obo:IAO_0000115 xml:lang="en">clone-end sequencing project</obo:IAO_0000115>
+        <obo:GENEPIO_0000006 xml:lang="en">clone ends</obo:GENEPIO_0000006>
+        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000122"/>
+        <obo:IAO_0000115 xml:lang="en">CloneEnds: capturing clone end data.</obo:IAO_0000115>
         <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
-        <rdfs:label xml:lang="en">clone ends</rdfs:label>
+        <obo:IAO_0000119 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.ncbi.nlm.nih.gov/books/NBK54364/</obo:IAO_0000119>
+        <rdfs:label xml:lang="en">clone end data capture</rdfs:label>
     </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001752"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/OBI_0001899"/>
+        <oboInOwl:hasAlternativeId>CloneEnds</oboInOwl:hasAlternativeId>
+    </owl:Axiom>
     
 
 
@@ -15493,11 +16110,20 @@ specifichost</oboInOwl:hasRelatedSynonym>
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001753">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/OBI_0001899"/>
-        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000123"/>
-        <obo:IAO_0000115 xml:lang="en">exome resequencing project</obo:IAO_0000115>
+        <obo:GENEPIO_0000006 xml:lang="en">exome</obo:GENEPIO_0000006>
+        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000122"/>
+        <obo:IAO_0000115 xml:lang="en">Exome: capturing exon-specific data.</obo:IAO_0000115>
+        <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
         <obo:IAO_0000119 xml:lang="en">NCBI BioSample</obo:IAO_0000119>
-        <rdfs:label xml:lang="en">exome</rdfs:label>
+        <obo:IAO_0000119 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.ncbi.nlm.nih.gov/books/NBK54364/</obo:IAO_0000119>
+        <rdfs:label xml:lang="en">exome specific data capture</rdfs:label>
     </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001753"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/OBI_0001899"/>
+        <oboInOwl:hasAlternativeId>Exome</oboInOwl:hasAlternativeId>
+    </owl:Axiom>
     
 
 
@@ -15505,10 +16131,20 @@ specifichost</oboInOwl:hasRelatedSynonym>
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001754">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/OBI_0001899"/>
-        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000123"/>
-        <obo:IAO_0000115 xml:lang="en">sequence generated from a random sampling of the collected sample; not intended to be comprehensive sampling of the material</obo:IAO_0000115>
-        <rdfs:label xml:lang="en">random survey</rdfs:label>
+        <obo:GENEPIO_0000006 xml:lang="en">random survey</obo:GENEPIO_0000006>
+        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000122"/>
+        <obo:IAO_0000115 xml:lang="en">sequences generated from a random sampling of the collected sample; not intended to be comprehensive sampling of the material</obo:IAO_0000115>
+        <obo:IAO_0000116 xml:lang="en">Is this with respect to an isolate or a specimen derived culture?</obo:IAO_0000116>
+        <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
+        <obo:IAO_0000119 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.ncbi.nlm.nih.gov/books/NBK54364/</obo:IAO_0000119>
+        <rdfs:label xml:lang="en">random survey data capture</rdfs:label>
     </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001754"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/OBI_0001899"/>
+        <oboInOwl:hasAlternativeId>RandomSurvey</oboInOwl:hasAlternativeId>
+    </owl:Axiom>
     
 
 
@@ -16224,7 +16860,7 @@ specifichost</oboInOwl:hasRelatedSynonym>
         <obo:IAO_0000115 xml:lang="en">The specimen extraction location - city is the city where a specimen was taken (extracted) from a subject or environment</obo:IAO_0000115>
         <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
         <obo:IAO_0000117 xml:lang="en">Damion Dooley&apos;s note: Deprecate in favour of specimen extraction location - city or region ?</obo:IAO_0000117>
-        <rdfs:label xml:lang="en">specimen extraction location - city</rdfs:label>
+        <rdfs:label xml:lang="en">specimen extraction location city</rdfs:label>
     </owl:Class>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001785"/>
@@ -16916,12 +17552,66 @@ Generally de-identified data should include HIPAA patient privacy fields as indi
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001836">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000115"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002351"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/OBI_0001892"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002351"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001572"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002351"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/OBI_0001882"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002351"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/OBI_0001884"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002351"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/OBI_0001896"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002351"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/OBI_0001899"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000120"/>
         <obo:IAO_0000115 xml:lang="en">A National Center for Biotechnology Information BioProject is a collection of biological data related to a single initiative, originating from a single organization or from a consortium.  A BioProject record provides users a single place to find links to the diverse data types generated for that project.</obo:IAO_0000115>
         <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
         <obo:IAO_0000119 xml:lang="en">http://www.ncbi.nlm.nih.gov/bioproject/</obo:IAO_0000119>
         <rdfs:label xml:lang="en">NCBI BioProject standard</rdfs:label>
     </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001836"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002351"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/OBI_0001899"/>
+            </owl:Restriction>
+        </owl:annotatedTarget>
+        <oboInOwl:hasAlternativeId>Capture</oboInOwl:hasAlternativeId>
+    </owl:Axiom>
     
 
 
@@ -21152,7 +21842,9 @@ Also note historical name issue (Myanmar vs Burma) and diplomatic name issue (Ta
         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/OBI_0001628"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
         <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000097"/>
+        <obo:IAO_0000115 xml:lang="en">The format of the BioProject Accession is five alpha-letters followed by one to six numbers. For example PRJNA43021.</obo:IAO_0000115>
         <oboInOwl:hasAlternativeId>bioproject_accession</oboInOwl:hasAlternativeId>
+        <rdfs:label xml:lang="en">Project Accession</rdfs:label>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/OBI_0001628"/>
@@ -21239,6 +21931,10 @@ Also note historical name issue (Myanmar vs Burma) and diplomatic name issue (Ta
         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/OBI_0001882"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
         <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000103"/>
+        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000122"/>
+        <obo:IAO_0000115 xml:lang="en">Indicates the type of material that is isolated from the sample for use in the study</obo:IAO_0000115>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
+        <oboInOwl:hasAlternativeId>Material</oboInOwl:hasAlternativeId>
         <rdfs:label xml:lang="en">Material</rdfs:label>
     </owl:Axiom>
     <owl:Axiom>
@@ -21358,7 +22054,10 @@ Also note historical name issue (Myanmar vs Burma) and diplomatic name issue (Ta
         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/OBI_0001892"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
         <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000103"/>
-        <rdfs:label>Objective*</rdfs:label>
+        <obo:GENEPIO_0001763>required</obo:GENEPIO_0001763>
+        <obo:IAO_0000115 xml:lang="en">Indicates the project goals with respect to the type of data that will be generated and submitted to an INSDC database. Select all relevant menu options.</obo:IAO_0000115>
+        <oboInOwl:hasAlternativeId xml:lang="en">objective</oboInOwl:hasAlternativeId>
+        <rdfs:label>Objective</rdfs:label>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/OBI_0001892"/>
@@ -21393,7 +22092,9 @@ Also note historical name issue (Myanmar vs Burma) and diplomatic name issue (Ta
         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/OBI_0001896"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
         <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000103"/>
-        <rdfs:label>Methodology*</rdfs:label>
+        <obo:IAO_0000115>Indicate the general approach used to obtain data.</obo:IAO_0000115>
+        <oboInOwl:hasAlternativeId>methodology</oboInOwl:hasAlternativeId>
+        <rdfs:label>Methodology</rdfs:label>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/OBI_0001896"/>
@@ -21428,32 +22129,13 @@ Also note historical name issue (Myanmar vs Burma) and diplomatic name issue (Ta
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000112"/>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001655"/>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001705"/>
-        <obo:IAO_0000116 xml:lang="en">Damion Dooley&apos;s note: Used in NCBI BioProject specifcation; Seems to exist under another identity: an NCBI &quot;project-data-type&quot;: http://www.ncbi.nlm.nih.gov/books/NBK54364/def-item/project-data-type/
-
-Also see http://trace.ddbj.nig.ac.jp/news/2014-11-12_e.html - &quot;A BioProject record can have multiple project data types.  By selecting multiple Project Data Types (for example, &quot;Genome Sequencing&quot; and &quot;Transcriptome or Gene Expression&quot;), multiple studies can be merged into single project.&quot;</obo:IAO_0000116>
-        <obo:IAO_0000116 xml:lang="en">NCBI lists project data type and other controlled vocabulary fields at : https://www.ncbi.nlm.nih.gov/books/NBK54364/
-
-Assembly: genome assembly project utilizing already existing sequence data including data that was submitted by a different group
-Clone ends: clone-end sequencing project
-Epigenomics: DNA methylation, histone modification, chromatin accessibility datasets
-Exome: exome resequencing project
-Genome sequencing: whole, or partial, genome sequencing project (with or without a genome assembly)
-Map: - project that results in non-sequence map data such as genetic map, radiation hybrid map, cytogenetic map, optical map, and etc.
-Metagenome: sequence analysis of environmental samples
-Metagenome assembly: a genome assembly generated from sequenced environmental samples
-Other: a free text description is provided to indicate Other data type
-Phenotype or Genotype: project correlating phenotype and genotype
-Proteome: large scale proteomics experiment including mass spec. analysis
-Random Survey: sequence generated from a random sampling of the collected sample; not intended to be comprehensive sampling of the material.
-Targeted locus (loci): project to sequence specific loci, such as a 16S rRNA sequencing
-Transcriptome or Gene expression: large scale RNA sequencing or expression analysis. Includes cDNA, EST, RNA_seq, and microarray.
-Variation: project with a primary goal of identifying large or small sequence variation across populations.</obo:IAO_0000116>
-        <oboInOwl:hasSynonym xml:lang="en">NCBI Project data type</oboInOwl:hasSynonym>
     </rdf:Description>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/OBI_0001899"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
         <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000103"/>
+        <obo:IAO_0000115 xml:lang="en">Indicates the scale, or type, of information that the study is designed to generate from the sample material.</obo:IAO_0000115>
+        <oboInOwl:hasAlternativeId>Capture</oboInOwl:hasAlternativeId>
         <rdfs:label>Capture</rdfs:label>
     </owl:Axiom>
     <owl:Axiom>
@@ -21517,6 +22199,7 @@ Often a value specification may need to allow for a &quot;data item state&quot; 
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000103"/>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000112"/>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001705"/>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/IAO_0000300"/>
     </rdf:Description>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/OBI_0001942"/>
@@ -21808,15 +22491,6 @@ Often a value specification may need to allow for a &quot;data item state&quot; 
         </rdfs:subClassOf>
         <oboInOwl:hasExactSynonym rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://edamontology.org/data_0925</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym xml:lang="en">http://purl.obolibrary.org/obo/OBI_0000973 - &apos;sequence data&apos;</oboInOwl:hasExactSynonym>
-    </rdf:Description>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/SO_0001026 -->
-
-    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/SO_0001026">
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/OBI_0001882"/>
-        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000123"/>
     </rdf:Description>
     
 
@@ -23546,6 +24220,33 @@ Note that this file contains examples of cities, provinces, states, territories,
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
+    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0000140">
+        <obo:IAO_0000115 xml:lang="en"></obo:IAO_0000115>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0000144">
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0000145">
+        <obo:IAO_0000115 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000123"/>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
+        <obo:IAO_0000115 xml:lang="en"></obo:IAO_0000115>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0000146">
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
+        <obo:IAO_0000115 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000123"/>
+        <obo:IAO_0000115 xml:lang="en"></obo:IAO_0000115>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0000154">
+        <obo:IAO_0000115 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000123"/>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
+        <obo:IAO_0000115 xml:lang="en"></obo:IAO_0000115>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0000155">
+        <obo:IAO_0000115 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000123"/>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
+        <obo:IAO_0000115 xml:lang="en"></obo:IAO_0000115>
+    </rdf:Description>
     <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001854">
         <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000428"/>
         <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
@@ -23692,11 +24393,18 @@ Note that this file contains examples of cities, provinces, states, territories,
     <rdf:Description rdf:about="http://purl.obolibrary.org/obo/OBI_0002027">
         <oboInOwl:hasDbXref>NCBI SRA: Illumina Genome Analyzer IIe</oboInOwl:hasDbXref>
     </rdf:Description>
+    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/OMIT_0012122">
+        <obo:IAO_0000412 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://purl.obolibrary.org/obo/omit</obo:IAO_0000412>
+    </rdf:Description>
     <rdf:Description rdf:about="http://purl.obolibrary.org/obo/PATO_0000460">
         <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000122"/>
     </rdf:Description>
     <rdf:Description rdf:about="http://purl.obolibrary.org/obo/PATO_0001827">
         <obo:IAO_0000116 xml:lang="en">This value is not present in NCBI BioSample host sex.</obo:IAO_0000116>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/SO_0001026">
+        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000122"/>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
     </rdf:Description>
     <rdf:Description rdf:about="http://purl.obolibrary.org/obo/UBERON_0001130">
         <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://purl.obolibrary.org/obo/BTO_0000818</rdfs:seeAlso>

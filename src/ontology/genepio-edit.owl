@@ -876,14 +876,6 @@ I believe time dependency relations (conditions) don&apos;t imply existence by t
     
 
 
-    <!-- http://purl.obolibrary.org/obo/BFO_0000006 -->
-
-    <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000006">
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001884"/>
-    </owl:Class>
-    
-
-
     <!-- http://purl.obolibrary.org/obo/BFO_0000008 -->
 
     <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000008">
@@ -1719,7 +1711,6 @@ https://www.ncbi.nlm.nih.gov/biosample/docs/antibiogram/?format=txt</obo:IAO_000
 
     <rdf:Description rdf:about="http://purl.obolibrary.org/obo/ENVO_00000009">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001655"/>
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001886"/>
         <rdfs:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000415"/>
         <obo:GENEPIO_0000006 xml:lang="en">country</obo:GENEPIO_0000006>
         <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://purl.obolibrary.org/obo/GEO_000000396</rdfs:seeAlso>
@@ -5937,19 +5928,26 @@ https://www.niaid.nih.gov/research/human-pathogen-and-vector-sequencing-metadata
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0000025 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0000025">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000105"/>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001073"/>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001635"/>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001655"/>
         <obo:GENEPIO_0000001>Pathogen Isolate</obo:GENEPIO_0000001>
-        <obo:GENEPIO_0000004>Host body site</obo:GENEPIO_0000004>
         <obo:GENEPIO_0000005>inferred from BCCDC interviews</obo:GENEPIO_0000005>
-        <obo:GENEPIO_0000007>User Input</obo:GENEPIO_0000007>
-        <obo:IAO_0000112>gut, spine</obo:IAO_0000112>
-        <obo:IAO_0000115>name of body site where the sample was obtained from, such as a specific organ or tissue (tongue, lung etc...). For Foundational Model of Anatomy Ontology (FMA) (v 3.1) terms, please see http://purl.bioontology.org/ontology/FMA</obo:IAO_0000115>
+        <obo:IAO_0000112 xml:lang="en">gut, spine, tongue, lung</obo:IAO_0000112>
+        <obo:IAO_0000115 xml:lang="en">Name of body site where the sample was obtained from, such as a specific organ or tissue.</obo:IAO_0000115>
         <obo:IAO_0000119>GROUP: MIxS</obo:IAO_0000119>
         <oboInOwl:inSubset>GENEPIO</oboInOwl:inSubset>
         <rdfs:label xml:lang="en">specimen source body (anatomical) site</rdfs:label>
+        <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://gensc.org/ns/mixs/host_body_site</rdfs:seeAlso>
     </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000025"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000105"/>
+        <obo:IAO_0000115 xml:lang="en">Name of body site where the sample was obtained from, such as a specific organ or tissue (tongue, lung etc...). For Foundational Model of Anatomy Ontology (FMA) (v 3.1) terms, please see http://purl.bioontology.org/ontology/FMA</obo:IAO_0000115>
+        <rdfs:label xml:lang="en">host body site</rdfs:label>
+    </owl:Axiom>
     
 
 
@@ -6173,6 +6171,7 @@ https://www.niaid.nih.gov/research/human-pathogen-and-vector-sequencing-metadata
                 <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/PATO_0001894"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <obo:GENEPIO_0001745>sex of given subject</obo:GENEPIO_0001745>
         <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000428"/>
         <obo:IAO_0000115 xml:lang="en">A subject sex is the phenotypic sex of given subject (human or animal) related to a given investigation, study, and/or specimen.</obo:IAO_0000115>
         <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
@@ -7336,15 +7335,10 @@ Clusters passing filter are represented by PF in analysis reports. Clusters pass
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0000090">
         <owl:equivalentClass>
             <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0000090"/>
-                    <owl:Class>
-                        <owl:unionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001628"/>
-                            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0002028"/>
-                        </owl:unionOf>
-                    </owl:Class>
-                </owl:intersectionOf>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001628"/>
+                    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0002028"/>
+                </owl:unionOf>
             </owl:Class>
         </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000105"/>
@@ -7589,12 +7583,6 @@ Clusters passing filter are represented by PF in analysis reports. Clusters pass
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0000105">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000106"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002350"/>
-                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000003"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <obo:IAO_0000115 xml:lang="en">a MixS data item is a term or field defined in the Genomic Standards Consortium MIxS standard.</obo:IAO_0000115>
         <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
         <rdfs:label xml:lang="en">MIxS data item</rdfs:label>
@@ -8588,8 +8576,10 @@ Syntax: urrently is free text, but ISO3166 standard abbreviations would be accep
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001011">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001010"/>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001073"/>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/IAO_0000300"/>
+        <obo:IAO_0000112 rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">254532233433235152213423</obo:IAO_0000112>
         <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000428"/>
-        <obo:IAO_0000115 xml:lang="en">The MIRU24 - international standard is a mycobacterial interspersed repetitive units (MIRU) typing method classifies Mycobacterium tuberculosis complex (MBTC) bacteria according to a multiple locus VNTR [variable number of tandem repeats] analysis (MLVA) typing scheme of counts of repeats at 24 sequence loci.</obo:IAO_0000115>
+        <obo:IAO_0000115 xml:lang="en">The MIRU24 - international standard is a mycobacterial interspersed repetitive units (MIRU) typing method that classifies Mycobacterium tuberculosis complex (MBTC) bacteria according to a multiple locus VNTR [variable number of tandem repeats] analysis (MLVA) typing scheme of counts of repeats at 24 sequence loci.</obo:IAO_0000115>
         <obo:IAO_0000119 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.miru-vntrplus.org/</obo:IAO_0000119>
         <obo:IAO_0000600 xml:lang="en">The ordering of loci is as follows: MIRU 04, MIRU 26, MIRU 40, MIRU 10, MIRU 16, MIRU 31, 424	577, 2165, 401, 3690, 4156, 2163, 1955, 4052, MIRU 02, MIRU 23, MIRU 39, MIRU 20, MIRU 24, MIRU 27, 2347, 2461, 3171</obo:IAO_0000600>
         <rdfs:label xml:lang="en">MIRU24 - international standard</rdfs:label>
@@ -8608,6 +8598,7 @@ Syntax: urrently is free text, but ISO3166 standard abbreviations would be accep
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001012">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001010"/>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001073"/>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/IAO_0000300"/>
         <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000428"/>
         <obo:IAO_0000115 xml:lang="en">The MIRU24 - Canadian standard is a Mycobacterium tuberculosis typing method exactly like MIRU24 - international standard except that the report of the ordering of the matching loci is different.</obo:IAO_0000115>
         <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
@@ -9992,6 +9983,15 @@ Syntax: urrently is free text, but ISO3166 standard abbreviations would be accep
         <obo:IAO_0000115 xml:lang="en">NCBI BioSample: Genome: a whole genome initiative (a specific sub-cellular molecule is not experimentally isolated). May be only the nuclear genome. Use for DNA of a metagenome sample.</obo:IAO_0000115>
         <oboInOwl:hasAlternativeId>Genome</oboInOwl:hasAlternativeId>
     </owl:Axiom>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001116 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001116">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0002008"/>
+        <rdfs:label xml:lang="en">TB lineage 7 - Ethiopia</rdfs:label>
+    </owl:Class>
     
 
 
@@ -13957,12 +13957,6 @@ or https://www.ncbi.nlm.nih.gov/mesh/1000067</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001628">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000090"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000050"/>
-                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000090"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0002028"/>
         <rdfs:label xml:lang="en">de-novo assembly</rdfs:label>
     </owl:Class>
@@ -15874,10 +15868,11 @@ specifichost</oboInOwl:hasRelatedSynonym>
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001738">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001425"/>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001655"/>
-        <obo:GENEPIO_0000006 xml:lang="en">assembly and annotation project objective</obo:GENEPIO_0000006>
+        <obo:GENEPIO_0000006 xml:lang="en">assembly and annotation</obo:GENEPIO_0000006>
         <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000428"/>
         <obo:IAO_0000115 xml:lang="en">The assembly and annotation objective is the set of objectives that assembly and annotation techniques (including instruments and software platforms) applied to a sample are meant to satisfy.  This impacts on the quality control thresholds applied to the sequencing project.</obo:IAO_0000115>
         <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
+        <rdfs:label xml:lang="en">assembly and annotation project objective</rdfs:label>
     </owl:Class>
     
 
@@ -16971,7 +16966,7 @@ specifichost</oboInOwl:hasRelatedSynonym>
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001790">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/IAO_0000109"/>
         <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
-        <rdfs:label xml:lang="en">organism sample datum</rdfs:label>
+        <rdfs:label xml:lang="en">organism specimen datum</rdfs:label>
     </owl:Class>
     
 
@@ -17793,12 +17788,12 @@ Generally de-identified data should include HIPAA patient privacy fields as indi
 
     <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001844">
         <rdfs:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000507"/>
-        <obo:GENEPIO_0000005>https://en.wikipedia.org/wiki/Origin_(mathematics)</obo:GENEPIO_0000005>
         <obo:IAO_0000112 xml:lang="en">(0,0) is the origin of the cartesian coordinate system.</obo:IAO_0000112>
         <obo:IAO_0000115 xml:lang="en">&quot;In mathematics, the origin of a Euclidean space is a special point, usually denoted by the letter O, used as a fixed point of reference for the geometry of the surrounding space.
 
 In physical problems, the choice of origin is often arbitrary, meaning any choice of origin will ultimately give the same answer. This allows one to pick an origin point that makes the mathematics as simple as possible, often by taking advantage of some kind of geometric symmetry.&quot;</obo:IAO_0000115>
         <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
+        <obo:IAO_0000119 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://en.wikipedia.org/wiki/Origin_(mathematics)</obo:IAO_0000119>
         <rdfs:label xml:lang="en">origin</rdfs:label>
     </rdf:Description>
     
@@ -18437,6 +18432,10 @@ http://www.ebi.ac.uk/ena/about/missing-values-reporting</rdfs:seeAlso>
                 <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/PATO_0002390"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000428"/>
+        <obo:IAO_0000115 xml:lang="en">A circle is a simple closed shape in Euclidean geometry. It is the set of all points in a plane that are at a given distance from a given point, the centre; equivalently it is the curve traced out by a point that moves so that its distance from a given point is constant.</obo:IAO_0000115>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
+        <obo:IAO_0000119 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://en.wikipedia.org/wiki/Circle</obo:IAO_0000119>
         <rdfs:label xml:lang="en">circle</rdfs:label>
     </owl:Class>
     
@@ -18577,6 +18576,9 @@ http://www.ebi.ac.uk/ena/about/missing-values-reporting</rdfs:seeAlso>
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001934">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001884"/>
+        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000428"/>
+        <obo:IAO_0000115 xml:lang="en">A two dimensional entity is an entity composed of one or more points on a two dimensional surface.</obo:IAO_0000115>
+        <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
         <rdfs:label xml:lang="en">2D entity</rdfs:label>
     </owl:Class>
     
@@ -18924,7 +18926,7 @@ http://www.ebi.ac.uk/ena/about/missing-values-reporting</rdfs:seeAlso>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001655"/>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001681"/>
         <obo:GENEPIO_0000005>https://www.ncbi.nlm.nih.gov/books/NBK54984/table/SRA_Glossary_BK.T._library_descriptor_te/?report=objectonly</obo:GENEPIO_0000005>
-        <obo:IAO_0000115 xml:lang="en">The LIBRARY_SOURCE specifies the type of source material that is being sequenced.</obo:IAO_0000115>
+        <obo:IAO_0000115 xml:lang="en">The library source specifies the type of source material that is being sequenced.</obo:IAO_0000115>
         <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
         <rdfs:label xml:lang="en">library source</rdfs:label>
     </owl:Class>
@@ -19299,6 +19301,9 @@ http://www.ebi.ac.uk/ena/about/missing-values-reporting</rdfs:seeAlso>
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001996">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001884"/>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GEO_000000400"/>
+        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000428"/>
+        <obo:IAO_0000115 xml:lang="en">A two dimensional boundary is a continuous path (loop) defined on a two dimensional surface.</obo:IAO_0000115>
+        <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
         <rdfs:label xml:lang="en">2D boundary</rdfs:label>
     </owl:Class>
     
@@ -19699,6 +19704,18 @@ http://www.ebi.ac.uk/ena/about/missing-values-reporting</rdfs:seeAlso>
         </owl:annotatedTarget>
         <obo:GENEPIO_0000006 xml:lang="en">Case ID</obo:GENEPIO_0000006>
     </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0002001"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002351"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001775"/>
+            </owl:Restriction>
+        </owl:annotatedTarget>
+        <rdfs:label xml:lang="en">age</rdfs:label>
+    </owl:Axiom>
     
 
 
@@ -19723,13 +19740,6 @@ http://www.ebi.ac.uk/ena/about/missing-values-reporting</rdfs:seeAlso>
                 <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001468"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002351"/>
-                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onClass rdf:resource="http://www.ebi.ac.uk/efo/EFO_0004953"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000123"/>
         <rdfs:label xml:lang="en">TB case clinical presentation</rdfs:label>
     </owl:Class>
@@ -19740,6 +19750,20 @@ http://www.ebi.ac.uk/ena/about/missing-values-reporting</rdfs:seeAlso>
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0002004">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001777"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002351"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001011"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002351"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001012"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000123"/>
         <rdfs:label xml:lang="en">TB case laboratory testing</rdfs:label>
     </owl:Class>
@@ -19811,11 +19835,14 @@ http://www.ebi.ac.uk/ena/about/missing-values-reporting</rdfs:seeAlso>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001073"/>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001170"/>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001655"/>
-        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000123"/>
+        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000428"/>
+        <obo:IAO_0000115 xml:lang="en">A Mycobacterium tuberculosis lineage is a named family of strains of tuberculosis, named usually with reference to their shared geographic origin.</obo:IAO_0000115>
         <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
         <rdfs:label xml:lang="en">Mycobacterium tuberculosis lineage</rdfs:label>
-        <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://tbinsight.cs.rpi.edu/run_tb_lineage.html</rdfs:seeAlso>
-        <rdfs:seeAlso xml:lang="en">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3420893/</rdfs:seeAlso>
+        <rdfs:seeAlso rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">A TB-Lineage identification tool using spoligotypes and MIRU data:
+http://tbinsight.cs.rpi.edu/run_tb_lineage.html</rdfs:seeAlso>
+        <rdfs:seeAlso rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">Out-of-Africa migration and Neolithic coexpansion of Mycobacterium tuberculosis with modern humans
+http://www.nature.com/ng/journal/v45/n10/full/ng.2744.html</rdfs:seeAlso>
     </owl:Class>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0002008"/>
@@ -20068,12 +20095,6 @@ http://www.ebi.ac.uk/ena/about/missing-values-reporting</rdfs:seeAlso>
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0002028">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000090"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000050"/>
-                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000090"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:label xml:lang="en">mapping (reference based)</rdfs:label>
     </owl:Class>
     
@@ -20146,9 +20167,9 @@ http://www.ebi.ac.uk/ena/about/missing-values-reporting</rdfs:seeAlso>
         <rdfs:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000507"/>
         <obo:IAO_0000112 xml:lang="en">Centre of circle, ellipse or parabola; centre of mass.</obo:IAO_0000112>
         <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000428"/>
+        <obo:IAO_0000115 xml:lang="en">A centre point is a point used in the description of an n-dimentional entity from which other (given) aspects of the entity are most efficienty described. A point of symmetry.  The entity must have only one such point.</obo:IAO_0000115>
         <obo:IAO_0000116 xml:lang="en">Probably a better formal math defn?</obo:IAO_0000116>
         <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
-        <rdfs:comment xml:lang="en">A centre point is a point used in the description of an n-dimentional entity from which other (given) aspects of the entity are most efficienty described. A point of symmetry.  The entity must have only one such point.</rdfs:comment>
         <rdfs:label xml:lang="en">centre point</rdfs:label>
     </owl:Class>
     
@@ -20351,6 +20372,7 @@ http://www.ebi.ac.uk/ena/about/missing-values-reporting</rdfs:seeAlso>
         <obo:IAO_0000115 xml:lang="en">The antibiotic test dosage is the amount of antibiotic delivered to the isolate plate or well.</obo:IAO_0000115>
         <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
         <rdfs:label xml:lang="en">antibiotic test dosage</rdfs:label>
+        <rdfs:seeAlso xml:lang="en">Clinical and Laboratory Standards Institute MIC antimicrobial testing standards at  http://em100.edaptivedocs.info/GetDoc.aspx?doc=CLSI%20M100%20S27:2017&amp;scope=user</rdfs:seeAlso>
     </owl:Class>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0002044"/>
@@ -21476,7 +21498,6 @@ Depending on its context, hasDbXref annotations may point directly to metadata f
     <rdf:Description rdf:about="http://purl.obolibrary.org/obo/OBI_0001479">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000097"/>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000105"/>
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/OBI_0100051"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002351"/>
@@ -22814,6 +22835,7 @@ Angular offset can be radians or degrees.</rdfs:comment>
     <!-- http://purl.obolibrary.org/obo/UBERON_0000061 -->
 
     <rdf:Description rdf:about="http://purl.obolibrary.org/obo/UBERON_0000061">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000025"/>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/UBERON_0001062"/>
     </rdf:Description>
     
@@ -22856,14 +22878,6 @@ Angular offset can be radians or degrees.</rdfs:comment>
     <rdf:Description rdf:about="http://purl.obolibrary.org/obo/UBERON_0000479">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001636"/>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001675"/>
-    </rdf:Description>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/UBERON_0001062 -->
-
-    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/UBERON_0001062">
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000025"/>
     </rdf:Description>
     
 
@@ -23232,7 +23246,7 @@ Angular offset can be radians or degrees.</rdfs:comment>
                 <owl:someValuesFrom rdf:resource="http://semanticscience.org/resource/SIO_000505"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:comment xml:lang="en">Damion Dooley&apos;s comment: On spheroids a polygon can be minimally defined by latitude and longitude coordinates, however it is ambiguous whether the larger or smaller area is being referred to.  Unambiguously, such a polygon could be defined by an epicenter, and a latitude width and longitude height.</rdfs:comment>
+        <rdfs:comment xml:lang="en">Damion Dooley&apos;s comment: On spheroids a polygon can be minimally defined by latitude and longitude coordinates, however technically this is ambiguous whether the larger or smaller area is being referred to.  Unambiguously, such a polygon could be defined by an epicenter, and a latitude width and longitude height.</rdfs:comment>
     </rdf:Description>
     
 
@@ -23243,6 +23257,7 @@ Angular offset can be radians or degrees.</rdfs:comment>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001934"/>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001996"/>
         <obo:IAO_0000115 xml:lang="en">In elementary geometry, a polygon is a plane figure that is bounded by a finite chain of straight line segments closing in a loop to form a closed chain or circuit.</obo:IAO_0000115>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
         <obo:IAO_0000119>https://en.wikipedia.org/wiki/Polygon</obo:IAO_0000119>
     </rdf:Description>
     
@@ -24220,6 +24235,11 @@ Note that this file contains examples of cities, provinces, states, territories,
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
+    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0000116">
+        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000428"/>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
+        <obo:IAO_0000115 xml:lang="en">This is a catch-all category for Gazetteer items that have &quot;located in&quot; relations but not an imported GAZETTEER class parent in GenEpiO.</obo:IAO_0000115>
+    </rdf:Description>
     <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0000140">
         <obo:IAO_0000115 xml:lang="en"></obo:IAO_0000115>
         <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
@@ -24343,6 +24363,7 @@ Note that this file contains examples of cities, provinces, states, territories,
     <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001908">
         <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
         <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000428"/>
+        <obo:IAO_0000119 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://en.wikipedia.org/wiki/Plane_(geometry)</obo:IAO_0000119>
     </rdf:Description>
     <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001910">
         <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
@@ -24416,6 +24437,10 @@ Note that this file contains examples of cities, provinces, states, territories,
     </rdf:Description>
     <rdf:Description rdf:about="http://purl.org/dc/terms/description">
         <rdfs:comment xml:lang="en">This is used by SIO only and is equivalent to &quot;definition&quot;.  Somewhat problematic in that queries must retrieve this too if requesting term definition.</rdfs:comment>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_000546">
+        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000123"/>
+        <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
     </rdf:Description>
     <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_010059">
         <oboInOwl:hasExactSynonym rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://purl.obolibrary.org/obo/GO_0016265</oboInOwl:hasExactSynonym>

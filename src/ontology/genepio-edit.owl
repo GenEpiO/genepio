@@ -903,7 +903,7 @@ I believe time dependency relations (conditions) don&apos;t imply existence by t
     <!-- http://purl.obolibrary.org/obo/BTO_0000155 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/BTO_0000155">
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/UBERON_0006314"/>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/OBI_0600044"/>
     </owl:Class>
     
 
@@ -5616,12 +5616,18 @@ https://www.niaid.nih.gov/research/human-pathogen-and-vector-sequencing-metadata
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0000003 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0000003">
-        <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C103180"/>
-        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000428"/>
-        <obo:IAO_0000115 xml:lang="en">MixS is a unified standard for describing sequence data provided by the Genomic Standards Consortium</obo:IAO_0000115>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GLOPID_00000063"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000050"/>
+                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000003"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <obo:GENEPIO_0000006 xml:lang="en">MIxS standard</obo:GENEPIO_0000006>
+        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000122"/>
+        <obo:IAO_0000115 xml:lang="en">MixS is a unified standard for describing sequence data provided by the Genomic Standards Consortium (GSC)</obo:IAO_0000115>
         <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
-        <obo:IAO_0000118 xml:lang="en">Minimum Information about any (x) Sequence (MIxS)</obo:IAO_0000118>
-        <rdfs:label xml:lang="en">MIxS standard</rdfs:label>
+        <rdfs:label xml:lang="en">Minimum Information about any (x) Sequence (MIxS)</rdfs:label>
     </owl:Class>
     
 
@@ -5629,8 +5635,11 @@ https://www.niaid.nih.gov/research/human-pathogen-and-vector-sequencing-metadata
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0000008 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0000008">
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000003"/>
-        <rdfs:label xml:lang="en">MIMARKS</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GLOPID_00000063"/>
+        <obo:GENEPIO_0000006 xml:lang="en">MIMARKS standard</obo:GENEPIO_0000006>
+        <obo:IAO_0000115 xml:lang="en">The &quot;minimum information about a marker gene sequence&quot; (MIMARKS) is a standard developed by the Genomic Standards Consortium (GSC) for reporting marker gene sequences.</obo:IAO_0000115>
+        <obo:IAO_0000119 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.nature.com/nbt/journal/v29/n5/full/nbt.1823.html</obo:IAO_0000119>
+        <rdfs:label xml:lang="en">Minimum information about a marker gene sequence</rdfs:label>
     </owl:Class>
     
 
@@ -6987,13 +6996,12 @@ https://www.niaid.nih.gov/research/human-pathogen-and-vector-sequencing-metadata
         <obo:GENEPIO_0000001>Sequencing</obo:GENEPIO_0000001>
         <obo:GENEPIO_0000004>Platform</obo:GENEPIO_0000004>
         <obo:GENEPIO_0000005>https://www.ncbi.nlm.nih.gov/books/NBK54984/table/SRA_Glossary_BK.T._platform_descriptor_t/</obo:GENEPIO_0000005>
-        <obo:GENEPIO_0000007>User Input</obo:GENEPIO_0000007>
         <obo:IAO_0000112>Illumina (MiSeq, HiSeq), PacBio, Ion Torrent, (Roche 454), SOLiD ABI</obo:IAO_0000112>
         <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000428"/>
-        <obo:IAO_0000115>Defined by sequencing method and instrumentation.</obo:IAO_0000115>
+        <obo:IAO_0000115 xml:lang="en">A sequencing plaform (brand) is a name of a company that produces sequencer equipment.</obo:IAO_0000115>
         <obo:IAO_0000119>GROUP: IRIDA Ontology (Emma)</obo:IAO_0000119>
         <oboInOwl:inSubset>GENEPIO</oboInOwl:inSubset>
-        <rdfs:label>sequencing platform</rdfs:label>
+        <rdfs:label xml:lang="en">sequencing platform (brand)</rdfs:label>
     </owl:Class>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000071"/>
@@ -7622,8 +7630,10 @@ Clusters passing filter are represented by PF in analysis reports. Clusters pass
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0000109">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000106"/>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001655"/>
-        <obo:IAO_0000115 xml:lang="en">The I2B2 Workbench software specification defines a number of basic states that a data item can be in with respect to transformations done for information privacy reasons. Derived from the Data Protection Track of the I2B2 Workbench software specification: https://www.i2b2.org/software/files/PDF/current/IM_Architecture.pdf</obo:IAO_0000115>
+        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000428"/>
+        <obo:IAO_0000115 xml:lang="en">The I2B2 Workbench software specification defines a number of basic states that a data item can be in with respect to transformations done for information privacy reasons.</obo:IAO_0000115>
         <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
+        <obo:IAO_0000119 xml:lang="en">Derived from the Data Protection Track of the I2B2 Workbench software specification: https://www.i2b2.org/software/files/PDF/current/IM_Architecture.pdf</obo:IAO_0000119>
         <rdfs:label xml:lang="en">I2B2 Data Protection data item</rdfs:label>
     </owl:Class>
     
@@ -8456,7 +8466,7 @@ Syntax: urrently is free text, but ISO3166 standard abbreviations would be accep
         <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000428"/>
         <obo:IAO_0000115 xml:lang="en">The NCBI antibiogram standard details the reporting specifications for antimicrobial susceptibility and resistance data derived from drug resistant pathogens. This information is submitted as an antibiogram table on BioSample records.</obo:IAO_0000115>
         <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
-        <rdfs:label xml:lang="en">NCBI antibiogram standard</rdfs:label>
+        <rdfs:label xml:lang="en">NCBI Antibiogram standard</rdfs:label>
     </owl:Class>
     
 
@@ -8464,7 +8474,7 @@ Syntax: urrently is free text, but ISO3166 standard abbreviations would be accep
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0001008 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001008">
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0002004"/>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001611"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002351"/>
@@ -8542,7 +8552,7 @@ Syntax: urrently is free text, but ISO3166 standard abbreviations would be accep
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000123"/>
-        <rdfs:label xml:lang="en">TB case AMR testing</rdfs:label>
+        <rdfs:label xml:lang="en">NCBI isolate AMR testing model</rdfs:label>
     </owl:Class>
     
 
@@ -9730,6 +9740,7 @@ Syntax: urrently is free text, but ISO3166 standard abbreviations would be accep
         <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000123"/>
         <rdfs:label xml:lang="en">NCBI Antibiogram drug test model</rdfs:label>
         <rdfs:seeAlso>http://the-vet.net/DVMWiz/Vetlibrary/Lab-%20Microbiology%20Guide%20to%20Interpreting%20MIC.htm</rdfs:seeAlso>
+        <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.ncbi.nlm.nih.gov/biosample/docs/antibiogram/</rdfs:seeAlso>
     </owl:Class>
     
 
@@ -10768,7 +10779,7 @@ Syntax: urrently is free text, but ISO3166 standard abbreviations would be accep
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001741"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000051"/>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002351"/>
                 <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/HP_0000118"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -10802,7 +10813,7 @@ Syntax: urrently is free text, but ISO3166 standard abbreviations would be accep
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
         <owl:annotatedTarget>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000051"/>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002351"/>
                 <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/HP_0000118"/>
             </owl:Restriction>
         </owl:annotatedTarget>
@@ -13225,6 +13236,13 @@ BioSample_contact_information&quot;</rdfs:comment>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002351"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001617"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002351"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
                 <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001616"/>
             </owl:Restriction>
@@ -13296,13 +13314,6 @@ BioSample_contact_information&quot;</rdfs:comment>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002351"/>
                 <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001617"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002351"/>
-                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
                 <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001625"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -13364,6 +13375,18 @@ BioSample_contact_information&quot;</rdfs:comment>
         <owl:annotatedTarget>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002351"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001617"/>
+            </owl:Restriction>
+        </owl:annotatedTarget>
+        <obo:GENEPIO_0000006 xml:lang="en">Host disease</obo:GENEPIO_0000006>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001613"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002351"/>
                 <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
                 <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000026"/>
             </owl:Restriction>
@@ -13418,18 +13441,6 @@ BioSample_contact_information&quot;</rdfs:comment>
             </owl:Restriction>
         </owl:annotatedTarget>
         <obo:GENEPIO_0000006 xml:lang="en">Host individual details (related to clinical isolate)</obo:GENEPIO_0000006>
-    </owl:Axiom>
-    <owl:Axiom>
-        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001613"/>
-        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002351"/>
-                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001617"/>
-            </owl:Restriction>
-        </owl:annotatedTarget>
-        <obo:GENEPIO_0000006 xml:lang="en">Host disease</obo:GENEPIO_0000006>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001613"/>
@@ -19754,6 +19765,13 @@ http://www.ebi.ac.uk/ena/about/missing-values-reporting</rdfs:seeAlso>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002351"/>
                 <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001008"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002351"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
                 <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001011"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -19806,7 +19824,7 @@ http://www.ebi.ac.uk/ena/about/missing-values-reporting</rdfs:seeAlso>
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000123"/>
-        <rdfs:label xml:lang="en">TB case whole genome sequencing</rdfs:label>
+        <rdfs:label xml:lang="en">isolate whole genome sequencing model</rdfs:label>
     </owl:Class>
     
 
@@ -20806,6 +20824,18 @@ Alternate definition: A geographic coordinate system is a 2 dimensional coordina
     
 
 
+    <!-- http://purl.obolibrary.org/obo/GLOPID_00000063 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GLOPID_00000063">
+        <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C103180"/>
+        <obo:IAO_0000115 xml:lang="en">A Genomic Standards Consortium standard is an international, community-driven standard to facilitate  genomic data integration, discovery and comparison.</obo:IAO_0000115>
+        <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
+        <rdfs:label xml:lang="en">Genomic Standards Consortium (GSC) standard</rdfs:label>
+        <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://gensc.org/</rdfs:seeAlso>
+    </owl:Class>
+    
+
+
     <!-- http://purl.obolibrary.org/obo/GO_0008150 -->
 
     <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GO_0008150">
@@ -21349,10 +21379,10 @@ Depending on its context, hasDbXref annotations may point directly to metadata f
     
 
 
-    <!-- http://purl.obolibrary.org/obo/OBI_0000658 -->
+    <!-- http://purl.obolibrary.org/obo/OBI_0000659 -->
 
-    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/OBI_0000658">
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/IAO_0000033"/>
+    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/OBI_0000659">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001655"/>
     </rdf:Description>
     
 
@@ -24439,8 +24469,8 @@ Note that this file contains examples of cities, provinces, states, territories,
         <rdfs:comment xml:lang="en">This is used by SIO only and is equivalent to &quot;definition&quot;.  Somewhat problematic in that queries must retrieve this too if requesting term definition.</rdfs:comment>
     </rdf:Description>
     <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_000546">
-        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000123"/>
         <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
+        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000123"/>
     </rdf:Description>
     <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_010059">
         <oboInOwl:hasExactSynonym rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://purl.obolibrary.org/obo/GO_0016265</oboInOwl:hasExactSynonym>

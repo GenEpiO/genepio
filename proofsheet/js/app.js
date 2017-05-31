@@ -1,86 +1,123 @@
-/****************************************************************************
+/********************** Ontology Proof Sheet Prototype ************************
 
-After ajax load of ontology_ui.json, top.data contains:
-{
-	@context
-	specifications
-	units
-	picklists
-}
+	This script mainly renders a menu of ontology entities, and a form viewer
+	that focuses on a selected entity.
+
+	Author: Damion Dooley
+	Project: GenEpiO.org Genomic Epidemiology Ontology
+	Updated: May 28, 2017
+
 */
 
-/*********** ALL THE SETUP *************************/
+/*********** ALL THE SETUP ***************************************************/
 
 data = {}
 bag = {}
 formatD = 'yyyy-mm-dd'
 formatT = 'Thh:ii:SS'
 
-Foundation.Abide.defaults.live_validate = true // validate the form as you go
-Foundation.Abide.defaults.validate_on_blur = true // validate whenever you focus/blur on an input field
-    focus_on_invalid : true, // automatically bring the focus to an invalid input field
-Foundation.Abide.defaults.error_labels = true, // labels with a for="inputId" will recieve an `error` class
-    // the amount of time Abide will take before it validates the form (in ms). 
-    // smaller time will result in faster validation
-Foundation.Abide.defaults.timeout = 1000
-Foundation.Abide.defaults.patterns = {
-      alpha: /^[a-zA-Z]+$/,
-      alpha_numeric : /^[a-zA-Z0-9]+$/,
-      integer: /^[-+]?\d+$/,
-      number: /^[-+]?[1-9]\d*$/,
-      decimal: /^[-+]?[1-9]\d*.\d+$/,
-
-      // http://www.whatwg.org/specs/web-apps/current-work/multipage/states-of-the-type-attribute.html#valid-e-mail-address
-      email : /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,
-
-      url: /(https?|ftp|file|ssh):\/\/(((([a-zA-Z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:)*@)?(((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]))|((([a-zA-Z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-zA-Z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-zA-Z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-zA-Z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-zA-Z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-zA-Z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-zA-Z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-zA-Z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?)(:\d*)?)(\/((([a-zA-Z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)+(\/(([a-zA-Z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*)?)?(\?((([a-zA-Z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|[\uE000-\uF8FF]|\/|\?)*)?(\#((([a-zA-Z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|\/|\?)*)?/,
-      // abc.de
-      domain: /^([a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,6}$/,
-
-      datetime: /([0-2][0-9]{3})\-([0-1][0-9])\-([0-3][0-9])T([0-5][0-9])\:([0-5][0-9])\:([0-5][0-9])(Z|([\-\+]([0-1][0-9])\:00))/,
-      // YYYY-MM-DD
-      date: /(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))/,
-      // HH:MM:SS
-      time : /(0[0-9]|1[0-9]|2[0-3])(:[0-5][0-9]){2}/,
-      dateISO: /\d{4}[\/\-]\d{1,2}[\/\-]\d{1,2}/,
-      // MM/DD/YYYY
-      month_day_year : /(0[1-9]|1[012])[- \/.](0[1-9]|[12][0-9]|3[01])[- \/.](19|20)\d\d/,
-
-    }
 
 
-/*********** ACTION *************************/
-$.getJSON('ontology_ui.json', function( data ) {
-	top.data = data;
-	var item = 'obo:GENEPIO_0001740'
-	if (location.hash > '' && $(location.hash.substr(0,5) =='#obo:' ).length>0) {
-		item = location.hash.substr(1)
+/*********** ACTION ***********************************************************
+	This loads the json user interface oriented version of an ontology
+	After ajax load of ontology_ui.json, top.data contains:
+	{
+		@context
+		specifications
+		units
+		picklists
 	}
+*/
 
-	$("#sidebar > ul").html(renderMenu('obo:OBI_0000658')).foundation() // Data specification
-	renderForm(item) // Line list object
-	$("#modalTechnical").foundation()
+$( document ).ready(function() {
 
-	//$('#sidebar > ul').foundation('down', $('#obo:OBI_0001741') ) ; //Doesn't work?!
+	initFoundation()
+
+	$.getJSON('ontology_ui.json', function( data ) {
+		// Setup Zurb Foundation user interface and form validation
+		top.data = data;
+		top.idVisibility = false;
+		// Default entity to render:
+		top.focusEntityId = 'obo:GENEPIO_0001740'
+
+		// Enables focus of entity form on a given ontology identifier
+		if (location.hash > '' && $(location.hash.substr(0,5) =='#obo:' ).length>0) {
+			top.focusEntityId = location.hash.substr(1)
+		}
+
+		// This control toggles the visibility of ontology ID's in the given 
+		// form content (for reference during content review)
+		$('input#toggleIdVisibility').on('change', function() {
+			top.idVisibility = $(this).is(':checked')
+			renderForm(top.focusEntityId)
+		})
+
+		$("ul#entityMenu").html(renderMenu('obo:OBI_0000658')).foundation() // Data specification
+
+		$(document).foundation()
+		
+		// default form to present:
+		// renderForm(top.focusEntityId)
+
+		//Trying to prime menu with given item
+		//$('#sidebar > ul').foundation('down', $('#obo:OBI_0001741') ) ; //Doesn't work?!
+	});
 });
 
+/*********** ENTITY MENU RENDERER *************************/
+function renderMenu(entityId, depth = 0 ) {
 
+	var html = ""
+	var entity = top.data['specifications'][entityId]
+	if (entity) {
+		if ('parent' in entity && parent['id'] == entityId) {
+			console.log("Node: " + entityId + " is a parent of itself and so is not re-rendered.")
+			return html
+		}
+		//  href="#' + entityId + '"  ; 
+		if (depth > 0) 
+			if ('members' in entity)
+				html = '<li class="menuEntity"><a>'+entity['uiLabel']+'<div style="float:right;margin-right:20px" onclick="menuClick(\''+entityId+'\');return false">[view]</div></a>'
+			else
+				html = '<li class="menuEntity"><a  onclick="menuClick(\''+entityId+'\')">'+entity['uiLabel']+'</a>'
+		// See if entity has subordinate parts that need rendering:
+		if ('members' in entity) {
+			for (var memberId in entity['members']) {
+				// Top level menu items
+				if (depth == 0) html += renderMenu(memberId, depth + 1)
+				// Deeper menu items
+				else html += '<ul class="menu vertical nested">' + renderMenu(memberId, depth + 1) + '</ul>'	//id="'+memberId+'"
+			}
+		}
+
+		html +=	'</li>'
+	}
+	return html
+}
+
+function menuClick(entityId) {
+	top.focusEntityId = entityId;
+	renderForm(entityId)
+}
+
+/*********** FORM RENDERER *************************/
 function renderForm(entityId) {
 	console.log("Rendering entity ", entityId)
-
+	$("#content").empty().html('')
 	//top.bag = {} // For catching entity in a loop.
 	form_html = '<form id="mainForm" data-abide>'
 	form_html += 	render(entityId)
-	form_html += 	renderButton('View Entity Specification','getEntitySpecification(\''+entityId+'\')')
-	form_html += 	renderButton('Preview Data Submission','getEntityData()') 
+	form_html += 	renderButton('Preview Form Data Submission','getEntityData()') 
 	form_html += '</form>'
 
-	$("#content").empty().html(form_html).foundation()
+	// Place new form html into page and activate its foundation interactivity
+	$("#content").html(form_html).foundation()
 	
 	// Set up UI widget for all date inputs; using http://foundation-datepicker.peterbeno.com/example.html
 	$('input[placeholder="xmls:date"]').fdatepicker({format: formatD, disableDblClickSelection: true});
 	$('input[placeholder="xmls:dateTime"]').fdatepicker({format: formatD+formatT, disableDblClickSelection: true});
 	$('input[placeholder="xmls:dateTimeStamp"]').fdatepicker({format: formatD+formatT, disableDblClickSelection: true});
+
 
 	// Enable page annotation by 3rd party tools by kicking browser to 
 	// understand that a #anchor and page title are different.
@@ -100,30 +137,6 @@ function renderForm(entityId) {
 	catch (e) {}
 
 	return false
-}
-
-function renderMenu(entityId, depth = 0 ) {
-
-	var html = ""
-	var entity = top.data['specifications'][entityId]
-	if (entity) {
-		if ('parent' in entity && parent['id'] == entityId) {
-			console.log("Node: " + entityId + " is a parent of itself and so is not re-rendered.")
-			return html
-		}
-		//  href="#' + entityId + '"  ; 
-		if (depth > 0) html = '<li><a><span onclick="renderForm(\''+entityId+'\')">'+entity['uiLabel']+'</span></a>' // id="'+entityId+'"
-		if ('members' in entity) {
-			for (var memberId in entity['members']) { // use "is-active" class ?
-				if (depth == 0) html += renderMenu(memberId, depth + 1)
-
-				else html += '<ul class="menu vertical nested">' + renderMenu(memberId, depth + 1) + '</ul>'	//id="'+memberId+'"
-			}
-		}
-
-		html +=	'</li>'
-	}
-	return html
 }
 
 function getEntityData() {
@@ -147,22 +160,22 @@ function getEntityData() {
 		}
 	})
 
-	setModalCode(obj, "The hierarchic form data is converted into a minimal JSON data packet for transmission back to server.")
+	setModalCode(obj, "Form data is converted into a JSON data packet for submission to server.")
 
 }
 
-function getEntitySpecification(entityId) {
+function getEntitySpecification() {
 	/* The entity form is defined by 1 encompassing entity and its parts which are 
 	defined in top.data components: specification, picklists and units 
 	*/
+	$("#entitySpecification").html(JSON.stringify(getEntitySpec(null, top.focusEntityId), null, 2))
 
-	setModalCode(getEntitySpec(null, entityId), "The entity form is defined by 1 encompassing entity and its parts - which are items within the JSON specification file's specifications, picklists and units components.")
 
 }
 
 
 function setModalCode(obj, header) {
-
+	// This displays the entity json object as an indented hierarchy of text inside html <pre> tag.
 	$("#modalEntity >div.row").html('<p><strong>' + header + '</strong></p>\n<pre style="white-space: pre-wrap;">' + JSON.stringify(obj, null, 2) +'</pre>\n' )
 	$("#modalEntity").foundation().foundation('open')
 
@@ -254,7 +267,7 @@ function render(entityId, path = [], depth = 0, inherited = false, minimal = fal
 	}
 	var label = ''
 	if (!minimal) {
-		label = '<label>' + renderLabel(entity) + '</label>'
+		label = '<label>' + renderLabel(entity) + '</label> '
 	}
 	// When this is a "has value specification" part of another entity, 
 	// that entity will indicate how many of this part are allowed.
@@ -274,7 +287,7 @@ function render(entityId, path = [], depth = 0, inherited = false, minimal = fal
 		entity['disabled'] = ('hidden' in entity['features']) ? ' disabled="disabled"' : '';
 
 	}
-	
+	if (!minimal) label = '<button class="fi-shopping-cart medium" style="float:right" />' + label
 	
 	switch (entity['datatype']) {
 		case undefined: // Anonymous node
@@ -442,7 +455,7 @@ function renderInput(entity, label) {
 	Add case for paragraph / textarea?
 	 <textarea placeholder="None"></textarea>
 	*/
-	label = label.replace("</label>","")
+	label = label.replace("</label>","") //We customize where label ends.
 
 	html = '<div class="input-wrapper">\n'
 	html +=		label
@@ -555,7 +568,8 @@ function renderChoice(entity, depth, type="select") {
 					case "select":
 
 					default:
-						html += '<option value="'+part['id']+'" class="depth'+depth+'" '+disabled+'>' + prefix + label + ' - ' + part['id'] + '</option>\n'
+						if (top.idVisibility == true) label = label + ' - ' + part['id'];
+						html += '<option value="'+part['id']+'" class="depth'+depth+'" '+disabled+'>' + prefix + label + '</option>\n'
 				}
 			}
 			html += kidHTML
@@ -626,7 +640,8 @@ function renderLabel(entity) {
 		label = entity['label'] + ' - '
 	else
 		label = ''
-	var html = '<span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover="false" title="' + label + entity['id']+'">'
+	var html = '' //<button class="fi-shopping-cart medium" style="float:right" />
+	html += ' <span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover="false" title="' + label + entity['id']+'">'
 	html += entity['uiLabel']
 	html += '</span>'
 	html += renderContext(entity)
@@ -873,3 +888,36 @@ function getChoices(helper, entityId) {
 	return false
 }
 
+function initFoundation() {
+
+	Foundation.Abide.defaults.live_validate = true // validate the form as you go
+	Foundation.Abide.defaults.validate_on_blur = true // validate whenever you focus/blur on an input field
+	focus_on_invalid : true, // automatically bring the focus to an invalid input field
+	Foundation.Abide.defaults.error_labels = true, // labels with a for="inputId" will recieve an `error` class
+	// the amount of time Abide will take before it validates the form (in ms). 
+	// smaller time will result in faster validation
+	Foundation.Abide.defaults.timeout = 1000
+	Foundation.Abide.defaults.patterns = {
+		alpha: /^[a-zA-Z]+$/,
+		alpha_numeric : /^[a-zA-Z0-9]+$/,
+		integer: /^[-+]?\d+$/,
+		number: /^[-+]?[1-9]\d*$/,
+		decimal: /^[-+]?[1-9]\d*.\d+$/,
+
+		// http://www.whatwg.org/specs/web-apps/current-work/multipage/states-of-the-type-attribute.html#valid-e-mail-address
+		email : /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,
+
+		url: /(https?|ftp|file|ssh):\/\/(((([a-zA-Z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:)*@)?(((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]))|((([a-zA-Z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-zA-Z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-zA-Z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-zA-Z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-zA-Z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-zA-Z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-zA-Z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-zA-Z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?)(:\d*)?)(\/((([a-zA-Z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)+(\/(([a-zA-Z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*)?)?(\?((([a-zA-Z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|[\uE000-\uF8FF]|\/|\?)*)?(\#((([a-zA-Z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|\/|\?)*)?/,
+		// abc.de
+		domain: /^([a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,6}$/,
+
+		datetime: /([0-2][0-9]{3})\-([0-1][0-9])\-([0-3][0-9])T([0-5][0-9])\:([0-5][0-9])\:([0-5][0-9])(Z|([\-\+]([0-1][0-9])\:00))/,
+		// YYYY-MM-DD
+		date: /(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))/,
+		// HH:MM:SS
+		time : /(0[0-9]|1[0-9]|2[0-3])(:[0-5][0-9]){2}/,
+		dateISO: /\d{4}[\/\-]\d{1,2}[\/\-]\d{1,2}/,
+	      // MM/DD/YYYY
+	      month_day_year : /(0[1-9]|1[012])[- \/.](0[1-9]|[12][0-9]|3[01])[- \/.](19|20)\d\d/,
+	}
+}

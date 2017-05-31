@@ -4,100 +4,122 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ontology UI Proof Sheet</title>
+    <title>Ontology UI Proof Sheet Prototype</title>
     <link rel="stylesheet" href="css/foundation.min.css">
+    <link rel="stylesheet" href="css/foundation-icons/foundation-icons.css">
     <link rel="stylesheet" href="css/foundation-datepicker.min.css">
+
     <!-- trying out either of these -->
     <link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
     <!-- link rel="stylesheet" href="css/foundation-icons/foundation-icons.css" -->
     
     <link rel="stylesheet" href="css/app.css">
-   
   </head>
   <body>
-    <div class="row">
+    <div class="row callout" style="background-color:#2199e8;color:white">
       <div class="large-12 columns text-center">
-        <h1>Ontology UI Proof Sheet</h1>
-        <h4>Produced by the <a href="www.irida.ca" target="_blank">IRIDA project</a> and <a href="https://github.com/Public-Health-Bioinformatics" target="_blank">Public Health Bioinformatics</a><br/> in conjunction with the <a href="https://github.com/GenEpiO/genepio/wiki" target="_blank">GenEpiO Consortium</a></h4>
+        <h1>Ontology Proof Sheet Prototype</h1>
       </div>
     </div>
 
-    <div class="row">
-      <div class="large-12 columns">
-        <div class="callout">
-          <p>This page presents the "Data Representational Model" entities of an Ontology for Biomedical Investigations (OBI) conformant ontology as HTML forms.  By adding specifications for measurable data elements to their ontology, an ontology manager can then see how they translate over to form input elements that would typically show up in a web application.  Here <strong>in-development</strong> <a href="https://github.com/GenEpiO/genepio" target="_blank">GenEpiO</a> measurables and data collection entities are shown. A term's preferred name, definition, synonyms and database cross-reference fields are shown directly or by mousing over a field label or its menu indicator.</p>
-          <p>See <a data-open="modalTechnical">technical details</a> for an overview of how it could work with other OBI ontologies.  <a onclick="renderForm('obo:GENEPIO_0001740')"> Here's </a> a list of fields for a line list. <a onclick="renderForm('obo:GENEPIO_0001624')">Here</a> are examples of measurables with units.  You can use a browser extension like Chrome Annotary to add comments to share between a review group.  </p> 
-        </div>
-
-      </div>
-    </div>
     <div class="row">
       <div class="large-4 medium-4 columns" id="sidebar">
-        <p>OBI Data Specifications
-        <ul class="accordion vertical menu" data-accordion-menu></ul>
+      <!-- data-options="scroll_to_content: false" data-options="deep_linking:true" -->
+        <ul class="tabs" data-tabs id="entity-tabs" >
+          <li class="tabs-title is-active"><a href="#panel1" aria-selected="true">Entities</a></li>
+          <li class="tabs-title"><a href="#panel2">Search</a></li>
+          <li class="tabs-title shoppingCart"><a href="#panel4">Cart</a></li>
+          <li class="tabs-title disabled"><a href="#panel3">My Packages</a></li>
+        </ul>
+
+        <div class="tabs-content" data-tabs-content="entity-tabs" style="height:450px;overflow-y:scroll"> 
+          <div class="tabs-panel is-active" id="panel1">
+            <ul class="vertical menu" id="entityMenu" data-accordion-menu data-deep-link></ul>
+          </div>
+          <div class="tabs-panel" id="panel2">
+            <form data-abide="" novalidate="novalidate" lpformnum="2">
+              <div class="name-field">
+                <label>Search
+                  <input type="text" placeholder="Search for a term or entity" pattern="alpha">
+                </label>
+                <small class="error">a simple phrase will do!</small>
+              </div>
+            </form> 
+          </div>
+          <div class="tabs-panel" id="panel4">
+            <p>Your entity shopping cart will be displayed here</p>
+          </div>
+          <div class="tabs-panel" id="panel3">
+            <p>Your remembered packages (and their content entities) will be listed here</p>
+          </div>
+
+        </div>
+
+        <br/>
+        <div class="row">
+          <div class="large-9 medium-9 columns">
+            <p>Toggle ontology Id visibility</p>
+          </div>
+          <div class="switch tiny large-3 medium-3 columns">
+            <input class="switch-input" id="toggleIdVisibility" type="checkbox" name="toggleIdVisibility">
+            <label class="switch-paddle" for="toggleIdVisibility">
+              <span class="show-for-sr">Toggle ontology Id view</span>
+            </label>
+          </div>
+        </div>
       </div>
-      <div class="large-6 medium-6 columns" style="min-height:600px;background-color:silver">
-        <h4>Proof Sheet</h4>
-        <div id="content">
-          <form id="mainForm" data-abide></form>
+
+      <div class="large-6 medium-6 columns">
+        <ul class="tabs" data-tabs id="content-tabs" >
+          <li class="tabs-title is-active"><a href="#content" aria-selected="true">Form View</a></li>
+          <li class="tabs-title"><a href="#panel6" onclick="getEntitySpecification()">Form Specification</a></li>
+        </ul>
+
+ <div class="tabs-content" data-tabs-content="content-tabs" style="height:520px;overflow:scroll"> 
+          <!--   style="height:450px;border:1px solid silver;" -->
+          <div class="tabs-panel is-active" id="content">
+            <form id="mainForm" data-abide>
+              <div style="margin:15%;padding:40px;background-color:#2199e8;color:white">
+                <p>Select an item from the "Entities" menu to see how it would be presented as a form.</p>
+              </div>
+            </form>
+          </div>
+          <div class="tabs-panel" id="panel6">
+            The entity form is driven by a JSON specification of entities, their fields, picklists and unit components.
+            <pre id="entitySpecification"></pre>
+          </div>
+        </div>
       </div>
-      <div class="large-2 medium-2 columns" id="rightbar"></div>
+
+      <div class="large-2 medium-2 columns" id="rightbar">
+        <small><p>In this prototype software selected entities of an Ontology for Biomedical Investigations (OBI) conformant ontology are presented in HTML forms.  Here <a href="https://github.com/GenEpiO/genepio" target="_blank">GenEpiO</a> datums and data collection entities are shown. A term's preferred name, definition, synonyms and database cross-reference fields are shown directly or by mousing over a field label or its menu indicator.</p>
+          <p>Example forms:
+          <ul><li><a onclick="renderForm('obo:GENEPIO_0001740')">line list fields</a></li>
+          <li> <a onclick="renderForm('obo:GENEPIO_0001624')">numeric data with units</a></li>
+          </ul>
+          You can use a browser extension like <a href="https://chrome.google.com/webstore/detail/annotary/fncckipieakpgpjifiadfiigdeanbond?hl=en" target="_blank">Chrome Annotary</a> to add comments to share between a review group.  
+          See <a href="design_details.html" target="_blank">technical details</a> for an overview of how it could work with other OBI ontologies.  </p> </small>
+      </div>
+    </div>
+
+    <div class="row callout footer">
+      <div class="large-12 columns text-center">
+        <p>Produced by the <a href="www.irida.ca" target="_blank">IRIDA project</a> and <a href="https://github.com/Public-Health-Bioinformatics" target="_blank">Public Health Bioinformatics</a> in conjunction with the <a href="https://github.com/GenEpiO/genepio/wiki" target="_blank">GenEpiO Consortium</a></p>
+      </div>
     </div>
 
 
     <div class="reveal small" id="modalEntity" data-reveal>
-
       <button class="close-button" data-close aria-label="Close reveal" type="button">
         <span aria-hidden="true">&times;</span>
       </button>
       <div class="row"></div>
     </div>
 
-    <div class="reveal large-10 medium-6" id="modalTechnical" data-reveal style="width:auto">
-
-      <button class="close-button" data-close aria-label="Close reveal" type="button">
-        <span aria-hidden="true">&times;</span>
-      </button>
-      <div class="row">
-        <div class="large-6 medium-6 columns">
-          <h4>In the ontology:</h4>
-          <p> References to data specifications, primitive fields and units must be set up.  A brief summary of features is provided below. <strong> Note: Currently items within a group are only ordered alphabetically on the Proof Sheet</strong>. We will provide a solution for custom sorting in the coming months.</p>
-          <ul>
-            <li> GenEpiO introduces a "has primitive value spec" object-property relationship for a measurable that indicates what xmls:XXXXX data type it is.  Typically one adds an axiom like "'has primitive value spec' some xmls:float" to a measurable.</li>
-            <li> In Protege, one is allowed to place additional constraints on primitive data type content:
-            <ul>
-              <li> Integers can have ranges specified: 'has primitive value spec' some unsignedByte[>= "0"^^unsignedByte , <= "14"^^unsignedByte] </li>
-              <li> Strings can have min/max/exact length specified: 'has primitive value spec' max 1 string[maxLength "6"^^string]</li>
-              <li> Strings can have regular expression matching: (e.g. for e-coli serotype K antigen) 'has primitive value spec' some string[pattern "K(1|2a|2ac|3|4|5|6|7|8|9|10|11|12|13|14|15|16|18a|18ab|19|... |101|102|103|X104|X105|X106)"]" </li>
-              <li> Categorical selection items can be enhanced with dynamic ontology lookup (of source ontology of selected term id) via a "UI preferred feature" = lookup annotation.</li>
-
-            <li> We add one or more permissible units to a measurable by using the OBI "has measurement unit label" object property, e.g. for "pH measurement" we have "'has measurement unit label' some pH".  The ontology's list of units needs to be prepared of course; we've tried to use the <a href="http://purl.obolibrary.org/obo/uo.owl" target="_blank">Units of Measurement</a> (UO) for most of GenEpiO's units. (The future plan here is to allow unit conversion during data input).</li>
-
-            <li> Every picklist must be made a member (subclass of) the OBI <a href="http://purl.obolibrary.org/obo/OBI_0000938" target="_blank">categorical measurement datum</a> class.  This class has an "'has primitive value spec' some anyURI" which is inherited by its members.</li>
-
-            <li> Each form/report group of fields must be made a member (subclass) of the OBI <a href="http://purl.obolibrary.org/obo/OBI_0000658" target="_blank">data representational model</a>.  To indicate that a particular categorical or measurable field is part of a form/report group, use the OBI "has value specification" relation to connect the field, e.g. "'line list row record' 'has value specification' some 'symptom record'".</li>
-          </ul>
-        </div>
-        <div class="large-6 medium-6 columns">
-          <h4>Command line:</h4>
-          <p>To convert an OBI compatible OWL ontology (and its include files) into a json data structure like <a href="https://github.com/GenEpiO/genepio/blob/master/proofsheet/ontology_ui.json" target="_blank">this one</a>, run:</p>
-          <p><strong>&gt; jsonimo.py [path to your ontology]</strong></p>
-          <p>The program assumes all include files for your ontology are provided in an "include/" folder under the ontology main file.  To see an HTML version of this, rendered by this page, you need to have this page and the ontology_ui.json file served from a webserver.  An easy way to do that is to temporarily run a minimal webserver in the same directory:</p>
-
-           <p><strong>&gt; python -m SimpleHTTPServer </strong></p>
-
-           <p>Then reload this file (usually at the address http://localhost:8000/ ) to see an HTML rendering of the entities as forms.</p>
-           <p>Currently, because of inappropriate relations between entities, circular loops might be possible in rendering form elements.  A recursive depth limit of 20 descendant form elements has been instituted for the form rendering.  A loop that exceeds this amount is exited, and is reported in the browser's javascript console as an "AWOL loop".</p>
-        </div>
-
-      </div>
-
-    </div>
-
     <script src="js/vendor/jquery.js"></script>
     <script src="js/vendor/what-input.js"></script>
     <script src="js/vendor/foundation.min.js"></script>
-    <script src="js/foundation-datepicker.js"></script>
+    <script src="js/vendor/foundation-datepicker.js"></script>
     <script src="js/app.js"></script>
   </body>
 

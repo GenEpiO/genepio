@@ -7,6 +7,9 @@
 	Project: GenEpiO.org Genomic Epidemiology Ontology
 	Updated: May 28, 2017
 
+	Note: we can get a dynamic list of OBOFoundry ontologies via: 
+	http://sparql.hegroup.org/sparql?default-graph-uri=&query=SELECT+%3Fv+WHERE+%7B%3Fx+owl%3AversionIRI+%3Fv%7D&format=json   //&timeout=0&debug=on
+
 */
 
 /*********** ALL THE SETUP ***************************************************/
@@ -15,8 +18,9 @@ data = {}
 bag = {}
 formatD = 'yyyy-mm-dd'
 formatT = 'Thh:ii:SS'
-
-
+shoppingCart=[]
+shoppingCartOff=[]
+searchDB = ''
 
 /*********** ACTION ***********************************************************
 	This loads the json user interface oriented version of an ontology
@@ -52,20 +56,136 @@ $( document ).ready(function() {
 			renderForm(top.focusEntityId)
 		})
 
-		$("ul#entityMenu").html(renderMenu('obo:OBI_0000658')).foundation() // Data specification
+		$("ul#entityMenu").html(renderMenu('obo:OBI_0000658'))
+
+
+		$("#searchField").on('keyup', function() {
+			var text = $("#searchField").val()
+			$("#searchResults").empty()
+			if (text.length > 2) {
+				ontology_ids = filterIt(top.data.specifications, text)
+				for (id in ontology_ids) {
+					//ontoId = ontology_ids[id]
+					$("#searchResults").append(renderCartItem (ontology_ids[id]))
+				}
+			}
+		})
+
+		$('ul#entityMenu *').on('click', function(event) { 
+			// All this just so eye icon clicks to a different location without opening/closing the accordion.
+  			event.stopPropagation();
+  			if ($(event.target).is('i.fi-eye') ) {renderForm(event.target.dataset.ontologyId)}
+		});
+
+		$("form").on("click", 'div.cart-item', function(item) {
+			if (! $(item.target).is('.fi-shopping-cart'))
+				renderForm(this.dataset.ontologyId)
+		})
+
+		$("#mainForm").on('click', "i.fi-shopping-cart", function(){
+			cartCheck(this.dataset.ontologyId)
+		})
+
+		$("#shoppingCart").on('click', "i.fi-shopping-cart", function(){
+			cartCheck(this.dataset.ontologyId)
+		})
+		$("#shoppingCartTrash").on('click', function() {
+			top.shoppingCart=[]
+			top.shoppingCartOff=[]
+			$('i.fi-shopping-cart[data-ontology-id]').removeClass('include exclude')
+			$('#shoppingCart').empty()
+		})
 
 		$(document).foundation()
-		
-		// default form to present:
-		// renderForm(top.focusEntityId)
 
 		//Trying to prime menu with given item
 		//$('#sidebar > ul').foundation('down', $('#obo:OBI_0001741') ) ; //Doesn't work?!
 	});
 });
 
+function filterIt(obj, searchKey) {
+	/* Text Search of ontology contents via JSON specification */
+    return Object.keys(obj).filter(function(key) { // key is specification ontology id.
+      return Object.keys(obj[key]).some(function(key2) {
+      	if (typeof obj[key][key2] === "object")
+      		return false
+      	else
+      		// FUTURE: add wildcard searching?
+      		return obj[key][key2].toLowerCase().includes(searchKey.toLowerCase());
+      })
+    })
+}
+
+
+/*********** ENTITY SHOPPING CART *************************/
+function cartCheck(ontologyId) {
+	/* The main shopping list contains items that should be included, but
+	these may have subordinate items - and we need a way to exclude subordinate
+	items from an included parent item, hence the shoppingCartOff list.
+	*/
+	// Clear out any help message:	
+	if (top.shoppingCart.length == 0 && top.shoppingCartOff.length == 0) $("#shoppingCart").empty()
+
+	var ptr = top.shoppingCart.indexOf(ontologyId)
+	var ptrExcl = top.shoppingCartOff.indexOf(ontologyId)
+	item = $('i.fi-shopping-cart[data-ontology-id="'+ontologyId+'"]')
+	var entity = top.data['specifications'][ontologyId]
+
+	if (ptrExcl != -1) {// De-activate negative selection
+		top.shoppingCartOff.splice(ptrExcl, 1) 
+		item.removeClass('exclude')
+		// Remove from shopping list
+		$('div.cart-item[data-ontology-id="'+ontologyId+'"]').remove()
+	}
+
+	else 
+		if (ptr != -1) {
+			top.shoppingCart.splice(ptr, 1) // delete from main list
+			top.shoppingCartOff.push(ontologyId) // pop onto exclusion list
+			item.addClass('exclude').removeClass('include')
+			itemAnimate('#shoppingCartIcon', 'attention')
+			$("#shoppingCartIcon").addClass('waitingForConnection')
+			setTimeout('$("#shoppingCartIcon").removeClass("attention")', 1000)
+		}
+		else { // activate positive selection
+			top.shoppingCart.push(ontologyId)
+			item.addClass('include')
+			// AND ADD TO SHOPPING LIST
+			// FUTURE: place new item UNDER RIGHT PARENT, OR ALPHABETICALLY
+			$("#shoppingCart").prepend(renderCartItem(ontologyId))
+			itemAnimate('#shoppingCartIcon', 'attention')
+			
+		}
+
+	/* Update shopping list
+	for (var ptr in top.shoppingCart) {
+		var id = top.shoppingCart[ptr]
+		$('i.fi-shopping-cart[data-ontology-id="'+id+'"]').css('color','green')
+
+	}
+	*/
+
+}
+
+function itemAnimate(item, effectClass) {
+	// Apply given css effectClass to given DOM item for 1 second
+	$(item).addClass(effectClass)
+	setTimeout('$("'+item+'").removeClass("'+effectClass+'")', 1000)
+}
+
+function renderCartItem (ontologyId) {
+	var entity = top.data['specifications'][ontologyId]
+	newItem = '<div class="cart-item" data-ontology-id="'+ontologyId+'"]>'
+	newItem += '<i class="fi-shopping-cart include" data-ontology-id="' + ontologyId + '"></i>'
+	newItem += '<a href="#' + ontologyId + '">' + entity['uiLabel'] + '</div>'
+	return newItem
+
+}
+
+
 /*********** ENTITY MENU RENDERER *************************/
 function renderMenu(entityId, depth = 0 ) {
+	// WHEN THIS IS CALLED, ACTIVATE ITS TAB
 
 	var html = ""
 	var entity = top.data['specifications'][entityId]
@@ -77,9 +197,9 @@ function renderMenu(entityId, depth = 0 ) {
 		//  href="#' + entityId + '"  ; 
 		if (depth > 0) 
 			if ('members' in entity)
-				html = '<li class="menuEntity"><a>'+entity['uiLabel']+'<div style="float:right;margin-right:20px" onclick="menuClick(\''+entityId+'\');return false">[view]</div></a>'
+				html = '<li class="menuEntity"><a>' + entity['uiLabel'] + ' <i class="fi-eye" data-ontology-id="'+entityId+'"></i></a>'
 			else
-				html = '<li class="menuEntity"><a  onclick="menuClick(\''+entityId+'\')">'+entity['uiLabel']+'</a>'
+				html = '<li class="menuEntity"><a onclick="menuClick(\''+entityId+'\')">'+entity['uiLabel']+'</a>'
 		// See if entity has subordinate parts that need rendering:
 		if ('members' in entity) {
 			for (var memberId in entity['members']) {
@@ -96,23 +216,28 @@ function renderMenu(entityId, depth = 0 ) {
 }
 
 function menuClick(entityId) {
-	top.focusEntityId = entityId;
+
 	renderForm(entityId)
 }
 
 /*********** FORM RENDERER *************************/
 function renderForm(entityId) {
-	console.log("Rendering entity ", entityId)
-	$("#content").empty().html('')
+
+
+	// WHEN THIS IS CALLED, ACTIVATE ITS TAB
+	$('#content-tabs').foundation('selectTab', '#content'); 
+	
+	top.focusEntityId = entityId;
+
+	$("#mainForm").empty().html('')
+
 	//top.bag = {} // For catching entity in a loop.
-	form_html = '<form id="mainForm" data-abide>'
-	form_html += 	render(entityId)
-	form_html += 	renderButton('Preview Form Data Submission','getEntityData()') 
-	form_html += '</form>'
+	form_html = 	render(entityId)
+	form_html += 	renderButton('View Mockup Form Data Submission', 'getEntityData()') 
 
 	// Place new form html into page and activate its foundation interactivity
-	$("#content").html(form_html).foundation()
-	
+	$("#mainForm").html(form_html).foundation()
+
 	// Set up UI widget for all date inputs; using http://foundation-datepicker.peterbeno.com/example.html
 	$('input[placeholder="xmls:date"]').fdatepicker({format: formatD, disableDblClickSelection: true});
 	$('input[placeholder="xmls:dateTime"]').fdatepicker({format: formatD+formatT, disableDblClickSelection: true});
@@ -122,8 +247,13 @@ function renderForm(entityId) {
 	// Enable page annotation by 3rd party tools by kicking browser to 
 	// understand that a #anchor and page title are different.
 	var title = 'Ontology UI Proof Sheet: ' + entityId
-	if (top.data['specifications'][entityId]) 
-		title += top.data['specifications'][entityId]['uiLabel']
+	if (top.data['specifications'][entityId]) {
+		var uiLabel = top.data['specifications'][entityId]['uiLabel']
+		title += uiLabel
+		$('#panelDiscussTerm').empty().append('<h5>Term: ' + uiLabel + ' ('+entityId+')</h5>')
+		//ADD DISCUSSION FORUM IFRAME HERE
+	}
+
 	window.document.title = title
 
 	try { //May fail if on http://htmlpreview.github.io/
@@ -136,6 +266,7 @@ function renderForm(entityId) {
 	}
 	catch (e) {}
 
+ 	getdataSpecification(entityId) // Fill specification tab
 	return false
 }
 
@@ -160,15 +291,17 @@ function getEntityData() {
 		}
 	})
 
-	setModalCode(obj, "Form data is converted into a JSON data packet for submission to server.")
+	setModalCode(obj, "Form data is converted into a simplified JSON data packet for submission.")
 
 }
 
-function getEntitySpecification() {
+function getdataSpecification(entityId) {
+	// WHEN THIS IS CALLED, ACTIVATE ITS TAB
 	/* The entity form is defined by 1 encompassing entity and its parts which are 
 	defined in top.data components: specification, picklists and units 
 	*/
-	$("#entitySpecification").html(JSON.stringify(getEntitySpec(null, top.focusEntityId), null, 2))
+	$("#helpDataSpecification").remove()
+	$("#dataSpecification").html(JSON.stringify(getEntitySpec(null, entityId), null, 2))
 
 
 }
@@ -269,6 +402,7 @@ function render(entityId, path = [], depth = 0, inherited = false, minimal = fal
 	if (!minimal) {
 		label = '<label>' + renderLabel(entity) + '</label> '
 	}
+
 	// When this is a "has value specification" part of another entity, 
 	// that entity will indicate how many of this part are allowed.
 
@@ -279,7 +413,7 @@ function render(entityId, path = [], depth = 0, inherited = false, minimal = fal
 		var cardinality = getCardinality(entity, referrerId)
 		if (cardinality.length) {
 			var requiredLabel = cardinality.join('.')
-			label = '<span class="info label float-right"><i class="fi-widget"></i>' + requiredLabel  + '</span>' + label
+			label = '<span class="info label float-right">' + requiredLabel  + '</span>' + label
 			entity['required'] = (requiredLabel.indexOf('required') >=0 ) ? ' required ' : ''
 		}
 		entity['features'] = getFeatures(entityId, referrerId)
@@ -287,8 +421,14 @@ function render(entityId, path = [], depth = 0, inherited = false, minimal = fal
 		entity['disabled'] = ('hidden' in entity['features']) ? ' disabled="disabled"' : '';
 
 	}
-	if (!minimal) label = '<button class="fi-shopping-cart medium" style="float:right" />' + label
-	
+	if (!minimal) {
+		// Draw with shopping cart which has class "include" or exclude
+		shoppingCartClass = ''
+		if (top.shoppingCart.indexOf(entityId) != -1) shoppingCartClass = ' include'
+		else if (top.shoppingCartOff.indexOf(entityId) != -1) shoppingCartClass = ' exclude'
+
+		label = '<i data-ontology-id="' + entityId + '" class="fi-shopping-cart'+shoppingCartClass+'"></i>' + label
+	}
 	switch (entity['datatype']) {
 		case undefined: // Anonymous node
 			html += renderSection('<strong>Error: No datatype for ' + entityId + '(' + renderLabel(entity) + ') !</strong><ul><li>Hint: A picklist must be a subclass of "categorical tree specification".</li><li>Other fields need a "has primitive value spec" data type.</li><li>or was this in an include file that failed to load?</li></ul>')
@@ -848,8 +988,13 @@ function getCardinality(entity, referrerId) {
 
 function getChoices(helper, entityId) {
 	/*
-	 If user makes a selection from a picklist, and the picklist has a "lookup" feature, i.e. a "More choices" button,
-	 They can then click that button and a dynamic fetch of subordinate items to the one the user has selected is performed., selection list tree will be extended/fetched?
+	 We can set some picklists to have a dynamic lookup feature, indicated by
+	 a "More choices" button next to the picklist.  When this button is 
+	 clicked, a dynamic fetch of subordinate items to the one the user has 
+	 selected is performed.  A user can then select one of the given items, if
+	 any.  
+
+	 The picklist's selection list tree can be dynamically extended/fetched?
 	*/
 	var select = $(helper).parent('div[class="input-group"]').find("select")
 	var term = select.val().split(":")[1]
@@ -864,25 +1009,32 @@ function getChoices(helper, entityId) {
 	fetchURL += term
 	fetchURL += '/children'
 
-	$.getJSON(fetchURL, function( data ) {
-		msg = ''
-		if ('_embedded' in data) {
-			content=data._embedded.terms
-			labels = []
-			for (ptr in content) {
-				item = content[ptr]
-				//iri = item.iri
-				label = item.label
-				labels.push(label)
-			}
-			labels.sort()
-			msg += labels.join('\n - ') 
 
-			alert ('COMING SOON: DYNAMIC LOOKUP!  An agency can enable this feature for a hierarchic pick list that has more detail available than the default selection list.\n\nThese choices (subclasses of selected term) were dynamically retrieved from https://www.ebi.ac.uk/ols/:\n\n - ' + msg)
-			//alert( entityId + ":" + select.val())
-		}
-		else 
-			alert("Coming soon, dynamic lookup!\n\nYour choice has no underlying ontology selections")
+	$.ajax({
+		type: 'GET',
+		url: fetchURL,
+		timeout: 10000, //10 sec timeout
+		success: function( data ) {
+			msg = ''
+			if ('_embedded' in data) {
+				content=data._embedded.terms
+				labels = []
+				for (ptr in content) {
+					item = content[ptr]
+					//iri = item.iri
+					label = item.label
+					labels.push(label)
+				}
+				labels.sort()
+				msg += labels.join('\n - ') 
+
+				alert ('DYNAMIC LOOKUP! These choices (subclasses of selected term) were dynamically retrieved from https://www.ebi.ac.uk/ols/:\n\n - ' + msg)
+				//alert( entityId + ":" + select.val())
+			}
+			else 
+				alert("Coming soon, dynamic lookup!\n\nYour choice has no underlying ontology selections")
+		},
+		error:function(XMLHttpRequest, textStatus, errorThrown) {alert('Dynamic Lookup is not currently available.  Either your internet connection is broken or the https://www.ebi.ac.uk/ols/ service is unavailable.')}
 	})
 
 	return false

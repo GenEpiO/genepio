@@ -239,9 +239,9 @@ function renderForm(entityId) {
 	$("#mainForm").html(form_html).foundation()
 
 	// Set up UI widget for all date inputs; using http://foundation-datepicker.peterbeno.com/example.html
-	$('input[placeholder="xmls:date"]').fdatepicker({format: formatD, disableDblClickSelection: true});
-	$('input[placeholder="xmls:dateTime"]').fdatepicker({format: formatD+formatT, disableDblClickSelection: true});
-	$('input[placeholder="xmls:dateTimeStamp"]').fdatepicker({format: formatD+formatT, disableDblClickSelection: true});
+	$('input[placeholder="date"]').fdatepicker({format: formatD, disableDblClickSelection: true});
+	$('input[placeholder="dateTime"]').fdatepicker({format: formatD+formatT, disableDblClickSelection: true});
+	$('input[placeholder="dateTimeStamp"]').fdatepicker({format: formatD+formatT, disableDblClickSelection: true});
 
 
 	// Enable page annotation by 3rd party tools by kicking browser to 
@@ -534,7 +534,6 @@ function render(entityId, path = [], depth = 0, inherited = false, minimal = fal
 function renderSection(text) {
 	html = '<div>\n'
 	html +=	'	<label>' + text + '</label>\n'
-	//html +=	'	<input type="text" placeholder="" />\n'
 	html +=	'</div>\n'
 
 	return html
@@ -600,7 +599,7 @@ function renderInput(entity, label) {
 	html = '<div class="input-wrapper">\n'
 	html +=		label
 	html +=	'	<div class="input-group">\n'
-	html +=	'		<input class="input-group-field '+entity['id']+'" id="'+entity['domId']+'" type="text" ' + getStringConstraints(entity) + entity['required']+ entity['disabled']  +  ' placeholder="'+ entity['datatype']+ '" />\n'
+	html +=	'		<input class="input-group-field '+entity['id']+'" id="'+entity['domId']+'" type="text" ' + getStringConstraints(entity) + entity['required']+ entity['disabled']  + getPlaceholder(entity) + '" />\n'
     html += 		renderUnits(entity)
 	html +=	'	</div>\n'
 	html += ' 	</label>'
@@ -618,7 +617,7 @@ function renderNumber(entity, label) {
 	html = '<div class="input-wrapper">\n'
 	html +=		label
 	html +=	'	<div class="input-group">\n'
-	html +=	'		<input class="input-group-field '+entity['id']+'" id="'+entity['domId']+'" type="text"' + entity['required']+ entity['disabled'] + 'placeholder="'+ entity['datatype']+'" />\n'
+	html +=	'		<input class="input-group-field '+entity['id']+'" id="'+entity['domId']+'" type="text"' + entity['required']+ entity['disabled'] + getPlaceholder(entity)+'" />\n'
     html += 		renderUnits(entity)
 	html +=	'	</div>\n'
 	html +=		renderHelp(entity)
@@ -632,7 +631,7 @@ function renderInteger(entity, label, minInclusive, maxInclusive) {
 	html = '<div class="input-wrapper">\n'
 	html +=		label
 	html +=	'	<div class="input-group">\n'
-	html +=	'		<input class="input-group-field '+entity['id']+'" id="'+entity['domId']+'" type="number"' + entity['required'] + entity['disabled'] + getIntegerConstraints(entity, minInclusive, maxInclusive) + ' placeholder="'+ entity['datatype']+'" pattern="integer" />\n'
+	html +=	'		<input class="input-group-field '+entity['id']+'" id="'+entity['domId']+'" type="number"' + entity['required'] + entity['disabled'] + getIntegerConstraints(entity, minInclusive, maxInclusive) + getPlaceholder(entity) + '" pattern="integer" />\n'
     html += 		renderUnits(entity)
 	html +=	'	</div>\n'
 	html +=		renderHelp(entity)
@@ -662,7 +661,7 @@ function renderChoices(entity, label) {
 	html = '<div class="input-wrapper">\n' 
 	html +=		label
 	html +=	'	<div class="input-group">\n'
-	html +=	'		<select placeholder="'+entity['datatype'] + '" class="input-group-field '+entity['id'] + '" id="'+entity['domId']+'"' + entity['required'] + entity['disabled'] + '>\n'
+	html +=	'		<select ' + getPlaceholder(entity) + '" class="input-group-field '+entity['id'] + '" id="'+entity['domId']+'"' + entity['required'] + entity['disabled'] + '>\n'
 	html +=				renderChoice(top.data['picklists'][picklistId], 0)
 	html +=	'		</select>\n'
 	if ('lookup' in entity['features']) 
@@ -793,7 +792,9 @@ function renderLabel(entity) {
 
 /************************** UTILITIES ************************/
 
-
+function getPlaceholder(entity) {
+	return (' placeholder="'+ entity['datatype'].substr(entity['datatype'].indexOf(':') + 1 ) ) 
+}
 
 function getSort(members, myList) { // an object with entity ids as keys
 	/* Complicated by the fact that some items, like individuals, may not have uiLabel.

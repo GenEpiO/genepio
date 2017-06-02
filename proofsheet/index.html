@@ -8,11 +8,6 @@
     <link rel="stylesheet" href="css/foundation.min.css">
     <link rel="stylesheet" href="css/foundation-icons/foundation-icons.css">
     <link rel="stylesheet" href="css/foundation-datepicker.min.css">
-
-    <!-- trying out either of these -->
-    <link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-    <!-- link rel="stylesheet" href="css/foundation-icons/foundation-icons.css" -->
-    
     <link rel="stylesheet" href="css/app.css">
   </head>
   <body>
@@ -42,8 +37,8 @@
         <div id="tabsNavigation" class="tabs-content" data-tabs-content="entity-tabs"> 
           <div style="padding:10px 10px 0 10px">
             <select name="ontology">
-              <option value="genepio" selected="selected">GenEpiO</option>
-              <option value="foodon">FoodOn</option>
+              <option value="genepio" selected="selected">Genomic Epidemiology Ontology (GenEpiO)</option>
+              <option value="foodon">Food Ontology (FoodOn)</option>
             </select>
           </div>
 
@@ -94,19 +89,40 @@
           <div class="tabs-panel is-active" id="content">
             <form id="mainForm" data-abide="ajax">
               <div class="infoBox">
-                Select an ontology item from the "Browse" menu to see how it would be presented as a form.
+                Select an ontology item from the "Browse" or "Search" menu to see how it would be presented as a form.
               </div>
             </form>
 
+            <!-- ************************* FORM CONTROLS ******************* -->
             <div class="container" style="border-top:1px dotted silver;padding:10px">
-              
-              <div class="switch tiny" style="float:left;margin-right:10px">
-                <input class="switch-input" id="toggleIdVisibility" type="checkbox" name="toggleIdVisibility">
-                <label class="switch-paddle" for="toggleIdVisibility">
-                  <span class="show-for-sr">Toggle ontology detail view</span>
-                </label>
+             
+              <div class="row" style="font-size:.8rem">
+                Legend: 
+                <i class="fi-shopping-cart include"></i> add item and its descendants to shopping cart; 
+                <i class="fi-shopping-cart exclude"></i> filter out descendant
               </div>
-              <label class="left" for="toggleVisibility">Toggle ontology detail view</label>
+              <br/>
+
+              <div class="row">
+                <div class="switch tiny" style="float:left;margin-right:10px">
+                  <input class="switch-input" id="toggleIdVisibility" type="checkbox" name="toggleIdVisibility">
+                  <label class="switch-paddle" for="toggleIdVisibility">
+                    <span class="show-for-sr">Toggle ontology detail view</span>
+                  </label>
+                </div>
+                <label class="left" for="toggleIdVisibility">Toggle ontology details (also provided on mouse-over)</label>
+              </div>
+
+              <div class="row">
+                <div class="switch tiny" style="float:left;margin-right:10px">
+                  <input class="switch-input" id="toggleMinimalForm" type="checkbox" name="toggleMinimalForm">
+                  <label class="switch-paddle" for="toggleMinimalForm">
+                    <span class="show-for-sr">Minimize form view</span>
+                  </label>
+                </div>
+                <label class="left" for="toggleMinimalForm">Minimize form view</label>
+              </div>
+
             </div>
           </div>
 <!--
@@ -176,17 +192,20 @@
           <!-- ********************** MY PACKAGES ******************* -->
           <div class="tabs-panel" id="panel3">
             <div class="infoBox">
-              <p>A package is a collection of ontology identifiers and filters 
-              that enables generation of an ontology-driven entity specification 
-              file as an excel spreadsheet or in JSON format.</p> 
+              <p>A package is a collection of ontology term and entity 
+              identifiers and filters generated from a shopping list. 
+              A package enables generation of an ontology-driven entity 
+              specification file (as an Excel spreadsheet or in JSON format) 
+              which indicates term names, synonyms, definitions, and categorical 
+              and numeric variable details. If you login, your persistent list 
+              of downloadable packages will be listed here.</p> 
 
               <p> A specification file can be periodically regenerated from a package
               so that new ontology updates can be incorporated into it.  
               A specification can be used by software and data integration 
               developers to facilitate data entry, display and exchange.</p>  
 
-              <p>If you login, your persistent list of downloadable JSON 
-              format ontology entity packages will be listed here.</p>
+              <p></p>
 
             </div>
 
@@ -201,8 +220,14 @@
               Ontologies: GenEpio v0.3.1</p>
             </div>
 
-            <div class="infoBox"> To download a JSON or excel specification from a package, click on its name, and
-            then view the "Data Specification" tab where it will be regenerated.</div>
+            <div class="infoBox">
+              <p>To download a JSON or excel specification from a package, click on its name, and
+            then view the "Data Specification" tab where it will be regenerated.</p>
+              <p>One can edit a package to adjust its name or description.  Upgrading a package
+              involves changing its ontology version numbers.  A differential list of changes
+              is provided so that decisions can be made about what new terms to accept or filter out.</p>
+
+            </div>
 
           </div>
 

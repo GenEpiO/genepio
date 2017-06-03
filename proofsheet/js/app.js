@@ -45,8 +45,8 @@ $( document ).ready(function() {
 		top.focusEntityId = 'obo:GENEPIO_0001740'
 
 		// Enables focus of entity form on a given ontology identifier
-		if (location.hash > '' && $(location.hash.substr(0,5) =='#obo:' ).length>0) {
-			top.focusEntityId = location.hash.substr(1)
+		if (document.location.hash > '' && $(document.location.hash.substr(0,5) =='#obo:' ).length>0) {
+			top.focusEntityId = document.location.hash.substr(1)
 		}
 
 		// This control toggles the visibility of ontology ID's in the given 
@@ -261,7 +261,7 @@ function renderForm(entityId) {
 			history.pushState(null, null, '#'+entityId);
 		}
 		else {
-			location.hash = '#'+entityId;
+			document.location.hash = '#'+entityId;
 		}
 	}
 	catch (e) {}

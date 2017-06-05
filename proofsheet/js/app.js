@@ -46,7 +46,7 @@ $( document ).ready(function() {
 		top.focusEntityId = false
 
 		// Enables focus of entity form on a given ontology identifier
-		if (document.location.hash > '' && $(document.location.hash.substr(0,5) =='#obo:' ).length>0) {
+		if (document.location && document.location.hash > '' && $(document.location.hash.substr(0,5) =='#obo:' ).length>0) {
 			top.focusEntityId = document.location.hash.substr(1)
 		}
 

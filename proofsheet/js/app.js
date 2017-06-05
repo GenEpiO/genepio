@@ -21,6 +21,8 @@ formatT = 'Thh:ii:SS'
 shoppingCart=[]
 shoppingCartOff=[]
 searchDB = ''
+ontologyDetails = false
+top.focusEntityId = false
 
 /*********** ACTION ***********************************************************
 	This loads the json user interface oriented version of an ontology
@@ -40,9 +42,8 @@ $( document ).ready(function() {
 	$.getJSON('ontology_ui.json', function( data ) {
 		// Setup Zurb Foundation user interface and form validation
 		top.data = data;
-		top.idVisibility = false;
 		// Default entity to render:
-		top.focusEntityId = 'obo:GENEPIO_0001740'
+		top.focusEntityId = false
 
 		// Enables focus of entity form on a given ontology identifier
 		if (document.location.hash > '' && $(document.location.hash.substr(0,5) =='#obo:' ).length>0) {
@@ -52,22 +53,29 @@ $( document ).ready(function() {
 		// This control toggles the visibility of ontology ID's in the given 
 		// form content (for reference during content review)
 		$('input#toggleIdVisibility').on('change', function() {
-			top.idVisibility = $(this).is(':checked')
+			top.ontologyDetails = $(this).is(':checked')
 			renderForm(top.focusEntityId)
 		})
 
+		// Show Data Representation Model item menu
 		$("ul#entityMenu").html(renderMenu('obo:OBI_0000658'))
 
-
+		// Provide type-as-you-go searching
 		$("#searchField").on('keyup', function() {
 			var text = $("#searchField").val()
 			$("#searchResults").empty()
 			if (text.length > 2) {
-				ontology_ids = filterIt(top.data.specifications, text)
+				var ontology_ids = filterIt(top.data.specifications, text)
 				for (id in ontology_ids) {
-					//ontoId = ontology_ids[id]
 					$("#searchResults").append(renderCartItem (ontology_ids[id]))
 				}
+				
+				// Picklist item search should lead to picklist?
+				var ontology_ids = filterIt(top.data.picklists, text) 
+				for (id in ontology_ids) {
+					$("#searchResults").append(renderCartItem (ontology_ids[id]))
+				}
+
 			}
 		})
 
@@ -77,22 +85,26 @@ $( document ).ready(function() {
   			if ($(event.target).is('i.fi-eye') ) {renderForm(event.target.dataset.ontologyId)}
 		});
 
-		$("form").on("click", 'div.cart-item', function(item) {
-			if (! $(item.target).is('.fi-shopping-cart'))
-				renderForm(this.dataset.ontologyId)
-		})
 
 		$("#mainForm").on('click', "i.fi-shopping-cart", function(){
-			cartCheck(this.dataset.ontologyId)
+			// Check and update shopping cart include/exclude status of this item
+			cartCheck($(this).parents('.field-wrapper').first()[0].dataset.ontologyId)
 		})
 
-		$("#shoppingCart").on('click', "i.fi-shopping-cart", function(){
-			cartCheck(this.dataset.ontologyId)
-		})
+		$("#shoppingCart")
+			.on("click", 'div.cart-item', function(item) {
+				if ($(item.target).is('i.fi-shopping-cart'))
+					// Change state of shopping cart item
+					cartCheck(this.dataset.ontologyId)
+				else
+					// Follow link if user didn't click
+					renderForm(this.dataset.ontologyId)
+			})
+
 		$("#shoppingCartTrash").on('click', function() {
 			top.shoppingCart=[]
 			top.shoppingCartOff=[]
-			$('i.fi-shopping-cart[data-ontology-id]').removeClass('include exclude')
+			$('form#mainForm div[data-ontology-id]').removeClass('include exclude')
 			$('#shoppingCart').empty()
 		})
 
@@ -104,7 +116,11 @@ $( document ).ready(function() {
 });
 
 function filterIt(obj, searchKey) {
-	/* Text Search of ontology contents via JSON specification */
+	/* Text Search of ontology contents via JSON specification.
+	This looks at each "specification" entry's main fields: label, uiLabel, definition, 
+	uiDefinition, hasSynonym, hasNarrowSynonym, hasExactSynonym.
+	 */
+
     return Object.keys(obj).filter(function(key) { // key is specification ontology id.
       return Object.keys(obj[key]).some(function(key2) {
       	if (typeof obj[key][key2] === "object")
@@ -124,22 +140,24 @@ function cartCheck(ontologyId) {
 	items from an included parent item, hence the shoppingCartOff list.
 	*/
 	// Clear out any help message:	
-	if (top.shoppingCart.length == 0 && top.shoppingCartOff.length == 0) $("#shoppingCart").empty()
+	if (top.shoppingCart.length == 0 && top.shoppingCartOff.length == 0) 
+		$("#shoppingCart").empty()
 
 	var ptr = top.shoppingCart.indexOf(ontologyId)
 	var ptrExcl = top.shoppingCartOff.indexOf(ontologyId)
-	item = $('i.fi-shopping-cart[data-ontology-id="'+ontologyId+'"]')
-	var entity = top.data['specifications'][ontologyId]
+	var dataId = '[data-ontology-id="'+ontologyId+'"]'
+	var item = $('div.cart-item'+dataId+ ',div.field-wrapper'+dataId)
 
-	if (ptrExcl != -1) {// De-activate negative selection
+	if (ptrExcl != -1) {
+		// Item on exclusion list, so drop it entirely
 		top.shoppingCartOff.splice(ptrExcl, 1) 
 		item.removeClass('exclude')
-		// Remove from shopping list
 		$('div.cart-item[data-ontology-id="'+ontologyId+'"]').remove()
 	}
 
 	else 
 		if (ptr != -1) {
+			// ITEM already in shopping list so downgrade to "exclude" list.
 			top.shoppingCart.splice(ptr, 1) // delete from main list
 			top.shoppingCartOff.push(ontologyId) // pop onto exclusion list
 			item.addClass('exclude').removeClass('include')
@@ -147,24 +165,15 @@ function cartCheck(ontologyId) {
 			$("#shoppingCartIcon").addClass('waitingForConnection')
 			setTimeout('$("#shoppingCartIcon").removeClass("attention")', 1000)
 		}
-		else { // activate positive selection
+		else { 
+			// ADD item to shopping list
 			top.shoppingCart.push(ontologyId)
 			item.addClass('include')
-			// AND ADD TO SHOPPING LIST
-			// FUTURE: place new item UNDER RIGHT PARENT, OR ALPHABETICALLY
+
 			$("#shoppingCart").prepend(renderCartItem(ontologyId))
 			itemAnimate('#shoppingCartIcon', 'attention')
 			
 		}
-
-	/* Update shopping list
-	for (var ptr in top.shoppingCart) {
-		var id = top.shoppingCart[ptr]
-		$('i.fi-shopping-cart[data-ontology-id="'+id+'"]').css('color','green')
-
-	}
-	*/
-
 }
 
 function itemAnimate(item, effectClass) {
@@ -174,12 +183,13 @@ function itemAnimate(item, effectClass) {
 }
 
 function renderCartItem (ontologyId) {
-	var entity = top.data['specifications'][ontologyId]
-	newItem = '<div class="cart-item" data-ontology-id="'+ontologyId+'"]>'
-	newItem += '<i class="fi-shopping-cart include" data-ontology-id="' + ontologyId + '"></i>'
-	newItem += '<a href="#' + ontologyId + '">' + entity['uiLabel'] + '</div>'
-	return newItem
-
+	var ptr = ontologyId.lastIndexOf('/')
+	if (ptr)
+		var entity = top.data['specifications'][ontologyId.substr(ptr+1)]
+	else
+		var entity = top.data['specifications'][ontologyId]
+	return ['<div class="cart-item include" data-ontology-id="', ontologyId, '"]>',
+		'<i class="fi-shopping-cart"></i>','<a href="#', ontologyId, '">', entity['uiLabel'], '</div>'].join('')
 }
 
 
@@ -243,10 +253,13 @@ function renderForm(entityId) {
 	$('input[placeholder="dateTime"]').fdatepicker({format: formatD+formatT, disableDblClickSelection: true});
 	$('input[placeholder="dateTimeStamp"]').fdatepicker({format: formatD+formatT, disableDblClickSelection: true});
 
+	setShoppingCart()
+	setCardinality()
+
 
 	// Enable page annotation by 3rd party tools by kicking browser to 
 	// understand that a #anchor and page title are different.
-	var title = 'Ontology UI Proof Sheet: ' + entityId
+	var title = 'Ontology Entity Mart: ' + entityId
 	if (top.data['specifications'][entityId]) {
 		var uiLabel = top.data['specifications'][entityId]['uiLabel']
 		title += uiLabel
@@ -268,6 +281,83 @@ function renderForm(entityId) {
 
  	getdataSpecification(entityId) // Fill specification tab
 	return false
+}
+
+function setCardinality() {
+	var cardinalityLabel = ''
+
+	$('div.field-wrapper').each(function(item) {
+		var min = $(item).getAttr("cardinality-min")// || false
+		var max = $(item).getAttr("cardinality-max")// || false
+		alert(min)
+		alert(max)
+		//if ()
+		if (min)
+			if (max)
+				if (min == max)
+					if (min > 1) cardinalityLabel =  min + ' required'
+					else cardinalityLabel = 'required'
+				else
+					cardinalityLabel = min + ' &lte; ' + max
+			else if (min == 0) cardinalityLabel = 'optional'
+			else cardinalityLabel = 'gte;' + min + ' required'
+		else if (max)
+
+	if (top.ontologyDetails && cardinalityLabel)
+		$(item).prepend('<span class="info label float-right">' + cardinalityLabel + '</span>')
+
+		//label = '<i class="fi-plus float-right"></i> <i class="fi-minus float-right"></i>' + label
+	})
+	/*
+
+			case 'owl:someValuesFrom': // >= 1 of ...
+				entity['cardinalityLabel'] = '1+ required'; 
+				entity['cardinality-min'] = 1
+				entity['required'] = ' required '
+				break 
+			case 'owl:qualifiedCardinality': // exactly ...
+				entity['cardinalityLabel'] = (limit == 1) ? 'required' : limit + ' required'; 
+				entity['cardinality-min'] = limit
+				entity['cardinality-max'] = limit
+				entity['required'] = ' required '
+				break 
+			case 'owl:minQualifiedCardinality': // at least ...
+				entity['cardinalityLabel'] = limit + '+ ' + (limit == 0 ? 'optional' : 'required'); 
+				entity['cardinality-min'] = limit
+				if (limit != 0) entity['required'] = ' required '
+				break
+			case 'owl:maxQualifiedCardinality': // at most ...
+				entity['cardinalityLabel'] = (limit == 1) ? 'optional' : limit + ' optional'; 
+				entity['cardinality-max'] = limit
+				break 
+			default:
+		}
+	*/
+			/*
+			if (entity['cardinality'] == 'min')
+				// SHOW CREATE ON 1st [0] ITEM UNTIL THERE ARE TOO MANY.
+				if (place <= entity['cardinality-min'])
+					label = '<i class="fi-plus float-right"></i>' + label
+				if (place >= entity['cardinality-max'])
+					label = '<i class="fi-trash float-right"></i>' + label
+			*/
+
+
+
+
+}
+
+function setShoppingCart() {
+	// UPDATE SHOPPING CART STATUS
+	$('div.field-wrapper').prepend('<i class="fi-shopping-cart"></i>')
+	for (var ptr in top.shoppingCart) {
+		$('div.field-wrapper [data-ontology-id="'+top.shoppingCart[ptr]+'"]')
+		.addClass('include')
+	}
+	for (var ptr in top.shoppingCartOff) {
+		$('div.field-wrapper [data-ontology-id="'+top.shoppingCartOff[ptr]+'"]')
+		.addClass('exclude')
+	}
 }
 
 function getEntityData() {
@@ -296,14 +386,11 @@ function getEntityData() {
 }
 
 function getdataSpecification(entityId) {
-	// WHEN THIS IS CALLED, ACTIVATE ITS TAB
 	/* The entity form is defined by 1 encompassing entity and its parts which are 
 	defined in top.data components: specification, picklists and units 
 	*/
 	$("#helpDataSpecification").remove()
 	$("#dataSpecification").html(JSON.stringify(getEntitySpec(null, entityId), null, 2))
-
-
 }
 
 
@@ -359,15 +446,14 @@ function getEntitySpecItems(spec, entity, type, table, inherited = false) {
 				spec[table][partId] = top.data[table][partId]
 				getEntitySpec(spec, partId)
 			}
-
 	}
-
 }
 
 /*********************** FORM PART RENDERING **********************/
 
 
 function render(entityId, path = [], depth = 0, inherited = false, minimal = false) {
+	if (entityId === false) return '' // Nothing selected yet.
 
 	console.log("Render", path, entityId, depth, inherited)
 
@@ -384,51 +470,36 @@ function render(entityId, path = [], depth = 0, inherited = false, minimal = fal
 	//if (entityId in top.bag) {console.log('ISSUE: entity '+entityId+' is in a loop');return ""} 
 	//else top.bag[entityId] = true		
 
-	var entity = $.extend(true, {}, top.data['specifications'][entityId]) // clone entity so we can change it.
+	// Clone entity so we can change it.
+	var entity = $.extend(true, {}, top.data['specifications'][entityId]) 
 
 	if (!entity) {
 		console.log("Node: " + entityId + " has no specification entry.")
 		return html
 	}
-	
+	// Initialize entity
+	entity['required'] = ''
+	entity['features'] = {}
 	entity['path'] = path.concat([entityId])
 	// Create a unique domId out of all the levels 
-	entity['domId'] = entity['path'].join('/0/')
+	entity['domId'] = entity['path'].join('/')
 	if ('parent' in entity && parent['id'] == entityId) {
 		console.log("Node: " + entityId + " is a parent of itself and so cannot be re-rendered.")
 		return html
 	}
-	var label = ''
-	if (!minimal) {
-		label = '<label>' + renderLabel(entity) + '</label> '
-	}
 
-	// When this is a "has value specification" part of another entity, 
-	// that entity will indicate how many of this part are allowed.
+	// Used for some controls for sub-parts
+	var	label = (minimal) ? '' : renderLabel(entity)
 
-	entity['required'] = ''
-	entity['features'] = {}
 	if (entity['path'].length > 1) {
-		referrerId = entity['path'].slice(-2)[0]
-		var cardinality = getCardinality(entity, referrerId)
-		if (cardinality.length) {
-			var requiredLabel = cardinality.join('.')
-			label = '<span class="info label float-right">' + requiredLabel  + '</span>' + label
-			entity['required'] = (requiredLabel.indexOf('required') >=0 ) ? ' required ' : ''
-		}
-		entity['features'] = getFeatures(entityId, referrerId)
+		// When this is a member of another entity, that entity will 
+		// indicate how many of this part are allowed.
+		getFeatures(entity)
+		getCardinality(entity)
 		// Currently showing "hidden" feature fields as disabled.
 		entity['disabled'] = ('hidden' in entity['features']) ? ' disabled="disabled"' : '';
-
 	}
-	if (!minimal) {
-		// Draw with shopping cart which has class "include" or exclude
-		shoppingCartClass = ''
-		if (top.shoppingCart.indexOf(entityId) != -1) shoppingCartClass = ' include'
-		else if (top.shoppingCartOff.indexOf(entityId) != -1) shoppingCartClass = ' exclude'
 
-		label = '<i data-ontology-id="' + entityId + '" class="fi-shopping-cart'+shoppingCartClass+'"></i>' + label
-	}
 	switch (entity['datatype']) {
 		case undefined: // Anonymous node
 			html += renderSection('<strong>Error: No datatype for ' + entityId + '(' + renderLabel(entity) + ') !</strong><ul><li>Hint: A picklist must be a subclass of "categorical tree specification".</li><li>Other fields need a "has primitive value spec" data type.</li><li>or was this in an include file that failed to load?</li></ul>')
@@ -439,34 +510,10 @@ function render(entityId, path = [], depth = 0, inherited = false, minimal = fal
 			break;
 
 		case 'specification':
-			// Here we go up the hierarchy to render all inherited superclass 'has value specification' components.
-			if ('parent' in entity) { // aka member_of or subclass of
-				var parentId = entity['parent']
-				if (parentId != 'obo:OBI_0000658') {//Top level spec.
-					//console.log('' + depth + ": Specification "+entityId+" inheriting: " + parentId)
-					html += render(parentId, [], depth-1, true)
-				}
-			}	
-
-			var ids = getSort(entity['parts'], 'specifications') // "has value specification" parts. 
-			for (var ptr in ids) { 
-				// Sort so fields within a group are consistenty orderd:
-				childId = ids[ptr]
-				html += render(childId, entity['path'], depth+1)
-			}
-
-			if (inherited == false) {
-				var ids = getSort(entity['members'], 'specifications') //'is a' members, e.g. categorical lists or trees
-				for (var ptr in ids) { 
-					childId = ids[ptr]
-					html += render(childId, [], depth + 1) // cardinality lookup doesn't apply to categorical pick-lists so no need to supply path.
-				}
-			}
-
-			if (html.length > 0)
-				if (entity['uiLabel'] != '[no label]')
-					html = '<div class="callout' +  entity['required']+ '"><h5>' + label + '</h5>' + html + '</div>'
-
+			html += renderSpecification(entity, inherited, depth)
+			if (html.length > 0 && entity['uiLabel'] != '[no label]')
+				html = ['<div class="field-wrapper', entity['required'], '" data-ontology-id="', entity['domId'], '">\n', 
+					label, html, '\n</div>'].join('')
 			break;
 
 		/* PRIMITIVE data types 
@@ -531,6 +578,34 @@ function render(entityId, path = [], depth = 0, inherited = false, minimal = fal
 	return html
 }
 
+function renderSpecification(entity, inherited, depth) {
+	html = ''
+	// Here we go up the hierarchy to render all inherited superclass 'has value specification' components.
+	if ('parent' in entity) { // aka member_of or subclass of
+		var parentId = entity['parent']
+		if (parentId != 'obo:OBI_0000658') {//Top level spec.
+			//console.log('' + depth + ": Specification "+entityId+" inheriting: " + parentId)
+			html += render(parentId, [], depth-1, true)
+		}
+	}	
+
+	var ids = getSort(entity['parts'], 'specifications') // "has value specification" parts. 
+	for (var ptr in ids) { 
+		// Sort so fields within a group are consistenty orderd:
+		childId = ids[ptr]
+		html += render(childId, entity['path'], depth+1)
+	}
+
+	if (inherited == false) {
+		var ids = getSort(entity['members'], 'specifications') //'is a' members, e.g. categorical lists or trees
+		for (var ptr in ids) { 
+			childId = ids[ptr]
+			html += render(childId, [], depth + 1) // cardinality lookup doesn't apply to categorical pick-lists so no need to supply path.
+		}
+	}
+	return html	
+}
+
 function renderSection(text) {
 	html = '<div>\n'
 	html +=	'	<label>' + text + '</label>\n'
@@ -581,14 +656,6 @@ function renderDisjunction(entity, label, depth) {
 	return html
 }
 
-function renderItem(text) {
-	html = '<div>\n'
-	html +=	'	<label>' + text + '</label>\n'
-	html +=	'</div>\n'
-
-	return html
-}
-
 function renderInput(entity, label) {
 	/*
 	Add case for paragraph / textarea?
@@ -596,61 +663,53 @@ function renderInput(entity, label) {
 	*/
 	label = label.replace("</label>","") //We customize where label ends.
 
-	html = '<div class="input-wrapper">\n'
-	html +=		label
+	html =		label
 	html +=	'	<div class="input-group">\n'
 	html +=	'		<input class="input-group-field '+entity['id']+'" id="'+entity['domId']+'" type="text" ' + getStringConstraints(entity) + entity['required']+ entity['disabled']  + getPlaceholder(entity) + '" />\n'
     html += 		renderUnits(entity)
 	html +=	'	</div>\n'
 	html += ' 	</label>'
 	html +=		renderHelp(entity)
-	//html += 	renderContext(entity)
-	html +=	'</div>\n'
-
-	return html
+	return getFieldWrapper(entity, html)
 }
 
 
 /* NUMERIC DATATYPES HANDLED HERE */
 function renderNumber(entity, label) {
 	// ADD DECIMAL/FLOAT VALIDATION
-	html = '<div class="input-wrapper">\n'
-	html +=		label
+
+	html =		label
 	html +=	'	<div class="input-group">\n'
 	html +=	'		<input class="input-group-field '+entity['id']+'" id="'+entity['domId']+'" type="text"' + entity['required']+ entity['disabled'] + getPlaceholder(entity)+'" />\n'
     html += 		renderUnits(entity)
 	html +=	'	</div>\n'
 	html +=		renderHelp(entity)
-	html +=	'</div>\n'
+	return getFieldWrapper(entity, html)
 
 	return html
 }
 
 function renderInteger(entity, label, minInclusive, maxInclusive) {
-	
-	html = '<div class="input-wrapper">\n'
-	html +=		label
+
+	html = label
 	html +=	'	<div class="input-group">\n'
 	html +=	'		<input class="input-group-field '+entity['id']+'" id="'+entity['domId']+'" type="number"' + entity['required'] + entity['disabled'] + getIntegerConstraints(entity, minInclusive, maxInclusive) + getPlaceholder(entity) + '" pattern="integer" />\n'
     html += 		renderUnits(entity)
 	html +=	'	</div>\n'
-	html +=		renderHelp(entity)
-	html +=	'</div>\n'
-
-	return html
+	html +=	renderHelp(entity)
+	return getFieldWrapper(entity, html)
 }
 
 
 function renderBoolean(entity) {
-html = '<div class="input-wrapper">\n'
-	html +=	'	<div class="switch small" style="float:left;margin-right:10px;margin-bottom:0">\n'
+
+	html =	'	<div class="switch small" style="float:left;margin-right:10px;margin-bottom:0">\n'
 	html +=	'	  <input id="'+entity['domId']+'" class="switch-input" type="checkbox" name="'+entity['id']+'"' + entity['required']+ entity['disabled'] + '/>\n' //class="switch-input '+entity['id'] + '" 
 	html +=	'		<label class = "switch-paddle" for="'+entity['domId']+'"></label>\n'
 	html +=	'	</div>\n'
-	html +=	'	<span>' + entity['uiLabel'] + '</span>\n'  // 
-	html +=	'	<br/><br/>' + renderHelp(entity)
-	html +=	'</div>\n'
-	return html
+	html +=	renderLabel(entity) 
+	html +=	'	<br/>' + renderHelp(entity)
+	return getFieldWrapper(entity, html)
 }
 
 function renderChoices(entity, label) {
@@ -658,8 +717,7 @@ function renderChoices(entity, label) {
 
 	*/
 	picklistId = entity['id']
-	html = '<div class="input-wrapper">\n' 
-	html +=		label
+	html =		label
 	html +=	'	<div class="input-group">\n'
 	html +=	'		<select ' + getPlaceholder(entity) + '" class="input-group-field '+entity['id'] + '" id="'+entity['domId']+'"' + entity['required'] + entity['disabled'] + '>\n'
 	html +=				renderChoice(top.data['picklists'][picklistId], 0)
@@ -669,9 +727,8 @@ function renderChoices(entity, label) {
 
 	html +=	'	</div>\n'
 	html += renderHelp(entity)
-	html +=	'</div>\n'
 
-	return html
+	return getFieldWrapper(entity, html)
 }
 
 
@@ -691,7 +748,7 @@ function renderChoice(entity, depth, type="select") {
 				console.log("Error: picklist choice not available: ", memberId, " for list ",entity['id'])
 			else {
 				// Currently showing "hidden" feature as disabled.
-				var disabled = getFeature(entity['id'], memberId, 'hidden') ? ' disabled="disabled"' : '';
+				var disabled = getFeature(entity, memberId, 'hidden') ? ' disabled="disabled"' : '';
 				var kidHTML = renderChoice(part, depth+1)
 				var label = part['uiLabel']
 				if ('label' in part && part['label'] != label)
@@ -707,7 +764,7 @@ function renderChoice(entity, depth, type="select") {
 					case "select":
 
 					default:
-						if (top.idVisibility == true) label = label + ' - ' + part['id'];
+						if (top.ontologyDetails == true) label = label + ' - ' + part['id'];
 						html += '<option value="'+part['id']+'" class="depth'+depth+'" '+disabled+'>' + prefix + label + '</option>\n'
 				}
 			}
@@ -739,54 +796,59 @@ function renderUnits(entity) {
 
 
 function renderHelp(entity) {
-	definition = ('definition' in entity) ? entity['definition'] : ''
-	definition = ('uiDefinition' in entity) ? 'UI definition:' + entity['uiDefinition'] + ' Original definition:' + definition : definition
+	// Currently help consists of displaying a field's user interface definition, or original ontology definition.
+	var definition = ''
+	if ('uiDefinition' in entity) definition = entity['uiDefinition'] 
+	else if (definition in entity) definition = entity['definition']
 	if (definition > '')
-		// need div to be  [aria-describedby="exampleHelpText"] , and id below as  [id="exampleHelpText"]
-		return '	<p class="help-text '+entity['id'] + '" id="">'+ definition+'</p>\n'
+		return '	<p class="help-text ' + entity['id'] + '">'+ definition+'</p>\n'
   	return ''
  }
 
-
-function renderContext(entity) {
-	var found = false
-	var html = ''
-	var selections = ''
-	var properties = ['hasDbXref','hasSynonym','hasExactSynonym','hasNarrowSynonym']
-	for (ptr in properties) {
-		var item = properties[ptr]
-		if (item in entity) {
-			found = true
-			for (var ptr2 in entity[item])
-				selections += '<li style="white-space:nowrap;padding:5px">' + item + ':' + entity[item][ptr2] + '</li>'
-		}
+function renderLabel(entity) {
+	if (!entity) return 'ERROR: Entity not defined'
+	html = ''
+	if (top.ontologyDetails === true) {
+		html = renderContext(entity)
 	}
-	if (found == true) {
-		html += '<ul class="dropdown menu" data-dropdown-menu style="display:inline;">'
-		html += 	'<li><a style="margin:0;padding:5px 0 0 20px"></a><ul class="menu">'
-		html +=  	selections
-		html += 	'</ul></li>'
-		html += '</ul>'
-	}
+	if (html == '') html = ' <label>' + entity['uiLabel'] + '</label>'
 	return html
 }
 
 
-function renderLabel(entity) {
-	if (!entity)
-		return 'ERROR: Entity not defined'
+function renderContext(entity) {
+	// Provide a label mouseover display of 
+	var itemHTML = '<li><span class="infoLabel">ontology id:</span> ' + entity['id'] + '</li>\n'
+
+	// Label is original ontology's label, not the user interface oriented one.
 	if ('label' in entity && entity['label'] != entity['uiLabel'])
-		label = entity['label'] + ' - '
-	else
-		label = ''
-	var html = '' //<button class="fi-shopping-cart medium" style="float:right" />
-	html += ' <span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover="false" title="' + label + entity['id']+'">'
-	html += entity['uiLabel']
-	html += '</span>'
-	html += renderContext(entity)
-	return html
+		itemHTML += '<li><span class="infoLabel">ontology label:</span> ' + entity['label'] + '</li>\n'
+	if ('uiDefinition' in entity && entity['uiDefinition'] != entity['definition'])
+		itemHTML += '<li><span class="infoLabel">ontology definition:</span> <i>' + entity['definition'] + '</i></li>\n'
+	
+	var properties = ['hasDbXref','hasSynonym','hasExactSynonym','hasNarrowSynonym']
+	for (ptr in properties) {
+		var item = properties[ptr]
+		if (item in entity) {
+			for (var ptr2 in entity[item]) {
+				var val = entity[item][ptr2]
+				if (val.substr(0,4) == 'http')
+					val = '<a href="' + val + '" target ="_blank">'+val+'</a>'
+				itemHTML += '<li><span class="infoLabel">' + item + ':</span> ' + val + '</li>\n'
+			}
+		}
+	}
+	// Add original definition if different.
 
-
+	if (itemHTML > '') {
+		itemHTML = 	['<label data-toggle="' + entity['domId'] + '_detail">', 
+			'<i class="fi-magnifying-glass"></i>',
+			entity['uiLabel'], '</label>',
+			'<div class="dropdown-pane top" id="' + entity['domId'] + '_detail" data-dropdown data-hover="true" data-hover-pane="true"><ul>',
+			itemHTML,
+			'</ul></div>'].join('\n')
+	}
+	return itemHTML
 }
 
 
@@ -794,6 +856,24 @@ function renderLabel(entity) {
 
 function getPlaceholder(entity) {
 	return (' placeholder="'+ entity['datatype'].substr(entity['datatype'].indexOf(':') + 1 ) ) 
+}
+
+function getFieldWrapper(entity, html) {
+	return ['<div class="field-wrapper field" ',
+		getIdHTMLAttribute(entity['domId']),
+		getHTMLAttribute(entity, 'cardinality-min'),
+		getHTMLAttribute(entity, 'cardinality-max'),
+		'>\n',
+		 html,
+		 '</div>\n'].join('')
+}
+
+function getIdHTMLAttribute(id) {
+	return 'data-ontology-id="' + id + '" '
+}
+
+function getHTMLAttribute(entity, attribute) {
+	return (attribute in entity) ? attribute +'="' + entity[attribute] + '" ' : ''
 }
 
 function getSort(members, myList) { // an object with entity ids as keys
@@ -821,10 +901,11 @@ function getSort(members, myList) { // an object with entity ids as keys
 	})
 }
 
-function getFeatures(entityId, referrerId) {
+function getFeatures(entity) {
 	// Since a feature like "hidden" or "feature" may exist in both members and parts lists,
 	// its a bit more hassle to determine where referrerId is to include the feature.
 
+	var referrerId = entity['path'].slice(-2)[0]
 	var referrer = top.data['specifications'][referrerId]
 	if (!referrer) referrer = top.data['picklists'][referrerId]
 	if (!referrer) {console.log("ERROR: can't find entity ", referrerId, " to get feature for." );return false }
@@ -832,7 +913,7 @@ function getFeatures(entityId, referrerId) {
 	var myLists = {'members':null,'parts':null}
 	for (var myList in myLists) {
 		if (myList in referrer) {
-			var features = referrer[myList][entityId]
+			var features = referrer[myList][entity['id']]
 			if (features) {
 				//console.log("FEATURES array? ",features)
 				for (var ptr in features) {
@@ -849,19 +930,19 @@ function getFeatures(entityId, referrerId) {
 			}
 		}
 	}
-	return myFeatures
+	entity['features'] = myFeatures
 }
 
-function getFeature(entityId, referrerId, feature) {
-	// a feature like "hidden" or "feature" may exist in both members and parts lists
-
+function getFeature(entity, referrerId, feature) {
+	// Features only exist with reference to a parent's relations to a child.
+	// A feature like "hidden" or "feature" may exist in both members and parts lists
 	var referrer = top.data['specifications'][referrerId]
 	if (!referrer) referrer = top.data['picklists'][referrerId]
 	if (!referrer) {console.log("ERROR: can't find entity ", referrerId, " to get feature for." );return false }
 
 	for (myList in ['members','parts']) 
 		if (myList in referrer) {
-			var features = referrer[myList][entityId]
+			var features = referrer[myList][entity['id']]
 			if (features)
 				for (var item in features) {
 					if (feature in features[item]) {
@@ -941,7 +1022,7 @@ function getStringConstraints(entity) {
 function getCardinality(entity, referrerId) {
 	/* Each part comes with a cardinality qualifier that indicates how many of
 	that part can exist in an entity's data structure and by extension, on a form. 
-	NOTE: limits on the data range of numeric values is handled separately in the
+	NOTE: limits on the data range of numeric or date values is handled separately in the
 	constraints functions above.
 
 	EXPLANATION
@@ -949,7 +1030,7 @@ function getCardinality(entity, referrerId) {
 
 		e.g.: h-antigen 'has primitive value spec' some 'xsd:string'
 		
-	This is equivalent to the cardinality "min 1" aka "minQualifiedCardinality 1" 
+	The term "some" above is equivalent to the cardinality "min 1" aka "minQualifiedCardinality 1" 
 	or in plain english, "1 or more", which is ok in many logic scenarios as it
 	enforces the existence of at least one example.  The cardinality of "some" in
 	a user interface would on the face of it allow the user to add more than one 
@@ -960,31 +1041,42 @@ function getCardinality(entity, referrerId) {
 	entity data structure, we actually need to say that entity A has exactly 
 	"owl:qualifiedCardinality 1" aka "exactly 1" of entity B, no less and no more.  
 	*/
+	var referrerId = entity['path'].slice(-2)[0]
 	var constraints = []
 	var id = entity['id']
 	var referrer = top.data['specifications'][referrerId]
 
+	// Find given entity in parent (referrer) list of parts
 	for (var cptr in referrer['parts'][id]) {
+
+		// Each part will have a cardinality constraint:
 		var condition = referrer['parts'][id][cptr]
-		
+
+		// Condition's 'value' attribute indicates cardinality exact|lower|upper range.
+
 		var limit = 'value' in condition ? parseInt(condition['value']) : 1
 		switch (condition['cardinality']) {
-			case 'owl:someValuesFrom': constraints.push('1+ required'); break // 1 of ...
+			case 'owl:someValuesFrom': // >= 1 of ...
+				entity['cardinality-min'] = 1
+				entity['required'] = ' required '
+				break 
 			case 'owl:qualifiedCardinality': // exactly ...
-				constraints.push( (limit == 1) ? 'required' : limit + ' required'); break 
-			case 'owl:minQualifiedCardinality': //at least ...
-				constraints.push(limit + '+ ' + (limit == 0 ? 'optional' : 'required') ); break
+				entity['cardinality-min'] = limit
+				entity['cardinality-max'] = limit
+				entity['required'] = ' required '
+				break 
+			case 'owl:minQualifiedCardinality': // at least ...
+				entity['cardinality-min'] = limit
+				if (limit != 0) entity['required'] = ' required '
+				break
 			case 'owl:maxQualifiedCardinality': // at most ...
-				constraints.push((limit == 1) ? 'optional' : limit + ' optional'); break 
+				entity['cardinality-max'] = limit
+				break 
 			default:
 		}
 
 	}
-	//console.log(referrerId, id, constraints, referrer['parts'][id])
-	return constraints
-
 }
-
 
 
 function getChoices(helper, entityId) {

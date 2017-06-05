@@ -1,10 +1,8 @@
 input[required], select[required],div.required {border-left:3px solid orange;}
-input.is-invalid-input, select.is-invalid-input {border-left:3px solid red;}
+input.is-invalid-input, select.is-invalid-input {border-left:3px solid red !important;}
 
 #content > form{border:0;margin:0;}
-.callout {border:0;}
-.callout > .callout {border-left:1px dotted silver;
-	padding-right:0;}
+
 div.callout.footer {background-color:#2199e8;color:white}
 div.callout.footer a:link {color:lightblue}
 div.callout.footer a:visited {color:lightblue}
@@ -12,14 +10,18 @@ div.callout.footer a:hover {color:navy}
 
 /* CART ITEMS */
 li.tabs-title i {font-size:1.5rem;position:absolute;margin-top:-5px;margin-left:5px;}
-form i.fi-shopping-cart {float:right; color:lightgreen; font-size:1.5rem;margin-left:5px;cursor:pointer;margin-top:-.4rem;}
-i.fi-shopping-cart.include {color:green}
-i.fi-shopping-cart.exclude {color:red}
+form i.fi-shopping-cart {float:right; clear:right; color:lightgreen; font-size:1.5rem;margin-left:5px;cursor:pointer;margin-top:-.4rem;}
+#shoppingCart div.cart-item {clear:both; border-top:1px dotted silver;padding-top:.5rem;}
+
+div.include i.fi-shopping-cart {color:green}
+div.exclude i.fi-shopping-cart {color:red}
+
 a.icon {font-size:1.5rem;float:right;margin-top:-5px;margin-left:20px;color:#2199e8;cursor:pointer;}
-div.cart-item {clear:both; border-top:1px dotted silver;padding-top:.5rem;}
 
 form#searchResults i.fi-shopping-cart {display:none !important}
-form#mainForm > div.input-wrapper {margin:20px;}
+
+form#mainForm > div.field-wrapper div.field-wrapper {border-left:1px dotted silver; padding-left:10px;}
+form#mainForm > div.field-wrapper div.field-wrapper.field {border-left:0;}
 
 div.package {border-top:1px dotted silver; padding-top:.5rem;}
 .has-tip {border-bottom:0;}
@@ -38,3 +40,9 @@ li.menuEntity i.fi-eye {float:right;margin-right:20px;font-size:1.3rem;}
 #tabsContent, #tabsNavigation {height:520px; overflow:scroll}
 
 #dataSpecification {clear:both;overflow:scroll;}
+
+div.dropdown-pane {background-color:#2199e8; color:white; font-size:.8rem; min-width:400px}
+div.dropdown-pane a:link,div.dropdown-pane a:follow {color:lightblue}
+div.dropdown-pane a:hover {color:cyan}
+
+.infoLabel {font-weight:bold;}

@@ -85,7 +85,8 @@ class Ontology(object):
 			'eo':'http://epidemiology_ontology.owl#',
 			'bibo':'http://purl.org/ontology/bibo/',
 			'efo':'http://www.ebi.ac.uk/efo/',
-			'oboInOwl': 'http://www.geneontology.org/formats/oboInOwl#'
+			'oboInOwl': 'http://www.geneontology.org/formats/oboInOwl#',
+			'ancestro': 'http://www.ebi.ac.uk/ancestro/'
 		}
 		self.struct['specifications'] = {}
 		self.struct['units'] = {}

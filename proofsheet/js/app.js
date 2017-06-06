@@ -22,7 +22,7 @@ shoppingCart=[]
 shoppingCartOff=[]
 searchDB = ''
 ontologyDetails = false
-top.focusEntityId = false
+top.focusEntityId = null
 
 /*********** ACTION ***********************************************************
 	This loads the json user interface oriented version of an ontology
@@ -43,62 +43,43 @@ $( document ).ready(function() {
 		// Setup Zurb Foundation user interface and form validation
 		top.data = data;
 		// Default entity to render:
-		top.focusEntityId = false
-
-		// Enables focus of entity form on a given ontology identifier
-		if (document.location && document.location.hash > '' && $(document.location.hash.substr(0,5) =='#obo:' ).length>0) {
-			top.focusEntityId = document.location.hash.substr(1)
-		}
+		top.focusEntityId = null
 
 		// This control toggles the visibility of ontology ID's in the given 
 		// form content (for reference during content review)
 		$('input#toggleIdVisibility').on('change', function() {
 			top.ontologyDetails = $(this).is(':checked')
-			renderForm(top.focusEntityId)
+			renderEntity(top.focusEntityId)
 		})
 
 		// Show Data Representation Model item menu
 		$("ul#entityMenu").html(renderMenu('obo:OBI_0000658'))
 
 		// Provide type-as-you-go searching
-		$("#searchField").on('keyup', function() {
-			var text = $("#searchField").val()
-			$("#searchResults").empty()
-			if (text.length > 2) {
-				var ontology_ids = filterIt(top.data.specifications, text)
-				for (id in ontology_ids) {
-					$("#searchResults").append(renderCartItem (ontology_ids[id]))
-				}
-				
-				// Picklist item search should lead to picklist?
-				var ontology_ids = filterIt(top.data.picklists, text) 
-				for (id in ontology_ids) {
-					$("#searchResults").append(renderCartItem (ontology_ids[id]))
-				}
-
-			}
-		})
+		$("#searchField").on('keyup', searchAsYouType)
 
 		$('ul#entityMenu *').on('click', function(event) { 
-			// All this just so eye icon clicks to a different location without opening/closing the accordion.
+			// Enables eye icon click to show form without opening/closing the accordion.
   			event.stopPropagation();
-  			if ($(event.target).is('i.fi-eye') ) {renderForm(event.target.dataset.ontologyId)}
+  			if ($(event.target).is('i.fi-eye') ) {renderEntity(getEntityId(event.target))}
 		});
 
 
 		$("#mainForm").on('click', "i.fi-shopping-cart", function(){
 			// Check and update shopping cart include/exclude status of this item
-			cartCheck($(this).parents('.field-wrapper').first()[0].dataset.ontologyId)
+			event.stopPropagation(); // otherwise parent cart items catch same click
+			cartCheck(getEntityId(this))
 		})
 
 		$("#shoppingCart")
-			.on("click", 'div.cart-item', function(item) {
-				if ($(item.target).is('i.fi-shopping-cart'))
+			.on("click", 'div.cart-item', function(event) {
+				event.stopPropagation(); // otherwise parent cart items catch same click
+				if ($(event.target).is('i.fi-shopping-cart'))
 					// Change state of shopping cart item
 					cartCheck(this.dataset.ontologyId)
 				else
 					// Follow link if user didn't click
-					renderForm(this.dataset.ontologyId)
+					renderEntity(this.dataset.ontologyId)
 			})
 
 		$("#shoppingCartTrash").on('click', function() {
@@ -110,10 +91,44 @@ $( document ).ready(function() {
 
 		$(document).foundation()
 
+		$(window).on('hashchange',function(){ 
+			// GEEM focuses on entities by way of a URL with hash #[entityId]
+		    if (location.hash.length > 0)
+			   	if (location.hash.substr(0,5) =='#obo:') {
+					top.focusEntityId = document.location.hash.substr(1)
+					renderEntity(top.focusEntityId)
+				}
+		});
+
 		//Trying to prime menu with given item
 		//$('#sidebar > ul').foundation('down', $('#obo:OBI_0001741') ) ; //Doesn't work?!
 	});
 });
+
+function getEntityId(item) {
+	return $(item).parents('.cart-item,.field-wrapper').first()[0].dataset.ontologyId
+}
+
+
+function searchAsYouType() {
+	var text = $("#searchField").val()
+	$("#searchResults").empty()
+	if (text.length > 2) {
+		var ontology_ids = filterIt(top.data.specifications, text)
+		for (id in ontology_ids) {
+			$("#searchResults").append(renderCartItem (ontology_ids[id]))
+		}
+		
+		// Picklist items are currently in a separate list.
+		var ontology_ids = filterIt(top.data.picklists, text) 
+		if (ontology_ids.length > 0)
+			$("#searchResults").append('<hr/><strong>Picklist Items</strong><br/>')
+		for (id in ontology_ids) {
+			$("#searchResults").append(renderCartItem (ontology_ids[id]))
+		}
+
+	}
+}
 
 function filterIt(obj, searchKey) {
 	/* Text Search of ontology contents via JSON specification.
@@ -135,45 +150,82 @@ function filterIt(obj, searchKey) {
 
 /*********** ENTITY SHOPPING CART *************************/
 function cartCheck(ontologyId) {
-	/* The main shopping list contains items that should be included, but
-	these may have subordinate items - and we need a way to exclude subordinate
-	items from an included parent item, hence the shoppingCartOff list.
+	/* A user can select as many entities as they like, but may find that 
+	some components of some entities are undesirable.  This script enables
+	the shopping list to be maintained with the ability to select entities,
+	and also select underlying entities or fields to omit.
 	*/
-	// Clear out any help message:	
-	if (top.shoppingCart.length == 0 && top.shoppingCartOff.length == 0) 
-		$("#shoppingCart").empty()
+	// Clear out initial help message:	
+	if ($('#shoppingCart div.cart-item').length == 0)
+		$("#panelCart > div.infoBox").remove()
 
-	var ptr = top.shoppingCart.indexOf(ontologyId)
-	var ptrExcl = top.shoppingCartOff.indexOf(ontologyId)
-	var dataId = '[data-ontology-id="'+ontologyId+'"]'
-	var item = $('div.cart-item'+dataId+ ',div.field-wrapper'+dataId)
+	var dataId = '[' + getIdHTMLAttribute(ontologyId) +']'
+	var items = $('div.cart-item' + dataId + ',div.field-wrapper' + dataId)
+	var formItem = $('#mainForm div.field-wrapper' + dataId)
+	var cartItem = $('#shoppingCart div.cart-item' + dataId)
 
-	if (ptrExcl != -1) {
-		// Item on exclusion list, so drop it entirely
-		top.shoppingCartOff.splice(ptrExcl, 1) 
-		item.removeClass('exclude')
-		$('div.cart-item[data-ontology-id="'+ontologyId+'"]').remove()
+	if (cartItem.length == 0) {
+		// ADD item to shopping list; couldn't possibly have clicked on it there.
+
+		// Place this new item under parent in cart if it exists
+		var path = ontologyId.substr(0, ontologyId.lastIndexOf('/'))
+		while (path.length) {
+			var item = $('#shoppingCart div.cart-item[data-ontology-id="' + path+ '"]')
+			if (item.length) {
+				$(item).append(renderCartItem(ontologyId))
+				break;
+			}
+			path = path.substr(0, path.lastIndexOf('/'))
+		}
+
+		if (path == '') {// item parent wasn't found
+			$("#shoppingCart").prepend(renderCartItem(ontologyId))
+			// Issue is that some of remaining items might be positioned under top-level
+		}
+		var cartItem = $('#shoppingCart div.cart-item' + dataId)
+		items = items.add(cartItem)  // x.add() is immutable.
+
+		// See if any existing items (longer ids) fit UNDER  new item
+		$('#shoppingCart div.cart-item').each(function(index) {
+			var id = $(this).attr('data-ontology-id')
+			if (id != ontologyId) {
+				if (id.substr(0, ontologyId.length) == ontologyId) 
+					$(cartItem).append(this)
+			}
+		})
+
 	}
 
-	else 
-		if (ptr != -1) {
-			// ITEM already in shopping list so downgrade to "exclude" list.
-			top.shoppingCart.splice(ptr, 1) // delete from main list
-			top.shoppingCartOff.push(ontologyId) // pop onto exclusion list
-			item.addClass('exclude').removeClass('include')
-			itemAnimate('#shoppingCartIcon', 'attention')
-			$("#shoppingCartIcon").addClass('waitingForConnection')
-			setTimeout('$("#shoppingCartIcon").removeClass("attention")', 1000)
-		}
-		else { 
-			// ADD item to shopping list
-			top.shoppingCart.push(ontologyId)
-			item.addClass('include')
+	if (formItem.length == 0) {//User has displayed a different form than shoppingList selection pertains to.
+		if (cartItem.is('.include'))
+			cartItem.removeClass('include').addClass('exclude')
+		else if (cartItem.is('.exclude'))
+			cartItem.remove()
+		return
+	}
 
-			$("#shoppingCart").prepend(renderCartItem(ontologyId))
+	// AN ITEM has a state or INHERITS STATE OF ITS FIRST STATED ANCESTOR.
+	if (! formItem.is('.exclude, .include')) {
+		formItem = formItem.parents('.exclude, .include').first()
+		if (formItem.length == 0) {// then this is truly unselected.
+			items.addClass('include')
 			itemAnimate('#shoppingCartIcon', 'attention')
-			
+			return
 		}
+	}
+	if (formItem.is('.exclude')) {
+		// Item on exclusion list, so drop it entirely
+		items.removeClass('exclude')
+		// And remove all markings on subordinate items
+		var mainFormEntity = ('#mainForm div.field-wrapper' + dataId)
+		mainFormEntity.add(mainFormEntity.find('div.field-wrapper')).removeClass('include, exclude')
+		cartItem.remove()
+	}
+	else if (formItem.is('.include')) {
+		// ITEM already in shopping list so downgrade to "exclude" list.
+		items.removeClass('include').addClass('exclude')
+		itemAnimate('#shoppingCartIcon', 'attention')
+	}
 }
 
 function itemAnimate(item, effectClass) {
@@ -182,14 +234,29 @@ function itemAnimate(item, effectClass) {
 	setTimeout('$("'+item+'").removeClass("'+effectClass+'")', 1000)
 }
 
-function renderCartItem (ontologyId) {
+function renderCartItem(ontologyId) {
 	var ptr = ontologyId.lastIndexOf('/')
-	if (ptr)
-		var entity = top.data['specifications'][ontologyId.substr(ptr+1)]
-	else
-		var entity = top.data['specifications'][ontologyId]
-	return ['<div class="cart-item include" data-ontology-id="', ontologyId, '"]>',
-		'<i class="fi-shopping-cart"></i>','<a href="#', ontologyId, '">', entity['uiLabel'], '</div>'].join('')
+	// Get last path item id.
+	var entityId = ptr ? ontologyId.substr(ptr+1) : ontologyId
+	var entity = top.data['specifications'][entityId]
+	if (!entity) entity = top.data['picklists'][entityId]
+	if (entity) var label = entity['uiLabel']
+	else var label = '[UNRECOGNIZED]'
+	return ['<div class="cart-item" ', getIdHTMLAttribute(ontologyId), '>',
+		'<i class="fi-shopping-cart"></i>','<a href="#', ontologyId, '">', label , '</a></div>'].join('')
+}
+
+
+function setShoppingCart() {
+	// UPDATE SHOPPING CART STATUS in renderEntity()
+	$('#mainForm div.field-wrapper').prepend('<i class="fi-shopping-cart"></i>')
+	$('#shoppingCart div.cart-item').each(function(index){
+		var status = ''
+		if ($(this).is('.include')) status = 'include'
+		if ($(this).is('.exclude')) status = 'exclude'
+
+		$('#mainForm div.field-wrapper[' + getIdHTMLAttribute($(this)[0].dataset.ontologyId) + ']').addClass(status)
+	})
 }
 
 
@@ -204,14 +271,18 @@ function renderMenu(entityId, depth = 0 ) {
 			console.log("Node: " + entityId + " is a parent of itself and so is not re-rendered.")
 			return html
 		}
-		//  href="#' + entityId + '"  ; 
+
+		var hasChildren = ('members' in entity)
 		if (depth > 0) 
-			if ('members' in entity)
-				html = '<li class="menuEntity"><a>' + entity['uiLabel'] + ' <i class="fi-eye" data-ontology-id="'+entityId+'"></i></a>'
-			else
-				html = '<li class="menuEntity"><a onclick="menuClick(\''+entityId+'\')">'+entity['uiLabel']+'</a>'
+
+			html = ['<li class="cart-item" data-ontology-id="',	entityId,'">',
+			hasChildren ? '<a href="#">' : '<a href="#'+entityId+'">',
+			entity['uiLabel'],
+			hasChildren ? ' <i class="fi-eye"></i>' : '',
+			'</a>'].join('')
+
 		// See if entity has subordinate parts that need rendering:
-		if ('members' in entity) {
+		if (hasChildren) {
 			for (var memberId in entity['members']) {
 				// Top level menu items
 				if (depth == 0) html += renderMenu(memberId, depth + 1)
@@ -225,19 +296,15 @@ function renderMenu(entityId, depth = 0 ) {
 	return html
 }
 
-function menuClick(entityId) {
-
-	renderForm(entityId)
-}
-
 /*********** FORM RENDERER *************************/
-function renderForm(entityId) {
-
+function renderEntity(entityId) {
 
 	// WHEN THIS IS CALLED, ACTIVATE ITS TAB
 	$('#content-tabs').foundation('selectTab', '#content'); 
 	
 	top.focusEntityId = entityId;
+	if (entityId.indexOf('/') != -1)
+		entityId = entityId.substr(0, entityId.indexOf('/'))
 
 	$("#mainForm").empty().html('')
 
@@ -256,28 +323,19 @@ function renderForm(entityId) {
 	setShoppingCart()
 	setCardinality()
 
+	var entity = top.data['specifications'][entityId]
+	if (!entity) entity = top.data['picklists'][entityId]
 
 	// Enable page annotation by 3rd party tools by kicking browser to 
 	// understand that a #anchor and page title are different.
-	var title = 'Ontology Entity Mart: ' + entityId
-	if (top.data['specifications'][entityId]) {
-		var uiLabel = top.data['specifications'][entityId]['uiLabel']
-		title += uiLabel
+	var title = 'GEEM: ' + entityId
+	if (entity) {
+		var uiLabel = entity['uiLabel']
+		title += ':' + uiLabel
 		$('#panelDiscussTerm').empty().append('<h5>Term: ' + uiLabel + ' ('+entityId+')</h5>')
-		//ADD DISCUSSION FORUM IFRAME HERE
+		// SET DISCUSSION FORUM IFRAME HERE
 	}
-
 	window.document.title = title
-
-	try { //May fail if on http://htmlpreview.github.io/
-		if(history.pushState) {
-			history.pushState(null, null, '#'+entityId);
-		}
-		else {
-			document.location.hash = '#'+entityId;
-		}
-	}
-	catch (e) {}
 
  	getdataSpecification(entityId) // Fill specification tab
 	return false
@@ -286,11 +344,9 @@ function renderForm(entityId) {
 function setCardinality() {
 	var cardinalityLabel = ''
 
-	$('div.field-wrapper').each(function(item) {
-		var min = $(item).getAttr("cardinality-min")// || false
-		var max = $(item).getAttr("cardinality-max")// || false
-		alert(min)
-		alert(max)
+	$('#mainForm div.field-wrapper').each(function(index) {
+		var min = $(this).attr("cardinality-min") // || false
+		var max = $(this).attr("cardinality-max") // || false
 		//if ()
 		if (min)
 			if (max)
@@ -302,9 +358,9 @@ function setCardinality() {
 			else if (min == 0) cardinalityLabel = 'optional'
 			else cardinalityLabel = 'gte;' + min + ' required'
 		else if (max)
-
-	if (top.ontologyDetails && cardinalityLabel)
-		$(item).prepend('<span class="info label float-right">' + cardinalityLabel + '</span>')
+			{}
+		if (top.ontologyDetails && cardinalityLabel)
+			$(this).prepend('<span class="info label float-right">' + cardinalityLabel + '</span>')
 
 		//label = '<i class="fi-plus float-right"></i> <i class="fi-minus float-right"></i>' + label
 	})
@@ -347,18 +403,6 @@ function setCardinality() {
 
 }
 
-function setShoppingCart() {
-	// UPDATE SHOPPING CART STATUS
-	$('div.field-wrapper').prepend('<i class="fi-shopping-cart"></i>')
-	for (var ptr in top.shoppingCart) {
-		$('div.field-wrapper [data-ontology-id="'+top.shoppingCart[ptr]+'"]')
-		.addClass('include')
-	}
-	for (var ptr in top.shoppingCartOff) {
-		$('div.field-wrapper [data-ontology-id="'+top.shoppingCartOff[ptr]+'"]')
-		.addClass('exclude')
-	}
-}
 
 function getEntityData() {
 	// The hierarchic form data must be converted into minimal JSON data packet for transmission back to server.
@@ -397,7 +441,7 @@ function getdataSpecification(entityId) {
 function setModalCode(obj, header) {
 	// This displays the entity json object as an indented hierarchy of text inside html <pre> tag.
 	$("#modalEntity >div.row").html('<p><strong>' + header + '</strong></p>\n<pre style="white-space: pre-wrap;">' + JSON.stringify(obj, null, 2) +'</pre>\n' )
-	$("#modalEntity").foundation().foundation('open')
+	$("#modalEntity").foundation('open') //.foundation()
 
 }
 
@@ -471,12 +515,18 @@ function render(entityId, path = [], depth = 0, inherited = false, minimal = fal
 	//else top.bag[entityId] = true		
 
 	// Clone entity so we can change it.
-	var entity = $.extend(true, {}, top.data['specifications'][entityId]) 
-
-	if (!entity) {
+	if (entityId in top.data['specifications'])
+		var entity = $.extend(true, {}, top.data['specifications'][entityId]) 
+	else if (entityId in top.data['picklists']) {
+		var entity = $.extend(true, {}, top.data['picklists'][entityId]) 
+		entity['datatype'] = 'xmls:anyURI' 
+		// ADD FEATURE TO SELECT SUBORDINATE ITEMS?
+	}
+	else {
 		console.log("Node: " + entityId + " has no specification entry.")
 		return html
 	}
+
 	// Initialize entity
 	entity['required'] = ''
 	entity['features'] = {}
@@ -512,7 +562,7 @@ function render(entityId, path = [], depth = 0, inherited = false, minimal = fal
 		case 'specification':
 			html += renderSpecification(entity, inherited, depth)
 			if (html.length > 0 && entity['uiLabel'] != '[no label]')
-				html = ['<div class="field-wrapper', entity['required'], '" data-ontology-id="', entity['domId'], '">\n', 
+				html = ['<div class="field-wrapper children', entity['required'], '" data-ontology-id="', entity['domId'], '">\n', 
 					label, html, '\n</div>'].join('')
 			break;
 
@@ -859,7 +909,9 @@ function getPlaceholder(entity) {
 }
 
 function getFieldWrapper(entity, html) {
-	return ['<div class="field-wrapper field" ',
+	return ['<div class="field-wrapper field',
+		('members' in entity) ? ' children' : '',
+		'" ',
 		getIdHTMLAttribute(entity['domId']),
 		getHTMLAttribute(entity, 'cardinality-min'),
 		getHTMLAttribute(entity, 'cardinality-max'),

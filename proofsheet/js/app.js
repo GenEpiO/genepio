@@ -58,10 +58,32 @@ $( document ).ready(function() {
 		// Provide type-as-you-go searching
 		$("#searchField").on('keyup', searchAsYouType)
 
+		$("#makePackageForm").on('submit', function() {
+			/* A package consists of 
+			{
+				name: string
+				description: string
+				version: int
+				ontologies:	[
+					{prefix: string // "genepio"
+					version: string // identifier or GEEM download date.
+					}
+				] 
+				specifications:
+					{}
+
+			}
+
+
+			*/
+		})
+
+		$("#searchResults").on('mouseenter','i.fi-arrow-up.dropdown', searchResultContext)
+		
 		$('ul#entityMenu *').on('click', function(event) { 
 			// Enables eye icon click to show form without opening/closing the accordion.
   			event.stopPropagation();
-  			if ($(event.target).is('i.fi-eye') ) {renderEntity(getEntityId(event.target))}
+  			if ($(event.target).is('i.fi-magnifying-glass') ) {renderEntity(getEntityId(event.target))}
 		});
 
 
@@ -105,29 +127,40 @@ $( document ).ready(function() {
 	});
 });
 
+function getEntity(ontologyId) {
+	var entity = top.data['specifications'][ontologyId]
+	if (!entity) entity = top.data['picklists'][ontologyId]
+	return entity
+}
+
 function getEntityId(item) {
 	return $(item).parents('.cart-item,.field-wrapper').first()[0].dataset.ontologyId
 }
 
-
+/*********** SEARCH AND RESULTS *************************/
 function searchAsYouType() {
 	var text = $("#searchField").val()
 	$("#searchResults").empty()
+	var results = []
 	if (text.length > 2) {
 		var ontology_ids = filterIt(top.data.specifications, text)
 		for (id in ontology_ids) {
-			$("#searchResults").append(renderCartItem (ontology_ids[id]))
+			results.push(renderCartObj(ontology_ids[id]))
 		}
 		
 		// Picklist items are currently in a separate list.
 		var ontology_ids = filterIt(top.data.picklists, text) 
-		if (ontology_ids.length > 0)
-			$("#searchResults").append('<hr/><strong>Picklist Items</strong><br/>')
+		//if (ontology_ids.length > 0)
+		//	$("#searchResults").append('<hr/><strong>Picklist Items</strong><br/>')
 		for (id in ontology_ids) {
-			$("#searchResults").append(renderCartItem (ontology_ids[id]))
+			results.push(renderCartObj(ontology_ids[id]))
 		}
-
+		// Sort results alphabetically.  Consider other sort metrics?
+		results.sort(function(a,b){return a[0].localeCompare(b[0]) })
+		resultsHTML = results.map(function(obj) {return obj[1]})
+		$("#searchResults").append(resultsHTML.join('\n'))
 	}
+
 }
 
 function filterIt(obj, searchKey) {
@@ -145,6 +178,75 @@ function filterIt(obj, searchKey) {
       		return obj[key][key2].toLowerCase().includes(searchKey.toLowerCase());
       })
     })
+}
+
+function searchResultContext(event) {
+	// THIS VERSION ALLOWS USER TO NAVIGATE TO PARENT USING DROPDOWN.
+	// Move and show menu options for navigating to parent/member_of/part_of entities
+	//event.stopPropagation();
+	parent = $('#navigateParentDropdown')
+	if (parent.length) {
+		$('#navigateParentDropdown').foundation('destroy') // or else subsequent dropdown position is fixed.
+		$('#navigateParentButton,#navigateParentDropdown').remove()
+	}
+	var thisDiv = $(this).parent()
+	var ontologyId = thisDiv.attr('data-ontology-id')
+
+	// Though it is hidden, have to include button or else Foundation throws error.
+	var domEl = ['<button id="navigateParentButton" data-toggle="navigateParentDropdown"></button>',
+		'<div id="navigateParentDropdown" class="dropdown-pane"><ul>',
+		getRelationsHTML(ontologyId),
+		'</ul></div>'].join('')
+
+	$(this).after($(domEl)).foundation() //Places it.
+	var elem = new Foundation.Dropdown($('#navigateParentDropdown'), {hover:true, hoverPane:true});
+	iconPosition = $(this).position()
+	$('#navigateParentDropdown').foundation('open')
+		.css('left', (iconPosition.left + 20) + 'px')
+		.css('top', (iconPosition.top) + 'px')
+		// Drop-down content is defined, now we ennervate the up-arrows.
+		// each can replace content 
+		.on('click','i.fi-arrow-up',function(event){
+			// Insert shopping cart item 
+			var target = $(event.target).parent()
+			var targetId = target[0].dataset.ontologyId
+			// DETECT IF ITEM HAS ALREADY HAD PARENTS ADDED?
+			if ($('#navigateParentDropdown ul[data-ontology-id="'+targetId+'"]').length == 0 ) {
+				target.parent().wrap('<ul data-ontology-id="'+targetId+'">')
+				target.parent().before(getRelationsHTML(targetId))
+			}
+		})
+
+}
+
+function getRelationsHTML(ontologyId) {
+	// Finds and draws relations as li links for given entity
+	var entity = getEntity(ontologyId) 
+
+	var filling = ''
+	if ('parent' in entity) {
+		filling += getRelationLink('parent', getEntity(entity['parent']))
+	}
+	// Possibly organize each entity's relations under a "relations" section?
+	for (const relation of ['member_of','part_of']) {
+		if (relation in entity) {
+			for (const targetId of entity[relation]) {
+				filling += getRelationLink(relation, getEntity(targetId))
+			}
+		}
+	}
+	return filling
+}
+
+function getRelationLink(relation, entity) {
+	// Used in search results
+	// Usually but not always there are links.  Performance boost if we drop this test.
+	var links = ('parent' in entity || 'member_of' in entity || 'part_of' in entity)
+	return ['<li data-ontology-id="' + entity['id'] + '">', relation, ': ',
+		links ? '<i class="fi-arrow-up large"></i> ' : '',
+		' <a href="#', entity['id'], '">' + entity['uiLabel'] + ' <i class="fi-magnifying-glass large"></i></a>',
+
+		'</li>'].join('')
 }
 
 
@@ -217,7 +319,7 @@ function cartCheck(ontologyId) {
 		// Item on exclusion list, so drop it entirely
 		items.removeClass('exclude')
 		// And remove all markings on subordinate items
-		var mainFormEntity = ('#mainForm div.field-wrapper' + dataId)
+		var mainFormEntity = $('#mainForm div.field-wrapper' + dataId)
 		mainFormEntity.add(mainFormEntity.find('div.field-wrapper')).removeClass('include, exclude')
 		cartItem.remove()
 	}
@@ -235,15 +337,38 @@ function itemAnimate(item, effectClass) {
 }
 
 function renderCartItem(ontologyId) {
+	// NavFlag enables display of up-arrows that user can click on
+	// to navigate to an item's parent.
 	var ptr = ontologyId.lastIndexOf('/')
 	// Get last path item id.
 	var entityId = ptr ? ontologyId.substr(ptr+1) : ontologyId
 	var entity = top.data['specifications'][entityId]
 	if (!entity) entity = top.data['picklists'][entityId]
-	if (entity) var label = entity['uiLabel']
-	else var label = '[UNRECOGNIZED]'
+	if (!entity) entity = {'uiLabel':'[UNRECOGNIZED]'}
 	return ['<div class="cart-item" ', getIdHTMLAttribute(ontologyId), '>',
-		'<i class="fi-shopping-cart"></i>','<a href="#', ontologyId, '">', label , '</a></div>'].join('')
+		'<i class="fi-shopping-cart"></i>',
+		'<a href="#', ontologyId, '">',	entity['uiLabel'], '</a></div>'].join('')
+}
+
+
+function renderCartObj(ontologyId) {
+	// This version of renderCartItem is optimized for sorting, and is used in
+	// search results page.  It also provides icons for navigating to an item's parent.
+	var ptr = ontologyId.lastIndexOf('/')
+	// Get last path item id.
+	var entityId = ptr ? ontologyId.substr(ptr+1) : ontologyId
+	var entity = top.data['specifications'][entityId]
+	if (!entity) entity = top.data['picklists'][entityId]
+	if (!entity) entity = {'uiLabel':'[UNRECOGNIZED:' + entityId + ']'}
+	var html = ['<div class="cart-item" ', getIdHTMLAttribute(ontologyId), '>',
+		'<i class="fi-shopping-cart"></i>',
+		('parent' in entity) ? '<i class="fi-arrow-up dropdown parent"></i>' : '',
+		('member_of' in entity) ? '<i class="fi-arrow-up dropdown member"></i>' : '',
+		('part_of' in entity) ? '<i class="fi-arrow-up dropdown part"></i>' : '',
+		'<a href="#', ontologyId, '">',	entity['uiLabel'], '</a></div>'].join('')
+	
+	return [entity['uiLabel'].toLowerCase(),html]
+
 }
 
 
@@ -278,7 +403,7 @@ function renderMenu(entityId, depth = 0 ) {
 			html = ['<li class="cart-item" data-ontology-id="',	entityId,'">',
 			hasChildren ? '<a href="#">' : '<a href="#'+entityId+'">',
 			entity['uiLabel'],
-			hasChildren ? ' <i class="fi-eye"></i>' : '',
+			hasChildren ? ' <i class="fi-magnifying-glass"></i>' : '',
 			'</a>'].join('')
 
 		// See if entity has subordinate parts that need rendering:
@@ -301,43 +426,45 @@ function renderEntity(entityId) {
 
 	// WHEN THIS IS CALLED, ACTIVATE ITS TAB
 	$('#content-tabs').foundation('selectTab', '#content'); 
-	
-	top.focusEntityId = entityId;
-	if (entityId.indexOf('/') != -1)
-		entityId = entityId.substr(0, entityId.indexOf('/'))
-
 	$("#mainForm").empty().html('')
+	top.focusEntityId = entityId;
 
-	//top.bag = {} // For catching entity in a loop.
-	form_html = 	render(entityId)
-	form_html += 	renderButton('View Mockup Form Data Submission', 'getEntityData()') 
+	if (entityId) {
+		if (entityId.indexOf('/') != -1)
+			entityId = entityId.substr(0, entityId.indexOf('/'))
 
-	// Place new form html into page and activate its foundation interactivity
-	$("#mainForm").html(form_html).foundation()
 
-	// Set up UI widget for all date inputs; using http://foundation-datepicker.peterbeno.com/example.html
-	$('input[placeholder="date"]').fdatepicker({format: formatD, disableDblClickSelection: true});
-	$('input[placeholder="dateTime"]').fdatepicker({format: formatD+formatT, disableDblClickSelection: true});
-	$('input[placeholder="dateTimeStamp"]').fdatepicker({format: formatD+formatT, disableDblClickSelection: true});
+		//top.bag = {} // For catching entity in a loop.
+		form_html = 	render(entityId)
+		form_html += 	renderButton('View Mockup Form Data Submission', 'getEntityData()') 
 
-	setShoppingCart()
-	setCardinality()
+		// Place new form html into page and activate its foundation interactivity
+		$("#mainForm").html(form_html).foundation()
 
-	var entity = top.data['specifications'][entityId]
-	if (!entity) entity = top.data['picklists'][entityId]
+		// Set up UI widget for all date inputs; using http://foundation-datepicker.peterbeno.com/example.html
+		$('input[placeholder="date"]').fdatepicker({format: formatD, disableDblClickSelection: true});
+		$('input[placeholder="dateTime"]').fdatepicker({format: formatD+formatT, disableDblClickSelection: true});
+		$('input[placeholder="dateTimeStamp"]').fdatepicker({format: formatD+formatT, disableDblClickSelection: true});
 
-	// Enable page annotation by 3rd party tools by kicking browser to 
-	// understand that a #anchor and page title are different.
-	var title = 'GEEM: ' + entityId
-	if (entity) {
-		var uiLabel = entity['uiLabel']
-		title += ':' + uiLabel
-		$('#panelDiscussTerm').empty().append('<h5>Term: ' + uiLabel + ' ('+entityId+')</h5>')
-		// SET DISCUSSION FORUM IFRAME HERE
-	}
-	window.document.title = title
+		setShoppingCart()
+		setCardinality()
 
- 	getdataSpecification(entityId) // Fill specification tab
+		var entity = top.data['specifications'][entityId]
+		if (!entity) entity = top.data['picklists'][entityId]
+
+		// Enable page annotation by 3rd party tools by kicking browser to 
+		// understand that a #anchor and page title are different.
+		var title = 'GEEM: ' + entityId
+		if (entity) {
+			var uiLabel = entity['uiLabel']
+			title += ':' + uiLabel
+			$('#panelDiscussTerm').empty().append('<h5>Term: ' + uiLabel + ' ('+entityId+')</h5>')
+			// SET DISCUSSION FORUM IFRAME HERE
+		}
+		window.document.title = title
+
+	 	getdataSpecification(entityId) // Fill specification tab
+	 }
 	return false
 }
 
@@ -470,7 +597,10 @@ function getEntitySpec(spec, entityId = null, inherited = false) {
 			}
 
 			getEntitySpecItems(spec, entity, 'parts', 'specifications')
+			getEntitySpecItems(spec, entity, 'members', 'specifications') 
+			// Though a member might not lead to a form element of any kind, still include?
 			getEntitySpecItems(spec, entity, 'units', 'units')
+
 		}
 	}
 
@@ -479,7 +609,7 @@ function getEntitySpec(spec, entityId = null, inherited = false) {
 
 function getEntitySpecItems(spec, entity, type, table, inherited = false) {
 	if (type in entity) {
-		if (table == 'units') //WHY?
+		if (table == 'units') //WHY? table of ids?!
 			for (var ptr in entity[type]) {
 				var partId = entity[type][ptr]
 				spec[table][partId] = top.data[table][partId]
@@ -873,7 +1003,7 @@ function renderContext(entity) {
 	// Label is original ontology's label, not the user interface oriented one.
 	if ('label' in entity && entity['label'] != entity['uiLabel'])
 		itemHTML += '<li><span class="infoLabel">ontology label:</span> ' + entity['label'] + '</li>\n'
-	if ('uiDefinition' in entity && entity['uiDefinition'] != entity['definition'])
+	if ('definition' in entity && entity['uiDefinition'] != entity['definition'])
 		itemHTML += '<li><span class="infoLabel">ontology definition:</span> <i>' + entity['definition'] + '</i></li>\n'
 	
 	var properties = ['hasDbXref','hasSynonym','hasExactSynonym','hasNarrowSynonym']

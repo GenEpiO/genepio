@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="css/app.css">
   </head>
   <body>
-    <div class="row callout" style="background-color:#2199e8;color:white">
+    <div class="row" style="background-color:#2199e8;color:white">
       <div class="large-12 columns text-center">
         <div class="field-group" style="float:right">
           <button class="disabled">Login</button>
@@ -22,7 +22,7 @@
         <h1>Ontology Entity Mart Prototype</h1>
       </div>
     </div>
-
+    <br/>
     <div class="row">
 
       <!-- ************************ ONTOLOGY MENU AND SEARCH ********************* -->
@@ -61,11 +61,14 @@
           <div class="tabs-panel" id="panel2">
             <form data-abide="" novalidate="novalidate" lpformnum="2">
               <div class="input-group">
-                <input id="searchField" class="input-group-field" type="text" placeholder="Search for a term or entity" pattern="alpha">
-                <!--- a href="#" id="searchButton" class="input-group-label button postfix">Go</a -->
+                <input id="searchField" class="input-group-field" type="text" placeholder="Search for a term (3 characters or more)" pattern="alpha">
               </div>
             </form> 
-            <form id="searchResults">Search results appear here...</form>
+
+            <form id="searchResults">Search results appear here...
+            </form>
+
+
           </div>
 
         </div>
@@ -128,8 +131,8 @@
 
           <!-- ******************* DATA SPECIFICATION **************** -->
           <div class="tabs-panel" id="panelDataSpecification">
-            <a href="#" class="icon fi-download" title="download">JSON</a>
-            <a href="#" class="icon fi-download" title="download">excel</a>
+            <button class="button icon fi-download float-right" title="download" style="margin-left:10px">JSON</button>
+            <button class="button icon fi-download float-right" title="download">MS Excel</button>
 
             <div id="helpDataSpecification" class="infoBox">
               The entity form and downloadable spreadsheet are driven by a JSON 
@@ -165,12 +168,20 @@
   
             <div class="infoBox">Your entity shopping cart is displayed here. You can convert it into a downloadable package.</div>
 
-           <div class="input-group">
-              <input class="input-group-field" type="text" placeholder="Enter name of new package" pattern="alpha">
-              <a href="#" class="input-group-label button postfix">make package</a>
+            <div class="row">
+              <button class="button" data-toggle="makePackageForm">make package</button>
+              <div class="dropdown-pane top" id="makePackageForm" data-dropdown data-hover="true" data-hover-pane="true"  data-auto-focus="true">
+                <div class="input-group" >
+                  <label>Package Name</label>
+                  <input name="name" class="input-group-field" type="text" placeholder="Enter name of new package" pattern="alpha" />
+                  <label>Description</label>
+                  <input name="description" class="input-group-field" type="text" placeholder="Enter Description" pattern="alpha" />
+                  <button id="makePackageButton" class="button" type="submit">submit</button>
+                </div>
+              </div>
             </div>
-           
-            <div style="font-size:.8rem">
+
+            <div style="font-size:.8rem;clear:both">
               Legend: 
               <i class="fi-shopping-cart include"></i> include item and its descendants; 
               <i class="fi-shopping-cart exclude"></i> filter out descendant
@@ -224,17 +235,18 @@
       </div>
 
       <div class="large-2 medium-2 columns" id="rightbar">
+        <br/>
         <small><p>In this <b>prototype</b> software selected entities of an Ontology for Biomedical Investigations (OBI) conformant ontology are presented in HTML forms.  Here the <a href="https://github.com/GenEpiO/genepio" target="_blank">GenEpiO</a> ontology datums and data collection entities are shown, including term preferred name, definition, synonyms and database cross-reference fields.</p>
           <p>Example forms:
-          <ul><li><a onclick="renderForm('obo:GENEPIO_0001740')">line list fields</a></li>
-          <li> <a onclick="renderForm('obo:GENEPIO_0001624')">numeric data with units</a></li>
+          <ul><li><a onclick="renderEntity('obo:GENEPIO_0001740')">line list fields</a></li>
+          <li> <a onclick="renderEntity('obo:GENEPIO_0001624')">numeric data with units</a></li>
           </ul>
             
           See <a href="design_details.html" target="_blank">technical details</a> for an overview of how it could work with other OBI ontologies.  </p> </small>
       </div>
     </div>
 
-    <div class="row callout footer">
+    <div class="row footer">
       <div class="large-12 columns text-center">
         <p>Produced by the <a href="www.irida.ca" target="_blank">IRIDA project</a> and <a href="https://github.com/Public-Health-Bioinformatics" target="_blank">Public Health Bioinformatics</a> in conjunction with the <a href="https://github.com/GenEpiO/genepio/wiki" target="_blank">GenEpiO Consortium</a></p>
       </div>

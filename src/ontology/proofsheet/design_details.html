@@ -1,0 +1,71 @@
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ontology Entity Mart Prototype - technical details</title>
+    <link rel="stylesheet" href="css/foundation.min.css">
+    <link rel="stylesheet" href="css/foundation-icons/foundation-icons.css">
+    <link rel="stylesheet" href="css/app.css">
+   
+  </head>
+  <body>
+    <div class="row">
+      <div class="large-12 columns text-center">
+        <h1>Ontology Entity Mart - Technical Details</h1>
+      </div>
+    </div>
+
+      <div class="row">
+        <div class="large-1 medium-1 columns">&nbsp;</div>
+        <div class="large-5 medium-5 columns">
+          <h4>For proper display of terms and entities in the Ontology Entity Mart:</h4>
+          <p> References to data specifications, primitive fields and units must be set up.  A brief summary of features is provided below. <strong> Note: Currently items within a group are only ordered alphabetically in the Entity Mart</strong>. We will provide a solution for custom sorting in the coming months.</p>
+          <ul>
+            <li> GenEpiO introduces a "has primitive value spec" object-property relationship for a measurable that indicates what xmls:XXXXX data type it is.  Typically one adds an axiom like "'has primitive value spec' some xmls:float" to a measurable.</li>
+            <li> In Protege, one is allowed to place additional constraints on primitive data type content:
+            <ul>
+              <li> Integers can have ranges specified: 'has primitive value spec' some unsignedByte[>= "0"^^unsignedByte , <= "14"^^unsignedByte] </li>
+              <li> Strings can have min/max/exact length specified: 'has primitive value spec' max 1 string[maxLength "6"^^string]</li>
+              <li> Strings can have regular expression matching: (e.g. for e-coli serotype K antigen) 'has primitive value spec' some string[pattern "K(1|2a|2ac|3|4|5|6|7|8|9|10|11|12|13|14|15|16|18a|18ab|19|... |101|102|103|X104|X105|X106)"]" </li>
+              <li> Categorical selection items can be enhanced with dynamic ontology lookup (of source ontology of selected term id) via a "UI preferred feature" = lookup annotation.</li>
+
+            <li> We add one or more permissible units to a measurable by using the OBI "has measurement unit label" object property, e.g. for "pH measurement" we have "'has measurement unit label' some pH".  The ontology's list of units needs to be prepared of course; we've tried to use the <a href="http://purl.obolibrary.org/obo/uo.owl" target="_blank">Units of Measurement</a> (UO) for most of GenEpiO's units. (The future plan here is to allow unit conversion during data input).</li>
+
+            <li> Every picklist must be made a member (subclass of) the OBI <a href="http://purl.obolibrary.org/obo/OBI_0000938" target="_blank">categorical measurement datum</a> class.  This class has an "'has primitive value spec' some anyURI" which is inherited by its members.</li>
+
+            <li> Each form/report group of fields must be made a member (subclass) of the OBI <a href="http://purl.obolibrary.org/obo/OBI_0000658" target="_blank">data representational model</a>.  To indicate that a particular categorical or measurable field is part of a form/report group, use the OBI "has value specification" relation to connect the field, e.g. "'line list row record' 'has value specification' some 'symptom record'".</li>
+          </ul>
+          </li>
+          </ul>
+        </div>
+
+        <div class="large-5 medium-5 columns">
+          <h4>Command line:</h4>
+          <p>To convert an OBI compatible OWL ontology (and its include files) into a json data structure like <a href="https://github.com/GenEpiO/genepio/blob/master/proofsheet/ontology_ui.json" target="_blank">this one</a>, run:</p>
+          <p><strong>&gt; jsonimo.py [path to your ontology]</strong></p>
+          <p>The program assumes all include files for your ontology are provided in an "include/" folder under the ontology main file.  To see an HTML version of this, rendered by this page, you need to have this page and the ontology_ui.json file served from a webserver.  An easy way to do that is to temporarily run a minimal webserver in the same directory:</p>
+
+           <p><strong>&gt; python -m SimpleHTTPServer </strong></p>
+
+           <p>Then reload this file (usually at the address <strong>http://localhost:8000/</strong> ) to see an HTML rendering of the entities as forms.</p>
+           <p>Currently, because of inappropriate relations between entities, circular loops might be possible in rendering form elements.  A recursive depth limit of 20 descendant form elements has been instituted for the form rendering.  A loop that exceeds this amount is exited, and is reported in the browser's javascript console as an "AWOL loop".</p>
+        </div>
+        <div class="large-1 medium-1 columns"></div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-12 columns text-center">
+        <p>Produced by the <a href="www.irida.ca" target="_blank">IRIDA project</a> and <a href="https://github.com/Public-Health-Bioinformatics" target="_blank">Public Health Bioinformatics</a><br/> in conjunction with the <a href="https://github.com/GenEpiO/genepio/wiki" target="_blank">GenEpiO Consortium</a></p>
+      </div>
+    </div>
+
+    <script src="js/vendor/jquery.js"></script>
+    <script src="js/vendor/what-input.js"></script>
+    <script src="js/vendor/foundation.min.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+
+</html>

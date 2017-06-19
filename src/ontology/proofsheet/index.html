@@ -1,103 +1,278 @@
 <!doctype html>
 <html class="no-js" lang="en" dir="ltr">
-  <head>
+  <head profile="http://www.w3.org/2005/10/profile">
+  <link rel="icon" type="image/ico" href="favicon.ico">
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ontology UI Proof Sheet</title>
+    <title>Ontology Entity Mart Prototype</title>
     <link rel="stylesheet" href="css/foundation.min.css">
+    <link rel="stylesheet" href="css/foundation-icons/foundation-icons.css">
     <link rel="stylesheet" href="css/foundation-datepicker.min.css">
-    <!-- trying out either of these -->
-    <link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-    <!-- link rel="stylesheet" href="css/foundation-icons/foundation-icons.css" -->
-    
+    <link rel="stylesheet" href="js/chosen/chosen.css">
     <link rel="stylesheet" href="css/app.css">
-   
   </head>
   <body>
-    <div class="row">
+    <div class="row" style="background-color:#2199e8;color:white">
       <div class="large-12 columns text-center">
-        <h1>Ontology UI Proof Sheet</h1>
-        <h4>Produced by the <a href="www.irida.ca" target="_blank">IRIDA project</a> and <a href="https://github.com/Public-Health-Bioinformatics" target="_blank">Public Health Bioinformatics</a><br/> in conjunction with the <a href="https://github.com/GenEpiO/genepio/wiki" target="_blank">GenEpiO Consortium</a></h4>
+        <div class="field-group" style="float:right">
+          <button class="disabled">Login</button>
+          <i class="fi-widget large"></i>
+        </div>
+        <!-- LOGIN / LOGOUT GOES HERE -->
+
+        <h1>Ontology Entity Mart Prototype</h1>
       </div>
     </div>
-
+    <br/>
     <div class="row">
-      <div class="large-12 columns">
-        <div class="callout">
-          <p>This page presents the "Data Representational Model" entities of an Ontology for Biomedical Investigations (OBI) conformant ontology as HTML forms.  By adding specifications for measurable data elements to their ontology, an ontology manager can then see how they translate over to form input elements that would typically show up in a web application.  Here <strong>in-development</strong> <a href="https://github.com/GenEpiO/genepio" target="_blank">GenEpiO</a> measurables and data collection entities are shown. A term's preferred name, definition, synonyms and database cross-reference fields are shown directly or by mousing over a field label or its menu indicator.</p>
-          <p>See <a data-open="modalTechnical">technical details</a> for an overview of how it could work with other OBI ontologies.  <a onclick="renderForm('obo:GENEPIO_0001740')"> Here's </a> a list of fields for a line list. <a onclick="renderForm('obo:GENEPIO_0001624')">Here</a> are examples of measurables with units.  You can use a browser extension like Chrome Annotary to add comments to share between a review group.  </p> 
+
+      <!-- ************************ ONTOLOGY MENU AND SEARCH ********************* -->
+      <div class="large-4 medium-4 columns" id="sidebar">
+      <!-- data-options="scroll_to_content: false" data-options="deep_linking:true" -->
+        <ul class="tabs" data-tabs id="entity-tabs" >
+          <li class="tabs-title is-active"><a href="#panelOntology" aria-selected="true">Ontologies</a></li>
+          <li class="tabs-title"><a href="#panelEntities">Browse</a></li>
+          <li class="tabs-title"><a href="#panel2">Search</a></li>
+        </ul>
+
+        <div id="tabsNavigation" class="tabs-content" data-tabs-content="entity-tabs"> 
+          <div style="padding:10px 10px 0 10px">
+            <select name="ontology">
+              <option value="genepio" selected="selected">Genomic Epidemiology Ontology (GenEpiO)</option>
+              <option value="foodon">Food Ontology (FoodOn)</option>
+            </select>
+          </div>
+
+          <!-- ******************* ONTOLOGY MENU ******************* -->
+          <div class="tabs-panel is-active" id="panelOntology" style="padding:0">
+            <div class="infoBox">
+              <p>Details about an ontology selected above are shown here.</p>
+              <p>Browsing, searching and shopping for ontology terms can only 
+              involve one version of an ontology at a time.</p>
+            </div>
+          </div>
+
+          <!-- ******************* ENTITY MENU ********************* -->
+          <div class="tabs-panel" id="panelEntities" style="padding:0">
+            <ul class="vertical menu" id="entityMenu" data-accordion-menu data-deep-link></ul>
+          </div>
+
+          <!-- ************************ SEARCH ********************* -->
+          <div class="tabs-panel" id="panel2">
+            <form data-abide="" novalidate="novalidate" lpformnum="2">
+              <div class="input-group">
+                <input id="searchField" class="input-group-field" type="text" placeholder="Search for a term (3 characters or more)" pattern="alpha">
+              </div>
+            </form> 
+
+            <form id="searchResults">Search results appear here...
+            </form>
+
+
+          </div>
+
         </div>
 
+        <br/>
+       
+      </div>
+
+      <!-- ************************ CONTENT AREA ********************* -->
+      <div class="large-6 medium-6 columns">
+        <ul class="tabs" data-tabs id="content-tabs" >
+          <li class="tabs-title is-active"><a href="#content" aria-selected="true">Form View</a></li>
+          <li class="tabs-title"><a href="#panelDataSpecification">Data Specification</a></li>
+          <li class="tabs-title"><a href="#panelDiscuss">Discuss</a></li>
+          <li class="tabs-title"><a href="#panelCart">Cart<i class="fi-shopping-cart" id="shoppingCartIcon"></i> &nbsp; </a></li>
+          <li class="tabs-title"><a href="#panel3">My Packages<i class="fi-folder"></i> &nbsp; </a></li>
+        </ul>
+
+        <div id="tabsContent" class="tabs-content" data-tabs-content="content-tabs"> 
+          <!-- ************************* FORM VIEW ******************* -->
+          <div class="tabs-panel is-active" id="content">
+            <form id="mainForm" data-abide="ajax">
+              <div class="infoBox">
+                Select an ontology item from the "Browse" or "Search" menu to see how it would be presented as a form.
+              </div>
+            </form>
+
+            <!-- ************************* FORM CONTROLS ******************* -->
+            <div class="container" style="border-top:1px dotted silver;padding:10px">
+             
+              <div class="row" style="font-size:.8rem">
+                Legend: <div style="display:inline-block;vertical-align:top">
+                  <i class="fi-shopping-cart include"></i> add item and its descendants to shopping cart<br/>
+                  <i class="fi-shopping-cart exclude"></i> filter out descendant<br/>
+                  <i class="fi-magnifying-glass" style="color:lightblue"></i> show ontology details for item.<br/>
+                  <input required size="2" style="height:13px" /> field requires a value
+                </div>
+              </div>
+              <br/>
+
+              <div class="row">
+                <div class="switch tiny" style="float:left;margin-right:10px">
+                  <input class="switch-input" id="toggleIdVisibility" type="checkbox" name="toggleIdVisibility">
+                  <label class="switch-paddle" for="toggleIdVisibility">
+                    <span class="show-for-sr">Toggle ontology detail view</span>
+                  </label>
+                </div>
+                <label class="left" for="toggleIdVisibility">Toggle ontology details</label>
+              </div>
+
+              <div class="row">
+                <div class="switch tiny" style="float:left;margin-right:10px">
+                  <input class="switch-input" id="toggleMinimalForm" type="checkbox" name="toggleMinimalForm">
+                  <label class="switch-paddle" for="toggleMinimalForm">
+                    <span class="show-for-sr">Minimize form view</span>
+                  </label>
+                </div>
+                <label class="left" for="toggleMinimalForm">Minimize form view (empty optional items are collapsed)</label>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- ******************* DATA SPECIFICATION **************** -->
+          <div class="tabs-panel" id="panelDataSpecification">
+            <button class="button icon fi-download float-right" title="download" style="margin-left:10px">JSON</button>
+            <button class="button icon fi-download float-right" title="download">MS Excel</button>
+
+            <div id="helpDataSpecification" class="infoBox">
+              The entity form and downloadable spreadsheet are driven by a JSON 
+              specification of entities, their fields, picklists and unit components.
+            </div>
+
+            <pre id="dataSpecification"></pre>
+
+          </div>
+
+          <!-- ******************* DISCUSSION **************** -->
+          <div class="tabs-panel" id="panelDiscuss">
+            
+            <div id="panelDiscussTerm"></div>
+
+            <div class="infoBox">
+              <p>Discussion about a selected ontology term (the top-level one
+              shown in the Form View) occurs here.  One can select a term by
+              browsing or searching, or from the shopping cart.</p>
+              <!-- p>(You can also use a browser extension like Chrome Annotary to add comments to share between a review group.)</p -->
+            </div>
+
+
+          </div>
+
+          <!-- ********************** SHOPPING CART ******************* -->
+          <div class="tabs-panel" id="panelCart">
+            <div style="padding-right:16px">
+              <a href="#" id="shoppingCartTrash" class="icon fi-trash" title="empty the cart"></a>
+            </div>
+            <form id="shoppingCart" class="callout" style="clear:both">
+            </form>
+  
+            <div class="infoBox">Your entity shopping cart is displayed here. You can convert it into a downloadable package.</div>
+
+            <div class="row">
+              <button class="button" data-toggle="makePackageForm">make package</button>
+              <div class="dropdown-pane top" id="makePackageForm" data-dropdown data-hover="true" data-hover-pane="true"  data-auto-focus="true">
+                <div class="input-group" >
+                  <label>Package Name</label>
+                  <input name="name" class="input-group-field" type="text" placeholder="Enter name of new package" pattern="alpha" />
+                  <label>Description</label>
+                  <input name="description" class="input-group-field" type="text" placeholder="Enter Description" pattern="alpha" />
+                  <button id="makePackageButton" class="button" type="submit">submit</button>
+                </div>
+              </div>
+            </div>
+
+            <div style="font-size:.8rem;clear:both">
+              Legend: 
+              <i class="fi-shopping-cart include"></i> include item and its descendants; 
+              <i class="fi-shopping-cart exclude"></i> filter out descendant
+              <br/>
+              <i>Click on an item to see its form view.  Click on an item's cart to filter or remove it.</i>
+            </div>
+
+          </div>
+
+          <!-- ********************** MY PACKAGES ******************* -->
+          <div class="tabs-panel" id="panel3">
+            <div class="infoBox">
+
+              <p>If you login, your persistent list 
+              of downloadable packages will be listed here.</p> 
+
+              <p>A package is a collection of ontology term and entity 
+              identifiers and filters generated from a shopping list. 
+              A package enables generation of an ontology-driven entity 
+              specification file (as an Excel spreadsheet or in JSON format) 
+              which indicates term names, synonyms, definitions, and categorical 
+              and numeric variable details.  A specification file can be periodically regenerated from a package
+              so that new ontology updates can be incorporated into it.  
+              A specification can be used by software and data integration 
+              developers to facilitate data entry, display and exchange.</p>  
+              
+              <p> A package cannot contain terms from two 
+              versions of an ontology, but it can contain more than one ontology.</p>
+
+              <p>To download a JSON or excel specification from a package, click on its name, and
+              then view the "Data Specification" tab where it will be regenerated.</p>
+
+              <p>One can edit a package to adjust its name or description.  Upgrading a package
+              involves changing its ontology version number(s).  A differential list of changes
+              is provided so that decisions can be made about what new terms to accept or filter out.</p>
+
+            </div>
+
+            <div class="package" data-id="123">
+              <a href="#" class="icon fi-download" title="download"></a>
+              <a href="#" class="icon fi-trash" title="delete package"></a>
+              <a href="#" class="icon fi-plus" title="upgrade package"><span class="small">upgrade</span></a>
+              <a href="#" class="icon fi-pencil" title="edit"></a>
+
+              <a>My example download package</a>
+              <p>This is a description about my package.  It has so many interesting standards and
+               other numeric and categorical variables in it!<br/>
+              Ontologies: GenEpio v0.3.1</p>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+      <div class="large-2 medium-2 columns" id="rightbar">
+        <br/>
+        <small><p>In this <b>prototype</b> software selected entities of an Ontology for Biomedical Investigations (OBI) conformant ontology are presented in HTML forms.  Here the <a href="https://github.com/GenEpiO/genepio" target="_blank">GenEpiO</a> ontology datums and data collection entities are shown, including term preferred name, definition, synonyms and database cross-reference fields.</p>
+          <p>Example forms:
+          <ul><li><a href="#obo:GENEPIO_0001740">line list fields</a></li>
+          <li> <a href="#obo:GENEPIO_0001624">numeric data with units</a></li>
+          </ul>
+            
+          See <a href="design_details.html" target="_blank">technical details</a> for an overview of how it could work with other OBI ontologies.  </p> </small>
       </div>
     </div>
-    <div class="row">
-      <div class="large-4 medium-4 columns" id="sidebar">
-        <p>OBI Data Specifications
-        <ul class="accordion vertical menu" data-accordion-menu></ul>
+
+    <div class="row footer">
+      <div class="large-12 columns text-center">
+        <p>Produced by the <a href="www.irida.ca" target="_blank">IRIDA project</a> and <a href="https://github.com/Public-Health-Bioinformatics" target="_blank">Public Health Bioinformatics</a> in conjunction with the <a href="https://github.com/GenEpiO/genepio/wiki" target="_blank">GenEpiO Consortium</a></p>
       </div>
-      <div class="large-6 medium-6 columns" style="min-height:600px;background-color:silver">
-        <h4>Proof Sheet</h4>
-        <div id="content">
-          <form id="mainForm" data-abide></form>
-      </div>
-      <div class="large-2 medium-2 columns" id="rightbar"></div>
     </div>
 
 
     <div class="reveal small" id="modalEntity" data-reveal>
-
       <button class="close-button" data-close aria-label="Close reveal" type="button">
         <span aria-hidden="true">&times;</span>
       </button>
       <div class="row"></div>
     </div>
 
-    <div class="reveal large-10 medium-6" id="modalTechnical" data-reveal style="width:auto">
-
-      <button class="close-button" data-close aria-label="Close reveal" type="button">
-        <span aria-hidden="true">&times;</span>
-      </button>
-      <div class="row">
-        <div class="large-6 medium-6 columns">
-          <h4>In the ontology:</h4>
-          <p> References to data specifications, primitive fields and units must be set up.  A brief summary of features is provided below. <strong> Note: Currently items within a group are only ordered alphabetically on the Proof Sheet</strong>. We will provide a solution for custom sorting in the coming months.</p>
-          <ul>
-            <li> GenEpiO introduces a "has primitive value spec" object-property relationship for a measurable that indicates what xmls:XXXXX data type it is.  Typically one adds an axiom like "'has primitive value spec' some xmls:float" to a measurable.</li>
-            <li> In Protege, one is allowed to place additional constraints on primitive data type content:
-            <ul>
-              <li> Integers can have ranges specified: 'has primitive value spec' some unsignedByte[>= "0"^^unsignedByte , <= "14"^^unsignedByte] </li>
-              <li> Strings can have min/max/exact length specified: 'has primitive value spec' max 1 string[maxLength "6"^^string]</li>
-              <li> Strings can have regular expression matching: (e.g. for e-coli serotype K antigen) 'has primitive value spec' some string[pattern "K(1|2a|2ac|3|4|5|6|7|8|9|10|11|12|13|14|15|16|18a|18ab|19|... |101|102|103|X104|X105|X106)"]" </li>
-              <li> Categorical selection items can be enhanced with dynamic ontology lookup (of source ontology of selected term id) via a "UI preferred feature" = lookup annotation.</li>
-
-            <li> We add one or more permissible units to a measurable by using the OBI "has measurement unit label" object property, e.g. for "pH measurement" we have "'has measurement unit label' some pH".  The ontology's list of units needs to be prepared of course; we've tried to use the <a href="http://purl.obolibrary.org/obo/uo.owl" target="_blank">Units of Measurement</a> (UO) for most of GenEpiO's units. (The future plan here is to allow unit conversion during data input).</li>
-
-            <li> Every picklist must be made a member (subclass of) the OBI <a href="http://purl.obolibrary.org/obo/OBI_0000938" target="_blank">categorical measurement datum</a> class.  This class has an "'has primitive value spec' some anyURI" which is inherited by its members.</li>
-
-            <li> Each form/report group of fields must be made a member (subclass) of the OBI <a href="http://purl.obolibrary.org/obo/OBI_0000658" target="_blank">data representational model</a>.  To indicate that a particular categorical or measurable field is part of a form/report group, use the OBI "has value specification" relation to connect the field, e.g. "'line list row record' 'has value specification' some 'symptom record'".</li>
-          </ul>
-        </div>
-        <div class="large-6 medium-6 columns">
-          <h4>Command line:</h4>
-          <p>To convert an OBI compatible OWL ontology (and its include files) into a json data structure like <a href="https://github.com/GenEpiO/genepio/blob/master/proofsheet/ontology_ui.json" target="_blank">this one</a>, run:</p>
-          <p><strong>&gt; jsonimo.py [path to your ontology]</strong></p>
-          <p>The program assumes all include files for your ontology are provided in an "include/" folder under the ontology main file.  To see an HTML version of this, rendered by this page, you need to have this page and the ontology_ui.json file served from a webserver.  An easy way to do that is to temporarily run a minimal webserver in the same directory:</p>
-
-           <p><strong>&gt; python -m SimpleHTTPServer </strong></p>
-
-           <p>Then reload this file (usually at the address http://localhost:8000/ ) to see an HTML rendering of the entities as forms.</p>
-           <p>Currently, because of inappropriate relations between entities, circular loops might be possible in rendering form elements.  A recursive depth limit of 20 descendant form elements has been instituted for the form rendering.  A loop that exceeds this amount is exited, and is reported in the browser's javascript console as an "AWOL loop".</p>
-        </div>
-
-      </div>
-
-    </div>
-
     <script src="js/vendor/jquery.js"></script>
     <script src="js/vendor/what-input.js"></script>
     <script src="js/vendor/foundation.min.js"></script>
-    <script src="js/foundation-datepicker.js"></script>
+    <script src="js/vendor/foundation-datepicker.js"></script>
+    <script src="js/OntologyForm.js"></script>
+    <script src="js/chosen/chosen.jquery.min.js" type="text/javascript"></script>
     <script src="js/app.js"></script>
   </body>
 

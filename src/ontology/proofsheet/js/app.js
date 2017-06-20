@@ -21,6 +21,7 @@
 	 - basic datatype & precision standard hould be a function of unit, i.e. annotated onto unit choice for this field.
 	 - disjunction tabbed interface has wrong required status?
 	 - for select pulldown lists, enable mouseover of selected term to provide more detail, e.g. ontology id.
+	 - FIX: contact specification - physician inherits first name, last name etc from person, but cardinality not shown.
 
 
 
@@ -33,8 +34,6 @@
 
 data = {}
 bag = {}
-formatD = 'yyyy-mm-dd'
-formatT = 'Thh:ii:SS'
 shoppingCart=[]
 shoppingCartOff=[]
 searchDB = ''
@@ -53,7 +52,7 @@ top.focusEntityId = null
 
 $( document ).ready(function() {
 
-	initFoundation()
+	OntologyForm.initFoundation()
 
 	$.getJSON('ontology_ui.json', function( data ) {
 		// Setup Zurb Foundation user interface and form validation
@@ -348,6 +347,19 @@ function cartCheck(ontologyId) {
 			return
 		}
 	}
+	
+	if (formItem.is('.include')) {
+		// ITEM already in shopping list, so downgrade to "exclude" list.
+		items.removeClass('include').addClass('exclude')
+
+		// If item is NOT top-level in form, we're done.
+		if (formItem.parent('form').length == 0 ) {
+		// otherwise 
+			itemAnimate('#shoppingCartIcon', 'attention')
+			return
+		}
+		// Otherwise, for top-level items, drop it immediately via .exclude state.
+	}
 	if (formItem.is('.exclude')) {
 		// Item on exclusion list, so drop it entirely
 		items.removeClass('exclude')
@@ -356,11 +368,7 @@ function cartCheck(ontologyId) {
 		mainFormEntity.add(mainFormEntity.find('div.field-wrapper')).removeClass('include, exclude')
 		cartItem.remove()
 	}
-	else if (formItem.is('.include')) {
-		// ITEM already in shopping list so downgrade to "exclude" list.
-		items.removeClass('include').addClass('exclude')
-		itemAnimate('#shoppingCartIcon', 'attention')
-	}
+
 }
 
 function itemAnimate(item, effectClass) {
@@ -465,12 +473,6 @@ function getdataSpecification(entityId) {
 }
 
 
-function setModalCode(obj, header) {
-	// This displays the entity json object as an indented hierarchy of text inside html <pre> tag.
-	$("#modalEntity >div.row").html('<p><strong>' + header + '</strong></p>\n<pre style="white-space: pre-wrap;">' + JSON.stringify(obj, null, 2) +'</pre>\n' )
-	$("#modalEntity").foundation('open') //.foundation()
-
-}
 
 function getEntitySpec(spec, entityId = null, inherited = false) {
 	if (spec == null)
@@ -520,41 +522,5 @@ function getEntitySpecItems(spec, entity, type, table, inherited = false) {
 				spec[table][partId] = top.data[table][partId]
 				getEntitySpec(spec, partId)
 			}
-	}
-}
-
-
-
-function initFoundation() {
-
-	Foundation.Abide.defaults.live_validate = true // validate the form as you go
-	Foundation.Abide.defaults.validate_on_blur = true // validate whenever you focus/blur on an input field
-	focus_on_invalid : true, // automatically bring the focus to an invalid input field
-	Foundation.Abide.defaults.error_labels = true, // labels with a for="inputId" will recieve an `error` class
-	// the amount of time Abide will take before it validates the form (in ms). 
-	// smaller time will result in faster validation
-	Foundation.Abide.defaults.timeout = 1000
-	Foundation.Abide.defaults.patterns = {
-		alpha: /^[a-zA-Z]+$/,
-		alpha_numeric : /^[a-zA-Z0-9]+$/,
-		integer: /^[-+]?\d+$/,
-		number: /^[-+]?[1-9]\d*$/,
-		decimal: /^[-+]?[1-9]\d*.\d+$/,
-
-		// http://www.whatwg.org/specs/web-apps/current-work/multipage/states-of-the-type-attribute.html#valid-e-mail-address
-		email : /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,
-
-		url: /(https?|ftp|file|ssh):\/\/(((([a-zA-Z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:)*@)?(((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]))|((([a-zA-Z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-zA-Z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-zA-Z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-zA-Z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-zA-Z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-zA-Z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-zA-Z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-zA-Z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?)(:\d*)?)(\/((([a-zA-Z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)+(\/(([a-zA-Z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*)?)?(\?((([a-zA-Z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|[\uE000-\uF8FF]|\/|\?)*)?(\#((([a-zA-Z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|\/|\?)*)?/,
-		// abc.de
-		domain: /^([a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,6}$/,
-
-		datetime: /([0-2][0-9]{3})\-([0-1][0-9])\-([0-3][0-9])T([0-5][0-9])\:([0-5][0-9])\:([0-5][0-9])(Z|([\-\+]([0-1][0-9])\:00))/,
-		// YYYY-MM-DD
-		date: /(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))/,
-		// HH:MM:SS
-		time : /(0[0-9]|1[0-9]|2[0-3])(:[0-5][0-9]){2}/,
-		dateISO: /\d{4}[\/\-]\d{1,2}[\/\-]\d{1,2}/,
-	      // MM/DD/YYYY
-	      month_day_year : /(0[1-9]|1[012])[- \/.](0[1-9]|[12][0-9]|3[01])[- \/.](19|20)\d\d/,
 	}
 }

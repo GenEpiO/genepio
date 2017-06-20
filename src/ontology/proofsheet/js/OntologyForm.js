@@ -12,6 +12,8 @@ Date: June 19, 2017
 */
 function OntologyForm(domId, specification) {
 	var self = this
+	self.formatD = 'yyyy-mm-dd'
+	self.formatT = 'Thh:ii:SS'
 	self.formDomId = $(domId)
 	self.specification = specification
 	self.ontologyDetails = false
@@ -23,7 +25,8 @@ function OntologyForm(domId, specification) {
 		self.formDomId.off().empty() //.html('')
 
 		// When renderEntity is called, activate its tab
-		$('#content-tabs').foundation('selectTab', '#content'); 
+		if ($('#content-tabs').length > 0)
+			$('#content-tabs').foundation('selectTab', '#content'); 
 
 		top.focusEntityId = entityId;
 
@@ -40,9 +43,9 @@ function OntologyForm(domId, specification) {
 			self.formDomId.html(form_html) //.foundation()
 
 			// Set up UI widget for all date inputs; using http://foundation-datepicker.peterbeno.com/example.html
-			$('input[placeholder="date"]').fdatepicker({format: formatD, disableDblClickSelection: true});
-			$('input[placeholder="dateTime"]').fdatepicker({format: formatD+formatT, disableDblClickSelection: true});
-			$('input[placeholder="dateTimeStamp"]').fdatepicker({format: formatD+formatT, disableDblClickSelection: true});
+			$('input[placeholder="date"]').fdatepicker({format: self.formatD, disableDblClickSelection: true});
+			$('input[placeholder="dateTime"]').fdatepicker({format: self.formatD + self.formatT, disableDblClickSelection: true});
+			$('input[placeholder="dateTimeStamp"]').fdatepicker({format: self.formatD + self.formatT, disableDblClickSelection: true});
 
 			var entity = self.specification['specifications'][entityId]
 			if (!entity) entity = self.specification['picklists'][entityId]
@@ -58,7 +61,7 @@ function OntologyForm(domId, specification) {
 			}
 			window.document.title = title
 
-			setShoppingCart() //BUT THIS IS BACK IN app.js CODE.
+			if (window.setShoppingCart) setShoppingCart() //BUT THIS IS BACK IN app.js CODE.
 
 		 	// Actually load an existing data record
 		 	//loadFormData()
@@ -67,7 +70,7 @@ function OntologyForm(domId, specification) {
 			setCardinality() 
 
 			// Fill specification tab.  THIS COULD BE DONE ON SHOW OF SPEC TAB INSTEAD.
-		 	getdataSpecification(entityId) 
+		 	if (window.getdataSpecification) getdataSpecification(entityId) 
 		 	
 		 	// All of form's regular <select> inputs (e.g. NOT the ones for picking units)
 		 	// get some extra smarts for type-as-you-go filtering.
@@ -159,60 +162,65 @@ function OntologyForm(domId, specification) {
 		*/
 		var cardinalityLabel = ''
 
-		$('#mainForm div.field-wrapper').each(function(index) {
+		self.formDomId.find('div.field-wrapper').each(function(index) {
 			var min = $(this).attr("data-cardinality-min") // || false
 			var max = $(this).attr("data-cardinality-max") // || false
 			var required = false
 
-			if (min) {
-				if (max) {
-					if (min == max) {
-						if (min > 1) {
-							cardinalityLabel = min + ' required'
-							required = true
-						}
-						else { 
-							if (min == 1) {
-								cardinalityLabel = 'required'
+			if (min || max) {
+				if (min) {
+					if (max) {
+						if (min == max) {
+							if (min > 1) {
+								cardinalityLabel = min + ' required'
 								required = true
 							}
-							else {} // 0 or less is nonsense.
+							else { 
+								if (min == 1) {
+									cardinalityLabel = 'required'
+									required = true
+								}
+								else {} // 0 or less is nonsense.
+							}
+						}
+						else {
+							cardinalityLabel = 'from ' + min + ' to ' + max + ' required'
+							required = true
 						}
 					}
 					else {
-						cardinalityLabel = 'from ' + min + ' to ' + max + ' required'
-						required = true
+						if (min == 0) 
+							cardinalityLabel = 'optional' // no max
+						else
+							if (min > 0) {
+								cardinalityLabel = min + '+ required' // some minimum was given.
+								required = true
+							}
+						
 					}
 				}
-				else {
-					if (min == 0) 
-						cardinalityLabel = 'optional' // no max
-					else {
-						cardinalityLabel = min + '+ required' // some minimum was given.
-						required = true
-					}
-				}
-			}
-			else {
-				if (max) {// No min means not required.
+				else {// No min means not required.
+
 					if (max == 1)
 						cardinalityLabel = 'optional' // no max
 					else
 						cardinalityLabel = '<' + (parseInt(max) + 1) + ' items'
+
 				}
-			}
+				console.log(required)
+				if (required == true) {
+					$(this).addClass('required')
+					$(this).children('div.input-group > input').prop('required',true)
+				}
+				else
+					$(this).addClass('optional')
 
-			if (required == true) {
-				$(this).addClass( 'required')
-				$(this).find('div.input-group input').prop('required',true)
+				// Show optional and required status messages.
+				if (self.ontologyDetails && cardinalityLabel.length > 0 ) 
+					$(this).children('label') //children(".fi-shopping-cart")
+						.before('<span class="info label float-right">' + cardinalityLabel + '</span>')
 			}
-			else
-				$(this).addClass( 'optional')
-
-			// Show optional and required status messages.
-			if (self.ontologyDetails && cardinalityLabel.length > 0 ) 
-				$(this).children(".fi-shopping-cart").after('<span class="info label float-right">' + cardinalityLabel + '</span>')
-			
+				
 		})
 
 	}
@@ -244,6 +252,12 @@ function OntologyForm(domId, specification) {
 	}
 
 
+	setModalCode = function (obj, header) {
+		// This displays the entity json object as an indented hierarchy of text inside html <pre> tag.
+		$("#modalEntity > div.row").html('<p><strong>' + header + '</strong></p>\n<pre style="white-space: pre-wrap;">' + JSON.stringify(obj, null, 2) +'</pre>\n' )
+		$("#modalEntity").foundation('open') //.foundation()
+
+	}
 
 	/*********************** FORM PART RENDERING **********************/
 
@@ -462,8 +476,8 @@ function OntologyForm(domId, specification) {
 		htmlTabs += '</ul>' 
 		htmlTabContent += '</div>\n'
 
-		html = '<div class="field-wrapper input-tabs">' + htmlTabs + htmlTabContent + '</div>\n'
-		html +=	renderHelp(entity) + '<br/>\n'
+		html = '<div class="field-wrapper input-tabs">' + htmlTabs + htmlTabContent + renderHelp(entity) + '</div>\n'
+		html +=	'<br/>\n'
 		return html
 	}
 
@@ -478,8 +492,8 @@ function OntologyForm(domId, specification) {
 		html +=	'	<div class="input-group">\n'
 		html +=	'		<input class="input-group-field '+entity['id']+'" id="'+entity['domId']+'" type="text" ' + getStringConstraints(entity) + entity['disabled']  + getPlaceholder(entity) + '" />\n'
 	    html += 		renderUnits(entity)
-		html +=	'	</div>\n'
 		html +=		renderHelp(entity)
+		html +=	'	</div>\n'
 		return getFieldWrapper(entity, html)
 	}
 
@@ -492,8 +506,8 @@ function OntologyForm(domId, specification) {
 		html +=	'	<div class="input-group">\n'
 		html +=	'		<input class="input-group-field '+entity['id']+'" id="'+entity['domId']+'" type="text"' + entity['disabled'] + getPlaceholder(entity)+'" />\n'
 	    html += 		renderUnits(entity)
-		html +=	'	</div>\n'
 		html +=		renderHelp(entity)
+		html +=	'	</div>\n'
 		return getFieldWrapper(entity, html)
 
 		return html
@@ -505,8 +519,8 @@ function OntologyForm(domId, specification) {
 		html +=	'	<div class="input-group">\n'
 		html +=	'		<input class="input-group-field '+entity['id']+'" id="'+entity['domId']+'" type="number"' + entity['disabled'] + getIntegerConstraints(entity, minInclusive, maxInclusive) + getPlaceholder(entity) + '" pattern="integer" />\n'
 	    html += 		renderUnits(entity)
-		html +=	'	</div>\n'
 		html +=	renderHelp(entity)
+		html +=	'	</div>\n'
 		return getFieldWrapper(entity, html)
 	}
 
@@ -543,7 +557,7 @@ function OntologyForm(domId, specification) {
 		html +=				renderChoice(self.specification['picklists'][picklistId], 0)
 		html +=	'		</select>\n'
 		if ('lookup' in entity['features']) 
-			html += '		<a class="input-group-label small" onclick="getChoices(this,\''+entity['id']+'\')">more choices...</a>\n'
+			html += '		<a class="input-group-label" onclick="getChoices(this,\''+entity['id']+'\')">more choices...</a>\n'
 	
 		html += renderHelp(entity)
 		html +=	'	</div>\n'
@@ -626,7 +640,7 @@ function OntologyForm(domId, specification) {
 		if ('uiDefinition' in entity) definition = entity['uiDefinition'] 
 		else if (definition in entity) definition = entity['definition']
 		if (definition > '')
-			return '	<p class="help-text ' + entity['id'] + '">'+ definition+'</p>\n'
+			return '	<p class="helper-text ' + entity['id'] + '">'+ definition+'</p>\n'
 	  	return ''
 	 }
 
@@ -952,49 +966,88 @@ function OntologyForm(domId, specification) {
 		 The picklist's selection list tree can be dynamically extended/fetched?
 		*/
 		var select = $(helper).parent('div[class="input-group"]').find("select")
-		var term = select.val().split(":")[1]
-		var ontology = term.split("_")[0]
+		if (select.val() > '') {
+			var term = select.val().split(":")[1]
+			var ontology = term.split("_")[0]
 
-		// https://www.ebi.ac.uk/ols/api/ontologies/doid/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FDOID_0050589/children
-		// http://www.ebi.ac.uk/ols/api/ontologies/doid/terms?iri=http://purl.obolibrary.org/obo/DOID_77
+			// https://www.ebi.ac.uk/ols/api/ontologies/doid/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FDOID_0050589/children
+			// http://www.ebi.ac.uk/ols/api/ontologies/doid/terms?iri=http://purl.obolibrary.org/obo/DOID_77
 
-		fetchURL = 'https://www.ebi.ac.uk/ols/api/ontologies/'
-		fetchURL += ontology.toLowerCase()
-		fetchURL += '/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252F'
-		fetchURL += term
-		fetchURL += '/children'
+			fetchURL = 'https://www.ebi.ac.uk/ols/api/ontologies/'
+			fetchURL += ontology.toLowerCase()
+			fetchURL += '/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252F'
+			fetchURL += term
+			fetchURL += '/children'
 
 
-		$.ajax({
-			type: 'GET',
-			url: fetchURL,
-			timeout: 10000, //10 sec timeout
-			success: function( data ) {
-				msg = ''
-				if ('_embedded' in data) {
-					content=data._embedded.terms
-					labels = []
-					for (ptr in content) {
-						item = content[ptr]
-						//iri = item.iri
-						label = item.label
-						labels.push(label)
+			$.ajax({
+				type: 'GET',
+				url: fetchURL,
+				timeout: 10000, //10 sec timeout
+				success: function( data ) {
+					msg = ''
+					if ('_embedded' in data) {
+						content=data._embedded.terms
+						labels = []
+						for (ptr in content) {
+							item = content[ptr]
+							//iri = item.iri
+							label = item.label
+							labels.push(label)
+						}
+						labels.sort()
+						msg += labels.join('\n - ') 
+
+						alert ('DYNAMIC LOOKUP! These choices (subclasses of selected term) were dynamically retrieved from https://www.ebi.ac.uk/ols/:\n\n - ' + msg)
+						//alert( entityId + ":" + select.val())
 					}
-					labels.sort()
-					msg += labels.join('\n - ') 
+					else 
+						alert("Coming soon, dynamic lookup!\n\nYour choice has no underlying ontology selections")
+				},
+				error:function(XMLHttpRequest, textStatus, errorThrown) {alert('Dynamic Lookup is not currently available.  Either your internet connection is broken or the https://www.ebi.ac.uk/ols/ service is unavailable.')}
+			})
 
-					alert ('DYNAMIC LOOKUP! These choices (subclasses of selected term) were dynamically retrieved from https://www.ebi.ac.uk/ols/:\n\n - ' + msg)
-					//alert( entityId + ":" + select.val())
-				}
-				else 
-					alert("Coming soon, dynamic lookup!\n\nYour choice has no underlying ontology selections")
-			},
-			error:function(XMLHttpRequest, textStatus, errorThrown) {alert('Dynamic Lookup is not currently available.  Either your internet connection is broken or the https://www.ebi.ac.uk/ols/ service is unavailable.')}
-		})
-
-		return false
+			return false
+		}
+		else
+			alert('Select an item, then use "more choices..." to see if there are more fine-grained choices for it.')
 	}
+
 
 }
 
+// Implementing a static method for default zurb Foundation settings:
+OntologyForm.initFoundation = function() {
+
+	Foundation.Abide.defaults.live_validate = true // validate the form as you go
+	Foundation.Abide.defaults.validate_on_blur = true // validate whenever you focus/blur on an input field
+	focus_on_invalid : true, // automatically bring the focus to an invalid input field
+	Foundation.Abide.defaults.error_labels = true, // labels with a for="inputId" will recieve an `error` class
+	// the amount of time Abide will take before it validates the form (in ms). 
+	// smaller time will result in faster validation
+	Foundation.Abide.defaults.timeout = 1000
+	Foundation.Abide.defaults.patterns = {
+		alpha: /^[a-zA-Z]+$/,
+		alpha_numeric : /^[a-zA-Z0-9]+$/,
+		integer: /^[-+]?\d+$/,
+		number: /^[-+]?[1-9]\d*$/,
+		decimal: /^[-+]?[1-9]\d*.\d+$/,
+
+		// http://www.whatwg.org/specs/web-apps/current-work/multipage/states-of-the-type-attribute.html#valid-e-mail-address
+		email : /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,
+
+		url: /(https?|ftp|file|ssh):\/\/(((([a-zA-Z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:)*@)?(((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]))|((([a-zA-Z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-zA-Z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-zA-Z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-zA-Z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-zA-Z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-zA-Z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-zA-Z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-zA-Z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?)(:\d*)?)(\/((([a-zA-Z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)+(\/(([a-zA-Z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*)?)?(\?((([a-zA-Z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|[\uE000-\uF8FF]|\/|\?)*)?(\#((([a-zA-Z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|\/|\?)*)?/,
+		// abc.de
+		domain: /^([a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,6}$/,
+
+		datetime: /([0-2][0-9]{3})\-([0-1][0-9])\-([0-3][0-9])T([0-5][0-9])\:([0-5][0-9])\:([0-5][0-9])(Z|([\-\+]([0-1][0-9])\:00))/,
+		// YYYY-MM-DD
+		date: /(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))/,
+		// HH:MM:SS
+		time : /(0[0-9]|1[0-9]|2[0-3])(:[0-5][0-9]){2}/,
+		dateISO: /\d{4}[\/\-]\d{1,2}[\/\-]\d{1,2}/,
+	      // MM/DD/YYYY
+	      month_day_year : /(0[1-9]|1[012])[- \/.](0[1-9]|[12][0-9]|3[01])[- \/.](19|20)\d\d/,
+	}
+}
 

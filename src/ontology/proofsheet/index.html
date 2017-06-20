@@ -31,27 +31,76 @@
       <div class="large-4 medium-4 columns" id="sidebar">
       <!-- data-options="scroll_to_content: false" data-options="deep_linking:true" -->
         <ul class="tabs" data-tabs id="entity-tabs" >
-          <li class="tabs-title is-active"><a href="#panelOntology" aria-selected="true">Ontologies</a></li>
+          <li class="tabs-title is-active"><a href="#panelLibrary" aria-selected="true">Library</a></li>
           <li class="tabs-title"><a href="#panelEntities">Browse</a></li>
           <li class="tabs-title"><a href="#panel2">Search</a></li>
         </ul>
-
-        <div id="tabsNavigation" class="tabs-content" data-tabs-content="entity-tabs"> 
-          <div style="padding:10px 10px 0 10px">
+        <div style="padding:10px 10px 0 10px;border-left:1px solid #e6e6e6;border-right:1px solid #e6e6e6">
             <select name="ontology">
-              <option value="genepio" selected="selected">Genomic Epidemiology Ontology (GenEpiO)</option>
-              <option value="foodon">Food Ontology (FoodOn)</option>
+
+              <optgroup label="Ontologies">
+                <option value="genepio" selected="selected">Genomic Epidemiology Ontology (GenEpiO)</option>
+                <option value="foodon">Food Ontology (FoodOn)</option>
+              </optgroup>
+
+              <optgroup label="Shared Packages">
+                <option value="sharedpackage1">A shared Package, e.g. a atandard!<i class="fi-folder"></i></option>
+              </optgroup>
+
+              <optgroup label="My Packages">
+                <option value="mypackage1">My Example Package</option>
+              </optgroup>
             </select>
           </div>
+        <div id="tabsNavigation" class="tabs-content" data-tabs-content="entity-tabs"> 
+          
 
           <!-- ******************* ONTOLOGY MENU ******************* -->
-          <div class="tabs-panel is-active" id="panelOntology" style="padding:0">
+          <div class="tabs-panel is-active" id="panelLibrary" style="padding:0">
             <div class="infoBox">
-              <p>Details about an ontology selected above are shown here.</p>
-              <p>Browsing, searching and shopping for ontology terms can only 
-              involve one version of an ontology at a time.</p>
+              <p>Details about a selected ontology or package are shown here.
+              All other tabs focus on the selected resource.</p>
+              <p>Browsing, searching and shopping for terms can only 
+              involve one version of an ontology or package at a time.</p>
+
+              <p>If you login, your persistent list of downloadable packages 
+              will be listed in the "My Packages" section.</p> 
+
+              <p>A package is a collection of ontology term and entity 
+              identifiers and filters generated from a shopping list. 
+              A package enables generation of an ontology-driven entity 
+              specification file (as an Excel spreadsheet or in JSON format) 
+              which indicates term names, synonyms, definitions, and categorical 
+              and numeric variable details.  A specification file can be periodically regenerated from a package
+              so that new ontology updates can be incorporated into it.  
+              A specification can be used by software and data integration 
+              developers to facilitate data entry, display and exchange.</p>  
+              
+              <p> A package cannot contain terms from two 
+              versions of an ontology, but it can contain more than one ontology.</p>
+
+              <p>To download a JSON or excel specification from a package, click on its name, and
+              then view the "Data Specification" tab where it will be regenerated.</p>
+
+              <p>One can edit a package to adjust its name or description.  Upgrading a package
+              involves changing its ontology version number(s).  A differential list of changes
+              is provided so that decisions can be made about what new terms to accept or filter out.</p>
             </div>
+
+            <div class="package" data-id="123">
+              <a href="#" class="icon fi-download" title="download"></a>
+              <a href="#" class="icon fi-trash" title="delete package"></a>
+              <a href="#" class="icon fi-plus" title="upgrade package"><span class="small">upgrade</span></a>
+              <a href="#" class="icon fi-pencil" title="edit"></a>
+
+              <a>My example download package</a>
+              <p>This is a description about my package.  It has so many interesting standards and
+               other numeric and categorical variables in it!<br/>
+              Ontologies: GenEpio v0.3.1</p>
+            </div>
+
           </div>
+
 
           <!-- ******************* ENTITY MENU ********************* -->
           <div class="tabs-panel" id="panelEntities" style="padding:0">
@@ -62,7 +111,7 @@
           <div class="tabs-panel" id="panel2">
             <form data-abide="" novalidate="novalidate" lpformnum="2">
               <div class="input-group">
-                <input id="searchField" class="input-group-field" type="text" placeholder="Search for a term (3 characters or more)" pattern="alpha">
+                <input id="searchField" class="input-group-field" type="text" placeholder="Search for a term (3 characters or more)">
               </div>
             </form> 
 
@@ -85,13 +134,12 @@
           <li class="tabs-title"><a href="#panelDataSpecification">Data Specification</a></li>
           <li class="tabs-title"><a href="#panelDiscuss">Discuss</a></li>
           <li class="tabs-title"><a href="#panelCart">Cart<i class="fi-shopping-cart" id="shoppingCartIcon"></i> &nbsp; </a></li>
-          <li class="tabs-title"><a href="#panel3">My Packages<i class="fi-folder"></i> &nbsp; </a></li>
         </ul>
 
         <div id="tabsContent" class="tabs-content" data-tabs-content="content-tabs"> 
           <!-- ************************* FORM VIEW ******************* -->
           <div class="tabs-panel is-active" id="content">
-            <form id="mainForm" data-abide="ajax">
+            <form id="mainForm" data-abide="ajax" style="border:2px solid black;padding:5px">
               <div class="infoBox">
                 Select an ontology item from the "Browse" or "Search" menu to see how it would be presented as a form.
               </div>
@@ -99,16 +147,6 @@
 
             <!-- ************************* FORM CONTROLS ******************* -->
             <div class="container" style="border-top:1px dotted silver;padding:10px">
-             
-              <div class="row" style="font-size:.8rem">
-                Legend: <div style="display:inline-block;vertical-align:top">
-                  <i class="fi-shopping-cart include"></i> add item and its descendants to shopping cart<br/>
-                  <i class="fi-shopping-cart exclude"></i> filter out descendant<br/>
-                  <i class="fi-magnifying-glass" style="color:lightblue"></i> show ontology details for item.<br/>
-                  <input required size="2" style="height:13px" /> field requires a value
-                </div>
-              </div>
-              <br/>
 
               <div class="row">
                 <div class="switch tiny" style="float:left;margin-right:10px">
@@ -128,6 +166,15 @@
                   </label>
                 </div>
                 <label class="left" for="toggleMinimalForm">Minimize form view (empty optional items are collapsed)</label>
+              </div>
+
+              <div class="row" style="font-size:.9rem">
+                Legend: <div style="display:inline-block;vertical-align:top">
+                  <i class="fi-shopping-cart include"></i> click to add item and its descendants to shopping cart<br/>
+                  <i class="fi-shopping-cart exclude"></i> click to filter out descendant<br/>
+                  <i class="fi-magnifying-glass" style="color:lightblue"></i> see ontology details for item<br/>
+                  <input required size="2" style="height:15px;border-radius: 4px;" onclick="blur()" /> field requires a value
+                </div>
               </div>
 
             </div>
@@ -195,48 +242,7 @@
 
           </div>
 
-          <!-- ********************** MY PACKAGES ******************* -->
-          <div class="tabs-panel" id="panel3">
-            <div class="infoBox">
 
-              <p>If you login, your persistent list 
-              of downloadable packages will be listed here.</p> 
-
-              <p>A package is a collection of ontology term and entity 
-              identifiers and filters generated from a shopping list. 
-              A package enables generation of an ontology-driven entity 
-              specification file (as an Excel spreadsheet or in JSON format) 
-              which indicates term names, synonyms, definitions, and categorical 
-              and numeric variable details.  A specification file can be periodically regenerated from a package
-              so that new ontology updates can be incorporated into it.  
-              A specification can be used by software and data integration 
-              developers to facilitate data entry, display and exchange.</p>  
-              
-              <p> A package cannot contain terms from two 
-              versions of an ontology, but it can contain more than one ontology.</p>
-
-              <p>To download a JSON or excel specification from a package, click on its name, and
-              then view the "Data Specification" tab where it will be regenerated.</p>
-
-              <p>One can edit a package to adjust its name or description.  Upgrading a package
-              involves changing its ontology version number(s).  A differential list of changes
-              is provided so that decisions can be made about what new terms to accept or filter out.</p>
-
-            </div>
-
-            <div class="package" data-id="123">
-              <a href="#" class="icon fi-download" title="download"></a>
-              <a href="#" class="icon fi-trash" title="delete package"></a>
-              <a href="#" class="icon fi-plus" title="upgrade package"><span class="small">upgrade</span></a>
-              <a href="#" class="icon fi-pencil" title="edit"></a>
-
-              <a>My example download package</a>
-              <p>This is a description about my package.  It has so many interesting standards and
-               other numeric and categorical variables in it!<br/>
-              Ontologies: GenEpio v0.3.1</p>
-            </div>
-
-          </div>
 
         </div>
       </div>

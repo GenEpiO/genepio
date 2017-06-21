@@ -1,4 +1,4 @@
-/********************** Ontology Proof Sheet Prototype ************************
+/********************** Ontology Entity Mart Prototype ************************
 
 	This script provides the engine for displaying OBOFoundry.org compatible 
 	ontologies, allowing one to search and browse any data representation model 
@@ -14,16 +14,14 @@
 	http://sparql.hegroup.org/sparql?default-graph-uri=&query=SELECT+%3Fv+WHERE+%7B%3Fx+owl%3AversionIRI+%3Fv%7D&format=json   //&timeout=0&debug=on
 
 	TO DO:
-	 - Hyperlink form labels so user can view them independently of form they are in?
+
 	 - seems like URL geem/#ontologyID/... isn't updating browser address bar, or on a RELOAD to load Form View.
-	 - FIX: View Mockup data button triggering form submit.
 	 - FIX: merge picklist and specification dictionaries.
-	 - basic datatype & precision standard hould be a function of unit, i.e. annotated onto unit choice for this field.
+	 - basic datatype & precision standard should be a function of unit, i.e. annotated onto unit choice for this field.
 	 - disjunction tabbed interface has wrong required status?
 	 - for select pulldown lists, enable mouseover of selected term to provide more detail, e.g. ontology id.
 	 - FIX: contact specification - physician inherits first name, last name etc from person, but cardinality not shown.
-
-
+	 - Must do a better job of identifying and grouping top-level items
 
 	Author: Damion Dooley
 	Project: genepio.org/geem
@@ -33,11 +31,98 @@
 /*********** ALL THE SETUP ***************************************************/
 
 data = {}
-bag = {}
-shoppingCart=[]
-shoppingCartOff=[]
-searchDB = ''
-top.focusEntityId = null
+focusEntityId = null
+formSettings = {}
+
+$( document ).ready(function() {
+
+	OntologyForm.initFoundation()
+
+	$(window).on('hashchange',function(){ 
+		// GEEM focuses on entities by way of a URL with hash #[entityId]
+	    if (location.hash.length > 0)
+	    	// Better entity id detection?
+		   	if (location.hash.indexOf(':') != -1) { //.substr(0,5) =='#obo:'
+				top.focusEntityId = document.location.hash.substr(1).split('/',1)[0]
+				// CHECK FOR VALID ENTITY REFERENCE IN SOME ONTOLOGY.
+				// PREFIX SHOULD INDICATE WHICH ONTOLOGY SPEC FILE TO LOAD?
+				myForm.renderEntity(top.focusEntityId)
+
+				// When renderEntity is called, activate its tab
+				$('#content-tabs').foundation('selectTab', '#content'); 
+			}
+	});
+
+
+	// This control toggles the visibility of ontology ID's in the given 
+	// form content (for reference during content review)
+	$('input#toggleIdVisibility').on('change', function() {
+		top.formSettings.ontologyDetails = $(this).is(':checked')
+		myForm.renderEntity()
+	})
+
+	// Display all optional elements as label [+] for concise display.
+	$('input#toggleMinimalForm').on('change', function() {
+		top.formSettings.minimalForm = $(this).is(':checked')
+		myForm.renderEntity()
+	})
+
+	$('#selectSpecification').on('change', function() {
+		loadSpecification($(this).val())
+	})
+
+	// Provide type-as-you-go searching
+	$("#searchField").on('keyup', function() {
+		var text = $(this).val().toLowerCase()
+		searchAsYouType(top.data.specifications, text)
+	})
+
+	$("#searchResults").on('mouseenter','i.fi-arrow-up.dropdown', searchResultContext)
+	
+	$("#makePackageForm").on('submit', function() {
+		/* A package consists of 
+		{
+			name: string
+			description: string
+			version: int //auto-increment per update function.
+			ontologies:	[
+				{prefix: string // "genepio"; OBOFoundry ontology lower case name.
+				version: string // identifier or if none, GEEM download date.
+				}
+			] 
+			specifications:
+				{}
+
+		}
+
+
+		*/
+	})
+
+
+	$("#shoppingCart")
+		.on("click", 'div.cart-item', function(event) {
+			event.stopPropagation(); // otherwise parent cart items catch same click
+			if ($(event.target).is('i.fi-shopping-cart'))
+				// Change state of shopping cart item as indicated by div.cart-item.data-ontology-Id
+				cartCheck(this.dataset.ontologyId)
+			else
+				// Follow link if user didn't click
+				return navigateToForm(this.dataset.ontologyId)
+		})
+
+
+	$("#shoppingCartTrash").on('click', function() {
+		$('form#mainForm div[data-ontology-id]').removeClass('include exclude')
+		$('#shoppingCart').empty()
+	})
+
+	//Default load of GenEpiO
+	loadSpecification('data/ontology/genepio_ui.json')
+
+	
+});
+
 
 /*********** ACTION *****************************************************
 	This loads the json user interface oriented version of an ontology
@@ -49,108 +134,63 @@ top.focusEntityId = null
 		picklists
 	}
 */
+function loadSpecification(specification_file) {
+	$.ajax({
+		type: 'GET',
+		url: specification_file,
+		timeout: 10000, //10 sec timeout
+		success: function( specification ) {
 
-$( document ).ready(function() {
+			// Setup Zurb Foundation user interface and form validation
+			top.data = specification;
 
-	OntologyForm.initFoundation()
+			myForm = new OntologyForm("#mainForm", top.data, top.formSettings) // Provide ID of form to populate.
 
-	$.getJSON('ontology_ui.json', function( data ) {
-		// Setup Zurb Foundation user interface and form validation
-		top.data = data;
-		// Default entity to render:
-		top.focusEntityId = null
+			// Show Data Representation Model item menu on "Browse" tab.
+			$("ul#entityMenu").empty().html(renderMenu('obo:OBI_0000658'))
 
-		myForm = new OntologyForm("#mainForm", data) // Provide ID of form to populate.
-
-		// This control toggles the visibility of ontology ID's in the given 
-		// form content (for reference during content review)
-		$('input#toggleIdVisibility').on('change', function() {
-			myForm.ontologyDetails = $(this).is(':checked')
-			myForm.renderEntity(top.focusEntityId)
-		})
-
-		// Display all optional elements as label [+] for concise display.
-		$('input#toggleMinimalForm').on('change', function() {
-			myForm.minimalForm = $(this).is(':checked')
-			myForm.renderEntity(top.focusEntityId)
-		})
-
-		// Show Data Representation Model item menu
-		$("ul#entityMenu").html(renderMenu('obo:OBI_0000658'))
-
-		// Provide type-as-you-go searching
-		$("#searchField").on('keyup', function() {
-			var text = $(this).val().toLowerCase()
-			searchAsYouType(top.data.specifications, text)
-		})
-
-		$("#searchResults").on('mouseenter','i.fi-arrow-up.dropdown', searchResultContext)
-		
-		$("#makePackageForm").on('submit', function() {
-			/* A package consists of 
-			{
-				name: string
-				description: string
-				version: int //auto-increment per update function.
-				ontologies:	[
-					{prefix: string // "genepio"; OBOFoundry ontology lower case name.
-					version: string // identifier or if none, GEEM download date.
-					}
-				] 
-				specifications:
-					{}
-
-			}
-
-
-			*/
-		})
-
-
-		$('ul#entityMenu *').on('click', function(event) { 
-			// Enables eye icon click to show form without opening/closing the accordion.
-  			event.stopPropagation();
-  			if ($(event.target).is('i.fi-magnifying-glass') ) {myForm.renderEntity(getEntityId(event.target))}
-		});
-
-
-
-		$("#shoppingCart")
-			.on("click", 'div.cart-item', function(event) {
-				event.stopPropagation(); // otherwise parent cart items catch same click
-				if ($(event.target).is('i.fi-shopping-cart'))
-					// Change state of shopping cart item
-					cartCheck(this.dataset.ontologyId)
-				else
-					// Follow link if user didn't click
-					myForm.renderEntity(this.dataset.ontologyId)
-			})
-
-
-		$("#shoppingCartTrash").on('click', function() {
-			top.shoppingCart=[]
-			top.shoppingCartOff=[]
-			$('form#mainForm div[data-ontology-id]').removeClass('include exclude')
-			$('#shoppingCart').empty()
-		})
-
-		$(document).foundation()
-
-		$(window).on('hashchange',function(){ 
-			// GEEM focuses on entities by way of a URL with hash #[entityId]
-		    if (location.hash.length > 0)
-			   	if (location.hash.substr(0,5) =='#obo:') {
-					top.focusEntityId = document.location.hash.substr(1)
-					myForm.renderEntity(top.focusEntityId)
+			// Prepare browsable top-level list of ontology items
+			html = ''
+			for (specId in specification.specifications) {
+				var spec = specification.specifications[specId]
+				// Must do a better job of identifying and grouping top-level items  //! ('part_of' in spec) && 
+				if (! ('member_of' in spec) && (!('datatype' in spec ))) {
+					html += ['<li class="cart-item" data-ontology-id="',	specId,'">','<a href="#'+specId+'">',
+					spec['uiLabel'], '</a>'].join('')
 				}
-		});
+			}
+			$("ul#entityMenu").append('<hr/>' + html)
 
+			// On Browse tab, enables eye icon click to show form without opening/closing the accordion.
+			$('ul#entityMenu *').on('click', function(event) { 
+	  			event.stopPropagation();
+	  			if ($(event.target).is('i.fi-magnifying-glass') ) {
+	  				myForm.renderEntity(getEntityId(event.target))
+	  			}
+			});
 
-
-		//Trying to prime menu with given item
-		//$('#sidebar > ul').foundation('down', $('#obo:OBI_0001741') ) ; //Doesn't work?!
+			$(document).foundation()
+		},
+		error:function(XMLHttpRequest, textStatus, errorThrown) {
+			alert('Given resource could not be found: \n\n\t' + specification_file) 
+		}
 	});
-});
+}
+
+function navigateToForm(ontologyId) {
+	
+	if (window.location.href.indexOf(ontologyId) == -1) {// not found
+		window.location.replace('#' + ontologyId);
+		//window.location.href = '#' + ontologyId
+
+	}
+	else
+		// form already displayed, ensure tab is activated
+		$('#content-tabs').foundation('selectTab', '#content'); 
+
+	return false
+}
+
 
 function getEntity(ontologyId) {
 	var entity = top.data['specifications'][ontologyId]
@@ -439,13 +479,14 @@ function renderMenu(entityId, depth = 0 ) {
 		}
 
 		var hasChildren = ('members' in entity)
-		if (depth > 0) 
+		if (depth > 0) {
 
 			html = ['<li class="cart-item" data-ontology-id="',	entityId,'">',
 			hasChildren ? '<a href="#">' : '<a href="#'+entityId+'">',
 			entity['uiLabel'],
 			hasChildren ? ' <i class="fi-magnifying-glass"></i>' : '',
 			'</a>'].join('')
+		}
 
 		// See if entity has subordinate parts that need rendering:
 		if (hasChildren) {

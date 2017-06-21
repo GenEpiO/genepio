@@ -33,30 +33,31 @@
         <ul class="tabs" data-tabs id="entity-tabs" >
           <li class="tabs-title is-active"><a href="#panelLibrary" aria-selected="true">Library</a></li>
           <li class="tabs-title"><a href="#panelEntities">Browse</a></li>
-          <li class="tabs-title"><a href="#panel2">Search</a></li>
+          <li class="tabs-title"><a href="#panelSearch">Search</a></li>
         </ul>
-        <div style="padding:10px 10px 0 10px;border-left:1px solid #e6e6e6;border-right:1px solid #e6e6e6">
-            <select name="ontology">
+        <div id="selectSpecificationWrapper">
+            <select id="selectSpecification">
 
               <optgroup label="Ontologies">
-                <option value="genepio" selected="selected">Genomic Epidemiology Ontology (GenEpiO)</option>
-                <option value="foodon">Food Ontology (FoodOn)</option>
+                <option value="data/ontology/genepio_ui.json" selected="selected">Genomic Epidemiology Ontology (GenEpiO)</option>
+                <option value="data/ontology/foodon_ui.json">Food Ontology (FoodOn)</option>
               </optgroup>
 
               <optgroup label="Shared Packages">
-                <option value="sharedpackage1">A shared Package, e.g. a atandard!<i class="fi-folder"></i></option>
+                <option value="data/shared_packages/package_2_ui.json">A shared Package, e.g. a atandard!<i class="fi-folder"></i></option>
               </optgroup>
 
-              <optgroup label="My Packages">
-                <option value="mypackage1">My Example Package</option>
+              <optgroup label="My Packages (login required)">
+                <option value="data/user_packages/package_1_ui.json">My Example Package</option>
               </optgroup>
             </select>
           </div>
+
         <div id="tabsNavigation" class="tabs-content" data-tabs-content="entity-tabs"> 
           
-
-          <!-- ******************* ONTOLOGY MENU ******************* -->
+          <!-- ******************* SPECIFICATION MENU ******************* -->
           <div class="tabs-panel is-active" id="panelLibrary" style="padding:0">
+            
             <div class="infoBox">
               <p>Details about a selected ontology or package are shown here.
               All other tabs focus on the selected resource.</p>
@@ -65,39 +66,33 @@
 
               <p>If you login, your persistent list of downloadable packages 
               will be listed in the "My Packages" section.</p> 
-
-              <p>A package is a collection of ontology term and entity 
-              identifiers and filters generated from a shopping list. 
-              A package enables generation of an ontology-driven entity 
-              specification file (as an Excel spreadsheet or in JSON format) 
-              which indicates term names, synonyms, definitions, and categorical 
-              and numeric variable details.  A specification file can be periodically regenerated from a package
-              so that new ontology updates can be incorporated into it.  
-              A specification can be used by software and data integration 
-              developers to facilitate data entry, display and exchange.</p>  
-              
-              <p> A package cannot contain terms from two 
-              versions of an ontology, but it can contain more than one ontology.</p>
-
-              <p>To download a JSON or excel specification from a package, click on its name, and
-              then view the "Data Specification" tab where it will be regenerated.</p>
-
-              <p>One can edit a package to adjust its name or description.  Upgrading a package
-              involves changing its ontology version number(s).  A differential list of changes
-              is provided so that decisions can be made about what new terms to accept or filter out.</p>
             </div>
 
-            <div class="package" data-id="123">
-              <a href="#" class="icon fi-download" title="download"></a>
-              <a href="#" class="icon fi-trash" title="delete package"></a>
-              <a href="#" class="icon fi-plus" title="upgrade package"><span class="small">upgrade</span></a>
-              <a href="#" class="icon fi-pencil" title="edit"></a>
+            <ul class="tabs" data-tabs id="package-tabs">
+              <li class="tabs-title is-active"><a href="#package-view"><i class="icon fi-magnifying-glass"></i><span>view</span></a></li>
+              <li class="tabs-title"><a href="#package-edit"><i class="icon fi-pencil"></i><span>edit</span></a></li>
+              <li class="tabs-title"><a href="#package-download"><i class="icon fi-download"></i><span>download</span></a></li>
+              <li class="tabs-title"><a href="#package-delete"><i class="icon fi-trash"></i><span>delete</span></a></li>
+              <li class="tabs-title"><a href="#package-upgrade"><i class="icon fi-plus"></i><span>upgrade</span></a></li>
+            </ul>
 
-              <a>My example download package</a>
-              <p>This is a description about my package.  It has so many interesting standards and
-               other numeric and categorical variables in it!<br/>
-              Ontologies: GenEpio v0.3.1</p>
+            <div class="tabs-content" data-tabs-content="package-tabs">
+              <div class="tabs-panel is-active" id="package-view">
+                <a>My example download package</a>
+                <p>This is a description about my package.  It has so many interesting standards and
+                 other numeric and categorical variables in it!<br/>
+                Ontologies: GenEpio v0.3.1</p>
+              </div>
+              <div class="tabs-panel" id="package-edit">
+              </div>
+              <div class="tabs-panel" id="package-download">
+              </div>
+              <div class="tabs-panel" id="package-delete">
+              </div>
+              <div class="tabs-panel" id="package-upgrade">
+              </div>
             </div>
+
 
           </div>
 
@@ -108,7 +103,7 @@
           </div>
 
           <!-- ************************ SEARCH ********************* -->
-          <div class="tabs-panel" id="panel2">
+          <div class="tabs-panel" id="panelSearch">
             <form data-abide="" novalidate="novalidate" lpformnum="2">
               <div class="input-group">
                 <input id="searchField" class="input-group-field" type="text" placeholder="Search for a term (3 characters or more)">
@@ -131,7 +126,7 @@
       <div class="large-6 medium-6 columns">
         <ul class="tabs" data-tabs id="content-tabs" >
           <li class="tabs-title is-active"><a href="#content" aria-selected="true">Form View</a></li>
-          <li class="tabs-title"><a href="#panelDataSpecification">Data Specification</a></li>
+          <li class="tabs-title"><a href="#panelDataSpecification">Entity Specification</a></li>
           <li class="tabs-title"><a href="#panelDiscuss">Discuss</a></li>
           <li class="tabs-title"><a href="#panelCart">Cart<i class="fi-shopping-cart" id="shoppingCartIcon"></i> &nbsp; </a></li>
         </ul>
@@ -141,7 +136,7 @@
           <div class="tabs-panel is-active" id="content">
             <form id="mainForm" data-abide="ajax" style="border:2px solid black;padding:5px">
               <div class="infoBox">
-                Select an ontology item from the "Browse" or "Search" menu to see how it would be presented as a form.
+                Select an ontology or package in the Library tab, and then use the Browse or Search menu to see how an entity or part would be presented as a form.
               </div>
             </form>
 
@@ -254,8 +249,8 @@
           <ul><li><a href="#obo:GENEPIO_0001740">line list fields</a></li>
           <li> <a href="#obo:GENEPIO_0001624">numeric data with units</a></li>
           </ul>
-            
-          See <a href="design_details.html" target="_blank">technical details</a> for an overview of how it could work with other OBI ontologies.  </p> </small>
+          View a stand-alone form page <a href="form.html#obo:GENEPIO_0001740">here</a>. 
+          See <a href="design_details.html" target="_blank">design details</a> for an overview of how it could work with other OBI ontologies.  </p> </small>
       </div>
     </div>
 

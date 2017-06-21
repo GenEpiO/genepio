@@ -7,56 +7,60 @@ FUTURE: MAKE USE OF BETTER TEMPLATING
 
 Author: Damion Dooley
 Project: genepio.org/geem
-Date: June 19, 2017
+Date: June 20, 2017
 
 */
-function OntologyForm(domId, specification) {
+function OntologyForm(domId, specification, settings) {
 	var self = this
-	self.formatD = 'yyyy-mm-dd'
-	self.formatT = 'Thh:ii:SS'
+	//bag = {}
+	self.settings = {}
 	self.formDomId = $(domId)
-	self.specification = specification
-	self.ontologyDetails = false
-	self.minimalForm = false
+	self.specification = specification // By reference hopefully
+	// Some of these defaults can be overridden by particular fields via ui_feature specification
+
+	if (settings) self.settings = settings
+	if (! 'formatD' in self.settings) self.settings.formatD = 'yyyy-mm-dd'
+	if (! 'formatT' in self.settings) self.settings.formatT = 'Thh:ii:SS'
+	if (! 'ontologyDetails' in self.settings) self.settings.ontologyDetails = false
+	if (! 'minimalForm' in self.settings) self.settings.minimalForm = false
+
 
 	/*********** FORM RENDERER *************************/
 	this.renderEntity = function(entityId) {
-
-		self.formDomId.off().empty() //.html('')
-
-		// When renderEntity is called, activate its tab
-		if ($('#content-tabs').length > 0)
-			$('#content-tabs').foundation('selectTab', '#content'); 
-
-		top.focusEntityId = entityId;
-
+		//alert("renderEntity() " + entityId)
 		if (entityId) {
 			if (entityId.indexOf('/') != -1)
 				entityId = entityId.substr(0, entityId.indexOf('/'))
+			self.entityId = entityId
+		}
+		formDelete()
 
-
+		if (self.entityId) {
+			
 			//top.bag = {} // For catching entity in a loop.
-			form_html = render(entityId)
+			form_html = render(self.entityId)
 			form_html += renderButton('View Mockup Form Data Submission', 'getEntityData()') 
 
 			// Place new form html into page and activate its foundation interactivity
 			self.formDomId.html(form_html) //.foundation()
 
 			// Set up UI widget for all date inputs; using http://foundation-datepicker.peterbeno.com/example.html
-			$('input[placeholder="date"]').fdatepicker({format: self.formatD, disableDblClickSelection: true});
-			$('input[placeholder="dateTime"]').fdatepicker({format: self.formatD + self.formatT, disableDblClickSelection: true});
-			$('input[placeholder="dateTimeStamp"]').fdatepicker({format: self.formatD + self.formatT, disableDblClickSelection: true});
+			$('input[placeholder="date"]').fdatepicker({format: self.settings.formatD, disableDblClickSelection: true});
+			$('input[placeholder="dateTime"]').fdatepicker({format: self.settings.formatD + self.settings.formatT, disableDblClickSelection: true});
+			$('input[placeholder="dateTimeStamp"]').fdatepicker({format: self.settings.formatD + self.settings.formatT, disableDblClickSelection: true});
+
 
 			var entity = self.specification['specifications'][entityId]
 			if (!entity) entity = self.specification['picklists'][entityId]
 
 			// Enable page annotation by 3rd party tools by kicking browser to 
 			// understand that a #anchor and page title are different.
-			var title = 'GEEM: ' + entityId
+			// MOVE THIS UP TO app.js ???
+			var title = 'GEEM: ' + self.entityId
 			if (entity) {
 				var uiLabel = entity['uiLabel']
 				title += ':' + uiLabel
-				$('#panelDiscussTerm').empty().append('<h5>Term: ' + uiLabel + ' ('+entityId+')</h5>')
+				$('#panelDiscussTerm').empty().append('<h5>Term: ' + uiLabel + ' ('+self.entityId+')</h5>')
 				// SET DISCUSSION FORUM IFRAME HERE
 			}
 			window.document.title = title
@@ -70,13 +74,13 @@ function OntologyForm(domId, specification) {
 			setCardinality() 
 
 			// Fill specification tab.  THIS COULD BE DONE ON SHOW OF SPEC TAB INSTEAD.
-		 	if (window.getdataSpecification) getdataSpecification(entityId) 
+		 	if (window.getdataSpecification) getdataSpecification(self.entityId) 
 		 	
 		 	// All of form's regular <select> inputs (e.g. NOT the ones for picking units)
 		 	// get some extra smarts for type-as-you-go filtering.
 		 	$('select.regular').each(configureSelect); 
 		 		
-		 	if (self.minimalForm) setMinimalForm()
+		 	if (self.settings.minimalForm) setMinimalForm() // Hides empty optional field content.
 
 		 	// A WAY FOR THIS TO BE LOADED UP only when shopping cart component is attached?
 			self.formDomId.on('click', "i.fi-shopping-cart", function(){
@@ -88,6 +92,10 @@ function OntologyForm(domId, specification) {
 			self.formDomId.foundation()
 		 }
 		return false
+	}
+	formDelete = function() {
+		if (self.formDomId)
+			self.formDomId.off().empty()
 	}
 
 	setMinimalForm = function() {
@@ -207,7 +215,7 @@ function OntologyForm(domId, specification) {
 						cardinalityLabel = '<' + (parseInt(max) + 1) + ' items'
 
 				}
-				console.log(required)
+
 				if (required == true) {
 					$(this).addClass('required')
 					$(this).children('div.input-group > input').prop('required',true)
@@ -216,7 +224,7 @@ function OntologyForm(domId, specification) {
 					$(this).addClass('optional')
 
 				// Show optional and required status messages.
-				if (self.ontologyDetails && cardinalityLabel.length > 0 ) 
+				if (self.settings.ontologyDetails && cardinalityLabel.length > 0 ) 
 					$(this).children('label') //children(".fi-shopping-cart")
 						.before('<span class="info label float-right">' + cardinalityLabel + '</span>')
 			}
@@ -319,7 +327,8 @@ function OntologyForm(domId, specification) {
 
 		switch (entity['datatype']) {
 			case undefined: // Anonymous node
-				html += renderSection('<strong>Error: No datatype for ' + entityId + '(' + renderLabel(entity) + ') !</strong><ul><li>Hint: A picklist must be a subclass of "categorical tree specification".</li><li>Other fields need a "has primitive value spec" data type.</li><li>or was this in an include file that failed to load?</li></ul>')
+				html += renderSection('<li><strong>No form part for: "' + entity['uiLabel'] + '" (' + entityId + ')</strong></li>')
+				//<ul><li>Hint: A picklist must be a subclass of "categorical tree specification".</li><li>Other fields need a "has primitive value spec" data type.</li><li>or was this in an include file that failed to load?</li></ul>
 				break;
 
 			case 'disjunction':
@@ -603,7 +612,7 @@ function OntologyForm(domId, specification) {
 						case "select":
 
 						default:
-							if (self.ontologyDetails == true) label = label + ' - ' + part['id'];
+							if (self.settings.ontologyDetails == true) label = label + ' - ' + part['id'];
 							html += '<option value="'+part['id']+'" class="depth'+depth+'" '+disabled+'>' + label + '</option>\n' //prefix + 
 					}
 				}
@@ -647,7 +656,7 @@ function OntologyForm(domId, specification) {
 	renderLabel = function(entity) {
 		if (!entity) return 'ERROR: Entity not defined'
 		html = ''
-		if (self.ontologyDetails === true) {
+		if (self.settings.ontologyDetails === true) {
 			html = renderContext(entity)
 		}
 		if (html == '') html = ' <label>' + entity['uiLabel'] + '</label>'
@@ -745,7 +754,7 @@ function OntologyForm(domId, specification) {
 		var memberIds = []
 		for (var memberId in members) memberIds.push(memberId)
 
-		var pl = top.data[myList]
+		var pl = self.specification[myList]
 		return memberIds.sort(function(a,b) {
 			try {
 				var aLabel = pl[a]['uiLabel'].toLowerCase()
@@ -768,8 +777,8 @@ function OntologyForm(domId, specification) {
 		// its a bit more hassle to determine where referrerId is to include the feature.
 
 		var referrerId = entity['path'].slice(-2)[0]
-		var referrer = top.data['specifications'][referrerId]
-		if (!referrer) referrer = top.data['picklists'][referrerId]
+		var referrer = self.specification['specifications'][referrerId]
+		if (!referrer) referrer = self.specification['picklists'][referrerId]
 		if (!referrer) {console.log("ERROR: can't find entity ", referrerId, " to get feature for." );return false }
 		var myFeatures = {}
 		var myLists = {'members':null,'parts':null}
@@ -798,8 +807,8 @@ function OntologyForm(domId, specification) {
 	getFeature = function(entity, referrerId, feature) {
 		// Features only exist with reference to a parent's relations to a child.
 		// A feature like "hidden" or "feature" may exist in both members and parts lists
-		var referrer = top.data['specifications'][referrerId]
-		if (!referrer) referrer = top.data['picklists'][referrerId]
+		var referrer = self.specification['specifications'][referrerId]
+		if (!referrer) referrer = self.specification['picklists'][referrerId]
 		if (!referrer) {console.log("ERROR: can't find entity ", referrerId, " to get feature for." );return false }
 
 		for (myList in ['members','parts']) 
@@ -920,7 +929,7 @@ function OntologyForm(domId, specification) {
 		var referrerId = entity['path'].slice(-2)[0]
 		var constraints = []
 		var id = entity['id']
-		var referrer = top.data['specifications'][referrerId]
+		var referrer = self.specification['specifications'][referrerId]
 		if ('parts' in referrer) {
 			// Find given entity in parent (referrer) list of parts
 			for (var cptr in referrer['parts'][id]) {

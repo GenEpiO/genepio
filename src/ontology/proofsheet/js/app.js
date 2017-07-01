@@ -15,13 +15,13 @@
 
 	TO DO:
 
-	 - seems like URL geem/#ontologyID/... isn't updating browser address bar, or on a RELOAD to load Form View.
-	 - FIX: merge picklist and specification dictionaries.
 	 - basic datatype & precision standard should be a function of unit, i.e. annotated onto unit choice for this field.
 	 - disjunction tabbed interface has wrong required status?
-	 - for select pulldown lists, enable mouseover of selected term to provide more detail, e.g. ontology id.
+	 - for <select><option>, enable mouseover of selected term to provide more detail, e.g. ontology id.
 	 - FIX: contact specification - physician inherits first name, last name etc from person, but cardinality not shown.
-	 - Must do a better job of identifying and grouping top-level items
+	 - Must do a better job of identifying and grouping top-level ontology items
+	 - How to handle items that are not marked as datums?
+	 - Handle ordering of items based on "immediately after" relation.
 
 	Author: Damion Dooley
 	Project: genepio.org/geem
@@ -77,8 +77,9 @@ $( document ).ready(function() {
 		searchAsYouType(top.data.specifications, text)
 	})
 
-	$("#searchResults").on('mouseenter','i.fi-arrow-up.dropdown', searchResultContext)
-	
+	$("#searchResults").on('mouseenter','i.fi-arrow-up.dropdown', displayContext)
+	//Setup in form code because #mainForm events overwritten: $("#mainForm").on('mouseenter','i.fi-magnifying-glass', displayContext)
+			
 	$("#makePackageForm").on('submit', function() {
 		/* A package consists of 
 		{
@@ -124,6 +125,7 @@ $( document ).ready(function() {
 });
 
 
+
 /*********** ACTION *****************************************************
 	This loads the json user interface oriented version of an ontology
 	After ajax load of ontology_ui.json, top.data contains:
@@ -147,8 +149,6 @@ function loadSpecification(specification_file) {
 			myForm = new OntologyForm("#mainForm", top.data, top.formSettings) // Provide ID of form to populate.
 
 			// Show Data Representation Model item menu on "Browse" tab.
-			$("ul#entityMenu").empty().html(renderMenu('obo:OBI_0000658'))
-
 			// Prepare browsable top-level list of ontology items
 			html = ''
 			for (specId in specification.specifications) {
@@ -159,7 +159,9 @@ function loadSpecification(specification_file) {
 					spec['uiLabel'], '</a>'].join('')
 				}
 			}
-			$("ul#entityMenu").append('<hr/>' + html)
+			//Have to reinsert this or reload doesn't fire up menu (zurb issue?)
+			$('#panelEntities').html('<ul class="vertical menu" id="entityMenu" data-accordion-menu data-deep-link data-multi-open="false"></ul>')
+			$("ul#entityMenu").html(renderMenu('obo:OBI_0000658') + '<hr/>' + html)
 
 			// On Browse tab, enables eye icon click to show form without opening/closing the accordion.
 			$('ul#entityMenu *').on('click', function(event) { 
@@ -169,7 +171,18 @@ function loadSpecification(specification_file) {
 	  			}
 			});
 
+			if (location.hash.indexOf(':') != -1) { //.substr(0,5) =='#obo:'
+				top.focusEntityId = document.location.hash.substr(1).split('/',1)[0]
+				// CHECK FOR VALID ENTITY REFERENCE IN SOME ONTOLOGY.
+				// PREFIX SHOULD INDICATE WHICH ONTOLOGY SPEC FILE TO LOAD?
+				myForm.renderEntity(top.focusEntityId)
+
+				// When renderEntity is called, activate its tab
+				//$('#content-tabs').foundation('selectTab', '#content'); 
+			}
+
 			$(document).foundation()
+			//
 		},
 		error:function(XMLHttpRequest, textStatus, errorThrown) {
 			alert('Given resource could not be found: \n\n\t' + specification_file) 
@@ -194,7 +207,6 @@ function navigateToForm(ontologyId) {
 
 function getEntity(ontologyId) {
 	var entity = top.data['specifications'][ontologyId]
-	if (!entity) entity = top.data['picklists'][ontologyId]
 	return entity
 }
 
@@ -213,15 +225,6 @@ function searchAsYouType(collection, text) {
 	var results = []
 	if (text.length > 2) {
 		var ontology_ids = filterIt(collection, text)
-		for (id in ontology_ids) {
-			results.push(renderCartObj(ontology_ids[id]))
-		}
-		
-		// FIX FIX FIX
-		// Picklist items are currently in a separate list.
-		var ontology_ids = filterIt(top.data.picklists, text) 
-		//if (ontology_ids.length > 0)
-		//	$("#searchResults").append('<hr/><strong>Picklist Items</strong><br/>')
 		for (id in ontology_ids) {
 			results.push(renderCartObj(ontology_ids[id]))
 		}
@@ -251,39 +254,49 @@ function filterIt(obj, searchKey) {
     })
 }
 
-function searchResultContext(event) {
+function displayContext(event) {
 	/* Provide mouseover function to see dropdown menu that shows given item
 	as well as any parent items that link to it via "has member" and "has part"
 	and "is a" relations. Parents can be navigated to.
 	*/
-	parent = $('#navigateParentDropdown')
+	parent = $('#displayContext')
 	if (parent.length) {
-		$('#navigateParentDropdown').foundation('destroy') // or else subsequent dropdown position is fixed.
-		$('#navigateParentButton,#navigateParentDropdown').remove()
+		$('#displayContext').foundation('destroy') // or else subsequent dropdown position is fixed.
+		$('#displayContextButton,#displayContext').remove()
 	}
-	var thisDiv = $(this).parent()
-	var ontologyId = thisDiv.attr('data-ontology-id')
+	var thisDiv = $(this).parents('[data-ontology-id]').first()
+	var ontologyPath = thisDiv.attr('data-ontology-id')
+	var pathDivider = ontologyPath.lastIndexOf('/')
+	if (pathDivider != -1)
+		var ontologyId = ontologyPath.substr(pathDivider+1)
+	else
+		var ontologyId = ontologyPath 	
+
+	var content = '<div id="displayContext" class="dropdown-pane"><ul>'
+	if ($(this).is('.fi-magnifying-glass'))
+		content += getOntologyDetailHTML(ontologyId) 
+	else //'.fi-arrow-up'
+		content += '<ul>' + getRelationsHTML(ontologyId) + '</ul>'
 
 	// Though it is hidden, have to include button or else Foundation throws error.
-	var domEl = ['<button id="navigateParentButton" data-toggle="navigateParentDropdown"></button>',
-		'<div id="navigateParentDropdown" class="dropdown-pane"><ul>',
-		getRelationsHTML(ontologyId),
-		'</ul></div>'].join('')
+	content = '<button id="displayContextButton" data-toggle="displayContext"></button>' + content
 
-	$(this).after($(domEl)).foundation() //Places it.
-	var elem = new Foundation.Dropdown($('#navigateParentDropdown'), {hover:true, hoverPane:true});
-	iconPosition = $(this).position()
-	$('#navigateParentDropdown').foundation('open')
+	$('body').after(content).foundation() //Places it.
+	var elem = new Foundation.Dropdown($('#displayContext'), {hover:true, hoverPane:true});
+	var iconPosition = $(this).offset()
+	$('#displayContext').foundation('open')
 		.css('left', (iconPosition.left + 20) + 'px')
 		.css('top', (iconPosition.top) + 'px')
+
+	if ($(this).is('.fi-arrow-up'))
 		// Drop-down content is defined, now we ennervate the up-arrows.
 		// each can replace content 
-		.on('click','i.fi-arrow-up',function(event){
+		$('#displayContext').on('click','i.fi-arrow-up',function(event){
 			// Insert shopping cart item 
 			var target = $(event.target).parent()
 			var targetId = target[0].dataset.ontologyId
 			// DETECT IF ITEM HAS ALREADY HAD PARENTS ADDED?
-			if ($('#navigateParentDropdown ul[data-ontology-id="'+targetId+'"]').length == 0 ) {
+			if ($('#displayContext ul[data-ontology-id="'+targetId+'"]').length == 0 ) {
 				target.parent().wrap('<ul data-ontology-id="'+targetId+'">')
 				target.parent().before(getRelationsHTML(targetId))
 			}
@@ -320,6 +333,50 @@ function getRelationLink(relation, entity) {
 
 		'</li>'].join('')
 }
+
+/*********** DETAIL DROPDOWN/HOVER *************************/
+
+function getOntologyDetailHTML(ontologyId) {
+	entity = getEntity(ontologyId)
+	/* Provide a label mouseover display of underlying ontology details
+	like original ontology definition, term id, synonyms, etc.
+	*/
+	var itemHTML = '<li><span class="infoLabel">ontology id:</span> ' + entity['id'] + '</li>\n'
+
+	// Label is original ontology's label, not the user interface oriented one.
+	if ('label' in entity && entity['label'] != entity['uiLabel'])
+		itemHTML += '<li><span class="infoLabel">ontology label:</span> ' + entity['label'] + '</li>\n'
+	// Add original definition if different.
+	if ('definition' in entity && entity['uiDefinition'] != entity['definition'])
+		itemHTML += '<li><span class="infoLabel">ontology definition:</span> <i>' + entity['definition'] + '</i></li>\n'
+	
+	// Hardcode properties that you want to show from specification here:
+	var properties = ['hasDbXref','hasSynonym','hasExactSynonym','hasNarrowSynonym']
+	for (ptr in properties) {
+		var item = properties[ptr]
+		if (item in entity) {
+			for (var ptr2 in entity[item]) {
+				var val = entity[item][ptr2]
+				if (val.substr(0,4) == 'http') // covers https:// too.
+					val = '<a href="' + val + '" target ="_blank">'+val+'</a>'
+				itemHTML += '<li><span class="infoLabel">' + item + ':</span> ' + val + '</li>\n'
+			}
+		}
+	}
+	// This links directly to form for this entity.  Not in context of larger form.
+	// Problem is that recursion to fetch parts from parent runs into parents that 
+	// have no further path.
+	if (entity['depth'] > 0)
+		var labelURL = '<a href="#' + entity['id'] + '">' + entity['uiLabel'] + '</a>' 
+	else
+		var labelURL = entity['uiLabel']
+
+	// Enable mouseover display of above.
+	itemHTML = 	[labelURL, itemHTML].join('\n')
+
+	return itemHTML
+}
+
 
 
 /*********** ENTITY SHOPPING CART *************************/
@@ -424,7 +481,6 @@ function renderCartItem(ontologyId) {
 	// Get last path item id.
 	var entityId = ptr ? ontologyId.substr(ptr+1) : ontologyId
 	var entity = top.data['specifications'][entityId]
-	if (!entity) entity = top.data['picklists'][entityId]
 	if (!entity) entity = {'uiLabel':'[UNRECOGNIZED]'}
 	return ['<div class="cart-item" ', getIdHTMLAttribute(ontologyId), '>',
 		'<i class="fi-shopping-cart"></i>',
@@ -439,7 +495,6 @@ function renderCartObj(ontologyId) {
 	// Get last path item id.
 	var entityId = ptr ? ontologyId.substr(ptr+1) : ontologyId
 	var entity = top.data['specifications'][entityId]
-	if (!entity) entity = top.data['picklists'][entityId]
 	if (!entity) entity = {'uiLabel':'[UNRECOGNIZED:' + entityId + ']'}
 	var html = ['<div class="cart-item" ', getIdHTMLAttribute(ontologyId), '>',
 		'<i class="fi-shopping-cart"></i>',
@@ -458,8 +513,8 @@ function setShoppingCart() {
 	$('#mainForm div.field-wrapper').prepend('<i class="fi-shopping-cart"></i>')
 	$('#shoppingCart div.cart-item').each(function(index){
 		var status = ''
-		if ($(this).is('.include')) status = 'include'
-		if ($(this).is('.exclude')) status = 'exclude'
+		if ($(this).is('.include') ) status = 'include'
+		if ($(this).is('.exclude') ) status = 'exclude'
 
 		$('#mainForm div.field-wrapper[' + getIdHTMLAttribute($(this)[0].dataset.ontologyId) + ']').addClass(status)
 	})
@@ -468,7 +523,6 @@ function setShoppingCart() {
 
 /*********** ENTITY MENU RENDERER *************************/
 function renderMenu(entityId, depth = 0 ) {
-	// WHEN THIS IS CALLED, ACTIVATE ITS TAB
 
 	var html = ""
 	var entity = top.data['specifications'][entityId]
@@ -517,15 +571,8 @@ function getdataSpecification(entityId) {
 
 function getEntitySpec(spec, entityId = null, inherited = false) {
 	if (spec == null)
-		spec = {'specifications':{}, 'picklists':{}, 'units':{} }
+		spec = {'specifications':{}, 'units':{} }
 
-	// A spec entity may also be a root element in picklist
-	// FUTURE: MAY WANT TO MERGE THESE?
-	if (entityId in top.data['picklists'] && inherited == false) {
-		var picklistSpec = top.data['picklists'][entityId]
-		spec['picklists'][entityId] = picklistSpec
-		getEntitySpecItems(spec, picklistSpec, 'members', 'picklists')
-	}
 
 	if (entityId in top.data['specifications']) {
 		var entity = top.data['specifications'][entityId]
@@ -535,7 +582,7 @@ function getEntitySpec(spec, entityId = null, inherited = false) {
 			if (inherited == true) {
 				//Entity inherits 'part_of' ancestors' parts. 
 				var parentId = entity['parent']
-				if (parentId != 'obo:OBI_0000658') //Top level spec.
+				if (parentId != 'obo:OBI_0000658') //Top level OBI "data representation model"
 					getEntitySpec(spec, parentId, true)
 			}
 

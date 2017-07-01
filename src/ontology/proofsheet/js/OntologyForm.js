@@ -49,9 +49,7 @@ function OntologyForm(domId, specification, settings) {
 			$('input[placeholder="dateTime"]').fdatepicker({format: self.settings.formatD + self.settings.formatT, disableDblClickSelection: true});
 			$('input[placeholder="dateTimeStamp"]').fdatepicker({format: self.settings.formatD + self.settings.formatT, disableDblClickSelection: true});
 
-
 			var entity = self.specification['specifications'][entityId]
-			if (!entity) entity = self.specification['picklists'][entityId]
 
 			// Enable page annotation by 3rd party tools by kicking browser to 
 			// understand that a #anchor and page title are different.
@@ -89,7 +87,35 @@ function OntologyForm(domId, specification, settings) {
 				cartCheck(getEntityId(this))
 			})
 
+			self.formDomId.on('mouseenter','i.fi-magnifying-glass', displayContext)
+
 			self.formDomId.foundation()
+
+			// Adds shopping cart and magnifying glass to individual <select><option> item if it doesn't have one...
+			// This has to be done runtime (via mouseover) because only then does foundation render it.
+			// FUTURE: FORM Hides/DROPS HIDDEN <option> in renderChoice().
+			if (window.setShoppingCart)
+				$('#mainForm div.chosen-container').on('mouseenter', 'div.chosen-drop', function(event) { 
+
+					var control = $(this).children('ul.chosen-results')
+
+					if (control.find('li.active-result:first > i').length == 0 ) {
+						var selectOptions = $(this).parent('div').prev('select').children('option')
+						//console.log(select.html())
+						$(control).children('li').each(function (index) {
+							if ($(this).is('.active-result')) {
+								// We need to copy the value from the existing <select><option>
+								// into the data-ontology-id for this <li>.
+								var id = selectOptions.eq(index+1).attr('value') //Get corresponding option value.
+								$(this).attr('data-ontology-id',id)
+								$(this).append('<i class="fi-shopping-cart"></i>')
+								if (self.settings.ontologyDetails)
+									$(this).prepend('<i class="fi-magnifying-glass"></i> &nbsp;')
+							}
+						})
+					}
+				})
+
 		 }
 		return false
 	}
@@ -291,11 +317,18 @@ function OntologyForm(domId, specification, settings) {
 		// Clone entity so we can change it.
 		if (entityId in self.specification['specifications'])
 			var entity = $.extend(true, {}, self.specification['specifications'][entityId]) 
+
+
+
+		/*
 		else if (entityId in self.specification['picklists']) {
 			var entity = $.extend(true, {}, self.specification['picklists'][entityId]) 
 			entity['datatype'] = 'xmls:anyURI' 
-			// ADD FEATURE TO SELECT SUBORDINATE ITEMS?
 		}
+		*/
+
+
+		
 		else {
 			console.log("Node: " + entityId + " has no specification entry.")
 			return html
@@ -391,7 +424,7 @@ function OntologyForm(domId, specification, settings) {
 				break;
 
 			case 'xmls:anyURI': // Picklists are here
-				if (entityId in self.specification['picklists'])
+				if (entityId in self.specification['specifications'])
 					html += renderChoices(entity, label)
 				else
 					html += '<p class="small-text">ERROR: Categorical variable [' + entityId + '] not marked as a "Categorical tree specification"</p>'
@@ -563,7 +596,7 @@ function OntologyForm(domId, specification, settings) {
 		//}
 		//Because one should deliberately make a selection ... esp. when confronted with required selection list where 1st item is 
 		html +=	'<option value="" disabled>Select ...</option>'
-		html +=				renderChoice(self.specification['picklists'][picklistId], 0)
+		html +=				renderChoice(self.specification['specifications'][picklistId], 0)
 		html +=	'		</select>\n'
 		if ('lookup' in entity['features']) 
 			html += '		<a class="input-group-label" onclick="getChoices(this,\''+entity['id']+'\')">more choices...</a>\n'
@@ -578,16 +611,18 @@ function OntologyForm(domId, specification, settings) {
 
 
 	renderChoice = function(entity, depth, type="select") { 
+		
+		// NOTE: currently the ontologyID for each item does not include path
 
 		var html = ""
 		if (depth > 10) return "MAX DEPTH PROBLEM WITH " + entity['id']
 		if ('members' in entity) 
 			//var prefix = Array(depth+1).join("     ")
-			var memberIds = getSort(entity['members'],'picklists') 
+			var memberIds = getSort(entity['members'],'specifications') 
 			//console.log("List:",entity['uiLabel'], memberIds)
 			for (var ptr in memberIds) {
 				var memberId = memberIds[ptr]
-				var part = self.specification['picklists'][memberId]
+				var part = self.specification['specifications'][memberId]
 				if (!part) // Should never happen.
 					console.log("Error: picklist choice not available: ", memberId, " for list ",entity['id'])
 				else {
@@ -634,7 +669,8 @@ function OntologyForm(domId, specification, settings) {
 			var html ='<div class="input-group-button" style="font-weight:700;" ><select class="units" id="'+entity['domId']+'-obo:IAO_0000039">'
 			for (var ptr in units) { //.slice(1)
 				var unit = self.specification['units'][units[ptr]]
-				html += '		<option value="'+ unit['id'] + '">' + (unit['uiLabel'] ? unit['uiLabel'] : unit['label']) + ' &nbsp;</option>'
+				var unitLabel = unit['uiLabel'] ? unit['uiLabel'] : unit['label']
+				html += '		<option value="'+ unit['id'] + '">' + unitLabel + ' &nbsp;</option>'
 			}
 			html += '</select></div>\n'
 			return html
@@ -655,58 +691,23 @@ function OntologyForm(domId, specification, settings) {
 
 	renderLabel = function(entity) {
 		if (!entity) return 'ERROR: Entity not defined'
-		html = ''
-		if (self.settings.ontologyDetails === true) {
-			html = renderContext(entity)
-		}
-		if (html == '') html = ' <label>' + entity['uiLabel'] + '</label>'
-		return html
-	}
 
-
-	renderContext = function(entity) {
-		/* Provide a label mouseover display of underlying ontology details
-		like original ontology definition, term id, synonyms, etc.
-		*/
-		var itemHTML = '<li><span class="infoLabel">ontology id:</span> ' + entity['id'] + '</li>\n'
-
-		// Label is original ontology's label, not the user interface oriented one.
-		if ('label' in entity && entity['label'] != entity['uiLabel'])
-			itemHTML += '<li><span class="infoLabel">ontology label:</span> ' + entity['label'] + '</li>\n'
-		// Add original definition if different.
-		if ('definition' in entity && entity['uiDefinition'] != entity['definition'])
-			itemHTML += '<li><span class="infoLabel">ontology definition:</span> <i>' + entity['definition'] + '</i></li>\n'
-		
-		// Hardcode properties that you want to show from specification here:
-		var properties = ['hasDbXref','hasSynonym','hasExactSynonym','hasNarrowSynonym']
-		for (ptr in properties) {
-			var item = properties[ptr]
-			if (item in entity) {
-				for (var ptr2 in entity[item]) {
-					var val = entity[item][ptr2]
-					if (val.substr(0,4) == 'http') // covers https:// too.
-						val = '<a href="' + val + '" target ="_blank">'+val+'</a>'
-					itemHTML += '<li><span class="infoLabel">' + item + ':</span> ' + val + '</li>\n'
-				}
-			}
-		}
-		// This links directly to form for this entity.  Not in context of larger form.
+		// This links directly to form for only this entity.  Not in context of larger form.
 		// Problem is that recursion to fetch parts from parent runs into parents that 
 		// have no further path.
-		if (entity['depth'] > 0)
+		if (self.settings.ontologyDetails && entity['depth'] > 0)
 			var labelURL = '<a href="#' + entity['id'] + '">' + entity['uiLabel'] + '</a>' 
 		else
 			var labelURL = entity['uiLabel']
 
 		// Enable mouseover display of above.
-		itemHTML = 	['<label>', 
-			'<i class="fi-magnifying-glass" data-toggle="' + entity['domId'] + '_detail"></i>',
-			labelURL, '</label>',
-			'<div class="dropdown-pane top" id="' + entity['domId'] + '_detail" data-dropdown data-hover="true" data-hover-pane="true"><ul>',
-			itemHTML,
-			'</ul></div>'].join('\n')
+		html = 	['<label>', 
+			self.settings.ontologyDetails ? '<i class="fi-magnifying-glass"]></i>' : '',
+			labelURL, 
+			'</label>'
+		].join('')
 
-		return itemHTML
+		return html
 	}
 
 
@@ -778,7 +779,6 @@ function OntologyForm(domId, specification, settings) {
 
 		var referrerId = entity['path'].slice(-2)[0]
 		var referrer = self.specification['specifications'][referrerId]
-		if (!referrer) referrer = self.specification['picklists'][referrerId]
 		if (!referrer) {console.log("ERROR: can't find entity ", referrerId, " to get feature for." );return false }
 		var myFeatures = {}
 		var myLists = {'members':null,'parts':null}
@@ -808,7 +808,6 @@ function OntologyForm(domId, specification, settings) {
 		// Features only exist with reference to a parent's relations to a child.
 		// A feature like "hidden" or "feature" may exist in both members and parts lists
 		var referrer = self.specification['specifications'][referrerId]
-		if (!referrer) referrer = self.specification['picklists'][referrerId]
 		if (!referrer) {console.log("ERROR: can't find entity ", referrerId, " to get feature for." );return false }
 
 		for (myList in ['members','parts']) 

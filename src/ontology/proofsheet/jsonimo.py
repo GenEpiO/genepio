@@ -90,7 +90,6 @@ class Ontology(object):
 		}
 		self.struct['specifications'] = {}
 		self.struct['units'] = {}
-		self.struct['picklists'] = {}
 
 
 	def __main__(self): #, main_ontology_file
@@ -116,8 +115,12 @@ class Ontology(object):
 		self.ontologyIncludes()
 
 		#data_representational_model
-		specBinding={'root': rdflib.URIRef(self.expandId('obo:OBI_0000658'))} 
+		specBinding = {'root': rdflib.URIRef(self.expandId('obo:OBI_0000658'))} 
 		self.doSpecifications(self.doQueryTable('tree', specBinding ))
+		
+		# ALSO GET OTHER TOP-LEVEL TERMS?
+		# ...
+
 		self.doSpecParts(self.doQueryTable('spec_parts' ) )	
 		self.doPrimitives(self.doQueryTable('inherited') )		
 		self.doPrimitives(self.doQueryTable('primitives') )
@@ -131,7 +134,7 @@ class Ontology(object):
 
 		self.doUIFeatures(self.doQueryTable('features') ,'features')
 		self.doUIFeatures(self.doQueryTable('feature_annotations'), 'feature_annotations')
-		self.doLabels(['specifications','units','picklists'])
+		self.doLabels(['specifications','units'])
 
 		# DO NOT USE sort_keys=True on piclists etc. because this overrides OrderedDict() sort order.
 		# BUT NEED TO IMPLEMENT json ordereddict sorting patch.
@@ -198,7 +201,7 @@ class Ontology(object):
 			A given term may belong to a number of piclists, e.g. "other" category.
 
 		"""
-		struct = 'picklists'
+		struct = 'specifications'
 		# Fashion complete picklists (flat list) of items, with parent(s) of each item, and members.
 		for myDict in table:
 			id = str(myDict['id'])
@@ -208,7 +211,9 @@ class Ontology(object):
 			# node's member list so it might already be set up.
 			self.setDefault(self.struct, struct, id, myDict)
 			self.setDefault(self.struct, struct, id, 'member_of', [])
+			self.setDefault(self.struct, struct, id, 'datatype', 'xmls:anyURI') # MARKS PICKLIST ITEMS
 			self.getStruct(self.struct, struct, id, 'member_of').append(parentId)
+			# ALSO ADD 'located in' as 'part of' links?????
 
 			# Ditto for a member
 			self.setDefault(self.struct, struct, parentId, {'id': parentId} )
@@ -386,7 +391,10 @@ class Ontology(object):
 		""" ####################################################################
 			User Interface Features
 
-			FOR NOW JUST HIDDEN FEATURE (In features query) is provided.
+			Features are placed on an entity directly as an ordered array in 'features' attribute.
+			Or they are recreated on relation between a parent item and its children.
+
+			REVISE:
 			"obo:GENEPIO_0001746" is the annotation property that marks as hidden
 			the relation between a part (form field or specification) and its parent.
 			In the future ?criteria may	contain a user type or other expression.  
@@ -403,35 +411,48 @@ class Ontology(object):
 				?id ?member ?feature ?criteria 
 
 		"""
+		#Loop through query results; each line has one id, feature, referrer.
 		for myDict in table:
 			id = myDict['id']
 			referrer = myDict['referrer']  #Id of parent/
-			myList = 'members' if table_name == 'features' else 'parts'
-			for myTable in ['specifications','picklists']: #,'fields'
-				if id in self.struct[myTable]:
+			feature = myDict['feature']
+			# Providing plain english term for feature unless motivation to keep onto ids arises.
+			if feature == 'obo:GENEPIO_0001746':
+				feature = 'hidden'
+			elif feature == 'obo:GENEPIO_0001763':
+				feature = myDict['criteria']
+			else:
+				feature = 'unknown'
+			myObj = {'feature': feature}
+			if len(myDict['criteria']) > 0:
+				myObj['criteria'] = myDict['criteria']
+
+			# Look in parents 'members' table for features,
+			# or parents 'parts' table for 'feature annotations'
+			if table_name == 'features':
+				myList = 'members' 
+			else:
+				myList = 'parts'
+
+			if id in self.struct['specifications']:
+
+				# if no referrer, then just mark feature directly in feature set of entity
+				if referrer == '':
+					entity = self.struct['specifications'][id]
+					self.setDefault(entity, 'features', OrderedDict())
+					self.entity['features'].append(myObj)
+				else:
+					# Go find referrer
 					entity = self.getStruct(self.struct, 'specifications', referrer)
-					if not entity:
-						entity = self.getStruct(self.struct, 'picklists', referrer)
 					if not entity:
 						print "Error when adding feature: couldn't locate ", referrer
 						continue
 
 					self.setDefault(entity, myList, OrderedDict())
 					self.setDefault(entity, myList, id,[])
-					feature = myDict['feature']
-					# Providing plain english term for feature unless motivation to keep onto ids arises.
-					if feature == 'obo:GENEPIO_0001746':
-						feature = 'hidden'
-					elif feature == 'obo:GENEPIO_0001763':
-						feature = myDict['criteria']
-					else:
-						feature = 'unknown'
-					myObj = {'feature': feature}
-					if len(myDict['criteria']) > 0:
-						myObj['criteria'] = myDict['criteria']
-					#try:
 					self.getStruct(entity, myList, id).append(myObj)	
 					print "Feature added:", id, feature, myDict['criteria']		
+					
 					#except:
 					#	print "Error when adding feature; ", id, 'in ', myTable, ', ', referrer
 					#	continue
@@ -478,7 +499,8 @@ class Ontology(object):
 		"""
 			In order to do a sparql query to get back the label fields for an item, we have to supply
 			the query with initBindings which includes the binding for [prefix]:id so query can
-			succeed for that item.  E.g. GENEPIO:GENEPIO_12345 -> purl.obolibrary.org/obo/GENEPIO/GENEPIO_12345
+			succeed for that item.  
+			E.g. GENEPIO:GENEPIO_12345 -> purl.obolibrary.org/obo/GENEPIO/GENEPIO_12345
 		"""
 		rows = self.graph.query(self.queries['labels'],	initBindings={'datum': rdflib.URIRef(self.expandId(id) ) } )
 		for row in rows: # Only one row returned per idRef.
@@ -752,7 +774,7 @@ class Ontology(object):
 			ORDER BY ?parent ?label ?uiLabel
 		""", initNs = namespace),
 
-
+		# SECOND VERSION FOR ''
 		##################################################################
 		# RETRIEVE DATUM CARDINALITY, LIMIT FOR SPECIFICATION RELATIVE TO PARENT
 		#
@@ -828,7 +850,7 @@ class Ontology(object):
 		#	returns descendant datums.  Run inherited query first to calculate inheritances; 
 		#	then run "primitives" to override inherited values with more specific ones.
 		# 
-		#	HAndle much simpler inheritance of categoricals in 'categoricals' query below
+		#	Handle much simpler inheritance of categoricals in 'categoricals' query below
 
 		'inherited': rdflib.plugins.sparql.prepareQuery("""
 
@@ -878,9 +900,9 @@ class Ontology(object):
 
 		##################################################################
 		# INDIVIDUALS
-		# We use the convention that categorical picklist trees containing 
+		# We accept the convention that categorical picklist trees containing 
 		# entities represented by proper names - like "British Columbia", 
-		# "Vancouver (BC)", "Washington (DC)", etc. - have "individual" nodes, 
+		# "Vancouver (BC)", "Washington (DC)", etc. - may have "individual" nodes, 
 		# i.e. are represented by owl:NamedIndividual.
 		# 
 		'individuals': rdflib.plugins.sparql.prepareQuery("""
@@ -921,7 +943,8 @@ class Ontology(object):
 		# ################################################################
 		# UI FEATURES
 		# A picklist item or form input or specification can be hidden or required or
-		# other feature with respect to its parent.
+		# other feature with respect to its parent, via 
+		# As well, a form input can have UI features indicated just by annotating it directly.
 		# FUTURE: a feature may be qualified by user's user type.
 
 		#Typical UI_hidden axioms:
@@ -945,25 +968,38 @@ class Ontology(object):
 	    #	</owl:Axiom>
 	    #
 
+#    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001742">
+#        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001655"/>
+#        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GEO_000000005"/>
+#        <obo:GENEPIO_0000006 xml:lang="en">region</obo:GENEPIO_0000006>
+#        <obo:GENEPIO_0001763>lookup</obo:GENEPIO_0001763>
+
 
 		'features': rdflib.plugins.sparql.prepareQuery("""
 			SELECT DISTINCT ?id ?referrer ?feature ?criteria 
 			WHERE { 
+				{?id rdf:type owl:Class.  
+					?id obo:GENEPIO_0001763 ?criteria. 
+					?id ?feature ?criteria. 
+					BIND ('' as ?referrer).}
+				UNION
+				{
 				?axiom rdf:type owl:Axiom.
 				?axiom owl:annotatedSource ?id.
 				?axiom owl:annotatedTarget ?referrer. 
 				FILTER(isURI(?referrer))
-				?axiom (obo:GENEPIO_0001746|obo:GENEPIO_0001763) ?criteria.  #UI preferred hidden | UI_preferred feature
+				?axiom (obo:GENEPIO_0001746|obo:GENEPIO_0001763) ?criteria.  #user interface hidden | UI_preferred feature
 				?axiom ?feature ?criteria.
+				}
 			}
 		""", initNs = namespace),
 
 
 		# ################################################################
 		# UI FEATURES
-		# A "Has Part" link can be annotated with a "UI preferred feature"
+		# A "has member" link can be annotated with a "user interface feature"
 		# Add this to list of features above.
-		# FUTURE: a feature may be qualified by user's user type.
+		# FUTURE: a feature may be qualified by user's user type or identifier.
 	    #
 	    #    <owl:Axiom>
 		#        <obo:GENEPIO_0001763>lookup</obo:GENEPIO_0001763>
@@ -987,7 +1023,7 @@ class Ontology(object):
 				?restriction owl:onProperty obo:RO_0002351.
 				?restriction (owl:onClass|owl:qualifiedCardinality | owl:minQualifiedCardinality | owl:maxQualifiedCardinality | owl:someValuesFrom) ?id
 				FILTER(isURI(?id))
-				?axiom (obo:GENEPIO_0001746|obo:GENEPIO_0001763) ?criteria.  #UI preferred hidden | UI_preferred feature
+				?axiom (obo:GENEPIO_0001746|obo:GENEPIO_0001763) ?criteria.  #user interface hidden | UI_preferred feature
 				?axiom ?feature ?criteria.
 			}
 		""", initNs = namespace),
@@ -997,9 +1033,9 @@ class Ontology(object):
 		# UI LABELS 
 		'labels': rdflib.plugins.sparql.prepareQuery("""
 
-			SELECT ?label ?definition ?uiLabel ?uiDefinition
+			SELECT DISTINCT ?label ?definition ?uiLabel ?uiDefinition
 			WHERE {  
-				{?datum rdf:type owl:Class} UNION {?datum rdf:type owl:NamedIndividual}.
+				{?datum rdf:type owl:Class} UNION {?datum rdf:type owl:NamedIndividual} UNION {?datum rdf:type rdf:Description}.
 				OPTIONAL {?datum rdfs:label ?label.} 
 				OPTIONAL {?datum obo:IAO_0000115 ?definition.}
 				OPTIONAL {?datum obo:GENEPIO_0000006 ?uiLabel.} 
@@ -1021,7 +1057,7 @@ class Ontology(object):
 
 		# ################################################################
 		# oboInOwl:hasSynonym
-		# Picklist items need to be augmented with synonyms in order for 
+		# Picklist items could be augmented with synonyms in order for 
 		# type-as-you-go inputs to return appropriately filtered phrases
 
 		'synonyms': rdflib.plugins.sparql.prepareQuery("""

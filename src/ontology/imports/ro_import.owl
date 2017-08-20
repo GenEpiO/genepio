@@ -9,7 +9,6 @@
     <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
     <!ENTITY xml "http://www.w3.org/XML/1998/namespace" >
     <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
-    <!ENTITY subsets "http://purl.obolibrary.org/obo/ro/subsets#" >
     <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
     <!ENTITY oboInOwl "http://www.geneontology.org/formats/oboInOwl#" >
 ]>
@@ -25,8 +24,7 @@
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:obo="http://purl.obolibrary.org/obo/"
      xmlns:foaf="http://xmlns.com/foaf/0.1/"
-     xmlns:dc="http://purl.org/dc/elements/1.1/"
-     xmlns:subsets="&obo;ro/subsets#">
+     xmlns:dc="http://purl.org/dc/elements/1.1/">
     <owl:Ontology rdf:about="&obo;GENEPIO/imports/ro_import.owl"/>
     
 
@@ -39,12 +37,6 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/BFO_0000063 -->
-
-    <!-- <owl:AnnotationProperty rdf:about="&obo;BFO_0000063"/> -->
     
 
 
@@ -127,6 +119,13 @@
     
 
 
+    <!-- http://purl.obolibrary.org/obo/RO_0001900 -->
+
+    <!-- <owl:AnnotationProperty rdf:about="&obo;RO_0001900">
+        <obo:IAO_0000115>An assertion that holds between an OWL Object Property and a temporal interpretation that elucidates how OWL Class Axioms that use this property are to be interpreted in a temporal context.</obo:IAO_0000115>
+        <rdfs:label xml:lang="en">temporal interpretation</rdfs:label>
+        <foaf:page rdf:datatype="&xsd;anyURI">https://github.com/oborel/obo-relations/wiki/ROAndTime</foaf:page>
+    </owl:AnnotationProperty> -->
     
 
 
@@ -147,10 +146,21 @@
     
 
 
-    <!-- http://purl.obolibrary.org/obo/ro/subsets#ro-eco -->
+    <!-- http://purl.obolibrary.org/obo/RO_0002575 -->
 
-    <!-- <owl:AnnotationProperty rdf:about="&obo;ro/subsets#ro-eco">
-        <rdfs:label>eco subset</rdfs:label>
+    <!-- <owl:AnnotationProperty rdf:about="&obo;RO_0002575">
+        <obo:IAO_0000115>relation p is the direct form of relation q iff p is a subPropertyOf q, p does not have the Transitive characteristic, q does have the Transitive characteristic, and for all x, y: x q y -&gt; exists z1, z2, ..., zn such that x p z1 ... z2n y</obo:IAO_0000115>
+        <obo:IAO_0000116>The general property hierarchy is:
+
+  &quot;directly P&quot; SubPropertyOf &quot;P&quot;
+  Transitive(P)
+
+Where we have an annotation assertion
+
+  &quot;directly P&quot; &quot;is direct form of&quot; &quot;P&quot;</obo:IAO_0000116>
+        <obo:RO_0002423>If we have the annotation P is-direct-form-of Q, and we have inverses P&apos; and Q&apos;, then it follows that P&apos; is-direct-form-of Q&apos;</obo:RO_0002423>
+        <dc:creator>Chris Mungall</dc:creator>
+        <rdfs:label>is direct form of</rdfs:label>
     </owl:AnnotationProperty> -->
     
 
@@ -172,6 +182,18 @@
     <!-- <owl:AnnotationProperty rdf:about="&oboInOwl;inSubset">
         <rdfs:label rdf:datatype="&xsd;string">in_subset</rdfs:label>
     </owl:AnnotationProperty> -->
+    
+
+
+    <!-- http://www.w3.org/2000/01/rdf-schema#comment -->
+
+    <!-- <owl:AnnotationProperty rdf:about="&rdfs;comment"/> -->
+    
+
+
+    <!-- http://www.w3.org/2000/01/rdf-schema#label -->
+
+    <!-- <owl:AnnotationProperty rdf:about="&rdfs;label"/> -->
     
 
 
@@ -225,7 +247,7 @@
         <obo:IAO_0000118 xml:lang="en">preceded_by</obo:IAO_0000118>
         <obo:IAO_0000412 rdf:resource="&obo;ro.owl"/>
         <dc:source>http://www.obofoundry.org/ro/#OBO_REL:preceded_by</dc:source>
-        <oboInOwl:inSubset rdf:resource="&obo;ro/subsets#ro-eco"/>
+        <oboInOwl:inSubset rdf:resource="http://purl.oboInOwllibrary.org/oboInOwl/ro/subsets#ro-eco"/>
         <rdfs:label xml:lang="en">preceded by</rdfs:label>
     </owl:ObjectProperty>
     
@@ -243,6 +265,11 @@
             <rdf:Description rdf:about="&obo;RO_0002092"/>
             <rdf:Description rdf:about="&obo;BFO_0000063"/>
         </owl:propertyChainAxiom>
+        <obo:IAO_0000111 xml:lang="en">precedes</obo:IAO_0000111>
+        <obo:IAO_0000115 xml:lang="en">x precedes y if and only if the time point at which x ends is before or equivalent to the time point at which y starts. Formally: x precedes y iff ω(x) &lt;= α(y), where α is a function that maps a process to a start point, and ω is a function that maps a process to an end point.</obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="&obo;ro.owl"/>
+        <oboInOwl:inSubset rdf:resource="http://purl.oboInOwllibrary.org/oboInOwl/ro/subsets#ro-eco"/>
+        <rdfs:label xml:lang="en">precedes</rdfs:label>
     </owl:ObjectProperty>
     
 
@@ -253,7 +280,7 @@
         <obo:IAO_0000117>David Osumi-Sutherland</obo:IAO_0000117>
         <obo:IAO_0000118 xml:lang="en">&lt;=</obo:IAO_0000118>
         <obo:IAO_0000412 rdf:resource="&obo;ro.owl"/>
-        <oboInOwl:inSubset rdf:resource="&obo;ro/subsets#ro-eco"/>
+        <oboInOwl:inSubset rdf:resource="http://purl.oboInOwllibrary.org/oboInOwl/ro/subsets#ro-eco"/>
         <rdfs:comment>Primitive instance level timing relation between events</rdfs:comment>
         <rdfs:label xml:lang="en">before or simultaneous with</rdfs:label>
     </owl:ObjectProperty>
@@ -266,7 +293,7 @@
         <rdf:type rdf:resource="&owl;TransitiveProperty"/>
         <obo:IAO_0000117>David Osumi-Sutherland</obo:IAO_0000117>
         <obo:IAO_0000412 rdf:resource="&obo;ro.owl"/>
-        <oboInOwl:inSubset rdf:resource="&obo;ro/subsets#ro-eco"/>
+        <oboInOwl:inSubset rdf:resource="http://purl.oboInOwllibrary.org/oboInOwl/ro/subsets#ro-eco"/>
         <rdfs:comment xml:lang="en">t1 simultaneous_with t2 iff:=  t1 before_or_simultaneous_with t2  and not (t1 before t2)</rdfs:comment>
         <rdfs:label xml:lang="en">simultaneous with</rdfs:label>
     </owl:ObjectProperty>
@@ -279,7 +306,7 @@
         <rdf:type rdf:resource="&owl;TransitiveProperty"/>
         <obo:IAO_0000117>David Osumi-Sutherland</obo:IAO_0000117>
         <obo:IAO_0000412 rdf:resource="&obo;ro.owl"/>
-        <oboInOwl:inSubset rdf:resource="&obo;ro/subsets#ro-eco"/>
+        <oboInOwl:inSubset rdf:resource="http://purl.oboInOwllibrary.org/oboInOwl/ro/subsets#ro-eco"/>
         <rdfs:comment xml:lang="en">t1 before t2 iff:=  t1 before_or_simulataneous_with t2  and not (t1 simultaeous_with t2)</rdfs:comment>
         <rdfs:label xml:lang="en">before</rdfs:label>
     </owl:ObjectProperty>
@@ -315,7 +342,7 @@
         <obo:IAO_0000118>meets</obo:IAO_0000118>
         <obo:IAO_0000412 rdf:resource="&obo;ro.owl"/>
         <obo:RO_0002575 rdf:resource="&obo;BFO_0000063"/>
-        <oboInOwl:inSubset rdf:resource="&obo;ro/subsets#ro-eco"/>
+        <oboInOwl:inSubset rdf:resource="http://purl.oboInOwllibrary.org/oboInOwl/ro/subsets#ro-eco"/>
         <rdfs:comment xml:lang="en">X immediately_precedes_Y iff: end(X) simultaneous_with start(Y)</rdfs:comment>
         <rdfs:label xml:lang="en">immediately precedes</rdfs:label>
     </owl:ObjectProperty>
@@ -375,6 +402,44 @@
     
 
 
+    <!-- http://purl.obolibrary.org/obo/RO_0002233 -->
+
+    <owl:ObjectProperty rdf:about="&obo;RO_0002233">
+        <owl:inverseOf rdf:resource="&obo;RO_0002352"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="&obo;RO_0002224"/>
+            <rdf:Description rdf:about="&obo;RO_0002233"/>
+        </owl:propertyChainAxiom>
+        <obo:IAO_0000114 rdf:resource="&obo;IAO_0000125"/>
+        <obo:IAO_0000115>p has direct input c iff c is a participant in p, c is present at the start of p, and the state of c is modified during p.</obo:IAO_0000115>
+        <obo:IAO_0000117>Chris Mungall</obo:IAO_0000117>
+        <obo:IAO_0000118>consumes</obo:IAO_0000118>
+        <obo:IAO_0000412 rdf:resource="&obo;ro.owl"/>
+        <oboInOwl:inSubset rdf:resource="http://purl.oboInOwllibrary.org/oboInOwl/ro/subsets#ro-eco"/>
+        <rdfs:label xml:lang="en">has input</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/RO_0002234 -->
+
+    <owl:ObjectProperty rdf:about="&obo;RO_0002234">
+        <owl:inverseOf rdf:resource="&obo;RO_0002353"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="&obo;RO_0002230"/>
+            <rdf:Description rdf:about="&obo;RO_0002234"/>
+        </owl:propertyChainAxiom>
+        <obo:IAO_0000114 rdf:resource="&obo;IAO_0000125"/>
+        <obo:IAO_0000115>p has output c iff c is a participant in p, c is present at the end of p, and c is not present at the beginning of p.</obo:IAO_0000115>
+        <obo:IAO_0000117>Chris Mungall</obo:IAO_0000117>
+        <obo:IAO_0000118>produces</obo:IAO_0000118>
+        <obo:IAO_0000412 rdf:resource="&obo;ro.owl"/>
+        <oboInOwl:inSubset rdf:resource="http://purl.oboInOwllibrary.org/oboInOwl/ro/subsets#ro-eco"/>
+        <rdfs:label xml:lang="en">has output</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://purl.obolibrary.org/obo/RO_0002350 -->
 
     <owl:ObjectProperty rdf:about="&obo;RO_0002350">
@@ -396,6 +461,63 @@
     <owl:ObjectProperty rdf:about="&obo;RO_0002351">
         <rdf:type rdf:resource="&owl;IrreflexiveProperty"/>
         <rdfs:label xml:lang="en">has member</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/RO_0002352 -->
+
+    <owl:ObjectProperty rdf:about="&obo;RO_0002352">
+        <rdfs:label xml:lang="en">input of</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/RO_0002353 -->
+
+    <owl:ObjectProperty rdf:about="&obo;RO_0002353">
+        <rdfs:label xml:lang="en">output of</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/RO_0002404 -->
+
+    <owl:ObjectProperty rdf:about="&obo;RO_0002404">
+        <rdfs:subPropertyOf rdf:resource="&obo;BFO_0000062"/>
+        <owl:inverseOf rdf:resource="&obo;RO_0002411"/>
+        <obo:IAO_0000114 rdf:resource="&obo;IAO_0000428"/>
+        <obo:IAO_0000115>inverse of upstream of</obo:IAO_0000115>
+        <obo:IAO_0000117>Chris Mungall</obo:IAO_0000117>
+        <obo:IAO_0000412 rdf:resource="&obo;ro.owl"/>
+        <rdfs:label xml:lang="en">causally downstream of</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/RO_0002411 -->
+
+    <owl:ObjectProperty rdf:about="&obo;RO_0002411">
+        <rdfs:subPropertyOf rdf:resource="&obo;BFO_0000063"/>
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+        <obo:IAO_0000114 rdf:resource="&obo;IAO_0000428"/>
+        <obo:IAO_0000115>p is causally upstream of q if and only if p precedes q and p and q are linked in a causal chain</obo:IAO_0000115>
+        <obo:IAO_0000117>Chris Mungall</obo:IAO_0000117>
+        <obo:IAO_0000412 rdf:resource="&obo;ro.owl"/>
+        <rdfs:label xml:lang="en">causally upstream of</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/RO_0002451 -->
+
+    <owl:ObjectProperty rdf:about="&obo;RO_0002451">
+        <obo:IAO_0000112>all dengue disease transmitted by some mosquito</obo:IAO_0000112>
+        <obo:IAO_0000115>A relationship that holds between a disease and organism</obo:IAO_0000115>
+        <obo:IAO_0000116>Add domain and range constraints</obo:IAO_0000116>
+        <obo:IAO_0000117>Chris Mungall</obo:IAO_0000117>
+        <obo:IAO_0000412 rdf:resource="&obo;ro.owl"/>
+        <rdfs:label>transmitted by</rdfs:label>
     </owl:ObjectProperty>
     
 
@@ -427,29 +549,19 @@
     
 
 
+    <!-- http://purl.obolibrary.org/obo/IAO_0000428 -->
+
+    <owl:NamedIndividual rdf:about="&obo;IAO_0000428">
+        <rdfs:label xml:lang="en">requires discussion</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://purl.obolibrary.org/obo/RO_0001901 -->
 
     <owl:NamedIndividual rdf:about="&obo;RO_0001901">
         <rdfs:label xml:lang="en">axiom holds for all times</rdfs:label>
     </owl:NamedIndividual>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Annotations
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-    <rdf:Description rdf:about="&obo;BFO_0000063">
-        <obo:IAO_0000115 xml:lang="en">x precedes y if and only if the time point at which x ends is before or equivalent to the time point at which y starts. Formally: x precedes y iff ω(x) &lt;= α(y), where α is a function that maps a process to a start point, and ω is a function that maps a process to an end point.</obo:IAO_0000115>
-        <oboInOwl:inSubset rdf:resource="&obo;ro/subsets#ro-eco"/>
-        <obo:IAO_0000412 rdf:resource="&obo;ro.owl"/>
-        <rdfs:label xml:lang="en">precedes</rdfs:label>
-        <obo:IAO_0000111 xml:lang="en">precedes</obo:IAO_0000111>
-    </rdf:Description>
 </rdf:RDF>
 
 

@@ -26,7 +26,7 @@ $(ONT).owl: $(SRC)
 # Ontofox can't import geo either - the ids are ahead of what ontofox's geo ontology has?
 # Ontofox ido import is bringing in BFO root tree when it shouldn't.
 # 
-IMPORTS = brenda chebi chmo doid efo envo eo ero hp ncbitaxon ndf-rt obi pato ro sio so stato uberon uberon gazetteer
+IMPORTS = brenda chebi chmo doid efo envo eo ero gazetteer hp ido ncbitaxon ndf-rt obi pato po ro sio so stato uberon uberon
 # bfo 
 IMPORTS_OWL = $(patsubst %, imports/%_import.owl,$(IMPORTS))
 
@@ -42,17 +42,7 @@ imports/%_import.owl: imports/%_ontofox.txt
 	# In sed command on Macs we need the '.bak' after -i to avoid a parsing error
 	sed -i '.bak' 's/<owl:AnnotationProperty[^>]*\/>/<!-- & -->/; s/<\/owl:AnnotationProperty>/& -->/; s/<owl:AnnotationProperty[^>]*">/<!-- &/;' $@ ||	sed -i 's/<owl:AnnotationProperty[^>]*\/>/<!-- & -->/; s/<\/owl:AnnotationProperty>/& -->/; s/<owl:AnnotationProperty[^>]*">/<!-- &/;' $@
 
-
-# Use ROBOT, driven entirely by terms lists NOT from source ontology
-#imports/%_import.owl: mirror/%.owl imports/%_terms.txt
-#	$(ROBOT) extract -i $< -T imports/$*_terms.txt --method BOT -O $(BASE)/$@ -o $@
-
 .PRECIOUS: imports/%_import.owl
-
-# clone remote ontology locally, perfoming some excision of relations and annotations
-#mirror/%.owl: $(SRC)
-#	$(OWLTOOLS) $(OBO)/$*.owl --remove-annotation-assertions -l -s -d --remove-dangling-annotations  -o $@
-#.PRECIOUS: mirror/%.owl
 
 release: $(ONT).owl 
 	cp $^ $RELEASEDIR && cp imports/*.owl $RELEASEDIR/imports

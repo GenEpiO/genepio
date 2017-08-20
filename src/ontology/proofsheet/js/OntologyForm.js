@@ -10,14 +10,15 @@ Project: genepio.org/geem
 Date: June 20, 2017
 
 */
-function OntologyForm(domId, specification, settings) {
+function OntologyForm(domId, specification, settings, callback) {
 	var self = this
 	//bag = {}
 	self.settings = {}
 	self.formDomId = $(domId)
 	self.specification = specification // By reference hopefully
-	// Some of these defaults can be overridden by particular fields via ui_feature specification
+	self.formCallback = callback
 
+	// Some of these defaults can be overridden by particular fields via ui_feature specification
 	if (settings) self.settings = settings
 	if (! 'formatD' in self.settings) self.settings.formatD = 'yyyy-mm-dd'
 	if (! 'formatT' in self.settings) self.settings.formatT = 'Thh:ii:SS'
@@ -27,7 +28,7 @@ function OntologyForm(domId, specification, settings) {
 
 	/*********** FORM RENDERER *************************/
 	this.renderEntity = function(entityId) {
-		//alert("renderEntity() " + entityId)
+
 		if (entityId) {
 			if (entityId.indexOf('/') != -1)
 				entityId = entityId.substr(0, entityId.indexOf('/'))
@@ -63,62 +64,31 @@ function OntologyForm(domId, specification, settings) {
 			}
 			window.document.title = title
 
-			if (window.setShoppingCart) setShoppingCart() //BUT THIS IS BACK IN app.js CODE.
-
 		 	// Actually load an existing data record
 		 	//loadFormData()
 
 			// Set required/optional status of fields and controls for adding more elements.
 			setCardinality() 
 
-			// Fill specification tab.  THIS COULD BE DONE ON SHOW OF SPEC TAB INSTEAD.
+			// Fill specification tab.  THIS SHOULD BE DONE ON SHOW OF SPEC TAB INSTEAD.
 		 	if (window.getdataSpecification) getdataSpecification(self.entityId) 
 		 	
+		 	if (self.settings.minimalForm) setMinimalForm() // Hides empty optional field content.
+
 		 	// All of form's regular <select> inputs (e.g. NOT the ones for picking units)
 		 	// get some extra smarts for type-as-you-go filtering.
 		 	$('select.regular').each(configureSelect); 
-		 		
-		 	if (self.settings.minimalForm) setMinimalForm() // Hides empty optional field content.
-
-		 	// A WAY FOR THIS TO BE LOADED UP only when shopping cart component is attached?
-			self.formDomId.on('click', "i.fi-shopping-cart", function(){
-				// Check and update shopping cart include/exclude status of this item
-				event.stopPropagation(); // otherwise parent cart items catch same click
-				cartCheck(getEntityId(this))
-			})
-
-			self.formDomId.on('mouseenter','i.fi-magnifying-glass', displayContext)
-
+		 	
 			self.formDomId.foundation()
 
-			// Adds shopping cart and magnifying glass to individual <select><option> item if it doesn't have one...
-			// This has to be done runtime (via mouseover) because only then does foundation render it.
-			// FUTURE: FORM Hides/DROPS HIDDEN <option> in renderChoice().
-			if (window.setShoppingCart)
-				$('#mainForm div.chosen-container').on('mouseenter', 'div.chosen-drop', function(event) { 
-
-					var control = $(this).children('ul.chosen-results')
-
-					if (control.find('li.active-result:first > i').length == 0 ) {
-						var selectOptions = $(this).parent('div').prev('select').children('option')
-						//console.log(select.html())
-						$(control).children('li').each(function (index) {
-							if ($(this).is('.active-result')) {
-								// We need to copy the value from the existing <select><option>
-								// into the data-ontology-id for this <li>.
-								var id = selectOptions.eq(index+1).attr('value') //Get corresponding option value.
-								$(this).attr('data-ontology-id',id)
-								$(this).append('<i class="fi-shopping-cart"></i>')
-								if (self.settings.ontologyDetails)
-									$(this).prepend('<i class="fi-magnifying-glass"></i> &nbsp;')
-							}
-						})
-					}
-				})
-
+			//Setup of this class enables callback function to be supplied.  Could make an event instead.
+			if (self.formCallback)
+				self.formCallback(self)
 		 }
 		return false
 	}
+
+
 	formDelete = function() {
 		if (self.formDomId)
 			self.formDomId.off().empty()
@@ -179,7 +149,13 @@ function OntologyForm(domId, specification, settings) {
  			allow_single_deselect: singleDeselect, //only works on single-select where first option value is ""
  			search_contains: true, //substring search
  			inherit_select_classes: true // inherits <select class=""> css
- 		});  
+ 		})
+
+ 		// But using this doesn't allow us to keep selection list open:
+ 		//.on('chosen:showing_dropdown',function(event) {
+ 		//	console.log('showing')
+ 		//})
+
  		// Other options:
  		// width: xyz pixels.
  		// max_shown_results: only show the first (n) matching options...
@@ -213,6 +189,7 @@ function OntologyForm(domId, specification, settings) {
 								if (min == 1) {
 									cardinalityLabel = 'required'
 									required = true
+									console.log('got required')
 								}
 								else {} // 0 or less is nonsense.
 							}
@@ -244,7 +221,7 @@ function OntologyForm(domId, specification, settings) {
 
 				if (required == true) {
 					$(this).addClass('required')
-					$(this).children('div.input-group > input').prop('required',true)
+					$(this).children('div.input-group').children('input').prop('required',true) //NOT WORKING ON INPUT
 				}
 				else
 					$(this).addClass('optional')
@@ -265,7 +242,7 @@ function OntologyForm(domId, specification, settings) {
 		// ISSUE: fields like temperature that have a unit field with selections. Has to be broken up. 
 		var obj = {}
 
-		$.each($("form").find("input:not(.button), select"), function(i,item) {
+		$.each(self.formDomId.find("input:not(.button), select"), function(i,item) {
 			var focus = obj
 			var id = $(item).attr('id')
 			if (id) {
@@ -530,7 +507,7 @@ function OntologyForm(domId, specification, settings) {
 		*/
 		//label = label.replace("</label>","") //We customize where label ends.
 
-		html =		label
+		html = label
 		html +=	'	<div class="input-group">\n'
 		html +=	'		<input class="input-group-field '+entity['id']+'" id="'+entity['domId']+'" type="text" ' + getStringConstraints(entity) + entity['disabled']  + getPlaceholder(entity) + '" />\n'
 	    html += 		renderUnits(entity)
@@ -544,7 +521,7 @@ function OntologyForm(domId, specification, settings) {
 	renderNumber = function(entity, label) {
 		// ADD DECIMAL/FLOAT VALIDATION
 
-		html =		label
+		html = label
 		html +=	'	<div class="input-group">\n'
 		html +=	'		<input class="input-group-field '+entity['id']+'" id="'+entity['domId']+'" type="text"' + entity['disabled'] + getPlaceholder(entity)+'" />\n'
 	    html += 		renderUnits(entity)
@@ -583,17 +560,14 @@ function OntologyForm(domId, specification, settings) {
 
 		*/
 		picklistId = entity['id']
-		var multiple = entity['data-cardinality-min'] > 1 || entity['data-cardinality-max'] > 1 ? ' multiple' : ''
-		var html =		label
+		var multiple = entity['data-cardinality-min'] > 1 || (entity['data-cardinality-max'] != 1) ? ' multiple' : ''
+		var html = label
 		// TESTING "data-" prefix to getPlaceholder() - its a https://harvesthq.github.io/chosen/ thing.
 		html +=	'	<div class="input-group">\n'
-		// POSSIBLY PROVIDE CUSTOM prompt here
-		//data-' + $.trim(getPlaceholder(entity)) + '"
 		html +=	'		<select class="input-group-field '+ entity['id'] + ' regular" id="'+entity['domId']+'"' + entity['disabled'] + multiple + '>\n'
-		//if (!entity['data-cardinality-min'] || entity['data-cardinality-min'] == 0) {
 			//Enables no option to be selected.
 			html +=	'<option value=""></option>'
-		//}
+
 		//Because one should deliberately make a selection ... esp. when confronted with required selection list where 1st item is 
 		html +=	'<option value="" disabled>Select ...</option>'
 		html +=				renderChoice(self.specification['specifications'][picklistId], 0)
@@ -614,21 +588,21 @@ function OntologyForm(domId, specification, settings) {
 		
 		// NOTE: currently the ontologyID for each item does not include path
 
-		var html = ""
+		var html = ''
 		if (depth > 10) return "MAX DEPTH PROBLEM WITH " + entity['id']
+
 		if ('members' in entity) 
-			//var prefix = Array(depth+1).join("     ")
 			var memberIds = getSort(entity['members'],'specifications') 
-			//console.log("List:",entity['uiLabel'], memberIds)
+
 			for (var ptr in memberIds) {
 				var memberId = memberIds[ptr]
 				var part = self.specification['specifications'][memberId]
+
 				if (!part) // Should never happen.
 					console.log("Error: picklist choice not available: ", memberId, " for list ",entity['id'])
 				else {
 					// Currently showing "hidden" feature as disabled.
 					var disabled = getFeature(entity, memberId, 'hidden') ? ' disabled="disabled"' : '';
-					var kidHTML = renderChoice(part, depth+1)
 					var label = part['uiLabel']
 					if (!label) {
 						label = ''
@@ -637,7 +611,7 @@ function OntologyForm(domId, specification, settings) {
 					if ('label' in part && part['label'] != label)
 						label = label + ' (' + part['label'] + ')'
 					// Some extra pizaz for capitalizing labels that appear at 1st depth in hierarchic lists with descendants.
-					var label = (depth == 0 && (kidHTML.length > 0)) ? label.toUpperCase() : label
+					// var label = (depth == 0 && (kidItemHTML.length > 0)) ? label.toUpperCase() : label
 					switch (type) {
 
 						case "checkbox": // future
@@ -648,11 +622,15 @@ function OntologyForm(domId, specification, settings) {
 
 						default:
 							if (self.settings.ontologyDetails == true) label = label + ' - ' + part['id'];
-							html += '<option value="'+part['id']+'" class="depth'+depth+'" '+disabled+'>' + label + '</option>\n' //prefix + 
+							html += '<option value="' + part['id'] + '" class="depth' + depth + '" '+disabled+'>' + label + '</option>\n' //prefix + 
 					}
+					var kidItemHTML = renderChoice(part, depth+1)
+					if (kidItemHTML.length > 0)	
+						html += '<optgroup>' + kidItemHTML + '</optgroup>'
 				}
-				html += kidHTML
+				// Wrapping kids in optgroup so we have some way of understanding depth
 			}
+
 		return html
 	}
 
@@ -825,7 +803,7 @@ function OntologyForm(domId, specification, settings) {
 	}
 
 	getConstraints = function(entity) {
-		//Each constraint has "constraint", "datatype", and "value"
+		// Each constraints array item has "constraint", "datatype", and "value" key value pairs.
 		output = {}
 		if ('constraints' in entity && entity['constraints'].length) {
 			var constraints = entity['constraints']

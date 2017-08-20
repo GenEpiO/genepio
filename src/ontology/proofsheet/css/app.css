@@ -12,9 +12,13 @@ form i.fi-shopping-cart {float:right; clear:left; color:lightgreen; font-size:1.
 #shoppingCart div.cart-item {clear:both; border-top:1px dotted silver;padding-top:.5rem;}
 #shoppingCart div.cart-item:first-child {border-top:0;}
 #shoppingCart div.cart-item > div.cart-item {margin-left:10px;}
+#shoppingCart li.cart-item i.fi-magnifying-glass {float:right !important; margin-right:20px; font-size:1.3rem;}
+#mainForm li.cart-item {;margin-right:30px;}
+#mainForm li.cart-item.exclude {background-color:silver;}
+#mainForm li.cart-item.include {background-color:green;color:white;}
 
-div.include i.fi-shopping-cart, i.fi-shopping-cart.include {color:green}
-div.exclude i.fi-shopping-cart, i.fi-shopping-cart.exclude {color:red}
+.include i.fi-shopping-cart, i.fi-shopping-cart.include ,.include+i.fi-shopping-cart {color:green} /* ,.include+i.fi-shopping-cart */
+.exclude i.fi-shopping-cart, i.fi-shopping-cart.exclude,.exclude+i.fi-shopping-cart {color:red} /* ,.exclude+i.fi-shopping-cart */
 
 
 a.icon {font-size:1.5rem;float:right;margin-top:-5px;margin-left:20px;color:#2199e8;cursor:pointer;}
@@ -48,7 +52,7 @@ div.package {border-top:1px dotted silver; padding-top:.5rem;}
 
 .infoBox {margin:5%; padding:40px; background-color:#2199e8; color:white; font-style:italic}
 
-li.cart-item i.fi-magnifying-glass {float:right !important; margin-right:20px; font-size:1.3rem;}
+
 label >  i.fi-magnifying-glass {font-size:1.1rem; cursor:pointer; color:lightblue}
 i.fi-marker {color:green; cursor:pointer;}
 i.fi-marker.large {font-size: 1.1rem;}
@@ -77,7 +81,7 @@ div.callout.footer a:hover {color:navy}
 div.parental {padding-left:15px;}
 
 .chosen-container {width:inherit !important}
-
+/*
 li.depth0 {}
 li.depth1 {padding-left:15px !important;}
 li.depth2 {padding-left:30px !important;}
@@ -89,7 +93,7 @@ li.depth7 {padding-left:105px !important;}
 li.depth8 {padding-left:120px !important;}
 li.depth9 {padding-left:135px !important;}
 li.depth10 {padding-left:150px !important;}
-
+*/
 select.units {width:auto;cursor:pointer} 
 
 
@@ -115,7 +119,8 @@ a.input-group-label {font-size:.9em;}
 
 .tabs-title>a { padding: .75rem 1.5rem; font-size:.9rem; } /* Foundation tabs are big for tablet/mobile touch but this is only a PC app for now so made them smaller padding. */
 
-/* Signal deselected toggle state */
-ul.chosen-results > li.active-result::after {content: }
-
 #displayContext {position:absolute;z-index:1500;color:black;}
+
+i.fi-shopping-cart.option {position:absolute;right:10px;margin-top:-30px;} 
+
+li.group-result {display:none;}

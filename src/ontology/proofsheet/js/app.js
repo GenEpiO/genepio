@@ -22,6 +22,7 @@
 	 - Must do a better job of identifying and grouping top-level ontology items
 	 - How to handle items that are not marked as datums?
 	 - Handle ordering of items based on "immediately after" relation.
+	 - possibly try: http://knockoutjs.com/index.html
 
 	Author: Damion Dooley
 	Project: genepio.org/geem
@@ -33,6 +34,8 @@
 data = {}
 focusEntityId = null
 formSettings = {}
+//ontologyLookupService = 'https://www.ebi.ac.uk/ols/search?q='
+ontologyLookupService = 'http://purl.obolibrary.org/obo/'
 
 $( document ).ready(function() {
 
@@ -78,6 +81,16 @@ $( document ).ready(function() {
 	})
 
 	$("#searchResults").on('mouseenter','i.fi-arrow-up.dropdown', displayContext)
+
+	$("#content").on('mouseenter','i.fi-magnifying-glass', displayContext)
+
+	$("#content").on('click', "i.fi-shopping-cart", function(event){
+		// Check and update shopping cart include/exclude status of this item
+		event.stopPropagation(); // otherwise parent cart items catch same click
+		cartCheck(getEntityId(this))
+		return false
+	})
+
 	//Setup in form code because #mainForm events overwritten: $("#mainForm").on('mouseenter','i.fi-magnifying-glass', displayContext)
 			
 	$("#makePackageForm").on('submit', function() {
@@ -104,12 +117,15 @@ $( document ).ready(function() {
 	$("#shoppingCart")
 		.on("click", 'div.cart-item', function(event) {
 			event.stopPropagation(); // otherwise parent cart items catch same click
+
 			if ($(event.target).is('i.fi-shopping-cart'))
 				// Change state of shopping cart item as indicated by div.cart-item.data-ontology-Id
 				cartCheck(this.dataset.ontologyId)
 			else
 				// Follow link if user didn't click
 				return navigateToForm(this.dataset.ontologyId)
+
+			return false
 		})
 
 
@@ -121,10 +137,14 @@ $( document ).ready(function() {
 	//Default load of GenEpiO
 	loadSpecification('data/ontology/genepio_ui.json')
 
-	
+
 });
 
 
+
+getIdHTMLAttribute = function(id) {
+	return 'data-ontology-id="' + id + '" '
+}
 
 /*********** ACTION *****************************************************
 	This loads the json user interface oriented version of an ontology
@@ -146,7 +166,7 @@ function loadSpecification(specification_file) {
 			// Setup Zurb Foundation user interface and form validation
 			top.data = specification;
 
-			myForm = new OntologyForm("#mainForm", top.data, top.formSettings) // Provide ID of form to populate.
+			myForm = new OntologyForm("#mainForm", top.data, top.formSettings, formCallback) // Provide context of form to populate.
 
 			// Show Data Representation Model item menu on "Browse" tab.
 			// Prepare browsable top-level list of ontology items
@@ -190,6 +210,69 @@ function loadSpecification(specification_file) {
 	});
 }
 
+function formCallback(formObj) {
+	//This is executed whenever a new form is rendered.
+	if (window.setShoppingCart) {
+		setShoppingCart(formObj) 
+		setFormSelectOptionsCart(formObj)
+	}
+}
+
+
+setShoppingCart = function (formObj) {
+	// UPDATE SHOPPING CART STATUS in renderEntity()
+	// ISSUE is foundation zurb selection lists redrawn each time, so need statuses added in that code.
+	$('#content div.field-wrapper')
+		.addClass('cart-item')
+		.prepend('<i class="fi-shopping-cart"></i>')
+
+	$('#shoppingCart div.cart-item').each(function(index){
+		var status = ''
+		if ($(this).is('.include') ) status = 'include'
+		if ($(this).is('.exclude') ) status = 'exclude'
+
+		$('#content div.field-wrapper[' + getIdHTMLAttribute($(this)[0].dataset.ontologyId) + ']').addClass(status)
+	})
+}
+
+
+function setFormSelectOptionsCart(formObj) {
+	// Adds shopping cart and magnifying glass to individual <select><option> item if it doesn't have one...
+	// This has to be done runtime (via mouseover) because only then does foundation render it.
+	// FUTURE: FORM Hides/DROPS HIDDEN <option> in renderChoice().
+	$('#content select.regular').on('chosen:showing_dropdown', function(event) {
+
+		var control = $(this).next().find('ul.chosen-results')
+		var select = $(this) //.parent('div').prev('select')
+		var selectId = select.attr('id') // FUTURE: generalize to data-ontology-id
+		var selectOptions = select.children('option')
+
+		$(control).children('li').each(function (index) {
+			if ($(this).is('.active-result')) {
+
+				// We need to copy the value from the existing <select><option>
+				// into the data-ontology-id for this <li>.
+				var id = selectOptions.eq(index+1).attr('value') //Get corresponding option value.
+				var pathId = selectId + '/' + id
+				$(this).attr('data-ontology-id',pathId)
+				$(this).addClass('cart-item')
+				var cartItem = $('#shoppingCart [data-ontology-id="' + pathId +'"]')
+				var cart = $('<i class="fi-shopping-cart option"></i>')
+				if (cartItem.length>0)
+					if (cartItem.is('.include') ) $(this).add(cart).addClass('include')
+					else if (cartItem.is('.exclude') ) $(this).add(cart).addClass('exclude')
+
+				// Couldn't figure out how to keep lselection window open
+				$(this).after(cart) //awkward, cart requires margin-top:-30px in stylesheet.
+				if (formObj.settings.ontologyDetails)
+					$(this).prepend('<i class="fi-magnifying-glass"></i> &nbsp;')
+			}
+		})
+
+	})
+
+}
+
 function navigateToForm(ontologyId) {
 	
 	if (window.location.href.indexOf(ontologyId) == -1) {// not found
@@ -211,7 +294,9 @@ function getEntity(ontologyId) {
 }
 
 function getEntityId(item) {
+	if ($(item).is('i.fi-shopping-cart.option')) return $(item).prev().attr('data-ontology-id')
 	return $(item).parents('.cart-item,.field-wrapper').first()[0].dataset.ontologyId
+
 }
 
 /*********** SEARCH AND RESULTS *************************/
@@ -279,11 +364,18 @@ function displayContext(event) {
 		content += '<ul>' + getRelationsHTML(ontologyId) + '</ul>'
 
 	// Though it is hidden, have to include button or else Foundation throws error.
-	content = '<button id="displayContextButton" data-toggle="displayContext"></button>' + content
+	content = '<button id="displayContextButton" data-toggle="displayContext">&nbsp; &nbsp;</button>' + content // style="position:absolute"
 
 	$('body').after(content).foundation() //Places it.
+
 	var elem = new Foundation.Dropdown($('#displayContext'), {hover:true, hoverPane:true});
 	var iconPosition = $(this).offset()
+	
+	//So mouseout works
+	$('#displayContextButton')
+		.css('left', (iconPosition.left) + 'px')
+		.css('top', (iconPosition.top) + 'px')
+
 	$('#displayContext').foundation('open')
 		.css('left', (iconPosition.left + 20) + 'px')
 		.css('top', (iconPosition.top) + 'px')
@@ -334,10 +426,16 @@ function getRelationLink(relation, entity) {
 		'</li>'].join('')
 }
 
-/*********** DETAIL DROPDOWN/HOVER *************************/
-
 function getOntologyDetailHTML(ontologyId) {
+
+	// This links directly to form for this entity.  Not in context of larger form.
+	// Problem is that recursion to fetch parts from parent runs into parents that 
+	// have no further path.
+	// ALSO SELECT LIST CHOICES DON'T HAVE DEPTH STEMMING FROM PARENT ENTITY, only from ???
 	entity = getEntity(ontologyId)
+	entityId = entity['id'].split(':')[1]
+	var labelURL = '<a href="' + top.ontologyLookupService + entityId + '" target="_blank">' + entity['uiLabel'] + '</a>' 
+
 	/* Provide a label mouseover display of underlying ontology details
 	like original ontology definition, term id, synonyms, etc.
 	*/
@@ -363,13 +461,7 @@ function getOntologyDetailHTML(ontologyId) {
 			}
 		}
 	}
-	// This links directly to form for this entity.  Not in context of larger form.
-	// Problem is that recursion to fetch parts from parent runs into parents that 
-	// have no further path.
-	if (entity['depth'] > 0)
-		var labelURL = '<a href="#' + entity['id'] + '">' + entity['uiLabel'] + '</a>' 
-	else
-		var labelURL = entity['uiLabel']
+
 
 	// Enable mouseover display of above.
 	itemHTML = 	[labelURL, itemHTML].join('\n')
@@ -391,9 +483,9 @@ function cartCheck(ontologyId) {
 		$("#panelCart > div.infoBox").remove()
 
 	var dataId = '[' + getIdHTMLAttribute(ontologyId) +']'
-	var items = $('div.cart-item' + dataId + ',div.field-wrapper' + dataId)
-	var formItem = $('#mainForm div.field-wrapper' + dataId)
-	var cartItem = $('#shoppingCart div.cart-item' + dataId)
+	var items = $('.cart-item' + dataId)
+	var formItem = $('#mainForm .cart-item' + dataId) // CONGLOMERATE?
+	var cartItem = $('#shoppingCart .cart-item' + dataId)
 
 	if (cartItem.length == 0) {
 		// ADD item to shopping list; couldn't possibly have clicked on it there.
@@ -507,18 +599,6 @@ function renderCartObj(ontologyId) {
 
 }
 
-
-function setShoppingCart() {
-	// UPDATE SHOPPING CART STATUS in renderEntity()
-	$('#mainForm div.field-wrapper').prepend('<i class="fi-shopping-cart"></i>')
-	$('#shoppingCart div.cart-item').each(function(index){
-		var status = ''
-		if ($(this).is('.include') ) status = 'include'
-		if ($(this).is('.exclude') ) status = 'exclude'
-
-		$('#mainForm div.field-wrapper[' + getIdHTMLAttribute($(this)[0].dataset.ontologyId) + ']').addClass(status)
-	})
-}
 
 
 /*********** ENTITY MENU RENDERER *************************/

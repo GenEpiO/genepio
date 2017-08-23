@@ -26,7 +26,7 @@ $(ONT).owl: $(SRC)
 # Ontofox can't import geo either - the ids are ahead of what ontofox's geo ontology has?
 # Ontofox ido import is bringing in BFO root tree when it shouldn't.
 # 
-IMPORTS = brenda chebi chmo doid efo envo eo ero gazetteer hp ido ncbitaxon ndf-rt obi pato po ro sio so stato uberon uberon
+IMPORTS = brenda chebi chmo doid efo envo eo ero foodon gazetteer hp ido ncbitaxon ncit ndf-rt obi pato po ro sio so stato uberon uberon
 # bfo 
 IMPORTS_OWL = $(patsubst %, imports/%_import.owl,$(IMPORTS))
 

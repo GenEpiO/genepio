@@ -439,8 +439,12 @@ class Ontology(object):
 				# if no referrer, then just mark feature directly in feature set of entity
 				if referrer == '':
 					entity = self.struct['specifications'][id]
-					self.setDefault(entity, 'features', OrderedDict())
-					self.entity['features'].append(myObj)
+					if not entity:
+						print "Error,  no specification for id ", id, " when working on", table_name
+					else:
+						self.setDefault(entity, 'features', []) #OrderedDict()
+						#self.getStruct(entity, 'features').append(myObj)
+						entity['features'].append(myObj)
 				else:
 					# Go find referrer
 					entity = self.getStruct(self.struct, 'specifications', referrer)

@@ -21,12 +21,11 @@ $(ONT).owl: $(SRC)
 	$(ROBOT) reduce -i $< -r ELK -s true annotate --xml-entities -V $(BASE)/releases/`date +%Y-%m-%d`/$(ONT).owl -o $@
 
 # ALL OWL imports: apollo_sv chebi chmo doid efo envo eo ero evs fix gazetteer geo hardcoded hp ido irida model ncbitaxon ndf-rt oae obi ontology-metadata pato ro sio so stato symp typon uberon uo
-# ALL OntoFox imports: brenda chebi chmo doid efo envo eo ero fix gazetteer geo hp ido ncbitaxon ndf-rt oae obi pato ro sio so stato uberon uo
+# ALL OntoFox imports: brenda chebi chmo doid efo envo eo ero foodon gazetteer hp ido ncbitaxon ncit ndf-rt obi pato po ro sio so stato uberon uberon
 # Ontofox can't import apollo_sv at moment - yeilds empty ontology file.
 # Ontofox can't import geo either - the ids are ahead of what ontofox's geo ontology has?
-# Ontofox ido import is bringing in BFO root tree when it shouldn't.
 # 
-IMPORTS = brenda chebi chmo doid efo envo eo ero foodon gazetteer hp ido ncbitaxon ncit ndf-rt obi pato po ro sio so stato uberon uberon
+IMPORTS = brenda chebi chmo doid efo envo eo ero foodon gazetteer hp ido ncbitaxon ncit ndf-rt obi pato po ro so stato uberon uberon
 # bfo 
 IMPORTS_OWL = $(patsubst %, imports/%_import.owl,$(IMPORTS))
 

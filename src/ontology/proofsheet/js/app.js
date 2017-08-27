@@ -74,6 +74,11 @@ $( document ).ready(function() {
 		loadSpecification($(this).val())
 	})
 
+	// Trigger JSON / EXCELL / YAML view of specification
+	$('#specification-tabs').on('change.zf.tabs', getdataSpecification)
+
+	$('#view_spec_download').on('click', downloadDataSpecification)
+
 	// Provide type-as-you-go searching
 	$("#searchField").on('keyup', function() {
 		var text = $(this).val().toLowerCase()
@@ -262,7 +267,7 @@ function setFormSelectOptionsCart(formObj) {
 					if (cartItem.is('.include') ) $(this).add(cart).addClass('include')
 					else if (cartItem.is('.exclude') ) $(this).add(cart).addClass('exclude')
 
-				// Couldn't figure out how to keep lselection window open
+				// Couldn't figure out how to keep selection window open
 				$(this).after(cart) //awkward, cart requires margin-top:-30px in stylesheet.
 				if (formObj.settings.ontologyDetails)
 					$(this).prepend('<i class="fi-magnifying-glass"></i> &nbsp;')
@@ -639,12 +644,68 @@ function renderMenu(entityId, depth = 0 ) {
 
 
 
-function getdataSpecification(entityId) {
-	/* The entity form is defined by 1 encompassing entity and its parts which are 
-	defined in top.data components: specification, picklists and units 
+function getdataSpecification() {
+	/* This is called each time a dataSpecification is loaded, and also when a
+	 specification tab is clicked.
+
+	INPUT
+	active specification tab: tab user just clicked on, or one active when form loaded
+	top.focusEntityId: The current entity being focused on, looked up in
+                       top.data components: specification, picklists and units 
+    OUTPUT
+    - #dataSpecification div or field loaded with textual representation.
+    - download button activated
 	*/
-	$("#helpDataSpecification").remove()
-	$("#dataSpecification").html(JSON.stringify(getEntitySpec(null, entityId), null, 2))
+
+	var selected_tab = $('#specification-tabs > li.is-active > a[aria-selected="true"]').attr('aria-controls')
+
+	if (selected_tab) {
+		var specification = getEntitySpec(null, top.focusEntityId)
+		var content = ''
+		$("#helpDataSpecification").remove()
+
+		switch (selected_tab) {
+			case 'json_specification':
+				content = JSON.stringify(specification, null, 2)
+				break; 
+			case 'yaml_specification':
+				content = YAML.stringify(specification, 4)  //4=# indentation characters
+				break;
+			case 'yaml_tree_specification':
+				break; 
+			case 'excel_specification':
+				break; 
+		}
+
+		$("#dataSpecification").html(content)
+
+		if (content.length > 0) // If something to download, activate download button
+			$("#spec_download").removeClass('disabled').removeAttr('disabled')
+		else 
+			$("#spec_download").addClass('disabled').attr('disabled','disabled')
+
+	}
+	
+}
+
+function downloadDataSpecification() {
+	/* This creates dynamic file download link for a given ontology entity. File generated from #dataSpecification field
+	It fires when user clicks download button of specification, immediately before file is downloaded
+
+	OUTPUT
+	Download file link has attributes:
+		download = [ontology_id].[file type corresponding to first word of selected tab]
+		href = base 64 encoding of #dataSpecification field.
+	*/
+	if ($("#dataSpecification").html().length) {
+		var entity = top.data['specifications'][top.focusEntityId]
+		var selected_tab = $('#specification-tabs > li.is-active > a[aria-selected="true"]').attr('aria-controls')
+		var file_name = entity['id'].split(':')[1] + '.' + selected_tab.split('_')[0]  //Quick and dirty: yaml | json | tsv ...
+		var content = window.btoa($("#dataSpecification").text())
+		$("#view_spec_download")
+			.attr('download', file_name)
+			.attr('href', 'data:text/csv;base64,' + content)
+	}
 }
 
 

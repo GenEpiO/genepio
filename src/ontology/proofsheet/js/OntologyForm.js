@@ -70,9 +70,13 @@ function OntologyForm(domId, specification, settings, callback) {
 			// Set required/optional status of fields and controls for adding more elements.
 			setCardinality() 
 
-			// Fill specification tab.  THIS SHOULD BE DONE ON SHOW OF SPEC TAB INSTEAD.
-		 	if (window.getdataSpecification) getdataSpecification(self.entityId) 
-		 	
+			// Clear out specification tab.  THIS SHOULD BE DONE via form hook ON SHOW OF SPEC TAB INSTEAD.
+		 	if (window.getdataSpecification) {
+		 		$('#dataSpecification').empty()
+		 		$("#spec_download").attr('disabled','disabled')
+		 		$('#specification-tabs li.is-active').removeClass('is-active').find('a').removeAttr('aria-selected'); // how else?
+		 	}
+
 		 	if (self.settings.minimalForm) setMinimalForm() // Hides empty optional field content.
 
 		 	// All of form's regular <select> inputs (e.g. NOT the ones for picking units)
@@ -621,7 +625,7 @@ function OntologyForm(domId, specification, settings, callback) {
 						case "select":
 
 						default:
-							if (self.settings.ontologyDetails == true) label = label + ' - ' + part['id'];
+							//if (self.settings.ontologyDetails == true) label = label + ' - ' + part['id'];
 							html += '<option value="' + part['id'] + '" class="depth' + depth + '" '+disabled+'>' + label + '</option>\n' //prefix + 
 					}
 					var kidItemHTML = renderChoice(part, depth+1)

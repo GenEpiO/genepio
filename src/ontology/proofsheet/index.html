@@ -40,15 +40,15 @@
 
               <optgroup label="Ontologies">
                 <option value="data/ontology/genepio_ui.json" selected="selected">Genomic Epidemiology Ontology (GenEpiO)</option>
-                <option value="data/ontology/foodon_ui.json">Food Ontology (FoodOn)</option>
+                <option value="data/ontology/foodon_ui.json" disabled>Food Ontology (FoodOn)</option>
               </optgroup>
 
               <optgroup label="Shared Packages">
-                <option value="data/shared_packages/package_2_ui.json">A shared Package, e.g. a atandard!<i class="fi-folder"></i></option>
+                <option value="data/shared_packages/package_2_ui.json" disabled>A shared Package, e.g. a atandard!<i class="fi-folder"></i></option>
               </optgroup>
 
               <optgroup label="My Packages (login required)">
-                <option value="data/user_packages/package_1_ui.json">My Example Package</option>
+                <option value="data/user_packages/package_1_ui.json" disabled>My Example Package</option>
               </optgroup>
             </select>
           </div>
@@ -179,9 +179,12 @@
           <div class="tabs-panel" id="panelDataSpecification">
             <ul class="tabs" data-tabs id="specification-tabs" >
               <li class="tabs-title"><a href="#json_specification">JSON</a></li>
-              <li class="tabs-title"><a href="#yaml_specification">YAML</a></li>
-              <!--<li class="tabs-title"><a href="#yaml_tree_specification">YAML-tree</a></li>
-              <li class="tabs-title"><a href="#excel_specification">MS Excel</a></li>-->
+              <li class="tabs-title"><a href="#yml_specification">YAML</a></li>
+
+              <li class="tabs-title"><a href="#json_form_specification">JSON-simple</a></li>
+              <li class="tabs-title"><a href="#yml_form_specification">YAML-simple</a></li>
+
+              <!--<li class="tabs-title"><a href="#excel_specification">MS Excel</a></li>-->
               <a id="view_spec_download" download="specification.txt" href="data:application/octet-stream;charset=utf-8;base64,Zm9vIGJhcg==">
                 <button class="button icon fi-download float-right disabled" title="download" id="spec_download" style="margin-bottom:0;border:0"> Download</button>
               </a>
@@ -276,7 +279,8 @@
     <script src="js/vendor/what-input.js"></script>
     <script src="js/vendor/foundation.min.js"></script>
     <script src="js/vendor/foundation-datepicker.js"></script>
-    <script src="js/vendor/yaml.js"></script>
+    <script src="js/vendor/yaml.js"></script> <!-- https://github.com/jeremyfa/yaml.js -->
+    <script src="js/vendor/js-yaml.min.js"></script> <!-- http://adilapapaya.com/docs/js-yaml/readme_2.0.5.html#bundledyamllibraryforbrowsers -->
     <script src="js/OntologyForm.js"></script>
     <script src="js/chosen/chosen.jquery.min.js" type="text/javascript"></script>
     <script src="js/app.js"></script>

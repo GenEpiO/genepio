@@ -295,6 +295,8 @@ function navigateToForm(ontologyId) {
 
 function getEntity(ontologyId) {
 	var entity = top.data['specifications'][ontologyId]
+	if (!entity)
+		entity = top.data['units'][ontologyId]
 	return entity
 }
 
@@ -363,8 +365,10 @@ function displayContext(event) {
 		var ontologyId = ontologyPath 	
 
 	var content = '<div id="displayContext" class="dropdown-pane"><ul>'
-	if ($(this).is('.fi-magnifying-glass'))
+	if ($(this).is('.fi-magnifying-glass')) {
+		console.log('looking up label')
 		content += getOntologyDetailHTML(ontologyId) 
+	}
 	else //'.fi-arrow-up'
 		content += '<ul>' + getRelationsHTML(ontologyId) + '</ul>'
 
@@ -660,18 +664,25 @@ function getdataSpecification() {
 	var selected_tab = $('#specification-tabs > li.is-active > a[aria-selected="true"]').attr('aria-controls')
 
 	if (selected_tab) {
-		var specification = getEntitySpec(null, top.focusEntityId)
 		var content = ''
 		$("#helpDataSpecification").remove()
 
 		switch (selected_tab) {
 			case 'json_specification':
-				content = JSON.stringify(specification, null, 2)
+				content = JSON.stringify(getEntitySpec(null, top.focusEntityId), null, 2)
 				break; 
-			case 'yaml_specification':
-				content = YAML.stringify(specification, 4)  //4=# indentation characters
+			case 'yml_specification':
+				//content = YAML.stringify(getEntitySpec(null, top.focusEntityId), 4)  //4=# indentation characters
+				content = jsyaml.dump(getEntitySpec(null, top.focusEntityId), 4)  //4=# indentation characters
 				break;
-			case 'yaml_tree_specification':
+
+			case 'json_form_specification':
+				content = JSON.stringify(getEntitySpecForm(top.focusEntityId), null, 2)
+				break; 
+				
+			case 'yml_form_specification':
+				//content = YAML.stringify(getEntitySpecForm(top.focusEntityId))
+				content = jsyaml.dump(getEntitySpecForm(top.focusEntityId), 4) //indent of 4
 				break; 
 			case 'excel_specification':
 				break; 
@@ -685,12 +696,18 @@ function getdataSpecification() {
 			$("#spec_download").addClass('disabled').attr('disabled','disabled')
 
 	}
-	
+
 }
 
+
 function downloadDataSpecification() {
-	/* This creates dynamic file download link for a given ontology entity. File generated from #dataSpecification field
-	It fires when user clicks download button of specification, immediately before file is downloaded
+	/* This creates dynamic file download link for a given ontology entity. 
+	File generated from #dataSpecification field contents directly.
+	It fires when user clicks download button of specification, immediately 
+	before file is downloaded.
+
+	INPUT
+		Quick and dirty file suffix detection based on dom id: yml_ | json_ | tsv_ | xlsx_ ...
 
 	OUTPUT
 	Download file link has attributes:
@@ -700,8 +717,10 @@ function downloadDataSpecification() {
 	if ($("#dataSpecification").html().length) {
 		var entity = top.data['specifications'][top.focusEntityId]
 		var selected_tab = $('#specification-tabs > li.is-active > a[aria-selected="true"]').attr('aria-controls')
-		var file_name = entity['id'].split(':')[1] + '.' + selected_tab.split('_')[0]  //Quick and dirty: yaml | json | tsv ...
-		var content = window.btoa($("#dataSpecification").text())
+		
+		// File name is main ontology id component + file suffix.
+		var file_name = entity['id'].split(':')[1] + '.' + selected_tab.split('_')[0]  
+		var content = window.btoa($("#dataSpecification").text()) // Convert to base 64.
 		$("#view_spec_download")
 			.attr('download', file_name)
 			.attr('href', 'data:text/csv;base64,' + content)

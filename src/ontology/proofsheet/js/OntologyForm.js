@@ -138,8 +138,8 @@ function OntologyForm(domId, specification, settings, callback) {
 	configureSelect = function() {
 		// Applies jQuery chosen()
  		var fieldWrapper = $(this).parents("div.field-wrapper").first()
- 		var min = fieldWrapper.attr("data-cardinality-min")
-		var max = fieldWrapper.attr("data-cardinality-max")
+ 		var min = fieldWrapper.attr("min-cardinality")
+		var max = fieldWrapper.attr("max-cardinality")
 		var required = fieldWrapper.is('.required')
 		if (required) $(this).prop('required',true); //Should do this in setCardinality() instead?
  		singleDeselect = (!min || min == 0) ? true : false
@@ -170,15 +170,15 @@ function OntologyForm(domId, specification, settings, callback) {
 
 	setCardinality = function() {
 		/* This renders each form element's HTML required attribute via 
-		javascript.	It also adds attributes for data-cardinality-min and 
-		data-cardinality-max.  These are used dynamically by the form 
+		javascript.	It also adds attributes for min-cardinality and 
+		max-cardinality.  These are used dynamically by the form 
 		processor to show user controls for adding or removing input elements.
 		*/
 		var cardinalityLabel = ''
 
 		self.formDomId.find('div.field-wrapper').each(function(index) {
-			var min = $(this).attr("data-cardinality-min") // || false
-			var max = $(this).attr("data-cardinality-max") // || false
+			var min = $(this).attr("min-cardinality") // || false
+			var max = $(this).attr("max-cardinality") // || false
 			var required = false
 
 			if (min || max) {
@@ -274,6 +274,301 @@ function OntologyForm(domId, specification, settings, callback) {
 
 	}
 
+
+	/*********************** FORM SPECIFICATION BUILD **********************/
+	getEntitySpecForm = function(entityId, specification = [], path = [], depth = 0, inherited = false) {
+		/*
+		Modelled closely on OntologyForm.render(), this returns just the form 
+		specification object as it is "unwound" from pure JSON specification.
+		FUTURE: Have form driven from output of this function.
+		INPUT
+			entityId : initial or current id to build hierarchic specification from
+			specification : initially empty array containing ordered form elements.
+		OUTPUT
+			specification: javascript object containing all form elements.
+			entity['path'] : path style indication of how far down in hierarchy
+				the given entity is.
+		*/
+		if (entityId === false) return specification // Nothing selected yet.
+
+		console.log("Render Form Spec ", path, entityId, depth, inherited)
+
+		if (depth > 20) {
+			console.log ("Node: ", entityId, " loop went AWOL while rendering path", path )
+			return specification
+		}
+
+		if (! (entityId in self.specification['specifications'])) {
+			console.log("Node: " + entityId + " has no specification entry.")
+			return specification
+		}
+
+		// deepcopy specification entity so we can change it.
+		var entity = $.extend(true, {}, self.specification['specifications'][entityId]) 
+		
+		if ('parent' in entity && parent['id'] == entityId) {
+			console.log("Node: " + entityId + " is a parent of itself and so cannot be re-rendered.")
+			return specification
+		}
+
+		if (!inherited) inherited = false // NECESSARY?
+
+		// Initialize entity
+		//entity['required'] = ''
+
+		entity['path'] = path.concat([entityId])
+
+		// Create a unique domId out of all the levels 
+		// FUTURE: ENHANCE WITH RECORD ROW NUMBERS.
+		//entity['domId'] = entity['path'].join('/')
+
+		entity['depth'] = depth
+		if (entity['depth'] > 0) {
+			// When this entity is displayed within context of parent entity, that entity will 
+			// indicate how many of this part are allowed.
+			getFeatures(entity)
+			getCardinality(entity)
+			// Currently showing "hidden" feature fields as disabled.??????????????
+			entity['disabled'] = ('hidden' in entity['features']);
+		}
+
+		// Used for some controls for sub-parts
+		var	label = entity['uiLabel']
+
+		if (entity['datatype'] === undefined)
+			console.log('No form part for: "' + entity['uiLabel'] + '" (' + entityId + ')')
+		else {
+			switch (entity['datatype']) {
+
+				case 'disjunction':
+					// TODO TODO TODO TODO TODO TODO TODO TODO TODO 
+					//getEntitySpecDisjunction(entity, label, depth)
+					break;
+
+				case 'specification':
+					getEntitySpecFormParts(entity, specification, inherited, depth)
+					break;
+
+				/* PRIMITIVE data types 
+				Inputs as sepecified in an OWL Ontology file can have all the standard xmls data types and restrictions.
+				Potentially create ZURB Foundation fields: text, date, datetime, datetime-local, email, month, number, password, search, tel, time, url, and week
+				*/
+
+				/*
+				DATE DATATYPES: date dateTime duration gDay (just DD day) gMonth (the month MM) gMonthDay	(MM-DD) gYear (YYYY) gYearMonth (YYYY-MM) time
+				*/
+				case 'xmls:date': //YYYY-MM-DD  and possibly time zone "Z" for UTC or +/-HH:MM
+				case 'xmls:time': //HH:MM:SS and possibly .DDDD  and time zone as above.
+				case 'xmls:dateTime': //YYYY-MM-DDTHH:MM:SS
+				case 'xmls:dateTimeStamp': //YYYY-MM-DDTHH:MM:SS  and required time zone as above.
+				case 'xmls:duration': //[-]P (period, required) + nYnMnD (years / months / days) T nHnMnS (hours / minuts / seconds)
+
+				// Applicable restrictions : enumeration length maxLength minLength pattern whiteSpace
+				case 'xmls:string':
+				case 'xmls:normalizedString':
+				case 'xmls:token':
+					getEntitySpecFormUnits(entity)
+					break;
+		 
+				// renderInteger(entity, minInclusive, maxInclusive)
+				case 'xmls:integer':			getEntitySpecFormInteger(entity);	break
+				case 'xmls:positiveInteger': 	getEntitySpecFormInteger(entity, 1);	break
+				case 'xmls:nonNegativeInteger':	getEntitySpecFormInteger(entity, 0);	break
+				case 'xmls:unsignedByte':		getEntitySpecFormInteger(entity, 0, 255); break// (8-bit)	
+				case 'xmls:unsignedShort':		getEntitySpecFormInteger(entity, 0, 65535); break// (16-bit) 
+				case 'xmls:unsignedInt':		getEntitySpecFormInteger(entity, 0, 4294967295);	break// (32-bit)		
+				case 'xmls:unsignedLong':		getEntitySpecFormInteger(entity, 0, 18446744073709551615); break// (64-bit) 
+
+				case 'xmls:negativeInteger':	getEntitySpecFormInteger(entity, null, -1); break
+				case 'xmls:nonPositiveInteger':	getEntitySpecFormInteger(entity, null, 0); break
+
+				case 'xmls:byte': 	getEntitySpecFormInteger(entity, -128, 127);	break// (signed 8-bit)
+				case 'xmls:short': 	getEntitySpecFormInteger(entity, -32768, 32767);	break// (signed 16-bit)
+				case 'xmls:int': 	getEntitySpecFormInteger(entity, -2147483648, 2147483647);	break// (signed 32-bit)
+				case 'xmls:long': 	getEntitySpecFormInteger(entity, -9223372036854775808, 9223372036854775807); break // (signed 64-bit)
+
+				// Decimal and float numbers
+				case 'xmls:decimal': // max 18 digits
+				case 'xmls:float':
+					getEntitySpecFormNumber(entity)
+					break;
+
+				case 'xmls:boolean': // Yes/No inputs here
+					//getEntitySpecFormBoolean(entity)
+					break;
+
+				case 'xmls:anyURI': // Picklists are here
+					if (entityId in self.specification['specifications']) {
+						getEntitySpecFormChoices(entity)
+					}
+					else
+						console.log('ERROR: Categorical variable [', entityId, '] not marked as a "Categorical tree specification"')
+					break;
+
+				default:
+					console.log('UNRECOGNIZED: '+ entityId + ' [' + entity['datatype']  + ']' + label  )
+					break;
+			}
+
+		// Various fields that flat ontology has that trimmed-down JSON or YAML form view don't need.
+		entity = getEntitySimplification(entity)
+		specification.push(entity)
+
+		}
+
+		return specification
+	}
+
+	getEntitySimplification = function(entity) {
+		/* Simple view of specification dispenses with cross-references and 
+		other aspects that have already been digested.
+		*/
+		delete (entity['parent'])
+		delete (entity['part_of'])
+		//delete (entity['parts'])
+		delete (entity['members'])
+		delete (entity['member_of'])
+		delete (entity['constraints'])
+		if ($.isEmptyObject(entity['features']))
+			delete (entity['features'])
+		if ($.isEmptyObject(entity['choices']))
+			delete (entity['choices'])
+
+		// This is a CHEAT: moves uiLabel to first param in object for display purposes
+		var freshEntity = {'uiLabel': entity['uiLabel']}
+		return $.extend(true, freshEntity, entity) 
+	}
+
+	getEntitySpecFormParts = function(entity, topdownspecification, inherited, depth) {
+		/*
+		Convert given "specification" entitie's "parts" list into a list of
+		processed entities.
+		*/
+		specification = []
+
+		// Here we go up the hierarchy to render all inherited superclass 'has value specification' components.
+
+		/* PROBLEM PROBLEM PROBLEM PROBLEM PROBLEM PROBLEM PROBLEM PROBLEM PROBLEM PROBLEM
+		if ('parent' in entity) { // aka member_of or subclass of
+			var parentId = entity['parent']
+			if (parentId != 'obo:OBI_0000658') {//Top level spec.
+				//console.log('' + depth + ": Specification "+entityId+" inheriting: " + parentId)
+				html += this.getEntitySpecForm(parentId, specification, [], depth-1, true)
+			}
+		}	
+		*/
+
+
+		var ids = getSort(entity['parts'], 'specifications') // "has value specification" parts. 
+		for (var ptr in ids) { 
+			// Sort so fields within a group are consistenty orderd:
+			childId = ids[ptr]
+			this.getEntitySpecForm(childId, specification, entity['path'], depth+1)
+		}
+
+		// When a categorical variable is referenced on its own:
+		if (inherited == false) {
+			var ids = getSort(entity['members'], 'specifications') //'is a' members, e.g. categorical lists or trees
+			for (var ptr in ids) { 
+				childId = ids[ptr]
+				// Cardinality lookup doesn't apply to categorical pick-lists so no need to supply path.
+				this.getEntitySpecForm(childId, specification, [], depth + 1) 
+			}
+
+		entity['parts'] = specification
+		}
+	}
+
+	getEntitySpecFormInteger = function(entity, minInclusive, maxInclusive) {
+		getEntitySpecFormConstraints(entity, minInclusive, maxInclusive)
+		getEntitySpecFormUnits(entity)
+	}
+
+	getEntitySpecFormNumber = function(entity, minInclusive, maxInclusive) {
+		getEntitySpecFormConstraints(entity, minInclusive, maxInclusive)
+		getEntitySpecFormUnits(entity)
+	}
+
+	getEntitySpecFormConstraints = function(entity, minInclusive, maxInclusive) {
+		// This function boils down a numeric xmls min/max to 'min-value' and 'max-value' params.
+		// COULD EXTEND THIS TO WORK WITH NON-INTEGERS
+		var constraints = getConstraints(entity), min, max, pattern
+		if (maxInclusive === undefined || maxInclusive > constraints['xmls:maxInclusive']) 
+			maxInclusive = constraints['xmls:maxInclusive']
+		if (minInclusive === undefined || minInclusive < constraints['xmls:minInclusive']) 
+			minInclusive = constraints['xmls:minInclusive']
+		entity['min-value'] = (minInclusive === undefined) ? '' : minInclusive
+		entity['max-value'] = (maxInclusive === undefined) ? '' : maxInclusive
+	}
+
+	getEntitySpecFormChoices = function(entity) {
+		/* Select, radio, checkbox all get the same data structure. Here we
+		know that all subordinate "hasSubClass" ~ parts are picklist choice
+		items, which at most have feature annotations.
+		OUTPUT
+			entity.lookup if appropriate
+			entity.multiple if appropriate
+		*/
+		if ('lookup' in entity['features']) 
+			entity['lookup'] = true
+		
+		if (entity['min-cardinality'] > 1 || (entity['max-cardinality'] != 1))
+			entity['multiple'] = true
+
+		getEntitySpecFormChoice(entity)
+	}
+
+	getEntitySpecFormChoice = function(entity, depth = 0) { 
+		/* If entity already has 'choices' option, then skip this
+
+		OUTPUT
+			part['disabled'] if appropriate.  Indicates whether a certain 
+			categorical selection should be ignored or hidden.
+		*/
+		if (! entity['choices']) {
+			if (depth > 20) 
+				console.log("MAX DEPTH PROBLEM WITH " + entity['id'])
+
+			else {
+				entity['choices'] = []
+				if ('members' in entity) {
+					var memberIds = getSort(entity['members'], 'specifications') 
+					for (var ptr in memberIds) {
+						var memberId = memberIds[ptr]
+						var part = $.extend(true, {}, self.specification['specifications'][memberId]) //deepcopy
+
+						if (!part) // Should never happen.
+							console.log("Error: picklist choice not available: ", memberId, " for list ", entity['id'])
+						else {
+							// Currently showing "hidden" feature as disabled.
+							if (getFeature(part, entity['id'], 'hidden') )
+								part['disabled'] = true;
+							var id = part['id']
+							entity['choices'].push({id: getEntitySpecFormChoice(part , depth+1) })
+						}
+					}
+				}
+			}
+		}
+		getEntitySimplification(entity)
+		return entity
+	}
+
+
+	getEntitySpecFormUnits = function(entity) {
+		// Convert units array id references into reference to unit object
+		// itself.  Maintains order, and info like default unit.
+
+		if ('units' in entity) {
+			var units = entity['units']
+			for (var ptr in units) {
+				var unit = $.extend(true, {}, self.specification['units'][units[ptr]] )
+				var id = units[ptr]['id']
+				entity['units'][ptr] = {id: unit}
+			}
+	   	}
+	}
+
 	/*********************** FORM PART RENDERING **********************/
 
 
@@ -298,18 +593,6 @@ function OntologyForm(domId, specification, settings, callback) {
 		// Clone entity so we can change it.
 		if (entityId in self.specification['specifications'])
 			var entity = $.extend(true, {}, self.specification['specifications'][entityId]) 
-
-
-
-		/*
-		else if (entityId in self.specification['picklists']) {
-			var entity = $.extend(true, {}, self.specification['picklists'][entityId]) 
-			entity['datatype'] = 'xmls:anyURI' 
-		}
-		*/
-
-
-		
 		else {
 			console.log("Node: " + entityId + " has no specification entry.")
 			return html
@@ -564,7 +847,7 @@ function OntologyForm(domId, specification, settings, callback) {
 
 		*/
 		picklistId = entity['id']
-		var multiple = entity['data-cardinality-min'] > 1 || (entity['data-cardinality-max'] != 1) ? ' multiple' : ''
+		var multiple = entity['min-cardinality'] > 1 || (entity['max-cardinality'] != 1) ? ' multiple' : ''
 		var html = label
 		// TESTING "data-" prefix to getPlaceholder() - its a https://harvesthq.github.io/chosen/ thing.
 		html +=	'	<div class="input-group">\n'
@@ -595,7 +878,7 @@ function OntologyForm(domId, specification, settings, callback) {
 		var html = ''
 		if (depth > 10) return "MAX DEPTH PROBLEM WITH " + entity['id']
 
-		if ('members' in entity) 
+		if ('members' in entity) {
 			var memberIds = getSort(entity['members'],'specifications') 
 
 			for (var ptr in memberIds) {
@@ -606,7 +889,8 @@ function OntologyForm(domId, specification, settings, callback) {
 					console.log("Error: picklist choice not available: ", memberId, " for list ",entity['id'])
 				else {
 					// Currently showing "hidden" feature as disabled.
-					var disabled = getFeature(entity, memberId, 'hidden') ? ' disabled="disabled"' : '';
+					//var disabled = getFeature(entity, memberId, 'hidden') ? ' disabled="disabled"' : '';
+					var disabled = getFeature(part, entity['id'], 'hidden') ? ' disabled="disabled"' : '';
 					var label = part['uiLabel']
 					if (!label) {
 						label = ''
@@ -634,19 +918,29 @@ function OntologyForm(domId, specification, settings, callback) {
 				}
 				// Wrapping kids in optgroup so we have some way of understanding depth
 			}
-
+		}
 		return html
 	}
 
 	renderUnits = function(entity) {
-		// User is presented with choice of data-entry units if available.
-		// Future: enable default unit/scale (cm, mm, m, km etc.) by placing that unit first in selection list
-		// ISSUE: server has to unparse unit associated with particular input via some kind of name/unit syntax.
+		/* User is presented with choice of data-entry units if available.
+		Future: enable default unit/scale (cm, mm, m, km etc.) by placing 
+		default unit first in selection list.
+
+		NOTE: server has to unparse unit associated with particular input via
+		some kind of name/unit syntax.
+		INPUT
+			entity: 
+		OUTPUT
+		For a given input the id of the "units" selection list component is 
+		returned with a DOM id of "[entity domId path]-obo:IAO_0000039" (unit)
+		*/
 		if ('units' in entity) {
 			var units = entity['units']
 			var label = renderLabel(self.specification['units'][units[0]])
 			if (units.length == 1) 
-				return '<a class="input-group-label small">'+ label + '</a>\n'
+				//return '<a class="input-group-label small">'+ label + '</a>\n'
+				return '<span class="input-group-label small">'+ label + '</span>\n'
 
 			var html ='<div class="input-group-button" style="font-weight:700;" ><select class="units" id="'+entity['domId']+'-obo:IAO_0000039">'
 			for (var ptr in units) { //.slice(1)
@@ -683,7 +977,7 @@ function OntologyForm(domId, specification, settings, callback) {
 			var labelURL = entity['uiLabel']
 
 		// Enable mouseover display of above.
-		html = 	['<label>', 
+		html = 	['<label data-ontology-id="'+ entity['id'] +'">', 
 			self.settings.ontologyDetails ? '<i class="fi-magnifying-glass"]></i>' : '',
 			labelURL, 
 			'</label>'
@@ -704,8 +998,8 @@ function OntologyForm(domId, specification, settings, callback) {
 			('members' in entity) ? ' children' : '',
 			'" ',
 			getIdHTMLAttribute(entity['domId']),
-			getHTMLAttribute(entity, 'data-cardinality-min'),
-			getHTMLAttribute(entity, 'data-cardinality-max'),
+			getHTMLAttribute(entity, 'min-cardinality'),
+			getHTMLAttribute(entity, 'max-cardinality'),
 			'>\n',
 			 html,
 			 '</div>\n'].join('')
@@ -714,8 +1008,8 @@ function OntologyForm(domId, specification, settings, callback) {
 	getSectionWrapper = function(entity, html) {
 		return ['<div class="field-wrapper children" ',
 			getIdHTMLAttribute(entity['domId']),
-			getHTMLAttribute(entity, 'data-cardinality-min'),
-			getHTMLAttribute(entity, 'data-cardinality-max'),
+			getHTMLAttribute(entity, 'min-cardinality'),
+			getHTMLAttribute(entity, 'max-cardinality'),
 			'>\n',
 			 html,
 			 '</div>\n'].join('')
@@ -792,7 +1086,7 @@ function OntologyForm(domId, specification, settings, callback) {
 		var referrer = self.specification['specifications'][referrerId]
 		if (!referrer) {console.log("ERROR: can't find entity ", referrerId, " to get feature for." );return false }
 
-		for (myList in ['members','parts']) 
+		for (myList in ['members', 'parts']) 
 			if (myList in referrer) {
 				var features = referrer[myList][entity['id']]
 				if (features)
@@ -903,8 +1197,8 @@ function OntologyForm(domId, specification, settings, callback) {
 			referrerId: id of parent of entity (an entity may have more than one parent)
 		
 		OUTPUT
-			entity['cardinality-min']
-			entity['cardinality-max']
+			entity['min-cardinality']
+			entity['max-cardinality']
 			//entity['required']
 		*/
 		var referrerId = entity['path'].slice(-2)[0]
@@ -923,20 +1217,17 @@ function OntologyForm(domId, specification, settings, callback) {
 				var limit = 'value' in condition ? parseInt(condition['value']) : 1
 				switch (condition['cardinality']) {
 					case 'owl:someValuesFrom': // >= 1 of ...
-						entity['data-cardinality-min'] = 1
-						//entity['required'] = ' required '
+						entity['min-cardinality'] = 1
 						break 
 					case 'owl:qualifiedCardinality': // exactly N ...
-						entity['data-cardinality-min'] = limit
-						entity['data-cardinality-max'] = limit
-						//entity['required'] = ' required '
+						entity['min-cardinality'] = limit
+						entity['max-cardinality'] = limit
 						break 
 					case 'owl:minQualifiedCardinality': // max N ...
-						entity['data-cardinality-min'] = limit
-						//if (limit != 0) entity['required'] = ' required '
+						entity['min-cardinality'] = limit
 						break
 					case 'owl:maxQualifiedCardinality': // min N ...
-						entity['data-cardinality-max'] = limit
+						entity['max-cardinality'] = limit
 						break 
 					default:
 				}

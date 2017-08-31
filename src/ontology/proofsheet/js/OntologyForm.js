@@ -314,13 +314,10 @@ function OntologyForm(domId, specification, settings, callback) {
 		if (!inherited) inherited = false // NECESSARY?
 
 		// Initialize entity
+
 		//entity['required'] = ''
 
 		entity['path'] = path.concat([entityId])
-
-		// Create a unique domId out of all the levels 
-		// FUTURE: ENHANCE WITH RECORD ROW NUMBERS.
-		//entity['domId'] = entity['path'].join('/')
 
 		entity['depth'] = depth
 		if (entity['depth'] > 0) {
@@ -448,17 +445,17 @@ function OntologyForm(domId, specification, settings, callback) {
 
 		// Here we go up the hierarchy to render all inherited superclass 'has value specification' components.
 
-		/* PROBLEM PROBLEM PROBLEM PROBLEM PROBLEM PROBLEM PROBLEM PROBLEM PROBLEM PROBLEM
+		// PROBLEM 
+		// Inheritance of parent attributes & data structures.
 		if ('parent' in entity) { // aka member_of or subclass of
 			var parentId = entity['parent']
 			if (parentId != 'obo:OBI_0000658') {//Top level spec.
 				//console.log('' + depth + ": Specification "+entityId+" inheriting: " + parentId)
-				html += this.getEntitySpecForm(parentId, specification, [], depth-1, true)
+				this.getEntitySpecForm(parentId, specification, [], depth-1, true)
+				// Do we want parent's stuff APPENDED to spec, or inserted as part of this spec?
 			}
 		}	
-		*/
-
-
+		
 		var ids = getSort(entity['parts'], 'specifications') // "has value specification" parts. 
 		for (var ptr in ids) { 
 			// Sort so fields within a group are consistenty orderd:

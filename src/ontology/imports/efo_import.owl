@@ -241,6 +241,21 @@
     
 
 
+    <!-- http://www.ebi.ac.uk/efo/EFO_0000001 -->
+
+    <owl:Class rdf:about="&efo;EFO_0000001">
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">An experimental factor in Array Express which are essentially the variable aspects of an experiment design which can be used to describe an experiment, or set of experiments, in an increasingly detailed manner. This upper level class is really used to give a root class from which applications can rely on and not be tied to upper ontology classses which do change.</obo:IAO_0000115>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Helen Parkinson</obo:IAO_0000117>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">James Malone</obo:IAO_0000117>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Jie Zheng</obo:IAO_0000117>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Tomasz Adamusiak</obo:IAO_0000117>
+        <obo:IAO_0000412 rdf:resource="&efo;efo.owl"/>
+        <rdfs:comment rdf:datatype="&xsd;string">Concept naming convention is lower case natural naming with spaces, when necessary captials should be used, for example disease factor, HIV, breast carcinoma, Ewing&apos;s sarcoma</rdfs:comment>
+        <rdfs:label rdf:datatype="&xsd;string">experimental factor</rdfs:label>
+    </owl:Class>
+    
+
+
     <!-- http://www.ebi.ac.uk/efo/EFO_0000246 -->
 
     <owl:Class rdf:about="&efo;EFO_0000246">
@@ -335,6 +350,19 @@
     
 
 
+    <!-- http://www.ebi.ac.uk/efo/EFO_0000683 -->
+
+    <owl:Class rdf:about="&efo;EFO_0000683">
+        <rdfs:subClassOf rdf:resource="http://www.ifomis.org/bfo/1.1/snap#Role"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">A role played by a a biological sample in the context of an experiment where the intent is that biological or technical variation is measured.</obo:IAO_0000115>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">James Malone</obo:IAO_0000117>
+        <obo:IAO_0000412 rdf:resource="&efo;efo.owl"/>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NCIt:C28038</oboInOwl:hasDbXref>
+        <rdfs:label rdf:datatype="&xsd;string">replicate</rdfs:label>
+    </owl:Class>
+    
+
+
     <!-- http://www.ebi.ac.uk/efo/EFO_0000689 -->
 
     <owl:Class rdf:about="&efo;EFO_0000689">
@@ -420,6 +448,30 @@
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">SNOMEDCT:364699009</oboInOwl:hasDbXref>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">SNOMEDCT:372148003</oboInOwl:hasDbXref>
         <rdfs:label rdf:datatype="&xsd;string">ethnic group</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ebi.ac.uk/efo/EFO_0002090 -->
+
+    <owl:Class rdf:about="&efo;EFO_0002090">
+        <rdfs:subClassOf rdf:resource="&efo;EFO_0000683"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">A technical replicate is a replicate role where the same BioSample is use e.g. the same pool of RNA used to assess technical (as opposed to biological) variation within an experiment.</obo:IAO_0000115>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">James Malone</obo:IAO_0000117>
+        <obo:IAO_0000412 rdf:resource="&efo;efo.owl"/>
+        <rdfs:label rdf:datatype="&xsd;string">technical replicate</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ebi.ac.uk/efo/EFO_0002091 -->
+
+    <owl:Class rdf:about="&efo;EFO_0002091">
+        <rdfs:subClassOf rdf:resource="&efo;EFO_0000683"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">A biological replicate is a replicate role that consists of independent biological replicates made from different individual biosamples.</obo:IAO_0000115>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">James Malone</obo:IAO_0000117>
+        <obo:IAO_0000412 rdf:resource="&efo;efo.owl"/>
+        <rdfs:label rdf:datatype="&xsd;string">biological replicate</rdfs:label>
     </owl:Class>
     
 
@@ -1025,6 +1077,33 @@
         <obo:IAO_0000117>Dani Welter</obo:IAO_0000117>
         <obo:IAO_0000412 rdf:resource="&efo;efo.owl"/>
         <rdfs:label xml:lang="en">age at voice drop</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/bfo/1.1/snap#Role -->
+
+    <owl:Class rdf:about="http://www.ifomis.org/bfo/1.1/snap#Role">
+        <rdfs:subClassOf rdf:resource="http://www.ifomis.org/bfo/1.1/snap#SpecificallyDependentContinuant"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">A role is an entity which is borne in a material entity in some kinds of natural, social or institutional contexts, but which is not essential to the fundamental definition of that material entity (i.e. the material entity exists with or without the role).  For example, the role of a person as a surgeon, the role of an artificial heart in pumping blood, the role of a chemical compound in an experiment, the role of a drug in the treatment of a disease.</obo:IAO_0000115>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">James Malone</obo:IAO_0000117>
+        <obo:IAO_0000412 rdf:resource="&efo;efo.owl"/>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MSH:D012380</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NCIt:C48835</oboInOwl:hasDbXref>
+        <rdfs:label rdf:datatype="&xsd;string">role</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/bfo/1.1/snap#SpecificallyDependentContinuant -->
+
+    <owl:Class rdf:about="http://www.ifomis.org/bfo/1.1/snap#SpecificallyDependentContinuant">
+        <rdfs:subClassOf rdf:resource="&efo;EFO_0000001"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">An experimental factor which is a property or characteristic of some other entity.  For example, the mouse has the colour white.</obo:IAO_0000115>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">James Malone</obo:IAO_0000117>
+        <obo:IAO_0000117>Sirarat Sarntivijai</obo:IAO_0000117>
+        <obo:IAO_0000412 rdf:resource="&efo;efo.owl"/>
+        <rdfs:label rdf:datatype="&xsd;string">material property</rdfs:label>
     </owl:Class>
 </rdf:RDF>
 

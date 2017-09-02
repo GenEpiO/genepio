@@ -124,10 +124,10 @@ class Ontology(object):
 		self.doSpecParts(self.doQueryTable('spec_parts' ) )	
 		self.doPrimitives(self.doQueryTable('inherited') )		
 		self.doPrimitives(self.doQueryTable('primitives') )
-		self.doPrimitives(self.doQueryTable('categoricals') ) #SHOULD BE GOING TO picklists?
+		self.doPrimitives(self.doQueryTable('categoricals') )
 		self.doUnits(self.doQueryTable('units') )
 
-		# Categorical tree specification
+		# GENEPIO_0001655 = Categorical tree specification
 		picklistBinding = {'root': rdflib.URIRef(self.expandId('obo:GENEPIO_0001655'))}
 		self.doPickLists(self.doQueryTable('tree', picklistBinding ))
 		self.doPickLists(self.doQueryTable('individuals') )
@@ -386,7 +386,6 @@ class Ontology(object):
 				})
 
 
-
 	def doUIFeatures(self, table, table_name):
 		""" ####################################################################
 			User Interface Features
@@ -518,7 +517,8 @@ class Ontology(object):
 			All items have and need a rdfs:Label, but this might not be what we want to display to users.
 			We will however always show rdfs:Label to users on mouseover of item
 			If no uiLabel, uiLabel is created as a copy of Label
-			Then uiLabel always exists, and is displayed on form. "label" itself isn't needed anymore, if it is the same as uiLabel
+			Then uiLabel always exists, and is displayed on form. 
+			If label <> uiLabel, drop it.
 		"""
 		if not 'uiLabel' in myDict: 
 			if not 'label' in myDict: # a data maintenance issue
@@ -948,19 +948,20 @@ class Ontology(object):
 		# UI FEATURES
 		# A picklist item or form input or specification can be hidden or required or
 		# other feature with respect to its parent, via 
-		# As well, a form input can have UI features indicated just by annotating it directly.
+		# As well, a form input datum can have UI features indicated just by annotating it directly.
 		# FUTURE: a feature may be qualified by user's user type.
-
-		#Typical UI_hidden axioms:
-		#    <owl:Axiom>
-		#        <obo:GENEPIO_0001746></obo:GENEPIO_0001746>
-		#        <owl:annotatedTarget rdf:resource="&obo;EO_0007027"/>
-		#        <owl:annotatedSource rdf:resource="&obo;EO_0007286"/>
-		#        <owl:annotatedProperty rdf:resource="&rdfs;subClassOf"/>
-		#    </owl:Axiom>
-
+		#
+		# Typical "lookup" UI feature axioms:
+		#
+		#    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001742">
+		#        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001655"/>
+		#        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GEO_000000005"/>
+		#        <obo:GENEPIO_0000006 xml:lang="en">region</obo:GENEPIO_0000006>
+		#        <obo:GENEPIO_0001763>lookup</obo:GENEPIO_0001763>
+		#		...
+		#
 	    #	<owl:Axiom>
-	    #	    <obo:GENEPIO_0001746></obo:GENEPIO_0001746>
+	    #	    <obo:GENEPIO_0001763>lookup</obo:GENEPIO_0001763>
 	    #	    <owl:annotatedSource rdf:resource="&obo;GENEPIO_0001740"/>
 	    #	    <owl:annotatedProperty rdf:resource="&rdfs;subClassOf"/>
 	    #	    <owl:annotatedTarget>
@@ -972,39 +973,40 @@ class Ontology(object):
 	    #	</owl:Axiom>
 	    #
 
-#    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001742">
-#        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001655"/>
-#        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GEO_000000005"/>
-#        <obo:GENEPIO_0000006 xml:lang="en">region</obo:GENEPIO_0000006>
-#        <obo:GENEPIO_0001763>lookup</obo:GENEPIO_0001763>
-
 
 		'features': rdflib.plugins.sparql.prepareQuery("""
 			SELECT DISTINCT ?id ?referrer ?feature ?criteria 
 			WHERE { 
-				{?id rdf:type owl:Class.  
-					?id obo:GENEPIO_0001763 ?criteria. 
+				{# Get direct (Class annotated) features
+					?id rdf:type owl:Class.  
+					?id obo:GENEPIO_0001763 ?criteria.  # UI_preferred feature
 					?id ?feature ?criteria. 
-					BIND ('' as ?referrer).}
+					BIND ('' as ?referrer).
+				}
 				UNION
-				{
-				?axiom rdf:type owl:Axiom.
-				?axiom owl:annotatedSource ?id.
-				?axiom owl:annotatedTarget ?referrer. 
-				FILTER(isURI(?referrer))
-				?axiom (obo:GENEPIO_0001746|obo:GENEPIO_0001763) ?criteria.  #user interface hidden | UI_preferred feature
-				?axiom ?feature ?criteria.
+				{	# Get features placed on axiom if it is a simple (subClass?) relation. 
+					?axiom rdf:type owl:Axiom.
+					?axiom owl:annotatedSource ?id.
+					?axiom owl:annotatedTarget ?referrer. 
+					FILTER(isURI(?referrer))
+					?axiom obo:GENEPIO_0001763 ?criteria.  # UI_preferred feature
+					?axiom ?feature ?criteria.
 				}
 			}
 		""", initNs = namespace),
 
-
+		
 		# ################################################################
-		# UI FEATURES
-		# A "has member" link can be annotated with a "user interface feature"
-		# Add this to list of features above.
+		# UI "MEMBER OF" STANDARD FEATURES
+		#
+		# A standard has datums via "has member".  Each datum in turn can have
+		# a reciprocal "member of" relation to a standard.  That "member of" 
+		# relation can be annotated with standard-specific label, definition, 
+		# hasAlternateId and other attributes. Add all "user interface feature"
+		# annotations to list of features above.
 		# FUTURE: a feature may be qualified by user's user type or identifier.
-	    #
+		# 
+	    # OLD
 	    #    <owl:Axiom>
 		#        <obo:GENEPIO_0001763>lookup</obo:GENEPIO_0001763>
 		#        <owl:annotatedSource rdf:resource="&obo;OBI_0000938"/>
@@ -1018,16 +1020,43 @@ class Ontology(object):
 		#        </owl:annotatedTarget>
 		#    </owl:Axiom>
 
-		'feature_annotations': rdflib.plugins.sparql.prepareQuery("""
+		'feature_annotations-old': rdflib.plugins.sparql.prepareQuery("""
 			SELECT DISTINCT ?id ?referrer ?feature ?criteria 
 			WHERE { 
 				?axiom rdf:type owl:Axiom.
 				?axiom owl:annotatedSource ?referrer.
 				?axiom owl:annotatedTarget ?restriction. ?restriction rdf:type owl:Restriction.
-				?restriction owl:onProperty obo:RO_0002351.
+				?restriction owl:onProperty obo:RO_0002351. # has member
 				?restriction (owl:onClass|owl:qualifiedCardinality | owl:minQualifiedCardinality | owl:maxQualifiedCardinality | owl:someValuesFrom) ?id
 				FILTER(isURI(?id))
-				?axiom (obo:GENEPIO_0001746|obo:GENEPIO_0001763) ?criteria.  #user interface hidden | UI_preferred feature
+				?axiom obo:GENEPIO_0001763 ?criteria.  #UI_preferred feature
+				?axiom ?feature ?criteria.
+			}
+		""", initNs = namespace),
+
+		# USER FEATURE ANNOTATION ON DATUM - TO STANDARD?
+		#	<owl:Axiom>
+		#        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/OBI_0000079"/>
+		#        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+		#        <owl:annotatedTarget>
+		#            <owl:Restriction>
+		#                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002350"/>
+		#                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0002085"/>
+		#            </owl:Restriction>
+		#        </owl:annotatedTarget>
+		#        <obo:GENEPIO_0001763>lookup</obo:GENEPIO_0001763>
+		#    </owl:Axiom>
+
+		'feature_annotations': rdflib.plugins.sparql.prepareQuery("""
+			SELECT DISTINCT ?id ?referrer ?feature ?criteria 
+			WHERE { 
+				?axiom rdf:type owl:Axiom.
+				?axiom owl:annotatedSource ?id.
+				?axiom owl:annotatedTarget ?restriction. ?restriction rdf:type owl:Restriction.
+				?restriction owl:onProperty obo:RO_0002350. # member of
+				?restriction owl:someValuesFrom ?referrer
+				FILTER(isURI(?id))
+				?axiom (obo:GENEPIO_0001763|obo:hasAlternativeId) ?criteria.  #UI_preferred feature
 				?axiom ?feature ?criteria.
 			}
 		""", initNs = namespace),
@@ -1048,6 +1077,29 @@ class Ontology(object):
 		""", initNs = namespace),
 
 		# ################################################################
+		# STANDARDS INFORMATION
+		# A "[field] 'member of' [some standard]" can have annotations of 
+		# standard-specific label, definition, hasAlternateId, etc.
+		# This query retrieves them; they are loaded into the parent entity's
+		# corresponding members[id] dictionary
+		#
+		'standards_information': rdflib.plugins.sparql.prepareQuery("""
+			SELECT DISTINCT ?id ?referrer ?feature ?criteria 
+			WHERE { 
+				?axiom rdf:type owl:Axiom.
+				?axiom owl:annotatedSource ?id.
+				?axiom owl:annotatedTarget ?restriction. ?restriction rdf:type owl:Restriction.
+				?restriction owl:onProperty obo:RO_0002350. # member of
+				?restriction owl:someValuesFrom ?referrer
+				FILTER(isURI(?id))
+				#Get feature as label, definition, UI label, UI definition, UI_preferred,  feature
+				?axiom (rdfs:label|obo:IAO_0000115|obo:GENEPIO_0000006|GENEPIO_0001745) ?criteria.  
+				?axiom ?feature ?criteria.
+			}
+		""", initNs = namespace),
+
+
+		# ################################################################
 		# oboInOwl:hasDbXref (an annotation property) cross references to other terminology databases 
 		'dbreferences': rdflib.plugins.sparql.prepareQuery("""
 
@@ -1063,7 +1115,14 @@ class Ontology(object):
 		# oboInOwl:hasSynonym
 		# Picklist items could be augmented with synonyms in order for 
 		# type-as-you-go inputs to return appropriately filtered phrases
-
+		#
+		# FUTURE: add oboInOwl:hasBroadSynonym ?
+		#
+		# INPUT
+		# 	?datum : id of term to get labels for
+		# OUTPUT
+		#   ?Synonym ?ExactSynonym ?NarrowSynonym
+		#
 		'synonyms': rdflib.plugins.sparql.prepareQuery("""
 
 			SELECT DISTINCT ?datum ?Synonym ?ExactSynonym ?NarrowSynonym

@@ -178,7 +178,7 @@ function loadSpecification(specification_file) {
 			html = ''
 			for (specId in specification.specifications) {
 				var spec = specification.specifications[specId]
-				// Must do a better job of identifying and grouping top-level items  //! ('part_of' in spec) && 
+				// Must do a better job of identifying and grouping top-level items  //! ('otherParent' in spec) && 
 				if (! ('member_of' in spec) && (!('datatype' in spec ))) {
 					html += ['<li class="cart-item" data-ontology-id="',	specId,'">','<a href="#'+specId+'">',
 					spec['uiLabel'], '</a>'].join('')
@@ -414,7 +414,7 @@ function getRelationsHTML(ontologyId) {
 		filling += getRelationLink('parent', getEntity(entity['parent']))
 	}
 	// Possibly organize each entity's relations under a "relations" section?
-	for (const relation of ['member_of','part_of']) {
+	for (const relation of ['member_of','otherParent']) {
 		if (relation in entity) {
 			for (const targetId of entity[relation]) {
 				filling += getRelationLink(relation, getEntity(targetId))
@@ -427,7 +427,7 @@ function getRelationsHTML(ontologyId) {
 function getRelationLink(relation, entity) {
 	// Used in search results
 	// Usually but not always there are links.  Performance boost if we drop this test.
-	var links = ('parent' in entity || 'member_of' in entity || 'part_of' in entity)
+	var links = ('parent' in entity || 'member_of' in entity || 'otherParent' in entity)
 	return ['<li data-ontology-id="' + entity['id'] + '">', relation, ': ',
 		links ? '<i class="fi-arrow-up large"></i> ' : '',
 		' <a href="#', entity['id'], '">' + entity['uiLabel'] + ' <i class="fi-magnifying-glass large"></i></a>',
@@ -601,7 +601,7 @@ function renderCartObj(ontologyId) {
 		'<i class="fi-shopping-cart"></i>',
 		('parent' in entity) ? '<i class="fi-arrow-up dropdown parent"></i>' : '',
 		('member_of' in entity) ? '<i class="fi-arrow-up dropdown member"></i>' : '',
-		('part_of' in entity) ? '<i class="fi-arrow-up dropdown part"></i>' : '',
+		('otherParent' in entity) ? '<i class="fi-arrow-up dropdown part"></i>' : '',
 		'<a href="#', ontologyId, '">',	entity['uiLabel'], '</a></div>'].join('')
 	
 	return [entity['uiLabel'].toLowerCase(),html]
@@ -740,7 +740,7 @@ function getEntitySpec(spec, entityId = null, inherited = false) {
 			spec['specifications'][entityId] = entity
 			
 			if (inherited == true) {
-				//Entity inherits 'part_of' ancestors' parts. 
+				// Entity inherits primary ancestors' parts (the ones that led from start of rendering to here). 
 				var parentId = entity['parent']
 				if (parentId != 'obo:OBI_0000658') //Top level OBI "data representation model"
 					getEntitySpec(spec, parentId, true)

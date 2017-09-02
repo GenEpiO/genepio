@@ -114,7 +114,7 @@ class Ontology(object):
 		# Add each ontology include file (must be in OWL RDF format)
 		self.ontologyIncludes()
 
-		#data_representational_model
+		# Retrieve all subclasses of data_representational_model
 		specBinding = {'root': rdflib.URIRef(self.expandId('obo:OBI_0000658'))} 
 		self.doSpecifications(self.doQueryTable('tree', specBinding ))
 		
@@ -147,25 +147,23 @@ class Ontology(object):
 		""" ####################################################################
 			SPECIFICATIONS
 
-			A specification is basically a complex entity that defines a form, 
-			record or report. 
+			A specification is a subClassOf 'data representational model', and is
+			basically a complex entity that defines a form, record or report. 
+
 			* The 'has_member' relation specifies what component entities it has
 			  and include the cardinality restrictions on how many of a given 
 			  component type are allowed (some, > 0, = 1, < n).
 			* A component entity may have a "has primitive data type".  
 
 			For example one can specify that a contact can have up to 3 phone numbers.
-			Since such constraints can be very installation specific, they should be placed
-			in the MODEL_import.owl file that is expected to vary between implementations.
 
 			When an entity "is a" subclass of a specification, it means that in addition to
 			all of the entity's own 'has_value_specification' attributes, it inherits those
-			of its parent(s)
+			of its parent(s).  WHERE TO PLACE THEM?
 
 			In example below, a "contact specification - patient" (obo:GENEPIO_0001677) inherits 
 			attributes from "contact specification - person" (obo:GENEPIO_0001606)
 
-			CATCHES cases where a specification "is a" subclass of another specification.
 			Example:
 				"obo:GENEPIO_0001677": {
 		            "id": "obo:GENEPIO_0001677",
@@ -181,7 +179,7 @@ class Ontology(object):
 			myDict['datatype'] = 'specification'
 			self.setDefault(self.struct, struct, myDict['id'], myDict)
 
-			parentId = self.getParentId(myDict)
+			parentId = self.getParentId(myDict) # primary parent according to data rep hierarchy
 
 			self.setDefault(self.struct, struct, parentId, {
 				'id': parentId, 
@@ -198,7 +196,9 @@ class Ontology(object):
 
 			This is a flat list containing every picklist item.  To advance through a given
 			picklist one recursively reads through a picklist node's members.
-			A given term may belong to a number of piclists, e.g. "other" category.
+			It is problematic for a particular picklist item to belong to several parents,
+			as logically it would then inherit semantics of each parent.  However in some
+			cases where no other inheritance implications are done, it is possible.
 
 		"""
 		struct = 'specifications'
@@ -210,15 +210,15 @@ class Ontology(object):
 			#This picklist node might already have been mentioned in another picklist 
 			# node's member list so it might already be set up.
 			self.setDefault(self.struct, struct, id, myDict)
-			self.setDefault(self.struct, struct, id, 'member_of', [])
 			self.setDefault(self.struct, struct, id, 'datatype', 'xmls:anyURI') # MARKS PICKLIST ITEMS
+			self.setDefault(self.struct, struct, id, 'member_of', [])
 			self.getStruct(self.struct, struct, id, 'member_of').append(parentId)
 			# ALSO ADD 'located in' as 'part of' links?????
 
-			# Ditto for a member
+			# Ditto for parent, if any...
 			self.setDefault(self.struct, struct, parentId, {'id': parentId} )
-			self.setDefault(self.struct, struct, parentId, 'members', OrderedDict())
-			self.setStruct(self.struct, struct, parentId, 'members', id, [])
+			self.setDefault(self.struct, struct, parentId, 'choices', OrderedDict())
+			self.setStruct(self.struct, struct, parentId, 'choices', id, []) # empty array is set of features.
 
 
 	def doSpecParts(self, table):
@@ -241,18 +241,18 @@ class Ontology(object):
 				return
 
 			self.setDefault(self.struct, struct, id, {'id': id} )
-			self.setDefault(self.struct, struct, id, 'part_of', [] )	
+			self.setDefault(self.struct, struct, id, 'otherParent', [] )	
 
 
 			parentId = self.getParentId(myDict)
 			if parentId:
 		
 				if parentId == id:
-					print 'WARNING: an entity mistakenly "Has Part" of itself: %s ' % id
+					print 'ERROR: an entity mistakenly is "parent" of itself: %s ' % id
 				else:
 
 					self.setDefault(self.struct, struct, parentId, {'id': parentId, 'datatype': 'specification'} )
-					self.struct[struct][id]['part_of'].append(parentId)
+					self.struct[struct][id]['otherParent'].append(parentId)
 
 					obj = {'cardinality': myDict['cardinality']}
 					if 'limit' in myDict: 
@@ -784,9 +784,7 @@ class Ontology(object):
 
 			SELECT DISTINCT ?parent (?datum as ?id) ?cardinality ?limit
 			WHERE { 	
-				BIND (obo:RO_0002351 as ?has_member). 
-
-				?restriction owl:onProperty ?has_member.
+				?restriction owl:onProperty obo:RO_0002351. # has member
 				?parent rdfs:subClassOf ?restriction. 
 
 				{?restriction owl:onClass ?datum.

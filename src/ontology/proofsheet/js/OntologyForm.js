@@ -421,7 +421,7 @@ function OntologyForm(domId, specification, settings, callback) {
 		other aspects that have already been digested.
 		*/
 		delete (entity['parent'])
-		delete (entity['part_of'])
+		delete (entity['otherParent'])
 		//delete (entity['parts'])
 		delete (entity['members'])
 		delete (entity['member_of'])
@@ -446,7 +446,7 @@ function OntologyForm(domId, specification, settings, callback) {
 		// Here we go up the hierarchy to render all inherited superclass 'has value specification' components.
 
 		// PROBLEM 
-		// Inheritance of parent attributes & data structures.
+		/* Inheritance of parent attributes & data structures.
 		if ('parent' in entity) { // aka member_of or subclass of
 			var parentId = entity['parent']
 			if (parentId != 'obo:OBI_0000658') {//Top level spec.
@@ -455,7 +455,8 @@ function OntologyForm(domId, specification, settings, callback) {
 				// Do we want parent's stuff APPENDED to spec, or inserted as part of this spec?
 			}
 		}	
-		
+		*/
+
 		var ids = getSort(entity['parts'], 'specifications') // "has value specification" parts. 
 		for (var ptr in ids) { 
 			// Sort so fields within a group are consistenty orderd:
@@ -465,7 +466,7 @@ function OntologyForm(domId, specification, settings, callback) {
 
 		// When a categorical variable is referenced on its own:
 		if (inherited == false) {
-			var ids = getSort(entity['members'], 'specifications') //'is a' members, e.g. categorical lists or trees
+			var ids = getSort(entity['members'], 'specifications') // cardinality "x has member some/one/etc y"
 			for (var ptr in ids) { 
 				childId = ids[ptr]
 				// Cardinality lookup doesn't apply to categorical pick-lists so no need to supply path.
@@ -522,31 +523,31 @@ function OntologyForm(domId, specification, settings, callback) {
 			part['disabled'] if appropriate.  Indicates whether a certain 
 			categorical selection should be ignored or hidden.
 		*/
-		if (! entity['choices']) {
-			if (depth > 20) 
-				console.log("MAX DEPTH PROBLEM WITH " + entity['id'])
+		//if (! entity['choices']) {
+		if (depth > 20) 
+			console.log("MAX DEPTH PROBLEM WITH " + entity['id'])
 
-			else {
-				entity['choices'] = []
-				if ('members' in entity) {
-					var memberIds = getSort(entity['members'], 'specifications') 
-					for (var ptr in memberIds) {
-						var memberId = memberIds[ptr]
-						var part = $.extend(true, {}, self.specification['specifications'][memberId]) //deepcopy
-						delete part['datatype'] // Unnecessary
-						if (!part) // Should never happen.
-							console.log("Error: picklist choice not available: ", memberId, " for list ", entity['id'])
-						else {
-							// Currently showing "hidden" feature as disabled.
-							if (getFeature(part, entity['id'], 'hidden') )
-								part['disabled'] = true;
-							var id = part['id']
-							entity['choices'].push(getEntitySpecFormChoice(part , depth+1))
-						}
-					}
+		if ('choices' in entity) {
+			var newChoices = [] // Array to preserve order
+			var memberIds = getSort(entity['choices'], 'specifications') 
+			for (var ptr in memberIds) {
+				var memberId = memberIds[ptr]
+				var part = $.extend(true, {}, self.specification['specifications'][memberId]) //deepcopy
+				delete part['datatype'] // Unnecessary
+				if (!part) // Should never happen.
+					console.log("Error: picklist choice not available: ", memberId, " for list ", entity['id'])
+				else {
+					// Currently showing "hidden" feature as disabled.
+					if (getFeature(part, entity['id'], 'hidden') )
+						part['disabled'] = true;
+					var id = part['id']
+					newChoices.push(getEntitySpecFormChoice(part , depth+1))
+
 				}
 			}
+			entity['choices'] = newChoices
 		}
+
 		getEntitySimplification(entity)
 		return entity
 	}
@@ -557,13 +558,15 @@ function OntologyForm(domId, specification, settings, callback) {
 		// itself.  Maintains order, and info like default unit.
 
 		if ('units' in entity) {
+			unitsArray = {}
 			var units = entity['units']
 			for (var ptr in units) {
 				var unit = $.extend(true, {}, self.specification['units'][units[ptr]] )
-				var id = units[ptr]['id']
-				entity['units'][ptr] = {id: unit}
+				unitsArray[unit['id']] = unit
 			}
+			entity['units'] = unitsArray
 	   	}
+	   	
 	}
 
 	/*********************** FORM PART RENDERING **********************/
@@ -716,8 +719,8 @@ function OntologyForm(domId, specification, settings, callback) {
 			html += this.render(childId, entity['path'], depth+1)
 		}
 
-		if (inherited == false) {
-			var ids = getSort(entity['members'], 'specifications') //'is a' members, e.g. categorical lists or trees
+		if (inherited == false && 'choices' in entity) { //no inheritance on choices
+			var ids = getSort(entity['choices'], 'specifications') // Alphabetical for now
 			for (var ptr in ids) { 
 				childId = ids[ptr]
 				html += this.render(childId, [], depth + 1) // cardinality lookup doesn't apply to categorical pick-lists so no need to supply path.
@@ -875,8 +878,8 @@ function OntologyForm(domId, specification, settings, callback) {
 		var html = ''
 		if (depth > 10) return "MAX DEPTH PROBLEM WITH " + entity['id']
 
-		if ('members' in entity) {
-			var memberIds = getSort(entity['members'],'specifications') 
+		if ('choices' in entity) {
+			var memberIds = getSort(entity['choices'], 'specifications') 
 
 			for (var ptr in memberIds) {
 				var memberId = memberIds[ptr]
@@ -991,8 +994,9 @@ function OntologyForm(domId, specification, settings, callback) {
 	}
 
 	getFieldWrapper = function(entity, html) {
+		// WHAT ABOUT CHOICES???
 		return ['<div class="field-wrapper field',
-			('members' in entity) ? ' children' : '',
+			('members' in entity || 'choices' in entity) ? ' children' : '',
 			'" ',
 			getIdHTMLAttribute(entity['domId']),
 			getHTMLAttribute(entity, 'min-cardinality'),

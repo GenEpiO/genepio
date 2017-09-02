@@ -89,7 +89,6 @@ class Ontology(object):
 			'ancestro': 'http://www.ebi.ac.uk/ancestro/'
 		}
 		self.struct['specifications'] = {}
-		#self.struct['units'] = {}
 
 
 	def __main__(self): #, main_ontology_file
@@ -121,7 +120,7 @@ class Ontology(object):
 		# ALSO GET OTHER TOP-LEVEL TERMS?
 		# ...
 
-		self.doSpecParts(self.doQueryTable('spec_parts' ) )	
+		self.doSpecComponents(self.doQueryTable('specification_components' ) )	
 		self.doPrimitives(self.doQueryTable('inherited') )		
 		self.doPrimitives(self.doQueryTable('primitives') )
 		self.doPrimitives(self.doQueryTable('categoricals') )
@@ -134,7 +133,7 @@ class Ontology(object):
 
 		self.doUIFeatures(self.doQueryTable('features') ,'features')
 		self.doUIFeatures(self.doQueryTable('feature_annotations'), 'feature_annotations')
-		self.doLabels(['specifications']) #,'units'
+		self.doLabels(['specifications']) 
 
 		# DO NOT USE sort_keys=True on piclists etc. because this overrides OrderedDict() sort order.
 		# BUT NEED TO IMPLEMENT json ordereddict sorting patch.
@@ -221,7 +220,7 @@ class Ontology(object):
 			self.setStruct(self.struct, struct, parentId, 'choices', id, []) # empty array is set of features.
 
 
-	def doSpecParts(self, table):
+	def doSpecComponents(self, table):
 		""" ####################################################################
 			FIELD GROUPS
 
@@ -377,7 +376,7 @@ class Ontology(object):
 				continue
 			else:
 				self.setDefault(self.struct, 'specifications', myDict['id'], 'units', [])
-				self.getStruct(self.struct, 'specifications', myDict['id'],'units').append(myDict['unit'])
+				self.getStruct(self.struct, 'specifications', myDict['id'], 'units').append(myDict['unit'])
 
 				#Populate Units list
 				self.setStruct(self.struct, 'specifications' ,myDict['unit'], {
@@ -780,11 +779,11 @@ class Ontology(object):
 		##################################################################
 		# RETRIEVE DATUM CARDINALITY, LIMIT FOR SPECIFICATION RELATIVE TO PARENT
 		#
-		'spec_parts': rdflib.plugins.sparql.prepareQuery("""
+		'specification_components': rdflib.plugins.sparql.prepareQuery("""
 
 			SELECT DISTINCT ?parent (?datum as ?id) ?cardinality ?limit
 			WHERE { 	
-				?restriction owl:onProperty obo:RO_0002351. # has member
+				?restriction owl:onProperty obo:RO_0002180. # has component
 				?parent rdfs:subClassOf ?restriction. 
 
 				{?restriction owl:onClass ?datum.
@@ -962,7 +961,7 @@ class Ontology(object):
 	    #	    <owl:annotatedProperty rdf:resource="&rdfs;subClassOf"/>
 	    #	    <owl:annotatedTarget>
 	    #	        <owl:Restriction>
-	    #	            <owl:onProperty rdf:resource="&obo;RO_0002351"/>
+	    #	            <owl:onProperty rdf:resource="&obo;RO_0002180"/>
 	    #	            <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0001287"/>
 	    #	        </owl:Restriction>
 	    #	    </owl:annotatedTarget>
@@ -1022,7 +1021,7 @@ class Ontology(object):
 				?axiom rdf:type owl:Axiom.
 				?axiom owl:annotatedSource ?referrer.
 				?axiom owl:annotatedTarget ?restriction. ?restriction rdf:type owl:Restriction.
-				?restriction owl:onProperty obo:RO_0002351. # has member
+				?restriction owl:onProperty obo:RO_0002180. # has component
 				?restriction (owl:onClass|owl:qualifiedCardinality | owl:minQualifiedCardinality | owl:maxQualifiedCardinality | owl:someValuesFrom) ?id
 				FILTER(isURI(?id))
 				?axiom obo:GENEPIO_0001763 ?criteria.  #UI_preferred feature

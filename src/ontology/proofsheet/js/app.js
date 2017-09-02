@@ -171,7 +171,8 @@ function loadSpecification(specification_file) {
 			// Setup Zurb Foundation user interface and form validation
 			top.specification = specification['specifications'];
 
-			myForm = new OntologyForm("#mainForm", top.specification, top.formSettings, formCallback) // Provide context of form to populate.
+			// Provide context of form to populate.
+			myForm = new OntologyForm("#mainForm", top.specification, top.formSettings, formCallback) 
 
 			// Show Data Representation Model item menu on "Browse" tab.
 			// Prepare browsable top-level list of ontology items
@@ -762,12 +763,12 @@ function getEntitySpecItems(spec, entity, type, inherited = false) {
 		if (type == 'units')
 			for (var ptr in entity[type]) { //entity['units'] which is an array
 				var partId = entity[type][ptr]
-				spec[table][partId] = top.specification[partId] // load object
+				spec[partId] = top.specification[partId] // load object
 				getEntitySpec(spec, partId) // and we make sure 
 			}
 		else
 			for (var partId in entity[type]) { // parts, members, which are dictionaries
-				spec[table][partId] = top.specification[partId] // load object
+				spec[partId] = top.specification[partId] // load object
 				getEntitySpec(spec, partId)
 			} 
 	}

@@ -89,7 +89,7 @@ class Ontology(object):
 			'ancestro': 'http://www.ebi.ac.uk/ancestro/'
 		}
 		self.struct['specifications'] = {}
-		self.struct['units'] = {}
+		#self.struct['units'] = {}
 
 
 	def __main__(self): #, main_ontology_file
@@ -134,7 +134,7 @@ class Ontology(object):
 
 		self.doUIFeatures(self.doQueryTable('features') ,'features')
 		self.doUIFeatures(self.doQueryTable('feature_annotations'), 'feature_annotations')
-		self.doLabels(['specifications','units'])
+		self.doLabels(['specifications']) #,'units'
 
 		# DO NOT USE sort_keys=True on piclists etc. because this overrides OrderedDict() sort order.
 		# BUT NEED TO IMPLEMENT json ordereddict sorting patch.
@@ -380,7 +380,7 @@ class Ontology(object):
 				self.getStruct(self.struct, 'specifications', myDict['id'],'units').append(myDict['unit'])
 
 				#Populate Units list
-				self.setStruct(self.struct, 'units' ,myDict['unit'], {
+				self.setStruct(self.struct, 'specifications' ,myDict['unit'], {
 					'id': myDict['unit'],
 					'label': myDict['label']
 				})

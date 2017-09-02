@@ -31,7 +31,7 @@
 
 /*********** ALL THE SETUP ***************************************************/
 
-data = {}
+specification = {}
 focusEntityId = null
 formSettings = {}
 //ontologyLookupService = 'https://www.ebi.ac.uk/ols/search?q='
@@ -82,7 +82,7 @@ $( document ).ready(function() {
 	// Provide type-as-you-go searching
 	$("#searchField").on('keyup', function() {
 		var text = $(this).val().toLowerCase()
-		searchAsYouType(top.data.specifications, text)
+		searchAsYouType(top.specification.specifications, text)
 	})
 
 	$("#searchResults").on('mouseenter','i.fi-arrow-up.dropdown', displayContext)
@@ -153,7 +153,7 @@ getIdHTMLAttribute = function(id) {
 
 /*********** ACTION *****************************************************
 	This loads the json user interface oriented version of an ontology
-	After ajax load of ontology_ui.json, top.data contains:
+	After ajax load of ontology_ui.json, top.specification contains:
 	{
 		@context
 		specifications
@@ -169,9 +169,9 @@ function loadSpecification(specification_file) {
 		success: function( specification ) {
 
 			// Setup Zurb Foundation user interface and form validation
-			top.data = specification;
+			top.specification = specification['specifications'];
 
-			myForm = new OntologyForm("#mainForm", top.data, top.formSettings, formCallback) // Provide context of form to populate.
+			myForm = new OntologyForm("#mainForm", top.specification, top.formSettings, formCallback) // Provide context of form to populate.
 
 			// Show Data Representation Model item menu on "Browse" tab.
 			// Prepare browsable top-level list of ontology items
@@ -294,9 +294,9 @@ function navigateToForm(ontologyId) {
 
 
 function getEntity(ontologyId) {
-	var entity = top.data['specifications'][ontologyId]
-	if (!entity)
-		entity = top.data['units'][ontologyId]
+	var entity = top.specification[ontologyId]
+	//if (!entity)
+	//	entity = top.specification['units'][ontologyId]
 	return entity
 }
 
@@ -309,7 +309,7 @@ function getEntityId(item) {
 /*********** SEARCH AND RESULTS *************************/
 function searchAsYouType(collection, text) {
 	/* As user types text into searchField, exact substring search is conducted
-	 through top.data.specifications entities (all of their numeric or textual 
+	 through top.specification.specifications entities (all of their numeric or textual 
 	 attributes)
 	*/
 	text = text.toLowerCase()
@@ -581,7 +581,7 @@ function renderCartItem(ontologyId) {
 	var ptr = ontologyId.lastIndexOf('/')
 	// Get last path item id.
 	var entityId = ptr ? ontologyId.substr(ptr+1) : ontologyId
-	var entity = top.data['specifications'][entityId]
+	var entity = top.specification[entityId]
 	if (!entity) entity = {'uiLabel':'[UNRECOGNIZED]'}
 	return ['<div class="cart-item" ', getIdHTMLAttribute(ontologyId), '>',
 		'<i class="fi-shopping-cart"></i>',
@@ -595,7 +595,7 @@ function renderCartObj(ontologyId) {
 	var ptr = ontologyId.lastIndexOf('/')
 	// Get last path item id.
 	var entityId = ptr ? ontologyId.substr(ptr+1) : ontologyId
-	var entity = top.data['specifications'][entityId]
+	var entity = top.specification[entityId]
 	if (!entity) entity = {'uiLabel':'[UNRECOGNIZED:' + entityId + ']'}
 	var html = ['<div class="cart-item" ', getIdHTMLAttribute(ontologyId), '>',
 		'<i class="fi-shopping-cart"></i>',
@@ -614,7 +614,7 @@ function renderCartObj(ontologyId) {
 function renderMenu(entityId, depth = 0 ) {
 
 	var html = ""
-	var entity = top.data['specifications'][entityId]
+	var entity = top.specification[entityId]
 	if (entity) {
 		if ('parent' in entity && parent['id'] == entityId) {
 			console.log("Node: " + entityId + " is a parent of itself and so is not re-rendered.")
@@ -655,7 +655,7 @@ function getdataSpecification() {
 	INPUT
 	active specification tab: tab user just clicked on, or one active when form loaded
 	top.focusEntityId: The current entity being focused on, looked up in
-                       top.data components: specification, picklists and units 
+                       top.specification components: specification, picklists and units 
     OUTPUT
     - #dataSpecification div or field loaded with textual representation.
     - download button activated
@@ -715,7 +715,7 @@ function downloadDataSpecification() {
 		href = base 64 encoding of #dataSpecification field.
 	*/
 	if ($("#dataSpecification").html().length) {
-		var entity = top.data['specifications'][top.focusEntityId]
+		var entity = top.specification[top.focusEntityId]
 		var selected_tab = $('#specification-tabs > li.is-active > a[aria-selected="true"]').attr('aria-controls')
 		
 		// File name is main ontology id component + file suffix.
@@ -731,13 +731,13 @@ function downloadDataSpecification() {
 
 function getEntitySpec(spec, entityId = null, inherited = false) {
 	if (spec == null)
-		spec = {'specifications':{}, 'units':{} }
+		spec = {} //, 'units':{}
 
 
-	if (entityId in top.data['specifications']) {
-		var entity = top.data['specifications'][entityId]
+	if (entityId in top.specification) {
+		var entity = top.specification[entityId]
 		if (entity) {
-			spec['specifications'][entityId] = entity
+			spec[entityId] = entity
 			
 			if (inherited == true) {
 				// Entity inherits primary ancestors' parts (the ones that led from start of rendering to here). 
@@ -746,10 +746,10 @@ function getEntitySpec(spec, entityId = null, inherited = false) {
 					getEntitySpec(spec, parentId, true)
 			}
 
-			getEntitySpecItems(spec, entity, 'parts', 'specifications')
-			getEntitySpecItems(spec, entity, 'members', 'specifications') 
+			getEntitySpecItems(spec, entity, 'parts')
+			getEntitySpecItems(spec, entity, 'members') 
 			// Though a member might not lead to a form element of any kind, still include?
-			getEntitySpecItems(spec, entity, 'units', 'units')
+			getEntitySpecItems(spec, entity, 'units')
 
 		}
 	}
@@ -757,18 +757,18 @@ function getEntitySpec(spec, entityId = null, inherited = false) {
 	return spec
 }
 
-function getEntitySpecItems(spec, entity, type, table, inherited = false) {
+function getEntitySpecItems(spec, entity, type, inherited = false) {
 	if (type in entity) {
-		if (table == 'units') //WHY? table of ids?!
-			for (var ptr in entity[type]) {
+		if (type == 'units')
+			for (var ptr in entity[type]) { //entity['units'] which is an array
 				var partId = entity[type][ptr]
-				spec[table][partId] = top.data[table][partId]
-				getEntitySpec(spec, partId)
+				spec[table][partId] = top.specification[partId] // load object
+				getEntitySpec(spec, partId) // and we make sure 
 			}
 		else
-			for (var partId in entity[type]) {
-				spec[table][partId] = top.data[table][partId]
+			for (var partId in entity[type]) { // parts, members, which are dictionaries
+				spec[table][partId] = top.specification[partId] // load object
 				getEntitySpec(spec, partId)
-			}
+			} 
 	}
 }

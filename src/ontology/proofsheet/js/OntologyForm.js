@@ -50,7 +50,7 @@ function OntologyForm(domId, specification, settings, callback) {
 			$('input[placeholder="dateTime"]').fdatepicker({format: self.settings.formatD + self.settings.formatT, disableDblClickSelection: true});
 			$('input[placeholder="dateTimeStamp"]').fdatepicker({format: self.settings.formatD + self.settings.formatT, disableDblClickSelection: true});
 
-			var entity = self.specification['specifications'][entityId]
+			var entity = self.specification[entityId]
 
 			// Enable page annotation by 3rd party tools by kicking browser to 
 			// understand that a #anchor and page title are different.
@@ -298,13 +298,13 @@ function OntologyForm(domId, specification, settings, callback) {
 			return specification
 		}
 
-		if (! (entityId in self.specification['specifications'])) {
+		if (! (entityId in self.specification)) {
 			console.log("Node: " + entityId + " has no specification entry.")
 			return specification
 		}
 
 		// deepcopy specification entity so we can change it.
-		var entity = $.extend(true, {}, self.specification['specifications'][entityId]) 
+		var entity = $.extend(true, {}, self.specification[entityId]) 
 		
 		if ('parent' in entity && parent['id'] == entityId) {
 			console.log("Node: " + entityId + " is a parent of itself and so cannot be re-rendered.")
@@ -395,7 +395,7 @@ function OntologyForm(domId, specification, settings, callback) {
 					break;
 
 				case 'xmls:anyURI': // Picklists are here
-					if (entityId in self.specification['specifications']) {
+					if (entityId in self.specification) {
 						getEntitySpecFormChoices(entity)
 					}
 					else
@@ -523,8 +523,7 @@ function OntologyForm(domId, specification, settings, callback) {
 			part['disabled'] if appropriate.  Indicates whether a certain 
 			categorical selection should be ignored or hidden.
 		*/
-		//if (! entity['choices']) {
-		if (depth > 20) 
+		if (depth > 20) // NCBI Taxon might go this deep?
 			console.log("MAX DEPTH PROBLEM WITH " + entity['id'])
 
 		if ('choices' in entity) {
@@ -532,7 +531,7 @@ function OntologyForm(domId, specification, settings, callback) {
 			var memberIds = getSort(entity['choices'], 'specifications') 
 			for (var ptr in memberIds) {
 				var memberId = memberIds[ptr]
-				var part = $.extend(true, {}, self.specification['specifications'][memberId]) //deepcopy
+				var part = $.extend(true, {}, self.specification[memberId]) //deepcopy
 				delete part['datatype'] // Unnecessary
 				if (!part) // Should never happen.
 					console.log("Error: picklist choice not available: ", memberId, " for list ", entity['id'])
@@ -542,7 +541,6 @@ function OntologyForm(domId, specification, settings, callback) {
 						part['disabled'] = true;
 					var id = part['id']
 					newChoices.push(getEntitySpecFormChoice(part , depth+1))
-
 				}
 			}
 			entity['choices'] = newChoices
@@ -561,7 +559,7 @@ function OntologyForm(domId, specification, settings, callback) {
 			unitsArray = {}
 			var units = entity['units']
 			for (var ptr in units) {
-				var unit = $.extend(true, {}, self.specification['units'][units[ptr]] )
+				var unit = $.extend(true, {}, self.specification[units[ptr]] )
 				unitsArray[unit['id']] = unit
 			}
 			entity['units'] = unitsArray
@@ -591,8 +589,8 @@ function OntologyForm(domId, specification, settings, callback) {
 		//else top.bag[entityId] = true		
 
 		// Clone entity so we can change it.
-		if (entityId in self.specification['specifications'])
-			var entity = $.extend(true, {}, self.specification['specifications'][entityId]) 
+		if (entityId in self.specification)
+			var entity = $.extend(true, {}, self.specification[entityId]) 
 		else {
 			console.log("Node: " + entityId + " has no specification entry.")
 			return html
@@ -688,7 +686,7 @@ function OntologyForm(domId, specification, settings, callback) {
 				break;
 
 			case 'xmls:anyURI': // Picklists are here
-				if (entityId in self.specification['specifications'])
+				if (entityId in self.specification)
 					html += renderChoices(entity, label)
 				else
 					html += '<p class="small-text">ERROR: Categorical variable [' + entityId + '] not marked as a "Categorical tree specification"</p>'
@@ -760,7 +758,7 @@ function OntologyForm(domId, specification, settings, callback) {
 		for (var ptr in ids) { 
 			childId = ids[ptr]
 			childDomId = childId.replace(':','_')
-			child = self.specification['specifications'][childId]
+			child = self.specification[childId]
 			if (ptr == 0) {
 				tab_active = ' is-active '
 				aria = ' aria-selected="true" '
@@ -857,7 +855,7 @@ function OntologyForm(domId, specification, settings, callback) {
 
 		//Because one should deliberately make a selection ... esp. when confronted with required selection list where 1st item is 
 		html +=	'<option value="" disabled>Select ...</option>'
-		html +=				renderChoice(self.specification['specifications'][picklistId], 0)
+		html +=				renderChoice(self.specification[picklistId], 0)
 		html +=	'		</select>\n'
 		if ('lookup' in entity['features']) 
 			html += '		<a class="input-group-label" onclick="getChoices(this,\''+entity['id']+'\')">more choices...</a>\n'
@@ -883,7 +881,7 @@ function OntologyForm(domId, specification, settings, callback) {
 
 			for (var ptr in memberIds) {
 				var memberId = memberIds[ptr]
-				var part = self.specification['specifications'][memberId]
+				var part = self.specification[memberId]
 
 				if (!part) // Should never happen.
 					console.log("Error: picklist choice not available: ", memberId, " for list ",entity['id'])
@@ -937,14 +935,14 @@ function OntologyForm(domId, specification, settings, callback) {
 		*/
 		if ('units' in entity) {
 			var units = entity['units']
-			var label = renderLabel(self.specification['units'][units[0]])
+			var label = renderLabel(self.specification[units[0]])
 			if (units.length == 1) 
 				//return '<a class="input-group-label small">'+ label + '</a>\n'
 				return '<span class="input-group-label small">'+ label + '</span>\n'
 
 			var html ='<div class="input-group-button" style="font-weight:700;" ><select class="units" id="'+entity['domId']+'-obo:IAO_0000039">'
 			for (var ptr in units) { //.slice(1)
-				var unit = self.specification['units'][units[ptr]]
+				var unit = self.specification[units[ptr]]
 				var unitLabel = unit['uiLabel'] ? unit['uiLabel'] : unit['label']
 				html += '		<option value="'+ unit['id'] + '">' + unitLabel + ' &nbsp;</option>'
 			}
@@ -1055,7 +1053,7 @@ function OntologyForm(domId, specification, settings, callback) {
 		// its a bit more hassle to determine where referrerId is to include the feature.
 
 		var referrerId = entity['path'].slice(-2)[0]
-		var referrer = self.specification['specifications'][referrerId]
+		var referrer = self.specification[referrerId]
 		if (!referrer) {console.log("ERROR: can't find entity ", referrerId, " to get feature for." );return false }
 		var myFeatures = {}
 		var myLists = {'members':null,'parts':null}
@@ -1084,7 +1082,7 @@ function OntologyForm(domId, specification, settings, callback) {
 	getFeature = function(entity, referrerId, feature) {
 		// Features only exist with reference to a parent's relations to a child.
 		// A feature like "hidden" or "feature" may exist in both members and parts lists
-		var referrer = self.specification['specifications'][referrerId]
+		var referrer = self.specification[referrerId]
 		if (!referrer) {console.log("ERROR: can't find entity ", referrerId, " to get feature for." );return false }
 
 		for (myList in ['members', 'parts']) 
@@ -1205,7 +1203,7 @@ function OntologyForm(domId, specification, settings, callback) {
 		var referrerId = entity['path'].slice(-2)[0]
 		var constraints = []
 		var id = entity['id']
-		var referrer = self.specification['specifications'][referrerId]
+		var referrer = self.specification[referrerId]
 		if ('parts' in referrer) {
 			// Find given entity in parent (referrer) list of parts
 			for (var cptr in referrer['parts'][id]) {

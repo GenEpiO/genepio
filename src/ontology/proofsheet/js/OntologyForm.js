@@ -533,7 +533,7 @@ function OntologyForm(domId, specification, settings, callback) {
 					for (var ptr in memberIds) {
 						var memberId = memberIds[ptr]
 						var part = $.extend(true, {}, self.specification['specifications'][memberId]) //deepcopy
-
+						delete part['datatype'] // Unnecessary
 						if (!part) // Should never happen.
 							console.log("Error: picklist choice not available: ", memberId, " for list ", entity['id'])
 						else {
@@ -541,7 +541,7 @@ function OntologyForm(domId, specification, settings, callback) {
 							if (getFeature(part, entity['id'], 'hidden') )
 								part['disabled'] = true;
 							var id = part['id']
-							entity['choices'].push({id: getEntitySpecFormChoice(part , depth+1) })
+							entity['choices'].push(getEntitySpecFormChoice(part , depth+1))
 						}
 					}
 				}

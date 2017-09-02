@@ -127,7 +127,7 @@ class Ontology(object):
 		self.doPrimitives(self.doQueryTable('categoricals') )
 		self.doUnits(self.doQueryTable('units') )
 
-		# GENEPIO_0001655 = Categorical tree specification
+		# GENEPIO_0001655 = Class:Categorical tree specification
 		picklistBinding = {'root': rdflib.URIRef(self.expandId('obo:GENEPIO_0001655'))}
 		self.doPickLists(self.doQueryTable('tree', picklistBinding ))
 		self.doPickLists(self.doQueryTable('individuals') )
@@ -147,11 +147,13 @@ class Ontology(object):
 		""" ####################################################################
 			SPECIFICATIONS
 
-			A specification is basically a data entity that can be transformed into a form, 
-			record or report.  The 'has_value_specification' relation specifies what 
-			component entities and primitive data types it has.  The specification can
-			indicate the "cardinality" or restriction on the number	of occurances 
-			(some, > 0, = 1, < n) of some other entity as a part.
+			A specification is basically a complex entity that defines a form, 
+			record or report. 
+			* The 'has_member' relation specifies what component entities it has
+			  and include the cardinality restrictions on how many of a given 
+			  component type are allowed (some, > 0, = 1, < n).
+			* A component entity may have a "has primitive data type".  
+
 			For example one can specify that a contact can have up to 3 phone numbers.
 			Since such constraints can be very installation specific, they should be placed
 			in the MODEL_import.owl file that is expected to vary between implementations.
@@ -171,8 +173,6 @@ class Ontology(object):
 		            "prefLabel": "contact specification - patient"
 		            }
 		        }
-			
-			MERGING WITH PICKLIST ....
 
 		"""
 		struct = 'specifications'
@@ -416,13 +416,12 @@ class Ontology(object):
 			referrer = myDict['referrer']  #Id of parent/
 			feature = myDict['feature']
 			# Providing plain english term for feature unless motivation to keep onto ids arises.
-			if feature == 'obo:GENEPIO_0001746':
-				feature = 'hidden'
-			elif feature == 'obo:GENEPIO_0001763':
+			if feature == 'obo:GENEPIO_0001763':
 				feature = myDict['criteria']
 			else:
 				feature = 'unknown'
 			myObj = {'feature': feature}
+
 			if len(myDict['criteria']) > 0:
 				myObj['criteria'] = myDict['criteria']
 
@@ -442,7 +441,6 @@ class Ontology(object):
 						print "Error,  no specification for id ", id, " when working on", table_name
 					else:
 						self.setDefault(entity, 'features', []) #OrderedDict()
-						#self.getStruct(entity, 'features').append(myObj)
 						entity['features'].append(myObj)
 				else:
 					# Go find referrer
@@ -664,7 +662,7 @@ class Ontology(object):
 					newrowdict[column] = self.extractId(value)  # a plain string
 
 				elif valType is rdflib.term.Literal :
-					literal = {'value': value.replace('\n',r'\n')} # Text may include carriage returns; escape to json
+					literal = {'value': value.replace('\n', r'\n')} # Text may include carriage returns; escape to json
 					#_invalid_uri_chars = '<>" {}|\\^`'
 
 					if hasattr(value, 'datatype'): #rdf:datatype
@@ -699,7 +697,7 @@ class Ontology(object):
 						"SELECT ?id WHERE {?datum owl:unionOf/rdf:rest*/rdf:first ?id}", 
 						initBindings={'datum': value} )		
 					results = [self.extractId(item[0]) for item in disjunction] 
-					newrowdict['expression'] = {'datatype':'disjunction','data':results}
+					newrowdict['expression'] = {'datatype':'disjunction', 'data':results}
 
 					newrowdict[column] = value
 
@@ -1020,7 +1018,7 @@ class Ontology(object):
 		#        </owl:annotatedTarget>
 		#    </owl:Axiom>
 
-		'feature_annotations-old': rdflib.plugins.sparql.prepareQuery("""
+		'feature_annotations': rdflib.plugins.sparql.prepareQuery("""
 			SELECT DISTINCT ?id ?referrer ?feature ?criteria 
 			WHERE { 
 				?axiom rdf:type owl:Axiom.
@@ -1047,15 +1045,15 @@ class Ontology(object):
 		#        <obo:GENEPIO_0001763>lookup</obo:GENEPIO_0001763>
 		#    </owl:Axiom>
 
-		'feature_annotations': rdflib.plugins.sparql.prepareQuery("""
+		'feature_annotations-new': rdflib.plugins.sparql.prepareQuery("""
 			SELECT DISTINCT ?id ?referrer ?feature ?criteria 
 			WHERE { 
 				?axiom rdf:type owl:Axiom.
 				?axiom owl:annotatedSource ?id.
 				?axiom owl:annotatedTarget ?restriction. ?restriction rdf:type owl:Restriction.
 				?restriction owl:onProperty obo:RO_0002350. # member of
-				?restriction owl:someValuesFrom ?referrer
-				FILTER(isURI(?id))
+				?restriction owl:someValuesFrom ?referrer.
+				FILTER(isURI(?id)).
 				?axiom (obo:GENEPIO_0001763|obo:hasAlternativeId) ?criteria.  #UI_preferred feature
 				?axiom ?feature ?criteria.
 			}
@@ -1090,10 +1088,10 @@ class Ontology(object):
 				?axiom owl:annotatedSource ?id.
 				?axiom owl:annotatedTarget ?restriction. ?restriction rdf:type owl:Restriction.
 				?restriction owl:onProperty obo:RO_0002350. # member of
-				?restriction owl:someValuesFrom ?referrer
-				FILTER(isURI(?id))
+				?restriction owl:someValuesFrom ?referrer.
+				FILTER(isURI(?id)).
 				#Get feature as label, definition, UI label, UI definition, UI_preferred,  feature
-				?axiom (rdfs:label|obo:IAO_0000115|obo:GENEPIO_0000006|GENEPIO_0001745) ?criteria.  
+				?axiom (rdfs:label|obo:IAO_0000115|obo:GENEPIO_0000006|obo:GENEPIO_0001745) ?criteria.  
 				?axiom ?feature ?criteria.
 			}
 		""", initNs = namespace),

@@ -4,10 +4,13 @@ The OntologyForm class provides all functions needed (using jquery, Zurb
 Foundation and app.css) to render and populate an ontology-driven form.
 
 FUTURE: MAKE USE OF BETTER TEMPLATING
+WISHLIST:
+	- Allow fields to take on date or dateTime formatting by providing choice
+	- Allow xml datatype formats for date&time to be inherited from parent model
 
 Author: Damion Dooley
 Project: genepio.org/geem
-Date: June 20, 2017
+Date: Sept 4, 2017
 
 */
 function OntologyForm(domId, specification, settings, callback) {
@@ -15,13 +18,11 @@ function OntologyForm(domId, specification, settings, callback) {
 	//bag = {}
 	self.settings = {}
 	self.formDomId = $(domId)
-	self.specification = specification // By reference hopefully
+	self.specification = specification // By reference
 	self.formCallback = callback
 
 	// Some of these defaults can be overridden by particular fields via ui_feature specification
 	if (settings) self.settings = settings
-	if (! 'formatD' in self.settings) self.settings.formatD = 'yyyy-mm-dd'
-	if (! 'formatT' in self.settings) self.settings.formatT = 'Thh:ii:SS'
 	if (! 'ontologyDetails' in self.settings) self.settings.ontologyDetails = false
 	if (! 'minimalForm' in self.settings) self.settings.minimalForm = false
 
@@ -46,9 +47,7 @@ function OntologyForm(domId, specification, settings, callback) {
 			self.formDomId.html(form_html) //.foundation()
 
 			// Set up UI widget for all date inputs; using http://foundation-datepicker.peterbeno.com/example.html
-			$('input[placeholder="date"]').fdatepicker({format: self.settings.formatD, disableDblClickSelection: true});
-			$('input[placeholder="dateTime"]').fdatepicker({format: self.settings.formatD + self.settings.formatT, disableDblClickSelection: true});
-			$('input[placeholder="dateTimeStamp"]').fdatepicker({format: self.settings.formatD + self.settings.formatT, disableDblClickSelection: true});
+			$('input[data-date-format]').fdatepicker({disableDblClickSelection: true})
 
 			var entity = self.specification[entityId]
 
@@ -320,10 +319,13 @@ function OntologyForm(domId, specification, settings, callback) {
 		entity['path'] = path.concat([entityId])
 
 		entity['depth'] = depth
+
+		if ('features' in entity) {} else entity['features'] = {}
+		getFeatures(entity)
+
 		if (entity['depth'] > 0) {
 			// When this entity is displayed within context of parent entity, that entity will 
 			// indicate how many of this part are allowed.
-			getFeatures(entity)
 			getCardinality(entity)
 			// Currently showing "hidden" feature fields as disabled.??????????????
 			entity['disabled'] = ('hidden' in entity['features']);
@@ -333,7 +335,9 @@ function OntologyForm(domId, specification, settings, callback) {
 		var	label = entity['uiLabel']
 
 		if (entity['datatype'] === undefined)
+			
 			console.log('No form part for: "' + entity['uiLabel'] + '" (' + entityId + ')')
+
 		else {
 			switch (entity['datatype']) {
 
@@ -342,7 +346,7 @@ function OntologyForm(domId, specification, settings, callback) {
 					//getEntitySpecDisjunction(entity, label, depth)
 					break;
 
-				case 'specification':
+				case 'model':
 					getEntitySpecFormParts(entity, specification, inherited, depth)
 					break;
 
@@ -368,24 +372,25 @@ function OntologyForm(domId, specification, settings, callback) {
 					break;
 		 
 				// renderInteger(entity, minInclusive, maxInclusive)
-				case 'xmls:integer':			getEntitySpecFormInteger(entity);	break
-				case 'xmls:positiveInteger': 	getEntitySpecFormInteger(entity, 1);	break
-				case 'xmls:nonNegativeInteger':	getEntitySpecFormInteger(entity, 0);	break
-				case 'xmls:unsignedByte':		getEntitySpecFormInteger(entity, 0, 255); break// (8-bit)	
-				case 'xmls:unsignedShort':		getEntitySpecFormInteger(entity, 0, 65535); break// (16-bit) 
-				case 'xmls:unsignedInt':		getEntitySpecFormInteger(entity, 0, 4294967295);	break// (32-bit)		
-				case 'xmls:unsignedLong':		getEntitySpecFormInteger(entity, 0, 18446744073709551615); break// (64-bit) 
+				case 'xmls:integer':			getEntitySpecFormNumber(entity);	break
+				case 'xmls:positiveInteger': 	getEntitySpecFormNumber(entity, 1);	break
+				case 'xmls:nonNegativeInteger':	getEntitySpecFormNumber(entity, 0);	break
+				case 'xmls:unsignedByte':		getEntitySpecFormNumber(entity, 0, 255); break// (8-bit)	
+				case 'xmls:unsignedShort':		getEntitySpecFormNumber(entity, 0, 65535); break// (16-bit) 
+				case 'xmls:unsignedInt':		getEntitySpecFormNumber(entity, 0, 4294967295);	break// (32-bit)		
+				case 'xmls:unsignedLong':		getEntitySpecFormNumber(entity, 0, 18446744073709551615); break// (64-bit) 
 
-				case 'xmls:negativeInteger':	getEntitySpecFormInteger(entity, null, -1); break
-				case 'xmls:nonPositiveInteger':	getEntitySpecFormInteger(entity, null, 0); break
+				case 'xmls:negativeInteger':	getEntitySpecFormNumber(entity, null, -1); break
+				case 'xmls:nonPositiveInteger':	getEntitySpecFormNumber(entity, null, 0); break
 
-				case 'xmls:byte': 	getEntitySpecFormInteger(entity, -128, 127);	break// (signed 8-bit)
-				case 'xmls:short': 	getEntitySpecFormInteger(entity, -32768, 32767);	break// (signed 16-bit)
-				case 'xmls:int': 	getEntitySpecFormInteger(entity, -2147483648, 2147483647);	break// (signed 32-bit)
-				case 'xmls:long': 	getEntitySpecFormInteger(entity, -9223372036854775808, 9223372036854775807); break // (signed 64-bit)
+				case 'xmls:byte': 	getEntitySpecFormNumber(entity, -128, 127);	break// (signed 8-bit)
+				case 'xmls:short': 	getEntitySpecFormNumber(entity, -32768, 32767);	break// (signed 16-bit)
+				case 'xmls:int': 	getEntitySpecFormNumber(entity, -2147483648, 2147483647);	break// (signed 32-bit)
+				case 'xmls:long': 	getEntitySpecFormNumber(entity, -9223372036854775808, 9223372036854775807); break // (signed 64-bit)
 
-				// Decimal and float numbers
-				case 'xmls:decimal': // max 18 digits
+				// Decimal, double and float numbers
+				case 'xmls:decimal': 
+				case 'xmls:double':  
 				case 'xmls:float':
 					getEntitySpecFormNumber(entity)
 					break;
@@ -422,12 +427,12 @@ function OntologyForm(domId, specification, settings, callback) {
 		*/
 		delete (entity['parent'])
 		delete (entity['otherParent'])
-		//delete (entity['parts'])
-		delete (entity['members'])
+		//delete (entity['components'])
+		delete (entity['models'])
 		delete (entity['member_of'])
 		delete (entity['constraints'])
-		if ($.isEmptyObject(entity['features']))
-			delete (entity['features'])
+		//if ($.isEmptyObject(entity['features']))
+		//	delete (entity['features'])
 		if ($.isEmptyObject(entity['choices']))
 			delete (entity['choices'])
 
@@ -457,7 +462,7 @@ function OntologyForm(domId, specification, settings, callback) {
 		}	
 		*/
 
-		var ids = getSort(entity['parts'], 'specifications') // "has value specification" parts. 
+		var ids = getOrder(entity, 'components') // "has value specification" parts. 
 		for (var ptr in ids) { 
 			// Sort so fields within a group are consistenty orderd:
 			childId = ids[ptr]
@@ -466,30 +471,24 @@ function OntologyForm(domId, specification, settings, callback) {
 
 		// When a categorical variable is referenced on its own:
 		if (inherited == false) {
-			var ids = getSort(entity['members'], 'specifications') // cardinality "x has member some/one/etc y"
+			var ids = getOrder(entity, 'models') // cardinality "x has member some/one/etc y"
 			for (var ptr in ids) { 
 				childId = ids[ptr]
 				// Cardinality lookup doesn't apply to categorical pick-lists so no need to supply path.
 				this.getEntitySpecForm(childId, specification, [], depth + 1) 
 			}
 
-		entity['parts'] = specification
+		entity['components'] = specification
 		}
 	}
 
-	getEntitySpecFormInteger = function(entity, minInclusive, maxInclusive) {
+	getEntitySpecFormNumber = function(entity, minInclusive=undefined, maxInclusive=undefined) {
 		getEntitySpecFormConstraints(entity, minInclusive, maxInclusive)
 		getEntitySpecFormUnits(entity)
 	}
 
-	getEntitySpecFormNumber = function(entity, minInclusive, maxInclusive) {
-		getEntitySpecFormConstraints(entity, minInclusive, maxInclusive)
-		getEntitySpecFormUnits(entity)
-	}
-
-	getEntitySpecFormConstraints = function(entity, minInclusive, maxInclusive) {
+	getEntitySpecFormConstraints = function(entity, minInclusive=undefined, maxInclusive=undefined) {
 		// This function boils down a numeric xmls min/max to 'min-value' and 'max-value' params.
-		// COULD EXTEND THIS TO WORK WITH NON-INTEGERS
 		var constraints = getConstraints(entity), min, max, pattern
 		if (maxInclusive === undefined || maxInclusive > constraints['xmls:maxInclusive']) 
 			maxInclusive = constraints['xmls:maxInclusive']
@@ -528,7 +527,7 @@ function OntologyForm(domId, specification, settings, callback) {
 
 		if ('choices' in entity) {
 			var newChoices = [] // Array to preserve order
-			var memberIds = getSort(entity['choices'], 'specifications') 
+			var memberIds = getOrder(entity, 'choices') 
 			for (var ptr in memberIds) {
 				var memberId = memberIds[ptr]
 				var part = $.extend(true, {}, self.specification[memberId]) //deepcopy
@@ -537,7 +536,7 @@ function OntologyForm(domId, specification, settings, callback) {
 					console.log("Error: picklist choice not available: ", memberId, " for list ", entity['id'])
 				else {
 					// Currently showing "hidden" feature as disabled.
-					if (getFeature(part, entity['id'], 'hidden') )
+					if (getFeature(part, 'hidden', entity['id']) )
 						part['disabled'] = true;
 					var id = part['id']
 					newChoices.push(getEntitySpecFormChoice(part , depth+1))
@@ -599,7 +598,7 @@ function OntologyForm(domId, specification, settings, callback) {
 		// Initialize entity
 		entity['depth'] = depth
 		//entity['required'] = ''
-		entity['features'] = {}
+		if ('features' in entity) {} else entity['features'] = {}
 		entity['path'] = path.concat([entityId])
 		// Create a unique domId out of all the levels 
 		entity['domId'] = entity['path'].join('/')
@@ -611,10 +610,11 @@ function OntologyForm(domId, specification, settings, callback) {
 		// Used for some controls for sub-parts
 		var	label = (minimal) ? '' : renderLabel(entity)
 
+		getFeatures(entity)
+
 		if (entity['depth'] > 0) {
 			// When this entity is displayed within context of parent entity, that entity will 
 			// indicate how many of this part are allowed.
-			getFeatures(entity)
 			getCardinality(entity)
 			// Currently showing "hidden" feature fields as disabled.
 			entity['disabled'] = ('hidden' in entity['features']) ? ' disabled="disabled"' : '';
@@ -622,15 +622,14 @@ function OntologyForm(domId, specification, settings, callback) {
 
 		switch (entity['datatype']) {
 			case undefined: // Anonymous node
-				html += renderSection('<li><strong>No form part for: "' + entity['uiLabel'] + '" (' + entityId + ')</strong></li>')
-				//<ul><li>Hint: A picklist must be a subclass of "categorical tree specification".</li><li>Other fields need a "has primitive value spec" data type.</li><li>or was this in an include file that failed to load?</li></ul>
+				html += renderSection(entity, label, '<span class="small"><i>No form part for this! Is it a "categorical tree specification" or does it have a "has primitive value spec" data type?</i></span>')
 				break;
 
 			case 'disjunction':
 				html += renderDisjunction(entity, label, depth)
 				break;
 
-			case 'specification':
+			case 'model':
 				html += renderSpecification(entity, inherited, depth)
 				// If specification has stuff, then wrap it:
 				if (html.length > 0 && entity['uiLabel'] != '[no label]')
@@ -651,6 +650,8 @@ function OntologyForm(domId, specification, settings, callback) {
 			case 'xmls:dateTimeStamp': //YYYY-MM-DDTHH:MM:SS  and required time zone as above.
 
 			case 'xmls:duration': //[-]P (period, required) + nYnMnD (years / months / days) T nHnMnS (hours / minuts / seconds)
+				html += renderDateTime(entity, label)
+				break;
 
 			// Applicable restrictions : enumeration length maxLength minLength pattern whiteSpace
 			case 'xmls:string':
@@ -660,25 +661,35 @@ function OntologyForm(domId, specification, settings, callback) {
 				break;
 	 
 			// renderInteger(entity, minInclusive, maxInclusive)
-			case 'xmls:integer':			html += renderInteger(entity, label);	break
-			case 'xmls:positiveInteger': 	html += renderInteger(entity, label, 1);	break
-			case 'xmls:nonNegativeInteger':	html += renderInteger(entity, label, 0);	break
-			case 'xmls:unsignedByte':		html += renderInteger(entity, label, 0, 255); break// (8-bit)	
-			case 'xmls:unsignedShort':		html += renderInteger(entity, label, 0, 65535); break// (16-bit) 
-			case 'xmls:unsignedInt':		html += renderInteger(entity, label, 0, 4294967295);	break// (32-bit)		
-			case 'xmls:unsignedLong':		html += renderInteger(entity, label, 0, 18446744073709551615); break// (64-bit) 
+			case 'xmls:integer':			html += renderNumber(entity, label, 'integer');	break
+			case 'xmls:positiveInteger': 	html += renderNumber(entity, label, 'integer', 1);	break
+			case 'xmls:nonNegativeInteger':	html += renderNumber(entity, label, 'integer', 0);	break
+			case 'xmls:unsignedByte':		html += renderNumber(entity, label, 'integer', 0, 255); break// (8-bit)	
+			case 'xmls:unsignedShort':		html += renderNumber(entity, label, 'integer', 0, 65535); break// (16-bit) 
+			case 'xmls:unsignedInt':		html += renderNumber(entity, label, 'integer', 0, 4294967295);	break// (32-bit)		
+			case 'xmls:unsignedLong':		html += renderNumber(entity, label, 'integer', 0, 18446744073709551615); break// (64-bit) 
 
-			case 'xmls:negativeInteger':	html += renderInteger(entity, label, null, -1); break
-			case 'xmls:nonPositiveInteger':	html += renderInteger(entity, label, null, 0); break
+			case 'xmls:negativeInteger':	html += renderNumber(entity, label, 'integer', null, -1); break
+			case 'xmls:nonPositiveInteger':	html += renderNumber(entity, label, 'integer', null, 0); break
 
-			case 'xmls:byte': 	html += renderInteger(entity, label, -128, 127);	break// (signed 8-bit)
-			case 'xmls:short': 	html += renderInteger(entity, label, -32768, 32767);	break// (signed 16-bit)
-			case 'xmls:int': 	html += renderInteger(entity, label, -2147483648, 2147483647);	break// (signed 32-bit)
-			case 'xmls:long': 	html += renderInteger(entity, label, -9223372036854775808, 9223372036854775807); break // (signed 64-bit)
+			case 'xmls:byte': 	html += renderNumber(entity, label, 'integer', -128, 127);	break// (signed 8-bit)
+			case 'xmls:short': 	html += renderNumber(entity, label, 'integer', -32768, 32767);	break// (signed 16-bit)
+			case 'xmls:int': 	html += renderNumber(entity, label, 'integer', -2147483648, 2147483647);	break// (signed 32-bit)
+			case 'xmls:long': 	html += renderNumber(entity, label, 'integer', -9223372036854775808, 9223372036854775807); break // (signed 64-bit)
 
-			case 'xmls:decimal': // max 18 digits
-			case 'xmls:float':
-				html += renderNumber(entity, label)
+			// See https://www.w3.org/TR/2005/WD-swbp-xsch-datatypes-20050427/ 
+			// about XML/RDF/OWL numeric representation.
+			// Re. OWL/RDF storage: Note: All "minimally conforming" processors
+			// "must" support decimal numbers with a minimum of 18 decimal
+			// digits (i.e., with a "totalDigits" of 18).
+
+			case 'xmls:decimal': // max 18 digits  
+				html += renderNumber(entity, label, 'decimal')
+				break;
+
+			case 'xmls:float':  
+			case 'xmls:double': 
+				html += renderNumber(entity, label, 'float')
 				break;
 
 			case 'xmls:boolean': // Yes/No inputs here
@@ -693,10 +704,51 @@ function OntologyForm(domId, specification, settings, callback) {
 				break;
 
 			default:
-				html += renderSection('UNRECOGNIZED: '+ entityId + ' [' + entity['datatype']  + ']' + label  )
+				html += renderSection(entity, label, 'UNRECOGNIZED: '+ entityId + ' [' + entity['datatype']  + ']')
 				break;
 		}
 		return html
+	}
+
+	renderDateTime = function(entity, label) {
+		/*
+		Provide datepicker with ISO 8601 date/time format which can be
+		overrided by other formats via entity feature "format_..."
+
+		ISSUE: datepicker isn't compatible with html5 <input type="date">
+
+		FUTURE: Enable date/time formats to be inheritable from parent model.
+		FUTURE: Implement data-start-view="year" data-min-view="year"
+
+		INPUT
+		entity['datatype'] = xmls:date | xmls:time | xmls:dateTime | xmls:dateTimeStamp | xmls:duration
+		entity['feature'] = optional "format_date=...", "format_time=..." etc.
+		*/
+		// Use ISO 8601 Defaults
+		// But duration selection depends on given units.
+		switch (entity['datatype']) {
+			case 'xmls:date': format='yyyy-mm-dd'; break; //and possibly time zone "Z" for UTC or +/-HH:MM
+			case 'xmls:time': format='hh:ii:SS'; break;
+			case 'xmls:dateTime': format='yyyy-mm-ddThh:ii:SS'; break;
+			case 'xmls:dateTimeStamp': format='yyyy-mm-ddThh:ii:SS'; break; //+ REQUIRED time zone "Z" for UTC or +/-HH:MM
+			case 'xmls:duration': format=''; break; //Should be driven by units.
+		}
+
+		html = [label
+			,'	<div class="input-group">\n'
+			,'		<input class="input-group-field '+entity['id']+'"'
+			,		' id="'+entity['domId']+'"'
+			,		' type="text"'
+			,		' data-date-format="' + format + '"'
+			,		getPlaceholder(entity)
+			,		getStringConstraints(entity)
+			,		entity['disabled']
+			,		'/>\n'
+	    	,	renderUnits(entity)
+			,	renderHelp(entity)
+			,'	</div>\n'].join('')
+
+		return getFieldWrapper(entity, html)
 	}
 
 	renderSpecification = function(entity, inherited, depth) {
@@ -710,7 +762,20 @@ function OntologyForm(domId, specification, settings, callback) {
 			}
 		}	
 
-		var ids = getSort(entity['parts'], 'specifications') // "has value specification" parts. 
+		// SHOULD MODELS BE MERGED WITH COMPONENTS?
+		// model "subClassOf" model . 
+		if (inherited == false) {
+			var ids = getOrder(entity, 'models') 
+			for (var ptr in ids) { 
+				// Sort so fields within a group are consistenty orderd:
+				childId = ids[ptr]
+				html += this.render(childId, entity['path'], depth+1)
+			}
+		}
+
+		// DISABLE INHERITANCE?
+ 		// [model|component] 'has component' [cardinality] [component|input variable]:
+		var ids = getOrder(entity, 'components')
 		for (var ptr in ids) { 
 			// Sort so fields within a group are consistenty orderd:
 			childId = ids[ptr]
@@ -718,7 +783,7 @@ function OntologyForm(domId, specification, settings, callback) {
 		}
 
 		if (inherited == false && 'choices' in entity) { //no inheritance on choices
-			var ids = getSort(entity['choices'], 'specifications') // Alphabetical for now
+			var ids = getOrder(entity, 'choices') // Alphabetical for now
 			for (var ptr in ids) { 
 				childId = ids[ptr]
 				html += this.render(childId, [], depth + 1) // cardinality lookup doesn't apply to categorical pick-lists so no need to supply path.
@@ -727,12 +792,34 @@ function OntologyForm(domId, specification, settings, callback) {
 		return html	
 	}
 
-	renderSection = function(text) {
-		html = '<div>\n'
-		html +=	'	<label>' + text + '</label>\n'
-		html +=	'</div>\n'
+	renderSection = function(entity, label, text) {
+		html = [label
+		,	'	<div class="input-group">\n'
+		,			text
+		,			renderHelp(entity)
+		,	'	</div>\n'].join('')
+		return getFieldWrapper(entity, html)
+	}
 
-		return html
+	renderInput = function(entity, label) {
+		/*
+		Add case for paragraph / textarea?
+		 <textarea placeholder="None"></textarea>
+		*/
+
+		html = [label
+		,	'	<div class="input-group">\n'
+		,	'		<input class="input-group-field '+entity['id']+'"'
+		,			' id="'+entity['domId']+'"'
+		, 			' type="text" '
+		,			 getStringConstraints(entity)
+		,			 entity['disabled']
+		,			 getPlaceholder(entity)
+		,			 '/>\n'
+    	, 			renderUnits(entity)
+		,			renderHelp(entity)
+		,	'	</div>\n'].join('')
+		return getFieldWrapper(entity, html)
 	}
 
 
@@ -748,7 +835,7 @@ function OntologyForm(domId, specification, settings, callback) {
 		/* EXPERIMENTAL: This entity was made up of 'has value specification some X or Y or Z ... 
 		Means at least one of the disjunction parts need to be included (more are allowed at moment). 
 		*/
-		var ids = getSort(entity['parts'], 'specifications') // "has value specification" parts. 
+		var ids = getOrder(entity, 'components') // "has value specification" parts. 
 		var domId = entity['domId']
 
 		var htmlTabs = '<ul class="tabs" data-tabs id="' + domId + '">'
@@ -790,41 +877,61 @@ function OntologyForm(domId, specification, settings, callback) {
 		Add case for paragraph / textarea?
 		 <textarea placeholder="None"></textarea>
 		*/
-		//label = label.replace("</label>","") //We customize where label ends.
 
-		html = label
-		html +=	'	<div class="input-group">\n'
-		html +=	'		<input class="input-group-field '+entity['id']+'" id="'+entity['domId']+'" type="text" ' + getStringConstraints(entity) + entity['disabled']  + getPlaceholder(entity) + '" />\n'
-	    html += 		renderUnits(entity)
-		html +=		renderHelp(entity)
-		html +=	'	</div>\n'
+		html = [label
+			,	'	<div class="input-group">\n'
+			,	'		<input class="input-group-field '+entity['id']+'"'
+			,			' id="'+entity['domId']+'"'
+			, 			' type="text" '
+			,			 getStringConstraints(entity)
+			,			 entity['disabled']
+			,			 getPlaceholder(entity)
+			,			 '/>\n'
+	    	, 			renderUnits(entity)
+			,			renderHelp(entity)
+			,	'	</div>\n'].join('')
 		return getFieldWrapper(entity, html)
 	}
 
 
 	/* NUMERIC DATATYPES HANDLED HERE */
-	renderNumber = function(entity, label) {
-		// ADD DECIMAL/FLOAT VALIDATION
+	renderNumber = function(entity, label, type, minInclusive=undefined, maxInclusive=undefined) {
+		/*
+		A general number input renderer that handles integer, decimal, double and float.
+		Issue is that foundation zurb styles "type=number" and "type=text" inputs but 
+		validation for number allows only integers by default; one has to supply a "step"
+		parameter to get decimal increments.  Doing this is very awkward for data entry so
+		resorting to "type=text" inputs with pattern catching the validation for those cases.
 
-		html = label
-		html +=	'	<div class="input-group">\n'
-		html +=	'		<input class="input-group-field '+entity['id']+'" id="'+entity['domId']+'" type="text"' + entity['disabled'] + getPlaceholder(entity)+'" />\n'
-	    html += 		renderUnits(entity)
-		html +=		renderHelp(entity)
-		html +=	'	</div>\n'
-		return getFieldWrapper(entity, html)
+		FUTURE: implement a xsd:fractionDigits, and xsd:totalDigits
+		
+		INPUT: 
+			type: integer|decimal|double|float
 
-		return html
-	}
+		*/
+		if (type == 'integer') {
+			var stepAttr = ' step="1"'
+			var typeAttr = ' type="number"' // foundation zurb does css on this.
+		}
+		else {
+			var stepAttr = ''
+			var typeAttr = ' type="text"'
+		}
+		html = [label,
+				,'<div class="input-group">\n'
+		 		,'		<input class="input-group-field ' + entity['id'] + '"'
+		 		,			' id="' + entity['domId'] + '"'
+		 		,			typeAttr
+				,			stepAttr
+				,			entity['disabled']
+				,			getNumericConstraints(entity, minInclusive, maxInclusive)
+				,			' placeholder="' + type + '"'
+				,			' pattern="' + type + '" />\n'
+	    		,	renderUnits(entity)
+				,	renderHelp(entity)
+				,'</div>\n'
+				].join('')
 
-	renderInteger = function(entity, label, minInclusive, maxInclusive) {
-
-		html = label
-		html +=	'	<div class="input-group">\n'
-		html +=	'		<input class="input-group-field '+entity['id']+'" id="'+entity['domId']+'" type="number"' + entity['disabled'] + getIntegerConstraints(entity, minInclusive, maxInclusive) + getPlaceholder(entity) + '" pattern="integer" />\n'
-	    html += 		renderUnits(entity)
-		html +=	renderHelp(entity)
-		html +=	'	</div>\n'
 		return getFieldWrapper(entity, html)
 	}
 
@@ -846,18 +953,19 @@ function OntologyForm(domId, specification, settings, callback) {
 		*/
 		picklistId = entity['id']
 		var multiple = entity['min-cardinality'] > 1 || (entity['max-cardinality'] != 1) ? ' multiple' : ''
+		var options = renderChoice(self.specification[picklistId], 0)[0]
 		var html = label
-		// TESTING "data-" prefix to getPlaceholder() - its a https://harvesthq.github.io/chosen/ thing.
 		html +=	'	<div class="input-group">\n'
 		html +=	'		<select class="input-group-field '+ entity['id'] + ' regular" id="'+entity['domId']+'"' + entity['disabled'] + multiple + '>\n'
-			//Enables no option to be selected.
-			html +=	'<option value=""></option>'
+		html +=	'<option value=""></option>'  //Enables no option to be selected.
 
-		//Because one should deliberately make a selection ... esp. when confronted with required selection list where 1st item is 
-		html +=	'<option value="" disabled>Select ...</option>'
-		html +=				renderChoice(self.specification[picklistId], 0)
-		html +=	'		</select>\n'
-		if ('lookup' in entity['features']) 
+		// Because one should deliberately make a selection ... esp. when 
+		// confronted with required selection list where 1st item is 
+		html +=	'	<option value="" disabled>Select ...</option>'
+		html +=			options
+		html +=	'	</select>\n'
+
+		if ('features' in entity && 'lookup' in entity['features']) 
 			html += '		<a class="input-group-label" onclick="getChoices(this,\''+entity['id']+'\')">more choices...</a>\n'
 	
 		html += renderHelp(entity)
@@ -869,15 +977,22 @@ function OntologyForm(domId, specification, settings, callback) {
 
 
 
-	renderChoice = function(entity, depth, type="select") { 
+	renderChoice = function(entity, depth, type='select') { 
+		/* 
 		
-		// NOTE: currently the ontologyID for each item does not include path
+		ISSUE: currently the ontologyID for each item does not include path
+			   Include path, or parent?
+		INPUT
+			type = select|radio|checkbox
+		*/
+
+		if (depth > 10) return ('MAX DEPTH PROBLEM WITH ' + entity['id'], 0)
 
 		var html = ''
-		if (depth > 10) return "MAX DEPTH PROBLEM WITH " + entity['id']
+		var memberIds = []
 
 		if ('choices' in entity) {
-			var memberIds = getSort(entity['choices'], 'specifications') 
+			var memberIds = getOrder(entity, 'choices') 
 
 			for (var ptr in memberIds) {
 				var memberId = memberIds[ptr]
@@ -887,8 +1002,7 @@ function OntologyForm(domId, specification, settings, callback) {
 					console.log("Error: picklist choice not available: ", memberId, " for list ",entity['id'])
 				else {
 					// Currently showing "hidden" feature as disabled.
-					//var disabled = getFeature(entity, memberId, 'hidden') ? ' disabled="disabled"' : '';
-					var disabled = getFeature(part, entity['id'], 'hidden') ? ' disabled="disabled"' : '';
+					var disabled = getFeature(part, 'hidden', entity['id']) ? ' disabled="disabled"' : '';
 					var label = part['uiLabel']
 					if (!label) {
 						label = ''
@@ -896,8 +1010,7 @@ function OntologyForm(domId, specification, settings, callback) {
 					}
 					if ('label' in part && part['label'] != label)
 						label = label + ' (' + part['label'] + ')'
-					// Some extra pizaz for capitalizing labels that appear at 1st depth in hierarchic lists with descendants.
-					// var label = (depth == 0 && (kidItemHTML.length > 0)) ? label.toUpperCase() : label
+
 					switch (type) {
 
 						case "checkbox": // future
@@ -907,17 +1020,20 @@ function OntologyForm(domId, specification, settings, callback) {
 						case "select":
 
 						default:
-							//if (self.settings.ontologyDetails == true) label = label + ' - ' + part['id'];
-							html += '<option value="' + part['id'] + '" class="depth' + depth + '" '+disabled+'>' + label + '</option>\n' //prefix + 
+							html += '<option value="' + part['id'] + '" class="depth' + depth + '" '+disabled+'>' + label + '</option>\n'  
 					}
-					var kidItemHTML = renderChoice(part, depth+1)
-					if (kidItemHTML.length > 0)	
-						html += '<optgroup>' + kidItemHTML + '</optgroup>'
+					var results = renderChoice(part, depth+1)
+					if (results[1] > 0)
+						html += results[0]
 				}
-				// Wrapping kids in optgroup so we have some way of understanding depth
+
 			}
+			// Wrapping kids in optgroup so we have some way of understanding depth
+			//if (memberIds.length > 1 && html.length > 0)	
+			//	html = '<optgroup>' + html + '</optgroup>'
 		}
-		return html
+		
+		return ['<optgroup>' + html + '</optgroup>', memberIds.length]
 	}
 
 	renderUnits = function(entity) {
@@ -937,7 +1053,6 @@ function OntologyForm(domId, specification, settings, callback) {
 			var units = entity['units']
 			var label = renderLabel(self.specification[units[0]])
 			if (units.length == 1) 
-				//return '<a class="input-group-label small">'+ label + '</a>\n'
 				return '<span class="input-group-label small">'+ label + '</span>\n'
 
 			var html ='<div class="input-group-button" style="font-weight:700;" ><select class="units" id="'+entity['domId']+'-obo:IAO_0000039">'
@@ -987,21 +1102,21 @@ function OntologyForm(domId, specification, settings, callback) {
 
 	/************************** UTILITIES ************************/
 
-	getPlaceholder = function(entity) {
-		return (' placeholder="'+ entity['datatype'].substr(entity['datatype'].indexOf(':') + 1 ) ) 
+	getPlaceholder = function(entity,type) {
+		return (' placeholder="'+ entity['datatype'].substr(entity['datatype'].indexOf(':') + 1 )+ '"' ) 
 	}
 
 	getFieldWrapper = function(entity, html) {
-		// WHAT ABOUT CHOICES???
-		return ['<div class="field-wrapper field',
-			('members' in entity || 'choices' in entity) ? ' children' : '',
-			'" ',
-			getIdHTMLAttribute(entity['domId']),
-			getHTMLAttribute(entity, 'min-cardinality'),
-			getHTMLAttribute(entity, 'max-cardinality'),
-			'>\n',
-			 html,
-			 '</div>\n'].join('')
+
+		return ['<div class="field-wrapper field'
+			,		('models' in entity || 'choices' in entity) ? ' children' : ''
+			,		'" '
+			,		getIdHTMLAttribute(entity['domId'])
+			,		getHTMLAttribute(entity, 'min-cardinality')
+			,		getHTMLAttribute(entity, 'max-cardinality')
+			,		'>\n'
+			,		html
+			,	'</div>\n'].join('')
 	}
 
 	getSectionWrapper = function(entity, html) {
@@ -1013,7 +1128,6 @@ function OntologyForm(domId, specification, settings, callback) {
 			 html,
 			 '</div>\n'].join('')
 	}
-					
 
 	getIdHTMLAttribute = function(id) {
 		return 'data-ontology-id="' + id + '" '
@@ -1023,22 +1137,37 @@ function OntologyForm(domId, specification, settings, callback) {
 		return (attribute in entity) ? attribute +'="' + entity[attribute] + '" ' : ''
 	}
 
-	getSort = function(members, myList) { // an object with entity ids as keys
-		/* Complicated by the fact that some items, like individuals, may not have uiLabel.
+	getOrder = function(entity, partName) {
+		/* Ordering function of an entity's model, component, or choices items
+		Ordering is based on:
+			
+			a) if entity has entity['features']['sort'] array, comparison of 
+			those values (given in ontology as 
+			'user interface function'="sort: obo:ONTO_1234\n obo:ONTO_2345\n ...")
+			
+			b) alphabetical sort
+		
+		INPUT
+			entity
+			partName = 'models','components','choices'
 		*/
 
+		var sortArray = ('features' in entity && 'order' in entity['features']) ? entity['features']['order']['value'] : []
 		var memberIds = []
-		for (var memberId in members) memberIds.push(memberId)
+		for (var memberId in entity[partName]) memberIds.push(memberId)
 
-		var pl = self.specification[myList]
 		return memberIds.sort(function(a,b) {
+			indexA = sortArray.indexOf(a)
+			indexB = sortArray.indexOf(b)
+			if (indexA != -1 && indexB != -1) {
+				return (indexA > indexB )
+			}
 			try {
-				var aLabel = pl[a]['uiLabel'].toLowerCase()
-				var bLabel = pl[b]['uiLabel'].toLowerCase()
+				var aLabel = self.specification[a]['uiLabel'].toLowerCase()
+				var bLabel = self.specification[b]['uiLabel'].toLowerCase()
 			}
 			catch (e) {
-				//console.log("SORTING", memberIds)
-				console.log("ERROR: getSort() picklist item doesn't have a label:", a, b)
+				//console.log("ERROR: getOrder() picklist item doesn't have a label:", a, b)
 				return 0
 			}
 
@@ -1049,58 +1178,85 @@ function OntologyForm(domId, specification, settings, callback) {
 	}
 
 	getFeatures = function(entity) {
-		// Since a feature like "hidden" or "feature" may exist in both members and parts lists,
-		// its a bit more hassle to determine where referrerId is to include the feature.
-
+		/* 
+		An instance of a form field that has entity['features'] should have those
+		enhanced by parent's route to this entity.
+		*/
 		var referrerId = entity['path'].slice(-2)[0]
 		var referrer = self.specification[referrerId]
-		if (!referrer) {console.log("ERROR: can't find entity ", referrerId, " to get feature for." );return false }
+
+		if (!referrer) {console.log("ERROR: can't find entity ", referrerId, " to get feature for." ); return false }
+		
 		var myFeatures = {}
-		var myLists = {'members':null,'parts':null}
-		for (var myList in myLists) {
+		for (var myList in {'models':null, 'components':null}) {
 			if (myList in referrer) {
-				var features = referrer[myList][entity['id']]
-				if (features) {
-					//console.log("FEATURES array? ",features)
-					for (var ptr in features) {
-						var myobj = features[ptr]
+				var piecesArray = referrer[myList][entity['id']]
+				if (piecesArray) {
+					for (var ptr in piecesArray) {
+						var myobj = piecesArray[ptr]
 						if ('feature' in myobj) {
-							if (typeof myobj['feature'] === 'object') 
-								for (item in myobj['feature'])
-									myFeatures[item] = myobj['feature'][item]
-							else
-								myFeatures[myobj['feature']] = myobj['feature']
+							myFeatures[myobj['feature']] = $.extend({}, myobj)
 						}
 					}
-					//console.log("FEATURES",myFeatures)
 				}
 			}
 		}
-		entity['features'] = myFeatures
+		// Will this OVERRIDE dictionary items?
+		$.extend(entity['features'], myFeatures)
+
 	}
 
-	getFeature = function(entity, referrerId, feature) {
-		// Features only exist with reference to a parent's relations to a child.
-		// A feature like "hidden" or "feature" may exist in both members and parts lists
-		var referrer = self.specification[referrerId]
-		if (!referrer) {console.log("ERROR: can't find entity ", referrerId, " to get feature for." );return false }
+	getFeature = function(entity, feature, referrerId=undefined) {
+		/* A feature exists in either entity['features'] or 
+		entity['components'][referrerId]
 
-		for (myList in ['members', 'parts']) 
-			if (myList in referrer) {
-				var features = referrer[myList][entity['id']]
-				if (features)
-					for (var item in features) {
-						if (feature in features[item]) {
-							//console.log("found", feature, id, "in", entity['id']);
-							return [features[item][feature]] //true
-						}
+		*/
+
+		if (referrerId) {
+
+			var referrer = self.specification[referrerId]
+			if (feature == 'order') console.log('featurehunt', referrer, entity['features'])
+
+			if (referrer)
+				for (myList in ['models', 'components']) 
+					if (myList in referrer) {
+						var pieceArray = referrer[myList][entity['id']]
+						if (pieceArray)
+							for (var ptr in pieceArray) {
+								if ('feature' in pieceArray[ptr] && pieceArray[ptr]['feature'] == feature) {
+									//console.log("found", feature, id, "in", entity['id']);
+									return pieceArray[ptr]
+								}
+							}
 					}
-			}
-		return false
+			return false
+		}
+
+		if (feature == 'order' && entity['id'] =='obo:GENEPIO_0001287') console.log('some stuff?', entity['features'])
+			//Features wiped out!
+		if ('features' in entity && feature in entity['features']) 
+			return entity['features'][feature]
+
 	}
 
 	getConstraints = function(entity) {
-		// Each constraints array item has "constraint", "datatype", and "value" key value pairs.
+		/* 
+		Converts axiom bracketed expressions of the form:
+			
+			'has primitive data type' exactly 1 xsd:decimal[>= -90.0 , <= 90.0,
+				 totalDigits 8, fractionDigits 6]
+
+			'has primitive data type' exactly 1 xsd:string[length 6]
+
+		into a dictionary with attributes corresponding to each constraint.
+		Each constraints array item has "constraint", "datatype", and "value" 
+		key value pairs.
+
+		See https://books.google.ca/books?isbn=1118080602 for OWL/XML items below.
+
+		OUTPUT
+			a key-value dictionary.
+		*/
 		output = {}
 		if ('constraints' in entity && entity['constraints'].length) {
 			var constraints = entity['constraints']
@@ -1141,7 +1297,17 @@ function OntologyForm(domId, specification, settings, callback) {
 		return output
 	}
 
-	getIntegerConstraints = function(entity, minInclusive, maxInclusive) {
+	getNumericConstraints = function(entity, minInclusive, maxInclusive) {
+		/*
+
+		// ISSUE: is 'pattern' getting duplicated?
+
+		OUTPUT:
+			min: min=N or empty string
+			max: max=N or empty string
+			pattern: xmls:pattern or empty string
+
+		*/
 		var constraints = getConstraints(entity), min, max, pattern
 		if (maxInclusive === undefined || maxInclusive > constraints['xmls:maxInclusive']) 
 			maxInclusive = constraints['xmls:maxInclusive']
@@ -1204,12 +1370,12 @@ function OntologyForm(domId, specification, settings, callback) {
 		var constraints = []
 		var id = entity['id']
 		var referrer = self.specification[referrerId]
-		if ('parts' in referrer) {
+		if ('components' in referrer) {
 			// Find given entity in parent (referrer) list of parts
-			for (var cptr in referrer['parts'][id]) {
+			for (var cptr in referrer['components'][id]) {
 
 				// Each part will have a cardinality constraint:
-				var condition = referrer['parts'][id][cptr]
+				var condition = referrer['components'][id][cptr]
 
 				// Condition's 'value' attribute indicates cardinality exact|lower|upper range.
 
@@ -1237,17 +1403,24 @@ function OntologyForm(domId, specification, settings, callback) {
 
 	getChoices = function(helper, entityId) {
 		/*
-		 We can set some picklists to have a dynamic lookup feature, indicated by
-		 a "More choices" button next to the picklist.  When this button is 
-		 clicked, a dynamic fetch of subordinate items to the one the user has 
-		 selected is performed.  A user can then select one of the given items, if
-		 any.  
+		We can set some picklists to have a dynamic lookup feature, indicated by
+		a "More choices" button next to the picklist.  When this button is 
+		clicked, a dynamic fetch of subordinate items to the one the user has 
+		selected is performed.  A user can then select one of the given items, if
+		any.  
 
-		 The picklist's selection list tree can be dynamically extended/fetched?
+		The picklist's selection list tree can be dynamically extended/fetched?
+
+		CURRENTLY ONLY DOING LOOKUP ON FIRST TERM OF MULTI-SELECT
 		*/
 		var select = $(helper).parent('div[class="input-group"]').find("select")
-		if (select.val() > '') {
-			var term = select.val().split(":")[1]
+		var value = select.val()
+		if (value.length > 0) {
+			// select.val() is either a string, for a single-select, or an array
+			// for multi-select
+			var term = Array.isArray(value) ? value[0] : value
+			term = term.split(":")[1]
+			//console.log(term)
 			var ontology = term.split("_")[0]
 
 			// https://www.ebi.ac.uk/ols/api/ontologies/doid/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FDOID_0050589/children
@@ -1278,11 +1451,11 @@ function OntologyForm(domId, specification, settings, callback) {
 						labels.sort()
 						msg += labels.join('\n - ') 
 
-						alert ('DYNAMIC LOOKUP! These choices (subclasses of selected term) were dynamically retrieved from https://www.ebi.ac.uk/ols/:\n\n - ' + msg)
+						alert ('These choices (subclasses of selected term) were fetched from https://www.ebi.ac.uk/ols/:\n\n - ' + msg)
 						//alert( entityId + ":" + select.val())
 					}
 					else 
-						alert("Coming soon, dynamic lookup!\n\nYour choice has no underlying ontology selections")
+						alert('Your choice [' + term + '] has no underlying selections')
 				},
 				error:function(XMLHttpRequest, textStatus, errorThrown) {alert('Dynamic Lookup is not currently available.  Either your internet connection is broken or the https://www.ebi.ac.uk/ols/ service is unavailable.')}
 			})
@@ -1312,6 +1485,7 @@ OntologyForm.initFoundation = function() {
 		integer: /^[-+]?\d+$/,
 		number: /^[-+]?[1-9]\d*$/,
 		decimal: /^[-+]?[1-9]\d*.\d+$/,
+		float: /^[-+]?[1-9]\d*.\d+$/,
 
 		// http://www.whatwg.org/specs/web-apps/current-work/multipage/states-of-the-type-attribute.html#valid-e-mail-address
 		email : /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,
@@ -1327,7 +1501,7 @@ OntologyForm.initFoundation = function() {
 		time : /(0[0-9]|1[0-9]|2[0-3])(:[0-5][0-9]){2}/,
 		dateISO: /\d{4}[\/\-]\d{1,2}[\/\-]\d{1,2}/,
 	      // MM/DD/YYYY
-	      month_day_year : /(0[1-9]|1[012])[- \/.](0[1-9]|[12][0-9]|3[01])[- \/.](19|20)\d\d/,
+	    month_day_year : /(0[1-9]|1[012])[- \/.](0[1-9]|[12][0-9]|3[01])[- \/.](19|20)\d\d/,
 	}
 }
 

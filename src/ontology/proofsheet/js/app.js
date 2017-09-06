@@ -17,11 +17,10 @@
 
 	 - basic datatype & precision standard should be a function of unit, i.e. annotated onto unit choice for this field.
 	 - disjunction tabbed interface has wrong required status?
-	 - for <select><option>, enable mouseover of selected term to provide more detail, e.g. ontology id.
+	 - FIX: for <select><option>, shopping cart add/block/drop not working
 	 - FIX: contact specification - physician inherits first name, last name etc from person, but cardinality not shown.
 	 - Must do a better job of identifying and grouping top-level ontology items
 	 - How to handle items that are not marked as datums?
-	 - Handle ordering of items based on "immediately after" relation.
 	 - possibly try: http://knockoutjs.com/index.html
 
 	Author: Damion Dooley
@@ -82,7 +81,11 @@ $( document ).ready(function() {
 	// Provide type-as-you-go searching
 	$("#searchField").on('keyup', function() {
 		var text = $(this).val().toLowerCase()
-		searchAsYouType(top.specification.specifications, text)
+		searchAsYouType(top.specification, text)
+	})
+
+	$('#toggleSearchDefinition').on('change', function() {
+		searchAsYouType(top.specification, $("#searchField").val().toLowerCase())
 	})
 
 	$("#searchResults").on('mouseenter','i.fi-arrow-up.dropdown', displayContext)
@@ -157,8 +160,6 @@ getIdHTMLAttribute = function(id) {
 	{
 		@context
 		specifications
-		units
-		picklists
 	}
 */
 function loadSpecification(specification_file) {
@@ -176,18 +177,20 @@ function loadSpecification(specification_file) {
 
 			// Show Data Representation Model item menu on "Browse" tab.
 			// Prepare browsable top-level list of ontology items
+			/*
 			html = ''
 			for (specId in specification.specifications) {
 				var spec = specification.specifications[specId]
-				// Must do a better job of identifying and grouping top-level items  //! ('otherParent' in spec) && 
 				if (! ('member_of' in spec) && (!('datatype' in spec ))) {
 					html += ['<li class="cart-item" data-ontology-id="',	specId,'">','<a href="#'+specId+'">',
 					spec['uiLabel'], '</a>'].join('')
 				}
 			}
+			*/
+
 			//Have to reinsert this or reload doesn't fire up menu (zurb issue?)
 			$('#panelEntities').html('<ul class="vertical menu" id="entityMenu" data-accordion-menu data-deep-link data-multi-open="false"></ul>')
-			$("ul#entityMenu").html(renderMenu('obo:OBI_0000658') + '<hr/>' + html)
+			$("ul#entityMenu").html(renderMenu('obo:OBI_0000658') + '<hr/>') // + html
 
 			// On Browse tab, enables eye icon click to show form without opening/closing the accordion.
 			$('ul#entityMenu *').on('click', function(event) { 
@@ -197,18 +200,16 @@ function loadSpecification(specification_file) {
 	  			}
 			});
 
-			if (location.hash.indexOf(':') != -1) { //.substr(0,5) =='#obo:'
+			// If browser URL indicates a particular entity, render it:
+			if (location.hash.indexOf(':') != -1) { // ? also .substr(0,5) =='#obo:'
 				top.focusEntityId = document.location.hash.substr(1).split('/',1)[0]
 				// CHECK FOR VALID ENTITY REFERENCE IN SOME ONTOLOGY.
 				// PREFIX SHOULD INDICATE WHICH ONTOLOGY SPEC FILE TO LOAD?
 				myForm.renderEntity(top.focusEntityId)
-
-				// When renderEntity is called, activate its tab
-				//$('#content-tabs').foundation('selectTab', '#content'); 
 			}
 
 			$(document).foundation()
-			//
+
 		},
 		error:function(XMLHttpRequest, textStatus, errorThrown) {
 			alert('Given resource could not be found: \n\n\t' + specification_file) 
@@ -302,16 +303,17 @@ function getEntity(ontologyId) {
 }
 
 function getEntityId(item) {
-	if ($(item).is('i.fi-shopping-cart.option')) return $(item).prev().attr('data-ontology-id')
+	// Determine relevant ontology ID for given entity
+	if ($(item).is('i.fi-shopping-cart.option')) 
+		return $(item).prev().attr('data-ontology-id')
 	return $(item).parents('.cart-item,.field-wrapper').first()[0].dataset.ontologyId
-
 }
 
 /*********** SEARCH AND RESULTS *************************/
 function searchAsYouType(collection, text) {
-	/* As user types text into searchField, exact substring search is conducted
-	 through top.specification.specifications entities (all of their numeric or textual 
-	 attributes)
+	/* As user types text (more than 2 characters) into searchField, exact
+	 substring search is conducted through top.specification entities (all
+	 of their numeric or textual attributes)
 	*/
 	text = text.toLowerCase()
 	$("#searchResults").empty()
@@ -321,7 +323,8 @@ function searchAsYouType(collection, text) {
 		for (id in ontology_ids) {
 			results.push(renderCartObj(ontology_ids[id]))
 		}
-		// Sort results alphabetically.  Consider other sort metrics?
+		// Sort results alphabetically.  
+		// Consider other sort metrics?
 		results.sort(function(a,b){return a[0].localeCompare(b[0]) })
 		resultsHTML = results.map(function(obj) {return obj[1]})
 		$("#searchResults").append(resultsHTML.join('\n'))
@@ -329,20 +332,26 @@ function searchAsYouType(collection, text) {
 
 }
 
-function filterIt(obj, searchKey) {
+function filterIt(collection, searchKey) {
 	/* Text Search of ontology contents via JSON specification.
 	This looks at each "specification" entry's main fields, e.g.: label, 
 	uiLabel, definition, uiDefinition, hasSynonym, hasNarrowSynonym, 
 	hasExactSynonym.
 	 */
+	 var details = $('#toggleSearchDefinition:checked').length
 
-    return Object.keys(obj).filter(function(key) { // key is specification ontology id.
-      return Object.keys(obj[key]).some(function(key2) {
-      	if (typeof obj[key][key2] === "object")
+    return Object.keys(collection).filter(function(key) { // key is ontology term id.
+      return Object.keys(collection[key]).some(function(key2) { 
+      	// key2 is name of object property like label, definition, component
+
+      	if (typeof collection[key][key2] === "object") 
+      		//i.e. skip entity components, models, features.
       		return false
       	else
+      		if (!details && (key2 == 'definition' || key2 == 'uiDefinition'))
+      			return false
       		// FUTURE: add wildcard searching?
-      		return obj[key][key2].toLowerCase().includes(searchKey);
+      		return collection[key][key2].toLowerCase().includes(searchKey);
       })
     })
 }
@@ -622,11 +631,12 @@ function renderMenu(entityId, depth = 0 ) {
 			return html
 		}
 
-		var hasChildren = ('members' in entity)
+		var hasChildren = ('models' in entity)
 		if (depth > 0) {
 
 			html = ['<li class="cart-item" data-ontology-id="',	entityId,'">',
-			hasChildren ? '<a href="#">' : '<a href="#'+entityId+'">',
+			//hasChildren ? '<a href="#">' : '<a href="#'+entityId+'">',
+			 '<a href="#'+entityId+'">',
 			entity['uiLabel'],
 			hasChildren ? ' <i class="fi-magnifying-glass"></i>' : '',
 			'</a>'].join('')
@@ -634,7 +644,7 @@ function renderMenu(entityId, depth = 0 ) {
 
 		// See if entity has subordinate parts that need rendering:
 		if (hasChildren) {
-			for (var memberId in entity['members']) {
+			for (var memberId in entity['models']) {
 				// Top level menu items
 				if (depth == 0) html += renderMenu(memberId, depth + 1)
 				// Deeper menu items
@@ -685,7 +695,8 @@ function getdataSpecification() {
 				//content = YAML.stringify(getEntitySpecForm(top.focusEntityId))
 				content = jsyaml.dump(getEntitySpecForm(top.focusEntityId), 4) //indent of 4
 				break; 
-			case 'excel_specification':
+			case 'xlsm_specification':
+				alert('Coming soon!')
 				break; 
 		}
 
@@ -731,9 +742,10 @@ function downloadDataSpecification() {
 
 
 function getEntitySpec(spec, entityId = null, inherited = false) {
+	// Recursively copy the entityId specification element and all its
+	// underlings into a a single javascript object.
 	if (spec == null)
-		spec = {} //, 'units':{}
-
+		spec = {}
 
 	if (entityId in top.specification) {
 		var entity = top.specification[entityId]
@@ -747,9 +759,8 @@ function getEntitySpec(spec, entityId = null, inherited = false) {
 					getEntitySpec(spec, parentId, true)
 			}
 
-			getEntitySpecItems(spec, entity, 'parts')
-			getEntitySpecItems(spec, entity, 'members') 
-			// Though a member might not lead to a form element of any kind, still include?
+			getEntitySpecItems(spec, entity, 'components')
+			getEntitySpecItems(spec, entity, 'models') 
 			getEntitySpecItems(spec, entity, 'units')
 
 		}
@@ -759,15 +770,20 @@ function getEntitySpec(spec, entityId = null, inherited = false) {
 }
 
 function getEntitySpecItems(spec, entity, type, inherited = false) {
+	/*
+	FUTURE: units array will be ordered so that favoured unit is first.
+	*/
 	if (type in entity) {
 		if (type == 'units')
-			for (var ptr in entity[type]) { //entity['units'] which is an array
+			// units is an array; 
+			for (var ptr in entity[type]) { 
 				var partId = entity[type][ptr]
 				spec[partId] = top.specification[partId] // load object
 				getEntitySpec(spec, partId) // and we make sure 
 			}
 		else
-			for (var partId in entity[type]) { // parts, members, which are dictionaries
+			// models, components, which are dictionaries
+			for (var partId in entity[type]) { 
 				spec[partId] = top.specification[partId] // load object
 				getEntitySpec(spec, partId)
 			} 

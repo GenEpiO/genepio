@@ -16,7 +16,7 @@
     <div class="row" style="background-color:#2199e8;color:white">
       <div class="large-12 columns text-center">
         <div class="field-group" style="float:right">
-          <button class="disabled">Login</button>
+          <button class="disabled" onclick="alert('Coming soon!')">Login</button>
           <i class="fi-widget large"></i>
         </div>
         <!-- LOGIN / LOGOUT GOES HERE -->
@@ -48,7 +48,7 @@
               </optgroup>
 
               <optgroup label="My Packages (login required)">
-                <option value="data/user_packages/package_1_ui.json" disabled>My Example Package</option>
+                <!-- option value="data/user_packages/package_1_ui.json" disabled>My Example Package</option -->
               </optgroup>
             </select>
           </div>
@@ -58,7 +58,7 @@
           <!-- ******************* SPECIFICATION MENU ******************* -->
           <div class="tabs-panel is-active" id="panelLibrary" style="padding:0">
             
-            <div class="infoBox">
+            <div class="infoBox" style="padding:10px">
               <p>Details about a selected ontology or package are shown here.
               All other tabs focus on the selected resource.</p>
               <p>Browsing, searching and shopping for terms can only 
@@ -83,14 +83,10 @@
                  other numeric and categorical variables in it!<br/>
                 Ontologies: GenEpio v0.3.1</p>
               </div>
-              <div class="tabs-panel" id="package-edit">
-              </div>
-              <div class="tabs-panel" id="package-download">
-              </div>
-              <div class="tabs-panel" id="package-delete">
-              </div>
-              <div class="tabs-panel" id="package-upgrade">
-              </div>
+              <div class="tabs-panel" id="package-edit"></div>
+              <div class="tabs-panel" id="package-download"></div>
+              <div class="tabs-panel" id="package-delete"></div>
+              <div class="tabs-panel" id="package-upgrade"></div>
             </div>
 
 
@@ -107,12 +103,18 @@
             <form data-abide="" novalidate="novalidate" lpformnum="2">
               <div class="input-group">
                 <input id="searchField" class="input-group-field" type="text" placeholder="Search for a term (3 characters or more)">
+
+               <div class="switch tiny" style="float:left;margin-right:10px;">
+                  <input class="switch-input" id="toggleSearchDefinition" type="checkbox" name="toggleSearchDefinition">
+                  <label class="switch-paddle" for="toggleSearchDefinition">
+                    <span class="show-for-sr">Search definitions?</span>
+                  </label>
+                </div>
+                <label class="left" for="toggleSearchDefinition">Search definitions?</label>
               </div>
             </form> 
-
-            <form id="searchResults">Search results appear here...
-            </form>
-
+            
+            <form id="searchResults" style=""></form>
 
           </div>
 
@@ -184,6 +186,8 @@
               <li class="tabs-title"><a href="#json_form_specification">JSON-simple</a></li>
               <li class="tabs-title"><a href="#yml_form_specification">YAML-simple</a></li>
 
+              <li class="tabs-title"><a href="#xlsm_specification">MS Excel</a></li>
+
               <!--<li class="tabs-title"><a href="#excel_specification">MS Excel</a></li>-->
               <a id="view_spec_download" download="specification.txt" href="data:application/octet-stream;charset=utf-8;base64,Zm9vIGJhcg==">
                 <button class="button icon fi-download float-right disabled" title="download" id="spec_download" style="margin-bottom:0;border:0"> Download</button>
@@ -219,14 +223,14 @@
           <div class="tabs-panel" id="panelCart">
             <div style="padding-right:16px">
               <a href="#" id="shoppingCartTrash" class="icon fi-trash" title="empty the cart"></a>
+              <button class="button" data-toggle="makePackageForm" disabled>make package</button>
             </div>
-            <form id="shoppingCart" class="callout" style="clear:both">
-            </form>
+            <form id="shoppingCart" class="callout" style="clear:both"></form>
   
             <div class="infoBox">Your entity shopping cart is displayed here. You can convert it into a downloadable package.</div>
 
             <div class="row">
-              <button class="button" data-toggle="makePackageForm">make package</button>
+              
               <div class="dropdown-pane top" id="makePackageForm" data-dropdown data-hover="true" data-hover-pane="true"  data-auto-focus="true">
                 <div class="input-group" >
                   <label>Package Name</label>
@@ -239,12 +243,14 @@
             </div>
 
             <div style="font-size:.8rem;clear:both">
-              Legend: 
-              <i class="fi-shopping-cart include"></i> include item and its descendants; 
-              <i class="fi-shopping-cart exclude"></i> filter out descendant
-              <br/>
-              <i>Click on an item to see its form view.  Click on an item's cart to filter or remove it.</i>
+              Legend: <div style="display:inline-block;vertical-align:top">
+                <i>Click on an item to see its form view.  Click on an item's cart to<br/>
+                 filter or remove it.</i><br/> 
+                <i class="fi-shopping-cart include"></i> item and its descendants are included<br/>
+                <i class="fi-shopping-cart exclude"></i> descendant is filtered out<br/>
+              </div>
             </div>
+
 
           </div>
 

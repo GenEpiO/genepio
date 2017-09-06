@@ -71,8 +71,9 @@ class Ontology(object):
 		self.struct = OrderedDict()
 		# JSON-LD @context markup, and as well its used for a prefix encoding table.
 		self.struct['@context'] = {		#JSON-LD markup
-			'ifm':'http://purl.obolibrary.org/obo/GENEPIO/IFM#',  # Must be ordered 1st or obo usurps.
-			'obo':'http://purl.obolibrary.org/obo/',
+			'ifm':'http://purl.obolibrary.org/obo/GENEPIO/IFM#',  
+			'NCBITaxon' : 'http://purl.obolibrary.org/obo/NCBITaxon#',
+			'obo':'http://purl.obolibrary.org/obo/', # Must be ordered AFTER all obo ontologies
 			'owl':'http://www.w3.org/2002/07/owl/',
 			'evs':'http://ncicb.nci.nih.gov/xml/owl/EVS/',
 			'sio':'http://semanticscience.org/resource/',
@@ -86,7 +87,8 @@ class Ontology(object):
 			'bibo':'http://purl.org/ontology/bibo/',
 			'efo':'http://www.ebi.ac.uk/efo/',
 			'oboInOwl': 'http://www.geneontology.org/formats/oboInOwl#',
-			'ancestro': 'http://www.ebi.ac.uk/ancestro/'
+			'ancestro': 'http://www.ebi.ac.uk/ancestro/',
+			'rdfs': 'http://www.w3.org/2000/01/rdf-schema#'
 		}
 		self.struct['specifications'] = {}
 
@@ -132,6 +134,7 @@ class Ontology(object):
 		self.doPickLists(self.doQueryTable('individuals') )
 
 		self.doUIFeatures(self.doQueryTable('features') ,'features')
+		# Second call for 'member of' can override entity and 'has component' features established above.
 		self.doUIFeatures(self.doQueryTable('feature_annotations'), 'feature_annotations')
 		self.doLabels(['specifications']) 
 
@@ -175,18 +178,18 @@ class Ontology(object):
 		struct = 'specifications'
 		for myDict in table:
 			myDict['id'] = str(myDict['id'])
-			myDict['datatype'] = 'specification'
+			myDict['datatype'] = 'model'
 			self.setDefault(self.struct, struct, myDict['id'], myDict)
 
 			parentId = self.getParentId(myDict) # primary parent according to data rep hierarchy
 
 			self.setDefault(self.struct, struct, parentId, {
 				'id': parentId, 
-				'datatype': 'specification',
-				'members': OrderedDict()
+				'datatype': 'model',
+				'models': OrderedDict()
 			})
 
-			self.setStruct(self.struct, struct, parentId, 'members', myDict['id'], [])
+			self.setStruct(self.struct, struct, parentId, 'models', myDict['id'], [])
 
 
 	def doPickLists(self, table):
@@ -250,7 +253,7 @@ class Ontology(object):
 					print 'ERROR: an entity mistakenly is "parent" of itself: %s ' % id
 				else:
 
-					self.setDefault(self.struct, struct, parentId, {'id': parentId, 'datatype': 'specification'} )
+					self.setDefault(self.struct, struct, parentId, {'id': parentId, 'datatype': 'model'} )
 					self.struct[struct][id]['otherParent'].append(parentId)
 
 					obj = {'cardinality': myDict['cardinality']}
@@ -258,9 +261,9 @@ class Ontology(object):
 						obj.update(self.getBindings(myDict['limit']))
 
 					# First time children list populated with this id's content:
-					self.setDefault(self.struct, struct, parentId, 'parts', {})
-					self.setDefault(self.struct, struct, parentId, 'parts', id, [])
-					self.getStruct(self.struct, struct, parentId, 'parts', id).append(obj)
+					self.setDefault(self.struct, struct, parentId, 'components', {})
+					self.setDefault(self.struct, struct, parentId, 'components', id, [])
+					self.getStruct(self.struct, struct, parentId, 'components', id).append(obj)
 
 					# BNodes have no name but have expression stuff.
 					if 'expression' in myDict: 
@@ -268,11 +271,12 @@ class Ontology(object):
 						print "HAS LOGIC EXPRESSION: ", myDict
 						print
 						expression = myDict['expression']
-						self.struct[struct][id]['datatype'] = expression['datatype']
+						self.struct[struct][id]['datatype'] = expression['datatype'] # disjunction or ???
 						self.struct[struct][id]['uiLabel'] = '' #
-						self.struct[struct][id]['parts'] = {}
+						self.struct[struct][id]['components'] = {}
+						# List off each of the disjunction items, all with a 'some'
 						for ptr, partId in enumerate(expression['data']):
-							self.struct[struct][id]['parts'][partId] = [] # So far logical expression parts have no further info.
+							self.struct[struct][id]['components'][partId] = [] # So far logical expression parts have no further info.
 
 
 	def doPrimitives(self, table):
@@ -388,14 +392,36 @@ class Ontology(object):
 	def doUIFeatures(self, table, table_name):
 		""" ####################################################################
 			User Interface Features
+			
+			Features are (non-reasoning) annotations pertinent to display and
+			data interfacing. They enable us to describe 3rd part standard field
+			specifications, as well as flags for involving user interface features
+			like selection list "lookup"
 
-			Features are placed on an entity directly as an ordered array in 'features' attribute.
-			Or they are recreated on relation between a parent item and its children.
+			In an ontology features are marked in three ways:
 
-			REVISE:
-			"obo:GENEPIO_0001746" is the annotation property that marks as hidden
-			the relation between a part (form field or specification) and its parent.
-			In the future ?criteria may	contain a user type or other expression.  
+				1) As 'user interface feature' annotations directly on an entity.
+				This is signaled in table record when no referrer id value exists.  
+				These features get put in entity['features'], e.g.
+
+				"obo:NCIT_C87194": {
+					"uiLabel": "State"
+            		"definition": "A constituent administrative district of a nation.",
+		            "features": [
+		                {
+		                    "lookup":{}
+		                }
+		            ],...
+
+				2) As annotations on the 'has component' parent-entity relation.
+				Mainly provides cardinality, marked on parent 'components'.
+
+				3) As annotations on the reciprocal 'member of' entity-parent
+				relation. Provides overriding label, definition, and other flags
+				and constraints.  Marked on parent 'components'.
+			
+		
+			In the future ?value may contain a user type or other expression.  
 			For now, "hidden" means not	to show item in pick-lists (unless it is a 
 			categorical choice in data value?) This raises the difference between 
 			local disuse for a choice, vs. global possibility that it exists in data.
@@ -403,59 +429,93 @@ class Ontology(object):
 			The difference between "part" and "member": "member" is reserved for "is a" relationships.
 			"part" is reserved for "Has Part" relations.
 
-			Features get added onto existing parent-child member or part lists.  
+			Features get added onto existing parent-child member or part lists. 
+
 			parent's list must have child already established?
+
 			INPUT
-				?id ?member ?feature ?criteria 
+				table: ?id ?member ?feature ?value 
+				table_name: 'features' or 'feature_annotations'
 
 		"""
 		#Loop through query results; each line has one id, feature, referrer.
 		for myDict in table:
 			id = myDict['id']
-			referrer = myDict['referrer']  #Id of parent/
-			feature = myDict['feature']
-			# Providing plain english term for feature unless motivation to keep onto ids arises.
-			if feature == 'obo:GENEPIO_0001763':
-				feature = myDict['criteria']
+			if not id in self.struct['specifications']:
+				print "Error,  no specification for id ", id, " when working on", table_name
+				continue
+
+			parent_id = myDict['referrer'] # Id of parent if applicable
+			featureType = myDict['feature']
+
+			# FEATURE MAY HAVE DATATYPE AND VALUE
+			#
+			#"feature": {
+            #        "datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+            #        "value": "dateFormat=ISO 8601"
+            #    },
+			#
+
+			valueObj = myDict['value']
+			featureDict = {}
+
+			if 'datatype' in valueObj: # ontology included a datatype in this.
+				featureDict['datatype'] = valueObj['datatype']
+				value = valueObj['value']
+
+			else: # value is a straight string.
+				value = valueObj 
+
+			# User interface feature, of form [keyword] or [key:value]
+			if featureType == 'obo:GENEPIO_0001763': 
+				if ':' in value: #  [key:value] 
+					binding = value.split(":",1)
+					feature = binding[0]
+					featureDict['value'] = binding[1]
+
+					# Special case: minimize sort parameters, which are
+					# a list of ontology ids, one per line, with possible
+					# hashmark comment after them.
+					if feature == 'order':
+						orderArray = featureDict['value'].strip().strip(r'\n').split(r'\n') #splitlines() not working!
+						newArray = [unicode(x.split('#')[0].strip()) for x in orderArray]
+						featureDict['value'] = newArray
+
+				else: # keyword
+					feature = value
+
+			# Other feature-value annotations picked up in 'feature_annotations' query
 			else:
-				feature = 'unknown'
-			myObj = {'feature': feature}
-
-			if len(myDict['criteria']) > 0:
-				myObj['criteria'] = myDict['criteria']
-
-			# Look in parents 'members' table for features,
-			# or parents 'parts' table for 'feature annotations'
-			if table_name == 'features':
-				myList = 'members' 
-			else:
-				myList = 'parts'
-
-			if id in self.struct['specifications']:
-
-				# if no referrer, then just mark feature directly in feature set of entity
-				if referrer == '':
-					entity = self.struct['specifications'][id]
-					if not entity:
-						print "Error,  no specification for id ", id, " when working on", table_name
-					else:
-						self.setDefault(entity, 'features', []) #OrderedDict()
-						entity['features'].append(myObj)
+				featureDict['value'] = value
+				if featureType == 'rdfs:label':
+					feature = 'label'
+				elif featureType == 'obo:IAO_0000115':
+					feature = 'definition'
+				elif featureType == 'obo:hasAlternativeId':
+					feature = 'field_label'
 				else:
-					# Go find referrer
-					entity = self.getStruct(self.struct, 'specifications', referrer)
-					if not entity:
-						print "Error when adding feature: couldn't locate ", referrer
-						continue
+					feature = featureType
 
-					self.setDefault(entity, myList, OrderedDict())
-					self.setDefault(entity, myList, id,[])
-					self.getStruct(entity, myList, id).append(myObj)	
-					print "Feature added:", id, feature, myDict['criteria']		
-					
-					#except:
-					#	print "Error when adding feature; ", id, 'in ', myTable, ', ', referrer
-					#	continue
+			# If no parent, then just mark feature directly in entity's 
+			# 'features' list.  Client side programming determines
+			# what overrides what.
+			if parent_id == '':
+				entity = self.struct['specifications'][id]
+				self.setDefault(entity, 'features', {})
+				entity['features'][feature] = featureDict
+				continue
+
+			# Here entity has feature with respect to a parent, so mark in 
+			# parent's entity.  Normally use "components" link but what
+			# about models?
+			parent = self.getStruct(self.struct, 'specifications', parent_id)
+			if not parent:
+				print "Error when adding feature: couldn't locate ", parent_id
+				continue
+
+			self.setDefault(parent, 'components', OrderedDict())
+			self.setDefault(parent, 'components', id,[])
+			self.getStruct(parent, 'components', id).append(featureDict)	
 
 
 	def doLabels(self, list):
@@ -511,11 +571,13 @@ class Ontology(object):
 
 	def doLabel(self, myDict):
 		""" 
-			All items have and need a rdfs:Label, but this might not be what we want to display to users.
-			We will however always show rdfs:Label to users on mouseover of item
-			If no uiLabel, uiLabel is created as a copy of Label
-			Then uiLabel always exists, and is displayed on form. 
-			If label <> uiLabel, drop it.
+			All ontology items have and need a rdfs:Label, but this is often
+			not nice to display to users. If no uiLabel, uiLabel is created as
+			a copy of Label. Then uiLabel always exists, and is displayed on
+			form. If label <> uiLabel, drop label field for efficiency's sake.
+
+			label, definition etc. annotations on an entity 'member of' parent
+			are kept in parent's 'components'.
 		"""
 		if not 'uiLabel' in myDict: 
 			if not 'label' in myDict: # a data maintenance issue
@@ -540,6 +602,8 @@ class Ontology(object):
 		return None
 
 	def setStruct(self, focus,*args):
+		# Create a recursive dictionary path from focus ... to n-1 args, and 
+		# set it to value provided in last argument
 		value = args[-1]
 		for ptr, arg in enumerate(args[0:-1]):
 			if not arg in focus: focus[arg]={}
@@ -573,6 +637,10 @@ class Ontology(object):
 				focus = focus[arg]
 
 	def getStruct(self, focus, *args):
+		"""
+			Navigate from focus object dictionary hierarchy down through 
+			textual keys, returning value of last key.
+		"""
 		try:
 			for arg in args:
 				focus = focus[arg]
@@ -970,12 +1038,12 @@ class Ontology(object):
 
 
 		'features': rdflib.plugins.sparql.prepareQuery("""
-			SELECT DISTINCT ?id ?referrer ?feature ?criteria 
+			SELECT DISTINCT ?id ?referrer ?feature ?value 
 			WHERE { 
 				{# Get direct (Class annotated) features
 					?id rdf:type owl:Class.  
-					?id obo:GENEPIO_0001763 ?criteria.  # UI_preferred feature
-					?id ?feature ?criteria. 
+					?id obo:GENEPIO_0001763 ?value.  # UI_preferred feature
+					?id ?feature ?value. #
 					BIND ('' as ?referrer).
 				}
 				UNION
@@ -984,8 +1052,8 @@ class Ontology(object):
 					?axiom owl:annotatedSource ?id.
 					?axiom owl:annotatedTarget ?referrer. 
 					FILTER(isURI(?referrer))
-					?axiom obo:GENEPIO_0001763 ?criteria.  # UI_preferred feature
-					?axiom ?feature ?criteria.
+					?axiom obo:GENEPIO_0001763 ?value.  # UI_preferred feature
+					?axiom ?feature ?value.
 				}
 			}
 		""", initNs = namespace),
@@ -1015,8 +1083,8 @@ class Ontology(object):
 		#        </owl:annotatedTarget>
 		#    </owl:Axiom>
 
-		'feature_annotations': rdflib.plugins.sparql.prepareQuery("""
-			SELECT DISTINCT ?id ?referrer ?feature ?criteria 
+		'feature_annotations-old': rdflib.plugins.sparql.prepareQuery("""
+			SELECT DISTINCT ?id ?referrer ?value 
 			WHERE { 
 				?axiom rdf:type owl:Axiom.
 				?axiom owl:annotatedSource ?referrer.
@@ -1024,8 +1092,7 @@ class Ontology(object):
 				?restriction owl:onProperty obo:RO_0002180. # has component
 				?restriction (owl:onClass|owl:qualifiedCardinality | owl:minQualifiedCardinality | owl:maxQualifiedCardinality | owl:someValuesFrom) ?id
 				FILTER(isURI(?id))
-				?axiom obo:GENEPIO_0001763 ?criteria.  #UI_preferred feature
-				?axiom ?feature ?criteria.
+				?axiom obo:GENEPIO_0001763 ?value.  # user interface feature
 			}
 		""", initNs = namespace),
 
@@ -1042,8 +1109,9 @@ class Ontology(object):
 		#        <obo:GENEPIO_0001763>lookup</obo:GENEPIO_0001763>
 		#    </owl:Axiom>
 
-		'feature_annotations-new': rdflib.plugins.sparql.prepareQuery("""
-			SELECT DISTINCT ?id ?referrer ?feature ?criteria 
+		# LIST all annotations that should be treated as features below, including ""
+		'feature_annotations': rdflib.plugins.sparql.prepareQuery("""
+			SELECT DISTINCT ?id ?referrer ?feature ?value 
 			WHERE { 
 				?axiom rdf:type owl:Axiom.
 				?axiom owl:annotatedSource ?id.
@@ -1051,19 +1119,23 @@ class Ontology(object):
 				?restriction owl:onProperty obo:RO_0002350. # member of
 				?restriction owl:someValuesFrom ?referrer.
 				FILTER(isURI(?id)).
-				?axiom (obo:GENEPIO_0001763|obo:hasAlternativeId) ?criteria.  #UI_preferred feature
-				?axiom ?feature ?criteria.
+				#user interface feature | label | definition | alternative identifier (database field)
+				?axiom (obo:GENEPIO_0001763|rdfs:label|obo:IAO_0000115|obo:hasAlternativeId) ?value.  
+				?axiom ?feature ?value.
 			}
 		""", initNs = namespace),
 
 
 		# ################################################################
 		# UI LABELS 
+		# These are annotations directly on an entity
 		'labels': rdflib.plugins.sparql.prepareQuery("""
 
 			SELECT DISTINCT ?label ?definition ?uiLabel ?uiDefinition
 			WHERE {  
-				{?datum rdf:type owl:Class} UNION {?datum rdf:type owl:NamedIndividual} UNION {?datum rdf:type rdf:Description}.
+				{?datum rdf:type owl:Class} 
+				UNION {?datum rdf:type owl:NamedIndividual} 
+				UNION {?datum rdf:type rdf:Description}.
 				OPTIONAL {?datum rdfs:label ?label.} 
 				OPTIONAL {?datum obo:IAO_0000115 ?definition.}
 				OPTIONAL {?datum obo:GENEPIO_0000006 ?uiLabel.} 
@@ -1079,7 +1151,7 @@ class Ontology(object):
 		# corresponding members[id] dictionary
 		#
 		'standards_information': rdflib.plugins.sparql.prepareQuery("""
-			SELECT DISTINCT ?id ?referrer ?feature ?criteria 
+			SELECT DISTINCT ?id ?referrer ?feature ?value 
 			WHERE { 
 				?axiom rdf:type owl:Axiom.
 				?axiom owl:annotatedSource ?id.
@@ -1088,8 +1160,8 @@ class Ontology(object):
 				?restriction owl:someValuesFrom ?referrer.
 				FILTER(isURI(?id)).
 				#Get feature as label, definition, UI label, UI definition, UI_preferred,  feature
-				?axiom (rdfs:label|obo:IAO_0000115|obo:GENEPIO_0000006|obo:GENEPIO_0001745) ?criteria.  
-				?axiom ?feature ?criteria.
+				?axiom (rdfs:label|obo:IAO_0000115|obo:GENEPIO_0000006|obo:GENEPIO_0001745) ?value.  
+				?axiom ?feature ?value.
 			}
 		""", initNs = namespace),
 

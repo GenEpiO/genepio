@@ -512,7 +512,8 @@ class Ontology(object):
 			if not parent:
 				print "Error when adding feature: couldn't locate ", parent_id
 				continue
-
+				
+			featureDict['feature'] = feature
 			self.setDefault(parent, 'components', OrderedDict())
 			self.setDefault(parent, 'components', id,[])
 			self.getStruct(parent, 'components', id).append(featureDict)	

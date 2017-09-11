@@ -1008,9 +1008,6 @@ function OntologyForm(domId, specification, settings, callback) {
 						label = ''
 						console.log['Error: picklist item has no label: ' + part['label']]
 					}
-					if ('label' in part && part['label'] != label)
-						label = label + ' (' + part['label'] + ')'
-
 					switch (type) {
 
 						case "checkbox": // future

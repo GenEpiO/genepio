@@ -104,12 +104,20 @@ class Ontology(object):
 		if not len(args):
 			stop_err('Please supply an OWL ontology file (in RDF format)')
 
-		main_ontology_file = args[0] #accepts relative path with file name
+		main_ontology_file = args[0] #accepts relative path with file name e.g. ../genepio-edit.owl
+
 		main_ontology_file = self.check_folder(main_ontology_file, "Ontology file")
 		if not os.path.isfile(main_ontology_file):
 			stop_err('Please check the OWL ontology file path')			
 
 		print "PROCESSING " + main_ontology_file + " ..."
+
+		# Get ontology core filename, without .owl suffix
+		ontology_filename = os.path.basename(main_ontology_file).rsplit('.',1)[0]
+		
+		# Get ontology version, and add to core filename
+		#...
+
 		# Load main ontology file into RDF graph
 		self.graph.parse(main_ontology_file)
 		# Add each ontology include file (must be in OWL RDF format)
@@ -141,9 +149,9 @@ class Ontology(object):
 		# DO NOT USE sort_keys=True on piclists etc. because this overrides OrderedDict() sort order.
 		# BUT NEED TO IMPLEMENT json ordereddict sorting patch.
 
-		with (open('./ontology_ui.json','w')) as output_handle:
+		with (open('./data/ontology/' + ontology_filename + '.json', 'w')) as output_handle:
 			output_handle.write(json.dumps(self.struct,  sort_keys=False, indent=4, separators=(',', ': ')))
-	
+
 
 	def doSpecifications(self, table):
 		""" ####################################################################

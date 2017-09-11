@@ -143,7 +143,7 @@ $( document ).ready(function() {
 	})
 
 	//Default load of GenEpiO
-	loadSpecification('data/ontology/genepio_ui.json')
+	loadSpecification('data/ontology/genepio-edit.json')
 
 
 });

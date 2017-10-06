@@ -104,7 +104,8 @@ class Ontology(object):
 		if not len(args):
 			stop_err('Please supply an OWL ontology file (in RDF format)')
 
-		main_ontology_file = args[0] #accepts relative path with file name e.g. ../genepio-edit.owl
+		# Accepts relative path with file name e.g. ../genepio-edit.owl
+		main_ontology_file = args[0] 
 
 		main_ontology_file = self.check_folder(main_ontology_file, "Ontology file")
 		if not os.path.isfile(main_ontology_file):
@@ -143,8 +144,11 @@ class Ontology(object):
 
 		self.doUIFeatures(self.doQueryTable('features') ,'features')
 		# Second call for 'member of' can override entity and 'has component' features established above.
-		self.doUIFeatures(self.doQueryTable('feature_annotations'), 'feature_annotations')
+
 		self.doLabels(['specifications']) 
+		
+		# FUTURE: DO UIFeatures last because its "order" feature reorganizes some of above content.
+		self.doUIFeatures(self.doQueryTable('feature_annotations'), 'feature_annotations')
 
 		# DO NOT USE sort_keys=True on piclists etc. because this overrides OrderedDict() sort order.
 		# BUT NEED TO IMPLEMENT json ordereddict sorting patch.
@@ -253,7 +257,6 @@ class Ontology(object):
 			self.setDefault(self.struct, struct, id, {'id': id} )
 			self.setDefault(self.struct, struct, id, 'otherParent', [] )	
 
-
 			parentId = self.getParentId(myDict)
 			if parentId:
 		
@@ -285,7 +288,12 @@ class Ontology(object):
 						# List off each of the disjunction items, all with a 'some'
 						for ptr, partId in enumerate(expression['data']):
 							self.struct[struct][id]['components'][partId] = [] # So far logical expression parts have no further info.
-
+			else:
+				# Entity without a datatype has no parents so was only a 'component of' some 
+				# other component. TESTING: make it a simple stand-alone complex entity.
+				#if not 'datatype' in myDict:
+				#	self.struct[struct][id]['datatype'] = 'model'
+				self.setDefault(self.struct, struct, id, 'datatype', 'model')
 
 	def doPrimitives(self, table):
 		""" ####################################################################

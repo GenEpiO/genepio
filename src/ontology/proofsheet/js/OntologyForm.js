@@ -192,7 +192,7 @@ function OntologyForm(domId, specification, settings, callback) {
 								if (min == 1) {
 									cardinalityLabel = 'required'
 									required = true
-									console.log('got required')
+									//console.log('got required')
 								}
 								else {} // 0 or less is nonsense.
 							}
@@ -597,8 +597,12 @@ function OntologyForm(domId, specification, settings, callback) {
 
 		// Initialize entity
 		entity['depth'] = depth
-		//entity['required'] = ''
-		if ('features' in entity) {} else entity['features'] = {}
+		if ('features' in entity) {
+			//console.log('found features')
+		} 
+		else {
+			entity['features'] = {}; //Default
+		}
 		entity['path'] = path.concat([entityId])
 		// Create a unique domId out of all the levels 
 		entity['domId'] = entity['path'].join('/')
@@ -775,7 +779,13 @@ function OntologyForm(domId, specification, settings, callback) {
 
 		// DISABLE INHERITANCE?
  		// [model|component] 'has component' [cardinality] [component|input variable]:
+ 		if (entity['id'] == 'obo:GENEPIO_0001835')
+ 			console.log('BEGIN WITH:', entity['components'])
 		var ids = getOrder(entity, 'components')
+		if (entity['id'] == 'obo:GENEPIO_0001835') {
+			console.log ("SORT BY", entity['features']['order'])
+			console.log('SHOULD SORT:', ids)
+		}
 		for (var ptr in ids) { 
 			// Sort so fields within a group are consistenty orderd:
 			childId = ids[ptr]
@@ -1149,29 +1159,36 @@ function OntologyForm(domId, specification, settings, callback) {
 			partName = 'models','components','choices'
 		*/
 
-		var sortArray = ('features' in entity && 'order' in entity['features']) ? entity['features']['order']['value'] : []
+		sortArray = ('features' in entity && 'order' in entity['features']) ? entity['features']['order']['value'] : []
 		var memberIds = []
 		for (var memberId in entity[partName]) memberIds.push(memberId)
+		//if (entity['id'] == 'obo:GENEPIO_0001835') console.log("SHOULD HAVE", sortArray)
+		if (sortArray.length > 0)
+			memberIds.sort(function(a,b) {
+			//Uses context of sortArray
+				var indexA = sortArray.indexOf(a)
+				var indexB = sortArray.indexOf(b)
+				if (indexA == indexB) return 0
+				// Shove to back of list all not-found items.??? Not working.
+				if (indexA == -1 || indexB == -1) return 1 
+				return (indexA > indexB)
+			})
+		else
+			memberIds.sort(function(a,b) {
+				try {
+					var aLabel = self.specification[a]['uiLabel'].toLowerCase()
+					var bLabel = self.specification[b]['uiLabel'].toLowerCase()
+				}
+				catch (e) {
+					console.log("ERROR: getOrder() picklist item doesn't have a label:", a, b)
+					return 0
+				}
 
-		return memberIds.sort(function(a,b) {
-			indexA = sortArray.indexOf(a)
-			indexB = sortArray.indexOf(b)
-			if (indexA != -1 && indexB != -1) {
-				return (indexA > indexB )
-			}
-			try {
-				var aLabel = self.specification[a]['uiLabel'].toLowerCase()
-				var bLabel = self.specification[b]['uiLabel'].toLowerCase()
-			}
-			catch (e) {
-				//console.log("ERROR: getOrder() picklist item doesn't have a label:", a, b)
-				return 0
-			}
+				if ( aLabel == bLabel) return 0
+				return aLabel.localeCompare(bLabel) // Wierd, the ">" operator doesn't work for GEO items.
 
-			if ( aLabel == bLabel) return 0
-			return aLabel.localeCompare(bLabel) // Wierd, the ">" operator doesn't work for GEO items.
-
-		})
+			})
+		return memberIds // .sort() doesn't return anything.
 	}
 
 	getFeatures = function(entity) {
@@ -1212,7 +1229,6 @@ function OntologyForm(domId, specification, settings, callback) {
 		if (referrerId) {
 
 			var referrer = self.specification[referrerId]
-			if (feature == 'order') console.log('featurehunt', referrer, entity['features'])
 
 			if (referrer)
 				for (myList in ['models', 'components']) 
@@ -1229,7 +1245,6 @@ function OntologyForm(domId, specification, settings, callback) {
 			return false
 		}
 
-		if (feature == 'order' && entity['id'] =='obo:GENEPIO_0001287') console.log('some stuff?', entity['features'])
 			//Features wiped out!
 		if ('features' in entity && feature in entity['features']) 
 			return entity['features'][feature]

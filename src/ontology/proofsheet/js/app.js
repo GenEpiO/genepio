@@ -22,8 +22,11 @@
 	 - Must do a better job of identifying and grouping top-level ontology items
 	 - How to handle items that are not marked as datums?
 	 - possibly try: http://knockoutjs.com/index.html
+     - FIX: problem with 'specimen category'; selections linked "member of" some standard with annotation for their label, causing item itself tor surface in standard.
+	 - FIX: "has component some XYZ" where XYZ is a composite entity fails to be recognized. using "min 1" instead of "some" is the workaround.
+	 - FIX: Drug MIC has two units of measure, each with different basic data type - probably a dimensional analysis quality to annotate.
 
-	Author: Damion Dooley
+    Author: Damion Dooley
 	Project: genepio.org/geem
 
 */

@@ -35,6 +35,10 @@
           <span>Minimize form view</span>
         </div>
 
+        <div style="float:right; margin-top:15px;margin-right:10px;border:1px solid silver;border-radius:4px;background-color:lightblue;padding:13px">
+            <button id="viewSpecification">View Specification</button>
+        </div>
+
         <form id="mainForm" data-abide="ajax" style="margin-top:35px;">
 
           <div class="infoBox" style="margin-top:80px">
@@ -99,6 +103,14 @@
         OntologyForm.initFoundation()
         $('#modalEntity').foundation()
 
+
+        $('button#viewSpecification').on('click', function() {
+          // This displays the entity json object as an indented hierarchy of text inside html <pre> tag.
+          $("#modalEntity > div.row").html('<p><strong>' + "Simple YAML Specification" + '</strong></p>\n<pre style="white-space: pre-wrap;">' + jsyaml.dump(getEntitySpecForm(top.focusEntityId), 4) +'</pre>\n' )
+          $("#modalEntity").foundation('open') //.foundation()
+
+        })
+
         //Default load of GenEpiO
         loadSpecification('data/ontology/genepio-edit.json')
 
@@ -118,6 +130,7 @@
 
         // PREFIX SHOULD INDICATE WHICH ONTOLOGY SPEC FILE TO LOAD?
         var focusEntityId = document.location.hash.substr(1).split('/',1)[0]
+        top.focusEntityId = focusEntityId
         myForm.renderEntity(focusEntityId)
       
         // Toggle to hide all optional empty input content for concise display.

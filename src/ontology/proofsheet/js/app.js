@@ -72,6 +72,7 @@ $( document ).ready(function() {
 		myForm.renderEntity()
 	})
 
+	// When a new ontology is selected:
 	$('#selectSpecification').on('change', function() {
 		loadSpecification($(this).val())
 	})
@@ -262,7 +263,7 @@ function setFormSelectOptionsCart(formObj) {
 
 				// We need to copy the value from the existing <select><option>
 				// into the data-ontology-id for this <li>.
-				var id = selectOptions.eq(index+1).attr('value') //Get corresponding option value.
+				var id = selectOptions.eq(index).attr('value') //Get corresponding option value.
 				var pathId = selectId + '/' + id
 				$(this).attr('data-ontology-id',pathId)
 				$(this).addClass('cart-item')

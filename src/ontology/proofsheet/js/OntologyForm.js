@@ -320,9 +320,13 @@ function OntologyForm(domId, specification, settings, callback) {
 
 		entity['depth'] = depth
 
-		if ('features' in entity) {} else entity['features'] = {}
+		//if ('features' in entity) {} else entity['features'] = {}
 		getFeatures(entity)
 
+		if ('label' in entity['features']) {
+			entity['uiLabel'] = entity['features']['label']['value']
+		}
+		
 		if (entity['depth'] > 0) {
 			// When this entity is displayed within context of parent entity, that entity will 
 			// indicate how many of this part are allowed.
@@ -462,20 +466,17 @@ function OntologyForm(domId, specification, settings, callback) {
 		}	
 		*/
 
-		var ids = getOrder(entity, 'components') // "has value specification" parts. 
-		for (var ptr in ids) { 
+		for (var entityId in entity['components'] ) { 
 			// Sort so fields within a group are consistenty orderd:
-			childId = ids[ptr]
-			this.getEntitySpecForm(childId, specification, entity['path'], depth+1)
+			this.getEntitySpecForm(entityId, specification, entity['path'], depth+1)
 		}
 
 		// When a categorical variable is referenced on its own:
 		if (inherited == false) {
-			var ids = getOrder(entity, 'models') // cardinality "x has member some/one/etc y"
-			for (var ptr in ids) { 
-				childId = ids[ptr]
+			// cardinality "x has member some/one/etc y"
+			for (var entityId in entity['models']) { 
 				// Cardinality lookup doesn't apply to categorical pick-lists so no need to supply path.
-				this.getEntitySpecForm(childId, specification, [], depth + 1) 
+				this.getEntitySpecForm(entityId, specification, [], depth + 1) 
 			}
 
 		entity['components'] = specification
@@ -527,9 +528,7 @@ function OntologyForm(domId, specification, settings, callback) {
 
 		if ('choices' in entity) {
 			var newChoices = [] // Array to preserve order
-			var memberIds = getOrder(entity, 'choices') 
-			for (var ptr in memberIds) {
-				var memberId = memberIds[ptr]
+			for (var memberId in entity['choices']) {
 				var part = $.extend(true, {}, self.specification[memberId]) //deepcopy
 				delete part['datatype'] // Unnecessary
 				if (!part) // Should never happen.
@@ -538,7 +537,6 @@ function OntologyForm(domId, specification, settings, callback) {
 					// Currently showing "hidden" feature as disabled.
 					if (getFeature(part, 'hidden', entity['id']) )
 						part['disabled'] = true;
-					var id = part['id']
 					newChoices.push(getEntitySpecFormChoice(part , depth+1))
 				}
 			}
@@ -597,24 +595,24 @@ function OntologyForm(domId, specification, settings, callback) {
 
 		// Initialize entity
 		entity['depth'] = depth
-		if ('features' in entity) {
-			//console.log('found features')
-		} 
-		else {
-			entity['features'] = {}; //Default
-		}
+
+
 		entity['path'] = path.concat([entityId])
 		// Create a unique domId out of all the levels 
 		entity['domId'] = entity['path'].join('/')
-		if ('parent' in entity && parent['id'] == entityId) {
-			console.log("Node: " + entityId + " is a parent of itself and so cannot be re-rendered.")
-			return html
+		//if ('parent' in entity && parent['id'] == entityId) {
+		//	console.log("Node: " + entityId + " is a parent of itself and so cannot be re-rendered.")
+		//	return html
+		//}
+
+		getFeatures(entity)
+
+		if ('label' in entity['features']) {
+			entity['uiLabel'] = entity['features']['label']['value']
 		}
 
 		// Used for some controls for sub-parts
 		var	label = (minimal) ? '' : renderLabel(entity)
-
-		getFeatures(entity)
 
 		if (entity['depth'] > 0) {
 			// When this entity is displayed within context of parent entity, that entity will 
@@ -637,7 +635,7 @@ function OntologyForm(domId, specification, settings, callback) {
 				html += renderSpecification(entity, inherited, depth)
 				// If specification has stuff, then wrap it:
 				if (html.length > 0 && entity['uiLabel'] != '[no label]')
-					return getSectionWrapper(entity, label + html)
+					return getModelWrapper(entity, label + html)
 				break;
 
 			/* PRIMITIVE data types 
@@ -766,37 +764,21 @@ function OntologyForm(domId, specification, settings, callback) {
 			}
 		}	
 
-		// SHOULD MODELS BE MERGED WITH COMPONENTS?
-		// model "subClassOf" model . 
 		if (inherited == false) {
-			var ids = getOrder(entity, 'models') 
-			for (var ptr in ids) { 
-				// Sort so fields within a group are consistenty orderd:
-				childId = ids[ptr]
-				html += this.render(childId, entity['path'], depth+1)
+			for (var entityId in entity['models']) { 
+				html += this.render(entityId, entity['path'], depth+1)
 			}
 		}
 
 		// DISABLE INHERITANCE?
  		// [model|component] 'has component' [cardinality] [component|input variable]:
- 		if (entity['id'] == 'obo:GENEPIO_0001835')
- 			console.log('BEGIN WITH:', entity['components'])
-		var ids = getOrder(entity, 'components')
-		if (entity['id'] == 'obo:GENEPIO_0001835') {
-			console.log ("SORT BY", entity['features']['order'])
-			console.log('SHOULD SORT:', ids)
-		}
-		for (var ptr in ids) { 
-			// Sort so fields within a group are consistenty orderd:
-			childId = ids[ptr]
-			html += this.render(childId, entity['path'], depth+1)
+		for (var entityId in entity['components']) { 
+			html += this.render(entityId, entity['path'], depth+1)
 		}
 
 		if (inherited == false && 'choices' in entity) { //no inheritance on choices
-			var ids = getOrder(entity, 'choices') // Alphabetical for now
-			for (var ptr in ids) { 
-				childId = ids[ptr]
-				html += this.render(childId, [], depth + 1) // cardinality lookup doesn't apply to categorical pick-lists so no need to supply path.
+			for (var entityId in entity['choices']) { 
+				html += this.render(entityId, [], depth + 1) // cardinality lookup doesn't apply to categorical pick-lists so no need to supply path.
 			}
 		}
 		return html	
@@ -845,18 +827,18 @@ function OntologyForm(domId, specification, settings, callback) {
 		/* EXPERIMENTAL: This entity was made up of 'has value specification some X or Y or Z ... 
 		Means at least one of the disjunction parts need to be included (more are allowed at moment). 
 		*/
-		var ids = getOrder(entity, 'components') // "has value specification" parts. 
+		// "has value specification" parts. 
 		var domId = entity['domId']
-
 		var htmlTabs = '<ul class="tabs" data-tabs id="' + domId + '">'
 		var htmlTabContent = '<div class="input-group tabs-content" data-tabs-content="' + domId + '">'
 
 		// Could externalize this
-		for (var ptr in ids) { 
-			childId = ids[ptr]
-			childDomId = childId.replace(':','_')
-			child = self.specification[childId]
-			if (ptr == 0) {
+		var activeDone = false
+		for (var entityId in entity['components']) { 
+			var childDomId = entityId.replace(':','_')
+			var child = self.specification[entityId]
+			if (activeDone == false) {
+				activeDone = true
 				tab_active = ' is-active '
 				aria = ' aria-selected="true" '
 			}
@@ -866,12 +848,9 @@ function OntologyForm(domId, specification, settings, callback) {
 			}
 
 			htmlTabs += '<li class="tabs-title'+tab_active+'"><a href="#panel_'+childDomId+'" ' + aria + '>' + renderLabel(child) + '</a></li>'
+
 			htmlTabContent += '<div class="tabs-panel'+tab_active+'" id="panel_'+childDomId+'">'
-
-			//html += '<li class="tabs-title"><a href="#panel_'+childDomId+'">' + renderLabel(child) + '</a></li>'
-			//content += '<div class="tabs-panel" id="panel_'+childDomId+'" style="padding:5px">'
-
-			htmlTabContent += 	this.render(childId, entity['path'], depth+1, false, true )
+			htmlTabContent += 	this.render(entityId, entity['path'], depth+1, false, true )
 			htmlTabContent += '</div>\n'		
 		}
 		htmlTabs += '</ul>' 
@@ -963,16 +942,16 @@ function OntologyForm(domId, specification, settings, callback) {
 		*/
 		picklistId = entity['id']
 		var multiple = entity['min-cardinality'] > 1 || (entity['max-cardinality'] != 1) ? ' multiple' : ''
-		var options = renderChoice(self.specification[picklistId], 0)[0]
 		var html = label
 		html +=	'	<div class="input-group">\n'
 		html +=	'		<select class="input-group-field '+ entity['id'] + ' regular" id="'+entity['domId']+'"' + entity['disabled'] + multiple + '>\n'
-		html +=	'<option value=""></option>'  //Enables no option to be selected.
+		if (multiple.length == 0)
+			html +=	'<option value=""></option>'  //Enables no option to be selected.
 
 		// Because one should deliberately make a selection ... esp. when 
 		// confronted with required selection list where 1st item is 
 		html +=	'	<option value="" disabled>Select ...</option>'
-		html +=			options
+		html +=			renderChoice(self.specification[picklistId], 0)
 		html +=	'	</select>\n'
 
 		if ('features' in entity && 'lookup' in entity['features']) 
@@ -999,13 +978,9 @@ function OntologyForm(domId, specification, settings, callback) {
 		if (depth > 10) return ('MAX DEPTH PROBLEM WITH ' + entity['id'], 0)
 
 		var html = ''
-		var memberIds = []
 
 		if ('choices' in entity) {
-			var memberIds = getOrder(entity, 'choices') 
-
-			for (var ptr in memberIds) {
-				var memberId = memberIds[ptr]
+			for (var memberId in entity['choices']) {
 				var part = self.specification[memberId]
 
 				if (!part) // Should never happen.
@@ -1027,20 +1002,19 @@ function OntologyForm(domId, specification, settings, callback) {
 						case "select":
 
 						default:
-							html += '<option value="' + part['id'] + '" class="depth' + depth + '" '+disabled+'>' + label + '</option>\n'  
+							// testing &#160; nobreak space in repeat() below
+							html += '<option value="' + part['id'] + '" class="depth' + depth + '" '+disabled+'>' + ' '.repeat(depth) + label + '</option>\n'  
 					}
-					var results = renderChoice(part, depth+1)
-					if (results[1] > 0)
-						html += results[0]
+					// See if this option has any child options
+					html +=  renderChoice(part, depth+1)
+
 				}
 
 			}
-			// Wrapping kids in optgroup so we have some way of understanding depth
-			//if (memberIds.length > 1 && html.length > 0)	
-			//	html = '<optgroup>' + html + '</optgroup>'
+
 		}
 		
-		return ['<optgroup>' + html + '</optgroup>', memberIds.length]
+		return html
 	}
 
 	renderUnits = function(entity) {
@@ -1116,7 +1090,7 @@ function OntologyForm(domId, specification, settings, callback) {
 	getFieldWrapper = function(entity, html) {
 
 		return ['<div class="field-wrapper field'
-			,		('models' in entity || 'choices' in entity) ? ' children' : ''
+			,		('models' in entity || 'choices' in entity) ? ' children' : '' // models check needed?
 			,		'" '
 			,		getIdHTMLAttribute(entity['domId'])
 			,		getHTMLAttribute(entity, 'min-cardinality')
@@ -1126,70 +1100,25 @@ function OntologyForm(domId, specification, settings, callback) {
 			,	'</div>\n'].join('')
 	}
 
-	getSectionWrapper = function(entity, html) {
-		return ['<div class="field-wrapper children" ',
-			getIdHTMLAttribute(entity['domId']),
-			getHTMLAttribute(entity, 'min-cardinality'),
-			getHTMLAttribute(entity, 'max-cardinality'),
-			'>\n',
-			 html,
-			 '</div>\n'].join('')
+	getModelWrapper = function(entity, html) {
+		return [
+			'<div class="field-wrapper model children depth' + entity['depth'] + '" '
+			,	getIdHTMLAttribute(entity['domId'])
+			,	getHTMLAttribute(entity, 'min-cardinality')
+			,	getHTMLAttribute(entity, 'max-cardinality')
+			,	'>\n'
+			,	html
+			,	'</div>\n'].join('')
 	}
 
-	getIdHTMLAttribute = function(id) {
-		return 'data-ontology-id="' + id + '" '
+	getIdHTMLAttribute = function(domId) {
+		return 'data-ontology-id="' + domId + '" '
 	}
 
 	getHTMLAttribute = function(entity, attribute) {
 		return (attribute in entity) ? attribute +'="' + entity[attribute] + '" ' : ''
 	}
 
-	getOrder = function(entity, partName) {
-		/* Ordering function of an entity's model, component, or choices items
-		Ordering is based on:
-			
-			a) if entity has entity['features']['sort'] array, comparison of 
-			those values (given in ontology as 
-			'user interface function'="sort: obo:ONTO_1234\n obo:ONTO_2345\n ...")
-			
-			b) alphabetical sort
-		
-		INPUT
-			entity
-			partName = 'models','components','choices'
-		*/
-
-		sortArray = ('features' in entity && 'order' in entity['features']) ? entity['features']['order']['value'] : []
-		var memberIds = []
-		for (var memberId in entity[partName]) memberIds.push(memberId)
-		//if (entity['id'] == 'obo:GENEPIO_0001835') console.log("SHOULD HAVE", sortArray)
-		if (sortArray.length > 0)
-			memberIds.sort(function(a,b) {
-			//Uses context of sortArray
-				var indexA = sortArray.indexOf(a)
-				var indexB = sortArray.indexOf(b)
-				if (indexA == indexB) return 0
-				// Shove to back of list all not-found items.??? Not working.
-				if (indexA == -1 || indexB == -1) return 1 
-				return (indexA > indexB)
-			})
-		else
-			memberIds.sort(function(a,b) {
-				try {
-					var aLabel = self.specification[a]['uiLabel'].toLowerCase()
-					var bLabel = self.specification[b]['uiLabel'].toLowerCase()
-				}
-				catch (e) {
-					console.log("ERROR: getOrder() picklist item doesn't have a label:", a, b)
-					return 0
-				}
-
-				if ( aLabel == bLabel) return 0
-				return aLabel.localeCompare(bLabel) // Wierd, the ">" operator doesn't work for GEO items.
-
-			})
-		return memberIds // .sort() doesn't return anything.
-	}
 
 	getFeatures = function(entity) {
 		/* 
@@ -1210,13 +1139,17 @@ function OntologyForm(domId, specification, settings, callback) {
 						var myobj = piecesArray[ptr]
 						if ('feature' in myobj) {
 							myFeatures[myobj['feature']] = $.extend({}, myobj)
+							break;
 						}
 					}
 				}
 			}
 		}
 		// Will this OVERRIDE dictionary items?
-		$.extend(entity['features'], myFeatures)
+		if ('features' in entity) 
+			$.extend(entity['features'], myFeatures)
+		else
+			entity['features'] = myFeatures
 
 	}
 
@@ -1229,19 +1162,23 @@ function OntologyForm(domId, specification, settings, callback) {
 		if (referrerId) {
 
 			var referrer = self.specification[referrerId]
-
-			if (referrer)
-				for (myList in ['models', 'components']) 
+			var parts = ['models', 'components']
+			if (referrer) {
+				for (ptr in parts) {
+					var myList = parts[ptr]
 					if (myList in referrer) {
 						var pieceArray = referrer[myList][entity['id']]
-						if (pieceArray)
+						if (pieceArray) {
 							for (var ptr in pieceArray) {
 								if ('feature' in pieceArray[ptr] && pieceArray[ptr]['feature'] == feature) {
-									//console.log("found", feature, id, "in", entity['id']);
 									return pieceArray[ptr]
 								}
 							}
+						}
 					}
+				}
+			}
+
 			return false
 		}
 

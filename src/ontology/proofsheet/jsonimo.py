@@ -456,9 +456,9 @@ class Ontology(object):
 		"""
 		#Loop through query results; each line has one id, feature, referrer.
 		for myDict in table:
-			id = myDict['id']
-			if not id in self.struct['specifications']:
-				print "Error,  no specification for id ", id, " when working on", table_name
+			entityId = myDict['id']
+			if not entityId in self.struct['specifications']:
+				print "Error,  no specification for id ", entityId, " when working on", table_name
 				continue
 
 			parent_id = myDict['referrer'] # Id of parent if applicable
@@ -479,7 +479,7 @@ class Ontology(object):
 				featureDict['datatype'] = valueObj['datatype']
 				value = valueObj['value']
 
-			else: # value is a straight string.
+			else: # value is a string.
 				value = valueObj 
 
 			# User interface feature, of form [keyword] or [key:value]
@@ -494,8 +494,7 @@ class Ontology(object):
 					# hashmark comment after them.
 					if feature == 'order':
 						orderArray = featureDict['value'].strip().strip(r'\n').split(r'\n') #splitlines() not working!
-						newArray = [unicode(x.split('#')[0].strip()) for x in orderArray]
-						featureDict['value'] = newArray
+						featureDict['value'] = [unicode(x.split('#')[0].strip()) for x in orderArray]
 
 				else: # keyword
 					feature = value
@@ -505,6 +504,9 @@ class Ontology(object):
 				featureDict['value'] = value
 				if featureType == 'rdfs:label':
 					feature = 'label'
+					# Issue is that entity['parent'] is not showing up
+					#print feature, value, parentId
+
 				elif featureType == 'obo:IAO_0000115':
 					feature = 'definition'
 				elif featureType == 'obo:hasAlternativeId':
@@ -512,13 +514,21 @@ class Ontology(object):
 				else:
 					feature = featureType
 
+			# Feature is set at this point
+
 			# If no parent, then just mark feature directly in entity's 
 			# 'features' list.  Client side programming determines
 			# what overrides what.
 			if parent_id == '':
-				entity = self.struct['specifications'][id]
+				entity = self.struct['specifications'][entityId]
 				self.setDefault(entity, 'features', {})
 				entity['features'][feature] = featureDict
+				if feature == 'order':
+					# Reorganize entity's components, models, and choices according to featureDict['value'] list.
+					self.reorder(entity,'models', featureDict['value'])
+					self.reorder(entity,'components', featureDict['value'])
+					self.reorder(entity,'choices', featureDict['value'])
+
 				continue
 
 			# Here entity has feature with respect to a parent, so mark in 
@@ -531,9 +541,19 @@ class Ontology(object):
 				
 			featureDict['feature'] = feature
 			self.setDefault(parent, 'components', OrderedDict())
-			self.setDefault(parent, 'components', id,[])
-			self.getStruct(parent, 'components', id).append(featureDict)	
+			self.setDefault(parent, 'components', entityId,[])
+			self.getStruct(parent, 'components', entityId).append(featureDict)	
 
+	def reorder(self, entity, part, orderedKeys = None):
+		""" Order given entity part dictionary by given order array of ids, or alphabetically if none.
+		"""
+		# components, models, choices are all orderedDict already.
+		if part in entity:
+			#newList = OrderedDict()
+			if orderedKeys:
+				entity[part] = OrderedDict(sorted(entity[part].items(), key=lambda item: orderedKeys.index(item[0]) if item[0] in orderedKeys else False))
+			else:
+				entity[part] = OrderedDict(sorted(entity[part].items(), key=attrgetter('uiLabel')) )
 
 	def doLabels(self, list):
 		""" ####################################################################

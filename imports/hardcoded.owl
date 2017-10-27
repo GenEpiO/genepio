@@ -143,6 +143,12 @@
     
 
 
+    <!-- http://purl.obolibrary.org/obo/RO_0002350 -->
+
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/RO_0002350"/>
+    
+
+
     <!-- http://purl.obolibrary.org/obo/omp#towards -->
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/omp#towards"/>
@@ -320,7 +326,7 @@ guanine + cytosine content</oboInOwl:hasExactSynonym>
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/ExO_0000038">
         <obo:IAO_0000115 xml:lang="en">The condition of an organism in all aspects (e.g., functional or metabolic efficiency).</obo:IAO_0000115>
         <obo:created_by rdf:datatype="http://www.w3.org/2001/XMLSchema#string">cmattin</obo:created_by>
-        <rdfs:label xml:lang="en">health status</rdfs:label>
+        <rdfs:label xml:lang="en">subject health status</rdfs:label>
     </owl:Class>
     
 
@@ -348,6 +354,12 @@ guanine + cytosine content</oboInOwl:hasExactSynonym>
     
 
 
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001835 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001835"/>
+    
+
+
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0001886 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001886"/>
@@ -362,9 +374,15 @@ guanine + cytosine content</oboInOwl:hasExactSynonym>
     
 
 
-    <!-- http://purl.obolibrary.org/obo/IAO_0000429 -->
+    <!-- http://purl.obolibrary.org/obo/NCIT_C25690 -->
 
-    <owl:Class rdf:about="http://purl.obolibrary.org/obo/IAO_0000429"/>
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/NCIT_C25690"/>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/NCIT_C42775 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/NCIT_C42775"/>
     
 
 
@@ -377,8 +395,18 @@ guanine + cytosine content</oboInOwl:hasExactSynonym>
     <!-- http://purl.obolibrary.org/obo/OBI_0001888 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/OBI_0001888">
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000097"/>
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000112"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002350"/>
+                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000112"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002350"/>
+                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001835"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <obo:IAO_0000111 xml:lang="en">sequencing facility contact person</obo:IAO_0000111>
         <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000120"/>
         <obo:IAO_0000115>A person who is the contact representative at the sequencing facility</obo:IAO_0000115>
@@ -390,7 +418,12 @@ guanine + cytosine content</oboInOwl:hasExactSynonym>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/OBI_0001888"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000112"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002350"/>
+                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000112"/>
+            </owl:Restriction>
+        </owl:annotatedTarget>
         <obo:IAO_0000115 xml:lang="en">Name of the responsible investigator leading the sequencing project at the sequencing facility</obo:IAO_0000115>
         <oboInOwl:hasAlternativeId>CP17</oboInOwl:hasAlternativeId>
         <oboInOwl:inSubset xml:lang="en">Investigation</oboInOwl:inSubset>
@@ -434,6 +467,22 @@ guanine + cytosine content</oboInOwl:hasExactSynonym>
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/OMIT_0012122">
         <rdfs:label xml:lang="en">population density</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/OMIT_0016142 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/OMIT_0016142">
+        <rdfs:label xml:lang="en">Bacterial Typing Techniques</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/OMIT_0027409 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/OMIT_0027409">
+        <rdfs:label xml:lang="en">Molecular Typing</rdfs:label>
     </owl:Class>
     
 
@@ -589,15 +638,6 @@ guanine + cytosine content</oboInOwl:hasExactSynonym>
     
 
 
-    <!-- http://www.w3.org/2006/vcard/ns#streetAddress -->
-
-    <owl:Class rdf:about="http://www.w3.org/2006/vcard/ns#streetAddress">
-        <obo:IAO_0000412 rdf:resource="http://purl.obolibrary.org/obo/arg/isf-dev.owl"/>
-        <rdfs:label xml:lang="en">street address</rdfs:label>
-    </owl:Class>
-    
-
-
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
@@ -679,6 +719,20 @@ guanine + cytosine content</oboInOwl:hasExactSynonym>
         <obo:IAO_0000117>Person: Jie Zheng</obo:IAO_0000117>
         <rdfs:label xml:lang="en">Pacific Biosciences</rdfs:label>
     </owl:NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotations
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description rdf:about="http://www.w3.org/2006/vcard/ns#streetAddress">
+        <obo:IAO_0000412 rdf:resource="http://purl.obolibrary.org/obo/arg/isf-dev.owl"/>
+    </rdf:Description>
 </rdf:RDF>
 
 

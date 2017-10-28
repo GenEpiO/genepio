@@ -22,7 +22,7 @@ prepare_release: all
 
 #Annotates genepio.owl ( $(ONT).owl ) file with release
 $(ONT).owl: $(SRC)
-	$(ROBOT) reduce -i $< -r ELK -s true annotate --xml-entities -V $(BASE)/releases/'date +%Y-%m-%d'/$(ONT).owl -o "$@"
+	$(ROBOT) reduce -i $< -r ELK -s true annotate --xml-entities -V $(BASE)/releases/`date +%Y-%m-%d`/$(ONT).owl -o "$@"
 
 # Merge ontology and imports into one file 	
 	$(ROBOT) merge --input $(ONT).owl --output $(ONT)-merged.owl

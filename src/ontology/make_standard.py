@@ -156,6 +156,7 @@ class OntoMaker(object):
 
 		# Extract entities from the ontology given in 'get_data_standard' query
 		# Make binding for standard's ontology entity
+	"""
 		initBinds = {'root': rdflib.URIRef(self.onto.get_expanded_id(args[1]))} 
 		entity_results = self.onto.get_query_table('get_data_standard', initBinds) # Fetches all main ids via get_component and subClassOf
 
@@ -171,7 +172,7 @@ class OntoMaker(object):
 		# Write owl file back out (it is in rdf/xml format).
 		print "Output to", output_ontology_file
 		call("robot extract --method STAR --input %s --term-file './make_standard_ids.txt' --output %s.test" % (output_ontology_file, output_ontology_file) )
-
+	"""
 		# We have the ids and we want to know everything about them.
 
 		#self.onto.graph.add((rdflib.URIRef('http://purl.obolibrary.org/obo/GENEPIO/imports/gazetteer_import-converted.owl'), RDF.type, OWL.Ontology ))
@@ -180,6 +181,8 @@ class OntoMaker(object):
 		#	output_handle.write(self.newonto.graph.serialize(format='pretty-xml') )
 
 
+
+		# KNOCK OUT LINKS TO OTHER 
 	
 	############################## UTILITIES ###########################
 

@@ -28,7 +28,7 @@
      xmlns:foaf="http://xmlns.com/foaf/0.1/"
      xmlns:dc="http://purl.org/dc/elements/1.1/">
     <owl:Ontology rdf:about="&obo;genepio.owl">
-        <owl:versionIRI rdf:resource="&obo;genepio/releases/2017-10-27/genepio.owl"/>
+        <owl:versionIRI rdf:resource="&obo;genepio/releases/2017-10-29/genepio.owl"/>
         <owl:imports rdf:resource="&obo;GENEPIO/imports/pato_import.owl"/>
         <owl:imports rdf:resource="&obo;GENEPIO/imports/chebi_import.owl"/>
         <owl:imports rdf:resource="&obo;GENEPIO/imports/ncbitaxon_import.owl"/>
@@ -307,6 +307,15 @@
     
 
 
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001340 -->
+
+    <owl:ObjectProperty rdf:about="&obo;GENEPIO_0001340">
+        <rdfs:subPropertyOf rdf:resource="&obo;RO_0002180"/>
+        <rdfs:label xml:lang="en">standard_component</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0001739 -->
 
     <owl:ObjectProperty rdf:about="&obo;GENEPIO_0001739">
@@ -556,7 +565,7 @@ I believe time dependency relations (conditions) don&apos;t imply existence by t
     <!-- http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C103180 -->
 
     <rdf:Description rdf:about="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C103180">
-        <rdfs:subClassOf rdf:resource="&obo;OBI_0000658"/>
+        <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0001342"/>
         <obo:IAO_0000114 rdf:resource="&obo;IAO_0000122"/>
     </rdf:Description>
     
@@ -5043,12 +5052,6 @@ https://www.niaid.nih.gov/research/human-pathogen-and-vector-sequencing-metadata
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;RO_0002350"/>
-                <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0000015"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;RO_0002350"/>
                 <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0000111"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -5264,12 +5267,6 @@ https://www.niaid.nih.gov/research/human-pathogen-and-vector-sequencing-metadata
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;RO_0002350"/>
                 <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0000003"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;RO_0002350"/>
-                <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0000015"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -6782,11 +6779,11 @@ Clusters passing filter are represented by PF in analysis reports. Clusters pass
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0000106 -->
 
     <owl:Class rdf:about="&obo;GENEPIO_0000106">
-        <rdfs:subClassOf rdf:resource="&obo;OBI_0000658"/>
+        <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0001342"/>
         <obo:IAO_0000114 rdf:resource="&obo;IAO_0000428"/>
-        <obo:IAO_0000115 xml:lang="en">The &apos;data standard draft&apos; class is a place to indicate any drafts which are not currently officially authorized.</obo:IAO_0000115>
+        <obo:IAO_0000115 xml:lang="en">The GenEpiO &apos;draft data standard&apos; class contains draft representations of formal or defacto third party standards and related components.  These representations may have been crafted without any involvement of related standards issuers and so no guarantee can be provided about their currency, accuracy or veracity.</obo:IAO_0000115>
         <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
-        <rdfs:label xml:lang="en">data standard draft</rdfs:label>
+        <rdfs:label xml:lang="en">draft data standard</rdfs:label>
     </owl:Class>
     
 
@@ -7184,12 +7181,6 @@ Clusters passing filter are represented by PF in analysis reports. Clusters pass
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;RO_0002350"/>
-                <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0000015"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;RO_0002350"/>
                 <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0000111"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -7287,8 +7278,8 @@ Clusters passing filter are represented by PF in analysis reports. Clusters pass
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0000117 -->
 
     <owl:Class rdf:about="&obo;GENEPIO_0000117">
+        <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0000106"/>
         <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0001790"/>
-        <rdfs:subClassOf rdf:resource="&obo;OBI_0000658"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;RO_0002350"/>
@@ -7407,7 +7398,7 @@ Clusters passing filter are represented by PF in analysis reports. Clusters pass
             </owl:Restriction>
         </owl:annotatedTarget>
         <rdfs:comment xml:lang="en">Allowed Values: ISO 3166 standard abbreviation (2-alpha), www.iso.org/iso/iso-3166-1_decoding_table
-Syntax: urrently is free text, but ISO3166 standard abbreviations would be acceptable</rdfs:comment>
+Syntax: currently is free text, but ISO3166 standard abbreviations would be acceptable</rdfs:comment>
         <rdfs:label xml:lang="en">Specimen Collection Location - Location</rdfs:label>
     </owl:Axiom>
     
@@ -7882,12 +7873,6 @@ Syntax: urrently is free text, but ISO3166 standard abbreviations would be accep
 
     <owl:Class rdf:about="&obo;GENEPIO_0000156">
         <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0001655"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;RO_0002350"/>
-                <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0001705"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;RO_0002350"/>
@@ -9251,7 +9236,7 @@ obo:GENEPIO_0002056 # ... vendor</obo:GENEPIO_0001763>
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000115 xml:lang="en">The tuberculosis draft standard is a GenEpiO set of draft genomic and clinical data items related to Mycobacterium tuberculosis that various agencies are using in their own reporting.</obo:IAO_0000115>
-        <rdfs:label xml:lang="en">draft tuberculosis specimen contextual data standard</rdfs:label>
+        <rdfs:label xml:lang="en">draft tuberculosis - specimen contextual data standard</rdfs:label>
     </owl:Class>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="&obo;GENEPIO_0001073"/>
@@ -9658,6 +9643,12 @@ obo:GENEPIO_0002056 # ... vendor</obo:GENEPIO_0001763>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;RO_0002350"/>
                 <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0001007"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;RO_0002350"/>
+                <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0002088"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -10121,6 +10112,12 @@ obo:GENEPIO_0001001 # measurement comparator</obo:GENEPIO_0001763>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;RO_0002350"/>
                 <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0001100"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;RO_0002350"/>
+                <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0002088"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000114 rdf:resource="&obo;IAO_0000428"/>
@@ -10910,6 +10907,15 @@ obo:GENEPIO_0001784 # duration</obo:GENEPIO_0001763>
         <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
         <rdfs:comment xml:lang="en">Damion Dooley&apos;s note: Enabling this overarching area so that subregions can be designated as proper parts; and subtotals can be calculated.</rdfs:comment>
         <rdfs:label xml:lang="en">earth surface</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001342 -->
+
+    <owl:Class rdf:about="&obo;GENEPIO_0001342">
+        <rdfs:subClassOf rdf:resource="&obo;OBI_0000658"/>
+        <rdfs:label xml:lang="en">data standard component</rdfs:label>
     </owl:Class>
     
 
@@ -12017,12 +12023,6 @@ For Salmonella a 0.10 variance in length between an assembly size and a referenc
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;RO_0002350"/>
-                <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0000015"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;RO_0002350"/>
                 <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0000111"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -12193,12 +12193,6 @@ A large contig count may indicate insufficient read coverage.</obo:IAO_0000115>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;RO_0002350"/>
                 <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0000112"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;RO_0002350"/>
-                <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0001705"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -13365,12 +13359,6 @@ PubMed Central PMCID: PMC3071067. &quot;Host&quot; is not the preferred term sin
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;RO_0002350"/>
-                <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0000015"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;RO_0002350"/>
                 <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0000111"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -14331,12 +14319,6 @@ or https://www.ncbi.nlm.nih.gov/mesh/1000067</rdfs:comment>
         <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0001611"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;RO_0002350"/>
-                <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0001835"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;RO_0002180"/>
                 <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
                 <owl:onClass rdf:resource="&obo;OBI_0001620"/>
@@ -14354,17 +14336,6 @@ or https://www.ncbi.nlm.nih.gov/mesh/1000067</rdfs:comment>
         <rdfs:comment xml:lang="en">A geographic coordinate entity composed of both latitude and longitude components.</rdfs:comment>
         <rdfs:label xml:lang="en">latitude and longitude coordinate</rdfs:label>
     </owl:Class>
-    <owl:Axiom>
-        <owl:annotatedSource rdf:resource="&obo;GENEPIO_0001656"/>
-        <owl:annotatedProperty rdf:resource="&rdfs;subClassOf"/>
-        <owl:annotatedTarget>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;RO_0002350"/>
-                <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0001835"/>
-            </owl:Restriction>
-        </owl:annotatedTarget>
-        <rdfs:label xml:lang="en">latitude and longitude</rdfs:label>
-    </owl:Axiom>
     
 
 
@@ -15173,116 +15144,12 @@ obo:NCIT_C25621 # postal code</obo:GENEPIO_0001763>
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0001705 -->
 
     <owl:Class rdf:about="&obo;GENEPIO_0001705">
-        <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0000106"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;RO_0002180"/>
-                <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0000156"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;RO_0002180"/>
-                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
-                <owl:onClass rdf:resource="&obo;OBI_0001617"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;RO_0002180"/>
-                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onClass rdf:resource="&obo;GENEPIO_0001572"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;RO_0002180"/>
-                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onClass rdf:resource="&obo;OBI_0001629"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;RO_0002180"/>
-                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onClass rdf:resource="&obo;OBI_0001880"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;RO_0002180"/>
-                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onClass rdf:resource="&obo;OBI_0001882"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;RO_0002180"/>
-                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onClass rdf:resource="&obo;OBI_0001884"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;RO_0002180"/>
-                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onClass rdf:resource="&obo;OBI_0001889"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;RO_0002180"/>
-                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onClass rdf:resource="&obo;OBI_0001891"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;RO_0002180"/>
-                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onClass rdf:resource="&obo;OBI_0001892"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;RO_0002180"/>
-                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onClass rdf:resource="&obo;OBI_0001896"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;RO_0002180"/>
-                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onClass rdf:resource="&obo;OBI_0001899"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;RO_0002180"/>
-                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onClass rdf:resource="&obo;OBI_0001903"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;RO_0002180"/>
-                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onClass rdf:resource="&obo;OBI_0001942"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;RO_0002180"/>
-                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onClass rdf:resource="&obo;OBI_0500000"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <obo:IAO_0000114 rdf:resource="&obo;IAO_0000428"/>
+        <rdfs:subClassOf rdf:resource="&oboInOwl;ObsoleteClass"/>
         <obo:IAO_0000115 xml:lang="en">This is an organizational category for grouping parameters relevant to biomedical research projects.</obo:IAO_0000115>
         <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
-        <rdfs:comment xml:lang="en">Damion Dooley&apos;s note: According to http://trace.ddbj.nig.ac.jp/news/2014-11-12_e.html, &quot;A BioProject record can have multiple project data types&quot;</rdfs:comment>
-        <rdfs:label xml:lang="en">draft GenEpiO BioProject standard</rdfs:label>
+        <obo:IAO_0000231 rdf:resource="&obo;IAO_0000103"/>
+        <rdfs:label xml:lang="en">draft GenEpiO BioProject standard (deprecated)</rdfs:label>
+        <owl:deprecated rdf:datatype="&xsd;boolean">true</owl:deprecated>
     </owl:Class>
     
 
@@ -15620,12 +15487,6 @@ obo:NCIT_C25621 # postal code</obo:GENEPIO_0001763>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;RO_0002350"/>
-                <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0000015"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;RO_0002350"/>
                 <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0000111"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -15919,9 +15780,9 @@ obo:NCIT_C25621 # postal code</obo:GENEPIO_0001763>
     <owl:Class rdf:about="&obo;GENEPIO_0001741">
         <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0000106"/>
         <obo:IAO_0000114 rdf:resource="&obo;IAO_0000428"/>
-        <obo:IAO_0000115 xml:lang="en">The GenEpiO model is a collection of generic data models relevant to epidemiological, laboratory, clinical and environmental pathogen sample data collection and analysis.</obo:IAO_0000115>
+        <obo:IAO_0000115 xml:lang="en">A GenEpiO component model is a generic data model relevant to epidemiological, laboratory, clinical or environmental pathogen sample data collection and analysis.</obo:IAO_0000115>
         <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
-        <rdfs:label xml:lang="en">draft GenEpiO model</rdfs:label>
+        <rdfs:label xml:lang="en">draft GenEpiO component model</rdfs:label>
     </owl:Class>
     
 
@@ -15946,9 +15807,11 @@ obo:NCIT_C25621 # postal code</obo:GENEPIO_0001763>
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0001743 -->
 
     <owl:Class rdf:about="&obo;GENEPIO_0001743">
-        <rdfs:subClassOf rdf:resource="&obo;OBI_0000658"/>
+        <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C103180"/>
         <obo:IAO_0000114 rdf:resource="&obo;IAO_0000428"/>
-        <rdfs:label xml:lang="en">public health data model</rdfs:label>
+        <obo:IAO_0000115 xml:lang="en">A data standard related to publich health research and service delivery.</obo:IAO_0000115>
+        <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
+        <rdfs:label xml:lang="en">public health data standard</rdfs:label>
     </owl:Class>
     
 
@@ -16079,7 +15942,7 @@ obo:NCIT_C25621 # postal code</obo:GENEPIO_0001763>
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0001755 -->
 
     <owl:Class rdf:about="&obo;GENEPIO_0001755">
-        <rdfs:subClassOf rdf:resource="&obo;OBI_0000658"/>
+        <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0001342"/>
         <obo:IAO_0000114 rdf:resource="&obo;IAO_0000428"/>
         <obo:IAO_0000115 xml:lang="en">This is a collection of various human contact information specifications - organization or human role based specifications used in data standards.</obo:IAO_0000115>
         <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
@@ -16092,18 +15955,6 @@ obo:NCIT_C25621 # postal code</obo:GENEPIO_0001763>
 
     <owl:Class rdf:about="&obo;GENEPIO_0001756">
         <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0001755"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;RO_0002350"/>
-                <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0001606"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;RO_0002350"/>
-                <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0002104"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;RO_0002180"/>
@@ -16407,12 +16258,6 @@ obo:GENEPIO_0001896 # phone type</obo:GENEPIO_0001763>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;RO_0002350"/>
-                <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0000015"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;RO_0002350"/>
                 <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0000017"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -16486,7 +16331,8 @@ obo:GENEPIO_0001896 # phone type</obo:GENEPIO_0001763>
     <owl:Class rdf:about="&obo;GENEPIO_0001776">
         <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0001743"/>
         <obo:IAO_0000114 rdf:resource="&obo;IAO_0000428"/>
-        <obo:IAO_0000117 xml:lang="en">A sample data collection standard involving a particular species of pathogen</obo:IAO_0000117>
+        <obo:IAO_0000117 xml:lang="en">A public health related data standard involving a particular species of pathogen.</obo:IAO_0000117>
+        <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
         <rdfs:label xml:lang="en">pathogen specific data standard</rdfs:label>
     </owl:Class>
     
@@ -16496,9 +16342,57 @@ obo:GENEPIO_0001896 # phone type</obo:GENEPIO_0001763>
 
     <owl:Class rdf:about="&obo;GENEPIO_0001777">
         <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0000106"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;RO_0002180"/>
+                <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0002000"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;RO_0002180"/>
+                <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0002001"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;RO_0002180"/>
+                <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0002002"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;RO_0002180"/>
+                <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0002003"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;RO_0002180"/>
+                <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0002004"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;RO_0002180"/>
+                <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0002005"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;RO_0002180"/>
+                <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0002006"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;RO_0002180"/>
+                <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0002007"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <obo:IAO_0000114 rdf:resource="&obo;IAO_0000123"/>
         <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
-        <rdfs:label xml:lang="en">draft Mycobacterium tuberculosis contextual data standard</rdfs:label>
+        <rdfs:label xml:lang="en">draft tuberculosis contextual data standard</rdfs:label>
     </owl:Class>
     
 
@@ -17849,6 +17743,18 @@ obo:GENEPIO_0001212 # subject disease outcome</obo:GENEPIO_0001763>
         <rdfs:label xml:lang="en">NCBI BioSample Pathogen.cl standard</rdfs:label>
         <rdfs:seeAlso rdf:datatype="&xsd;anyURI">https://www.ncbi.nlm.nih.gov/biosample/docs/packages/Pathogen.cl.1.0/</rdfs:seeAlso>
     </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="&obo;GENEPIO_0001835"/>
+        <owl:annotatedProperty rdf:resource="&rdfs;subClassOf"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;RO_0002180"/>
+                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="&obo;GENEPIO_0001656"/>
+            </owl:Restriction>
+        </owl:annotatedTarget>
+        <rdfs:label>latitude and longitude</rdfs:label>
+    </owl:Axiom>
     
 
 
@@ -19868,7 +19774,7 @@ http://www.ebi.ac.uk/ena/about/missing-values-reporting</rdfs:seeAlso>
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0001999 -->
 
     <owl:Class rdf:about="&obo;GENEPIO_0001999">
-        <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0001777"/>
+        <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0000106"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;RO_0002180"/>
@@ -19898,7 +19804,7 @@ http://www.ebi.ac.uk/ena/about/missing-values-reporting</rdfs:seeAlso>
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000114 rdf:resource="&obo;IAO_0000123"/>
-        <rdfs:label xml:lang="en">TB dataset features and provenance</rdfs:label>
+        <rdfs:label xml:lang="en">draft tuberculosis - dataset features and provenance</rdfs:label>
     </owl:Class>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="&obo;GENEPIO_0001999"/>
@@ -19955,7 +19861,7 @@ http://www.ebi.ac.uk/ena/about/missing-values-reporting</rdfs:seeAlso>
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0002000 -->
 
     <owl:Class rdf:about="&obo;GENEPIO_0002000">
-        <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0001777"/>
+        <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0000106"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;RO_0002180"/>
@@ -20055,7 +19961,7 @@ http://www.ebi.ac.uk/ena/about/missing-values-reporting</rdfs:seeAlso>
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000114 rdf:resource="&obo;IAO_0000123"/>
-        <rdfs:label xml:lang="en">TB case specimen characteristics</rdfs:label>
+        <rdfs:label xml:lang="en">draft tuberculosis - case specimen characteristics</rdfs:label>
     </owl:Class>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="&obo;GENEPIO_0002000"/>
@@ -20159,7 +20065,7 @@ http://www.ebi.ac.uk/ena/about/missing-values-reporting</rdfs:seeAlso>
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0002001 -->
 
     <owl:Class rdf:about="&obo;GENEPIO_0002001">
-        <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0001777"/>
+        <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0000106"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;RO_0002180"/>
@@ -20210,7 +20116,7 @@ http://www.ebi.ac.uk/ena/about/missing-values-reporting</rdfs:seeAlso>
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000114 rdf:resource="&obo;IAO_0000123"/>
-        <rdfs:label xml:lang="en">TB case subject characteristics</rdfs:label>
+        <rdfs:label xml:lang="en">draft tuberculosis - case subject characteristics</rdfs:label>
     </owl:Class>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="&obo;GENEPIO_0002001"/>
@@ -20254,9 +20160,9 @@ http://www.ebi.ac.uk/ena/about/missing-values-reporting</rdfs:seeAlso>
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0002002 -->
 
     <owl:Class rdf:about="&obo;GENEPIO_0002002">
-        <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0001777"/>
+        <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0000106"/>
         <obo:IAO_0000114 rdf:resource="&obo;IAO_0000123"/>
-        <rdfs:label xml:lang="en">TB case risk factors</rdfs:label>
+        <rdfs:label xml:lang="en">draft tuberculosis - case risk factors</rdfs:label>
     </owl:Class>
     
 
@@ -20264,7 +20170,7 @@ http://www.ebi.ac.uk/ena/about/missing-values-reporting</rdfs:seeAlso>
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0002003 -->
 
     <owl:Class rdf:about="&obo;GENEPIO_0002003">
-        <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0001777"/>
+        <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0000106"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;RO_0002180"/>
@@ -20273,7 +20179,7 @@ http://www.ebi.ac.uk/ena/about/missing-values-reporting</rdfs:seeAlso>
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000114 rdf:resource="&obo;IAO_0000123"/>
-        <rdfs:label xml:lang="en">TB case clinical presentation</rdfs:label>
+        <rdfs:label xml:lang="en">draft tuberculosis - case clinical presentation</rdfs:label>
     </owl:Class>
     
 
@@ -20281,12 +20187,12 @@ http://www.ebi.ac.uk/ena/about/missing-values-reporting</rdfs:seeAlso>
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0002004 -->
 
     <owl:Class rdf:about="&obo;GENEPIO_0002004">
-        <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0001777"/>
+        <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0000106"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;RO_0002180"/>
                 <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onClass rdf:resource="&obo;GENEPIO_0001008"/>
+                <owl:onClass rdf:resource="&obo;GENEPIO_0001007"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -20304,7 +20210,7 @@ http://www.ebi.ac.uk/ena/about/missing-values-reporting</rdfs:seeAlso>
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000114 rdf:resource="&obo;IAO_0000123"/>
-        <rdfs:label xml:lang="en">TB case laboratory testing</rdfs:label>
+        <rdfs:label xml:lang="en">draft tuberculosis - case laboratory testing</rdfs:label>
     </owl:Class>
     
 
@@ -20312,9 +20218,9 @@ http://www.ebi.ac.uk/ena/about/missing-values-reporting</rdfs:seeAlso>
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0002005 -->
 
     <owl:Class rdf:about="&obo;GENEPIO_0002005">
-        <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0001777"/>
+        <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0000106"/>
         <obo:IAO_0000114 rdf:resource="&obo;IAO_0000123"/>
-        <rdfs:label xml:lang="en">TB case medication</rdfs:label>
+        <rdfs:label xml:lang="en">draft tuberculosis - case medication</rdfs:label>
     </owl:Class>
     
 
@@ -20322,7 +20228,7 @@ http://www.ebi.ac.uk/ena/about/missing-values-reporting</rdfs:seeAlso>
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0002006 -->
 
     <owl:Class rdf:about="&obo;GENEPIO_0002006">
-        <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0001777"/>
+        <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0000106"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;RO_0002180"/>
@@ -20345,7 +20251,7 @@ http://www.ebi.ac.uk/ena/about/missing-values-reporting</rdfs:seeAlso>
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000114 rdf:resource="&obo;IAO_0000123"/>
-        <rdfs:label xml:lang="en">isolate whole genome sequencing model</rdfs:label>
+        <rdfs:label xml:lang="en">draft isolate whole genome sequencing model</rdfs:label>
     </owl:Class>
     
 
@@ -20353,7 +20259,7 @@ http://www.ebi.ac.uk/ena/about/missing-values-reporting</rdfs:seeAlso>
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0002007 -->
 
     <owl:Class rdf:about="&obo;GENEPIO_0002007">
-        <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0001777"/>
+        <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0000106"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;RO_0002180"/>
@@ -20362,7 +20268,7 @@ http://www.ebi.ac.uk/ena/about/missing-values-reporting</rdfs:seeAlso>
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000114 rdf:resource="&obo;IAO_0000123"/>
-        <rdfs:label xml:lang="en">TB case model</rdfs:label>
+        <rdfs:label xml:lang="en">draft tuberculosis - case model</rdfs:label>
     </owl:Class>
     
 
@@ -20740,12 +20646,6 @@ http://www.nature.com/ng/journal/v45/n10/full/ng.2744.html</rdfs:seeAlso>
 
     <owl:Class rdf:about="&obo;GENEPIO_0002036">
         <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0001709"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;RO_0002350"/>
-                <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0002088"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <obo:IAO_0000114 rdf:resource="&obo;IAO_0000428"/>
         <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
         <obo:IAO_0000117 xml:lang="en">This is a collection of antibiotic resistance process parameters and outputs</obo:IAO_0000117>
@@ -20770,6 +20670,12 @@ http://www.nature.com/ng/journal/v45/n10/full/ng.2744.html</rdfs:seeAlso>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;RO_0002350"/>
                 <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0001100"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;RO_0002350"/>
+                <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0002088"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000114 rdf:resource="&obo;IAO_0000428"/>
@@ -20947,6 +20853,12 @@ http://www.nature.com/ng/journal/v45/n10/full/ng.2744.html</rdfs:seeAlso>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;RO_0002350"/>
+                <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0002088"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;IAO_0000039"/>
                 <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
                 <owl:onClass>
@@ -20994,6 +20906,12 @@ http://www.nature.com/ng/journal/v45/n10/full/ng.2744.html</rdfs:seeAlso>
                 <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0001007"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;RO_0002350"/>
+                <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0002088"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <obo:IAO_0000114 rdf:resource="&obo;IAO_0000428"/>
         <obo:IAO_0000115 xml:lang="en">The type of assay used to determine the minimum inhibitory concentration.</obo:IAO_0000115>
         <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
@@ -21035,6 +20953,12 @@ http://www.nature.com/ng/journal/v45/n10/full/ng.2744.html</rdfs:seeAlso>
                 <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0001007"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;RO_0002350"/>
+                <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0002088"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <obo:IAO_0000114 rdf:resource="&obo;IAO_0000428"/>
         <obo:IAO_0000115 xml:lang="en">The commercial kit or product used to determine the MIC e.g. E-Test. If a commercial product was not used, include the type of media used.</obo:IAO_0000115>
         <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
@@ -21064,6 +20988,12 @@ http://www.nature.com/ng/journal/v45/n10/full/ng.2744.html</rdfs:seeAlso>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;RO_0002350"/>
                 <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0001007"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;RO_0002350"/>
+                <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0002088"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000114 rdf:resource="&obo;IAO_0000428"/>
@@ -21204,6 +21134,12 @@ http://www.nature.com/ng/journal/v45/n10/full/ng.2744.html</rdfs:seeAlso>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;RO_0002350"/>
                 <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0001007"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;RO_0002350"/>
+                <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0002088"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000114 rdf:resource="&obo;IAO_0000428"/>
@@ -21529,7 +21465,7 @@ http://www.nature.com/ng/journal/v45/n10/full/ng.2744.html</rdfs:seeAlso>
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0002081 -->
 
     <owl:Class rdf:about="&obo;GENEPIO_0002081">
-        <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0002083"/>
+        <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0000106"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;RO_0002180"/>
@@ -21638,7 +21574,6 @@ obo:ENVO_00002297 # environmental feature</obo:GENEPIO_0001763>
 
     <owl:Class rdf:about="&obo;GENEPIO_0002082">
         <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0001755"/>
-        <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0002083"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;RO_0002180"/>
@@ -21708,6 +21643,78 @@ obo:NCIT_C25690 # Street Address</obo:GENEPIO_0001763>
 
     <owl:Class rdf:about="&obo;GENEPIO_0002083">
         <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0000106"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;RO_0002180"/>
+                <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0002081"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;RO_0002180"/>
+                <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0002082"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;RO_0002180"/>
+                <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0002084"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;RO_0002180"/>
+                <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0002085"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;RO_0002180"/>
+                <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0002086"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;RO_0002180"/>
+                <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0002087"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;RO_0002180"/>
+                <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0002088"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;RO_0002180"/>
+                <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0002089"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;RO_0002180"/>
+                <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0002090"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;RO_0002180"/>
+                <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0002091"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;RO_0002180"/>
+                <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0002092"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;RO_0002180"/>
+                <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0002106"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <obo:GENEPIO_0001763>dateFormat:ISO 8601</obo:GENEPIO_0001763>
         <obo:GENEPIO_0001763>order:
 obo:GENEPIO_0002082 # specimen related organization
@@ -21727,13 +21734,24 @@ obo:GENEPIO_0002091 # submission to NCBI/DDBJ</obo:GENEPIO_0001763>
         <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
         <rdfs:label xml:lang="en">draft sequence repository contextual data standard</rdfs:label>
     </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="&obo;GENEPIO_0002083"/>
+        <owl:annotatedProperty rdf:resource="&rdfs;subClassOf"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;RO_0002180"/>
+                <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0002086"/>
+            </owl:Restriction>
+        </owl:annotatedTarget>
+        <rdfs:label>Geographic Location of Sample Collection</rdfs:label>
+    </owl:Axiom>
     
 
 
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0002084 -->
 
     <owl:Class rdf:about="&obo;GENEPIO_0002084">
-        <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0002083"/>
+        <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0000106"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;RO_0002180"/>
@@ -21783,7 +21801,7 @@ obo:OBI_0000079 # culture medium</obo:GENEPIO_0001763>
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0002085 -->
 
     <owl:Class rdf:about="&obo;GENEPIO_0002085">
-        <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0002083"/>
+        <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0000106"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;RO_0002180"/>
@@ -21907,7 +21925,7 @@ obo:GENEPIO_0000095 # genome annotation algorithm</obo:GENEPIO_0001763>
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0002086 -->
 
     <owl:Class rdf:about="&obo;GENEPIO_0002086">
-        <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0002083"/>
+        <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0000106"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;RO_0002180"/>
@@ -21953,19 +21971,13 @@ obo:GENEPIO_0001785 # extraction city</obo:GENEPIO_0001763>
         <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
         <rdfs:label xml:lang="en">draft sequence repository data - geographic location</rdfs:label>
     </owl:Class>
-    <owl:Axiom>
-        <owl:annotatedSource rdf:resource="&obo;GENEPIO_0002086"/>
-        <owl:annotatedProperty rdf:resource="&rdfs;subClassOf"/>
-        <owl:annotatedTarget rdf:resource="&obo;GENEPIO_0002083"/>
-        <rdfs:label xml:lang="en">Geographic Location of Sample Collection</rdfs:label>
-    </owl:Axiom>
     
 
 
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0002087 -->
 
     <owl:Class rdf:about="&obo;GENEPIO_0002087">
-        <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0002083"/>
+        <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0000106"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;RO_0002180"/>
@@ -21992,7 +22004,7 @@ obo:GENEPIO_0002079 # passage protocol</obo:GENEPIO_0001763>
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0002088 -->
 
     <owl:Class rdf:about="&obo;GENEPIO_0002088">
-        <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0002083"/>
+        <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0000106"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;RO_0002180"/>
@@ -22072,7 +22084,7 @@ obo:GENEPIO_0002049 # antimicrobial resistance testing platform</obo:GENEPIO_000
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0002089 -->
 
     <owl:Class rdf:about="&obo;GENEPIO_0002089">
-        <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0002083"/>
+        <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0000106"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;RO_0002180"/>
@@ -22091,7 +22103,7 @@ obo:GENEPIO_0002049 # antimicrobial resistance testing platform</obo:GENEPIO_000
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0002090 -->
 
     <owl:Class rdf:about="&obo;GENEPIO_0002090">
-        <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0002083"/>
+        <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0000106"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;RO_0002180"/>
@@ -22131,7 +22143,7 @@ obo:GENEPIO_0002049 # antimicrobial resistance testing platform</obo:GENEPIO_000
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0002091 -->
 
     <owl:Class rdf:about="&obo;GENEPIO_0002091">
-        <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0002083"/>
+        <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0000106"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;RO_0002180"/>
@@ -22227,7 +22239,7 @@ obo:GENEPIO_0002049 # antimicrobial resistance testing platform</obo:GENEPIO_000
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0002092 -->
 
     <owl:Class rdf:about="&obo;GENEPIO_0002092">
-        <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0002083"/>
+        <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0000106"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;RO_0002180"/>
@@ -22473,6 +22485,12 @@ obo:GENEPIO_0002049 # antimicrobial resistance testing platform</obo:GENEPIO_000
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;RO_0002350"/>
+                <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0002088"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;GENEPIO_0001605"/>
                 <owl:someValuesFrom rdf:resource="&xsd;integer"/>
             </owl:Restriction>
@@ -22504,6 +22522,12 @@ obo:GENEPIO_0002049 # antimicrobial resistance testing platform</obo:GENEPIO_000
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;RO_0002350"/>
+                <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0002088"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;GENEPIO_0001605"/>
                 <owl:someValuesFrom rdf:resource="&xsd;integer"/>
             </owl:Restriction>
@@ -22521,6 +22545,12 @@ obo:GENEPIO_0002049 # antimicrobial resistance testing platform</obo:GENEPIO_000
     <owl:Class rdf:about="&obo;GENEPIO_0002102">
         <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0001655"/>
         <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0002036"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;RO_0002350"/>
+                <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0002088"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <obo:IAO_0000114 rdf:resource="&obo;IAO_0000428"/>
         <obo:IAO_0000115 xml:lang="en">The tissue type used to select breakpoints from a particular standard, for the interpretation of MIC results.</obo:IAO_0000115>
         <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
@@ -22651,7 +22681,7 @@ obo:OBI_0001885 # specimen repository organization</obo:GENEPIO_0001763>
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0002106 -->
 
     <owl:Class rdf:about="&obo;GENEPIO_0002106">
-        <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0002083"/>
+        <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0000106"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;RO_0002350"/>
@@ -23299,6 +23329,14 @@ Depending on its context, hasDbXref annotations may point directly to metadata f
     
 
 
+    <!-- http://purl.obolibrary.org/obo/NCIT_C16143 -->
+
+    <rdf:Description rdf:about="&obo;NCIT_C16143">
+        <rdfs:subClassOf rdf:resource="&obo;OBI_0000245"/>
+    </rdf:Description>
+    
+
+
     <!-- http://purl.obolibrary.org/obo/NCIT_C20108 -->
 
     <rdf:Description rdf:about="&obo;NCIT_C20108">
@@ -23319,12 +23357,6 @@ Depending on its context, hasDbXref annotations may point directly to metadata f
 
     <rdf:Description rdf:about="&obo;NCIT_C25464">
         <rdfs:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000415"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;RO_0002350"/>
-                <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0002082"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <obo:GENEPIO_0001763 xml:lang="en">lookup</obo:GENEPIO_0001763>
         <rdfs:seeAlso rdf:datatype="&xsd;anyURI">http://purl.obolibrary.org/obo/GEO_000000396</rdfs:seeAlso>
     </rdf:Description>
@@ -23454,6 +23486,14 @@ Depending on its context, hasDbXref annotations may point directly to metadata f
     
 
 
+    <!-- http://purl.obolibrary.org/obo/NCIT_C41277 -->
+
+    <rdf:Description rdf:about="&obo;NCIT_C41277">
+        <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0002094"/>
+    </rdf:Description>
+    
+
+
     <!-- http://purl.obolibrary.org/obo/NCIT_C42614 -->
 
     <rdf:Description rdf:about="&obo;NCIT_C42614">
@@ -23494,6 +23534,22 @@ Depending on its context, hasDbXref annotations may point directly to metadata f
                 </owl:onDataRange>
             </owl:Restriction>
         </rdfs:subClassOf>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/NCIT_C48519 -->
+
+    <rdf:Description rdf:about="&obo;NCIT_C48519">
+        <rdfs:subClassOf rdf:resource="&obo;UO_0000006"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/NCIT_C48531 -->
+
+    <rdf:Description rdf:about="&obo;NCIT_C48531">
+        <rdfs:subClassOf rdf:resource="&obo;UO_0000006"/>
     </rdf:Description>
     
 
@@ -23892,12 +23948,6 @@ Depending on its context, hasDbXref annotations may point directly to metadata f
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;RO_0002350"/>
-                <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0000015"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;RO_0002350"/>
                 <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0001835"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -24023,12 +24073,6 @@ Depending on its context, hasDbXref annotations may point directly to metadata f
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;RO_0002350"/>
-                <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0000015"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;RO_0002350"/>
                 <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0000111"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -24093,12 +24137,6 @@ Depending on its context, hasDbXref annotations may point directly to metadata f
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;RO_0002350"/>
                 <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0000112"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;RO_0002350"/>
-                <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0001705"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -24564,12 +24602,6 @@ Also note historical name issue (Myanmar vs Burma) and diplomatic name issue (Ta
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;RO_0002350"/>
-                <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0001705"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;RO_0002350"/>
                 <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0001836"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -24609,12 +24641,6 @@ Also note historical name issue (Myanmar vs Burma) and diplomatic name issue (Ta
                 <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0000112"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;RO_0002350"/>
-                <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0001705"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <obo:GENEPIO_0000006 xml:lang="en">specimen provider PI organization</obo:GENEPIO_0000006>
     </rdf:Description>
     <owl:Axiom>
@@ -24639,12 +24665,6 @@ Also note historical name issue (Myanmar vs Burma) and diplomatic name issue (Ta
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;RO_0002350"/>
                 <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0000112"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;RO_0002350"/>
-                <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0001705"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -24691,12 +24711,6 @@ Also note historical name issue (Myanmar vs Burma) and diplomatic name issue (Ta
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;RO_0002350"/>
                 <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0000112"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;RO_0002350"/>
-                <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0001705"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -24768,12 +24782,6 @@ Also note historical name issue (Myanmar vs Burma) and diplomatic name issue (Ta
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;RO_0002350"/>
-                <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0001705"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;RO_0002180"/>
                 <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
                 <owl:onClass rdf:resource="&obo;OBI_0001903"/>
@@ -24814,12 +24822,6 @@ Also note historical name issue (Myanmar vs Burma) and diplomatic name issue (Ta
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;RO_0002350"/>
-                <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0001705"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;RO_0002350"/>
                 <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0001836"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -24847,12 +24849,6 @@ Also note historical name issue (Myanmar vs Burma) and diplomatic name issue (Ta
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;RO_0002350"/>
                 <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0000112"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;RO_0002350"/>
-                <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0001705"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -24925,12 +24921,6 @@ Also note historical name issue (Myanmar vs Burma) and diplomatic name issue (Ta
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;RO_0002350"/>
-                <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0001705"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;RO_0002350"/>
                 <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0001836"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -24987,12 +24977,6 @@ Also note historical name issue (Myanmar vs Burma) and diplomatic name issue (Ta
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;RO_0002350"/>
-                <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0001705"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;RO_0002350"/>
                 <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0001836"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -25038,12 +25022,6 @@ Also note historical name issue (Myanmar vs Burma) and diplomatic name issue (Ta
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;RO_0002350"/>
                 <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0000112"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;RO_0002350"/>
-                <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0001705"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:GENEPIO_0000006 xml:lang="en">specimen provider PI email</obo:GENEPIO_0000006>
@@ -25094,12 +25072,6 @@ Often a value specification may need to allow for a &quot;data item state&quot; 
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;RO_0002350"/>
                 <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0000112"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;RO_0002350"/>
-                <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0001705"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -25211,20 +25183,6 @@ Often a value specification may need to allow for a &quot;data item state&quot; 
 
     <rdf:Description rdf:about="&obo;OBI_0400103">
         <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0001681"/>
-    </rdf:Description>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/OBI_0500000 -->
-
-    <rdf:Description rdf:about="&obo;OBI_0500000">
-        <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0001655"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;RO_0002350"/>
-                <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0001705"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
     </rdf:Description>
     
 
@@ -25965,9 +25923,9 @@ Angular offset can be radians or degrees.</rdfs:comment>
 
     <!-- http://purl.obolibrary.org/obo/UBERON_2000084 -->
 
-    <rdf:Description rdf:about="&obo;UBERON_2000084">
+    <owl:Class rdf:about="&obo;UBERON_2000084">
         <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0001636"/>
-    </rdf:Description>
+    </owl:Class>
     
 
 

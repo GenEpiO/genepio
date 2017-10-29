@@ -82,23 +82,22 @@ class OntoMaker(object):
 					}
 				}
 			""",
-
-			# ################################################################
-			# 
-			# Update/Delete queries are below. These queries are straight strings.
-
-			# Connect 'province (Canada)' as 'located in' 'Canada'
-			# Or connect each province separately?
-			'province in canada': """
-				INSERT {?entity obo:RO_0001025 obo:GAZ_00002560}
-				WHERE {VALUES ?entity {obo:GAZ_00002561}
-				}
-			""",
-
-			# Case of type:city wrongly associated with Gazetteer country 
-			'delete city type':"""
-				DELETE {?entity rdf:type obo:ENVO_00000856}
-				WHERE {?entity rdf:type obo:ENVO_00000856}
+			'drop_other_memberships': r""" 
+				DELETE {?restriction owl:onProperty obo:RO_0002350}
+				DELETE {?restriction owl:someValuesFrom ?otherStandard}
+				DELETE {?restriction owl:onClass ?otherStandard}
+				DELETE {?restriction owl:qualifiedCardinality ?cardinality}
+				SELECT DISTINCT ?component ?otherStandard ?standard # Strips off all but given standard's links to each field
+					WHERE { BIND (obo:GENEPIO_0002083 as ?standard) . # standard to keep links for
+						?component rdfs:subClassOf ?restriction .
+						?restriction owl:onProperty obo:RO_0002350 . # member of
+						?restriction owl:qualifiedCardinality ?cardinality .
+						?restriction owl:someValuesFrom ?otherStandard .
+						?otherStandard rdfs:label ?label .
+						?otherStandard rdfs:subClassOf+ obo:GENEPIO_0001342
+						FILTER NOT EXISTS { ?standard (rdfs:subClassOf/(owl:someValuesFrom))+ ?otherStandard . }
+						
+					}
 			"""
 		}
 
@@ -113,8 +112,8 @@ class OntoMaker(object):
 			print CODE_VERSION
 			return CODE_VERSION
 
-		self.onto = OntoUtils(queries=self.queries)
-		self.newonto = OntoUtils()
+		self.onto = OntoUtils(newqueries=self.queries)
+		#self.newonto = OntoUtils()
 
 		if not len(args):
 			self.onto.stop_err('Please supply an OWL ontology file (in XML/RDF format)')
@@ -146,9 +145,12 @@ class OntoMaker(object):
 
 		print("graph has %s statements." % len(self.onto.graph))
 
-		# ONTOLOGY IMPORT FILES
+		# ONTOLOGY IMPORT FILES // USING ROBOT MERGE output now...
 		# Add each ontology include file (must be in OWL RDF format)
 		#self.onto.get_ontology_imports(os.path.dirname(input_ontology_file) + '/imports')
+
+		initBinds = {'standard': rdflib.URIRef(self.onto.get_expanded_id(args[1]))} 
+		entity_results = self.onto.do_query_update('drop_other_memberships', initBinds)
 
 		# Temporarily write merged ontology
 		with (open(output_ontology_file, 'w')) as output_handle:
@@ -156,10 +158,12 @@ class OntoMaker(object):
 
 		# Extract entities from the ontology given in 'get_data_standard' query
 		# Make binding for standard's ontology entity
-	"""
-		initBinds = {'root': rdflib.URIRef(self.onto.get_expanded_id(args[1]))} 
-		entity_results = self.onto.get_query_table('get_data_standard', initBinds) # Fetches all main ids via get_component and subClassOf
 
+		#initBinds = {'standard': rdflib.URIRef(self.onto.get_expanded_id(args[1]))} 
+		#entity_results = self.onto.do_query_update('drop_other_memberships', initBinds)
+
+		#entity_results = self.onto.get_query_table('get_data_standard', initBinds) # Fetches all main ids via get_component and subClassOf
+	"""
 		entity_ids = []
 		print "Importing ", len(entity_results), " terms"
 		for row in entity_results:

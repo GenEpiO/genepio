@@ -104,17 +104,22 @@ class OntoUtils(object):
 
 	}
 
-	def __init__(self, namespace={}, prefixes='', queries={}):
+	def __init__(self, namespace={}, prefixes='', newqueries={}):
 
 		self.graph = rdflib.Graph()
 
 		self.namespace.update(namespace)
 		self.prefixes += prefixes
 		# run all given "SELECT" queries through prepareQuery function.
-		for (id, query) in queries.iteritems():
-			if query.strip()[0:6] == 'SELECT': # prepareQuery only works on SELECT ...
+		for (id, query) in newqueries.iteritems():
+			leader = query.strip()[0:6]
+			if leader == 'SELECT': # prepareQuery only works on SELECT ...
 				self.queries[id] = rdflib.plugins.sparql.prepareQuery(query, initNs = self.namespace)
+				print "Adding SELECT query"
 
+			elif leader == 'DELETE' or leader == 'INSERT':
+				self.queries[id] = query
+				print "Adding DEL/INS query"
 		#self.queries.update(queries)
 		#print "Done query prep."
 

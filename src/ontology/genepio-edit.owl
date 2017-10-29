@@ -306,15 +306,6 @@
     
 
 
-    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001341 -->
-
-    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001341">
-        <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/RO_0002180"/>
-        <rdfs:label xml:lang="en">has standards component</rdfs:label>
-    </owl:ObjectProperty>
-    
-
-
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0001739 -->
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001739">
@@ -7399,7 +7390,7 @@ Clusters passing filter are represented by PF in analysis reports. Clusters pass
             </owl:Restriction>
         </owl:annotatedTarget>
         <rdfs:comment xml:lang="en">Allowed Values: ISO 3166 standard abbreviation (2-alpha), www.iso.org/iso/iso-3166-1_decoding_table
-Syntax: urrently is free text, but ISO3166 standard abbreviations would be acceptable</rdfs:comment>
+Syntax: currently is free text, but ISO3166 standard abbreviations would be acceptable</rdfs:comment>
         <rdfs:label xml:lang="en">Specimen Collection Location - Location</rdfs:label>
     </owl:Axiom>
     
@@ -14340,12 +14331,6 @@ or https://www.ncbi.nlm.nih.gov/mesh/1000067</rdfs:comment>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001611"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002350"/>
-                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001835"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
                 <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002180"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
                 <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/OBI_0001620"/>
@@ -14363,17 +14348,6 @@ or https://www.ncbi.nlm.nih.gov/mesh/1000067</rdfs:comment>
         <rdfs:comment xml:lang="en">A geographic coordinate entity composed of both latitude and longitude components.</rdfs:comment>
         <rdfs:label xml:lang="en">latitude and longitude coordinate</rdfs:label>
     </owl:Class>
-    <owl:Axiom>
-        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001656"/>
-        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002350"/>
-                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001835"/>
-            </owl:Restriction>
-        </owl:annotatedTarget>
-        <rdfs:label xml:lang="en">latitude and longitude</rdfs:label>
-    </owl:Axiom>
     
 
 
@@ -15995,18 +15969,6 @@ obo:NCIT_C25621 # postal code</obo:GENEPIO_0001763>
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001756">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001755"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002350"/>
-                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001606"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002350"/>
-                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0002104"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002180"/>
@@ -17810,6 +17772,18 @@ obo:GENEPIO_0001212 # subject disease outcome</obo:GENEPIO_0001763>
         <rdfs:label xml:lang="en">NCBI BioSample Pathogen.cl standard</rdfs:label>
         <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.ncbi.nlm.nih.gov/biosample/docs/packages/Pathogen.cl.1.0/</rdfs:seeAlso>
     </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001835"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002180"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001656"/>
+            </owl:Restriction>
+        </owl:annotatedTarget>
+        <rdfs:label>latitude and longitude</rdfs:label>
+    </owl:Axiom>
     
 
 
@@ -20707,12 +20681,6 @@ http://www.nature.com/ng/journal/v45/n10/full/ng.2744.html</rdfs:seeAlso>
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0002036">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001709"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002350"/>
-                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0002088"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000428"/>
         <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
         <obo:IAO_0000117 xml:lang="en">This is a collection of antibiotic resistance process parameters and outputs</obo:IAO_0000117>
@@ -21642,12 +21610,6 @@ obo:ENVO_00002297 # environmental feature</obo:GENEPIO_0001763>
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0002082">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001755"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002350"/>
-                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0002083"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002180"/>
@@ -23432,12 +23394,6 @@ Depending on its context, hasDbXref annotations may point directly to metadata f
     <rdf:Description rdf:about="http://purl.obolibrary.org/obo/NCIT_C25464">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001655"/>
         <rdfs:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000415"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002350"/>
-                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0002082"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <obo:GENEPIO_0001763 xml:lang="en">lookup</obo:GENEPIO_0001763>
         <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://purl.obolibrary.org/obo/GEO_000000396</rdfs:seeAlso>
     </rdf:Description>

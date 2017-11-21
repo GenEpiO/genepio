@@ -66,7 +66,6 @@ class OntologyHammer(object):
 		# JSON-LD @context markup, and as well its used for a prefix encoding table.
 		# Might need some of these prefixes for GAZETTEER related geo terms
 		self.struct['@context'] = {
-			'ifm':'http://purl.obolibrary.org/obo/GENEPIO/IFM#',  # Must be ordered 1st or obo usurps.
 			'obo':'http://purl.obolibrary.org/obo/',
 			'owl':'http://www.w3.org/2002/07/owl/',
 			'sio':'http://semanticscience.org/resource/',

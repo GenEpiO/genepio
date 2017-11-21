@@ -33,7 +33,7 @@ $(ONT).owl: $(SRC)
 # Ontofox can't import apollo_sv at moment - yeilds empty ontology file.
 # Ontofox can't import geo either - the ids are ahead of what ontofox's geo ontology has?
 # 
-IMPORTS=brenda chebi chmo doid efo envo eo ero foodon gazetteer hp ido ncbitaxon ncit ndf-rt obi pato po ro so stato uberon
+IMPORTS=brenda chebi chmo doid efo envo eo ero foodon gazetteer hp ido ncbitaxon ncit ndf-rt obi pato po pco ro so stato uberon
 # bfo 
 
 IMPORTS_OWL=$(patsubst %, imports/%_import.owl,$(IMPORTS))

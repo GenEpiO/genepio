@@ -28,7 +28,7 @@
      xmlns:foaf="http://xmlns.com/foaf/0.1/"
      xmlns:dc="http://purl.org/dc/elements/1.1/">
     <owl:Ontology rdf:about="&obo;genepio.owl">
-        <owl:versionIRI rdf:resource="&obo;genepio/releases/2017-11-21/genepio.owl"/>
+        <owl:versionIRI rdf:resource="&obo;genepio/releases/2017-11-23/genepio.owl"/>
         <owl:imports rdf:resource="&obo;GENEPIO/imports/pato_import.owl"/>
         <owl:imports rdf:resource="&obo;GENEPIO/imports/chebi_import.owl"/>
         <owl:imports rdf:resource="&obo;GENEPIO/imports/ncbitaxon_import.owl"/>
@@ -12404,11 +12404,12 @@ Note that the health status of people associated with an exposure event can chan
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0001533 -->
 
     <owl:Class rdf:about="&obo;GENEPIO_0001533">
-        <rdfs:subClassOf rdf:resource="&oboInOwl;ObsoleteClass"/>
-        <obo:IAO_0100001 rdf:datatype="&xsd;anyURI">http://purl.obolibrary.org/obo/GENEPIO_0001533</obo:IAO_0100001>
-        <rdfs:comment xml:lang="en">This will also point to food ontology</rdfs:comment>
-        <rdfs:label xml:lang="en">food product type (deprecated)</rdfs:label>
-        <owl:deprecated rdf:datatype="&xsd;boolean">true</owl:deprecated>
+        <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0001532"/>
+        <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0001655"/>
+        <obo:IAO_0000114 rdf:resource="&obo;IAO_0000428"/>
+        <obo:IAO_0000115 xml:lang="en">A food specimen product type is a class of food products that is differentiated by its food composition, processing and/or consumption characteristics and which is of epidemiological interest. This does not include brand name products but it may include generic food dish categories.</obo:IAO_0000115>
+        <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
+        <rdfs:label xml:lang="en">food specimen product type</rdfs:label>
     </owl:Class>
     
 
@@ -13682,13 +13683,40 @@ obolibrary:GENEPIO_0001756 # phone</obo:GENEPIO_0001763>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;RO_0000052"/>
-                <owl:someValuesFrom rdf:resource="&obo;IDO_0000531"/>
+                <owl:someValuesFrom rdf:resource="&obo;OBI_0100026"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;RO_0002350"/>
                 <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0001000"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;IAO_0000039"/>
+                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&obo;UO_0000036"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&obo;GENEPIO_0001605"/>
+                                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                                <owl:onDataRange>
+                                    <rdfs:Datatype>
+                                        <owl:onDatatype rdf:resource="&xsd;nonNegativeInteger"/>
+                                        <owl:withRestrictions rdf:parseType="Collection">
+                                            <rdf:Description>
+                                                <xsd:maxExclusive rdf:datatype="&xsd;nonNegativeInteger">130</xsd:maxExclusive>
+                                            </rdf:Description>
+                                        </owl:withRestrictions>
+                                    </rdfs:Datatype>
+                                </owl:onDataRange>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:onClass>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -13705,22 +13733,6 @@ obolibrary:GENEPIO_0001756 # phone</obo:GENEPIO_0001763>
                         </owl:unionOf>
                     </owl:Class>
                 </owl:onClass>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;GENEPIO_0001605"/>
-                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange>
-                    <rdfs:Datatype>
-                        <owl:onDatatype rdf:resource="&xsd;nonNegativeInteger"/>
-                        <owl:withRestrictions rdf:parseType="Collection">
-                            <rdf:Description>
-                                <xsd:maxExclusive rdf:datatype="&xsd;nonNegativeInteger">130</xsd:maxExclusive>
-                            </rdf:Description>
-                        </owl:withRestrictions>
-                    </rdfs:Datatype>
-                </owl:onDataRange>
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000114 rdf:resource="&obo;IAO_0000428"/>
@@ -22466,12 +22478,6 @@ obolibrary:NCIT_C25690 # Street Address</obo:GENEPIO_0001763>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;RO_0002180"/>
-                <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0002086"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;RO_0002180"/>
                 <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0002087"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -22562,17 +22568,6 @@ obolibrary:GENEPIO_0002091 # submission to NCBI/DDBJ</obo:GENEPIO_0001763>
             </owl:Restriction>
         </owl:annotatedTarget>
         <rdfs:label xml:lang="en">Sequencing</rdfs:label>
-    </owl:Axiom>
-    <owl:Axiom>
-        <owl:annotatedSource rdf:resource="&obo;GENEPIO_0002083"/>
-        <owl:annotatedProperty rdf:resource="&rdfs;subClassOf"/>
-        <owl:annotatedTarget>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;RO_0002180"/>
-                <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0002086"/>
-            </owl:Restriction>
-        </owl:annotatedTarget>
-        <rdfs:label>Geographic Location of Sample Collection</rdfs:label>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="&obo;GENEPIO_0002083"/>
@@ -23568,7 +23563,7 @@ obolibrary:OBI_0001885 # specimen repository organization</obo:GENEPIO_0001763>
         <obo:IAO_0000114 rdf:resource="&obo;IAO_0000428"/>
         <obo:IAO_0000115 xml:lang="en">An organization related to the collection, isolate production, sequencing or storage of specimen material or data.</obo:IAO_0000115>
         <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
-        <rdfs:label xml:lang="en">specimen-related organization role</rdfs:label>
+        <rdfs:label xml:lang="en">specimen processing organization role</rdfs:label>
     </owl:Class>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="&obo;GENEPIO_0002105"/>
@@ -23599,13 +23594,6 @@ obolibrary:OBI_0001885 # specimen repository organization</obo:GENEPIO_0001763>
                 <owl:onProperty rdf:resource="&obo;RO_0002180"/>
                 <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
                 <owl:onClass rdf:resource="&obo;FOODON_03430113"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;RO_0002180"/>
-                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onClass rdf:resource="&obo;FOODON_03400361"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -23662,6 +23650,20 @@ obolibrary:OBI_0001885 # specimen repository organization</obo:GENEPIO_0001763>
                 <owl:onProperty rdf:resource="&obo;RO_0002180"/>
                 <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
                 <owl:onClass rdf:resource="http://semanticscience.org/resource/SIO_000119"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;RO_0002180"/>
+                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&obo;FOODON_00002381"/>
+                            <rdf:Description rdf:about="&obo;FOODON_03311737"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:onClass>
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:GENEPIO_0001763>order:

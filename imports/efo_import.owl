@@ -8,6 +8,7 @@
     <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
     <!ENTITY xml "http://www.w3.org/XML/1998/namespace" >
     <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY userfiles "file:/data/var/www/html/ontofox/userfiles/0" >
     <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
     <!ENTITY oboInOwl "http://www.geneontology.org/formats/oboInOwl#" >
 ]>
@@ -19,6 +20,7 @@
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:oboInOwl="http://www.geneontology.org/formats/oboInOwl#"
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:userfiles="file:/data/var/www/html/ontofox/userfiles/0"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:obo="http://purl.obolibrary.org/obo/"
@@ -35,6 +37,12 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
+    
+
+
+    <!-- file:/data/var/www/html/ontofox/userfiles/0vgmp8p8.in.owl -->
+
+    <!-- <owl:AnnotationProperty rdf:about="&userfiles;vgmp8p8.in.owl"/> -->
     
 
 
@@ -82,7 +90,10 @@
 
     <!-- http://www.ebi.ac.uk/efo/alternative_term -->
 
-    <!-- <owl:AnnotationProperty rdf:about="&efo;alternative_term"/> -->
+    <!-- <owl:AnnotationProperty rdf:about="&efo;alternative_term">
+        <obo:IAO_0000115>An alternative label for a given entity such as a commonly used abbreviation or synonym. </obo:IAO_0000115>
+        <rdfs:label rdf:datatype="&xsd;string">alternative_term</rdfs:label>
+    </owl:AnnotationProperty> -->
     
 
 
@@ -148,6 +159,14 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
+    
+
+
+    <!-- file:/data/var/www/html/ontofox/userfiles/0vgmp8p8.in.owl -->
+
+    <owl:Class rdf:about="&userfiles;vgmp8p8.in.owl">
+        <rdfs:subClassOf rdf:resource="&efo;EFO_0000001"/>
+    </owl:Class>
     
 
 
@@ -235,9 +254,21 @@
     
 
 
-    <!-- http://purl.obolibrary.org/obo/OBI_0000181 -->
+    <!-- http://purl.obolibrary.org/obo/UBERON_0000069 -->
 
-    <owl:Class rdf:about="&obo;OBI_0000181"/>
+    <owl:Class rdf:about="&obo;UBERON_0000069">
+        <rdfs:subClassOf rdf:resource="&efo;EFO_0000399"/>
+        <rdfs:subClassOf rdf:resource="&efo;EFO_0000787"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">a distinct juvenile stage many animals undergo before metamorphosis into adults. Animals with indirect development such as insects, amphibians, or cnidarians typically have a larval phase of their life cycle.</obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="&efo;efo.owl"/>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MSH:D007814</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MSH:D009758</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">SNOMEDCT:8181006</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">SNOMEDCT:86802003</oboInOwl:hasDbXref>
+        <oboInOwl:inSubset rdf:resource="http://purl.oboInOwllibrary.org/oboInOwl/uberon#efo_slim"/>
+        <rdfs:comment rdf:datatype="&xsd;string">It is a misunderstanding that the larval form always reflects the group&apos;s evolutionary history. It could be the case, but often the larval stage has evolved secondarily, as in insects. In these cases the larval form might differ more from the group&apos;s common origin than the adult form[WP]. Uberon includes clade-specific subclasses.</rdfs:comment>
+        <rdfs:label rdf:datatype="&xsd;string">larval stage</rdfs:label>
+    </owl:Class>
     
 
 
@@ -268,6 +299,21 @@
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NCIt:C25150</oboInOwl:hasDbXref>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">SNOMEDCT:397669002</oboInOwl:hasDbXref>
         <rdfs:label rdf:datatype="&xsd;string">age</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ebi.ac.uk/efo/EFO_0000399 -->
+
+    <owl:Class rdf:about="&efo;EFO_0000399">
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">A developmental stage is spatiotemporal region encompassing some part of the life cycle of an organism, e.g. blastula stage</obo:IAO_0000115>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">James Malone</obo:IAO_0000117>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Jie Zheng</obo:IAO_0000117>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Tomasz Adamusiak</obo:IAO_0000117>
+        <obo:IAO_0000412 rdf:resource="&efo;efo.owl"/>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NCIt:C43531</oboInOwl:hasDbXref>
+        <rdfs:comment>This branch will be replaced by, and if necessary merged with an Uberon import in future.</rdfs:comment>
+        <rdfs:label rdf:datatype="&xsd;string">developmental stage</rdfs:label>
     </owl:Class>
     
 
@@ -323,6 +369,20 @@
         <obo:IAO_0000119>http://en.wikibooks.org/wiki/Radiation_Oncology/Survival_curve_terminology</obo:IAO_0000119>
         <obo:IAO_0000412 rdf:resource="&efo;efo.owl"/>
         <rdfs:label rdf:datatype="&xsd;string">event free survival time</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ebi.ac.uk/efo/EFO_0000635 -->
+
+    <owl:Class rdf:about="&efo;EFO_0000635">
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">The part of organism&apos;s anatomy or substance arising from an organism from which the biomaterial was derived, excludes cells. E.g. tissue, organ, system, sperm, blood or body location (arm).</obo:IAO_0000115>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">James Malone</obo:IAO_0000117>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Jie Zheng</obo:IAO_0000117>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Tomasz Adamusiak</obo:IAO_0000117>
+        <obo:IAO_0000412 rdf:resource="&efo;efo.owl"/>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NCIt:C103199</oboInOwl:hasDbXref>
+        <rdfs:label rdf:datatype="&xsd;string">organism part</rdfs:label>
     </owl:Class>
     
 
@@ -417,6 +477,64 @@
     
 
 
+    <!-- http://www.ebi.ac.uk/efo/EFO_0000786 -->
+
+    <owl:Class rdf:about="&efo;EFO_0000786">
+        <rdfs:subClassOf rdf:resource="&efo;EFO_0000635"/>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">James Malone</obo:IAO_0000117>
+        <obo:IAO_0000412 rdf:resource="&efo;efo.owl"/>
+        <rdfs:label rdf:datatype="&xsd;string">anatomy basic component</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ebi.ac.uk/efo/EFO_0000787 -->
+
+    <owl:Class rdf:about="&efo;EFO_0000787">
+        <rdfs:subClassOf rdf:resource="&efo;EFO_0000786"/>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">James Malone</obo:IAO_0000117>
+        <obo:IAO_0000412 rdf:resource="&efo;efo.owl"/>
+        <rdfs:label rdf:datatype="&xsd;string">animal component</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ebi.ac.uk/efo/EFO_0001272 -->
+
+    <owl:Class rdf:about="&efo;EFO_0001272">
+        <rdfs:subClassOf rdf:resource="&efo;EFO_0000399"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">A maturity quality inhering in an individual by virtue of the individual having attained sexual maturity and full growth</obo:IAO_0000115>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">James Malone</obo:IAO_0000117>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">OntologyMappingImporter following MAT:0000403</obo:IAO_0000117>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Tomasz Adamusiak</obo:IAO_0000117>
+        <obo:IAO_0000412 rdf:resource="&efo;efo.owl"/>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MSH:D000328</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NCIt:C17600</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NIFSTD:birnlex_228</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NIFSTD:birnlex_681</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">SNOMEDCT:133936004</oboInOwl:hasDbXref>
+        <rdfs:label rdf:datatype="&xsd;string">adult</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ebi.ac.uk/efo/EFO_0001355 -->
+
+    <owl:Class rdf:about="&efo;EFO_0001355">
+        <rdfs:subClassOf rdf:resource="&efo;EFO_0000399"/>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">James Malone</obo:IAO_0000117>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Tomasz Adamusiak</obo:IAO_0000117>
+        <obo:IAO_0000412 rdf:resource="&efo;efo.owl"/>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MSH:D007223</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NCIt:C27956</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NIFSTD:birnlex_438</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NIFSTD:birnlex_695</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">SNOMEDCT:133931009</oboInOwl:hasDbXref>
+        <rdfs:label rdf:datatype="&xsd;string">infant</rdfs:label>
+    </owl:Class>
+    
+
+
     <!-- http://www.ebi.ac.uk/efo/EFO_0001444 -->
 
     <owl:Class rdf:about="&efo;EFO_0001444">
@@ -436,7 +554,6 @@
     <!-- http://www.ebi.ac.uk/efo/EFO_0001799 -->
 
     <owl:Class rdf:about="&efo;EFO_0001799">
-        <rdfs:subClassOf rdf:resource="&obo;OBI_0000181"/>
         <obo:IAO_0000115 rdf:datatype="&xsd;string">A group of people with a common cultural heritage that sets them apart from others in a variety of social relationships. (MSH); A social group characterized by a distinctive social and cultural tradition maintained from generation to generation, a common history and origin and a sense of identification with the group; members of the group have distinctive features in their way of life, shared experiences and often a common genetic heritage; these features may be reflected in their experience of health and disease. (NCI); Ethnicity - an arbitrary classification of the social group a person belongs to, and either identifies with or is identified with by others, as a result of a complex of cultural, biological, geographical and other factors such as linguistic, dietary and religion traditions; ancestry, background, allegiance, or association; and physical characteristics traditionally associated with race. Increasingly the concept is used synonymously with race but this use trend has a pragmatic basis rather than scientific. (NCI); The concept of ethnic origin is an attempt to classify people, not according to their current ethnicity, but according to where their ancestors came from. Ethnic origin has become a popular classification in statistics, where the concept of race has been largely discarded. (from Wikipedia) (NCI); a group of people with a common cultural heritage that sets them apart from others in a variety of social relationships. (CSP)</obo:IAO_0000115>
         <obo:IAO_0000115 rdf:datatype="&xsd;string">An ethnic group is a population whose members have a common heritage that is real or presumed such as common culture, language, religion, behaviour or biological trait.</obo:IAO_0000115>
         <obo:IAO_0000117 rdf:datatype="&xsd;string">James Malone</obo:IAO_0000117>
@@ -1069,6 +1186,19 @@
     
 
 
+    <!-- http://www.ebi.ac.uk/efo/EFO_0007725 -->
+
+    <owl:Class rdf:about="&efo;EFO_0007725">
+        <rdfs:subClassOf rdf:resource="&efo;EFO_0000399"/>
+        <obo:IAO_0000115>A life cycle stage that starts with fertilization and ends with the fully formed embryo.</obo:IAO_0000115>
+        <obo:IAO_0000117>Sirarat Sarntivijai</obo:IAO_0000117>
+        <obo:IAO_0000412 rdf:resource="&efo;efo.owl"/>
+        <oboInOwl:hasDbXref>SNOMEDCT:296280003</oboInOwl:hasDbXref>
+        <rdfs:label>embryo stage</rdfs:label>
+    </owl:Class>
+    
+
+
     <!-- http://www.ebi.ac.uk/efo/EFO_0007888 -->
 
     <owl:Class rdf:about="&efo;EFO_0007888">
@@ -1105,6 +1235,28 @@
         <obo:IAO_0000412 rdf:resource="&efo;efo.owl"/>
         <rdfs:label rdf:datatype="&xsd;string">material property</rdfs:label>
     </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotations
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description rdf:about="&userfiles;vgmp8p8.in.owl">
+        <rdfs:label rdf:datatype="&xsd;string">definition</rdfs:label>
+        <obo:IAO_0000412 rdf:resource="&efo;efo.owl"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">A process is an entity that exists in time by occurring or happening, has temporal parts and always involves and depends on some entity during the time it occurs.</obo:IAO_0000115>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">A material entity is an entity that exists in full during the length of time of its existence, persists through this time while maintaining its identity and has no temporal parts. For example a heart, a human, a fly, a microarray.</obo:IAO_0000115>
+        <rdfs:label rdf:datatype="&xsd;string">material entity</rdfs:label>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NCIt:C29862</oboInOwl:hasDbXref>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">James Malone</obo:IAO_0000117>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">SNOMEDCT:415178003</oboInOwl:hasDbXref>
+        <rdfs:label rdf:datatype="&xsd;string">process</rdfs:label>
+    </rdf:Description>
 </rdf:RDF>
 
 

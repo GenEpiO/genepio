@@ -2449,6 +2449,15 @@ I believe time dependency relations (conditions) don&apos;t imply existence by t
     
 
 
+    <!-- http://purl.obolibrary.org/obo/GAZ_00000590 -->
+
+    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GAZ_00000590">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/NCIT_C25464"/>
+        <obo:GENEPIO_0000006 xml:lang="en">[Oceans and Seas]</obo:GENEPIO_0000006>
+    </rdf:Description>
+    
+
+
     <!-- http://purl.obolibrary.org/obo/GAZ_00000641 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GAZ_00000641">
@@ -12498,9 +12507,9 @@ A &quot;measure&quot; can indicate an amount of activity, consumption, transform
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
-        <obo:hasAlternativeId>GSCID-BRC:clinical or host-associated pathogen</obo:hasAlternativeId>
+        <obo:hasAlternativeId>GSCID-BRC:Clinical/host-associated pathogen</obo:hasAlternativeId>
         <obo:hasAlternativeId>NCBI:Pathogen.cl</obo:hasAlternativeId>
-        <rdfs:label xml:lang="en">clinical or host associated specimen category</rdfs:label>
+        <rdfs:label xml:lang="en">clinical or host-associated pathogen</rdfs:label>
     </owl:Class>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001569"/>
@@ -12908,9 +12917,9 @@ BioSample_submission_facilitator field and a BioSample_contact_information field
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
-        <obo:hasAlternativeId>GSCID-BRC:environmental, food or other pathogen</obo:hasAlternativeId>
+        <obo:hasAlternativeId>GSCID-BRC:environmental/food/other</obo:hasAlternativeId>
         <obo:hasAlternativeId>NCBI:Pathogen.env</obo:hasAlternativeId>
-        <rdfs:label xml:lang="en">environmental or food or other specimen category</rdfs:label>
+        <rdfs:label xml:lang="en">environmental, food or other pathogen</rdfs:label>
     </owl:Class>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001590"/>
@@ -21817,29 +21826,12 @@ http://www.nature.com/ng/journal/v45/n10/full/ng.2744.html</rdfs:seeAlso>
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0002080">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001655"/>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0002036"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002350"/>
-                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0002109"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <obo:GENEPIO_0000006 xml:lang="en">drug MIC unit</obo:GENEPIO_0000006>
         <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000428"/>
         <obo:IAO_0000115 xml:lang="en">The unit provided for an antibiotic drug test dosage.</obo:IAO_0000115>
         <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
         <rdfs:label xml:lang="en">drug minimum inhibitory concentration unit</rdfs:label>
     </owl:Class>
-    <owl:Axiom>
-        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0002080"/>
-        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002350"/>
-                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0002109"/>
-            </owl:Restriction>
-        </owl:annotatedTarget>
-        <rdfs:label>Measurement_unit</rdfs:label>
-    </owl:Axiom>
     
 
 
@@ -23042,7 +23034,7 @@ GENEPIO:0001785 # extraction city</obo:GENEPIO_0001763>
             </owl:Restriction>
         </owl:annotatedTarget>
         <obo:GENEPIO_0001763 xml:lang="en">help:Use ISO 6709 standard. Values should be stored in signed decimal degrees format based on the WGS84 geodetic reference system. Multiple value pairs may be entered if the site is not a point. Latitude and longitude should not be abstracted to the centre of a city, province/state or country as this may falsely implicate an existing location.</obo:GENEPIO_0001763>
-        <rdfs:label xml:lang="en">latitude</rdfs:label>
+        <rdfs:label xml:lang="en">latitude and longitude coordinate(s)</rdfs:label>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0002086"/>
@@ -23541,13 +23533,6 @@ the entire assembly is contained in contigs or scaffolds equal to or larger than
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002180"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001656"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002180"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
                 <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001657"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -23556,6 +23541,13 @@ the entire assembly is contained in contigs or scaffolds equal to or larger than
                 <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002180"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
                 <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001797"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002180"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0002141"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -23638,6 +23630,7 @@ The value provided in this field drives validation of other fields.</obo:IAO_000
                 <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001429"/>
             </owl:Restriction>
         </owl:annotatedTarget>
+        <obo:IAO_0000115 xml:lang="en">Microbial or eukaryotic strain name.</obo:IAO_0000115>
         <rdfs:label xml:lang="en">strain</rdfs:label>
     </owl:Axiom>
     <owl:Axiom>
@@ -23650,6 +23643,7 @@ The value provided in this field drives validation of other fields.</obo:IAO_000
                 <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001567"/>
             </owl:Restriction>
         </owl:annotatedTarget>
+        <obo:IAO_0000115 xml:lang="en">The natural (as opposed to laboratory) host to the organism from which the sample was obtained. Use the full taxonomic name, eg, &quot;Homo sapiens&quot;.</obo:IAO_0000115>
         <rdfs:label xml:lang="en">host</rdfs:label>
     </owl:Axiom>
     <owl:Axiom>
@@ -23662,6 +23656,7 @@ The value provided in this field drives validation of other fields.</obo:IAO_000
                 <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001640"/>
             </owl:Restriction>
         </owl:annotatedTarget>
+        <obo:IAO_0000115 xml:lang="en">The most descriptive organism name for this sample (to the species, if relevant).</obo:IAO_0000115>
         <rdfs:label>organism</rdfs:label>
     </owl:Axiom>
     <owl:Axiom>
@@ -23674,21 +23669,8 @@ The value provided in this field drives validation of other fields.</obo:IAO_000
                 <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001644"/>
             </owl:Restriction>
         </owl:annotatedTarget>
+        <obo:IAO_0000115 xml:lang="en">Identification or description of the specific individual from which this sample was obtained.</obo:IAO_0000115>
         <rdfs:label xml:lang="en">isolate</rdfs:label>
-    </owl:Axiom>
-    <owl:Axiom>
-        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0002091"/>
-        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002180"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001656"/>
-            </owl:Restriction>
-        </owl:annotatedTarget>
-        <obo:GENEPIO_0001763 xml:lang="en">help:This information can be derived by concatenating a subset of the ISO Geographic Location of Sample Collection fields prescribed by Annex
-B. Specifically, Latitude and Longitude information should be concatenated and separated by a space.</obo:GENEPIO_0001763>
-        <rdfs:label>lat_lon</rdfs:label>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0002091"/>
@@ -23701,6 +23683,7 @@ B. Specifically, Latitude and Longitude information should be concatenated and s
             </owl:Restriction>
         </owl:annotatedTarget>
         <obo:GENEPIO_0001763 xml:lang="en">help:This information can be derived by concatenating a subset of the ISO Geographic Location of Sample Collection fields prescribed by Annex B. Specifically, City, Province/State/Territory, Country information should be concatenated and separated by colons.*</obo:GENEPIO_0001763>
+        <obo:IAO_0000115 xml:lang="en">Geographical origin of the sample; use the appropriate name from this list http://www.insdc.org/documents/co untry-qualifier-vocabulary. Use a colon to separate the country or ocean from more detailed information about the location, eg &quot;Canada: Vancouver&quot; or &quot;Germany: halfway down Zugspitze, Alps&quot;</obo:IAO_0000115>
         <rdfs:label>geo_loc_name</rdfs:label>
     </owl:Axiom>
     <owl:Axiom>
@@ -23715,6 +23698,21 @@ B. Specifically, Latitude and Longitude information should be concatenated and s
         </owl:annotatedTarget>
         <obo:IAO_0000115 xml:lang="en">Name of persons or institute who collected the sample.</obo:IAO_0000115>
         <rdfs:label>collected_by</rdfs:label>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0002091"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002180"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0002141"/>
+            </owl:Restriction>
+        </owl:annotatedTarget>
+        <obo:GENEPIO_0001763 xml:lang="en">help:This information can be derived by concatenating a subset of the ISO Geographic Location of Sample Collection fields prescribed by Annex
+B. Specifically, Latitude and Longitude information should be concatenated and separated by a space.</obo:GENEPIO_0001763>
+        <obo:IAO_0000115 xml:lang="en">The geographical coordinates of the location where the sample was collected. Specify as degrees latitude and longitude in format &quot;d[d.dddd] N|S d[dd.dddd] W|E&quot;, eg, 38.98 N 77.11 W.</obo:IAO_0000115>
+        <rdfs:label>lat_lon</rdfs:label>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0002091"/>
@@ -23739,6 +23737,9 @@ B. Specifically, Latitude and Longitude information should be concatenated and s
                 <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/OBI_0001619"/>
             </owl:Restriction>
         </owl:annotatedTarget>
+        <obo:GENEPIO_0001763 xml:lang="en">help:This information can be derived from the ISO Collection Date field. If the stakeholder must include a truncated version due to data sharing constraints, only include the year (YYYY format).</obo:GENEPIO_0001763>
+        <obo:IAO_0000115 xml:lang="en">Date of sampling, in &quot;DD-Mmm-YYYY&quot;, &quot;Mmm-YYYY&quot; or &quot;YYYY&quot; format (eg., 30-Oct-1990, Oct-1990 or 1990) or ISO 8601 standard &quot;YYYY-mm-dd&quot;, &quot;YYYY-mm&quot; or &quot;YYYY-mm-ddThh:mm:ss&quot; (eg., 1990-10-30, 1990-10 or
+1990-10-30T14:41:36)</obo:IAO_0000115>
         <rdfs:label>collection_date</rdfs:label>
     </owl:Axiom>
     <owl:Axiom>
@@ -23752,6 +23753,7 @@ B. Specifically, Latitude and Longitude information should be concatenated and s
             </owl:Restriction>
         </owl:annotatedTarget>
         <obo:GENEPIO_0001763 xml:lang="en">help:This information can be derived by concatenating the information for Sample Type and related fields, separated by a colon.</obo:GENEPIO_0001763>
+        <obo:IAO_0000115 xml:lang="en">Describes the physical, environmental and/or local geographical source of the biological sample from which the sample was derived.</obo:IAO_0000115>
         <rdfs:label>isolation_source</rdfs:label>
     </owl:Axiom>
     <owl:Axiom>
@@ -23766,6 +23768,7 @@ B. Specifically, Latitude and Longitude information should be concatenated and s
         </owl:annotatedTarget>
         <obo:GENEPIO_0001763 xml:lang="en">help:e.g. gastroenteritis.</obo:GENEPIO_0001763>
         <obo:GENEPIO_0001763>lookup</obo:GENEPIO_0001763>
+        <obo:IAO_0000115 xml:lang="en">Name of relevant disease, e.g. gastroenteritis.</obo:IAO_0000115>
         <rdfs:label xml:lang="en">host_disease</rdfs:label>
     </owl:Axiom>
     <owl:Axiom>
@@ -23787,6 +23790,12 @@ B. Specifically, Latitude and Longitude information should be concatenated and s
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0002092">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001342"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002180"/>
+                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0002140"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002180"/>
@@ -23819,6 +23828,13 @@ B. Specifically, Latitude and Longitude information should be concatenated and s
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002180"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0002086"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002180"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
                 <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0002135"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -23827,34 +23843,6 @@ B. Specifically, Latitude and Longitude information should be concatenated and s
                 <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002180"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
                 <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/OBI_0001619"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002180"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onClass>
-                    <owl:Class>
-                        <owl:unionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001429"/>
-                            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001644"/>
-                        </owl:unionOf>
-                    </owl:Class>
-                </owl:onClass>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002180"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onClass>
-                    <owl:Class>
-                        <owl:unionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001656"/>
-                            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/NCIT_C25464"/>
-                        </owl:unionOf>
-                    </owl:Class>
-                </owl:onClass>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -23875,13 +23863,16 @@ B. Specifically, Latitude and Longitude information should be concatenated and s
 GENEPIO:0001644 # isolate identifier
 GENEPIO:0001429 # strain identifier
 GENEPIO:0001640 # specimen organism taxonomy
-GENEPIO_0001079 # serovar 
+GENEPIO:0001079 # serovar 
+GENEPIO_0002135 # EBI environmental feature
 GENEPIO:0000113 # specimen category
 OBI:0001619 # specimen extraction date
 GENEPIO:0001797 # specimen extraction by (person)
+GENEPIO:0002086 # geographic location
 GENEPIO:0000027 # specimen source context
+GENEPIO:0002076 # geographic feature
 GENEPIO:0001567 # subject taxonomy
-GENEPIO:0002103 # subject health status</obo:GENEPIO_0001763>
+GENEPIO:0000110 # subject health status</obo:GENEPIO_0001763>
         <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000428"/>
         <obo:IAO_0000115 xml:lang="en"></obo:IAO_0000115>
         <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
@@ -23894,11 +23885,35 @@ GENEPIO:0002103 # subject health status</obo:GENEPIO_0001763>
         <owl:annotatedTarget>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002180"/>
+                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0002140"/>
+            </owl:Restriction>
+        </owl:annotatedTarget>
+        <obo:GENEPIO_0001763 xml:lang="en">help:This information can be derived exactly from the ISO Strain or Isolate field. Only one value should be provided, at the discretion of the submitter.</obo:GENEPIO_0001763>
+        <rdfs:label xml:lang="en">strain OR isolate</rdfs:label>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0002092"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002180"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001079"/>
+            </owl:Restriction>
+        </owl:annotatedTarget>
+        <obo:IAO_0000115 xml:lang="en">Serological variety of a species characterized by its antigenic properties.</obo:IAO_0000115>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0002092"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002180"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
                 <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001640"/>
             </owl:Restriction>
         </owl:annotatedTarget>
-        <obo:GENEPIO_0001763>other:</obo:GENEPIO_0001763>
+        <obo:IAO_0000115 xml:lang="en">Taxon identifier OR scientific name of the organism that provided the sequenced genetic material.</obo:IAO_0000115>
         <rdfs:label xml:lang="en">taxon OR organism</rdfs:label>
     </owl:Axiom>
     <owl:Axiom>
@@ -23911,6 +23926,7 @@ GENEPIO:0002103 # subject health status</obo:GENEPIO_0001763>
                 <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001797"/>
             </owl:Restriction>
         </owl:annotatedTarget>
+        <obo:IAO_0000115 xml:lang="en">Name of persons or institute who collected the specimen.</obo:IAO_0000115>
         <rdfs:label>collected_by</rdfs:label>
     </owl:Axiom>
     <owl:Axiom>
@@ -23924,7 +23940,25 @@ GENEPIO:0002103 # subject health status</obo:GENEPIO_0001763>
             </owl:Restriction>
         </owl:annotatedTarget>
         <obo:GENEPIO_0001763 xml:lang="en">help:This information can be derived by concatenating the information for Sample Type and related fields, separated by a colon.</obo:GENEPIO_0001763>
+        <obo:IAO_0000115 xml:lang="en">Describes the physical, environmental and/or local geographical source of the biological sample from which the sample was derived.</obo:IAO_0000115>
         <rdfs:label>isolation_source</rdfs:label>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0002092"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002180"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0002086"/>
+            </owl:Restriction>
+        </owl:annotatedTarget>
+        <obo:GENEPIO_0001763 xml:lang="en">help:Only lat_lon or country information should be provided, at the discretion of the submitter.*
+Lat_lon information can be derived by concatenating a subset of the ISO Geographic Location of Sample Collection fields prescribed by Annex
+B. Specifically, Latitude and Longitude information should be concatenated and separated by a space.
+Country information can be derived exactly from the ISO Country field in Annex B.</obo:GENEPIO_0001763>
+        <obo:IAO_0000115 xml:lang="en">Geographical coordinates of the location where the specimen was collected OR locality of isolation of the sampled organism indicated in terms of political names for nations, oceans or seas, followed by regions and localities.</obo:IAO_0000115>
+        <rdfs:label xml:lang="en">lat_lon OR country</rdfs:label>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0002092"/>
@@ -23936,6 +23970,7 @@ GENEPIO:0002103 # subject health status</obo:GENEPIO_0001763>
                 <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0002135"/>
             </owl:Restriction>
         </owl:annotatedTarget>
+        <obo:IAO_0000115 xml:lang="en">Identifies sequences derived by direct molecular isolation from a bulk environmental DNA sample (by PCR with or without subsequent cloning of the product, DGGE, or other anonymous methods) with no reliable identification of the source of the organism.</obo:IAO_0000115>
         <rdfs:label>environmental_feature</rdfs:label>
     </owl:Axiom>
     <owl:Axiom>
@@ -23949,51 +23984,8 @@ GENEPIO:0002103 # subject health status</obo:GENEPIO_0001763>
             </owl:Restriction>
         </owl:annotatedTarget>
         <obo:GENEPIO_0001763 xml:lang="en">help:This information can be derived from the ISO Collection Date field. If the stakeholder must include a truncated version due to data sharing constraints, only include the year (YYYY format).</obo:GENEPIO_0001763>
+        <obo:IAO_0000115 xml:lang="en">Date that the specimen was collected, in format YYYY-MM-DD.</obo:IAO_0000115>
         <rdfs:label>collection_date</rdfs:label>
-    </owl:Axiom>
-    <owl:Axiom>
-        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0002092"/>
-        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002180"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onClass>
-                    <owl:Class>
-                        <owl:unionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001429"/>
-                            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001644"/>
-                        </owl:unionOf>
-                    </owl:Class>
-                </owl:onClass>
-            </owl:Restriction>
-        </owl:annotatedTarget>
-        <obo:GENEPIO_0001763 xml:lang="en">help:This information can be derived exactly from the ISO Strain or Isolate field.
-Only one value should be provided, at the discretion of the submitter.</obo:GENEPIO_0001763>
-        <rdfs:label xml:lang="en">strain OR isolate</rdfs:label>
-    </owl:Axiom>
-    <owl:Axiom>
-        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0002092"/>
-        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002180"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onClass>
-                    <owl:Class>
-                        <owl:unionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001656"/>
-                            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/NCIT_C25464"/>
-                        </owl:unionOf>
-                    </owl:Class>
-                </owl:onClass>
-            </owl:Restriction>
-        </owl:annotatedTarget>
-        <obo:GENEPIO_0001763 xml:lang="en">help:Only lat_lon or country information should be provided, at the discretion of the submitter.*
-Lat_lon information can be derived by concatenating a subset of the ISO Geographic Location of Sample Collection fields prescribed by Annex
-B. Specifically, Latitude and Longitude information should be concatenated and separated by a space.
-Country information can be derived exactly from the ISO Country field in Annex B.</obo:GENEPIO_0001763>
-        <rdfs:label xml:lang="en">lat_lon OR country</rdfs:label>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0002092"/>
@@ -24007,6 +23999,7 @@ Country information can be derived exactly from the ISO Country field in Annex B
         </owl:annotatedTarget>
         <obo:GENEPIO_0001763>depth:1</obo:GENEPIO_0001763>
         <obo:GENEPIO_0001763 xml:lang="en">help:This field is specific to the EBI. If the host was associated with a disease in the ISO Host Disease field, choose “diseased”, if the host did not manifest disease, choose “healthy”.</obo:GENEPIO_0001763>
+        <obo:IAO_0000115 xml:lang="en">Condition of host (“healthy”, “diseased”).</obo:IAO_0000115>
         <rdfs:label>host_disease_status</rdfs:label>
     </owl:Axiom>
     <owl:Axiom>
@@ -24019,7 +24012,7 @@ Country information can be derived exactly from the ISO Country field in Annex B
                 <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001567"/>
             </owl:Restriction>
         </owl:annotatedTarget>
-        <obo:GENEPIO_0001763>other:</obo:GENEPIO_0001763>
+        <obo:IAO_0000115 xml:lang="en">Natural (as opposed to laboratory) host to the organism from which sample was obtained (or “free-living” if not host-associated).</obo:IAO_0000115>
         <rdfs:label xml:lang="en">specific_host</rdfs:label>
     </owl:Axiom>
     
@@ -24610,6 +24603,18 @@ GENEPIO:0002049 # Platform</obo:GENEPIO_0001763>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002180"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0002080"/>
+            </owl:Restriction>
+        </owl:annotatedTarget>
+        <rdfs:comment>measurement_unit</rdfs:comment>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0002109"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002180"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
                 <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/NCIT_C85539"/>
             </owl:Restriction>
         </owl:annotatedTarget>
@@ -25188,6 +25193,7 @@ UBERON:0000105 # life cycle</obo:GENEPIO_0001763>
                 <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0002096"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <obo:GENEPIO_0001763>order:</obo:GENEPIO_0001763>
         <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000428"/>
         <obo:IAO_0000115 xml:lang="en">The procedures used to remove adapters from raw sequence reads, trim low quality bases and where applicable, merge paired-end reads.</obo:IAO_0000115>
         <obo:IAO_0000117 xml:lang="en">Emma Griffiths</obo:IAO_0000117>
@@ -25206,6 +25212,61 @@ UBERON:0000105 # life cycle</obo:GENEPIO_0001763>
         <obo:IAO_0000115 xml:lang="en">The procedure used to remove low quality reads and unalignable sequences from raw sequence data.</obo:IAO_0000115>
         <rdfs:label xml:lang="en">Sequence Data Filtering Method</rdfs:label>
     </owl:Axiom>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0002140 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0002140">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001342"/>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/IAO_0000300"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002180"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001429"/>
+                            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001644"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:onClass>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000122"/>
+        <obo:IAO_0000115 xml:lang="en">Name of strain from which sample was obtained OR name of isolate from which sample was obtained.</obo:IAO_0000115>
+        <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
+        <rdfs:label xml:lang="en">specimen strain or isolate identifier</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0002141 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0002141">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/IAO_0000300"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001605"/>
+                <owl:someValuesFrom>
+                    <rdfs:Datatype>
+                        <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                        <owl:withRestrictions rdf:parseType="Collection">
+                            <rdf:Description>
+                                <xsd:pattern>\s*(\d(.\d{1,4})?|[1-8]\d(.\d{1,4})?|90(.0{1,4})?)\s*[WEwe]\s*(\d(.\d{1,4})?|[1-9]\d(.\d{1,4})?|1[0-7]\d(.\d{1,4})?|180(.0{1,4})?)\s*[NSns]\s*</xsd:pattern>
+                            </rdf:Description>
+                        </owl:withRestrictions>
+                    </rdfs:Datatype>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000428"/>
+        <obo:IAO_0000115 xml:lang="en">The geographical coordinates of the location where the sample was collected. Specify as degrees latitude and longitude in format &quot;d[d.dddd] N|S d[dd.dddd] W|E&quot;, eg, 38.98 N 77.11 W</obo:IAO_0000115>
+        <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
+        <obo:IAO_0000119 xml:lang="en">https://www.ncbi.nlm.nih.gov/biosample/docs/attributes/</obo:IAO_0000119>
+        <rdfs:label xml:lang="en">latitude and longitude coordinate (NCBI BioSample format)</rdfs:label>
+    </owl:Class>
     
 
 

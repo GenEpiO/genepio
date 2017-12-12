@@ -2461,6 +2461,7 @@ I believe time dependency relations (conditions) don&apos;t imply existence by t
 
     <rdf:Description rdf:about="&obo;GAZ_00000590">
         <rdfs:subClassOf rdf:resource="&obo;NCIT_C25464"/>
+        <obo:GENEPIO_0000006 xml:lang="en">[Oceans and Seas]</obo:GENEPIO_0000006>
     </rdf:Description>
     
 
@@ -12510,9 +12511,9 @@ A &quot;measure&quot; can indicate an amount of activity, consumption, transform
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
-        <obo:hasAlternativeId>GSCID-BRC:clinical or host-associated pathogen</obo:hasAlternativeId>
+        <obo:hasAlternativeId>GSCID-BRC:Clinical/host-associated pathogen</obo:hasAlternativeId>
         <obo:hasAlternativeId>NCBI:Pathogen.cl</obo:hasAlternativeId>
-        <rdfs:label xml:lang="en">clinical or host associated specimen category</rdfs:label>
+        <rdfs:label xml:lang="en">clinical or host-associated pathogen</rdfs:label>
     </owl:Class>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="&obo;GENEPIO_0001569"/>
@@ -12920,9 +12921,9 @@ BioSample_submission_facilitator field and a BioSample_contact_information field
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
-        <obo:hasAlternativeId>GSCID-BRC:environmental, food or other pathogen</obo:hasAlternativeId>
+        <obo:hasAlternativeId>GSCID-BRC:environmental/food/other</obo:hasAlternativeId>
         <obo:hasAlternativeId>NCBI:Pathogen.env</obo:hasAlternativeId>
-        <rdfs:label xml:lang="en">environmental or food or other specimen category</rdfs:label>
+        <rdfs:label xml:lang="en">environmental, food or other pathogen</rdfs:label>
     </owl:Class>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="&obo;GENEPIO_0001590"/>
@@ -23007,8 +23008,7 @@ A sequencing biological replicate represents a sequencing experiment based on a 
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:GENEPIO_0001763>order:
-OBI:0001620 # latitude
-OBI:0001621 # longitude
+GENEPIO_0001656 # latitude and longitude ISO 6709
 GENEPIO:0000118 # extraction country
 GENEPIO:0002097 # extraction state/prov/ter/region
 GENEPIO:0001785 # extraction city</obo:GENEPIO_0001763>
@@ -23858,7 +23858,7 @@ GENEPIO:0001644 # isolate identifier
 GENEPIO:0001429 # strain identifier
 GENEPIO:0001640 # specimen organism taxonomy
 GENEPIO:0001079 # serovar 
-GENEPIO_0002135 # EBI environmental feature
+GENEPIO:0002135 # EBI environmental feature
 GENEPIO:0000113 # specimen category
 OBI:0001619 # specimen extraction date
 GENEPIO:0001797 # specimen extraction by (person)
@@ -25076,7 +25076,6 @@ UBERON:0000105 # life cycle</obo:GENEPIO_0001763>
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0002135 -->
 
     <owl:Class rdf:about="&obo;GENEPIO_0002135">
-        <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0001655"/>
         <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0001790"/>
         <rdfs:subClassOf>
             <owl:Restriction>
@@ -25187,7 +25186,11 @@ UBERON:0000105 # life cycle</obo:GENEPIO_0001763>
                 <owl:someValuesFrom rdf:resource="&obo;GENEPIO_0002096"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <obo:GENEPIO_0001763>order:</obo:GENEPIO_0001763>
+        <obo:GENEPIO_0001763>order:
+GENEPIO:0000084 # read adapter trimming (y/n)
+GENEPIO:0002096 # read adapter trimming software
+GENEPIO:0002095 # read paired-end merging software
+GENEPIO:0000150 # read trimming and filtering software</obo:GENEPIO_0001763>
         <obo:IAO_0000114 rdf:resource="&obo;IAO_0000428"/>
         <obo:IAO_0000115 xml:lang="en">The procedures used to remove adapters from raw sequence reads, trim low quality bases and where applicable, merge paired-end reads.</obo:IAO_0000115>
         <obo:IAO_0000117 xml:lang="en">Emma Griffiths</obo:IAO_0000117>
@@ -26010,8 +26013,6 @@ Depending on its context, hasDbXref annotations may point directly to metadata f
 
     <rdf:Description rdf:about="&obo;NCIT_C25464">
         <rdfs:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000415"/>
-        <obo:IAO_0000114 xml:lang="en">order:
-GAZ:00000590 # oceans and seas.  By leaving other options undefined, they get listed first.</obo:IAO_0000114>
         <rdfs:seeAlso rdf:datatype="&xsd;anyURI">http://purl.obolibrary.org/obo/GEO_000000396</rdfs:seeAlso>
     </rdf:Description>
     

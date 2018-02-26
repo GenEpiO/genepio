@@ -28,7 +28,7 @@
      xmlns:foaf="http://xmlns.com/foaf/0.1/"
      xmlns:dc="http://purl.org/dc/elements/1.1/">
     <owl:Ontology rdf:about="&obo;genepio.owl">
-        <owl:versionIRI rdf:resource="&obo;genepio/releases/2017-12-12/genepio.owl"/>
+        <owl:versionIRI rdf:resource="&obo;genepio/releases/2018-02-26/genepio.owl"/>
         <owl:imports rdf:resource="&obo;GENEPIO/imports/pato_import.owl"/>
         <owl:imports rdf:resource="&obo;GENEPIO/imports/chebi_import.owl"/>
         <owl:imports rdf:resource="&obo;GENEPIO/imports/ncbitaxon_import.owl"/>
@@ -43,6 +43,7 @@
         <owl:imports rdf:resource="&obo;GENEPIO/imports/eo_import.owl"/>
         <owl:imports rdf:resource="&obo;GENEPIO/imports/uo_import.owl"/>
         <owl:imports rdf:resource="&obo;GENEPIO/imports/apollo_sv_import.owl"/>
+        <owl:imports rdf:resource="&obo;GENEPIO/imports/gaz_insdc_mapping.owl"/>
         <owl:imports rdf:resource="&obo;GENEPIO/imports/geo_import.owl"/>
         <owl:imports rdf:resource="&obo;GENEPIO/imports/so_import.owl"/>
         <owl:imports rdf:resource="&obo;GENEPIO/imports/hp_import.owl"/>
@@ -199,24 +200,6 @@
     
 
 
-    <!-- http://purl.obolibrary.org/obo/RO_0002233 -->
-
-    <owl:AnnotationProperty rdf:about="&obo;RO_0002233"/>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/RO_0002234 -->
-
-    <owl:AnnotationProperty rdf:about="&obo;RO_0002234"/>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/RO_0002351 -->
-
-    <owl:AnnotationProperty rdf:about="&obo;RO_0002351"/>
-    
-
-
     <!-- http://purl.obolibrary.org/obo/hasAlternativeId -->
 
     <owl:AnnotationProperty rdf:about="&obo;hasAlternativeId"/>
@@ -329,9 +312,9 @@
 
     <!-- http://purl.obolibrary.org/obo/BFO_0000050 -->
 
-    <rdf:Description rdf:about="&obo;BFO_0000050">
+    <owl:ObjectProperty rdf:about="&obo;BFO_0000050">
         <rdfs:label xml:lang="en">part of</rdfs:label>
-    </rdf:Description>
+    </owl:ObjectProperty>
     
 
 
@@ -370,15 +353,26 @@ I believe time dependency relations (conditions) don&apos;t imply existence by t
 
     <!-- http://purl.obolibrary.org/obo/IAO_0000039 -->
 
-    <rdf:Description rdf:about="&obo;IAO_0000039">
+    <owl:ObjectProperty rdf:about="&obo;IAO_0000039">
         <owl:inverseOf rdf:resource="&obo;uo#is_unit_of"/>
-    </rdf:Description>
+        <rdfs:label>has measurement unit label</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/RO_0000057 -->
+
+    <owl:ObjectProperty rdf:about="&obo;RO_0000057">
+        <rdfs:label>has participant</rdfs:label>
+    </owl:ObjectProperty>
     
 
 
     <!-- http://purl.obolibrary.org/obo/RO_0000086 -->
 
-    <owl:ObjectProperty rdf:about="&obo;RO_0000086"/>
+    <owl:ObjectProperty rdf:about="&obo;RO_0000086">
+        <rdfs:label>has quality</rdfs:label>
+    </owl:ObjectProperty>
     
 
 
@@ -392,17 +386,18 @@ I believe time dependency relations (conditions) don&apos;t imply existence by t
 
     <!-- http://purl.obolibrary.org/obo/RO_0001025 -->
 
-    <rdf:Description rdf:about="&obo;RO_0001025">
+    <owl:ObjectProperty rdf:about="&obo;RO_0001025">
         <rdfs:label>located in</rdfs:label>
-    </rdf:Description>
+    </owl:ObjectProperty>
     
 
 
     <!-- http://purl.obolibrary.org/obo/RO_0002083 -->
 
-    <rdf:Description rdf:about="&obo;RO_0002083">
+    <owl:ObjectProperty rdf:about="&obo;RO_0002083">
         <obo:IAO_0000115 xml:lang="en">t1 before t2 iff:= t1 before_or_simulataneous_with t2 and not (t1 simultaeous_with t2)</obo:IAO_0000115>
-    </rdf:Description>
+        <rdfs:label>before</rdfs:label>
+    </owl:ObjectProperty>
     
 
 
@@ -419,23 +414,28 @@ I believe time dependency relations (conditions) don&apos;t imply existence by t
 
     <owl:ObjectProperty rdf:about="&obo;RO_0002220">
         <rdf:type rdf:resource="&owl;SymmetricProperty"/>
+        <rdfs:label>adjacent to</rdfs:label>
     </owl:ObjectProperty>
     
 
 
     <!-- http://purl.obolibrary.org/obo/RO_0002233 -->
 
-    <rdf:Description rdf:about="&obo;RO_0002233">
+    <owl:ObjectProperty rdf:about="&obo;RO_0002233">
         <rdfs:subPropertyOf rdf:resource="&obo;RO_0000057"/>
-    </rdf:Description>
+        <rdfs:label>has input</rdfs:label>
+        <rdfs:label xml:lang="en">has input</rdfs:label>
+    </owl:ObjectProperty>
     
 
 
     <!-- http://purl.obolibrary.org/obo/RO_0002234 -->
 
-    <rdf:Description rdf:about="&obo;RO_0002234">
+    <owl:ObjectProperty rdf:about="&obo;RO_0002234">
         <rdfs:subPropertyOf rdf:resource="&obo;RO_0000057"/>
-    </rdf:Description>
+        <rdfs:label>has output</rdfs:label>
+        <rdfs:label xml:lang="en">has output</rdfs:label>
+    </owl:ObjectProperty>
     
 
 
@@ -444,13 +444,24 @@ I believe time dependency relations (conditions) don&apos;t imply existence by t
     <owl:ObjectProperty rdf:about="&obo;RO_0002350">
         <rdf:type rdf:resource="&owl;AsymmetricProperty"/>
         <rdf:type rdf:resource="&owl;IrreflexiveProperty"/>
+        <rdfs:label>member of</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/RO_0002351 -->
+
+    <owl:ObjectProperty rdf:about="&obo;RO_0002351">
+        <rdfs:label>has member</rdfs:label>
     </owl:ObjectProperty>
     
 
 
     <!-- http://purl.obolibrary.org/obo/uo#is_unit_of -->
 
-    <rdf:Description rdf:about="&obo;uo#is_unit_of"/>
+    <owl:ObjectProperty rdf:about="&obo;uo#is_unit_of">
+        <rdfs:label>is unit of</rdfs:label>
+    </owl:ObjectProperty>
     
 
 
@@ -1734,7 +1745,7 @@ I believe time dependency relations (conditions) don&apos;t imply existence by t
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:GENEPIO_0000006 xml:lang="en">state / province / territory / region</obo:GENEPIO_0000006>
-        <obo:GENEPIO_0001763>lookup</obo:GENEPIO_0001763>
+        <obo:GENEPIO_0001763>lookup:http://purl.obolibrary.org/obo/GAZ_00000448</obo:GENEPIO_0001763>
     </owl:Class>
     
 
@@ -8238,8 +8249,8 @@ NCIT:C28554 # deceased</obo:GENEPIO_0001763>
         </rdfs:subClassOf>
         <obo:IAO_0000112 xml:lang="en">In expressions like: &quot;&lt;= 8mg/L&quot;</obo:IAO_0000112>
         <obo:IAO_0000114 rdf:resource="&obo;IAO_0000123"/>
+        <obo:IAO_0000115 xml:lang="en">The measurement comparator is a sign indicating that a measurement is above, equal to, or below a given threshold.</obo:IAO_0000115>
         <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
-        <obo:IAO_0000117 xml:lang="en">The measurement comparator is a sign indicating that a measurement is above, equal to, or below a given threshold.</obo:IAO_0000117>
         <rdfs:label xml:lang="en">measurement comparator</rdfs:label>
     </owl:Class>
     <owl:Axiom>
@@ -10177,9 +10188,9 @@ NCIT:C85539 # antimicrobial resistance phenotype</obo:GENEPIO_0001763>
                 </owl:someValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <obo:IAO_0000115 xml:lang="en">The INDISC country qualifier is a textual controlled vocabulary used to indicate the country of origin of a DNA sample.  It can also have the following format: country:sub_region, such as: &quot;Canada:Vancouver&quot;.</obo:IAO_0000115>
+        <obo:IAO_0000115 xml:lang="en">The INSDC country qualifier is a textual controlled vocabulary used to indicate the country of origin of a DNA sample.  It can also have the following format: country:sub_region, such as: &quot;Canada:Vancouver&quot;.</obo:IAO_0000115>
         <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
-        <rdfs:label xml:lang="en">INDISC country qualifier controlled vocabulary</rdfs:label>
+        <rdfs:label xml:lang="en">INSDSC country qualifier controlled vocabulary</rdfs:label>
     </owl:Class>
     
 
@@ -14913,11 +14924,18 @@ ENVO:00000005 # state / province etc.</obo:GENEPIO_0001763>
         <rdfs:subClassOf rdf:resource="&obo;PATO_0001894"/>
         <owl:disjointWith rdf:resource="&obo;PATO_0000383"/>
         <owl:disjointWith rdf:resource="&obo;PATO_0000384"/>
+        <obo:IAO_0000115 xml:lang="en">An animal that has had a substantial part of its reproductive organs removed surgically.</obo:IAO_0000115>
         <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
         <oboInOwl:hasDbXref>NCBI BioSample: neuter</oboInOwl:hasDbXref>
         <rdfs:comment xml:lang="en">Not a PATO phenotypic sex catigorical value.</rdfs:comment>
         <rdfs:label xml:lang="en">neuter</rdfs:label>
     </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="&obo;GENEPIO_0001660"/>
+        <owl:annotatedProperty rdf:resource="&obo;IAO_0000115"/>
+        <owl:annotatedTarget xml:lang="en">An animal that has had a substantial part of its reproductive organs removed surgically.</owl:annotatedTarget>
+        <obo:IAO_0000119 rdf:datatype="&xsd;anyURI">https://en.wikipedia.org/wiki/Neutering</obo:IAO_0000119>
+    </owl:Axiom>
     
 
 
@@ -15257,7 +15275,7 @@ NCIT:C25621 # postal code</obo:GENEPIO_0001763>
                 <owl:onClass rdf:resource="&obo;ENVO_00000005"/>
             </owl:Restriction>
         </owl:annotatedTarget>
-        <obo:GENEPIO_0001763>lookup</obo:GENEPIO_0001763>
+        <obo:GENEPIO_0001763>lookup:http://purl.obolibrary.org/obo/GAZ_00000448</obo:GENEPIO_0001763>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="&obo;GENEPIO_0001679"/>
@@ -15269,7 +15287,7 @@ NCIT:C25621 # postal code</obo:GENEPIO_0001763>
                 <owl:onClass rdf:resource="&obo;NCIT_C80234"/>
             </owl:Restriction>
         </owl:annotatedTarget>
-        <obo:GENEPIO_0001763>lookup</obo:GENEPIO_0001763>
+        <obo:GENEPIO_0001763>lookup:http://purl.obolibrary.org/obo/GAZ_00000448</obo:GENEPIO_0001763>
     </owl:Axiom>
     
 
@@ -16225,7 +16243,7 @@ NCIT:C25621 # postal code</obo:GENEPIO_0001763>
         <owl:disjointWith rdf:resource="&obo;NCIT_C87194"/>
         <owl:disjointWith rdf:resource="&obo;NCIT_C89811"/>
         <obo:GENEPIO_0000006 xml:lang="en">region</obo:GENEPIO_0000006>
-        <obo:GENEPIO_0001763>lookup</obo:GENEPIO_0001763>
+        <obo:GENEPIO_0001763>lookup:http://purl.obolibrary.org/obo/GAZ_00000448</obo:GENEPIO_0001763>
         <obo:IAO_0000114 rdf:resource="&obo;IAO_0000428"/>
         <obo:IAO_0000115 xml:lang="en">A subnational region is a type of subnational entity similar to a nation&apos;s state, province, or territory.</obo:IAO_0000115>
         <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
@@ -17367,7 +17385,7 @@ Aggregated results are by nature obfuscated (example: patient count).</obo:IAO_0
                 <owl:onDataRange rdf:resource="&xsd;boolean"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <obo:GENEPIO_0001763 xml:lang="en">help=In this dataset, selected data have been de-identified (anonymized) for access by dataset users.</obo:GENEPIO_0001763>
+        <obo:GENEPIO_0001763 xml:lang="en">help:In this dataset, selected data have been de-identified (anonymized) for access by dataset users.</obo:GENEPIO_0001763>
         <obo:IAO_0000114 rdf:resource="&obo;IAO_0000428"/>
         <obo:IAO_0000115 xml:lang="en">A &apos;de-identified data&apos; role between a user and given data entails that the user is authorized to see only those fields (including those that are encrypted) which do not contain information that could be use to identify particular individuals (whether patients or medical practitioners) or potentially organizations in the case where an investigation may implicate them.</obo:IAO_0000115>
         <obo:IAO_0000116 xml:lang="en">Damion Dooley&apos;s note: There is a case in the &quot;draft tuberculosis contextual data standard&quot; that has this be a boolean selection.  If a categorical field is linked directly, and it has no underlings, this indicates that it is being treated as a boolean feature.</obo:IAO_0000116>
@@ -23977,6 +23995,7 @@ Country information can be derived exactly from the ISO Country field in Annex B
                 <owl:onClass rdf:resource="&obo;OBI_0001619"/>
             </owl:Restriction>
         </owl:annotatedTarget>
+        <obo:GENEPIO_0001763>format:yyyy-mm-dd</obo:GENEPIO_0001763>
         <obo:GENEPIO_0001763 xml:lang="en">help:This information can be derived from the ISO Collection Date field. If the stakeholder must include a truncated version due to data sharing constraints, only include the year (YYYY format).</obo:GENEPIO_0001763>
         <obo:IAO_0000115 xml:lang="en">Date that the specimen was collected, in format YYYY-MM-DD.</obo:IAO_0000115>
         <rdfs:label>collection_date</rdfs:label>
@@ -25992,6 +26011,22 @@ Depending on its context, hasDbXref annotations may point directly to metadata f
     
 
 
+    <!-- http://purl.obolibrary.org/obo/NCIT_C25174 -->
+
+    <rdf:Description rdf:about="&obo;NCIT_C25174">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2006/vcard/ns#Parent"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/NCIT_C25189 -->
+
+    <rdf:Description rdf:about="&obo;NCIT_C25189">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2006/vcard/ns#Parent"/>
+    </rdf:Description>
+    
+
+
     <!-- http://purl.obolibrary.org/obo/NCIT_C25191 -->
 
     <rdf:Description rdf:about="&obo;NCIT_C25191">
@@ -26045,7 +26080,7 @@ Depending on its context, hasDbXref annotations may point directly to metadata f
         <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0001655"/>
         <owl:disjointWith rdf:resource="&obo;NCIT_C87194"/>
         <owl:disjointWith rdf:resource="&obo;NCIT_C89811"/>
-        <obo:GENEPIO_0001763>lookup</obo:GENEPIO_0001763>
+        <obo:GENEPIO_0001763>lookup:http://purl.obolibrary.org/obo/GAZ_00000448</obo:GENEPIO_0001763>
         <obo:IAO_0000114 rdf:resource="&obo;IAO_0000428"/>
     </rdf:Description>
     <owl:Axiom>
@@ -26394,7 +26429,7 @@ Depending on its context, hasDbXref annotations may point directly to metadata f
 
     <rdf:Description rdf:about="&obo;NCIT_C80234">
         <rdfs:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000415"/>
-        <obo:GENEPIO_0001763>lookup</obo:GENEPIO_0001763>
+        <obo:GENEPIO_0001763>lookup:http://purl.obolibrary.org/obo/GAZ_00000448</obo:GENEPIO_0001763>
         <rdfs:seeAlso xml:lang="en">http://semanticscience.org/resource/SIO_000665</rdfs:seeAlso>
     </rdf:Description>
     
@@ -26515,7 +26550,7 @@ GENEPIO:0001618 # missing</obo:GENEPIO_0001763>
     <rdf:Description rdf:about="&obo;NCIT_C87194">
         <rdfs:subClassOf rdf:resource="&obo;ENVO_00000005"/>
         <owl:disjointWith rdf:resource="&obo;NCIT_C89811"/>
-        <obo:GENEPIO_0001763>lookup</obo:GENEPIO_0001763>
+        <obo:GENEPIO_0001763>lookup:http://purl.obolibrary.org/obo/GAZ_00000448</obo:GENEPIO_0001763>
         <obo:IAO_0000114 rdf:resource="&obo;IAO_0000428"/>
     </rdf:Description>
     
@@ -26533,7 +26568,7 @@ GENEPIO:0001618 # missing</obo:GENEPIO_0001763>
 
     <owl:Class rdf:about="&obo;NCIT_C89811">
         <rdfs:subClassOf rdf:resource="&obo;ENVO_00000005"/>
-        <obo:GENEPIO_0001763>lookup</obo:GENEPIO_0001763>
+        <obo:GENEPIO_0001763>lookup:http://purl.obolibrary.org/obo/GAZ_00000448</obo:GENEPIO_0001763>
         <obo:IAO_0000114 rdf:resource="&obo;IAO_0000428"/>
     </owl:Class>
     
@@ -29149,6 +29184,14 @@ Angular offset can be radians or degrees.</rdfs:comment>
     
 
 
+    <!-- http://www.ebi.ac.uk/efo/EFO_0000399 -->
+
+    <rdf:Description rdf:about="http://www.ebi.ac.uk/efo/EFO_0000399">
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000015"/>
+    </rdf:Description>
+    
+
+
     <!-- http://www.ebi.ac.uk/efo/EFO_0000683 -->
 
     <rdf:Description rdf:about="http://www.ebi.ac.uk/efo/EFO_0000683">
@@ -29179,6 +29222,14 @@ Angular offset can be radians or degrees.</rdfs:comment>
     <rdf:Description rdf:about="http://www.ebi.ac.uk/efo/EFO_0001355">
         <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0002034"/>
         <oboInOwl:hasExactSynonym>http://purl.obolibrary.org/obo/NCIT_C27956</oboInOwl:hasExactSynonym>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.ebi.ac.uk/efo/EFO_0001444 -->
+
+    <rdf:Description rdf:about="http://www.ebi.ac.uk/efo/EFO_0001444">
+        <rdfs:subClassOf rdf:resource="&obo;IAO_0000027"/>
     </rdf:Description>
     
 
@@ -29605,13 +29656,13 @@ Note that this file contains examples of cities, provinces, states, territories,
     <rdf:Description rdf:about="&obo;GENEPIO_0001367">
         <rdf:type rdf:resource="&obo;GENEPIO_0001286"/>
         <obo:RO_0001025 rdf:resource="&obo;GAZ_00002562"/>
-        <obo:IAO_0000114 rdf:resource="&obo;IAO_0000428"/>
-        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
         <obo:RO_0002351 rdf:resource="&obo;GENEPIO_0001368"/>
         <obo:RO_0002351 rdf:resource="&obo;GENEPIO_0001369"/>
         <obo:RO_0002351 rdf:resource="&obo;GENEPIO_0001370"/>
         <obo:RO_0002351 rdf:resource="&obo;GENEPIO_0001372"/>
         <obo:RO_0002351 rdf:resource="&obo;GENEPIO_0001373"/>
+        <obo:IAO_0000114 rdf:resource="&obo;IAO_0000428"/>
+        <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
         <rdfs:comment xml:lang="en">Damion Dooley&apos;s note: Here we are exploring the use of individuals/instances to describe local picklists for GenEpiO driven software.</rdfs:comment>
     </rdf:Description>
     
@@ -29907,12 +29958,6 @@ Note that this file contains examples of cities, provinces, states, territories,
     </rdf:Description>
     <rdf:Description rdf:about="&obo;RO_0002230">
         <rdfs:label xml:lang="en">ends with</rdfs:label>
-    </rdf:Description>
-    <rdf:Description rdf:about="&obo;RO_0002233">
-        <rdfs:label xml:lang="en">has input</rdfs:label>
-    </rdf:Description>
-    <rdf:Description rdf:about="&obo;RO_0002234">
-        <rdfs:label xml:lang="en">has output</rdfs:label>
     </rdf:Description>
     <rdf:Description rdf:about="&obo;RO_0002352">
         <rdfs:label xml:lang="en">input of</rdfs:label>

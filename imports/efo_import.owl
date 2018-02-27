@@ -8,7 +8,6 @@
     <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
     <!ENTITY xml "http://www.w3.org/XML/1998/namespace" >
     <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
-    <!ENTITY userfiles "file:/data/var/www/html/ontofox/userfiles/" >
     <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
     <!ENTITY oboInOwl "http://www.geneontology.org/formats/oboInOwl#" >
 ]>
@@ -19,7 +18,6 @@
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:oboInOwl="http://www.geneontology.org/formats/oboInOwl#"
-     xmlns:userfiles="file:/data/var/www/html/ontofox/userfiles/"
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
@@ -37,24 +35,6 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
-    
-
-
-    <!-- file:/data/var/www/html/ontofox/userfiles/jf5n9xxg.in.owl -->
-
-    <!-- <owl:AnnotationProperty rdf:about="&userfiles;jf5n9xxg.in.owl"/> -->
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/BFO_0000015 -->
-
-    <!-- <owl:AnnotationProperty rdf:about="&obo;BFO_0000015"/> -->
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/BFO_0000040 -->
-
-    <!-- <owl:AnnotationProperty rdf:about="&obo;BFO_0000040"/> -->
     
 
 
@@ -159,14 +139,6 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
-    
-
-
-    <!-- file:/data/var/www/html/ontofox/userfiles/jf5n9xxg.in.owl -->
-
-    <owl:Class rdf:about="&userfiles;jf5n9xxg.in.owl">
-        <rdfs:subClassOf rdf:resource="&efo;EFO_0000001"/>
-    </owl:Class>
     
 
 
@@ -288,6 +260,7 @@
     <!-- http://www.ebi.ac.uk/efo/EFO_0000399 -->
 
     <owl:Class rdf:about="&efo;EFO_0000399">
+        <rdfs:subClassOf rdf:resource="http://www.ifomis.org/bfo/1.1/span#ProcessualEntity"/>
         <obo:IAO_0000115 rdf:datatype="&xsd;string">A developmental stage is spatiotemporal region encompassing some part of the life cycle of an organism, e.g. blastula stage</obo:IAO_0000115>
         <obo:IAO_0000117 rdf:datatype="&xsd;string">James Malone</obo:IAO_0000117>
         <obo:IAO_0000117 rdf:datatype="&xsd;string">Jie Zheng</obo:IAO_0000117>
@@ -1143,6 +1116,30 @@
     
 
 
+    <!-- http://www.ebi.ac.uk/efo/EFO_0008007 -->
+
+    <owl:Class rdf:about="&efo;EFO_0008007">
+        <rdfs:subClassOf rdf:resource="&efo;EFO_0000246"/>
+        <obo:IAO_0000115>The age of an individual at the time an assessment takes place</obo:IAO_0000115>
+        <obo:IAO_0000117>Dani Welter</obo:IAO_0000117>
+        <obo:IAO_0000412 rdf:resource="&efo;efo.owl"/>
+        <rdfs:label xml:lang="en">age at assessment</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ebi.ac.uk/efo/EFO_0008336 -->
+
+    <owl:Class rdf:about="&efo;EFO_0008336">
+        <rdfs:subClassOf rdf:resource="&efo;EFO_0004949"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">quantification of some aspect of disease progression such as speed or symptom variability. Disease progression can be quantified in a number of ways, for example as a correlated measure of progression scores from different symptom areas</obo:IAO_0000115>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Dani Welter</obo:IAO_0000117>
+        <obo:IAO_0000412 rdf:resource="&efo;efo.owl"/>
+        <rdfs:label xml:lang="en">disease progression measurement</rdfs:label>
+    </owl:Class>
+    
+
+
     <!-- http://www.ifomis.org/bfo/1.1/snap#Role -->
 
     <owl:Class rdf:about="http://www.ifomis.org/bfo/1.1/snap#Role">
@@ -1170,23 +1167,17 @@
     
 
 
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Annotations
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
+    <!-- http://www.ifomis.org/bfo/1.1/span#ProcessualEntity -->
 
-    <rdf:Description rdf:about="&userfiles;jf5n9xxg.in.owl">
-        <rdfs:label rdf:datatype="&xsd;string">definition</rdfs:label>
+    <owl:Class rdf:about="http://www.ifomis.org/bfo/1.1/span#ProcessualEntity">
+        <rdfs:subClassOf rdf:resource="&efo;EFO_0000001"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">A process is an entity that exists in time by occurring or happening, has temporal parts and always involves and depends on some entity during the time it occurs.</obo:IAO_0000115>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">James Malone</obo:IAO_0000117>
+        <obo:IAO_0000412 rdf:resource="&efo;efo.owl"/>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NCIt:C29862</oboInOwl:hasDbXref>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">SNOMEDCT:415178003</oboInOwl:hasDbXref>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">James Malone</obo:IAO_0000117>
         <rdfs:label rdf:datatype="&xsd;string">process</rdfs:label>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">A process is an entity that exists in time by occurring or happening, has temporal parts and always involves and depends on some entity during the time it occurs.</obo:IAO_0000115>
-        <obo:IAO_0000412 rdf:resource="&efo;efo.owl"/>
-    </rdf:Description>
+    </owl:Class>
 </rdf:RDF>
 
 

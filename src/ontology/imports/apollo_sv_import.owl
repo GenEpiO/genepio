@@ -71,16 +71,6 @@
     
 
 
-    <!-- http://purl.obolibrary.org/obo/apollo_sv.owl/APOLLO_SV_0000040 -->
-
-    <owl:AnnotationProperty rdf:about="http://purl.obolibrary.org/obo/apollo_sv.owl/APOLLO_SV_0000040">
-        <obo:IAO_0000115>This annotation property gives the unique label of all Apollo_SV entities that are refered to in the schema. The UAL is the denotator for the Apollo_SV class in the schema. There can at all times only be ONE value of UAL for each class.</obo:IAO_0000115>
-        <obo:IAO_0000118>UAL</obo:IAO_0000118>
-        <rdfs:label xml:lang="en">Unique Apollo Label</rdfs:label>
-    </owl:AnnotationProperty>
-    
-
-
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
@@ -89,20 +79,6 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/BFO_0000156 -->
-
-    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000156">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-        <rdfs:domain rdf:resource="http://purl.obolibrary.org/obo/BFO_0000008"/>
-        <rdfs:range rdf:resource="http://purl.obolibrary.org/obo/BFO_0000003"/>
-        <obo:IAO_0000412 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://purl.obolibrary.org/obo/bfo.owl</obo:IAO_0000412>
-        <obo:IAO_0000600>[copied from inverse property &apos;occupies temporal region&apos;] p occupies_temporal_region t. This is a primitive relation between an occurrent p and the temporal region t upon which the spatiotemporal region p occupies_spatiotemporal_region projects. (axiom label in BFO2 Reference: [132-001])</obo:IAO_0000600>
-        <rdfs:isDefinedBy rdf:resource="http://purl.obolibrary.org/obo/bfo.owl"/>
-        <rdfs:label xml:lang="en">has temporal occupant</rdfs:label>
-    </owl:ObjectProperty>
     
 
 
@@ -136,7 +112,6 @@
         <obo:IAO_0000115 xml:lang="en">The average number of transmissions of an infectious agent from an infectious organism to a susceptible organism within a completely susceptible population.</obo:IAO_0000115>
         <obo:IAO_0000117 xml:lang="en">William R. Hogan</obo:IAO_0000117>
         <obo:IAO_0000600 xml:lang="en">The number of organisms that each infected organism infects in a completely susceptible population during its infectious period.</obo:IAO_0000600>
-        <apollo_sv:APOLLO_SV_0000040 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">basicReproductionNumbers</apollo_sv:APOLLO_SV_0000040>
         <rdfs:comment xml:lang="en">MB: Here we run into the well know DL problem that we cannot specify that the infectious agent that is transmitted is of the same type that the infectious agent the population is susceptible to.</rdfs:comment>
         <rdfs:label xml:lang="en">basic reproduction number</rdfs:label>
     </owl:Class>
@@ -146,28 +121,11 @@
     <!-- http://purl.obolibrary.org/obo/APOLLO_SV_00000016 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/APOLLO_SV_00000016">
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000136"/>
-                <owl:someValuesFrom>
-                    <owl:Class>
-                        <owl:intersectionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000038"/>
-                            <owl:Restriction>
-                                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000156"/>
-                                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/APOLLO_SV_00000140"/>
-                            </owl:Restriction>
-                        </owl:intersectionOf>
-                    </owl:Class>
-                </owl:someValuesFrom>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <obo:IAO_0000115 xml:lang="en">A duration of the parts of an infection during which the host bears an infectious disposition in a population of hosts.</obo:IAO_0000115>
         <obo:IAO_0000117>Mathias Brochhausen</obo:IAO_0000117>
         <obo:IAO_0000600 xml:lang="en">A period when an individual of a particular species, who is infected with a particular pathogen, is able to infect susceptible organisms of a particular species.
 
 Note that the susceptible and infectious organisms can be of different species.</obo:IAO_0000600>
-        <apollo_sv:APOLLO_SV_0000040 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">infectiousPeriodDuration</apollo_sv:APOLLO_SV_0000040>
         <rdfs:comment xml:lang="en">MB: In order to get the temporal occupation relations I added properties that I renamed with BFO2 URIs.</rdfs:comment>
         <rdfs:label xml:lang="en">infectious period duration</rdfs:label>
     </owl:Class>
@@ -177,22 +135,6 @@ Note that the susceptible and infectious organisms can be of different species.<
     <!-- http://purl.obolibrary.org/obo/APOLLO_SV_00000017 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/APOLLO_SV_00000017">
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000136"/>
-                <owl:someValuesFrom>
-                    <owl:Class>
-                        <owl:intersectionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000038"/>
-                            <owl:Restriction>
-                                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000156"/>
-                                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/APOLLO_SV_00000118"/>
-                            </owl:Restriction>
-                        </owl:intersectionOf>
-                    </owl:Class>
-                </owl:someValuesFrom>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <obo:IAO_0000115 xml:lang="en">A duration of the time interval between the host acquiring an infection and the host bearing a contagiousness disposition during the same disease course within a population of hosts.</obo:IAO_0000115>
         <obo:IAO_0000117>Mathias Brochhausen</obo:IAO_0000117>
         <obo:IAO_0000600 xml:lang="en">A period during which an organism of a particular species, who is infected with a particular pathogen, is not yet able to infect susceptible organisms of a particular species.  
@@ -200,7 +142,6 @@ Note that the susceptible and infectious organisms can be of different species.<
 Note that the susceptible and infected organisms can be of different species.
 
 </obo:IAO_0000600>
-        <apollo_sv:APOLLO_SV_0000040 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">latentPeriodDuration</apollo_sv:APOLLO_SV_0000040>
         <rdfs:comment xml:lang="en">MB: In order to get the temporal occupation relations I added properties that I renamed with BFO2 URIs</rdfs:comment>
         <rdfs:comment xml:lang="en">The duration of the period between when an organism becomes infected and when it becomes infectious.</rdfs:comment>
         <rdfs:label xml:lang="en">latent period duration</rdfs:label>
@@ -256,7 +197,6 @@ Any ideas?  I’ve considered and rejected allowing individual organisms to be f
         <obo:IAO_0000115 xml:lang="en">A simulation of the aggregate of organisms that are members of the population participating in a simulator.</obo:IAO_0000115>
         <obo:IAO_0000117>Mathias Brochhausen</obo:IAO_0000117>
         <obo:IAO_0000600 xml:lang="en">A simulated population is a set of simulated organisms.  The set can be null (e.g., the set of 200 year-old H. sapiens).  A simulated population can include more than one species, in which case it may be convenient to define each species as a simulated population and form the overall simulated population by set union.  Similarly, it may be convenient to define sociodemographic or geographic strata within a simulated population as simulated populations and obtain the overall simulated population by set union.  See examples in “Programmer’s Guide, page x)</obo:IAO_0000600>
-        <apollo_sv:APOLLO_SV_0000040 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">simulatorReferencablePopulation</apollo_sv:APOLLO_SV_0000040>
         <rdfs:label xml:lang="en">simulated population</rdfs:label>
         <rdfs:label xml:lang="en">simulation of population</rdfs:label>
     </owl:Class>
@@ -282,7 +222,6 @@ Any ideas?  I’ve considered and rejected allowing individual organisms to be f
         <obo:IAO_0000115 xml:lang="en">The average value of transmissions of the infectious agent from one infected organism to another, resulting in an infection. </obo:IAO_0000115>
         <obo:IAO_0000117>Mathias Brochhausen</obo:IAO_0000117>
         <obo:IAO_0000600 xml:lang="en">The number of susceptible organisms that each infected organism infects.  ‘Infects’ carries the same meaning as ‘exposes’ in epidemic simulations such as SEIR simulation.</obo:IAO_0000600>
-        <apollo_sv:APOLLO_SV_0000040 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReproductionNumber</apollo_sv:APOLLO_SV_0000040>
         <rdfs:label xml:lang="en">reproduction number</rdfs:label>
     </owl:Class>
     
@@ -374,7 +313,6 @@ Any ideas?  I’ve considered and rejected allowing individual organisms to be f
         <obo:IAO_0000115 xml:lang="en">The count of a specific entity in a specified region at a specified time.</obo:IAO_0000115>
         <obo:IAO_0000117 xml:lang="en">Mathias Brochhausen</obo:IAO_0000117>
         <obo:IAO_0000600 xml:lang="en">The count of a specific entity in a specified region at a specified time.</obo:IAO_0000600>
-        <apollo_sv:APOLLO_SV_0000040 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CensusData</apollo_sv:APOLLO_SV_0000040>
         <rdfs:label xml:lang="en">census</rdfs:label>
     </owl:Class>
     
@@ -386,7 +324,6 @@ Any ideas?  I’ve considered and rejected allowing individual organisms to be f
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/IAO_0000030"/>
         <obo:IAO_0000115 xml:lang="en">An information content entity that represents the rate that an infection moves from infected individuals to susceptible individuals in a population.</obo:IAO_0000115>
         <obo:IAO_0000600 xml:lang="en">An information content entity that represents the rate that an infection moves from infected individuals to susceptible individuals in a population.</obo:IAO_0000600>
-        <apollo_sv:APOLLO_SV_0000040 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">beta</apollo_sv:APOLLO_SV_0000040>
         <rdfs:label xml:lang="en">transmission coefficient</rdfs:label>
     </owl:Class>
     
@@ -399,7 +336,6 @@ Any ideas?  I’ve considered and rejected allowing individual organisms to be f
         <obo:IAO_0000115 xml:lang="en">An infectious disease control strategy that immediately targets individuals.</obo:IAO_0000115>
         <obo:IAO_0000117 xml:lang="en">Mathias Brochhausen</obo:IAO_0000117>
         <obo:IAO_0000600 xml:lang="en">An infectious disease control strategy that immediately targets individuals.</obo:IAO_0000600>
-        <apollo_sv:APOLLO_SV_0000040 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IndividualTreatmentControlMeasure</apollo_sv:APOLLO_SV_0000040>
         <rdfs:label xml:lang="en">individual treatment control strategy</rdfs:label>
     </owl:Class>
     
@@ -410,7 +346,6 @@ Any ideas?  I’ve considered and rejected allowing individual organisms to be f
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/APOLLO_SV_00000211">
         <obo:IAO_0000115 xml:lang="en">The probability of the occurence of an infection acquisition from one infected organism to another when in contact.</obo:IAO_0000115>
         <obo:IAO_0000600 xml:lang="en">The probability of the occurence of an infection acquisition from one infected organism to another when in contact.</obo:IAO_0000600>
-        <apollo_sv:APOLLO_SV_0000040 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TransmissionProbability</apollo_sv:APOLLO_SV_0000040>
         <rdfs:label xml:lang="en">transmission probability</rdfs:label>
     </owl:Class>
     
@@ -460,7 +395,6 @@ Any ideas?  I’ve considered and rejected allowing individual organisms to be f
         <obo:IAO_0000115 xml:lang="en">A information content entity that specifies the date of a census.</obo:IAO_0000115>
         <obo:IAO_0000117 xml:lang="en">Mathias Brochhausen</obo:IAO_0000117>
         <obo:IAO_0000600 xml:lang="en">A information content entity that specifies the date of a census.</obo:IAO_0000600>
-        <apollo_sv:APOLLO_SV_0000040 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">referenceDate</apollo_sv:APOLLO_SV_0000040>
         <rdfs:label xml:lang="en">census reference date</rdfs:label>
     </owl:Class>
     
@@ -472,7 +406,6 @@ Any ideas?  I’ve considered and rejected allowing individual organisms to be f
         <obo:IAO_0000115 xml:lang="en">The duration between the appearance of symptoms of a disease and the start of a treatment.</obo:IAO_0000115>
         <obo:IAO_0000117 xml:lang="en">Mathias Brochhausen</obo:IAO_0000117>
         <obo:IAO_0000600 xml:lang="en">The duration between the appearance of symptoms of a disease and the start of a treatment.</obo:IAO_0000600>
-        <apollo_sv:APOLLO_SV_0000040 xml:lang="en">delayFromSymptomsToTreatment</apollo_sv:APOLLO_SV_0000040>
         <rdfs:label xml:lang="en">delay from symptoms to treatment</rdfs:label>
     </owl:Class>
     
@@ -484,7 +417,6 @@ Any ideas?  I’ve considered and rejected allowing individual organisms to be f
         <obo:IAO_0000115 xml:lang="en">The duration from the time an organism satisfies a case definition until a process or system detects the organism as satisfying that case definition</obo:IAO_0000115>
         <obo:IAO_0000117 xml:lang="en">Mathias Brochhausen</obo:IAO_0000117>
         <obo:IAO_0000600 xml:lang="en">The period from the time an organism satisfies the criteria of a case definition until a process or system detects the organism as satisfying those criteria.</obo:IAO_0000600>
-        <apollo_sv:APOLLO_SV_0000040 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">timeDelayToCaseDetection</apollo_sv:APOLLO_SV_0000040>
         <rdfs:label xml:lang="en">time delay to case detection</rdfs:label>
     </owl:Class>
     
@@ -493,26 +425,9 @@ Any ideas?  I’ve considered and rejected allowing individual organisms to be f
     <!-- http://purl.obolibrary.org/obo/APOLLO_SV_00000280 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/APOLLO_SV_00000280">
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000136"/>
-                <owl:someValuesFrom>
-                    <owl:Class>
-                        <owl:intersectionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000038"/>
-                            <owl:Restriction>
-                                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000156"/>
-                                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/OGMS_0000090"/>
-                            </owl:Restriction>
-                        </owl:intersectionOf>
-                    </owl:Class>
-                </owl:someValuesFrom>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <obo:IAO_0000115 xml:lang="en">A duration that measures the temporal interval occupied by a treatment course.</obo:IAO_0000115>
         <obo:IAO_0000117 xml:lang="en">Mathias Brochhausen</obo:IAO_0000117>
         <obo:IAO_0000600 xml:lang="en">A period from the start to the end of a treatment course.</obo:IAO_0000600>
-        <apollo_sv:APOLLO_SV_0000040 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">durationOfTreatmentCourse</apollo_sv:APOLLO_SV_0000040>
         <rdfs:label xml:lang="en">duration of treatment course</rdfs:label>
     </owl:Class>
     
@@ -530,7 +445,6 @@ Any ideas?  I’ve considered and rejected allowing individual organisms to be f
         <obo:IAO_0000115 xml:lang="en">The count of the number of doses that are part of a treatment course.</obo:IAO_0000115>
         <obo:IAO_0000117 xml:lang="en">Mathias Brochhausen</obo:IAO_0000117>
         <obo:IAO_0000600 xml:lang="en">The number of doses (of material such as antiviral drug or vaccine) that constitutes a particular course of treatment</obo:IAO_0000600>
-        <apollo_sv:APOLLO_SV_0000040 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">numDosesInTreatmentCourse</apollo_sv:APOLLO_SV_0000040>
         <rdfs:label xml:lang="en">number of doses in a treatment course</rdfs:label>
     </owl:Class>
     
@@ -542,7 +456,6 @@ Any ideas?  I’ve considered and rejected allowing individual organisms to be f
         <obo:IAO_0000115 xml:lang="en">The duration from the time an individual receives a treatment until the time a system designed to detect that the treatment occurred detects it in a population</obo:IAO_0000115>
         <obo:IAO_0000117 xml:lang="en">William R. Hogan</obo:IAO_0000117>
         <obo:IAO_0000600 xml:lang="en">The duration from treatment until a treatment surveillance system detects it in a population</obo:IAO_0000600>
-        <apollo_sv:APOLLO_SV_0000040 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">timeDelayOfTreatmentDetection</apollo_sv:APOLLO_SV_0000040>
         <rdfs:label xml:lang="en">time delay of treatment detection</rdfs:label>
     </owl:Class>
     
@@ -558,7 +471,6 @@ Any ideas?  I’ve considered and rejected allowing individual organisms to be f
 
 The abnormal state could be having a disease, carrier status, a syndrome, a structural abnormality (e.g., congenital heart defect), and so on.
 </obo:IAO_0000600>
-        <apollo_sv:APOLLO_SV_0000040 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CaseDefinition</apollo_sv:APOLLO_SV_0000040>
         <rdfs:label xml:lang="en">case definition</rdfs:label>
     </owl:Class>
     
@@ -572,7 +484,6 @@ The abnormal state could be having a disease, carrier status, a syndrome, a stru
         <obo:IAO_0000117>Matthew Diller</obo:IAO_0000117>
         <obo:IAO_0000117>William R. Hogan</obo:IAO_0000117>
         <obo:IAO_0000600 xml:lang="en">A count of disease cases in an infected population that meet the case definition criteria within a particular epidemic interval.</obo:IAO_0000600>
-        <apollo_sv:APOLLO_SV_0000040 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EpidemicCaseCounts</apollo_sv:APOLLO_SV_0000040>
         <rdfs:label xml:lang="en">count of cases in an epidemic</rdfs:label>
     </owl:Class>
     

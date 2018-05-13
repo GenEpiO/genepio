@@ -65,11 +65,15 @@
     <!-- <owl:AnnotationProperty rdf:about="&obo;IAO_0000115">
         <obo:IAO_0000111 xml:lang="en">definition</obo:IAO_0000111>
         <obo:IAO_0000114 rdf:resource="&obo;IAO_0000122"/>
+        <obo:IAO_0000115 xml:lang="en">The official OBI definition, explaining the meaning of a class or property. Shall be Aristotelian, formalized and normalized. Can be augmented with colloquial definitions.</obo:IAO_0000115>
         <obo:IAO_0000115 xml:lang="en">The official definition, explaining the meaning of a class or property. Shall be Aristotelian, formalized and normalized. Can be augmented with colloquial definitions.</obo:IAO_0000115>
         <obo:IAO_0000117 xml:lang="en">PERSON:Daniel Schober</obo:IAO_0000117>
         <obo:IAO_0000119 xml:lang="en">GROUP:OBI:&lt;http://purl.obolibrary.org/obo/obi&gt;</obo:IAO_0000119>
+        <rdfs:label>definition</rdfs:label>
         <rdfs:label xml:lang="en">definition</rdfs:label>
         <rdfs:label rdf:datatype="&xsd;string">definition</rdfs:label>
+        <rdfs:label>textual definition</rdfs:label>
+        <rdfs:label rdf:datatype="&xsd;string">textual definition</rdfs:label>
     </owl:AnnotationProperty> -->
     
 
@@ -117,7 +121,9 @@
 
     <!-- http://www.w3.org/2000/01/rdf-schema#label -->
 
-    <!-- <owl:AnnotationProperty rdf:about="&rdfs;label"/> -->
+    <!-- <owl:AnnotationProperty rdf:about="&rdfs;label">
+        <rdfs:label>label</rdfs:label>
+    </owl:AnnotationProperty> -->
     
 
 
@@ -135,6 +141,7 @@
     <!-- http://purl.obolibrary.org/obo/BFO_0000001 -->
 
     <owl:Class rdf:about="&obo;BFO_0000001">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
         <obo:IAO_0000412 rdf:resource="&obo;ido.owl"/>
         <rdfs:label xml:lang="en">entity</rdfs:label>
     </owl:Class>
@@ -257,7 +264,6 @@
 
     <owl:Class rdf:about="&obo;CHEBI_23367">
         <rdfs:subClassOf rdf:resource="&obo;BFO_0000040"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">molecular entity</obo:IAO_0000111>
         <obo:IAO_0000115 rdf:datatype="&xsd;string">Any constitutionally or isotopically distinct atom, molecule, ion, ion pair, radical, radical ion, complex, conformer etc., identifiable as a separately distinguishable entity.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;ido.owl"/>
         <rdfs:label rdf:datatype="&xsd;string">molecular entity</rdfs:label>
@@ -484,7 +490,7 @@
 
     <owl:Class rdf:about="&obo;IDO_0000515">
         <rdfs:subClassOf rdf:resource="&obo;IDO_0000509"/>
-        <obo:IAO_0000115 xml:lang="en">An organism population whose members are particpating in non-parasitic symbiosis with a particular host.</obo:IAO_0000115>
+        <obo:IAO_0000115 xml:lang="en">An organism population whose members are participating in non-parasitic symbiosis with a particular host.</obo:IAO_0000115>
         <obo:IAO_0000117>Albert Goldfain</obo:IAO_0000117>
         <obo:IAO_0000117>Alexander Diehl</obo:IAO_0000117>
         <obo:IAO_0000117>Lindsay Cowell</obo:IAO_0000117>
@@ -504,6 +510,34 @@
         <obo:IAO_0000117>Lindsay Cowell</obo:IAO_0000117>
         <obo:IAO_0000412 rdf:resource="&obo;ido.owl"/>
         <rdfs:label xml:lang="en">host</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/IDO_0000537 -->
+
+    <owl:Class rdf:about="&obo;IDO_0000537">
+        <rdfs:subClassOf rdf:resource="&obo;IDO_0000538"/>
+        <obo:IAO_0000115 xml:lang="en">An organism bearing an infectious agent host role.</obo:IAO_0000115>
+        <obo:IAO_0000117>Albert Goldfain</obo:IAO_0000117>
+        <obo:IAO_0000117>Alexander Diehl</obo:IAO_0000117>
+        <obo:IAO_0000117>Lindsay Cowell</obo:IAO_0000117>
+        <obo:IAO_0000412 rdf:resource="&obo;ido.owl"/>
+        <rdfs:label xml:lang="en">infectious agent host</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/IDO_0000538 -->
+
+    <owl:Class rdf:about="&obo;IDO_0000538">
+        <rdfs:subClassOf rdf:resource="&obo;IDO_0000531"/>
+        <obo:IAO_0000115 xml:lang="en">An organism bearing a pathogen host role.</obo:IAO_0000115>
+        <obo:IAO_0000117>Albert Goldfain</obo:IAO_0000117>
+        <obo:IAO_0000117>Alexander Diehl</obo:IAO_0000117>
+        <obo:IAO_0000117>Lindsay Cowell</obo:IAO_0000117>
+        <obo:IAO_0000412 rdf:resource="&obo;ido.owl"/>
+        <rdfs:label xml:lang="en">pathogen host</rdfs:label>
     </owl:Class>
     
 
@@ -553,7 +587,7 @@
     <!-- http://purl.obolibrary.org/obo/IDO_0000569 -->
 
     <owl:Class rdf:about="&obo;IDO_0000569">
-        <rdfs:subClassOf rdf:resource="&obo;OBI_0100026"/>
+        <rdfs:subClassOf rdf:resource="&obo;IDO_0000537"/>
         <obo:IAO_0000115 xml:lang="en">An organism that is host to an infectious agent and has no symptoms of the infectious disease associated with the infectious agent.</obo:IAO_0000115>
         <obo:IAO_0000117>Albert Goldfain</obo:IAO_0000117>
         <obo:IAO_0000117>Alexander Diehl</obo:IAO_0000117>
@@ -567,7 +601,7 @@
     <!-- http://purl.obolibrary.org/obo/IDO_0000573 -->
 
     <owl:Class rdf:about="&obo;IDO_0000573">
-        <rdfs:subClassOf rdf:resource="&obo;OBI_0100026"/>
+        <rdfs:subClassOf rdf:resource="&obo;IDO_0000537"/>
         <obo:IAO_0000115 xml:lang="en">An organism who is host to an infectious agent and has symptoms of the infectious disease associated with the infectious agent</obo:IAO_0000115>
         <obo:IAO_0000117>Albert Goldfain</obo:IAO_0000117>
         <obo:IAO_0000117>Alexander Diehl</obo:IAO_0000117>
@@ -679,9 +713,7 @@
 
     <owl:Class rdf:about="&obo;OBI_0100026">
         <rdfs:subClassOf rdf:resource="&obo;BFO_0000040"/>
-        <obo:IAO_0000111 xml:lang="en">organism</obo:IAO_0000111>
         <obo:IAO_0000115 xml:lang="en">A material entity that is an individual living system, such as animal, plant, bacteria or virus, that is capable of replicating or reproducing, growth and maintenance in the right environment. An organism may be unicellular or made up, like humans, of many billions of cells divided into specialized tissues and organs.</obo:IAO_0000115>
-        <obo:IAO_0000115>An organism is material entity that is an individual living system, such as animal, plant, bacteria or virus, that is capable of replicating or reproducing, growth and maintenance in the right environment. An organism may be unicellular or made up, like humans, of many billions of cells divided into specialized tissues and organs.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;ido.owl"/>
         <rdfs:label xml:lang="en">organism</rdfs:label>
     </owl:Class>
@@ -692,7 +724,6 @@
 
     <owl:Class rdf:about="&obo;OGMS_0000063">
         <rdfs:subClassOf rdf:resource="&obo;BFO_0000015"/>
-        <obo:IAO_0000111>disease course</obo:IAO_0000111>
         <obo:IAO_0000115 xml:lang="en">The totality of all processes through which a given disease instance is realized.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;ido.owl"/>
         <rdfs:label>disease course</rdfs:label>

@@ -2,6 +2,7 @@
 
 
 <!DOCTYPE rdf:RDF [
+    <!ENTITY terms "http://purl.org/dc/terms/" >
     <!ENTITY foaf "http://xmlns.com/foaf/0.1/" >
     <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
     <!ENTITY obo "http://purl.obolibrary.org/obo/" >
@@ -17,6 +18,7 @@
 <rdf:RDF xmlns="&obo;genepio.owl#"
      xml:base="&obo;genepio.owl"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:terms="http://purl.org/dc/terms/"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:oboInOwl="http://www.geneontology.org/formats/oboInOwl#"
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
@@ -26,7 +28,7 @@
      xmlns:foaf="http://xmlns.com/foaf/0.1/"
      xmlns:dc="http://purl.org/dc/elements/1.1/">
     <owl:Ontology rdf:about="&obo;genepio.owl">
-        <owl:versionIRI rdf:resource="&obo;genepio/releases/2018-05-06/genepio.owl"/>
+        <owl:versionIRI rdf:resource="&obo;genepio/releases/2018-05-13/genepio.owl"/>
         <owl:imports rdf:resource="&obo;GENEPIO/imports/pato_import.owl"/>
         <owl:imports rdf:resource="&obo;GENEPIO/imports/chebi_import.owl"/>
         <owl:imports rdf:resource="&obo;GENEPIO/imports/ncbitaxon_import.owl"/>
@@ -59,11 +61,11 @@
         <owl:imports rdf:resource="&obo;GENEPIO/imports/omit_import.owl"/>
         <owl:imports rdf:resource="&obo;GENEPIO/imports/stato_import.owl"/>
         <owl:imports rdf:resource="&obo;GENEPIO/imports/envo_import.owl"/>
-        <dc:license rdf:resource="http://creativecommons.org/licenses/by/3.0/"/>
-        <dc:title xml:lang="en">Genomic Epidemiology Ontology</dc:title>
-        <dc:date rdf:datatype="&xsd;date">2018-05-06</dc:date>
+        <terms:title xml:lang="en">Genomic Epidemiology Ontology</terms:title>
+        <terms:description xml:lang="en">The Genomic Epidemiology Ontology aims to provide a comprehensive controlled vocabulary for infectious disease surveillance and outbreak investigations. It is an application ontology that draws on many other ontologies including anatomy, taxonomy, disease, symptoms, environment and food types.</terms:description>
         <oboInOwl:default-namespace rdf:datatype="&xsd;string">GENEPIO</oboInOwl:default-namespace>
-        <dc:description xml:lang="en">The Genomic Epidemiology Ontology aims to provide a comprehensive controlled vocabulary for infectious disease surveillance and outbreak investigations. It is an application ontology that draws on many other ontologies including anatomy, taxonomy, disease, symptoms, environment and food types.</dc:description>
+        <terms:license rdf:resource="http://creativecommons.org/licenses/by/3.0/"/>
+        <terms:date rdf:datatype="&xsd;date">2018-05-13</terms:date>
     </owl:Ontology>
     
 
@@ -314,10 +316,6 @@
 
     <owl:ObjectProperty rdf:about="&obo;GENEPIO_0001340">
         <rdfs:subPropertyOf rdf:resource="&obo;RO_0002180"/>
-        <owl:propertyChainAxiom rdf:parseType="Collection">
-            <rdf:Description rdf:about="&obo;GENEPIO_0002469"/>
-            <rdf:Description rdf:about="&obo;OBI_0001927"/>
-        </owl:propertyChainAxiom>
         <rdfs:label xml:lang="en">has string specification of</rdfs:label>
     </owl:ObjectProperty>
     
@@ -353,10 +351,6 @@ I believe time dependency relations (conditions) don&apos;t imply existence by t
 
     <owl:ObjectProperty rdf:about="&obo;GENEPIO_0002470">
         <rdfs:subPropertyOf rdf:resource="&obo;RO_0002180"/>
-        <owl:propertyChainAxiom rdf:parseType="Collection">
-            <rdf:Description rdf:about="&obo;GENEPIO_0002471"/>
-            <rdf:Description rdf:about="&obo;OBI_0001927"/>
-        </owl:propertyChainAxiom>
         <rdfs:label xml:lang="en">has categorical specification of</rdfs:label>
     </owl:ObjectProperty>
     
@@ -31983,6 +31977,14 @@ Often a value specification may need to allow for a &quot;data item state&quot; 
     <!-- http://purl.obolibrary.org/obo/PCO_0000000 -->
 
     <rdf:Description rdf:about="&obo;PCO_0000000">
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000040"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/PCO_0000031 -->
+
+    <rdf:Description rdf:about="&obo;PCO_0000031">
         <rdfs:subClassOf rdf:resource="&obo;BFO_0000040"/>
     </rdf:Description>
     

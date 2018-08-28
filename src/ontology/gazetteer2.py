@@ -72,7 +72,7 @@ class OntologyHammer(object):
 		# Might need some of these prefixes for GAZETTEER related geo terms
 		self.struct['@context'] = {
 			'obo':'http://purl.obolibrary.org/obo/',
-			'owl':'http://www.w3.org/2002/07/owl/',
+			'owl':'http://www.w3.org/2002/07/owl#',
 			'sio':'http://semanticscience.org/resource/',
 			'oboInOwl': 'http://www.geneontology.org/formats/oboInOwl#'
 		}

@@ -201,6 +201,12 @@
     
 
 
+    <!-- http://purl.obolibrary.org/obo/OBI_0002135 -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.obolibrary.org/obo/OBI_0002135"/>
+    
+
+
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
@@ -397,7 +403,7 @@ It can be defined by a cartesian or radial coordinate system.</obo:IAO_0000115>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001605"/>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/OBI_0002135"/>
                 <owl:someValuesFrom>
                     <rdfs:Datatype>
                         <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
@@ -429,7 +435,7 @@ It can be defined by a cartesian or radial coordinate system.</obo:IAO_0000115>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001605"/>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/OBI_0002135"/>
                 <owl:someValuesFrom>
                     <rdfs:Datatype>
                         <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
@@ -709,13 +715,6 @@ It can be defined by a cartesian or radial coordinate system.</obo:IAO_0000115>
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001879">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/STATO_0000047"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001605"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <obo:IAO_0000115 xml:lang="en">Wikipedia: &quot;The significant figures of a number are digits that carry meaning contributing to its measurement resolution.&quot;</obo:IAO_0000115>
         <rdfs:label xml:lang="en">significant digits</rdfs:label>
     </owl:Class>
@@ -728,7 +727,7 @@ It can be defined by a cartesian or radial coordinate system.</obo:IAO_0000115>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001869"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001605"/>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/OBI_0002135"/>
                 <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
                 <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
             </owl:Restriction>
@@ -737,7 +736,7 @@ It can be defined by a cartesian or radial coordinate system.</obo:IAO_0000115>
         <rdfs:comment xml:lang="en">Some dates don&apos;t belong to a range other than the overall timeline.
 
 Other dates associated with a process fall within a range that has a start and end bound.</rdfs:comment>
-        <rdfs:label xml:lang="en">datetime</rdfs:label>
+        <rdfs:label xml:lang="en">datetime linear coordinate</rdfs:label>
     </owl:Class>
     
 
@@ -1052,13 +1051,6 @@ Strings are only indirectly ordered insofar as strings can be sorted by characte
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001910">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001919"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001605"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <obo:GENEPIO_1919 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">^([+-]?[1-9]\d*|0)(\.\d+)?$</obo:GENEPIO_1919>
         <rdfs:label xml:lang="en">decimal</rdfs:label>
     </owl:Class>
@@ -1068,13 +1060,6 @@ Strings are only indirectly ordered insofar as strings can be sorted by characte
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0001911 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001911">
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001605"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <obo:GENEPIO_1919 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">^([-+]?[1-9]\d*|0)$</obo:GENEPIO_1919>
         <rdfs:label xml:lang="en">integer</rdfs:label>
     </owl:Class>
@@ -1148,13 +1133,6 @@ Strings are only indirectly ordered insofar as strings can be sorted by characte
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001919">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001855"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002180"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001879"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:comment>Number types can have min / max limits for validation.  Regular expressions would be used mostly for data entry transformation and display.</rdfs:comment>
         <rdfs:label xml:lang="en">number</rdfs:label>
     </owl:Class>

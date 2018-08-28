@@ -49,7 +49,7 @@ class OntoUtils(object):
 			'ifm':'http://purl.obolibrary.org/obo/GENEPIO/IFM#',  
 			'NCBITaxon' : 'http://purl.obolibrary.org/obo/NCBITaxon#',
 			'obo':'http://purl.obolibrary.org/obo/', # Must be ordered AFTER all obo ontologies
-			'owl':'http://www.w3.org/2002/07/owl/',
+			'owl':'http://www.w3.org/2002/07/owl#',
 			'evs':'http://ncicb.nci.nih.gov/xml/owl/EVS/',
 			'sio':'http://semanticscience.org/resource/',
 			'ndf-rt':'http://evs.nci.nih.gov/ftp1/NDF-RT/NDF-RT.owl#',

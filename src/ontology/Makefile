@@ -12,7 +12,14 @@ OWLTOOLS= owltools
 
 
 all: all_imports $(ONT).owl 
-test: all
+.PHONY: test
+test: reason
+
+# Run a basic reasoner to find inconsistencies
+.PHONY: reason
+reason: genepio-merged.owl
+	$(ROBOT) reason --input $< --reasoner ELK
+
 prepare_release: all 
 	cp $(ONT).owl $(RELEASEDIR) &&\
 	cp imports/*.owl $(RELEASEDIR)/imports/ &&\

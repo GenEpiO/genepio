@@ -1,12 +1,25 @@
 <?xml version="1.0"?>
-<rdf:RDF xmlns="http://purl.obolibrary.org/obo/GENEPIO/imports/aro_import.owl#"
-     xml:base="http://purl.obolibrary.org/obo/GENEPIO/imports/aro_import.owl"
-     xmlns:obo="http://purl.obolibrary.org/obo/"
-     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY obo "http://purl.obolibrary.org/obo/" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY xml "http://www.w3.org/XML/1998/namespace" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="&obo;GENEPIO/imports/aro_import.owl#"
+     xml:base="&obo;GENEPIO/imports/aro_import.owl"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-    <owl:Ontology rdf:about="http://purl.obolibrary.org/obo/GENEPIO/imports/aro_import.owl"/>
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:obo="http://purl.obolibrary.org/obo/">
+    <owl:Ontology rdf:about="&obo;GENEPIO/imports/aro_import.owl"/>
     
 
 
@@ -18,24 +31,28 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
-    <owl:AnnotationProperty rdf:about="http://purl.obolibrary.org/obo/IAO_0000115">
-        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">definition</rdfs:label>
-    </owl:AnnotationProperty>
-    <owl:AnnotationProperty rdf:about="http://purl.obolibrary.org/obo/IAO_0000412">
-        <rdfs:label xml:lang="en">imported from</rdfs:label>
-    </owl:AnnotationProperty>
-    <owl:AnnotationProperty rdf:about="http://www.w3.org/2000/01/rdf-schema#label"/>
     
 
 
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Datatypes
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
+    <!-- http://purl.obolibrary.org/obo/IAO_0000115 -->
 
+    <!-- <owl:AnnotationProperty rdf:about="&obo;IAO_0000115">
+        <rdfs:label rdf:datatype="&xsd;string">definition</rdfs:label>
+    </owl:AnnotationProperty> -->
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/IAO_0000412 -->
+
+    <!-- <owl:AnnotationProperty rdf:about="&obo;IAO_0000412">
+        <rdfs:label xml:lang="en">imported from</rdfs:label>
+    </owl:AnnotationProperty> -->
+    
+
+
+    <!-- http://www.w3.org/2000/01/rdf-schema#label -->
+
+    <!-- <owl:AnnotationProperty rdf:about="&rdfs;label"/> -->
     
 
 
@@ -52,311 +69,541 @@
 
     <!-- http://purl.obolibrary.org/obo/ARO_3004299 -->
 
-    <owl:Class rdf:about="http://purl.obolibrary.org/obo/ARO_3004299">
-        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">antimicrobial phenotype</rdfs:label>
-        <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Qualitative description of a microbe’s response to antimicrobial agents and the expected clinical outcome. Bacteria may be susceptible or resistant to a broad range of antibiotic drugs or drug classes, with several intermediate states or phases.</obo:IAO_0000115>
-        <obo:IAO_0000412 rdf:resource="http://purl.obolibrary.org/obo/aro.owl"/>
+    <owl:Class rdf:about="&obo;ARO_3004299">
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">Qualitative description of a microbe’s response to antimicrobial agents and the expected clinical outcome. Bacteria may be susceptible or resistant to a broad range of antibiotic drugs or drug classes, with several intermediate states or phases.</obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="&obo;aro.owl"/>
+        <rdfs:label rdf:datatype="&xsd;string">antimicrobial phenotype</rdfs:label>
     </owl:Class>
     
 
 
     <!-- http://purl.obolibrary.org/obo/ARO_3004300 -->
 
-    <owl:Class rdf:about="http://purl.obolibrary.org/obo/ARO_3004300">
-        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">intermediate antimicrobial phenotype</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/ARO_3004440"/>
-        <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Intermediate sensitivity of a bacterial strain to a given antibiotic occurs when it is inhibited by a concentration of the drug that is associated with uncertain therapeutic effect. The elimination of intermediate phenotype bacteria may depend on the site of infection and/or the concentration of the administered drug.</obo:IAO_0000115>
-        <obo:IAO_0000412 rdf:resource="http://purl.obolibrary.org/obo/aro.owl"/>
+    <owl:Class rdf:about="&obo;ARO_3004300">
+        <rdfs:subClassOf rdf:resource="&obo;ARO_3004440"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">Intermediate sensitivity of a bacterial strain to a given antibiotic occurs when it is inhibited by a concentration of the drug that is associated with uncertain therapeutic effect. The elimination of intermediate phenotype bacteria may depend on the site of infection and/or the concentration of the administered drug.</obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="&obo;aro.owl"/>
+        <rdfs:label rdf:datatype="&xsd;string">intermediate antimicrobial phenotype</rdfs:label>
     </owl:Class>
     
 
 
     <!-- http://purl.obolibrary.org/obo/ARO_3004301 -->
 
-    <owl:Class rdf:about="http://purl.obolibrary.org/obo/ARO_3004301">
-        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">resistant antimicrobial phenotype</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/ARO_3004440"/>
-        <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A bacterial strain is said to be resistant to a given antibiotic when it is inhibited in vitro by a concentration of this drug that is associated with a high likelihood of therapeutic failure.</obo:IAO_0000115>
-        <obo:IAO_0000412 rdf:resource="http://purl.obolibrary.org/obo/aro.owl"/>
+    <owl:Class rdf:about="&obo;ARO_3004301">
+        <rdfs:subClassOf rdf:resource="&obo;ARO_3004440"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">A bacterial strain is said to be resistant to a given antibiotic when it is inhibited in vitro by a concentration of this drug that is associated with a high likelihood of therapeutic failure.</obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="&obo;aro.owl"/>
+        <rdfs:label rdf:datatype="&xsd;string">resistant antimicrobial phenotype</rdfs:label>
     </owl:Class>
     
 
 
     <!-- http://purl.obolibrary.org/obo/ARO_3004302 -->
 
-    <owl:Class rdf:about="http://purl.obolibrary.org/obo/ARO_3004302">
-        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">susceptible antimicrobial phenotype</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/ARO_3004440"/>
-        <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A bacterial strain is said to be susceptible to a given antibiotic when it is inhibited in vitro by a concentration of a drug that is associated with a high likelihood of therapeutic success</obo:IAO_0000115>
-        <obo:IAO_0000412 rdf:resource="http://purl.obolibrary.org/obo/aro.owl"/>
+    <owl:Class rdf:about="&obo;ARO_3004302">
+        <rdfs:subClassOf rdf:resource="&obo;ARO_3004440"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">A bacterial strain is said to be susceptible to a given antibiotic when it is inhibited in vitro by a concentration of a drug that is associated with a high likelihood of therapeutic success</obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="&obo;aro.owl"/>
+        <rdfs:label rdf:datatype="&xsd;string">susceptible antimicrobial phenotype</rdfs:label>
     </owl:Class>
     
 
 
     <!-- http://purl.obolibrary.org/obo/ARO_3004303 -->
 
-    <owl:Class rdf:about="http://purl.obolibrary.org/obo/ARO_3004303">
-        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">nonsusceptible antimicrobial phenotype</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/ARO_3004440"/>
-        <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A bacterial strain is said to be nonsusceptible to a given antibiotic drug if it demonstrates either an intermediate or resistant phenotype when exposed to a concentration of a drug that is associated with a high likelihood of therapeutic failure, i.e. if the bacterial strain is not susceptible to the antibiotic drug but not necessarily totally resistant under all conditions.</obo:IAO_0000115>
-        <obo:IAO_0000412 rdf:resource="http://purl.obolibrary.org/obo/aro.owl"/>
+    <owl:Class rdf:about="&obo;ARO_3004303">
+        <rdfs:subClassOf rdf:resource="&obo;ARO_3004440"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">A bacterial strain is said to be nonsusceptible to a given antibiotic drug if it demonstrates either an intermediate or resistant phenotype when exposed to a concentration of a drug that is associated with a high likelihood of therapeutic failure, i.e. if the bacterial strain is not susceptible to the antibiotic drug but not necessarily totally resistant under all conditions.</obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="&obo;aro.owl"/>
+        <rdfs:label rdf:datatype="&xsd;string">nonsusceptible antimicrobial phenotype</rdfs:label>
     </owl:Class>
     
 
 
     <!-- http://purl.obolibrary.org/obo/ARO_3004304 -->
 
-    <owl:Class rdf:about="http://purl.obolibrary.org/obo/ARO_3004304">
-        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">susceptible dose dependent antimicrobial phenotype</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/ARO_3004440"/>
-        <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A bacterial strain is said to be susceptible-dose dependent (SDD) to a given antibiotic when growth is inhibited with a high likelihood of therapeutic success, but when multiple approved dosing options exist. When a higher or more frequent dose is used, the predicted therapeutic result is the same as for susceptible individuals.</obo:IAO_0000115>
-        <obo:IAO_0000412 rdf:resource="http://purl.obolibrary.org/obo/aro.owl"/>
+    <owl:Class rdf:about="&obo;ARO_3004304">
+        <rdfs:subClassOf rdf:resource="&obo;ARO_3004440"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">A bacterial strain is said to be susceptible-dose dependent (SDD) to a given antibiotic when growth is inhibited with a high likelihood of therapeutic success, but when multiple approved dosing options exist. When a higher or more frequent dose is used, the predicted therapeutic result is the same as for susceptible individuals.</obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="&obo;aro.owl"/>
+        <rdfs:label rdf:datatype="&xsd;string">susceptible dose dependent antimicrobial phenotype</rdfs:label>
     </owl:Class>
     
 
 
     <!-- http://purl.obolibrary.org/obo/ARO_3004305 -->
 
-    <owl:Class rdf:about="http://purl.obolibrary.org/obo/ARO_3004305">
-        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">multidrug resistance antimicrobial phenotype</rdfs:label>
-        <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Multidrug-resistant organisms are defined as bacterial strains that have become resistant to multiple classes of antibacterial drugs or other agents. The phenotype of these organisms is defined by the spectrum of antibiotic drug classes to which that organism is resistant. Often, these organisms are susceptible to a narrow range of available drugs, making treatment difficult and urgent.</obo:IAO_0000115>
-        <obo:IAO_0000412 rdf:resource="http://purl.obolibrary.org/obo/aro.owl"/>
+    <owl:Class rdf:about="&obo;ARO_3004305">
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">Multidrug-resistant organisms are defined as bacterial strains that have become resistant to multiple classes of antibacterial drugs or other agents. The phenotype of these organisms is defined by the spectrum of antibiotic drug classes to which that organism is resistant. Often, these organisms are susceptible to a narrow range of available drugs, making treatment difficult and urgent.</obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="&obo;aro.owl"/>
+        <rdfs:label rdf:datatype="&xsd;string">multidrug resistance antimicrobial phenotype</rdfs:label>
     </owl:Class>
     
 
 
     <!-- http://purl.obolibrary.org/obo/ARO_3004360 -->
 
-    <owl:Class rdf:about="http://purl.obolibrary.org/obo/ARO_3004360">
-        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">antimicrobial resistance testing reference standard</rdfs:label>
-        <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Uses breakpoints to create standards for interpreting the clinical outcome of an MIC value for a particular microbial species and antimicrobial agent</obo:IAO_0000115>
-        <obo:IAO_0000412 rdf:resource="http://purl.obolibrary.org/obo/aro.owl"/>
+    <owl:Class rdf:about="&obo;ARO_3004360">
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">Uses breakpoints to create standards for interpreting the clinical outcome of an MIC value for a particular microbial species and antimicrobial agent</obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="&obo;aro.owl"/>
+        <rdfs:label rdf:datatype="&xsd;string">antimicrobial resistance testing reference standard</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/ARO_3004365 -->
+
+    <owl:Class rdf:about="&obo;ARO_3004365">
+        <rdfs:subClassOf rdf:resource="&obo;ARO_3004360"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">BSAC is a British inter-professional organisation involved in antibiotic education, research and leadership. Baquero F. found that the BSAC system recommends lower breakpoints than the consensus standard of all systems for antimicrobial susceptibility testing used in Europe (BSAC, DIN, SFM, SIR, NCCLS and WRG).</obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="&obo;aro.owl"/>
+        <rdfs:label rdf:datatype="&xsd;string">British Society for Antimicrobial Chemotherapy (BSAC)</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/ARO_3004366 -->
+
+    <owl:Class rdf:about="&obo;ARO_3004366">
+        <rdfs:subClassOf rdf:resource="&obo;ARO_3004360"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">The Clinical and Laboratory Standards Institute develops and implements clinical laboratory testing standards.</obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="&obo;aro.owl"/>
+        <rdfs:label rdf:datatype="&xsd;string">Clinical and Laboratory Standards Institute (CLSI)</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/ARO_3004367 -->
+
+    <owl:Class rdf:about="&obo;ARO_3004367">
+        <rdfs:subClassOf rdf:resource="&obo;ARO_3004360"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">DIN is recognized by the Federal Government of Germany as the competent standards organization for Germany and as the national standards body representing Germany in non-governmental international standards organizations. Baquero F. found that the DIN system recommends lower breakpoints than the consensus standard of all systems for antimicrobial susceptibility testing used in Europe (BSAC, DIN, SFM, SIR, NCCLS and WRG).</obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="&obo;aro.owl"/>
+        <rdfs:label rdf:datatype="&xsd;string">Deutsches Institut für Normung (DIN)</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/ARO_3004368 -->
+
+    <owl:Class rdf:about="&obo;ARO_3004368">
+        <rdfs:subClassOf rdf:resource="&obo;ARO_3004360"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">EUCAST is a standing committee jointly organized by ESCMID, ECDC and European national breakpoint committees; it deals with breakpoints and technical aspects of phenotypic in-vitro antimicrobial susceptibility testing.</obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="&obo;aro.owl"/>
+        <rdfs:label rdf:datatype="&xsd;string">European Committee on Antimicrobial Susceptibility Testing (EUCAST)</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/ARO_3004369 -->
+
+    <owl:Class rdf:about="&obo;ARO_3004369">
+        <rdfs:subClassOf rdf:resource="&obo;ARO_3004360"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">The French Society of Microbiology (SFM) is a non-profit association which aims to bring together microbiologists from French-speaking countries, working in the domains of bacteria, viruses, Fungi and parasites, and related medical, industrial and environmental microbiology, physiology, genetics, taxonomy, hygiene, and antimicrobial agents. Baquero F. found that the SFM system recommends higher breakpoints than the consensus standard of all systems for antimicrobial susceptibility testing used in Europe (BSAC, DIN, SFM, SIR, NCCLS and WRG).</obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="&obo;aro.owl"/>
+        <rdfs:label rdf:datatype="&xsd;string">Société Française de Microbiologie (SFM)</rdfs:label>
     </owl:Class>
     
 
 
     <!-- http://purl.obolibrary.org/obo/ARO_3004371 -->
 
-    <owl:Class rdf:about="http://purl.obolibrary.org/obo/ARO_3004371">
-        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MIC value</rdfs:label>
-        <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The measured or quantified MIC</obo:IAO_0000115>
-        <obo:IAO_0000412 rdf:resource="http://purl.obolibrary.org/obo/aro.owl"/>
+    <owl:Class rdf:about="&obo;ARO_3004371">
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">The measured or quantified MIC</obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="&obo;aro.owl"/>
+        <rdfs:label rdf:datatype="&xsd;string">MIC value</rdfs:label>
     </owl:Class>
     
 
 
     <!-- http://purl.obolibrary.org/obo/ARO_3004372 -->
 
-    <owl:Class rdf:about="http://purl.obolibrary.org/obo/ARO_3004372">
-        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MIC unit</rdfs:label>
-        <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">mg/L</obo:IAO_0000115>
-        <obo:IAO_0000412 rdf:resource="http://purl.obolibrary.org/obo/aro.owl"/>
+    <owl:Class rdf:about="&obo;ARO_3004372">
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">mg/L</obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="&obo;aro.owl"/>
+        <rdfs:label rdf:datatype="&xsd;string">MIC unit</rdfs:label>
     </owl:Class>
     
 
 
     <!-- http://purl.obolibrary.org/obo/ARO_3004388 -->
 
-    <owl:Class rdf:about="http://purl.obolibrary.org/obo/ARO_3004388">
-        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">in-vitro microbial susceptibility test</rdfs:label>
-        <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">An experimental test conducted outside of a living organism, usually in a tube or plate.</obo:IAO_0000115>
-        <obo:IAO_0000412 rdf:resource="http://purl.obolibrary.org/obo/aro.owl"/>
+    <owl:Class rdf:about="&obo;ARO_3004388">
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">An experimental test conducted outside of a living organism, usually in a tube or plate.</obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="&obo;aro.owl"/>
+        <rdfs:label rdf:datatype="&xsd;string">in-vitro microbial susceptibility test</rdfs:label>
     </owl:Class>
     
 
 
     <!-- http://purl.obolibrary.org/obo/ARO_3004390 -->
 
-    <owl:Class rdf:about="http://purl.obolibrary.org/obo/ARO_3004390">
-        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">antimicrobial resistance test platform</rdfs:label>
-        <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">System of analysis for determining antimicrobial susceptibility.</obo:IAO_0000115>
-        <obo:IAO_0000412 rdf:resource="http://purl.obolibrary.org/obo/aro.owl"/>
+    <owl:Class rdf:about="&obo;ARO_3004390">
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">System of analysis for determining antimicrobial susceptibility.</obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="&obo;aro.owl"/>
+        <rdfs:label rdf:datatype="&xsd;string">antimicrobial resistance test platform</rdfs:label>
     </owl:Class>
     
 
 
     <!-- http://purl.obolibrary.org/obo/ARO_3004391 -->
 
-    <owl:Class rdf:about="http://purl.obolibrary.org/obo/ARO_3004391">
-        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">diffusion method</rdfs:label>
-        <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Microbial species are inoculated in a growth medium onto which antimicrobial agents are transferred by diffusion.</obo:IAO_0000115>
-        <obo:IAO_0000412 rdf:resource="http://purl.obolibrary.org/obo/aro.owl"/>
+    <owl:Class rdf:about="&obo;ARO_3004391">
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">Microbial species are inoculated in a growth medium onto which antimicrobial agents are transferred by diffusion.</obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="&obo;aro.owl"/>
+        <rdfs:label rdf:datatype="&xsd;string">diffusion method</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/ARO_3004392 -->
+
+    <owl:Class rdf:about="&obo;ARO_3004392">
+        <rdfs:subClassOf rdf:resource="&obo;ARO_3004388"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">Components of complex mixtures such as plant extracts are separated across a TLC plate and tested for anti-microbial activity.</obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="&obo;aro.owl"/>
+        <rdfs:label rdf:datatype="&xsd;string">thin-layer chromatography (TLC)-bioautography</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/ARO_3004393 -->
+
+    <owl:Class rdf:about="&obo;ARO_3004393">
+        <rdfs:subClassOf rdf:resource="&obo;ARO_3004388"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">Allows for time-dependent or concentration-dependent analysis of antimicrobial effects. Several tubes of broth culture medium containing a suspension of the test microbe are treated with varying concentrations of the antimicrobial agent and the percentage of dead cells determined at various time points.</obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="&obo;aro.owl"/>
+        <rdfs:label rdf:datatype="&xsd;string">time-kill test</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/ARO_3004394 -->
+
+    <owl:Class rdf:about="&obo;ARO_3004394">
+        <rdfs:subClassOf rdf:resource="&obo;ARO_3004388"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">Relies on the indirect measurement of microbe populations by quantifying microbial ATP production.</obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="&obo;aro.owl"/>
+        <rdfs:label rdf:datatype="&xsd;string">ATP bioluminescence assay</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/ARO_3004395 -->
+
+    <owl:Class rdf:about="&obo;ARO_3004395">
+        <rdfs:subClassOf rdf:resource="&obo;ARO_3004388"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">Microbes exposed to antimicrobial agents are then stained with the intercalating agent propidium iodide. Damaged cells emit a positive signal that is detected by flow cytometry analysis. Flow cytometry can also be used to discriminate between dead, damaged and live cells.</obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="&obo;aro.owl"/>
+        <rdfs:label rdf:datatype="&xsd;string">flow cytofluorometric method</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/ARO_3004396 -->
+
+    <owl:Class rdf:about="&obo;ARO_3004396">
+        <rdfs:subClassOf rdf:resource="&obo;ARO_3004388"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">Test that directly detect the presence of a particular resistance mechanism.</obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="&obo;aro.owl"/>
+        <rdfs:label rdf:datatype="&xsd;string">mechanism-specific test</rdfs:label>
     </owl:Class>
     
 
 
     <!-- http://purl.obolibrary.org/obo/ARO_3004397 -->
 
-    <owl:Class rdf:about="http://purl.obolibrary.org/obo/ARO_3004397">
-        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">broth dilution method</rdfs:label>
-        <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The microbial species are inoculated in liquid growth medium containing incremental dilutions (usually 2-fold) of the antimicrobial agent.</obo:IAO_0000115>
-        <obo:IAO_0000412 rdf:resource="http://purl.obolibrary.org/obo/aro.owl"/>
+    <owl:Class rdf:about="&obo;ARO_3004397">
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">The microbial species are inoculated in liquid growth medium containing incremental dilutions (usually 2-fold) of the antimicrobial agent.</obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="&obo;aro.owl"/>
+        <rdfs:label rdf:datatype="&xsd;string">broth dilution method</rdfs:label>
     </owl:Class>
     
 
 
     <!-- http://purl.obolibrary.org/obo/ARO_3004398 -->
 
-    <owl:Class rdf:about="http://purl.obolibrary.org/obo/ARO_3004398">
-        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">automated testing platform</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/ARO_3004390"/>
-        <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Automated system of analysis for determining antimicrobial susceptibility.</obo:IAO_0000115>
-        <obo:IAO_0000412 rdf:resource="http://purl.obolibrary.org/obo/aro.owl"/>
+    <owl:Class rdf:about="&obo;ARO_3004398">
+        <rdfs:subClassOf rdf:resource="&obo;ARO_3004390"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">Automated system of analysis for determining antimicrobial susceptibility.</obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="&obo;aro.owl"/>
+        <rdfs:label rdf:datatype="&xsd;string">automated testing platform</rdfs:label>
     </owl:Class>
     
 
 
     <!-- http://purl.obolibrary.org/obo/ARO_3004399 -->
 
-    <owl:Class rdf:about="http://purl.obolibrary.org/obo/ARO_3004399">
-        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">manual testing platform</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/ARO_3004390"/>
-        <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Non-automated system of analysis for determining antimicrobial susceptibility.</obo:IAO_0000115>
-        <obo:IAO_0000412 rdf:resource="http://purl.obolibrary.org/obo/aro.owl"/>
+    <owl:Class rdf:about="&obo;ARO_3004399">
+        <rdfs:subClassOf rdf:resource="&obo;ARO_3004390"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">Non-automated system of analysis for determining antimicrobial susceptibility.</obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="&obo;aro.owl"/>
+        <rdfs:label rdf:datatype="&xsd;string">manual testing platform</rdfs:label>
     </owl:Class>
     
 
 
     <!-- http://purl.obolibrary.org/obo/ARO_3004400 -->
 
-    <owl:Class rdf:about="http://purl.obolibrary.org/obo/ARO_3004400">
-        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MicroScan</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/ARO_3004398"/>
-        <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Specific automated system of analysis for determining antimicrobial susceptibility developed by Omron.</obo:IAO_0000115>
-        <obo:IAO_0000412 rdf:resource="http://purl.obolibrary.org/obo/aro.owl"/>
+    <owl:Class rdf:about="&obo;ARO_3004400">
+        <rdfs:subClassOf rdf:resource="&obo;ARO_3004398"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">Specific automated system of analysis for determining antimicrobial susceptibility developed by Omron.</obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="&obo;aro.owl"/>
+        <rdfs:label rdf:datatype="&xsd;string">MicroScan</rdfs:label>
     </owl:Class>
     
 
 
     <!-- http://purl.obolibrary.org/obo/ARO_3004401 -->
 
-    <owl:Class rdf:about="http://purl.obolibrary.org/obo/ARO_3004401">
-        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Phoenix</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/ARO_3004398"/>
-        <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Specific automated system of analysis for determining antimicrobial susceptibility developed by Becton Dickinson.</obo:IAO_0000115>
-        <obo:IAO_0000412 rdf:resource="http://purl.obolibrary.org/obo/aro.owl"/>
+    <owl:Class rdf:about="&obo;ARO_3004401">
+        <rdfs:subClassOf rdf:resource="&obo;ARO_3004398"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">Specific automated system of analysis for determining antimicrobial susceptibility developed by Becton Dickinson.</obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="&obo;aro.owl"/>
+        <rdfs:label rdf:datatype="&xsd;string">Phoenix</rdfs:label>
     </owl:Class>
     
 
 
     <!-- http://purl.obolibrary.org/obo/ARO_3004402 -->
 
-    <owl:Class rdf:about="http://purl.obolibrary.org/obo/ARO_3004402">
-        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Sensitire</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/ARO_3004398"/>
-        <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Specific automated system of analysis for determining antimicrobial susceptibility developed by Trek, Thermo Fisher Scientific.</obo:IAO_0000115>
-        <obo:IAO_0000412 rdf:resource="http://purl.obolibrary.org/obo/aro.owl"/>
+    <owl:Class rdf:about="&obo;ARO_3004402">
+        <rdfs:subClassOf rdf:resource="&obo;ARO_3004398"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">Specific automated system of analysis for determining antimicrobial susceptibility developed by Trek, Thermo Fisher Scientific.</obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="&obo;aro.owl"/>
+        <rdfs:label rdf:datatype="&xsd;string">Sensitire</rdfs:label>
     </owl:Class>
     
 
 
     <!-- http://purl.obolibrary.org/obo/ARO_3004403 -->
 
-    <owl:Class rdf:about="http://purl.obolibrary.org/obo/ARO_3004403">
-        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Vitek System</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/ARO_3004398"/>
-        <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Specific automated system of analysis for determining antimicrobial susceptibility developed by bioMérieux.</obo:IAO_0000115>
-        <obo:IAO_0000412 rdf:resource="http://purl.obolibrary.org/obo/aro.owl"/>
+    <owl:Class rdf:about="&obo;ARO_3004403">
+        <rdfs:subClassOf rdf:resource="&obo;ARO_3004398"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">Specific automated system of analysis for determining antimicrobial susceptibility developed by bioMérieux.</obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="&obo;aro.owl"/>
+        <rdfs:label rdf:datatype="&xsd;string">Vitek System</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/ARO_3004404 -->
+
+    <owl:Class rdf:about="&obo;ARO_3004404">
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">Vendor of automated system of analysis for determining antimicrobial susceptibility.</obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="&obo;aro.owl"/>
+        <rdfs:label rdf:datatype="&xsd;string">automated testing platform vendor</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/ARO_3004405 -->
+
+    <owl:Class rdf:about="&obo;ARO_3004405">
+        <rdfs:subClassOf rdf:resource="&obo;ARO_3004404"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">Specific vendor of automated system of analysis for determining antimicrobial susceptibility headquartered in New Jersey, USA. Becton Dickinson is the developer of the Phoenix automated testing platform.</obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="&obo;aro.owl"/>
+        <rdfs:label rdf:datatype="&xsd;string">Becton Dickinson</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/ARO_3004406 -->
+
+    <owl:Class rdf:about="&obo;ARO_3004406">
+        <rdfs:subClassOf rdf:resource="&obo;ARO_3004404"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">Specific vendor of automated system of analysis for determining antimicrobial susceptibility headquartered in France. bioMérieux is the developer of the Vitek automated testing platform.</obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="&obo;aro.owl"/>
+        <rdfs:label rdf:datatype="&xsd;string">bioMérieux</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/ARO_3004407 -->
+
+    <owl:Class rdf:about="&obo;ARO_3004407">
+        <rdfs:subClassOf rdf:resource="&obo;ARO_3004404"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">Specific vendor of automated system of analysis for determining antimicrobial susceptibility headquartered in Berlin and Munich.</obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="&obo;aro.owl"/>
+        <rdfs:label rdf:datatype="&xsd;string">Siemens</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/ARO_3004408 -->
+
+    <owl:Class rdf:about="&obo;ARO_3004408">
+        <rdfs:subClassOf rdf:resource="&obo;ARO_3004404"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">Specific vendor of automated system of analysis for determining antimicrobial susceptibility based in Japan. Omron is the developer of the MicroScan automated testing platform.</obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="&obo;aro.owl"/>
+        <rdfs:label rdf:datatype="&xsd;string">Omron</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/ARO_3004409 -->
+
+    <owl:Class rdf:about="&obo;ARO_3004409">
+        <rdfs:subClassOf rdf:resource="&obo;ARO_3004404"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">Specific vendor of automated system of analysis for determining antimicrobial susceptibility that was acquired by Thermo Fisher Scientific Inc. Thermo Fisher Scienfiic Inc. is headquartered in Massachusetts, USA.  Trek is the developer of the Sensitire automated testing platform.</obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="&obo;aro.owl"/>
+        <rdfs:label rdf:datatype="&xsd;string">Trek</rdfs:label>
     </owl:Class>
     
 
 
     <!-- http://purl.obolibrary.org/obo/ARO_3004410 -->
 
-    <owl:Class rdf:about="http://purl.obolibrary.org/obo/ARO_3004410">
-        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">micro broth dilution method</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/ARO_3004397"/>
-        <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Broth dilution conducted on 96-well microtiter plates (≤200 µL per well).</obo:IAO_0000115>
-        <obo:IAO_0000412 rdf:resource="http://purl.obolibrary.org/obo/aro.owl"/>
+    <owl:Class rdf:about="&obo;ARO_3004410">
+        <rdfs:subClassOf rdf:resource="&obo;ARO_3004397"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">Broth dilution conducted on 96-well microtiter plates (≤200 µL per well).</obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="&obo;aro.owl"/>
+        <rdfs:label rdf:datatype="&xsd;string">micro broth dilution method</rdfs:label>
     </owl:Class>
     
 
 
     <!-- http://purl.obolibrary.org/obo/ARO_3004411 -->
 
-    <owl:Class rdf:about="http://purl.obolibrary.org/obo/ARO_3004411">
-        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">agar well diffusion method</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/ARO_3004391"/>
-        <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This test is a common method of evaluating the antimicrobial activity of plants or microbial extracts. In this method, bacteria are inoculated onto agar plates and the antimicrobial agent is injected into the plate and allowed to diffuse.</obo:IAO_0000115>
-        <obo:IAO_0000412 rdf:resource="http://purl.obolibrary.org/obo/aro.owl"/>
+    <owl:Class rdf:about="&obo;ARO_3004411">
+        <rdfs:subClassOf rdf:resource="&obo;ARO_3004391"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">This test is a common method of evaluating the antimicrobial activity of plants or microbial extracts. In this method, bacteria are inoculated onto agar plates and the antimicrobial agent is injected into the plate and allowed to diffuse.</obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="&obo;aro.owl"/>
+        <rdfs:label rdf:datatype="&xsd;string">agar well diffusion method</rdfs:label>
     </owl:Class>
     
 
 
     <!-- http://purl.obolibrary.org/obo/ARO_3004412 -->
 
-    <owl:Class rdf:about="http://purl.obolibrary.org/obo/ARO_3004412">
-        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">agar plug diffusion method</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/ARO_3004391"/>
-        <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This method is commonly used to study the antagonism between microorganisms. The first bacterial strain is inoculated onto agar plates in tight streaks. The bacteria will secrete molecules that diffuse in the agar medium; this medium is cut and placed on another agar plate inoculated with another microorganism.</obo:IAO_0000115>
-        <obo:IAO_0000412 rdf:resource="http://purl.obolibrary.org/obo/aro.owl"/>
+    <owl:Class rdf:about="&obo;ARO_3004412">
+        <rdfs:subClassOf rdf:resource="&obo;ARO_3004391"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">This method is commonly used to study the antagonism between microorganisms. The first bacterial strain is inoculated onto agar plates in tight streaks. The bacteria will secrete molecules that diffuse in the agar medium; this medium is cut and placed on another agar plate inoculated with another microorganism.</obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="&obo;aro.owl"/>
+        <rdfs:label rdf:datatype="&xsd;string">agar plug diffusion method</rdfs:label>
     </owl:Class>
     
 
 
     <!-- http://purl.obolibrary.org/obo/ARO_3004413 -->
 
-    <owl:Class rdf:about="http://purl.obolibrary.org/obo/ARO_3004413">
-        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">cross streak method</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/ARO_3004391"/>
-        <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This method is commonly used to study the antagonism between microorganisms. The microbial strain of interest is seeded by a single streak in the center of the agar plate. After incubation, the plate is seeded with the second microorganism by single streak perpendicular to the central streak.</obo:IAO_0000115>
-        <obo:IAO_0000412 rdf:resource="http://purl.obolibrary.org/obo/aro.owl"/>
+    <owl:Class rdf:about="&obo;ARO_3004413">
+        <rdfs:subClassOf rdf:resource="&obo;ARO_3004391"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">This method is commonly used to study the antagonism between microorganisms. The microbial strain of interest is seeded by a single streak in the center of the agar plate. After incubation, the plate is seeded with the second microorganism by single streak perpendicular to the central streak.</obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="&obo;aro.owl"/>
+        <rdfs:label rdf:datatype="&xsd;string">cross streak method</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/ARO_3004414 -->
+
+    <owl:Class rdf:about="&obo;ARO_3004414">
+        <rdfs:subClassOf rdf:resource="&obo;ARO_3004392"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">The antimicrobial agent is transferred from a chromatogram to an agar plate previously inoculated with the test microorganism.</obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="&obo;aro.owl"/>
+        <rdfs:label rdf:datatype="&xsd;string">agar diffusion bioautography</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/ARO_3004415 -->
+
+    <owl:Class rdf:about="&obo;ARO_3004415">
+        <rdfs:subClassOf rdf:resource="&obo;ARO_3004392"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">A developed TLC plate is dipped into or sprayed with a microbial suspension and then incubated. Live microbial cells are visualized using tetrazolium salts.</obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="&obo;aro.owl"/>
+        <rdfs:label rdf:datatype="&xsd;string">direct bioautography</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/ARO_3004416 -->
+
+    <owl:Class rdf:about="&obo;ARO_3004416">
+        <rdfs:subClassOf rdf:resource="&obo;ARO_3004392"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">The TLC plate is covered with a molten agar medium seeded with the test microbe and the antimicrobial compounds are allowed to diffuse onto the agar medium. Tetrazolium dye staining allows for visualization.</obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="&obo;aro.owl"/>
+        <rdfs:label rdf:datatype="&xsd;string">agar overlay bioautography</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/ARO_3004419 -->
+
+    <owl:Class rdf:about="&obo;ARO_3004419">
+        <rdfs:subClassOf rdf:resource="&obo;ARO_3004396"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">Assay for beta lactamase detection</obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="&obo;aro.owl"/>
+        <rdfs:label rdf:datatype="&xsd;string">chromogenic cephalosporinase test</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/ARO_3004420 -->
+
+    <owl:Class rdf:about="&obo;ARO_3004420">
+        <rdfs:subClassOf rdf:resource="&obo;ARO_3004396"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">Commercial colorimetric assay for detection of chloramphenicol modifying enzyme chloramphenicol acetyltransferase.</obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="&obo;aro.owl"/>
+        <rdfs:label rdf:datatype="&xsd;string">chloramphenicol acetyltransferase assay (CAT)</rdfs:label>
     </owl:Class>
     
 
 
     <!-- http://purl.obolibrary.org/obo/ARO_3004430 -->
 
-    <owl:Class rdf:about="http://purl.obolibrary.org/obo/ARO_3004430">
-        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">antimicrobial resistance tissue specificity</rdfs:label>
-        <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The tissue type used to select breakpoints from a particular standard, for the interpretation of MIC results.</obo:IAO_0000115>
-        <obo:IAO_0000412 rdf:resource="http://purl.obolibrary.org/obo/aro.owl"/>
+    <owl:Class rdf:about="&obo;ARO_3004430">
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">The tissue type used to select breakpoints from a particular standard, for the interpretation of MIC results.</obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="&obo;aro.owl"/>
+        <rdfs:label rdf:datatype="&xsd;string">antimicrobial resistance tissue specificity</rdfs:label>
     </owl:Class>
     
 
 
     <!-- http://purl.obolibrary.org/obo/ARO_3004431 -->
 
-    <owl:Class rdf:about="http://purl.obolibrary.org/obo/ARO_3004431">
-        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EUCAST antimicrobial phenotype</rdfs:label>
-        <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Qualitative description of a microbe’s response to antimicrobial agents as described by EUCAST using breakpoints determined through in-vitro testing.  These breakpoints are determined irrespective of tissue specificity of infection.</obo:IAO_0000115>
-        <obo:IAO_0000412 rdf:resource="http://purl.obolibrary.org/obo/aro.owl"/>
+    <owl:Class rdf:about="&obo;ARO_3004431">
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">Qualitative description of a microbe’s response to antimicrobial agents as described by EUCAST using breakpoints determined through in-vitro testing.  These breakpoints are determined irrespective of tissue specificity of infection.</obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="&obo;aro.owl"/>
+        <rdfs:label rdf:datatype="&xsd;string">EUCAST antimicrobial phenotype</rdfs:label>
     </owl:Class>
     
 
 
     <!-- http://purl.obolibrary.org/obo/ARO_3004432 -->
 
-    <owl:Class rdf:about="http://purl.obolibrary.org/obo/ARO_3004432">
-        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">wild-type</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/ARO_3004431"/>
-        <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A microbe whose susceptibility to antibiotics is comparable to that of a reference susceptible microbe, meaning that the microbe is sensitive to the particular antibiotic.</obo:IAO_0000115>
-        <obo:IAO_0000412 rdf:resource="http://purl.obolibrary.org/obo/aro.owl"/>
+    <owl:Class rdf:about="&obo;ARO_3004432">
+        <rdfs:subClassOf rdf:resource="&obo;ARO_3004431"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">A microbe whose susceptibility to antibiotics is comparable to that of a reference susceptible microbe, meaning that the microbe is sensitive to the particular antibiotic.</obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="&obo;aro.owl"/>
+        <rdfs:label rdf:datatype="&xsd;string">wild-type</rdfs:label>
     </owl:Class>
     
 
 
     <!-- http://purl.obolibrary.org/obo/ARO_3004433 -->
 
-    <owl:Class rdf:about="http://purl.obolibrary.org/obo/ARO_3004433">
-        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">non wild-type</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/ARO_3004431"/>
-        <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A microbe whose susceptibility to antibiotics differs from that of a reference susceptible microbe, meaning that the microbe is resistant to the particular antibiotic.</obo:IAO_0000115>
-        <obo:IAO_0000412 rdf:resource="http://purl.obolibrary.org/obo/aro.owl"/>
+    <owl:Class rdf:about="&obo;ARO_3004433">
+        <rdfs:subClassOf rdf:resource="&obo;ARO_3004431"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">A microbe whose susceptibility to antibiotics differs from that of a reference susceptible microbe, meaning that the microbe is resistant to the particular antibiotic.</obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="&obo;aro.owl"/>
+        <rdfs:label rdf:datatype="&xsd;string">non wild-type</rdfs:label>
     </owl:Class>
     
 
 
     <!-- http://purl.obolibrary.org/obo/ARO_3004440 -->
 
-    <owl:Class rdf:about="http://purl.obolibrary.org/obo/ARO_3004440">
-        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CLSI antimicrobial phenotype</rdfs:label>
-        <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Qualitative description of a microbe’s response to antimicrobial agents as described by CLSI using breakpoints that take into consideration tissue specificity of infection.</obo:IAO_0000115>
-        <obo:IAO_0000412 rdf:resource="http://purl.obolibrary.org/obo/aro.owl"/>
+    <owl:Class rdf:about="&obo;ARO_3004440">
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">Qualitative description of a microbe’s response to antimicrobial agents as described by CLSI using breakpoints that take into consideration tissue specificity of infection.</obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="&obo;aro.owl"/>
+        <rdfs:label rdf:datatype="&xsd;string">CLSI antimicrobial phenotype</rdfs:label>
     </owl:Class>
 </rdf:RDF>
 
 
 
-<!-- Generated by the OWL API (version 3.2.4.1806) http://owlapi.sourceforge.net -->
+<!-- Generated by the OWL API (version 4.2.6) https://github.com/owlcs/owlapi -->
 

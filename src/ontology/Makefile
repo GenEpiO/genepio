@@ -34,7 +34,7 @@ $(ONT).owl: $(SRC)
 # NEED TO ADD UPDATE ON dc.date too.
 
 # Merge ontology and imports into one file 	
-	$(ROBOT) merge --input $(ONT).owl --output $(ONT)-merged.owl
+	$(ROBOT) merge --input $(ONT).owl --xml-entities --output $(ONT)-merged.owl
 	sed -i '.bak' 's/<owl:imports[^>]*\/>/<!-- & -->/' $(ONT)-merged.owl
 
 # ALL OWL imports: apollo_sv chebi chmo doid efo envo eo ero evs fix gazetteer geo hardcoded hp ido irida model ncbitaxon ndf-rt oae obi ontology-metadata pato ro sio so stato symp typon uberon uo

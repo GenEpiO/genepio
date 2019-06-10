@@ -1,19 +1,19 @@
 <?xml version="1.0"?>
 <rdf:RDF xmlns="http://purl.obolibrary.org/obo/GENEPIO/imports/ontology-metadata.owl#"
      xml:base="http://purl.obolibrary.org/obo/GENEPIO/imports/ontology-metadata.owl"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:obo="http://purl.obolibrary.org/obo/"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
-     xmlns:oboInOwl="http://www.geneontology.org/formats/oboInOwl#"
-     xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
-     xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#"
-     xmlns:swrl="http://www.w3.org/2003/11/swrl#"
-     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-     xmlns:xsp="http://www.owl-ontologies.com/2005/08/07/xsp.owl#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
-     xmlns:obo="http://purl.obolibrary.org/obo/"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:xsp="http://www.owl-ontologies.com/2005/08/07/xsp.owl#"
      xmlns:foaf="http://xmlns.com/foaf/0.1/"
-     xmlns:dc="http://purl.org/dc/elements/1.1/">
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+     xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
+     xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#"
+     xmlns:oboInOwl="http://www.geneontology.org/formats/oboInOwl#">
     <owl:Ontology rdf:about="http://purl.obolibrary.org/obo/GENEPIO/imports/ontology-metadata.owl">
         <owl:versionIRI rdf:resource="http://purl.obolibrary.org/obo/iao/2015-02-23/ontology-metadata.owl"/>
         <owl:versionInfo xml:lang="en">$Revision$</owl:versionInfo>
@@ -104,7 +104,6 @@ We also have the outstanding issue of how to aim different definitions to differ
         <obo:IAO_0000119 xml:lang="en">GROUP:OBI:&lt;http://purl.obolibrary.org/obo/obi&gt;</obo:IAO_0000119>
         <rdfs:label>definition</rdfs:label>
         <rdfs:label xml:lang="en">definition</rdfs:label>
-        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">definition</rdfs:label>
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">textual definition</rdfs:label>
     </owl:AnnotationProperty>
     
@@ -132,8 +131,6 @@ We also have the outstanding issue of how to aim different definitions to differ
         <obo:IAO_0000116 xml:lang="en">20110707, MC: label update to term editor and definition modified accordingly. See http://code.google.com/p/information-artifact-ontology/issues/detail?id=115.</obo:IAO_0000116>
         <obo:IAO_0000117 xml:lang="en">PERSON:Daniel Schober</obo:IAO_0000117>
         <obo:IAO_0000119 xml:lang="en">GROUP:OBI:&lt;http://purl.obolibrary.org/obo/obi&gt;</obo:IAO_0000119>
-        <rdfs:label xml:lang="en">definition editor</rdfs:label>
-        <rdfs:label xml:lang="en">term editor</rdfs:label>
     </owl:AnnotationProperty>
     
 
@@ -337,7 +334,7 @@ EquivalentTo: xsd:integer[&gt; 2151 , &lt;= 2300]
 
     <owl:AnnotationProperty rdf:about="http://www.geneontology.org/formats/oboInOwl#hasBroadSynonym">
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">has broad synonym</rdfs:label>
-        <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/IAO_0000118"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasSynonym"/>
     </owl:AnnotationProperty>
     
 
@@ -346,7 +343,7 @@ EquivalentTo: xsd:integer[&gt; 2151 , &lt;= 2300]
 
     <owl:AnnotationProperty rdf:about="http://www.geneontology.org/formats/oboInOwl#hasExactSynonym">
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">has exact synonym</rdfs:label>
-        <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/IAO_0000118"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasSynonym"/>
     </owl:AnnotationProperty>
     
 
@@ -355,7 +352,7 @@ EquivalentTo: xsd:integer[&gt; 2151 , &lt;= 2300]
 
     <owl:AnnotationProperty rdf:about="http://www.geneontology.org/formats/oboInOwl#hasNarrowSynonym">
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">has narrow synonym</rdfs:label>
-        <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/IAO_0000118"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasSynonym"/>
     </owl:AnnotationProperty>
     
 
@@ -515,17 +512,6 @@ EquivalentTo: xsd:integer[&gt; 2151 , &lt;= 2300]
     
 
 
-    <!-- http://purl.obolibrary.org/obo/IAO_0000420 -->
-
-    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/IAO_0000420">
-        <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A defined class is a class that is defined by a set of logically necessary and sufficient conditions but is not a universal</obo:IAO_0000115>
-        <obo:IAO_0000116 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">&quot;definitions&quot;, in some readings, always are given by necessary and sufficient conditions. So one must be careful (and this is difficult sometimes) to distinguish between defined classes and universal.</obo:IAO_0000116>
-        <obo:IAO_0000117 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Alan Ruttenberg</obo:IAO_0000117>
-        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">defined class</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
     <!-- http://purl.obolibrary.org/obo/IAO_0000421 -->
 
     <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/IAO_0000421">
@@ -593,5 +579,5 @@ EquivalentTo: xsd:integer[&gt; 2151 , &lt;= 2300]
 
 
 
-<!-- Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi -->
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
 

@@ -226,6 +226,14 @@ Where we have an annotation assertion
     
 
 
+    <!-- http://purl.obolibrary.org/obo/RO_0003001 -->
+
+    <!-- <owl:AnnotationProperty rdf:about="&obo;RO_0003001">
+        <rdfs:domain rdf:resource="&obo;BFO_0000040"/>
+    </owl:AnnotationProperty> -->
+    
+
+
     <!-- http://purl.org/dc/elements/1.1/creator -->
 
     <!-- <owl:AnnotationProperty rdf:about="&dc;creator"/> -->
@@ -334,6 +342,30 @@ Where we have an annotation assertion
     <!-- http://purl.obolibrary.org/obo/RO_0000087 -->
 
     <owl:ObjectProperty rdf:about="&obo;RO_0000087"/>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/RO_0001000 -->
+
+    <owl:ObjectProperty rdf:about="&obo;RO_0001000">
+        <owl:inverseOf rdf:resource="&obo;RO_0001001"/>
+        <obo:IAO_0000112 xml:lang="en">this cell derives from this parent cell (cell division)</obo:IAO_0000112>
+        <obo:IAO_0000112 xml:lang="en">this nucleus derives from this parent nucleus (nuclear division)</obo:IAO_0000112>
+        <obo:IAO_0000114 rdf:resource="&obo;IAO_0000125"/>
+        <obo:IAO_0000115 xml:lang="en">a relation between two distinct material entities, the new entity and the old entity, in which the new entity begins to exist when the old entity ceases to exist, and the new entity inherits the significant portion of the matter of the old entity</obo:IAO_0000115>
+        <obo:IAO_0000116 xml:lang="en">This is a very general relation. More specific relations are preferred when applicable, such as &apos;directly develops from&apos;.</obo:IAO_0000116>
+        <obo:IAO_0000118 xml:lang="en">derives_from</obo:IAO_0000118>
+        <obo:IAO_0000232>This relation is taken from the RO2005 version of RO. It may be obsoleted and replaced by relations with different definitions. See also the &apos;develops from&apos; family of relations.</obo:IAO_0000232>
+        <obo:IAO_0000412 rdf:resource="&obo;ro.owl"/>
+        <oboInOwl:inSubset rdf:resource="http://purl.oboInOwllibrary.org/oboInOwl/ro/subsets#ro-eco"/>
+        <rdfs:label xml:lang="en">derives from</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/RO_0001001 -->
+
+    <owl:ObjectProperty rdf:about="&obo;RO_0001001"/>
     
 
 
@@ -599,6 +631,12 @@ Where we have an annotation assertion
     
 
 
+    <!-- http://purl.obolibrary.org/obo/RO_0003001 -->
+
+    <owl:ObjectProperty rdf:about="&obo;RO_0003001"/>
+    
+
+
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
@@ -637,12 +675,12 @@ Where we have an annotation assertion
         <obo:RO_0001900 rdf:resource="&obo;RO_0001901"/>
         <obo:IAO_0000114 rdf:resource="&obo;IAO_0000125"/>
         <obo:IAO_0000412 rdf:resource="&obo;ro.owl"/>
-        <obo:IAO_0000116>This relation acts as a join point with BSPO</obo:IAO_0000116>
         <obo:IAO_0000112>A caterpillar walking on the surface of a leaf is adjacent_to the leaf, if one of the caterpillar appendages is touching the leaf. In contrast, a butterfly flying close to a flower is not considered adjacent, unless there are any touching parts.</obo:IAO_0000112>
+        <obo:IAO_0000116>This relation acts as a join point with BSPO</obo:IAO_0000116>
         <obo:IAO_0000115>x adjacent to y if and only if x and y share a boundary.</obo:IAO_0000115>
         <obo:IAO_0000112>The skin of the forelimb is adjacent to the skin of the torso if these are considered anatomical subdivisions with a defined border. Otherwise a relation such as continuous_with would be used.</obo:IAO_0000112>
-        <obo:IAO_0000112>The epidermis layer of a vertebrate is adjacent to the dermis.</obo:IAO_0000112>
         <obo:IAO_0000117>Chris Mungall</obo:IAO_0000117>
+        <obo:IAO_0000112>The epidermis layer of a vertebrate is adjacent to the dermis.</obo:IAO_0000112>
         <obo:IAO_0000112>The plasma membrane of a cell is adjacent to the cytoplasm, and also to the cell lumen which the cytoplasm occupies.</obo:IAO_0000112>
         <rdfs:label xml:lang="en">adjacent to</rdfs:label>
     </rdf:Description>
@@ -654,6 +692,14 @@ Where we have an annotation assertion
         <obo:IAO_0000412 rdf:resource="&obo;ro.owl"/>
         <rdfs:label xml:lang="en">has input</rdfs:label>
         <oboInOwl:inSubset rdf:resource="http://purl.oboInOwllibrary.org/oboInOwl/ro/subsets#ro-eco"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="&obo;RO_0003001">
+        <obo:IAO_0000114 rdf:resource="&obo;IAO_0000125"/>
+        <obo:IAO_0000412 rdf:resource="&obo;ro.owl"/>
+        <obo:IAO_0000115>a produced_by b iff some process that occurs_in b has_output a.</obo:IAO_0000115>
+        <oboInOwl:inSubset rdf:resource="http://purl.oboInOwllibrary.org/oboInOwl/ro/subsets#ro-eco"/>
+        <obo:IAO_0000117>Melissa Haendel</obo:IAO_0000117>
+        <rdfs:label xml:lang="en">produced by</rdfs:label>
     </rdf:Description>
 </rdf:RDF>
 

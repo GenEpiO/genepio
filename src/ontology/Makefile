@@ -29,7 +29,7 @@ prepare_release: all
 
 #Annotates genepio.owl ( $(ONT).owl ) file with release
 $(ONT).owl: $(SRC)
-	$(ROBOT) reduce -i $< -r ELK -s true annotate --xml-entities -V $(BASE)/releases/`date +%Y-%m-%d`/$(ONT).owl --typed-annotation http://purl.org/dc/terms/date `date +%Y-%m-%d` xsd:date -o "$@"
+	$(ROBOT) reduce -i $< -r ELK annotate --xml-entities -V $(BASE)/releases/`date +%Y-%m-%d`/$(ONT).owl --typed-annotation http://purl.org/dc/terms/date `date +%Y-%m-%d` xsd:date -o "$@"
 
 # NEED TO ADD UPDATE ON dc.date too.
 

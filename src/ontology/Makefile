@@ -60,7 +60,7 @@ imports/%_import.owl: imports/%_ontofox.txt
 		python ./gazetteer2.py "$@"; \
 	fi	
 
-	$(ROBOT) reduce -i "$@" -r ELK -s true --xml-entities -o "$@"
+	$(ROBOT) reduce -i "$@" -r ELK --xml-entities -o "$@"
 	# All annotations are manually curated in the ontology-metadata.owl file
 	# Because OWLAPI is parsing 1 line commented out annotations, make this step last:
 	# In sed command on Macs we need the '.bak' after -i to avoid a parsing error

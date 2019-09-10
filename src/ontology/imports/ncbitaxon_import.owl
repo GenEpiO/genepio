@@ -13,12 +13,12 @@
 
 <rdf:RDF xmlns="&obo;GENEPIO/imports/ncbitaxon_import.owl#"
      xml:base="&obo;GENEPIO/imports/ncbitaxon_import.owl"
-     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:obo="http://purl.obolibrary.org/obo/"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-     xmlns:obo="http://purl.obolibrary.org/obo/">
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
     <owl:Ontology rdf:about="&obo;GENEPIO/imports/ncbitaxon_import.owl"/>
     
 
@@ -62,6 +62,16 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/NCBITaxon_1 -->
+
+    <owl:Class rdf:about="&obo;NCBITaxon_1">
+        <obo:IAO_0000111 rdf:datatype="&xsd;string">root</obo:IAO_0000111>
+        <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
+        <rdfs:label rdf:datatype="&xsd;string">root</rdfs:label>
+    </owl:Class>
     
 
 
@@ -248,6 +258,17 @@
         <obo:IAO_0000111 rdf:datatype="&xsd;string">Mus musculus domesticus x M. m. molossinus</obo:IAO_0000111>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
         <rdfs:label rdf:datatype="&xsd;string">Mus musculus domesticus x M. m. molossinus</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/NCBITaxon_131567 -->
+
+    <owl:Class rdf:about="&obo;NCBITaxon_131567">
+        <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_1"/>
+        <obo:IAO_0000111 rdf:datatype="&xsd;string">cellular organisms</obo:IAO_0000111>
+        <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
+        <rdfs:label rdf:datatype="&xsd;string">cellular organisms</rdfs:label>
     </owl:Class>
     
 
@@ -1248,39 +1269,6 @@
     
 
 
-    <!-- http://purl.obolibrary.org/obo/NCBITaxon_class -->
-
-    <owl:Class rdf:about="&obo;NCBITaxon_class">
-        <rdfs:subClassOf rdf:resource="&obo;NCBITaxon#_taxonomic_rank"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">class</obo:IAO_0000111>
-        <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">class</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/NCBITaxon_family -->
-
-    <owl:Class rdf:about="&obo;NCBITaxon_family">
-        <rdfs:subClassOf rdf:resource="&obo;NCBITaxon#_taxonomic_rank"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">family</obo:IAO_0000111>
-        <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">family</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/NCBITaxon_forma -->
-
-    <owl:Class rdf:about="&obo;NCBITaxon_forma">
-        <rdfs:subClassOf rdf:resource="&obo;NCBITaxon#_taxonomic_rank"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">forma</obo:IAO_0000111>
-        <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">forma</rdfs:label>
-    </owl:Class>
-    
-
-
     <!-- http://purl.obolibrary.org/obo/NCBITaxon_genus -->
 
     <owl:Class rdf:about="&obo;NCBITaxon_genus">
@@ -1288,72 +1276,6 @@
         <obo:IAO_0000111 rdf:datatype="&xsd;string">genus</obo:IAO_0000111>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
         <rdfs:label rdf:datatype="&xsd;string">genus</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/NCBITaxon_infraclass -->
-
-    <owl:Class rdf:about="&obo;NCBITaxon_infraclass">
-        <rdfs:subClassOf rdf:resource="&obo;NCBITaxon#_taxonomic_rank"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">infraclass</obo:IAO_0000111>
-        <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">infraclass</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/NCBITaxon_infraorder -->
-
-    <owl:Class rdf:about="&obo;NCBITaxon_infraorder">
-        <rdfs:subClassOf rdf:resource="&obo;NCBITaxon#_taxonomic_rank"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">infraorder</obo:IAO_0000111>
-        <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">infraorder</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/NCBITaxon_kingdom -->
-
-    <owl:Class rdf:about="&obo;NCBITaxon_kingdom">
-        <rdfs:subClassOf rdf:resource="&obo;NCBITaxon#_taxonomic_rank"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">kingdom</obo:IAO_0000111>
-        <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">kingdom</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/NCBITaxon_order -->
-
-    <owl:Class rdf:about="&obo;NCBITaxon_order">
-        <rdfs:subClassOf rdf:resource="&obo;NCBITaxon#_taxonomic_rank"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">order</obo:IAO_0000111>
-        <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">order</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/NCBITaxon_parvorder -->
-
-    <owl:Class rdf:about="&obo;NCBITaxon_parvorder">
-        <rdfs:subClassOf rdf:resource="&obo;NCBITaxon#_taxonomic_rank"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">parvorder</obo:IAO_0000111>
-        <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">parvorder</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/NCBITaxon_phylum -->
-
-    <owl:Class rdf:about="&obo;NCBITaxon_phylum">
-        <rdfs:subClassOf rdf:resource="&obo;NCBITaxon#_taxonomic_rank"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">phylum</obo:IAO_0000111>
-        <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">phylum</rdfs:label>
     </owl:Class>
     
 
@@ -1369,196 +1291,9 @@
     
 
 
-    <!-- http://purl.obolibrary.org/obo/NCBITaxon_subclass -->
-
-    <owl:Class rdf:about="&obo;NCBITaxon_subclass">
-        <rdfs:subClassOf rdf:resource="&obo;NCBITaxon#_taxonomic_rank"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">subclass</obo:IAO_0000111>
-        <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">subclass</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/NCBITaxon_subfamily -->
-
-    <owl:Class rdf:about="&obo;NCBITaxon_subfamily">
-        <rdfs:subClassOf rdf:resource="&obo;NCBITaxon#_taxonomic_rank"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">subfamily</obo:IAO_0000111>
-        <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">subfamily</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/NCBITaxon_subgenus -->
-
-    <owl:Class rdf:about="&obo;NCBITaxon_subgenus">
-        <rdfs:subClassOf rdf:resource="&obo;NCBITaxon#_taxonomic_rank"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">subgenus</obo:IAO_0000111>
-        <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">subgenus</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/NCBITaxon_subkingdom -->
-
-    <owl:Class rdf:about="&obo;NCBITaxon_subkingdom">
-        <rdfs:subClassOf rdf:resource="&obo;NCBITaxon#_taxonomic_rank"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">subkingdom</obo:IAO_0000111>
-        <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">subkingdom</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/NCBITaxon_suborder -->
-
-    <owl:Class rdf:about="&obo;NCBITaxon_suborder">
-        <rdfs:subClassOf rdf:resource="&obo;NCBITaxon#_taxonomic_rank"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">suborder</obo:IAO_0000111>
-        <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">suborder</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/NCBITaxon_subphylum -->
-
-    <owl:Class rdf:about="&obo;NCBITaxon_subphylum">
-        <rdfs:subClassOf rdf:resource="&obo;NCBITaxon#_taxonomic_rank"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">subphylum</obo:IAO_0000111>
-        <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">subphylum</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/NCBITaxon_subspecies -->
-
-    <owl:Class rdf:about="&obo;NCBITaxon_subspecies">
-        <rdfs:subClassOf rdf:resource="&obo;NCBITaxon#_taxonomic_rank"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">subspecies</obo:IAO_0000111>
-        <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">subspecies</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/NCBITaxon_subtribe -->
-
-    <owl:Class rdf:about="&obo;NCBITaxon_subtribe">
-        <rdfs:subClassOf rdf:resource="&obo;NCBITaxon#_taxonomic_rank"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">subtribe</obo:IAO_0000111>
-        <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">subtribe</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/NCBITaxon_superclass -->
-
-    <owl:Class rdf:about="&obo;NCBITaxon_superclass">
-        <rdfs:subClassOf rdf:resource="&obo;NCBITaxon#_taxonomic_rank"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">superclass</obo:IAO_0000111>
-        <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">superclass</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/NCBITaxon_superfamily -->
-
-    <owl:Class rdf:about="&obo;NCBITaxon_superfamily">
-        <rdfs:subClassOf rdf:resource="&obo;NCBITaxon#_taxonomic_rank"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">superfamily</obo:IAO_0000111>
-        <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">superfamily</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/NCBITaxon_superkingdom -->
-
-    <owl:Class rdf:about="&obo;NCBITaxon_superkingdom">
-        <rdfs:subClassOf rdf:resource="&obo;NCBITaxon#_taxonomic_rank"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">superkingdom</obo:IAO_0000111>
-        <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">superkingdom</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/NCBITaxon_superorder -->
-
-    <owl:Class rdf:about="&obo;NCBITaxon_superorder">
-        <rdfs:subClassOf rdf:resource="&obo;NCBITaxon#_taxonomic_rank"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">superorder</obo:IAO_0000111>
-        <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">superorder</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/NCBITaxon_superphylum -->
-
-    <owl:Class rdf:about="&obo;NCBITaxon_superphylum">
-        <rdfs:subClassOf rdf:resource="&obo;NCBITaxon#_taxonomic_rank"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">superphylum</obo:IAO_0000111>
-        <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">superphylum</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/NCBITaxon_tribe -->
-
-    <owl:Class rdf:about="&obo;NCBITaxon_tribe">
-        <rdfs:subClassOf rdf:resource="&obo;NCBITaxon#_taxonomic_rank"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">tribe</obo:IAO_0000111>
-        <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">tribe</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/NCBITaxon_varietas -->
-
-    <owl:Class rdf:about="&obo;NCBITaxon_varietas">
-        <rdfs:subClassOf rdf:resource="&obo;NCBITaxon#_taxonomic_rank"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">varietas</obo:IAO_0000111>
-        <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">varietas</rdfs:label>
-    </owl:Class>
-    
-
-
     <!-- http://purl.obolibrary.org/obo/OBI_0100026 -->
 
     <owl:Class rdf:about="&obo;OBI_0100026"/>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/NCBITaxon#_species_group -->
-
-    <owl:Class rdf:about="&obo;NCBITaxon#_species_group">
-        <rdfs:subClassOf rdf:resource="&obo;NCBITaxon#_taxonomic_rank"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">species group</obo:IAO_0000111>
-        <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">species group</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/NCBITaxon#_species_subgroup -->
-
-    <owl:Class rdf:about="&obo;NCBITaxon#_species_subgroup">
-        <rdfs:subClassOf rdf:resource="&obo;NCBITaxon#_taxonomic_rank"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">species subgroup</obo:IAO_0000111>
-        <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">species subgroup</rdfs:label>
-    </owl:Class>
     
 
 
@@ -1573,5 +1308,5 @@
 
 
 
-<!-- Generated by the OWL API (version 4.2.6) https://github.com/owlcs/owlapi -->
+<!-- Generated by the OWL API (version 4.5.6) https://github.com/owlcs/owlapi -->
 

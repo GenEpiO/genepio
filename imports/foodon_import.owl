@@ -14,13 +14,13 @@
 
 <rdf:RDF xmlns="&obo;GENEPIO/imports/foodon_import.owl#"
      xml:base="&obo;GENEPIO/imports/foodon_import.owl"
-     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:obo="http://purl.obolibrary.org/obo/"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
-     xmlns:oboInOwl="http://www.geneontology.org/formats/oboInOwl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-     xmlns:obo="http://purl.obolibrary.org/obo/">
+     xmlns:oboInOwl="http://www.geneontology.org/formats/oboInOwl#">
     <owl:Ontology rdf:about="&obo;GENEPIO/imports/foodon_import.owl"/>
     
 
@@ -41,7 +41,6 @@
     <!-- <owl:AnnotationProperty rdf:about="&obo;IAO_0000115">
         <obo:IAO_0000115 xml:lang="en">The official OBI definition, explaining the meaning of a class or property. Shall be Aristotelian, formalized and normalized. Can be augmented with colloquial definitions.</obo:IAO_0000115>
         <obo:IAO_0000115 xml:lang="en">The official definition, explaining the meaning of a class or property. Shall be Aristotelian, formalized and normalized. Can be augmented with colloquial definitions.</obo:IAO_0000115>
-        <rdfs:label>definition</rdfs:label>
         <rdfs:label xml:lang="en">definition</rdfs:label>
         <rdfs:label rdf:datatype="&xsd;string">definition</rdfs:label>
         <rdfs:label>textual definition</rdfs:label>
@@ -68,6 +67,7 @@
     <!-- http://www.w3.org/2000/01/rdf-schema#label -->
 
     <!-- <owl:AnnotationProperty rdf:about="&rdfs;label">
+        <rdfs:label>label</rdfs:label>
         <rdfs:label xml:lang="en">label</rdfs:label>
     </owl:AnnotationProperty> -->
     
@@ -143,7 +143,6 @@
 
     <owl:Class rdf:about="&obo;BFO_0000020">
         <rdfs:subClassOf rdf:resource="&obo;BFO_0000002"/>
-        <obo:IAO_0000115 xml:lang="en">A continuant that inheres in or is borne by other entities. Every instance of A requires some specific instance of B which must always be the same.</obo:IAO_0000115>
         <obo:IAO_0000115 xml:lang="en">b is a specifically dependent continuant = Def. b is a continuant &amp; there is some independent continuant c which is not a spatial region and which is such that b s-depends_on c at every time t during the course of b’s existence. (axiom label in BFO2 Reference: [050-003])</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
         <rdfs:label xml:lang="en">specifically dependent continuant</rdfs:label>
@@ -165,6 +164,7 @@
 
     <owl:Class rdf:about="&obo;BFO_0000031">
         <rdfs:subClassOf rdf:resource="&obo;BFO_0000002"/>
+        <obo:IAO_0000115 xml:lang="en">A continuant that is dependent on one or other independent continuant bearers. For every instance of A requires some instance of (an independent continuant type) B but which instance of B serves can change from time to time.</obo:IAO_0000115>
         <obo:IAO_0000115 xml:lang="en">b is a generically dependent continuant = Def. b is a continuant that g-depends_on one or more other entities. (axiom label in BFO2 Reference: [074-001])</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
         <rdfs:label xml:lang="en">generically dependent continuant</rdfs:label>
@@ -266,7 +266,6 @@
 
     <owl:Class rdf:about="&obo;FOODON_00001145">
         <rdfs:subClassOf rdf:resource="&obo;FOODON_00002381"/>
-        <rdfs:subClassOf rdf:resource="&obo;FOODON_00002403"/>
         <obo:IAO_0000115 xml:lang="en">A food product derived from one or more microorganisms including bacteria, mold, and yeast.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
         <rdfs:label xml:lang="en">microbial food product</rdfs:label>
@@ -277,7 +276,7 @@
     <!-- http://purl.obolibrary.org/obo/FOODON_00001176 -->
 
     <owl:Class rdf:about="&obo;FOODON_00001176">
-        <rdfs:subClassOf rdf:resource="&obo;FOODON_00002403"/>
+        <rdfs:subClassOf rdf:resource="&obo;FOODON_00002381"/>
         <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
         <rdfs:label xml:lang="en">invertebrate animal food product</rdfs:label>
     </owl:Class>
@@ -372,7 +371,7 @@
     <!-- http://purl.obolibrary.org/obo/FOODON_00002452 -->
 
     <owl:Class rdf:about="&obo;FOODON_00002452">
-        <rdfs:subClassOf rdf:resource="&obo;FOODON_03411564"/>
+        <rdfs:subClassOf rdf:resource="&obo;FOODON_00003004"/>
         <obo:IAO_0000115 xml:lang="en">Invertebrates are animals that neither possess nor develop a vertebral column (commonly known as a backbone or spine), derived from the notochord. This includes all animals apart from the subphylum Vertebrata.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
         <rdfs:label xml:lang="en">invertebrate animal</rdfs:label>
@@ -443,6 +442,50 @@
     
 
 
+    <!-- http://purl.obolibrary.org/obo/FOODON_00002886 -->
+
+    <owl:Class rdf:about="&obo;FOODON_00002886">
+        <rdfs:subClassOf rdf:resource="&obo;FOODON_03510115"/>
+        <obo:IAO_0000115 xml:lang="en">Synbiotic claim or use refers to food ingredients or dietary supplements combining probiotics and prebiotics in a form of synergism that beneficially affect the host.</obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
+        <rdfs:label xml:lang="en">synbiotic claim or use</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/FOODON_00002910 -->
+
+    <owl:Class rdf:about="&obo;FOODON_00002910">
+        <rdfs:subClassOf rdf:resource="&obo;FOODON_03530153"/>
+        <obo:IAO_0000115 xml:lang="en">An organism that originated from a wild caught population.</obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
+        <rdfs:label xml:lang="en">wild caught</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/FOODON_00003001 -->
+
+    <owl:Class rdf:about="&obo;FOODON_00003001">
+        <rdfs:subClassOf rdf:resource="&obo;FOODON_03530146"/>
+        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
+        <rdfs:label xml:lang="en">cutlet</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/FOODON_00003004 -->
+
+    <owl:Class rdf:about="&obo;FOODON_00003004">
+        <rdfs:subClassOf rdf:resource="&obo;FOODON_03411564"/>
+        <obo:IAO_0000115 xml:lang="en">A multicellular eukaryotic heterotrophic organism within the kingdom Animalia.</obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
+        <oboInOwl:hasDbXref rdf:resource="http://www.langual.org/langual_thesaurus.asp?termid=B1297"/>
+        <rdfs:label xml:lang="en">animal</rdfs:label>
+    </owl:Class>
+    
+
+
     <!-- http://purl.obolibrary.org/obo/FOODON_03311737 -->
 
     <owl:Class rdf:about="&obo;FOODON_03311737">
@@ -481,7 +524,7 @@
 
     <owl:Class rdf:about="&obo;FOODON_03411261">
         <rdfs:subClassOf rdf:resource="&obo;FOODON_03411564"/>
-        <obo:IAO_0000115 xml:lang="en">A fungus (plural: fungi or funguses) is any member of the group of eukaryotic organisms that includes unicellular microorganisms such as yeasts and molds, as well as multicellular fungi that produce familiar fruiting forms known as mushrooms. These organisms are classified as a kingdom, *Fungi*, which is separate from the other eukaryotic life kingdoms of plants and animals.[https://en.wikipedia.org/wiki/Fungus]</obo:IAO_0000115>
+        <obo:IAO_0000115 xml:lang="en">A member of the group of eukaryotic organisms in the kingdom Fungi that includes unicellular microorganisms such as yeasts and molds, as well as multicellular fungi that produce familiar fruiting forms known as mushrooms.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
         <oboInOwl:hasDbXref>http://www.langual.org/langual_thesaurus.asp?termid=B1261</oboInOwl:hasDbXref>
         <rdfs:label xml:lang="en">fungus</rdfs:label>
@@ -492,8 +535,8 @@
     <!-- http://purl.obolibrary.org/obo/FOODON_03411297 -->
 
     <owl:Class rdf:about="&obo;FOODON_03411297">
-        <rdfs:subClassOf rdf:resource="&obo;FOODON_03411564"/>
-        <obo:IAO_0000115 xml:lang="en">Multicellular animal, e.g., fish, meat animal or poultry.</obo:IAO_0000115>
+        <rdfs:subClassOf rdf:resource="&obo;FOODON_00003004"/>
+        <obo:IAO_0000115 xml:lang="en">A vertebrate animal is any species of organism within the subphylum Vertebrata (chordates with backbones). Vertebrates represent the overwhelming majority of the phylum Chordata, with currently about 69,276 species described.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
         <oboInOwl:hasDbXref>http://www.langual.org/langual_thesaurus.asp?termid=B1297</oboInOwl:hasDbXref>
         <rdfs:label xml:lang="en">vertebrate animal</rdfs:label>
@@ -505,7 +548,7 @@
 
     <owl:Class rdf:about="&obo;FOODON_03411301">
         <rdfs:subClassOf rdf:resource="&obo;FOODON_03411564"/>
-        <obo:IAO_0000115 xml:lang="en">Unicellular and multicellular algae.</obo:IAO_0000115>
+        <obo:IAO_0000115 xml:lang="en">An informal term for a large, diverse group of photosynthetic eukaryotic organisms that are not necessarily closely related, and is thus polyphyletic.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
         <oboInOwl:hasDbXref>http://www.langual.org/langual_thesaurus.asp?termid=B1301</oboInOwl:hasDbXref>
         <rdfs:label xml:lang="en">algae</rdfs:label>
@@ -517,10 +560,10 @@
 
     <owl:Class rdf:about="&obo;FOODON_03411347">
         <rdfs:subClassOf rdf:resource="&obo;FOODON_03411564"/>
-        <obo:IAO_0000115 xml:lang="en">Multicellular plants.</obo:IAO_0000115>
+        <obo:IAO_0000115 xml:lang="en">A multicellular eukaryote organism of the kingdom Plantae.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
         <oboInOwl:hasDbXref>http://www.langual.org/langual_thesaurus.asp?termid=B1347</oboInOwl:hasDbXref>
-        <rdfs:label xml:lang="en">plant</rdfs:label>
+        <rdfs:label xml:lang="en">obsolete: plant</rdfs:label>
     </owl:Class>
     
 
@@ -529,7 +572,7 @@
 
     <owl:Class rdf:about="&obo;FOODON_03411564">
         <rdfs:subClassOf rdf:resource="&obo;ENVO_00010483"/>
-        <obo:IAO_0000115 xml:lang="en">Individual plant or animal from which the food product or its major ingredient is derived; also a chemical food source [FDA CFSAN 1995].</obo:IAO_0000115>
+        <obo:IAO_0000115 xml:lang="en">A food source is a plant or animal from which a food product or  component is derived.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
         <oboInOwl:hasDbXref>http://www.langual.org/langual_thesaurus.asp?termid=B1564</oboInOwl:hasDbXref>
         <rdfs:label xml:lang="en">food source</rdfs:label>
@@ -541,7 +584,7 @@
 
     <owl:Class rdf:about="&obo;FOODON_03412345">
         <rdfs:subClassOf rdf:resource="&obo;FOODON_03411564"/>
-        <obo:IAO_0000115 xml:lang="en">Lichens are composite organisms consisting of a symbiotic association of a fungus (the mycobiont) with a photosynthetic partner (the photobiont or phycobiont), usually either a green alga (commonly *Trebouxia*) or cyanobacterium (commonly *Nostoc*).</obo:IAO_0000115>
+        <obo:IAO_0000115 xml:lang="en">A composite organism that arises from algae or cyanobacteria living among filaments of multiple fungi species in a mutualistic relationship.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
         <oboInOwl:hasDbXref>http://www.langual.org/langual_thesaurus.asp?termid=B2345</oboInOwl:hasDbXref>
         <rdfs:label xml:lang="en">lichen</rdfs:label>
@@ -553,6 +596,7 @@
 
     <owl:Class rdf:about="&obo;FOODON_03412846">
         <rdfs:subClassOf rdf:resource="&obo;FOODON_03411564"/>
+        <obo:IAO_0000115 xml:lang="en">A unicellular prokaryotic organism in the Domain Bacteria.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
         <oboInOwl:hasDbXref>http://www.langual.org/langual_thesaurus.asp?termid=B2846</oboInOwl:hasDbXref>
         <rdfs:label xml:lang="en">bacteria</rdfs:label>
@@ -571,6 +615,18 @@
     
 
 
+    <!-- http://purl.obolibrary.org/obo/FOODON_03420103 -->
+
+    <owl:Class rdf:about="&obo;FOODON_03420103">
+        <rdfs:subClassOf rdf:resource="&obo;FOODON_03420127"/>
+        <obo:IAO_0000115 xml:lang="en">Edible flesh of any type of animal, including poultry and seafood. Excludes parts containing only animal fat, which is indexed under *FAT OR OIL* or under *FAT, TRIM*.</obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
+        <oboInOwl:hasDbXref>http://www.langual.org/langual_thesaurus.asp?termid=C0103</oboInOwl:hasDbXref>
+        <rdfs:label xml:lang="en">meat part of animal</rdfs:label>
+    </owl:Class>
+    
+
+
     <!-- http://purl.obolibrary.org/obo/FOODON_03420116 -->
 
     <owl:Class rdf:about="&obo;FOODON_03420116">
@@ -583,6 +639,18 @@
     
 
 
+    <!-- http://purl.obolibrary.org/obo/FOODON_03420127 -->
+
+    <owl:Class rdf:about="&obo;FOODON_03420127">
+        <rdfs:subClassOf rdf:resource="&obo;FOODON_03420164"/>
+        <obo:IAO_0000115 xml:lang="en">Includes carcass meat, organ meat, and nonmeat parts of animals, as well as the whole animal.</obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
+        <oboInOwl:hasDbXref>http://www.langual.org/langual_thesaurus.asp?termid=C0127</oboInOwl:hasDbXref>
+        <rdfs:label xml:lang="en">animal body or body part</rdfs:label>
+    </owl:Class>
+    
+
+
     <!-- http://purl.obolibrary.org/obo/FOODON_03420148 -->
 
     <owl:Class rdf:about="&obo;FOODON_03420148">
@@ -591,6 +659,18 @@
         <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
         <oboInOwl:hasDbXref>http://www.langual.org/langual_thesaurus.asp?termid=C0148</oboInOwl:hasDbXref>
         <rdfs:label xml:lang="en">root, stem, leaf or flower</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/FOODON_03420164 -->
+
+    <owl:Class rdf:about="&obo;FOODON_03420164">
+        <rdfs:subClassOf rdf:resource="&obo;FOODON_03420116"/>
+        <obo:IAO_0000115 xml:lang="en">Anatomical part of an animal; includes eggs and milk that, although separated from the animal, are prouced as integral parts and are affected by the animal&apos;s food intake and metabolism.</obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
+        <oboInOwl:hasDbXref>http://www.langual.org/langual_thesaurus.asp?termid=C0164</oboInOwl:hasDbXref>
+        <rdfs:label xml:lang="en">part of animal</rdfs:label>
     </owl:Class>
     
 
@@ -1887,7 +1967,7 @@
 
     <owl:Class rdf:about="&obo;FOODON_03470100">
         <rdfs:subClassOf rdf:resource="&obo;FOODON_03470109"/>
-        <obo:IAO_0000115 xml:lang="en">preservation by adding chemical preservatives (e.g., sorbic acid, sodium benzoate, BHT, calcium proprionate) to suppress or inhibit undesirable microorganisms or enzyme activity.</obo:IAO_0000115>
+        <obo:IAO_0000115 xml:lang="en">Preservation by adding chemical preservatives (e.g., sorbic acid, sodium benzoate, BHT, calcium proprionate) to suppress or inhibit undesirable microorganisms or enzyme activity.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
         <oboInOwl:hasDbXref>http://www.langual.org/langual_thesaurus.asp?termid=J0100</oboInOwl:hasDbXref>
         <rdfs:label xml:lang="en">preservation by adding chemicals</rdfs:label>
@@ -1948,7 +2028,7 @@
 
     <owl:Class rdf:about="&obo;FOODON_03470108">
         <rdfs:subClassOf rdf:resource="&obo;FOODON_03470109"/>
-        <obo:IAO_0000115 xml:lang="en">preservation by immersing in or spraying with liquids (e.g., sulfite solutions) or surrounding with gases (e.g., ethylene oxide, propylene oxide or sulfur dioxide) to destroy undesirable microorganisms or inactivate enzymes. Diffusion and chemical reaction may create a residue in the food product that contributes to continuing preservation.</obo:IAO_0000115>
+        <obo:IAO_0000115 xml:lang="en">Preservation by immersing in or spraying with liquids (e.g., sulfite solutions) or surrounding with gases (e.g., ethylene oxide, propylene oxide or sulfur dioxide) to destroy undesirable microorganisms or inactivate enzymes. Diffusion and chemical reaction may create a residue in the food product that contributes to continuing preservation.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
         <oboInOwl:hasDbXref>http://www.langual.org/langual_thesaurus.asp?termid=J0108</oboInOwl:hasDbXref>
         <rdfs:label xml:lang="en">preservation by treatment with chemicals</rdfs:label>
@@ -1960,7 +2040,7 @@
 
     <owl:Class rdf:about="&obo;FOODON_03470109">
         <rdfs:subClassOf rdf:resource="&obo;FOODON_03470107"/>
-        <obo:IAO_0000115 xml:lang="en">preservation by use of chemical to destroy, suppress or inhibit undesirable microorganisms or enzyme activity.</obo:IAO_0000115>
+        <obo:IAO_0000115 xml:lang="en">Preservation by use of chemical to destroy, suppress or inhibit undesirable microorganisms or enzyme activity.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
         <oboInOwl:hasDbXref>http://www.langual.org/langual_thesaurus.asp?termid=J0109</oboInOwl:hasDbXref>
         <rdfs:label xml:lang="en">chemical food preservation process</rdfs:label>
@@ -1983,7 +2063,7 @@
 
     <owl:Class rdf:about="&obo;FOODON_03470111">
         <rdfs:subClassOf rdf:resource="&obo;FOODON_03470107"/>
-        <obo:IAO_0000115 xml:lang="en">preservation by storage in an atmosphere in which the concentrations of oxygen and carbon dioxide are different from those in air. This reduces microbial and enzymatic activity; often used commercially in conjunction with refrigeration (e.g., refrigerated rail cars) for fresh meat and produce.</obo:IAO_0000115>
+        <obo:IAO_0000115 xml:lang="en">Preservation by storage in an atmosphere in which the concentrations of oxygen and carbon dioxide are different from those in air. This reduces microbial and enzymatic activity; often used commercially in conjunction with refrigeration (e.g., refrigerated rail cars) for fresh meat and produce.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
         <oboInOwl:hasDbXref>http://www.langual.org/langual_thesaurus.asp?termid=J0111</oboInOwl:hasDbXref>
         <rdfs:label xml:lang="en">preservation by storage in modified atmosphere</rdfs:label>
@@ -2074,7 +2154,7 @@
 
     <owl:Class rdf:about="&obo;FOODON_03470120">
         <rdfs:subClassOf rdf:resource="&obo;FOODON_03470107"/>
-        <obo:IAO_0000115 xml:lang="en">preservation by the use of high temperature for a time sufficient to reduce or destroy undesirable microorganisms and enzyme activity. [FDA CFSAN 1995]</obo:IAO_0000115>
+        <obo:IAO_0000115 xml:lang="en">Preservation by the use of high temperature for a time sufficient to reduce or destroy undesirable microorganisms and enzyme activity. [FDA CFSAN 1995]</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
         <oboInOwl:hasDbXref>http://www.langual.org/langual_thesaurus.asp?termid=J0120</oboInOwl:hasDbXref>
         <rdfs:label xml:lang="en">heat treatment food preservation process</rdfs:label>
@@ -2087,7 +2167,7 @@
     <owl:Class rdf:about="&obo;FOODON_03470121">
         <rdfs:subClassOf rdf:resource="&obo;FOODON_03460238"/>
         <rdfs:subClassOf rdf:resource="&obo;FOODON_03470107"/>
-        <obo:IAO_0000115 xml:lang="en">preservation by filtering out yeasts and molds, generally followed by aseptic packaging. FDA CFSAN 1995]</obo:IAO_0000115>
+        <obo:IAO_0000115 xml:lang="en">Preservation by filtering out yeasts and molds, generally followed by aseptic packaging. FDA CFSAN 1995</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
         <oboInOwl:hasDbXref>http://www.langual.org/langual_thesaurus.asp?termid=J0121</oboInOwl:hasDbXref>
         <rdfs:label xml:lang="en">food filtration process</rdfs:label>
@@ -2099,7 +2179,7 @@
 
     <owl:Class rdf:about="&obo;FOODON_03470122">
         <rdfs:subClassOf rdf:resource="&obo;FOODON_03470138"/>
-        <obo:IAO_0000115 xml:lang="en">preservation by irradiation, primarily by gamma radiation.</obo:IAO_0000115>
+        <obo:IAO_0000115 xml:lang="en">Preservation by irradiation, primarily by gamma radiation.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
         <oboInOwl:hasDbXref>http://www.langual.org/langual_thesaurus.asp?termid=J0122</oboInOwl:hasDbXref>
         <rdfs:label xml:lang="en">preservation by ionizing radiation</rdfs:label>
@@ -2235,7 +2315,7 @@
 
     <owl:Class rdf:about="&obo;FOODON_03470136">
         <rdfs:subClassOf rdf:resource="&obo;FOODON_03470107"/>
-        <obo:IAO_0000115 xml:lang="en">preservation by freezing a food product and keeping it at a temperature below the freezing point (20-30 degrees F) without regard to the product&apos;s physical state.</obo:IAO_0000115>
+        <obo:IAO_0000115 xml:lang="en">Preservation by freezing a food product and keeping it at a temperature below the freezing point (20-30 degrees F) without regard to the product&apos;s physical state.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
         <oboInOwl:hasDbXref>http://www.langual.org/langual_thesaurus.asp?termid=J0136</oboInOwl:hasDbXref>
         <rdfs:label xml:lang="en">food freezing process</rdfs:label>
@@ -2259,7 +2339,7 @@
 
     <owl:Class rdf:about="&obo;FOODON_03470138">
         <rdfs:subClassOf rdf:resource="&obo;FOODON_03470107"/>
-        <obo:IAO_0000115 xml:lang="en">preservation by the use of radiation to destroy or suppress undesirable microorganisms or enzyme activity.</obo:IAO_0000115>
+        <obo:IAO_0000115 xml:lang="en">Preservation by the use of radiation to destroy or suppress undesirable microorganisms or enzyme activity.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
         <oboInOwl:hasDbXref>http://www.langual.org/langual_thesaurus.asp?termid=J0138</oboInOwl:hasDbXref>
         <rdfs:label xml:lang="en">preservation by irradiation</rdfs:label>
@@ -2306,7 +2386,7 @@
 
     <owl:Class rdf:about="&obo;FOODON_03470142">
         <rdfs:subClassOf rdf:resource="&obo;FOODON_03470107"/>
-        <obo:IAO_0000115 xml:lang="en">preservation by cooling and storage at low temperature (chilling at around 0-5°C (32 to 41°F), freezing at -18°C (0°F))  to prevent or retard microbial or enzymatic spoilage.</obo:IAO_0000115>
+        <obo:IAO_0000115 xml:lang="en">Preservation by cooling and storage at low temperature (chilling at around 0-5°C (32 to 41°F), freezing at -18°C (0°F))  to prevent or retard microbial or enzymatic spoilage.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
         <oboInOwl:hasDbXref>http://www.langual.org/langual_thesaurus.asp?termid=J0142</oboInOwl:hasDbXref>
         <rdfs:label xml:lang="en">chilling or freezing process</rdfs:label>
@@ -2353,7 +2433,7 @@
 
     <owl:Class rdf:about="&obo;FOODON_03470146">
         <rdfs:subClassOf rdf:resource="&obo;FOODON_03470145"/>
-        <obo:IAO_0000115 xml:lang="en">preservation by adding sugar, sugar syrup or by partial inversion of disaccharides until the sugar concentration is high enough to prevent growth of microorganisms.</obo:IAO_0000115>
+        <obo:IAO_0000115 xml:lang="en">Preservation by adding sugar, sugar syrup or by partial inversion of disaccharides until the sugar concentration is high enough to prevent growth of microorganisms.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
         <oboInOwl:hasDbXref>http://www.langual.org/langual_thesaurus.asp?termid=J0146</oboInOwl:hasDbXref>
         <rdfs:label xml:lang="en">preservation by adding sugar</rdfs:label>
@@ -2433,7 +2513,7 @@
 
     <owl:Class rdf:about="&obo;FOODON_03470153">
         <rdfs:subClassOf rdf:resource="&obo;FOODON_03470107"/>
-        <obo:IAO_0000115 xml:lang="en">preservation by adding spices or extracts (e.g. garlic, onion, horseradish, paprika) to suppress or inhibit undesirable micro-organisms, enzyme activity, or oxidative changes.</obo:IAO_0000115>
+        <obo:IAO_0000115 xml:lang="en">Preservation by adding spices or extracts (e.g. garlic, onion, horseradish, paprika) to suppress or inhibit undesirable micro-organisms, enzyme activity, or oxidative changes.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
         <oboInOwl:hasDbXref>http://www.langual.org/langual_thesaurus.asp?termid=J0153</oboInOwl:hasDbXref>
         <rdfs:label xml:lang="en">preservation by adding spices or extracts</rdfs:label>
@@ -2445,7 +2525,7 @@
 
     <owl:Class rdf:about="&obo;FOODON_03470154">
         <rdfs:subClassOf rdf:resource="&obo;FOODON_03470149"/>
-        <obo:IAO_0000115 xml:lang="en">preservation by adding inorganic acids or salts (e.g. SO2, H2SO4, KNO4, NaNO3) to suppress or inhibit undesirable micro-organisms or enzyme activity.</obo:IAO_0000115>
+        <obo:IAO_0000115 xml:lang="en">Preservation by adding inorganic acids or salts (e.g. SO2, H2SO4, KNO4, NaNO3) to suppress or inhibit undesirable micro-organisms or enzyme activity.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
         <oboInOwl:hasDbXref>http://www.langual.org/langual_thesaurus.asp?termid=J0154</oboInOwl:hasDbXref>
         <rdfs:label xml:lang="en">preservation by adding inorganic acids or salts</rdfs:label>
@@ -2457,7 +2537,7 @@
 
     <owl:Class rdf:about="&obo;FOODON_03470155">
         <rdfs:subClassOf rdf:resource="&obo;FOODON_03470149"/>
-        <obo:IAO_0000115 xml:lang="en">preservation by adding organic acids or salts (e.g. lactic acid, acetic acid, salicylic acid) to suppress or inhibit undesirable micro organisms or enzyme activity.</obo:IAO_0000115>
+        <obo:IAO_0000115 xml:lang="en">Preservation by adding organic acids or salts (e.g. lactic acid, acetic acid, salicylic acid) to suppress or inhibit undesirable micro organisms or enzyme activity.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
         <oboInOwl:hasDbXref>http://www.langual.org/langual_thesaurus.asp?termid=J0155</oboInOwl:hasDbXref>
         <rdfs:label xml:lang="en">preservation by adding organic acids or salts</rdfs:label>
@@ -2469,7 +2549,7 @@
 
     <owl:Class rdf:about="&obo;FOODON_03470156">
         <rdfs:subClassOf rdf:resource="&obo;FOODON_03470100"/>
-        <obo:IAO_0000115 xml:lang="en">preservation by adding antibiotics (e.g. nisin, tylosine, subtlin, bacitracin, chlorotetracyclin, oxytetracyclin) to kill micro organisms or stop their growth.</obo:IAO_0000115>
+        <obo:IAO_0000115 xml:lang="en">Preservation by adding antibiotics (e.g. nisin, tylosine, subtlin, bacitracin, chlorotetracyclin, oxytetracyclin) to kill micro organisms or stop their growth.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
         <oboInOwl:hasDbXref>http://www.langual.org/langual_thesaurus.asp?termid=J0156</oboInOwl:hasDbXref>
         <rdfs:label xml:lang="en">preservation by adding antibiotics</rdfs:label>
@@ -2642,7 +2722,7 @@ Some dairy product are ultrafiltrated in order to obtain a higher protein concen
 
     <owl:Class rdf:about="&obo;FOODON_03470173">
         <rdfs:subClassOf rdf:resource="&obo;FOODON_03470111"/>
-        <obo:IAO_0000115 xml:lang="en">preservation by storage in inert gases (e.g. nitrogen) to suppress or inhibit undesirable micro-organism growth, oxidation activity, etc.</obo:IAO_0000115>
+        <obo:IAO_0000115 xml:lang="en">Preservation by storage in inert gases (e.g. nitrogen) to suppress or inhibit undesirable micro-organism growth, oxidation activity, etc.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
         <oboInOwl:hasDbXref>http://www.langual.org/langual_thesaurus.asp?termid=J0173</oboInOwl:hasDbXref>
         <rdfs:label xml:lang="en">inert atmosphere storage process</rdfs:label>
@@ -2665,6 +2745,7 @@ Some dairy product are ultrafiltrated in order to obtain a higher protein concen
     <!-- http://purl.obolibrary.org/obo/FOODON_03470175 -->
 
     <owl:Class rdf:about="&obo;FOODON_03470175">
+        <rdfs:subClassOf rdf:resource="&obo;FOODON_03450002"/>
         <rdfs:subClassOf rdf:resource="&obo;FOODON_03460130"/>
         <rdfs:subClassOf rdf:resource="&obo;FOODON_03470120"/>
         <obo:IAO_0000115 xml:lang="en">Blanching is a cooking process wherein a food, usually a vegetable or fruit, is scalded in boiling water, removed after a brief, timed interval, and finally plunged into iced water or placed under cold running water (shocking or refreshing) to halt the cooking process. Blanching foods helps reduce quality loss over time. People often use blanching as a pre-treatment prior to freezing, drying, or canning—heating vegetables or fruits to inactivate enzymes, modify texture, remove the peel, and wilt tissue. Blanching is also utilized to preserve color, flavor, and nutritional value. The process has three stages: preheating, blanching, and cooling. The most common blanching methods for vegetables/fruits are hot water and steam, while cooling is either done using cold water or cool air.</obo:IAO_0000115>
@@ -2692,8 +2773,7 @@ The process is also denominated CA Storage (synonym).</obo:IAO_0000115>
 
     <owl:Class rdf:about="&obo;FOODON_03470177">
         <rdfs:subClassOf rdf:resource="&obo;FOODON_03470121"/>
-        <obo:IAO_0000115 xml:lang="en">Microfiltration is used to remove undesirable micro-organisms and molecules. The membranes have pore diameters from 10 to 10000 nm.
-Micro-filtration is often used instead of pateurisation, e.g. in the brewing industry.</obo:IAO_0000115>
+        <obo:IAO_0000115 xml:lang="en">Microfiltration is used to remove undesirable micro-organisms and molecules. The membranes have pore diameters from 10 to 10000 nm. Micro-filtration is often used instead of pateurisation, e.g. in the brewing industry.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
         <oboInOwl:hasDbXref>http://www.langual.org/langual_thesaurus.asp?termid=J0177</oboInOwl:hasDbXref>
         <rdfs:label xml:lang="en">food micro-filtration process</rdfs:label>
@@ -6830,7 +6910,6 @@ Micro-filtration is often used instead of pateurisation, e.g. in the brewing ind
         <rdfs:subClassOf rdf:resource="&obo;FOODON_03510021"/>
         <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
         <oboInOwl:hasDbXref>http://www.langual.org/langual_thesaurus.asp?termid=P0010</oboInOwl:hasDbXref>
-        <rdfs:label xml:lang="en">food for laboratory animals</rdfs:label>
         <rdfs:label xml:lang="en">laboratory animal as food consumer</rdfs:label>
     </owl:Class>
     
@@ -7062,7 +7141,7 @@ These descriptors are used either for foods intended for special dietary use as 
 Food having 40 calories or less per amount customarily consumed (and per 50 grams of food if the amount customarily consumed is small). Meals and main dishes contain 120 calories or less per 100 grams of food [US FDA]</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
         <oboInOwl:hasDbXref>http://www.langual.org/langual_thesaurus.asp?termid=P0033</oboInOwl:hasDbXref>
-        <rdfs:label xml:lang="en">low energy food</rdfs:label>
+        <rdfs:label xml:lang="en">low energy food claim or use</rdfs:label>
     </owl:Class>
     
 
@@ -7077,7 +7156,7 @@ food reduced in its total energy value [REGULATION (EC) No 1924/2006 Corrigendum
 Food having at least 25% fewer calories per amount customarily consumed from the calories of a comparable food product. The complarable food may not be &apos;low calorie&apos; [US FDA].</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
         <oboInOwl:hasDbXref>http://www.langual.org/langual_thesaurus.asp?termid=P0034</oboInOwl:hasDbXref>
-        <rdfs:label xml:lang="en">reduced energy food</rdfs:label>
+        <rdfs:label xml:lang="en">reduced energy food claim or use</rdfs:label>
     </owl:Class>
     
 
@@ -7091,7 +7170,7 @@ Food having at least 25% fewer calories per amount customarily consumed from the
 Food having less than 5 milligrams of salt or sodium per amount customarily consumed (or for meals and main dishes, less than 5 miligrams of salt or sodium per labeled serving). Such foods must not contain an ingredient that is salt or sodium or generally understood to comtain salt or sodium except where the ingredient listed is footnoted &apos;*adds a trivial amount of {salt or sodium}&apos; [US FDA]</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
         <oboInOwl:hasDbXref>http://www.langual.org/langual_thesaurus.asp?termid=P0035</oboInOwl:hasDbXref>
-        <rdfs:label xml:lang="en">salt or sodium free food</rdfs:label>
+        <rdfs:label xml:lang="en">salt or sodium free claim or use</rdfs:label>
     </owl:Class>
     
 
@@ -7105,7 +7184,7 @@ Food having less than 5 milligrams of salt or sodium per amount customarily cons
 Food having 35 milligrams or less salt or sodium per amount customarily consumed (and per 50 grams if the amount customarily consumed is small). Meals and main dishes contain 35 milligrams or less salt or sodium per 100 grams of food [US FDA]</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
         <oboInOwl:hasDbXref>http://www.langual.org/langual_thesaurus.asp?termid=P0036</oboInOwl:hasDbXref>
-        <rdfs:label xml:lang="en">very low salt or sodium food</rdfs:label>
+        <rdfs:label xml:lang="en">very low salt or sodium claim or use</rdfs:label>
     </owl:Class>
     
 
@@ -7116,7 +7195,7 @@ Food having 35 milligrams or less salt or sodium per amount customarily consumed
         <rdfs:subClassOf rdf:resource="&obo;FOODON_03510077"/>
         <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
         <oboInOwl:hasDbXref>http://www.langual.org/langual_thesaurus.asp?termid=P0037</oboInOwl:hasDbXref>
-        <rdfs:label xml:lang="en">reduced salt or sodium food</rdfs:label>
+        <rdfs:label xml:lang="en">reduced salt or sodium claim or use</rdfs:label>
     </owl:Class>
     
 
@@ -7130,7 +7209,7 @@ Food having 35 milligrams or less salt or sodium per amount customarily consumed
 Food having 140 milligrams or less salt or sodium per amount customarily consumed. Meals and main dishes have 140 milligrams or less salt or sodium per 100 grams food [US FDA]</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
         <oboInOwl:hasDbXref>http://www.langual.org/langual_thesaurus.asp?termid=P0038</oboInOwl:hasDbXref>
-        <rdfs:label xml:lang="en">low salt or sodium food</rdfs:label>
+        <rdfs:label xml:lang="en">low salt or sodium claim or use</rdfs:label>
     </owl:Class>
     
 
@@ -7177,10 +7256,10 @@ Food having 3 grams of fat or less per amount customarily consumed (and per 50 g
 
     <owl:Class rdf:about="&obo;FOODON_03510042">
         <rdfs:subClassOf rdf:resource="&obo;FOODON_03510149"/>
-        <obo:IAO_0000115 xml:lang="en">food having less than 2 milligrams cholesterol per amount customarily consumed (or for meals and main dishes, less than 2 milligrams cholesterol per labeled serving). Such food must contain no ingredient that contains cholesterol except where the ingredient listed has been footnoted &apos;*adds a trivial amount of cholesterol&apos;. If the food contains less than 2 milligrams cholesterol per amount customarily consumed by special processing and the total fat exceeds 13 grams cholesterol per amount or labeled serving, the amount of cholesterol must be &apos;Substantially less&apos; (25%) than in a comparable food with significant market share (5% of market).</obo:IAO_0000115>
+        <obo:IAO_0000115 xml:lang="en">Food having less than 2 milligrams cholesterol per amount customarily consumed (or for meals and main dishes, less than 2 milligrams cholesterol per labeled serving). Such food must contain no ingredient that contains cholesterol except where the ingredient listed has been footnoted &apos;*adds a trivial amount of cholesterol&apos;. If the food contains less than 2 milligrams cholesterol per amount customarily consumed by special processing and the total fat exceeds 13 grams cholesterol per amount or labeled serving, the amount of cholesterol must be &apos;Substantially less&apos; (25%) than in a comparable food with significant market share (5% of market).</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
         <oboInOwl:hasDbXref>http://www.langual.org/langual_thesaurus.asp?termid=P0042</oboInOwl:hasDbXref>
-        <rdfs:label xml:lang="en">cholesterol free food</rdfs:label>
+        <rdfs:label xml:lang="en">cholesterol free claim or use</rdfs:label>
     </owl:Class>
     
 
@@ -7192,7 +7271,7 @@ Food having 3 grams of fat or less per amount customarily consumed (and per 50 g
         <obo:IAO_0000115 xml:lang="en">Food having 20 miligrams or less cholesterol per amount customarily consumed (and per 50 grams of food if the amount customarily consumed is small). Meals and main dishes contain 20 milligrams or less cholesterol per 100 grams of food. If the food qualifies by special processing and total fat exceeds 13 grams per amount and labeled serving, the amount of cholesterol must be &apos;substantially less&apos; (25%) than in a comparable food with significant market share (5% of market).</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
         <oboInOwl:hasDbXref>http://www.langual.org/langual_thesaurus.asp?termid=P0043</oboInOwl:hasDbXref>
-        <rdfs:label xml:lang="en">low in cholesterol food</rdfs:label>
+        <rdfs:label xml:lang="en">low in cholesterol claim or use</rdfs:label>
     </owl:Class>
     
 
@@ -7204,7 +7283,7 @@ Food having 3 grams of fat or less per amount customarily consumed (and per 50 g
         <obo:IAO_0000115 xml:lang="en">Food having at least 25% less cholesterol per amount customarily consumed from the cholesterol content of a comparable food product. The comparable food may not be &apos;low cholesterol&apos;.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
         <oboInOwl:hasDbXref>http://www.langual.org/langual_thesaurus.asp?termid=P0044</oboInOwl:hasDbXref>
-        <rdfs:label xml:lang="en">reduced cholesterol food</rdfs:label>
+        <rdfs:label xml:lang="en">reduced cholesterol claim or use</rdfs:label>
     </owl:Class>
     
 
@@ -7282,7 +7361,7 @@ Food having less than 0.5 grams fat per amount customarily consumed. Meals and m
 Food having less than 5 calories per amount customarily consumed. Calorie amount is not defined for meals or main dishes [US FDA]</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
         <oboInOwl:hasDbXref>http://www.langual.org/langual_thesaurus.asp?termid=P0055</oboInOwl:hasDbXref>
-        <rdfs:label xml:lang="en">energy free food</rdfs:label>
+        <rdfs:label xml:lang="en">energy free food claim or use</rdfs:label>
     </owl:Class>
     
 
@@ -7333,7 +7412,7 @@ Food having one gram or less saturated fat per amount customarily consumed and 1
         <obo:IAO_0000115 xml:lang="en">[REGULATION (EC) No 1924/2006 Corrigendum 2007-01-18]</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
         <oboInOwl:hasDbXref>http://www.langual.org/langual_thesaurus.asp?termid=P0060</oboInOwl:hasDbXref>
-        <rdfs:label xml:lang="en">high energy food</rdfs:label>
+        <rdfs:label xml:lang="en">high energy food claim or use</rdfs:label>
     </owl:Class>
     
 
@@ -7525,7 +7604,7 @@ and/or
         <obo:IAO_0000115 xml:lang="en">Food having less than 5 milligrams salt per amount customarily consumed (or for meals and main dishes less than 5 milligrams salt per labeled serving). Such food must contain no ingredient that is salt or generally understood to contain salt except where the ingredient listed is footnoted &apos;*adds a trivial amount of salt&apos;.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
         <oboInOwl:hasDbXref>http://www.langual.org/langual_thesaurus.asp?termid=P0080</oboInOwl:hasDbXref>
-        <rdfs:label xml:lang="en">salt free food</rdfs:label>
+        <rdfs:label xml:lang="en">salt free claim or use</rdfs:label>
     </owl:Class>
     
 
@@ -7536,7 +7615,7 @@ and/or
         <rdfs:subClassOf rdf:resource="&obo;FOODON_03510038"/>
         <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
         <oboInOwl:hasDbXref>http://www.langual.org/langual_thesaurus.asp?termid=P0083</oboInOwl:hasDbXref>
-        <rdfs:label xml:lang="en">low salt food</rdfs:label>
+        <rdfs:label xml:lang="en">low salt claim or use</rdfs:label>
     </owl:Class>
     
 
@@ -7548,7 +7627,7 @@ and/or
         <obo:IAO_0000115 xml:lang="en">Food having less than 35 milligrams of salt per serving and per 100 grams of food. (U.S. proposed)</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
         <oboInOwl:hasDbXref>http://www.langual.org/langual_thesaurus.asp?termid=P0085</oboInOwl:hasDbXref>
-        <rdfs:label xml:lang="en">very low salt food</rdfs:label>
+        <rdfs:label xml:lang="en">very low salt claim or use</rdfs:label>
     </owl:Class>
     
 
@@ -7559,7 +7638,7 @@ and/or
         <rdfs:subClassOf rdf:resource="&obo;FOODON_03510037"/>
         <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
         <oboInOwl:hasDbXref>http://www.langual.org/langual_thesaurus.asp?termid=P0087</oboInOwl:hasDbXref>
-        <rdfs:label xml:lang="en">reduced salt food</rdfs:label>
+        <rdfs:label xml:lang="en">reduced salt claim or use</rdfs:label>
     </owl:Class>
     
 
@@ -8127,7 +8206,7 @@ Used for foods that have 33.3% fewer calories than a comparable product and a mi
         <obo:IAO_0000115 xml:lang="en">Food having less than 5 miligrams sodium per amount customarily consumed (or for meals and main dishes, less than 5 milligrams sodium per labeled serving). Such food must contain no ingredient that is sodium chloride or generally understood to contain sodium except where the ingredient listed is footnoted &apos;*adds a trivial amount of sodium&apos;.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
         <oboInOwl:hasDbXref>http://www.langual.org/langual_thesaurus.asp?termid=P0152</oboInOwl:hasDbXref>
-        <rdfs:label xml:lang="en">sodium free food</rdfs:label>
+        <rdfs:label xml:lang="en">sodium free claim or use</rdfs:label>
     </owl:Class>
     
 
@@ -8139,7 +8218,7 @@ Used for foods that have 33.3% fewer calories than a comparable product and a mi
         <obo:IAO_0000115 xml:lang="en">Food having 35 milligrams or less sodium per amount customarily consumed (and per 50 grams of food if the amount customarily consumed is small). Meals and main dishes contain 35 milligrams or less sodium per 100 grams food.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
         <oboInOwl:hasDbXref>http://www.langual.org/langual_thesaurus.asp?termid=P0153</oboInOwl:hasDbXref>
-        <rdfs:label xml:lang="en">very low sodium food</rdfs:label>
+        <rdfs:label xml:lang="en">very low sodium claim or use</rdfs:label>
     </owl:Class>
     
 
@@ -8151,7 +8230,7 @@ Used for foods that have 33.3% fewer calories than a comparable product and a mi
         <obo:IAO_0000115 xml:lang="en">Food containing at least 25% less sodium per amount customarily consumed than the sodium content of a comparable food product. The comparable food may not be &apos;low sodium&apos;.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
         <oboInOwl:hasDbXref>http://www.langual.org/langual_thesaurus.asp?termid=P0154</oboInOwl:hasDbXref>
-        <rdfs:label xml:lang="en">reduced sodium food</rdfs:label>
+        <rdfs:label xml:lang="en">reduced sodium claim or use</rdfs:label>
     </owl:Class>
     
 
@@ -8163,7 +8242,7 @@ Used for foods that have 33.3% fewer calories than a comparable product and a mi
         <obo:IAO_0000115 xml:lang="en">Foods having 140 milligrams or less sodium per amount customarily consumed (and per 50 grams of food if the amount customarily consumed is small). Meals and main dishes have 140 milligrams sodium per 100 grams of food.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
         <oboInOwl:hasDbXref>http://www.langual.org/langual_thesaurus.asp?termid=P0156</oboInOwl:hasDbXref>
-        <rdfs:label xml:lang="en">low sodium food</rdfs:label>
+        <rdfs:label xml:lang="en">low sodium claim or use</rdfs:label>
     </owl:Class>
     
 
@@ -8605,7 +8684,7 @@ The European Commission is considering how foods intended specifically for peopl
         <rdfs:subClassOf rdf:resource="&obo;FOODON_03510115"/>
         <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
         <oboInOwl:hasDbXref>http://www.langual.org/langual_thesaurus.asp?termid=P0200</oboInOwl:hasDbXref>
-        <rdfs:label xml:lang="en">no pork added</rdfs:label>
+        <rdfs:label xml:lang="en">no pork added claim</rdfs:label>
     </owl:Class>
     
 
@@ -8616,7 +8695,7 @@ The European Commission is considering how foods intended specifically for peopl
         <rdfs:subClassOf rdf:resource="&obo;FOODON_03510115"/>
         <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
         <oboInOwl:hasDbXref>http://www.langual.org/langual_thesaurus.asp?termid=P0201</oboInOwl:hasDbXref>
-        <rdfs:label xml:lang="en">no beef added</rdfs:label>
+        <rdfs:label xml:lang="en">no beef added claim</rdfs:label>
     </owl:Class>
     
 
@@ -8770,7 +8849,7 @@ The European Commission is considering how foods intended specifically for peopl
         <obo:IAO_0000115 xml:lang="en">Regulated by Directive 2003/89/EC of the European Parliament and of the Council of 10 November 2003 amending Directive 2000/13/EC as regards indication of the ingredients present in foodstuffs.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
         <oboInOwl:hasDbXref>http://www.langual.org/langual_thesaurus.asp?termid=P0214</oboInOwl:hasDbXref>
-        <rdfs:label xml:lang="en">cereals containing gluten and products thereof (labelling)</rdfs:label>
+        <rdfs:label xml:lang="en">food allergen labelling about cereals containing gluten and products thereof</rdfs:label>
     </owl:Class>
     
 
@@ -8782,7 +8861,7 @@ The European Commission is considering how foods intended specifically for peopl
         <obo:IAO_0000115 xml:lang="en">Regulated by Directive 2003/89/EC of the European Parliament and of the Council of 10 November 2003 amending Directive 2000/13/EC as regards indication of the ingredients present in foodstuffs.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
         <oboInOwl:hasDbXref>http://www.langual.org/langual_thesaurus.asp?termid=P0215</oboInOwl:hasDbXref>
-        <rdfs:label xml:lang="en">crustaceans and products thereof (labelling)</rdfs:label>
+        <rdfs:label xml:lang="en">food allergen labelling about crustaceans and products thereof</rdfs:label>
     </owl:Class>
     
 
@@ -8794,7 +8873,7 @@ The European Commission is considering how foods intended specifically for peopl
         <obo:IAO_0000115 xml:lang="en">Regulated by Directive 2003/89/EC of the European Parliament and of the Council of 10 November 2003 amending Directive 2000/13/EC as regards indication of the ingredients present in foodstuffs.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
         <oboInOwl:hasDbXref>http://www.langual.org/langual_thesaurus.asp?termid=P0216</oboInOwl:hasDbXref>
-        <rdfs:label xml:lang="en">eggs and products thereof (labelling)</rdfs:label>
+        <rdfs:label xml:lang="en">food allergen labelling about eggs and products thereof</rdfs:label>
     </owl:Class>
     
 
@@ -8806,7 +8885,7 @@ The European Commission is considering how foods intended specifically for peopl
         <obo:IAO_0000115 xml:lang="en">Regulated by Directive 2003/89/EC of the European Parliament and of the Council of 10 November 2003 amending Directive 2000/13/EC as regards indication of the ingredients present in foodstuffs.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
         <oboInOwl:hasDbXref>http://www.langual.org/langual_thesaurus.asp?termid=P0217</oboInOwl:hasDbXref>
-        <rdfs:label xml:lang="en">fish and products thereof (labelling)</rdfs:label>
+        <rdfs:label xml:lang="en">food allergen labelling about fish and products thereof</rdfs:label>
     </owl:Class>
     
 
@@ -8818,7 +8897,7 @@ The European Commission is considering how foods intended specifically for peopl
         <obo:IAO_0000115 xml:lang="en">Regulated by Directive 2003/89/EC of the European Parliament and of the Council of 10 November 2003 amending Directive 2000/13/EC as regards indication of the ingredients present in foodstuffs.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
         <oboInOwl:hasDbXref>http://www.langual.org/langual_thesaurus.asp?termid=P0218</oboInOwl:hasDbXref>
-        <rdfs:label xml:lang="en">peanuts and products thereof (labelling)</rdfs:label>
+        <rdfs:label xml:lang="en">food allergen labelling about peanuts and products thereof</rdfs:label>
     </owl:Class>
     
 
@@ -8830,7 +8909,7 @@ The European Commission is considering how foods intended specifically for peopl
         <obo:IAO_0000115 xml:lang="en">Regulated by Directive 2003/89/EC of the European Parliament and of the Council of 10 November 2003 amending Directive 2000/13/EC as regards indication of the ingredients present in foodstuffs.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
         <oboInOwl:hasDbXref>http://www.langual.org/langual_thesaurus.asp?termid=P0219</oboInOwl:hasDbXref>
-        <rdfs:label xml:lang="en">soybeans and products thereof (labelling)</rdfs:label>
+        <rdfs:label xml:lang="en">food allergen labelling about soybeans and products thereof</rdfs:label>
     </owl:Class>
     
 
@@ -8842,7 +8921,7 @@ The European Commission is considering how foods intended specifically for peopl
         <obo:IAO_0000115 xml:lang="en">Regulated by Directive 2003/89/EC of the European Parliament and of the Council of 10 November 2003 amending Directive 2000/13/EC as regards indication of the ingredients present in foodstuffs.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
         <oboInOwl:hasDbXref>http://www.langual.org/langual_thesaurus.asp?termid=P0220</oboInOwl:hasDbXref>
-        <rdfs:label xml:lang="en">milk and products thereof, including lactose (labelling)</rdfs:label>
+        <rdfs:label xml:lang="en">food allergen labelling about milk and products thereof, including lactose</rdfs:label>
     </owl:Class>
     
 
@@ -8854,7 +8933,7 @@ The European Commission is considering how foods intended specifically for peopl
         <obo:IAO_0000115 xml:lang="en">Regulated by Directive 2003/89/EC of the European Parliament and of the Council of 10 November 2003 amending Directive 2000/13/EC as regards indication of the ingredients present in foodstuffs.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
         <oboInOwl:hasDbXref>http://www.langual.org/langual_thesaurus.asp?termid=P0221</oboInOwl:hasDbXref>
-        <rdfs:label xml:lang="en">nuts and products thereof (labelling)</rdfs:label>
+        <rdfs:label xml:lang="en">food allergen labelling about nuts and products thereof</rdfs:label>
     </owl:Class>
     
 
@@ -8866,7 +8945,7 @@ The European Commission is considering how foods intended specifically for peopl
         <obo:IAO_0000115 xml:lang="en">Regulated by Directive 2003/89/EC of the European Parliament and of the Council of 10 November 2003 amending Directive 2000/13/EC as regards indication of the ingredients present in foodstuffs.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
         <oboInOwl:hasDbXref>http://www.langual.org/langual_thesaurus.asp?termid=P0222</oboInOwl:hasDbXref>
-        <rdfs:label xml:lang="en">celery and products thereof (labelling)</rdfs:label>
+        <rdfs:label xml:lang="en">food allergen labelling about celery and products thereof</rdfs:label>
     </owl:Class>
     
 
@@ -8878,7 +8957,7 @@ The European Commission is considering how foods intended specifically for peopl
         <obo:IAO_0000115 xml:lang="en">Regulated by Directive 2003/89/EC of the European Parliament and of the Council of 10 November 2003 amending Directive 2000/13/EC as regards indication of the ingredients present in foodstuffs.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
         <oboInOwl:hasDbXref>http://www.langual.org/langual_thesaurus.asp?termid=P0223</oboInOwl:hasDbXref>
-        <rdfs:label xml:lang="en">mustard and products thereof (labelling)</rdfs:label>
+        <rdfs:label xml:lang="en">food allergen labelling about mustard and products thereof</rdfs:label>
     </owl:Class>
     
 
@@ -8890,7 +8969,7 @@ The European Commission is considering how foods intended specifically for peopl
         <obo:IAO_0000115 xml:lang="en">Regulated by Directive 2003/89/EC of the European Parliament and of the Council of 10 November 2003 amending Directive 2000/13/EC as regards indication of the ingredients present in foodstuffs.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
         <oboInOwl:hasDbXref>http://www.langual.org/langual_thesaurus.asp?termid=P0224</oboInOwl:hasDbXref>
-        <rdfs:label xml:lang="en">sesame seeds and products thereof (labelling)</rdfs:label>
+        <rdfs:label xml:lang="en">food allergen labelling about sesame seeds and products thereof</rdfs:label>
     </owl:Class>
     
 
@@ -8905,7 +8984,7 @@ because they can cause adverse reactions in some people.
 Regulated by Directive 2003/89/EC of the European Parliament and of the Council of 10 November 2003 amending Directive 2000/13/EC as regards indication of the ingredients present in foodstuffs.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
         <oboInOwl:hasDbXref>http://www.langual.org/langual_thesaurus.asp?termid=P0225</oboInOwl:hasDbXref>
-        <rdfs:label xml:lang="en">sulphur dioxide and sulphites (labelling)</rdfs:label>
+        <rdfs:label xml:lang="en">food allergen labelling about sulphur dioxide and sulphites</rdfs:label>
     </owl:Class>
     
 
@@ -8917,7 +8996,7 @@ Regulated by Directive 2003/89/EC of the European Parliament and of the Council 
         <obo:IAO_0000115 xml:lang="en">Contained in GS1 Allergen Code List.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
         <oboInOwl:hasDbXref>http://www.langual.org/langual_thesaurus.asp?termid=P0226</oboInOwl:hasDbXref>
-        <rdfs:label xml:lang="en">cocoa and products thereof (labelling)</rdfs:label>
+        <rdfs:label xml:lang="en">food allergen labelling about cocoa and products thereof</rdfs:label>
     </owl:Class>
     
 
@@ -8929,7 +9008,7 @@ Regulated by Directive 2003/89/EC of the European Parliament and of the Council 
         <obo:IAO_0000115 xml:lang="en">Contained in GS1 Code List.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
         <oboInOwl:hasDbXref>http://www.langual.org/langual_thesaurus.asp?termid=P0227</oboInOwl:hasDbXref>
-        <rdfs:label xml:lang="en">coriander and products thereof (labelling)</rdfs:label>
+        <rdfs:label xml:lang="en">food allergen labelling about coriander and products thereof</rdfs:label>
     </owl:Class>
     
 
@@ -8941,7 +9020,7 @@ Regulated by Directive 2003/89/EC of the European Parliament and of the Council 
         <obo:IAO_0000115 xml:lang="en">Contained in GS1 Code List.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
         <oboInOwl:hasDbXref>http://www.langual.org/langual_thesaurus.asp?termid=P0228</oboInOwl:hasDbXref>
-        <rdfs:label xml:lang="en">lupine and products thereof (labelling)</rdfs:label>
+        <rdfs:label xml:lang="en">food allergen labelling about lupine and products thereof</rdfs:label>
     </owl:Class>
     
 
@@ -8953,7 +9032,7 @@ Regulated by Directive 2003/89/EC of the European Parliament and of the Council 
         <obo:IAO_0000115 xml:lang="en">Contained in GS1 Code List.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
         <oboInOwl:hasDbXref>http://www.langual.org/langual_thesaurus.asp?termid=P0229</oboInOwl:hasDbXref>
-        <rdfs:label xml:lang="en">corn and products thereof (labelling)</rdfs:label>
+        <rdfs:label xml:lang="en">food allergen labelling about corn and products thereof</rdfs:label>
     </owl:Class>
     
 
@@ -8965,7 +9044,7 @@ Regulated by Directive 2003/89/EC of the European Parliament and of the Council 
         <obo:IAO_0000115 xml:lang="en">Contained in GS1 Code List.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
         <oboInOwl:hasDbXref>http://www.langual.org/langual_thesaurus.asp?termid=P0230</oboInOwl:hasDbXref>
-        <rdfs:label xml:lang="en">pod fruits and products thereof (labelling)</rdfs:label>
+        <rdfs:label xml:lang="en">food allergen labelling about pod fruits and products thereof</rdfs:label>
     </owl:Class>
     
 
@@ -8977,7 +9056,7 @@ Regulated by Directive 2003/89/EC of the European Parliament and of the Council 
         <obo:IAO_0000115 xml:lang="en">Contained in GS1 Code List.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
         <oboInOwl:hasDbXref>http://www.langual.org/langual_thesaurus.asp?termid=P0231</oboInOwl:hasDbXref>
-        <rdfs:label xml:lang="en">carrot and products thereof (labelling)</rdfs:label>
+        <rdfs:label xml:lang="en">food allergen labelling about carrot and products thereof</rdfs:label>
     </owl:Class>
     
 
@@ -8989,7 +9068,7 @@ Regulated by Directive 2003/89/EC of the European Parliament and of the Council 
         <obo:IAO_0000115 xml:lang="en">Contained in GS1 Code List.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
         <oboInOwl:hasDbXref>http://www.langual.org/langual_thesaurus.asp?termid=P0232</oboInOwl:hasDbXref>
-        <rdfs:label xml:lang="en">molluscs and products thereof (labelling)</rdfs:label>
+        <rdfs:label xml:lang="en">food allergen labelling about molluscs and products thereof</rdfs:label>
     </owl:Class>
     
 
@@ -9703,17 +9782,6 @@ Traditional means conforming to established practice or specifications prior to 
     
 
 
-    <!-- http://purl.obolibrary.org/obo/FOODON_03530049 -->
-
-    <owl:Class rdf:about="&obo;FOODON_03530049">
-        <rdfs:subClassOf rdf:resource="&obo;FOODON_00002470"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <oboInOwl:hasDbXref>http://www.langual.org/langual_thesaurus.asp?termid=Z0049</oboInOwl:hasDbXref>
-        <rdfs:label xml:lang="en">meat, poultry or fish physical quality</rdfs:label>
-    </owl:Class>
-    
-
-
     <!-- http://purl.obolibrary.org/obo/FOODON_03530050 -->
 
     <owl:Class rdf:about="&obo;FOODON_03530050">
@@ -10131,7 +10199,7 @@ Use the appropriate narrower term only if ripeness is stated in the food name or
     <!-- http://purl.obolibrary.org/obo/FOODON_03530146 -->
 
     <owl:Class rdf:about="&obo;FOODON_03530146">
-        <rdfs:subClassOf rdf:resource="&obo;FOODON_03530049"/>
+        <rdfs:subClassOf rdf:resource="&obo;FOODON_03420103"/>
         <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
         <oboInOwl:hasDbXref>http://www.langual.org/langual_thesaurus.asp?termid=Z0146</oboInOwl:hasDbXref>
         <rdfs:label xml:lang="en">cut of meat</rdfs:label>
@@ -10489,2661 +10557,9 @@ For more on organic farming, see the European Commissions site on Organic Farmin
         <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
         <rdfs:label rdf:datatype="&xsd;string">physical object quality</rdfs:label>
     </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0004 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0004">
-        <rdfs:subClassOf rdf:resource="&obo;IAO_0000030"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">ancestral group</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0005 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0005">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0004"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">European</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0006 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0006">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0008"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">South Asian</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0007 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0007">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0008"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">South East Asian</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0008 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0008">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0004"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Asian</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0009 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0009">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0008"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">East Asian</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0010 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0010">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0004"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">African</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0011 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0011">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0010"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Sub-Saharan African</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0013 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0013">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0004"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">American Indian</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0014 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0014">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0004"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">An admixed population </obo:IAO_0000115>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Hispanic/Latin American</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0015 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0015">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0004"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Middle Eastern/North African</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0016 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0016">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0004"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">People who defined themselves as American with an admixture of west african, amerindian and european</obo:IAO_0000115>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">African American/Afro-Caribbean</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0017 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0017">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0004"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Oceanian</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0018 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0018">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0004"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">uncategorised population</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0019 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0019">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0009"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Japanese</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0020 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0020">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0009"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Taiwanese</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0021 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0021">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0009"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Chinese</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0022 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0022">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0009"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Korean</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0023 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0023">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0009"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Mongolian</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0024 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0024">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0021"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Macanese</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0025 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0025">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0021"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Singaporean Chinese</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0026 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0026">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0021"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Hong Kong Chinese</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0027 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0027">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0021"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Han Chinese</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0286 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0286">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0008"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Central Asian</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0290 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0290">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0004"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">population isolate</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0302 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0302">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0290"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">cultural isolate</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0303 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0303">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0290"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">geographic isolate</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0307 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0307">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0005"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Italian</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0309 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0309">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0307"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Sardinian</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0310 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0310">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0307"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Val Borbera</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0311 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0311">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0307"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Friuli Venezia Giulia</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0312 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0312">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0307"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Carlantino</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0313 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0313">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0005"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Old Order Amish</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0314 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0314">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0005"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Sorbian</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0315 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0315">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0005"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Hutterites</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0316 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0316">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0005"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Amish</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0317 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0317">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0005"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Erasmus Rucphen</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0318 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0318">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0005"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Orcadian</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0319 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0319">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0005"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Korculan</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0320 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0320">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0005"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Dutch</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0321 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0321">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0005"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Finish</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0322 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0322">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0321"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Finish founder</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0323 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0323">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0320"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Dutch founder</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0324 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0324">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0302"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Ashkenazi Jew</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0328 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0328">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0004"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Carribean</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0331 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0331">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0010"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Sudanese</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0332 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0332">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0010"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Sahrawi</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0333 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0333">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0016"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Anguillan</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0334 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0334">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0016"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Antiguan or Barbudan</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0335 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0335">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0016"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Barbadian</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0336 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0336">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0016"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Haitian</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0337 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0337">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0016"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Jamaican</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0338 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0338">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0286"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Tajikistani</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0339 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0339">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0286"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Turkmen</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0340 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0340">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0286"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Uzbekistani</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0341 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0341">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0286"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Afghan</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0342 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0342">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0286"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Kazakhstani</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0343 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0343">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0286"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Kyrgyzstani</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0344 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0344">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0005"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Albanian</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0345 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0345">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0005"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Andorran</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0346 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0346">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0005"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Australian</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0347 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0347">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0005"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Austrian</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0348 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0348">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0005"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Belarusian</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0349 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0349">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0005"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Belgian</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0350 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0350">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0005"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Bermudian</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0351 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0351">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0005"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Bosnian or Herzegovinian</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0352 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0352">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0005"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Brazilian</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0353 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0353">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0005"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Bulgarian</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0354 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0354">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0005"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Canadian</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0355 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0355">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0005"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Channel Islander</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0356 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0356">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0005"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Chilean</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0357 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0357">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0005"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Croatian</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0358 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0358">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0005"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Czech</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0359 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0359">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0005"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Danish</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0360 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0360">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0005"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Estonian</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0361 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0361">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0005"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Faroese</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0362 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0362">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0005"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Falkland Islander</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0363 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0363">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0005"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">French</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0364 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0364">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0005"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">German</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0365 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0365">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0005"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Gibraltarian</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0366 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0366">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0005"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Greek</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0367 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0367">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0005"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Greenlander</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0368 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0368">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0005"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Hungrian</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0369 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0369">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0005"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Icelandic</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0370 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0370">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0005"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Manx</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0371 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0371">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0005"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Latvian</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0372 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0372">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0005"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Liechtensteiner</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0373 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0373">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0005"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Lithuanian</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0374 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0374">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0005"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Luxembourgish</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0375 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0375">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0005"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Maltese</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0376 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0376">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0005"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Monegasque</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0377 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0377">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0005"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Montenegrin</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0378 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0378">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0005"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">New Zealandish</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0379 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0379">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0005"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Norfolk Islander</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0380 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0380">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0005"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Norwegian</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0381 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0381">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0005"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Polish</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0382 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0382">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0005"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Portugese</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0383 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0383">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0005"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Irish</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0384 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0384">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0005"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Moldovan</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0385 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0385">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0005"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Romanian</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0386 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0386">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0005"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Russian</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0387 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0387">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0005"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Saint-Pierrais or Miquelonnais</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0388 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0388">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0005"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Sammarinese</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0389 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0389">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0005"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Serb</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0390 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0390">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0005"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Slovak</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0391 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0391">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0005"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Slovene</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0392 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0392">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0005"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Spanish</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0393 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0393">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0005"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Swedish</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0394 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0394">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0005"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Swiss</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0395 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0395">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0005"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Macedonian</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0396 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0396">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0005"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Ukrainian</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0397 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0397">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0014"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Argentine</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0398 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0398">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0014"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Bahamian</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0399 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0399">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0014"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Belizean</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0400 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0400">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0014"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Bolivian</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0401 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0401">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0014"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">British Virgin Islander</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0402 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0402">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0014"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Caymanian</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0403 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0403">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0014"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Colombian</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0404 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0404">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0014"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Costa Rican</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0405 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0405">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0014"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Cuban</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0406 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0406">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0014"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Dominican</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0407 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0407">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0014"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Ecuadorian</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0408 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0408">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0014"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Salvadoran</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0409 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0409">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0014"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">French Guianese</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0410 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0410">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0014"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Grenadian</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0411 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0411">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0014"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Guatemalan</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0412 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0412">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0014"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Guyanese</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0413 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0413">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0014"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Honduran</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0414 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0414">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0014"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Martinican</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0415 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0415">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0014"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Mexican</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0416 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0416">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0014"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Montserratian</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0417 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0417">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0014"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Nicaraguan</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0418 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0418">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0014"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Panamanian</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0419 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0419">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0014"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Paraguayan</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0420 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0420">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0014"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Peruvian</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0421 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0421">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0014"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Puerto Rican</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0422 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0422">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0014"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Kittitian or Nevisian</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0423 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0423">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0014"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Saint Lucian</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0424 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0424">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0014"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Saint Vincentian</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0425 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0425">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0014"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Surinamer</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0426 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0426">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0014"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Trinidadian or Tobagonian</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0427 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0427">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0014"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Turks and Caicos Islander</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0428 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0428">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0014"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Virgin Islander</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0429 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0429">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0014"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Uruguayan</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0430 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0430">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0014"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Venezuelan</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0431 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0431">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0015"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Algerian</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0432 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0432">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0015"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Armenian</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0433 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0433">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0015"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Azerbaijani</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0434 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0434">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0015"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Bahraini</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0435 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0435">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0015"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Cypriote</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0436 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0436">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0015"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Egyptian</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0437 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0437">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0015"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Georgian</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0438 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0438">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0015"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Iranian</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0439 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0439">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0015"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Iraqi</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0440 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0440">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0015"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Israeli</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0441 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0441">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0015"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Jordanian</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0442 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0442">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0015"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Kuwaiti</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0443 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0443">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0015"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Lebanese</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0444 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0444">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0015"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Libyan</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0445 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0445">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0015"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Moroccan</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0446 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0446">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0015"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Palestinian</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0447 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0447">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0015"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Omani</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0448 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0448">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0015"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Qatari</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0449 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0449">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0015"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Saudi</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0450 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0450">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0015"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Tunisian</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0451 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0451">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0015"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Turkish</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0452 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0452">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0015"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Emirati</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0453 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0453">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0015"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Yemeni</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0454 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0454">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0018"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Aruban</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0455 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0455">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0018"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Christmas Islander</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0456 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0456">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0018"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Cocos Islander</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0457 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0457">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0018"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Curacaoan</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0458 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0458">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0018"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Kosovar</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0459 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0459">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0018"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Northern Mariana Islander</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0460 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0460">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0010"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">South Sudanese</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0461 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0461">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0015"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Syrian</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0462 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0462">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0018"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">British</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0463 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0463">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0018"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">American</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0464 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0464">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0017"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">American Samoan</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0465 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0465">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0017"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Cook Islander</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0466 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0466">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0017"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Fijian</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0467 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0467">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0017"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">French Polynesian</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0468 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0468">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0017"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Guamanian</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0469 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0469">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0017"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">I-Kiribati</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0470 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0470">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0017"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Marshallese</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0471 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0471">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0017"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Micronesian</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0472 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0472">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0017"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Nauruan</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0473 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0473">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0017"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">New Caledonian</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0474 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0474">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0017"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Niuean</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0475 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0475">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0017"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Palauan</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0476 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0476">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0017"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Papua New Guinean</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0477 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0477">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0017"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Pitcairn Islander</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0478 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0478">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0017"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Samoan</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0479 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0479">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0017"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Solomon Islander</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0480 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0480">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0017"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Tokelauan</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0481 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0481">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0017"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Tongan</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0482 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0482">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0017"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Tuvaluan</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0483 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0483">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0017"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Ni-Vanuato</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0484 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0484">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0017"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Wallis and Futuna Islander</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0485 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0485">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0006"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Bangladeshi</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0486 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0486">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0006"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Bhutanese</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0487 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0487">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0006"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Indian</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0488 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0488">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0006"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Maldivian</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0489 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0489">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0006"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Nepalese</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0490 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0490">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0006"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Pakistani</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0491 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0491">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0006"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Sri Lankan</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0492 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0492">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0007"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Bruneian</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0493 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0493">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0007"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Cambodian</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0494 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0494">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0007"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Indonesian</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0495 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0495">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0007"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Lao</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0496 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0496">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0007"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Malaysian</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0497 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0497">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0007"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Burmese</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0498 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0498">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0007"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Filipino</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0500 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0500">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0007"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Thai</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0501 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0501">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0007"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Timorese</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0502 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0502">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0007"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Vietnamese</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0503 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0503">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0011"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Cameroonian</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0504 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0504">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0011"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Cape Verdean</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0505 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0505">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0011"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Chadian</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0506 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0506">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0011"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Ethiopian</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0507 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0507">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0011"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Kenyan</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0508 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0508">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0011"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Liberian</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0509 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0509">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0011"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Malagasy</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0510 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0510">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0011"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Mauritanian</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0511 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0511">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0011"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Mauritian</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0512 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0512">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0011"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Mahoran</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0513 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0513">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0011"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Namibian</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0514 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0514">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0011"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Sao Tomean</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0515 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0515">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0011"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Senegalese</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0516 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0516">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0011"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Seychellois</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0517 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0517">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0011"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Sierra Leonean</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0518 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0518">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0011"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Somali</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0519 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0519">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0011"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">South African</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0520 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0520">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0011"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">St. Helenian</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0521 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0521">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0011"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Ugandan</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0522 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0522">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0011"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Angolan</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0523 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0523">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0011"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Beninese</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0524 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0524">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0011"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Motswana</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0525 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0525">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0011"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Burkinabe</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0526 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0526">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0011"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Burundian</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0527 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0527">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0011"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Central African</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0528 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0528">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0011"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Comoran</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0529 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0529">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0011"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Congolese</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0530 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0530">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0011"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Ivoirian</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0531 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0531">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0011"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Djiboutian</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0532 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0532">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0011"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Equatorial Guinean</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0533 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0533">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0011"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Eritrean</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0534 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0534">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0011"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Gabonese</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0535 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0535">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0011"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Gambian</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0536 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0536">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0011"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Ghanaian</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0537 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0537">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0011"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Guinean</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0538 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0538">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0011"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Bissau-Guinean</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0539 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0539">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0011"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Mosotho</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0540 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0540">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0011"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Malawian</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0541 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0541">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0011"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Malian</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0542 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0542">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0011"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Mozambican</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0543 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0543">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0011"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Nigerien</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0544 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0544">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0011"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Nigerian</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0545 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0545">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0011"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Rwandan</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0546 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0546">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0011"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Swazi</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0547 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0547">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0011"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Togolese</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0548 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0548">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0011"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Tanzanian</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0549 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0549">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0011"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Zambian</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0550 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0550">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0011"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">Zimbabweian</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/hancestro_0551 -->
-
-    <owl:Class rdf:about="&obo;hancestro_0551">
-        <rdfs:subClassOf rdf:resource="&obo;hancestro_0383"/>
-        <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
-        <rdfs:label xml:lang="en">genetically homogenous Irish</rdfs:label>
-    </owl:Class>
 </rdf:RDF>
 
 
 
-<!-- Generated by the OWL API (version 4.2.6) https://github.com/owlcs/owlapi -->
+<!-- Generated by the OWL API (version 4.5.6) https://github.com/owlcs/owlapi -->
 

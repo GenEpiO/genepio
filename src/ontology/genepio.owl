@@ -26,7 +26,7 @@
      xmlns:terms="http://purl.org/dc/terms/"
      xmlns:oboInOwl="http://www.geneontology.org/formats/oboInOwl#">
     <owl:Ontology rdf:about="&obo;genepio.owl">
-        <owl:versionIRI rdf:resource="&obo;genepio/releases/2020-04-27/genepio.owl"/>
+        <owl:versionIRI rdf:resource="&obo;genepio/releases/2020-06-29/genepio.owl"/>
         <owl:imports rdf:resource="&obo;GENEPIO/imports/apollo_sv_import.owl"/>
         <owl:imports rdf:resource="&obo;GENEPIO/imports/aro_import.owl"/>
         <owl:imports rdf:resource="&obo;GENEPIO/imports/chebi_import.owl"/>
@@ -59,7 +59,7 @@
         <owl:imports rdf:resource="&obo;GENEPIO/imports/uberon_import.owl"/>
         <owl:imports rdf:resource="&obo;GENEPIO/imports/uo_import.owl"/>
         <owl:imports rdf:resource="&obo;bfo/2.0/bfo.owl"/>
-        <terms:date rdf:datatype="&xsd;date">2020-04-27</terms:date>
+        <terms:date rdf:datatype="&xsd;date">2020-06-29</terms:date>
         <terms:description xml:lang="en">The Genomic Epidemiology Ontology aims to provide a comprehensive controlled vocabulary for infectious disease surveillance and outbreak investigations. It is an application ontology that draws on many other ontologies including anatomy, taxonomy, disease, symptoms, environment and food types.</terms:description>
         <terms:license rdf:resource="http://creativecommons.org/licenses/by/3.0/"/>
         <terms:title xml:lang="en">Genomic Epidemiology Ontology</terms:title>
@@ -1012,17 +1012,6 @@ I believe time dependency relations (conditions) don&apos;t imply existence by t
     <rdf:Description rdf:about="&obo;ARO_3004430">
         <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0001432"/>
         <obo:GENEPIO_0001763 rdf:datatype="&rdfs;Literal">depth:1</obo:GENEPIO_0001763>
-        <obo:GENEPIO_0001763 rdf:datatype="&rdfs;Literal">order:
-UBERON:0001003 # skin epidermis
-DOID:37 # skin disease
-SYMP:0000092 # skin lesion
-MPATH:608 # abscess
-HP:0031292 # cutaneous abscess
-DOID:1579 # respiratory system disease
-DOID:13148 # mastisis
-NCIT:C12471 # soft tissue
-UBERON_0003134 # female reproductive organ
-UBERON_0003135 # male reproductive organ</obo:GENEPIO_0001763>
     </rdf:Description>
     
 
@@ -2324,9 +2313,9 @@ ARO:3004301 # resistant</obo:GENEPIO_0001763>
 
     <!-- http://purl.obolibrary.org/obo/FOODON_00002403 -->
 
-    <rdf:Description rdf:about="&obo;FOODON_00002403">
+    <owl:Class rdf:about="&obo;FOODON_00002403">
         <rdfs:subClassOf rdf:resource="&obo;ENVO_00010483"/>
-    </rdf:Description>
+    </owl:Class>
     
 
 
@@ -2343,37 +2332,6 @@ ARO:3004301 # resistant</obo:GENEPIO_0001763>
     
 
 
-    <!-- http://purl.obolibrary.org/obo/FOODON_00002746 -->
-
-    <owl:Class rdf:about="&obo;FOODON_00002746">
-        <owl:equivalentClass>
-            <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&obo;FOODON_00002403"/>
-                    <rdf:Description rdf:about="&obo;NCIT_C53471"/>
-                </owl:intersectionOf>
-            </owl:Class>
-        </owl:equivalentClass>
-        <rdfs:subClassOf rdf:resource="&obo;NCIT_C53471"/>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">Damion Dooley</obo:IAO_0000117>
-        <dc:date rdf:datatype="&xsd;dateTime">2019-06-28T23:41:26Z</dc:date>
-        <rdfs:label xml:lang="en">food isolate</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/FOODON_00002747 -->
-
-    <owl:Class rdf:about="&obo;FOODON_00002747">
-        <rdfs:subClassOf rdf:resource="&obo;NCIT_C17627"/>
-        <obo:IAO_0000115 xml:lang="en">A surface wipe is a type of swab designed to collect specimen material from some envirronmental surface using a fabric or other material.</obo:IAO_0000115>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">Damion Dooley</obo:IAO_0000117>
-        <dc:date rdf:datatype="&xsd;dateTime">2019-06-28T19:42:45Z</dc:date>
-        <rdfs:label xml:lang="en">surface wipe</rdfs:label>
-    </owl:Class>
-    
-
-
     <!-- http://purl.obolibrary.org/obo/FOODON_03311737 -->
 
     <owl:Class rdf:about="&obo;FOODON_03311737">
@@ -2384,9 +2342,9 @@ ARO:3004301 # resistant</obo:GENEPIO_0001763>
 
     <!-- http://purl.obolibrary.org/obo/FOODON_03400361 -->
 
-    <rdf:Description rdf:about="&obo;FOODON_03400361">
+    <owl:Class rdf:about="&obo;FOODON_03400361">
         <rdfs:subClassOf rdf:resource="&obo;BFO_0000040"/>
-    </rdf:Description>
+    </owl:Class>
     
 
 
@@ -6018,7 +5976,7 @@ NCIT:C28554 # deceased</obo:GENEPIO_0001763>
         <obo:GENEPIO_0000004>Sequencing Kit version</obo:GENEPIO_0000004>
         <obo:GENEPIO_0000005>Derived from Illumina Sample Sheet</obo:GENEPIO_0000005>
         <obo:IAO_0000112>v2, v3</obo:IAO_0000112>
-        <obo:IAO_0000115>The version is the configuration of the reagent cartidge.</obo:IAO_0000115>
+        <obo:IAO_0000115 xml:lang="en">A string datum which is the version/configuration of the reagent cartidge.</obo:IAO_0000115>
         <obo:IAO_0000119>GROUP: IRIDA Ontology (Emma)</obo:IAO_0000119>
         <oboInOwl:inSubset>GENEPIO</oboInOwl:inSubset>
         <rdfs:label>sequencing kit version</rdfs:label>
@@ -10363,9 +10321,8 @@ GENEPIO:0001618 # missing</obo:GENEPIO_0001763>
 
     <owl:Class rdf:about="&obo;GENEPIO_0001056">
         <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0001271"/>
-        <obo:IAO_0000114 rdf:resource="&obo;IAO_0000428"/>
-        <obo:IAO_0000116 xml:lang="en">replace with FoodOn term</obo:IAO_0000116>
         <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
+        <obo:IAO_0100001 rdf:resource="&obo;FOODON_00003357"/>
         <rdfs:label xml:lang="en">pet treat</rdfs:label>
     </owl:Class>
     
@@ -10375,9 +10332,8 @@ GENEPIO:0001618 # missing</obo:GENEPIO_0001763>
 
     <owl:Class rdf:about="&obo;GENEPIO_0001057">
         <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0001271"/>
-        <obo:IAO_0000114 rdf:resource="&obo;IAO_0000428"/>
-        <obo:IAO_0000116 xml:lang="en">Replace with foodon term</obo:IAO_0000116>
         <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
+        <obo:IAO_0100001 rdf:resource="&obo;FOODON_00003356"/>
         <rdfs:label xml:lang="en">pet food (raw)</rdfs:label>
     </owl:Class>
     
@@ -11227,7 +11183,7 @@ GENEPIO:0001618 # missing</obo:GENEPIO_0001763>
 
     <owl:Class rdf:about="&obo;GENEPIO_0001098">
         <rdfs:subClassOf rdf:resource="&obo;BFO_0000029"/>
-        <rdfs:label xml:lang="en">tuberculosis disease anatomical site</rdfs:label>
+        <rdfs:label xml:lang="en">tuberculosis infection anatomical site</rdfs:label>
     </owl:Class>
     
 
@@ -11726,7 +11682,7 @@ GENEPIO:0002181 # antimicrobial resistance phenotype - ECOFF</obo:GENEPIO_000176
 
     <owl:Class rdf:about="&obo;GENEPIO_0001162">
         <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0001432"/>
-        <rdfs:label xml:lang="en">epidemiology / investigation data item</rdfs:label>
+        <rdfs:label xml:lang="en">epidemiology investigation data item</rdfs:label>
     </owl:Class>
     
 
@@ -11734,8 +11690,8 @@ GENEPIO:0002181 # antimicrobial resistance phenotype - ECOFF</obo:GENEPIO_000176
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0001163 -->
 
     <owl:Class rdf:about="&obo;GENEPIO_0001163">
-        <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0001162"/>
-        <rdfs:label xml:lang="en">distribution event</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&oboInOwl;ObsoleteClass"/>
+        <rdfs:label xml:lang="en">obsolete distribution event</rdfs:label>
     </owl:Class>
     
 
@@ -11743,8 +11699,9 @@ GENEPIO:0002181 # antimicrobial resistance phenotype - ECOFF</obo:GENEPIO_000176
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0001164 -->
 
     <owl:Class rdf:about="&obo;GENEPIO_0001164">
-        <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0001163"/>
-        <rdfs:label xml:lang="en">supply point / event</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&oboInOwl;ObsoleteClass"/>
+        <rdfs:label xml:lang="en">obsolete supply point / event</rdfs:label>
+        <owl:deprecated rdf:datatype="&xsd;boolean">true</owl:deprecated>
     </owl:Class>
     
 
@@ -13024,7 +12981,7 @@ Note that the health status of people associated with an exposure event can chan
         <rdfs:subClassOf rdf:resource="&owl;Thing"/>
         <obo:IAO_0000115 xml:lang="en">This class is a temporary holding bin for items that need a class hierarchy home, definition, and/or subclass items. Some classes have subclasses that are currently disjoint in other ontologies like ENVO, so awaiting resolution on such issues.</obo:IAO_0000115>
         <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
-        <rdfs:label xml:lang="en">awaiting ontology review/placement</rdfs:label>
+        <rdfs:label xml:lang="en">awaiting ontology review</rdfs:label>
     </owl:Class>
     
 
@@ -30813,6 +30770,27 @@ present.</obo:IAO_0000115>
     
 
 
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0002233 -->
+
+    <owl:Class rdf:about="&obo;GENEPIO_0002233">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&obo;FOODON_00002403"/>
+                    <rdf:Description rdf:about="&obo;NCIT_C53471"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="&obo;NCIT_C53471"/>
+        <obo:IAO_0000114 rdf:resource="&obo;IAO_0000122"/>
+        <obo:IAO_0000115 xml:lang="en">An isolate derived from a food sample.</obo:IAO_0000115>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Damion Dooley</obo:IAO_0000117>
+        <dc:date rdf:datatype="&xsd;dateTime">2019-06-28T23:41:26Z</dc:date>
+        <rdfs:label xml:lang="en">food isolate</rdfs:label>
+    </owl:Class>
+    
+
+
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0002464 -->
 
     <owl:Class rdf:about="&obo;GENEPIO_0002464">
@@ -30974,6 +30952,19 @@ present.</obo:IAO_0000115>
         <obo:IAO_0000117 rdf:datatype="&xsd;string">Damion Dooley</obo:IAO_0000117>
         <dc:date rdf:datatype="&xsd;dateTime">2019-06-28T20:11:45Z</dc:date>
         <rdfs:label xml:lang="en">animal rinse</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0003358 -->
+
+    <owl:Class rdf:about="&obo;GENEPIO_0003358">
+        <rdfs:subClassOf rdf:resource="&obo;NCIT_C17627"/>
+        <obo:IAO_0000114 rdf:resource="&obo;IAO_0000122"/>
+        <obo:IAO_0000115 xml:lang="en">A surface wipe is a type of swab designed to collect specimen material from some envirronmental surface using a fabric or other material.</obo:IAO_0000115>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Damion Dooley</obo:IAO_0000117>
+        <dc:date rdf:datatype="&xsd;dateTime">2019-06-28T19:42:45Z</dc:date>
+        <rdfs:label xml:lang="en">surface wipe</rdfs:label>
     </owl:Class>
     
 
@@ -34678,16 +34669,16 @@ Note that this file contains examples of cities, provinces, states, territories,
         <oboInOwl:hasSynonym xml:lang="en">black tiger shrimp</oboInOwl:hasSynonym>
     </rdf:Description>
     <rdf:Description rdf:about="&obo;FOODON_03530153">
-        <oboInOwl:hasSynonym xml:lang="en">wild</oboInOwl:hasSynonym>
         <oboInOwl:hasSynonym xml:lang="en">gathered</oboInOwl:hasSynonym>
+        <oboInOwl:hasSynonym xml:lang="en">wild</oboInOwl:hasSynonym>
     </rdf:Description>
     <rdf:Description rdf:about="&obo;GENEPIO_0000098">
         <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
     </rdf:Description>
     <rdf:Description rdf:about="&obo;GENEPIO_0000116">
         <obo:IAO_0000114 rdf:resource="&obo;IAO_0000428"/>
-        <obo:IAO_0000115 xml:lang="en">This is a catch-all category for Gazetteer items that have &quot;located in&quot; relations but not an imported GAZETTEER class parent in GenEpiO.</obo:IAO_0000115>
         <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
+        <obo:IAO_0000115 xml:lang="en">This is a catch-all category for Gazetteer items that have &quot;located in&quot; relations but not an imported GAZETTEER class parent in GenEpiO.</obo:IAO_0000115>
     </rdf:Description>
     <rdf:Description rdf:about="&obo;GENEPIO_0001605">
         <owl:deprecated rdf:datatype="&xsd;boolean">true</owl:deprecated>

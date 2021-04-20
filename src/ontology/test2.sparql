@@ -1,0 +1,50 @@
+PREFIX obo:<http://purl.obolibrary.org/obo/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX SIO: <http://semanticscience.org/resource/SIO_>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+#?component_type
+#?specification_label ?cardinality ?limit ?collection_id
+SELECT ?cardinality ?limit ?component_target_id ?component_spec_label ?component_type  ?object
+
+WHERE {
+	BIND (obo:GENEPIO_0001000 as ?specification_id) # DRAFT ReSeq TB spec.
+	#BIND (obo:GENEPIO_0001778 as ?specification_id) # DRAFT PulseNet Canada spec.
+	?specification_id rdfs:subClassOf* obo:OBI_0000658 . 		# Data Representation model
+	?specification_id rdfs:label ?specification_label .
+
+	?specification_id rdfs:subClassOf ?anon_restriction .  			
+	?anon_restriction owl:onProperty obo:RO_0002180 . 			# has component
+
+	# Get 'has component' cardinality
+	?anon_restriction (owl:someValuesFrom | owl:qualifiedCardinality | owl:minQualifiedCardinality | owl:maxQualifiedCardinality) ?target ;
+		?cardinality ?target .
+
+	# Get 'has component' ... limit
+	OPTIONAL { 
+		?anon_restriction (owl:qualifiedCardinality | owl:minQualifiedCardinality | owl:maxQualifiedCardinality) ?limit .
+		# IF owl:someValuesFrom doesn't work, must add filter here.
+		#FILTER isLiteral(?limit) 
+	}
+
+	# The restriction leads either an entity id, or an expression (a and b and ...)
+	?anon_restriction owl:onClass ?component_target_id .
+
+	# Component is either an entity directly (rdfs:subClassOf) and has label
+	# Or it is an owl:intersectionOf|owl:unionOf. Issue subclass may have multiple entries.
+	OPTIONAL {
+		?component_target_id (owl:intersectionOf|owl:unionOf) ?collection_id .
+		?component_target_id ?component_type ?collection_id .
+		# BIND forces component_spec_label to be evaluated, so following optional
+		# statement can't satisfy, and doesn't interfere somehow ... ?
+		BIND ('' as ?component_spec_label ) .
+		?collection_id rdf:rest*/rdf:first ?object
+	}
+
+	# case 'has component' ... '[specification id]', i.e. component_target_id is a specification
+	OPTIONAL {
+		?component_target_id rdfs:label ?component_spec_label .
+	}
+
+}
+ORDER BY ?component_target_id

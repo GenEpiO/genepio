@@ -1,0 +1,46 @@
+PREFIX obo:<http://purl.obolibrary.org/obo/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX SIO: <http://semanticscience.org/resource/SIO_>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+#?field_section ?field ?field_definition
+SELECT DISTINCT ?section_label ?field_label ?is_about ?whatever ?whatever2
+
+WHERE {
+	?field_section rdfs:subClassOf* obo:GENEPIO_0002178 . # Field Specification
+	?field_section rdfs:label ?section_label .
+	?field rdf:type ?field_section .
+	?field rdfs:label ?field_label .
+#	?field obo:IAO_0000115 ?field_definition
+	?match_to owl:hasValue ?field .
+	?anon1 rdf:first ?match_to . # And assumes this is last in sio:match so rdf:rest is nil
+	?anon2 rdf:rest ?anon1 .
+	?anon2 rdf:first ?anon3 .
+	OPTIONAL { 					# points straight to a class
+		?anon3 rdf:type	owl:Class .
+		?anon3 rdfs:label ?is_about
+	}
+	OPTIONAL {
+		?anon3 owl:onProperty obo:OBI_0001927 . # specifies value of
+		?anon3 owl:someValuesFrom ?whatever .
+		?whatever rdfs:label ?is_about
+	}
+	OPTIONAL {
+		?anon3 rdfs:subClassOf ?whatever3 .
+		?whatever3 rdfs:label ?is_about
+	}
+
+}
+ORDER BY ?field_section ?field
+
+# FIELD STRUCTURE IS:
+# match to:
+# anon3 rdfs:label [label] # match to class directly
+# anon3 owl:someValuesFrom [onto id]
+
+# anon3 rdf:type 
+#			owl:Class
+#			owl:Restriction
+# anon3 rdfs:subClassOf
+#	obo:OBI_0001616
+

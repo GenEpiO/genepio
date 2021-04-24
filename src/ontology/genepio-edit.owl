@@ -11,6 +11,7 @@
      xmlns:dc11="http://purl.org/dc/elements/1.1/"
      xmlns:foaf="http://xmlns.com/foaf/0.1/"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:linkml="https://w3id.org/linkml/"
      xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#"
      xmlns:oboInOwl="http://www.geneontology.org/formats/oboInOwl#"
      xmlns:patterns="http://www.co-ode.org/patterns#"
@@ -7948,6 +7949,47 @@ GENEPIO:0002181 # antimicrobial resistance phenotype - ECOFF</obo:GENEPIO_000176
         <obo:IAO_0000117 rdf:resource="http://orcid.org/0000-0002-8844-9165"/>
         <dc11:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-04-19T23:36:25Z</dc11:date>
         <rdfs:label xml:lang="en">organs or organ parts</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001120 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001120">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001342"/>
+        <obo:IAO_0000114 xml:lang="en">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000115 xml:lang="en">A data specification established for use by The Canadian COVID-19 Genomics Network (CanCOGeN) project DataHarmonizer application, for contextual data (metadata) harmonization and curation across data providers.</obo:IAO_0000115>
+        <obo:IAO_0000117>https://orcid.org/0000-0002-9578-0788</obo:IAO_0000117>
+        <obo:IAO_0000119>https://github.com/Public-Health-Bioinformatics/DataHarmonizer/blob/master/template/canada_covid19/SOP.pdf</obo:IAO_0000119>
+        <dc11:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-04-24T00:18:57Z</dc11:date>
+        <rdfs:label xml:lang="en">draft CanCOGeN DataHarmonizer specification</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001121 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001121">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0002178"/>
+        <obo:IAO_0000114 xml:lang="en">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000115 xml:lang="en">A field specification used in the Canadian COVID-10 Genomics Network (CanCOGeN) DataHarmonizer application.</obo:IAO_0000115>
+        <obo:IAO_0000117>https://orcid.org/0000-0002-9578-0788</obo:IAO_0000117>
+        <dc11:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-04-24T00:25:28Z</dc11:date>
+        <rdfs:label xml:lang="en">draft CanCOGeN DataHarmonizer field</rdfs:label>
+        <rdfs:seeAlso xml:lang="en">https://github.com/Public-Health-Bioinformatics/DataHarmonizer/blob/master/template/canada_covid19/SOP.pdf</rdfs:seeAlso>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001122 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001122">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001121"/>
+        <obo:IAO_0000114 xml:lang="en">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000115 xml:lang="en">A CanCOGeN DataHarmonizer field that refers to a database identifier.</obo:IAO_0000115>
+        <obo:IAO_0000117>https://orcid.org/0000-0002-9578-0788</obo:IAO_0000117>
+        <dc11:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-04-24T00:30:02Z</dc11:date>
+        <rdfs:label xml:lang="en">draft CanCOGeN DataHarmonizer field - database identifiers</rdfs:label>
     </owl:Class>
     
 
@@ -21220,6 +21262,24 @@ Note that this file contains examples of cities, provinces, states, territories,
     
 
 
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001123 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001123">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001122"/>
+        <linkml:comments xml:lang="en">Guidance: Store the collector sample ID. If this number is considered identifiable information, provide an alternative ID. Be sure to store the key that maps between the original and alternative IDs for traceability and follow up if necessary. Every collector sample ID from a single submitter must be unique. It can have any format, but we suggest that you make it concise, unique and consistent within your lab.</linkml:comments>
+        <linkml:created_on>2021-04-24T00:42:14Z</linkml:created_on>
+        <linkml:data_collection_state xml:lang="en">Not Applicable; Missing; Not Collected; Not Provided; Restricted Access</linkml:data_collection_state>
+        <linkml:description xml:lang="en">The user-defined name for the sample.</linkml:description>
+        <linkml:examples>prov_rona_99</linkml:examples>
+        <linkml:required xml:lang="en">true</linkml:required>
+        <linkml:type_uri>xs:unique</linkml:type_uri>
+        <obo:IAO_0000114 xml:lang="en">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000117>https://orcid.org/0000-0002-9578-0788</obo:IAO_0000117>
+        <rdfs:label xml:lang="en">CanCOGeN:specimen collector sample ID</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0001367 -->
 
     <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001367">
@@ -21920,8 +21980,8 @@ Note that this file contains examples of cities, provinces, states, territories,
         <oboInOwl:hasSynonym xml:lang="en">black tiger shrimp</oboInOwl:hasSynonym>
     </rdf:Description>
     <rdf:Description rdf:about="http://purl.obolibrary.org/obo/FOODON_03530153">
-        <oboInOwl:hasSynonym xml:lang="en">gathered</oboInOwl:hasSynonym>
         <oboInOwl:hasSynonym xml:lang="en">wild</oboInOwl:hasSynonym>
+        <oboInOwl:hasSynonym xml:lang="en">gathered</oboInOwl:hasSynonym>
     </rdf:Description>
     <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0000098">
         <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>

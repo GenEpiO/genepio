@@ -557,6 +557,58 @@ I believe time dependency relations (conditions) don&apos;t imply existence by t
     
 
 
+    <!-- https://w3id.org/linkml/examples -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/linkml/examples">
+        <rdfs:range rdf:resource="https://w3id.org/linkml/Example"/>
+        <obo:IAO_0000115 xml:lang="en">Example usages of an element.</obo:IAO_0000115>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- https://w3id.org/linkml/identifier -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/linkml/identifier"/>
+    
+
+
+    <!-- https://w3id.org/linkml/meaning -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/linkml/meaning"/>
+    
+
+
+    <!-- https://w3id.org/linkml/value -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/linkml/value">
+        <rdfs:domain rdf:resource="https://w3id.org/linkml/Example"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/linkml/value_description -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/linkml/value_description">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="https://w3id.org/linkml/Example"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <obo:IAO_0000115 xml:lang="en">Description of what the value is doing.</obo:IAO_0000115>
+    </owl:DatatypeProperty>
+    
+
+
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
@@ -7970,7 +8022,7 @@ GENEPIO:0002181 # antimicrobial resistance phenotype - ECOFF</obo:GENEPIO_000176
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0001121 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001121">
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0002178"/>
+        <rdfs:subClassOf rdf:resource="https://w3id.org/linkml/SlotDefinition"/>
         <obo:IAO_0000114 xml:lang="en">requires discussion</obo:IAO_0000114>
         <obo:IAO_0000115 xml:lang="en">A field specification used in the Canadian COVID-10 Genomics Network (CanCOGeN) DataHarmonizer application.</obo:IAO_0000115>
         <obo:IAO_0000117>https://orcid.org/0000-0002-9578-0788</obo:IAO_0000117>
@@ -15372,7 +15424,7 @@ http://www.nature.com/ng/journal/v45/n10/full/ng.2744.html</rdfs:seeAlso>
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0002034 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0002034">
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0002178"/>
+        <rdfs:subClassOf rdf:resource="https://w3id.org/linkml/SlotDefinition"/>
         <obo:IAO_0000117 rdf:resource="http://orcid.org/0000-0002-8844-9165"/>
         <dc11:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-11-17T00:43:00Z</dc11:date>
         <rdfs:label xml:lang="en">draft ISO sequence repository field</rdfs:label>
@@ -17797,11 +17849,12 @@ or https://www.ncbi.nlm.nih.gov/mesh/1000067</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0002178">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/OBI_0000658"/>
-        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000428"/>
         <obo:IAO_0000115 xml:lang="en">A field specification is the specification of a data field used in a data standard or database table. This includes at least a database field name, and optionally display name, description, and data type (binary blob, numeric, categorical, textual or cross-reference).</obo:IAO_0000115>
         <obo:IAO_0000117 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Damion Dooley</obo:IAO_0000117>
+        <obo:IAO_0100001 rdf:resource="https://w3id.org/linkml/SlotDefinition"/>
         <dc11:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-04-17T23:04:53Z</dc11:date>
-        <rdfs:label xml:lang="en">field specification</rdfs:label>
+        <rdfs:label xml:lang="en">obsolete: field specification</rdfs:label>
+        <owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
     </owl:Class>
     
 
@@ -17820,7 +17873,7 @@ or https://www.ncbi.nlm.nih.gov/mesh/1000067</rdfs:comment>
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0002185 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0002185">
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0002178"/>
+        <rdfs:subClassOf rdf:resource="https://w3id.org/linkml/SlotDefinition"/>
         <obo:IAO_0000117 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Damion Dooley</obo:IAO_0000117>
         <dc11:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-04-17T23:41:35Z</dc11:date>
         <rdfs:label xml:lang="en">PulseNet Canada field</rdfs:label>
@@ -21233,6 +21286,34 @@ Note that this file contains examples of cities, provinces, states, territories,
     
 
 
+    <!-- https://w3id.org/linkml/Example -->
+
+    <owl:Class rdf:about="https://w3id.org/linkml/Example">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/OBI_0000658"/>
+        <obo:IAO_0000115 xml:lang="en">Usage example and description.</obo:IAO_0000115>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/linkml/PermissibleValue -->
+
+    <owl:Class rdf:about="https://w3id.org/linkml/PermissibleValue">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/OBI_0000658"/>
+        <obo:IAO_0000115 xml:lang="en">A permissible value, accompanied by intended text and an optional mapping to a concept URI.</obo:IAO_0000115>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/linkml/SlotDefinition -->
+
+    <owl:Class rdf:about="https://w3id.org/linkml/SlotDefinition">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/OBI_0000658"/>
+        <obo:IAO_0000115 xml:lang="en">The definition of a property or a slot.</obo:IAO_0000115>
+        <dc11:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-04-24T17:46:42Z</dc11:date>
+    </owl:Class>
+    
+
+
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
@@ -21266,13 +21347,14 @@ Note that this file contains examples of cities, provinces, states, territories,
 
     <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001123">
         <rdf:type rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001122"/>
+        <linkml:examples rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0002236"/>
         <linkml:comments xml:lang="en">Guidance: Store the collector sample ID. If this number is considered identifiable information, provide an alternative ID. Be sure to store the key that maps between the original and alternative IDs for traceability and follow up if necessary. Every collector sample ID from a single submitter must be unique. It can have any format, but we suggest that you make it concise, unique and consistent within your lab.</linkml:comments>
         <linkml:created_on>2021-04-24T00:42:14Z</linkml:created_on>
         <linkml:data_collection_state xml:lang="en">Not Applicable; Missing; Not Collected; Not Provided; Restricted Access</linkml:data_collection_state>
         <linkml:description xml:lang="en">The user-defined name for the sample.</linkml:description>
-        <linkml:examples>prov_rona_99</linkml:examples>
-        <linkml:required xml:lang="en">true</linkml:required>
-        <linkml:type_uri>xs:unique</linkml:type_uri>
+        <linkml:identifier rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</linkml:identifier>
+        <linkml:required rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</linkml:required>
+        <linkml:type_uri>xsd:token</linkml:type_uri>
         <obo:IAO_0000114 xml:lang="en">requires discussion</obo:IAO_0000114>
         <obo:IAO_0000117>https://orcid.org/0000-0002-9578-0788</obo:IAO_0000117>
         <rdfs:label xml:lang="en">CanCOGeN:specimen collector sample ID</rdfs:label>
@@ -21888,6 +21970,17 @@ Note that this file contains examples of cities, provinces, states, territories,
         <obo:IAO_0000117 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Damion Dooley</obo:IAO_0000117>
         <dc11:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-04-17T22:47:51Z</dc11:date>
         <rdfs:label xml:lang="en">PulseNet:UploadDate</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0002236 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0002236">
+        <linkml:value>prov_rona_99</linkml:value>
+        <obo:IAO_0000117 rdf:resource="http://orcid.org/0000-0002-8844-9165"/>
+        <dc11:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-04-24T18:32:24Z</dc11:date>
+        <rdfs:label xml:lang="en">CanCoGeN:specimen coll ID example</rdfs:label>
     </owl:NamedIndividual>
     <rdf:Description>
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:qualifiedCardinality>

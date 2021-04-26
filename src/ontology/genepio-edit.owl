@@ -559,10 +559,13 @@ I believe time dependency relations (conditions) don&apos;t imply existence by t
 
     <!-- https://w3id.org/linkml/examples -->
 
-    <owl:ObjectProperty rdf:about="https://w3id.org/linkml/examples">
-        <rdfs:range rdf:resource="https://w3id.org/linkml/Example"/>
-        <obo:IAO_0000115 xml:lang="en">Example usages of an element.</obo:IAO_0000115>
-    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="https://w3id.org/linkml/examples"/>
+    
+
+
+    <!-- https://w3id.org/linkml/local_names -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/linkml/local_names"/>
     
 
 
@@ -577,9 +580,27 @@ I believe time dependency relations (conditions) don&apos;t imply existence by t
     
 
 
+    <!-- https://w3id.org/linkml/abstract -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/linkml/abstract"/>
+    
+
+
     <!-- https://w3id.org/linkml/identifier -->
 
     <owl:DatatypeProperty rdf:about="https://w3id.org/linkml/identifier"/>
+    
+
+
+    <!-- https://w3id.org/linkml/local_name_source -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/linkml/local_name_source"/>
+    
+
+
+    <!-- https://w3id.org/linkml/local_name_value -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/linkml/local_name_value"/>
     
 
 
@@ -591,21 +612,13 @@ I believe time dependency relations (conditions) don&apos;t imply existence by t
 
     <!-- https://w3id.org/linkml/value -->
 
-    <owl:DatatypeProperty rdf:about="https://w3id.org/linkml/value">
-        <rdfs:domain rdf:resource="https://w3id.org/linkml/Example"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="https://w3id.org/linkml/value"/>
     
 
 
     <!-- https://w3id.org/linkml/value_description -->
 
-    <owl:DatatypeProperty rdf:about="https://w3id.org/linkml/value_description">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-        <rdfs:domain rdf:resource="https://w3id.org/linkml/Example"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-        <obo:IAO_0000115 xml:lang="en">Description of what the value is doing.</obo:IAO_0000115>
-    </owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="https://w3id.org/linkml/value_description"/>
     
 
 
@@ -21286,31 +21299,53 @@ Note that this file contains examples of cities, provinces, states, territories,
     
 
 
+    <!-- https://w3id.org/linkml/Definition -->
+
+    <owl:Class rdf:about="https://w3id.org/linkml/Definition">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/linkml/Element"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/linkml/Element -->
+
+    <owl:Class rdf:about="https://w3id.org/linkml/Element">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/OBI_0000658"/>
+        <obo:IAO_0000115 xml:lang="en">A named element in the model.</obo:IAO_0000115>
+    </owl:Class>
+    
+
+
     <!-- https://w3id.org/linkml/Example -->
 
-    <owl:Class rdf:about="https://w3id.org/linkml/Example">
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/OBI_0000658"/>
-        <obo:IAO_0000115 xml:lang="en">Usage example and description.</obo:IAO_0000115>
-    </owl:Class>
+    <owl:Class rdf:about="https://w3id.org/linkml/Example"/>
+    
+
+
+    <!-- https://w3id.org/linkml/LocalName -->
+
+    <owl:Class rdf:about="https://w3id.org/linkml/LocalName"/>
     
 
 
     <!-- https://w3id.org/linkml/PermissibleValue -->
 
-    <owl:Class rdf:about="https://w3id.org/linkml/PermissibleValue">
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/OBI_0000658"/>
-        <obo:IAO_0000115 xml:lang="en">A permissible value, accompanied by intended text and an optional mapping to a concept URI.</obo:IAO_0000115>
+    <owl:Class rdf:about="https://w3id.org/linkml/PermissibleValue"/>
+    
+
+
+    <!-- https://w3id.org/linkml/SchemaDefinition -->
+
+    <owl:Class rdf:about="https://w3id.org/linkml/SchemaDefinition">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/linkml/Element"/>
+        <obo:IAO_0000115 xml:lang="en">A collection of subset, type, slot and class definitions</obo:IAO_0000115>
     </owl:Class>
     
 
 
     <!-- https://w3id.org/linkml/SlotDefinition -->
 
-    <owl:Class rdf:about="https://w3id.org/linkml/SlotDefinition">
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/OBI_0000658"/>
-        <obo:IAO_0000115 xml:lang="en">The definition of a property or a slot.</obo:IAO_0000115>
-        <dc11:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-04-24T17:46:42Z</dc11:date>
-    </owl:Class>
+    <owl:Class rdf:about="https://w3id.org/linkml/SlotDefinition"/>
     
 
 
@@ -21980,7 +22015,7 @@ Note that this file contains examples of cities, provinces, states, territories,
         <linkml:value>prov_rona_99</linkml:value>
         <obo:IAO_0000117 rdf:resource="http://orcid.org/0000-0002-8844-9165"/>
         <dc11:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-04-24T18:32:24Z</dc11:date>
-        <rdfs:label xml:lang="en">CanCoGeN:specimen coll ID example</rdfs:label>
+        <rdfs:label xml:lang="en">CanCOGeN:specimen collector sample ID example</rdfs:label>
     </owl:NamedIndividual>
     <rdf:Description>
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:qualifiedCardinality>
@@ -22073,16 +22108,16 @@ Note that this file contains examples of cities, provinces, states, territories,
         <oboInOwl:hasSynonym xml:lang="en">black tiger shrimp</oboInOwl:hasSynonym>
     </rdf:Description>
     <rdf:Description rdf:about="http://purl.obolibrary.org/obo/FOODON_03530153">
-        <oboInOwl:hasSynonym xml:lang="en">wild</oboInOwl:hasSynonym>
         <oboInOwl:hasSynonym xml:lang="en">gathered</oboInOwl:hasSynonym>
+        <oboInOwl:hasSynonym xml:lang="en">wild</oboInOwl:hasSynonym>
     </rdf:Description>
     <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0000098">
         <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
     </rdf:Description>
     <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0000116">
         <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000428"/>
-        <obo:IAO_0000115 xml:lang="en">This is a catch-all category for Gazetteer items that have &quot;located in&quot; relations but not an imported GAZETTEER class parent in GenEpiO.</obo:IAO_0000115>
         <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
+        <obo:IAO_0000115 xml:lang="en">This is a catch-all category for Gazetteer items that have &quot;located in&quot; relations but not an imported GAZETTEER class parent in GenEpiO.</obo:IAO_0000115>
     </rdf:Description>
     <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001605">
         <owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>

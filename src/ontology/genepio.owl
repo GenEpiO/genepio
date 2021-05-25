@@ -2,7 +2,9 @@
 
 
 <!DOCTYPE rdf:RDF [
+    <!ENTITY linkml "https://w3id.org/linkml/" >
     <!ENTITY terms "http://purl.org/dc/terms/" >
+    <!ENTITY foaf "http://xmlns.com/foaf/0.1/" >
     <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
     <!ENTITY obo "http://purl.obolibrary.org/obo/" >
     <!ENTITY dc "http://purl.org/dc/elements/1.1/" >
@@ -11,6 +13,7 @@
     <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
     <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
     <!ENTITY oboInOwl "http://www.geneontology.org/formats/oboInOwl#" >
+    <!ENTITY odes_field "http://purl.obolibrary.org/obo/genepio/imports/odes_field.owl#" >
 ]>
 
 
@@ -22,28 +25,31 @@
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:foaf="http://xmlns.com/foaf/0.1/"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:terms="http://purl.org/dc/terms/"
-     xmlns:oboInOwl="http://www.geneontology.org/formats/oboInOwl#">
+     xmlns:linkml="https://w3id.org/linkml/"
+     xmlns:oboInOwl="http://www.geneontology.org/formats/oboInOwl#"
+     xmlns:odes_field="&obo;genepio/imports/odes_field.owl#">
     <owl:Ontology rdf:about="&obo;genepio.owl">
-        <owl:versionIRI rdf:resource="&obo;genepio/releases/2021-04-20/genepio.owl"/>
-        <owl:imports rdf:resource="&obo;GENEPIO/imports/chebi_import.owl"/>
-        <owl:imports rdf:resource="&obo;GENEPIO/imports/doid_import.owl"/>
-        <owl:imports rdf:resource="&obo;GENEPIO/imports/envo_import.owl"/>
-        <owl:imports rdf:resource="&obo;GENEPIO/imports/foodon_import.owl"/>
-        <owl:imports rdf:resource="&obo;GENEPIO/imports/gaz_insdc_mapping.owl"/>
-        <owl:imports rdf:resource="&obo;GENEPIO/imports/gazetteer_import.owl"/>
-        <owl:imports rdf:resource="&obo;GENEPIO/imports/general_import.owl"/>
-        <owl:imports rdf:resource="&obo;GENEPIO/imports/hardcoded.owl"/>
-        <owl:imports rdf:resource="&obo;GENEPIO/imports/model_import.owl"/>
-        <owl:imports rdf:resource="&obo;GENEPIO/imports/ncbitaxon_import.owl"/>
-        <owl:imports rdf:resource="&obo;GENEPIO/imports/obi_import.owl"/>
-        <owl:imports rdf:resource="&obo;GENEPIO/imports/odes_field.owl"/>
-        <owl:imports rdf:resource="&obo;GENEPIO/imports/ontology-metadata.owl"/>
-        <owl:imports rdf:resource="&obo;GENEPIO/imports/ro_import.owl"/>
-        <owl:imports rdf:resource="&obo;GENEPIO/imports/uberon_import.owl"/>
+        <owl:versionIRI rdf:resource="&obo;genepio/releases/2021-05-24/genepio.owl"/>
         <owl:imports rdf:resource="&obo;bfo/2.0/bfo.owl"/>
-        <terms:date rdf:datatype="&xsd;date">2021-04-20</terms:date>
+        <owl:imports rdf:resource="&obo;genepio/imports/chebi_import.owl"/>
+        <owl:imports rdf:resource="&obo;genepio/imports/doid_import.owl"/>
+        <owl:imports rdf:resource="&obo;genepio/imports/envo_import.owl"/>
+        <owl:imports rdf:resource="&obo;genepio/imports/foodon_import.owl"/>
+        <owl:imports rdf:resource="&obo;genepio/imports/gaz_insdc_mapping.owl"/>
+        <owl:imports rdf:resource="&obo;genepio/imports/gazetteer_import.owl"/>
+        <owl:imports rdf:resource="&obo;genepio/imports/general_import.owl"/>
+        <owl:imports rdf:resource="&obo;genepio/imports/hardcoded.owl"/>
+        <owl:imports rdf:resource="&obo;genepio/imports/model_import.owl"/>
+        <owl:imports rdf:resource="&obo;genepio/imports/ncbitaxon_import.owl"/>
+        <owl:imports rdf:resource="&obo;genepio/imports/obi_import.owl"/>
+        <owl:imports rdf:resource="&obo;genepio/imports/odes_field.owl"/>
+        <owl:imports rdf:resource="&obo;genepio/imports/ontology-metadata.owl"/>
+        <owl:imports rdf:resource="&obo;genepio/imports/ro_import.owl"/>
+        <owl:imports rdf:resource="&obo;genepio/imports/uberon_import.owl"/>
+        <terms:date rdf:datatype="&xsd;date">2021-05-24</terms:date>
         <terms:description xml:lang="en">The Genomic Epidemiology Ontology aims to provide a comprehensive controlled vocabulary for infectious disease surveillance and outbreak investigations. It is an application ontology that draws on many other ontologies including anatomy, taxonomy, disease, symptoms, environment and food types.</terms:description>
         <terms:license rdf:resource="http://creativecommons.org/licenses/by/3.0/"/>
         <terms:title xml:lang="en">Genomic Epidemiology Ontology</terms:title>
@@ -565,6 +571,18 @@ I believe time dependency relations (conditions) don&apos;t imply existence by t
     
 
 
+    <!-- https://w3id.org/linkml/examples -->
+
+    <owl:ObjectProperty rdf:about="&linkml;examples"/>
+    
+
+
+    <!-- https://w3id.org/linkml/local_names -->
+
+    <owl:ObjectProperty rdf:about="&linkml;local_names"/>
+    
+
+
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
@@ -576,23 +594,45 @@ I believe time dependency relations (conditions) don&apos;t imply existence by t
     
 
 
-    <!-- https://schema.org/DataType -->
+    <!-- https://w3id.org/linkml/abstract -->
 
-    <owl:DatatypeProperty rdf:about="https://schema.org/DataType">
-        <obo:IAO_0000115 xml:lang="en">The basic schema.org data types such as Integers, Strings, etc.</obo:IAO_0000115>
-    </owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="&linkml;abstract"/>
     
 
 
-    <!-- https://schema.org/defaultValue -->
+    <!-- https://w3id.org/linkml/identifier -->
 
-    <owl:DatatypeProperty rdf:about="https://schema.org/defaultValue"/>
+    <owl:DatatypeProperty rdf:about="&linkml;identifier"/>
     
 
 
-    <!-- https://schema.org/name -->
+    <!-- https://w3id.org/linkml/local_name_source -->
 
-    <owl:DatatypeProperty rdf:about="https://schema.org/name"/>
+    <owl:DatatypeProperty rdf:about="&linkml;local_name_source"/>
+    
+
+
+    <!-- https://w3id.org/linkml/local_name_value -->
+
+    <owl:DatatypeProperty rdf:about="&linkml;local_name_value"/>
+    
+
+
+    <!-- https://w3id.org/linkml/meaning -->
+
+    <owl:DatatypeProperty rdf:about="&linkml;meaning"/>
+    
+
+
+    <!-- https://w3id.org/linkml/value -->
+
+    <owl:DatatypeProperty rdf:about="&linkml;value"/>
+    
+
+
+    <!-- https://w3id.org/linkml/value_description -->
+
+    <owl:DatatypeProperty rdf:about="&linkml;value_description"/>
     
 
 
@@ -1056,13 +1096,17 @@ ARO:3004301 # resistant</obo:GENEPIO_0001763>
 
     <!-- http://purl.obolibrary.org/obo/BTO_0000155 -->
 
-    <owl:Class rdf:about="&obo;BTO_0000155"/>
+    <owl:Class rdf:about="&obo;BTO_0000155">
+        <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0001432"/>
+    </owl:Class>
     
 
 
     <!-- http://purl.obolibrary.org/obo/BTO_0001762 -->
 
-    <owl:Class rdf:about="&obo;BTO_0001762"/>
+    <owl:Class rdf:about="&obo;BTO_0001762">
+        <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0001432"/>
+    </owl:Class>
     
 
 
@@ -7988,6 +8032,47 @@ GENEPIO:0002181 # antimicrobial resistance phenotype - ECOFF</obo:GENEPIO_000176
         <obo:IAO_0000117 rdf:resource="http://orcid.org/0000-0002-8844-9165"/>
         <dc:date rdf:datatype="&xsd;dateTime">2021-04-19T23:36:25Z</dc:date>
         <rdfs:label xml:lang="en">organs or organ parts</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001120 -->
+
+    <owl:Class rdf:about="&obo;GENEPIO_0001120">
+        <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0001342"/>
+        <obo:IAO_0000114 xml:lang="en">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000115 xml:lang="en">A data specification established for use by The Canadian COVID-19 Genomics Network (CanCOGeN) project DataHarmonizer application, for contextual data (metadata) harmonization and curation across data providers.</obo:IAO_0000115>
+        <obo:IAO_0000117>https://orcid.org/0000-0002-9578-0788</obo:IAO_0000117>
+        <obo:IAO_0000119>https://github.com/Public-Health-Bioinformatics/DataHarmonizer/blob/master/template/canada_covid19/SOP.pdf</obo:IAO_0000119>
+        <dc:date rdf:datatype="&xsd;dateTime">2021-04-24T00:18:57Z</dc:date>
+        <rdfs:label xml:lang="en">draft CanCOGeN DataHarmonizer specification</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001121 -->
+
+    <owl:Class rdf:about="&obo;GENEPIO_0001121">
+        <rdfs:subClassOf rdf:resource="&linkml;SlotDefinition"/>
+        <obo:IAO_0000114 xml:lang="en">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000115 xml:lang="en">A field specification used in the Canadian COVID-10 Genomics Network (CanCOGeN) DataHarmonizer application.</obo:IAO_0000115>
+        <obo:IAO_0000117>https://orcid.org/0000-0002-9578-0788</obo:IAO_0000117>
+        <dc:date rdf:datatype="&xsd;dateTime">2021-04-24T00:25:28Z</dc:date>
+        <rdfs:label xml:lang="en">draft CanCOGeN DataHarmonizer field</rdfs:label>
+        <rdfs:seeAlso xml:lang="en">https://github.com/Public-Health-Bioinformatics/DataHarmonizer/blob/master/template/canada_covid19/SOP.pdf</rdfs:seeAlso>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001122 -->
+
+    <owl:Class rdf:about="&obo;GENEPIO_0001122">
+        <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0001121"/>
+        <obo:IAO_0000114 xml:lang="en">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000115 xml:lang="en">A CanCOGeN DataHarmonizer field that refers to a database identifier.</obo:IAO_0000115>
+        <obo:IAO_0000117>https://orcid.org/0000-0002-9578-0788</obo:IAO_0000117>
+        <dc:date rdf:datatype="&xsd;dateTime">2021-04-24T00:30:02Z</dc:date>
+        <rdfs:label xml:lang="en">draft CanCOGeN DataHarmonizer field - database identifiers</rdfs:label>
     </owl:Class>
     
 
@@ -15358,7 +15443,7 @@ http://www.nature.com/ng/journal/v45/n10/full/ng.2744.html</rdfs:seeAlso>
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0002034 -->
 
     <owl:Class rdf:about="&obo;GENEPIO_0002034">
-        <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0002178"/>
+        <rdfs:subClassOf rdf:resource="&linkml;SlotDefinition"/>
         <obo:IAO_0000117 rdf:resource="http://orcid.org/0000-0002-8844-9165"/>
         <dc:date rdf:datatype="&xsd;dateTime">2019-11-17T00:43:00Z</dc:date>
         <rdfs:label xml:lang="en">draft ISO sequence repository field</rdfs:label>
@@ -17783,11 +17868,12 @@ or https://www.ncbi.nlm.nih.gov/mesh/1000067</rdfs:comment>
 
     <owl:Class rdf:about="&obo;GENEPIO_0002178">
         <rdfs:subClassOf rdf:resource="&obo;OBI_0000658"/>
-        <obo:IAO_0000114 rdf:resource="&obo;IAO_0000428"/>
         <obo:IAO_0000115 xml:lang="en">A field specification is the specification of a data field used in a data standard or database table. This includes at least a database field name, and optionally display name, description, and data type (binary blob, numeric, categorical, textual or cross-reference).</obo:IAO_0000115>
         <obo:IAO_0000117 rdf:datatype="&xsd;string">Damion Dooley</obo:IAO_0000117>
+        <obo:IAO_0100001 rdf:resource="&linkml;SlotDefinition"/>
         <dc:date rdf:datatype="&xsd;dateTime">2019-04-17T23:04:53Z</dc:date>
-        <rdfs:label xml:lang="en">field specification</rdfs:label>
+        <rdfs:label xml:lang="en">obsolete: field specification</rdfs:label>
+        <owl:deprecated rdf:datatype="&xsd;boolean">true</owl:deprecated>
     </owl:Class>
     
 
@@ -17806,7 +17892,7 @@ or https://www.ncbi.nlm.nih.gov/mesh/1000067</rdfs:comment>
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0002185 -->
 
     <owl:Class rdf:about="&obo;GENEPIO_0002185">
-        <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0002178"/>
+        <rdfs:subClassOf rdf:resource="&linkml;SlotDefinition"/>
         <obo:IAO_0000117 rdf:datatype="&xsd;string">Damion Dooley</obo:IAO_0000117>
         <dc:date rdf:datatype="&xsd;dateTime">2019-04-17T23:41:35Z</dc:date>
         <rdfs:label xml:lang="en">PulseNet Canada field</rdfs:label>
@@ -19144,7 +19230,9 @@ Depending on its context, hasDbXref annotations may point directly to metadata f
 
     <!-- http://purl.obolibrary.org/obo/NCIT_C49641 -->
 
-    <owl:Class rdf:about="&obo;NCIT_C49641"/>
+    <owl:Class rdf:about="&obo;NCIT_C49641">
+        <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0001432"/>
+    </owl:Class>
     
 
 
@@ -20220,7 +20308,7 @@ male | female | pooled male and female | neuter | hermaphrodite | intersex | not
 
     <rdf:Description rdf:about="&obo;PATO_0002390">
         <obo:IAO_0000114 rdf:resource="&obo;IAO_0000428"/>
-        <rdfs:comment xml:lang="en">Damion Dooley&apos;s note: We can&apos;t say radius is a subClass of PATO:length because length is considered a quality/specifically dependent continuant, which is disjoint with immaterial entity/independent continuant .  I.e. &quot;length&quot; as quality unfortunately can&apos;t pertain to abstract entities, only &quot;real&quot; ones.</rdfs:comment>
+        <rdfs:comment xml:lang="en">Damion Dooley&apos;s note: We can&apos;t say radius is a subclass of &quot;linear coordinate&quot; because length is considered a quality/specifically dependent continuant, which is disjoint with immaterial entity/independent continuant .  I.e. &quot;length&quot; as quality unfortunately can&apos;t pertain to abstract entities, only &quot;real&quot; ones.</rdfs:comment>
     </rdf:Description>
     
 
@@ -20247,6 +20335,14 @@ male | female | pooled male and female | neuter | hermaphrodite | intersex | not
         <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0001444"/>
         <obo:GENEPIO_0000006 xml:lang="en">social gathering</obo:GENEPIO_0000006>
     </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/PECO_0007027 -->
+
+    <rdf:Description rdf:about="&obo;PECO_0007027">
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000003"/>
+    </rdf:Description>
     
 
 
@@ -21218,6 +21314,56 @@ Note that this file contains examples of cities, provinces, states, territories,
     
 
 
+    <!-- https://w3id.org/linkml/Definition -->
+
+    <owl:Class rdf:about="&linkml;Definition">
+        <rdfs:subClassOf rdf:resource="&linkml;Element"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/linkml/Element -->
+
+    <owl:Class rdf:about="&linkml;Element">
+        <rdfs:subClassOf rdf:resource="&obo;OBI_0000658"/>
+        <obo:IAO_0000115 xml:lang="en">A named element in the model.</obo:IAO_0000115>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/linkml/Example -->
+
+    <owl:Class rdf:about="&linkml;Example"/>
+    
+
+
+    <!-- https://w3id.org/linkml/LocalName -->
+
+    <owl:Class rdf:about="&linkml;LocalName"/>
+    
+
+
+    <!-- https://w3id.org/linkml/PermissibleValue -->
+
+    <owl:Class rdf:about="&linkml;PermissibleValue"/>
+    
+
+
+    <!-- https://w3id.org/linkml/SchemaDefinition -->
+
+    <owl:Class rdf:about="&linkml;SchemaDefinition">
+        <rdfs:subClassOf rdf:resource="&linkml;Element"/>
+        <obo:IAO_0000115 xml:lang="en">A collection of subset, type, slot and class definitions</obo:IAO_0000115>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/linkml/SlotDefinition -->
+
+    <owl:Class rdf:about="&linkml;SlotDefinition"/>
+    
+
+
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
@@ -21244,6 +21390,401 @@ Note that this file contains examples of cities, provinces, states, territories,
     <!-- http://purl.obolibrary.org/obo/GAZ_00002562 -->
 
     <owl:NamedIndividual rdf:about="&obo;GAZ_00002562"/>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001123 -->
+
+    <owl:NamedIndividual rdf:about="&obo;GENEPIO_0001123">
+        <rdf:type rdf:resource="&obo;GENEPIO_0001122"/>
+        <linkml:examples rdf:resource="&obo;GENEPIO_0002236"/>
+        <linkml:comments xml:lang="en">Guidance: Store the collector sample ID. If this number is considered identifiable information, provide an alternative ID. Be sure to store the key that maps between the original and alternative IDs for traceability and follow up if necessary. Every collector sample ID from a single submitter must be unique. It can have any format, but we suggest that you make it concise, unique and consistent within your lab.</linkml:comments>
+        <linkml:created_on>2021-04-24T00:42:14Z</linkml:created_on>
+        <linkml:data_collection_state xml:lang="en">Not Applicable; Missing; Not Collected; Not Provided; Restricted Access</linkml:data_collection_state>
+        <linkml:description xml:lang="en">The user-defined name for the sample.</linkml:description>
+        <linkml:identifier rdf:datatype="&xsd;boolean">true</linkml:identifier>
+        <linkml:required rdf:datatype="&xsd;boolean">true</linkml:required>
+        <linkml:type_uri>xsd:token</linkml:type_uri>
+        <obo:IAO_0000114 xml:lang="en">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000117>https://orcid.org/0000-0002-9578-0788</obo:IAO_0000117>
+        <rdfs:label xml:lang="en">CanCOGeN:specimen collector sample ID</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001124 -->
+
+    <owl:NamedIndividual rdf:about="&obo;GENEPIO_0001124">
+        <rdf:type rdf:resource="&linkml;Example"/>
+        <linkml:value>SR20-12345</linkml:value>
+        <obo:IAO_0000114 xml:lang="en">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000117 rdf:resource="https://orcid.org/0000-0002-9578-0788"/>
+        <dc:date rdf:datatype="&xsd;dateTime">2021-04-26T23:49:57Z</dc:date>
+        <rdfs:label xml:lang="en">CanCOGeN:NML submitted specimen primary ID example</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001125 -->
+
+    <owl:NamedIndividual rdf:about="&obo;GENEPIO_0001125">
+        <rdf:type rdf:resource="&obo;GENEPIO_0001122"/>
+        <linkml:examples rdf:resource="&obo;GENEPIO_0001124"/>
+        <linkml:comments xml:lang="en">Guidance: Store the identifier for the specimen submitted through the NML LaSER system.</linkml:comments>
+        <linkml:created_on>2021-04-27T02:56:23Z</linkml:created_on>
+        <linkml:description xml:lang="en">The primary ID of the specimen submitted thorough the National Microbiology Laboratory (NML) LaSER.</linkml:description>
+        <linkml:type_uri>xs:token</linkml:type_uri>
+        <obo:IAO_0000114 xml:lang="en">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000117>https://orcid.org/0000-0002-9578-0788</obo:IAO_0000117>
+        <rdfs:label xml:lang="en">CanCOGeN:NML submitted specimen primary ID</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001127 -->
+
+    <owl:NamedIndividual rdf:about="&obo;GENEPIO_0001127">
+        <rdf:type rdf:resource="&linkml;Example"/>
+        <linkml:value>SR20-12345</linkml:value>
+        <obo:IAO_0000114 xml:lang="en">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000117>https://orcid.org/0000-0002-9578-0788</obo:IAO_0000117>
+        <dc:date rdf:datatype="&xsd;dateTime">2021-04-27T03:04:06Z</dc:date>
+        <rdfs:label xml:lang="en">CanCOGeN:NML related specimen primary ID example</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001128 -->
+
+    <owl:NamedIndividual rdf:about="&obo;GENEPIO_0001128">
+        <rdf:type rdf:resource="&obo;GENEPIO_0001122"/>
+        <linkml:examples rdf:resource="&obo;GENEPIO_0001127"/>
+        <linkml:comments xml:lang="en">Guidance: Store the primary ID of the related specimen previously submitted thorough LaSER</linkml:comments>
+        <linkml:created_on>2021-04-27T03:10:30Z</linkml:created_on>
+        <linkml:data_collection_state xml:lang="en">Not Applicable; Missing; Not Collected; Not Provided; Restricted Access</linkml:data_collection_state>
+        <linkml:description xml:lang="en">The primary ID of the related specimen previously submitted thorough the National Microbiology Laboratory (NML) LaSER.</linkml:description>
+        <linkml:type_uri>xs:token</linkml:type_uri>
+        <obo:IAO_0000114 xml:lang="en">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000117>https://orcid.org/0000-0002-9578-0788</obo:IAO_0000117>
+        <rdfs:label xml:lang="en">CanCOGeN:NML related specimen primary ID</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001129 -->
+
+    <owl:NamedIndividual rdf:about="&obo;GENEPIO_0001129">
+        <rdf:type rdf:resource="&linkml;Example"/>
+        <linkml:value>prov_rona_99</linkml:value>
+        <obo:IAO_0000114 xml:lang="en">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000117 rdf:resource="https://orcid.org/0000-0002-9578-0788"/>
+        <dc:date rdf:datatype="&xsd;dateTime">2021-04-27T03:14:01Z</dc:date>
+        <rdfs:label xml:lang="en">CanCOGeN:IRIDA sample name example</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001130 -->
+
+    <owl:NamedIndividual rdf:about="&obo;GENEPIO_0001130">
+        <rdf:type rdf:resource="&linkml;LocalName"/>
+        <linkml:local_name_value>http://purl.obolibrary.org/obo/GENEPIO_0001829</linkml:local_name_value>
+        <obo:IAO_0000114 xml:lang="en">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000117 rdf:resource="https://orcid.org/0000-0002-9578-0788"/>
+        <dc:date rdf:datatype="&xsd;dateTime">2021-04-27T03:21:11Z</dc:date>
+        <rdfs:label xml:lang="en">CanCOGeN:IRIDA sample name local name</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001131 -->
+
+    <owl:NamedIndividual rdf:about="&obo;GENEPIO_0001131">
+        <rdf:type rdf:resource="&obo;GENEPIO_0001122"/>
+        <linkml:examples rdf:resource="&obo;GENEPIO_0001129"/>
+        <linkml:local_names rdf:resource="&obo;GENEPIO_0001130"/>
+        <linkml:comments xml:lang="en">Guidance: Store the IRIDA sample name. The IRIDA sample name will be created by the individual entering data into the IRIDA platform. IRIDA samples may be linked to metadata and sequence data, or just metadata alone. It is recommended that the IRIDA sample name be the same as, or contain, the specimen collector sample ID for better traceability. It is also recommended that the IRIDA sample name mirror the GISAID accession. IRIDA sample names cannot contain slashes. Slashes should be replaced by underscores. See IRIDA documentation for more information regarding special characters (https://irida.corefacility.ca/documentation/user/user/samples/#adding-a-new-sample).</linkml:comments>
+        <linkml:created_on>2021-04-27T03:24:03Z</linkml:created_on>
+        <linkml:description xml:lang="en">The identifier assigned to a sequenced isolate in IRIDA.</linkml:description>
+        <linkml:type_uri>xs:token</linkml:type_uri>
+        <obo:IAO_0000114 xml:lang="en">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000117 rdf:resource="https://orcid.org/0000-0002-9578-0788"/>
+        <rdfs:label xml:lang="en">CanCOGeN:IRIDA sample name</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001132 -->
+
+    <owl:NamedIndividual rdf:about="&obo;GENEPIO_0001132">
+        <rdf:type rdf:resource="&linkml;Example"/>
+        <linkml:value xml:lang="en">PRJNA623807</linkml:value>
+        <obo:IAO_0000114 xml:lang="en">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000117 rdf:resource="https://orcid.org/0000-0002-9578-0788"/>
+        <dc:date rdf:datatype="&xsd;dateTime">2021-04-27T03:35:36Z</dc:date>
+        <rdfs:label xml:lang="en">CanCOGeN:umbrella bioproject accession example</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001133 -->
+
+    <owl:NamedIndividual rdf:about="&obo;GENEPIO_0001133">
+        <rdf:type rdf:resource="&obo;GENEPIO_0001122"/>
+        <linkml:examples rdf:resource="&obo;GENEPIO_0001132"/>
+        <linkml:comments xml:lang="en">Guidance: Store the umbrella BioProject accession by selecting it from the picklist in the template. The umbrella BioProject accession will be identical for all CanCOGen submitters. Different provinces will have their own BioProjects, however these BioProjects will be linked under one umbrella BioProject.</linkml:comments>
+        <linkml:created_on>2021-04-27T03:38:14Z</linkml:created_on>
+        <linkml:description xml:lang="en">The INSDC accession number assigned to the umbrella BioProject for the Canadian SARS-CoV-2 sequencing effort.</linkml:description>
+        <linkml:pattern>UPPER</linkml:pattern>
+        <linkml:see_also>https://www.ncbi.nlm.nih.gov/books/NBK54015/</linkml:see_also>
+        <linkml:type_uri>select</linkml:type_uri>
+        <obo:IAO_0000114 xml:lang="en">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000117 rdf:resource="https://orcid.org/0000-0002-9578-0788"/>
+        <rdfs:label xml:lang="en">CanCOGeN:umbrella bioproject accession</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001134 -->
+
+    <owl:NamedIndividual rdf:about="&obo;GENEPIO_0001134">
+        <rdf:type rdf:resource="&linkml;Example"/>
+        <linkml:value>PRJNA608651</linkml:value>
+        <obo:IAO_0000114 xml:lang="en">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000117 rdf:resource="https://orcid.org/0000-0002-9578-0788"/>
+        <dc:date rdf:datatype="&xsd;dateTime">2021-04-27T03:44:13Z</dc:date>
+        <rdfs:label xml:lang="en">CanCOGeN:bioproject accession example</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001135 -->
+
+    <owl:NamedIndividual rdf:about="&obo;GENEPIO_0001135">
+        <rdf:type rdf:resource="&linkml;LocalName"/>
+        <linkml:local_name_value>http://purl.obolibrary.org/obo/GENEPIO_0001836</linkml:local_name_value>
+        <obo:IAO_0000114 xml:lang="en">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000117 rdf:resource="https://orcid.org/0000-0002-9578-0788"/>
+        <dc:date rdf:datatype="&xsd;dateTime">2021-04-27T03:46:59Z</dc:date>
+        <rdfs:label xml:lang="en">CanCOGeN:bioproject accession local name</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001136 -->
+
+    <owl:NamedIndividual rdf:about="&obo;GENEPIO_0001136">
+        <rdf:type rdf:resource="&obo;GENEPIO_0001122"/>
+        <linkml:examples rdf:resource="&obo;GENEPIO_0001134"/>
+        <linkml:local_names rdf:resource="&obo;GENEPIO_0001135"/>
+        <linkml:comments xml:lang="en">Guidance: Store the BioProject accession number. BioProjects are an organizing tool that links together raw sequence data, assemblies, and their associated metadata. Each province will be assigned a different bioproject accession number by the National Microbiology Lab. A valid NCBI BioProject accession has prefix PRJN e.g., PRJNA12345, and is created once at the beginning of a new sequencing project.</linkml:comments>
+        <linkml:description xml:lang="en">The INSDC accession number of the BioProject(s) to which the BioSample belongs.</linkml:description>
+        <linkml:pattern>UPPER</linkml:pattern>
+        <linkml:see_also>https://www.ncbi.nlm.nih.gov/bioproject/</linkml:see_also>
+        <linkml:type_uri>xs:token</linkml:type_uri>
+        <obo:IAO_0000114 xml:lang="en">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000117 rdf:resource="https://orcid.org/0000-0002-9578-0788"/>
+        <dc:date rdf:datatype="&xsd;dateTime">2021-04-27T03:50:41Z</dc:date>
+        <rdfs:label xml:lang="en">CanCOGeN:bioproject accession</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001137 -->
+
+    <owl:NamedIndividual rdf:about="&obo;GENEPIO_0001137">
+        <rdf:type rdf:resource="&linkml;Example"/>
+        <linkml:value>SAMN14180202</linkml:value>
+        <obo:IAO_0000114 xml:lang="en">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000117 rdf:resource="https://orcid.org/0000-0002-9578-0788"/>
+        <dc:date rdf:datatype="&xsd;dateTime">2021-04-27T03:55:21Z</dc:date>
+        <rdfs:label xml:lang="en">CanCOGeN:biosample accession example</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001138 -->
+
+    <owl:NamedIndividual rdf:about="&obo;GENEPIO_0001138">
+        <rdf:type rdf:resource="&linkml;LocalName"/>
+        <linkml:local_name_value>http://purl.obolibrary.org/obo/GENEPIO_0001836</linkml:local_name_value>
+        <obo:IAO_0000114 xml:lang="en">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000117 rdf:resource="https://orcid.org/0000-0002-9578-0788"/>
+        <dc:date rdf:datatype="&xsd;dateTime">2021-04-27T04:03:29Z</dc:date>
+        <rdfs:label xml:lang="en">CanCOGeN:biosample accession local name</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001139 -->
+
+    <owl:NamedIndividual rdf:about="&obo;GENEPIO_0001139">
+        <rdf:type rdf:resource="&obo;GENEPIO_0001122"/>
+        <linkml:examples rdf:resource="&obo;GENEPIO_0001137"/>
+        <linkml:local_names rdf:resource="&obo;GENEPIO_0001138"/>
+        <linkml:comments xml:lang="en">Guidance: Store the accession returned from the BioSample submission. NCBI BioSamples will have the prefix SAMN.</linkml:comments>
+        <linkml:created_on>2021-04-27T04:06:03Z</linkml:created_on>
+        <linkml:description xml:lang="en">The identifier assigned to a BioSample in INSDC archives.</linkml:description>
+        <linkml:pattern>UPPER</linkml:pattern>
+        <linkml:see_also>https://www.ncbi.nlm.nih.gov/biosample</linkml:see_also>
+        <linkml:type_uri>xs:token</linkml:type_uri>
+        <obo:IAO_0000114 xml:lang="en">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000117 rdf:resource="https://orcid.org/0000-0002-9578-0788"/>
+        <rdfs:label xml:lang="en">CanCOGeN:biosample accession</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001140 -->
+
+    <owl:NamedIndividual rdf:about="&obo;GENEPIO_0001140">
+        <rdf:type rdf:resource="&linkml;Example"/>
+        <linkml:examples>SRR11177792</linkml:examples>
+        <obo:IAO_0000114 xml:lang="en">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000117 rdf:resource="https://orcid.org/0000-0002-9578-0788"/>
+        <dc:date rdf:datatype="&xsd;dateTime">2021-04-27T04:09:40Z</dc:date>
+        <rdfs:label xml:lang="en">CanCOGeN:SRA accession example</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001141 -->
+
+    <owl:NamedIndividual rdf:about="&obo;GENEPIO_0001141">
+        <rdf:type rdf:resource="&linkml;LocalName"/>
+        <linkml:local_name_value>http://purl.obolibrary.org/obo/GENEPIO_0000147</linkml:local_name_value>
+        <obo:IAO_0000114 xml:lang="en">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000117 rdf:resource="https://orcid.org/0000-0002-9578-0788"/>
+        <dc:date rdf:datatype="&xsd;dateTime">2021-04-27T04:13:07Z</dc:date>
+        <rdfs:label xml:lang="en">CanCOGeN:SRA accession local name</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001142 -->
+
+    <owl:NamedIndividual rdf:about="&obo;GENEPIO_0001142">
+        <rdf:type rdf:resource="&obo;GENEPIO_0001122"/>
+        <linkml:examples rdf:resource="&obo;GENEPIO_0001140"/>
+        <linkml:local_names rdf:resource="&obo;GENEPIO_0001141"/>
+        <linkml:comments xml:lang="en">Guidance: Store the accession assigned to the submitted &quot;run&quot;. NCBI-SRA accessions start with SRR.</linkml:comments>
+        <linkml:created_on>2021-04-27T04:19:10Z</linkml:created_on>
+        <linkml:description xml:lang="en">The Sequence Read Archive (SRA) identifier linking raw read data, methodological metadata and quality control metrics submitted to the INSDC.</linkml:description>
+        <linkml:pattern>UPPER</linkml:pattern>
+        <linkml:see_also>https://www.ncbi.nlm.nih.gov/sra</linkml:see_also>
+        <linkml:type_uri>xs:token</linkml:type_uri>
+        <obo:IAO_0000114 xml:lang="en">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000117 rdf:resource="https://orcid.org/0000-0002-9578-0788"/>
+        <dc:date rdf:datatype="&xsd;dateTime">2021-04-27T04:19:10Z</dc:date>
+        <rdfs:label xml:lang="en">CanCOGeN:SRA accession</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001143 -->
+
+    <owl:NamedIndividual rdf:about="&obo;GENEPIO_0001143">
+        <rdf:type rdf:resource="&linkml;Example"/>
+        <linkml:value>MN908947.3</linkml:value>
+        <obo:IAO_0000114 xml:lang="en">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000117 rdf:resource="https://orcid.org/0000-0002-9578-0788"/>
+        <dc:date rdf:datatype="&xsd;dateTime">2021-04-27T04:22:41Z</dc:date>
+        <rdfs:label xml:lang="en">CanCOGeN:GenBank accession example</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001144 -->
+
+    <owl:NamedIndividual rdf:about="&obo;GENEPIO_0001144">
+        <rdf:type rdf:resource="&linkml;LocalName"/>
+        <linkml:local_name_value>http://purl.obolibrary.org/obo/OBI_0001614</linkml:local_name_value>
+        <obo:IAO_0000114 xml:lang="en">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000117 rdf:resource="https://orcid.org/0000-0002-9578-0788"/>
+        <dc:date rdf:datatype="&xsd;dateTime">2021-04-27T04:25:46Z</dc:date>
+        <rdfs:label xml:lang="en">CanCOGeN:GenBank accession local name</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001145 -->
+
+    <owl:NamedIndividual rdf:about="&obo;GENEPIO_0001145">
+        <rdf:type rdf:resource="&obo;GENEPIO_0001122"/>
+        <linkml:examples rdf:resource="&obo;GENEPIO_0001143"/>
+        <linkml:local_names rdf:resource="&obo;GENEPIO_0001144"/>
+        <linkml:comments xml:lang="en">Guidance: Store the accession returned from a GenBank submission (viral genome assembly).</linkml:comments>
+        <linkml:created_on>2021-04-27T04:27:48Z</linkml:created_on>
+        <linkml:description xml:lang="en">The GenBank identifier assigned to the sequence in the INSDC archives.</linkml:description>
+        <linkml:pattern>UPPER</linkml:pattern>
+        <linkml:see_also>https://www.ncbi.nlm.nih.gov/genbank/,
+https://www.ncbi.nlm.nih.gov/genbank/acc_prefix/</linkml:see_also>
+        <linkml:type_uri>xs:token</linkml:type_uri>
+        <obo:IAO_0000114 xml:lang="en">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000117 rdf:resource="https://orcid.org/0000-0002-9578-0788"/>
+        <rdfs:label xml:lang="en">CanCOGeN:GenBank accession</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001146 -->
+
+    <owl:NamedIndividual rdf:about="&obo;GENEPIO_0001146">
+        <rdf:type rdf:resource="&linkml;Example"/>
+        <linkml:value>EPI_ISL_436489</linkml:value>
+        <obo:IAO_0000114 xml:lang="en">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000117 rdf:resource="https://orcid.org/0000-0002-9578-0788"/>
+        <dc:date rdf:datatype="&xsd;dateTime">2021-04-27T04:33:13Z</dc:date>
+        <rdfs:label xml:lang="en">CanCOGeN:GISAID accession example</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001147 -->
+
+    <owl:NamedIndividual rdf:about="&obo;GENEPIO_0001147">
+        <rdf:type rdf:resource="&obo;GENEPIO_0001122"/>
+        <linkml:examples rdf:resource="&obo;GENEPIO_0001146"/>
+        <linkml:comments xml:lang="en">Guidance: Store the accession returned from the GISAID submission.</linkml:comments>
+        <linkml:created_on>2021-04-27T04:36:10Z</linkml:created_on>
+        <linkml:description xml:lang="en">The GISAID accession number assigned to the sequence.</linkml:description>
+        <linkml:pattern>UPPER</linkml:pattern>
+        <linkml:see_also>https://www.gisaid.org/help/publish-with-data-from-gisaid/</linkml:see_also>
+        <linkml:type_uri>xs:token</linkml:type_uri>
+        <obo:IAO_0000114 xml:lang="en">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000117 rdf:resource="https://orcid.org/0000-0002-9578-0788"/>
+        <rdfs:label xml:lang="en">CanCOGeN:GISAID accession</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001148 -->
+
+    <owl:NamedIndividual rdf:about="&obo;GENEPIO_0001148">
+        <rdf:type rdf:resource="&linkml;Example"/>
+        <linkml:value>SHK123456</linkml:value>
+        <obo:IAO_0000114 xml:lang="en">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000117 rdf:resource="https://orcid.org/0000-0002-9578-0788"/>
+        <dc:date rdf:datatype="&xsd;dateTime">2021-04-28T18:48:39Z</dc:date>
+        <rdfs:label xml:lang="en">CanCOGeN:Switch Health ID example</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001149 -->
+
+    <owl:NamedIndividual rdf:about="&obo;GENEPIO_0001149">
+        <rdf:type rdf:resource="&obo;GENEPIO_0001122"/>
+        <linkml:examples rdf:resource="&obo;GENEPIO_0001148"/>
+        <linkml:comments xml:lang="en">Guidance: Store the identifier supplied by Seitch Health for the sample.</linkml:comments>
+        <linkml:created_on>2021-04-28T18:51:40Z</linkml:created_on>
+        <linkml:description xml:lang="en">The identifier assigned to a sample by Switch Health.</linkml:description>
+        <linkml:see_also>https://www.switchhealth.ca/en/</linkml:see_also>
+        <linkml:type_uri>xs:token</linkml:type_uri>
+        <obo:IAO_0000114 xml:lang="en">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000117 rdf:resource="https://orcid.org/0000-0002-9578-0788"/>
+        <rdfs:label xml:lang="en">CanCOGeN:Switch Health ID</rdfs:label>
+    </owl:NamedIndividual>
     
 
 
@@ -21856,6 +22397,18 @@ Note that this file contains examples of cities, provinces, states, territories,
         <dc:date rdf:datatype="&xsd;dateTime">2019-04-17T22:47:51Z</dc:date>
         <rdfs:label xml:lang="en">PulseNet:UploadDate</rdfs:label>
     </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0002236 -->
+
+    <owl:NamedIndividual rdf:about="&obo;GENEPIO_0002236">
+        <rdf:type rdf:resource="&linkml;Example"/>
+        <linkml:value>prov_rona_99</linkml:value>
+        <obo:IAO_0000117 rdf:resource="http://orcid.org/0000-0002-8844-9165"/>
+        <dc:date rdf:datatype="&xsd;dateTime">2021-04-24T18:32:24Z</dc:date>
+        <rdfs:label xml:lang="en">CanCOGeN:specimen collector sample ID example</rdfs:label>
+    </owl:NamedIndividual>
     <rdf:Description>
         <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:qualifiedCardinality>
     </rdf:Description>
@@ -21947,23 +22500,22 @@ Note that this file contains examples of cities, provinces, states, territories,
         <oboInOwl:hasSynonym xml:lang="en">black tiger shrimp</oboInOwl:hasSynonym>
     </rdf:Description>
     <rdf:Description rdf:about="&obo;FOODON_03530153">
-        <oboInOwl:hasSynonym xml:lang="en">gathered</oboInOwl:hasSynonym>
         <oboInOwl:hasSynonym xml:lang="en">wild</oboInOwl:hasSynonym>
+        <oboInOwl:hasSynonym xml:lang="en">gathered</oboInOwl:hasSynonym>
     </rdf:Description>
     <rdf:Description rdf:about="&obo;GENEPIO_0000098">
         <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
     </rdf:Description>
     <rdf:Description rdf:about="&obo;GENEPIO_0000116">
         <obo:IAO_0000114 rdf:resource="&obo;IAO_0000428"/>
-        <obo:IAO_0000115 xml:lang="en">This is a catch-all category for Gazetteer items that have &quot;located in&quot; relations but not an imported GAZETTEER class parent in GenEpiO.</obo:IAO_0000115>
         <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
+        <obo:IAO_0000115 xml:lang="en">This is a catch-all category for Gazetteer items that have &quot;located in&quot; relations but not an imported GAZETTEER class parent in GenEpiO.</obo:IAO_0000115>
     </rdf:Description>
     <rdf:Description rdf:about="&obo;GENEPIO_0001605">
         <owl:deprecated rdf:datatype="&xsd;boolean">true</owl:deprecated>
-        <obo:IAO_0000115 xml:lang="en">This relation indicates the type of datum an entity can have for a value</obo:IAO_0000115>
+        <obo:IAO_0100001 rdf:resource="&linkml;type_uri"/>
         <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
         <rdfs:label xml:lang="en">obsolete: has primitive data type</rdfs:label>
-        <obo:IAO_0100001 rdf:datatype="&xsd;anyURI">http://purl.obolibrary.org/obo/OBI_0002135</obo:IAO_0100001>
     </rdf:Description>
     <rdf:Description rdf:about="&obo;GENEPIO_0001854">
         <obo:IAO_0000114 rdf:resource="&obo;IAO_0000428"/>
@@ -22167,8 +22719,8 @@ Note that this file contains examples of cities, provinces, states, territories,
         <obo:GENEPIO_0000006>cfu/mL</obo:GENEPIO_0000006>
     </rdf:Description>
     <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_000546">
-        <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
         <obo:IAO_0000114 rdf:resource="&obo;IAO_0000123"/>
+        <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
     </rdf:Description>
     <rdf:Description rdf:about="http://www.ebi.ac.uk/efo/EFO_0000246">
         <oboInOwl:hasDbXref rdf:datatype="&xsd;anyURI">http://purl.obolibrary.org/obo/PATO_0000011</oboInOwl:hasDbXref>

@@ -560,13 +560,18 @@ I believe time dependency relations (conditions) don&apos;t imply existence by t
 
     <!-- https://w3id.org/linkml/examples -->
 
-    <owl:ObjectProperty rdf:about="https://w3id.org/linkml/examples"/>
+    <owl:ObjectProperty rdf:about="https://w3id.org/linkml/examples">
+        <rdfs:range rdf:resource="https://w3id.org/linkml/Example"/>
+        <obo:IAO_0000115 xml:lang="en">Example usages of an element.</obo:IAO_0000115>
+    </owl:ObjectProperty>
     
 
 
     <!-- https://w3id.org/linkml/local_names -->
 
-    <owl:ObjectProperty rdf:about="https://w3id.org/linkml/local_names"/>
+    <owl:ObjectProperty rdf:about="https://w3id.org/linkml/local_names">
+        <obo:IAO_0000115 xml:lang="en">An object relation between a LinkML SlotDefinition to a LocalName.</obo:IAO_0000115>
+    </owl:ObjectProperty>
     
 
 
@@ -583,7 +588,65 @@ I believe time dependency relations (conditions) don&apos;t imply existence by t
 
     <!-- https://w3id.org/linkml/abstract -->
 
-    <owl:DatatypeProperty rdf:about="https://w3id.org/linkml/abstract"/>
+    <owl:DatatypeProperty rdf:about="https://w3id.org/linkml/abstract">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <obo:IAO_0000115 xml:lang="en">An abstract class is a high level class or slot that is typically used to group common slots together and cannot be directly instantiated.</obo:IAO_0000115>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/linkml/comments -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/linkml/comments">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <obo:IAO_0000115 xml:lang="en">Notes and comments about an element intended for external consumption.</obo:IAO_0000115>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/linkml/created_on -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/linkml/created_on">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <obo:IAO_0000115 xml:lang="en">Date/time at which the element was created.</obo:IAO_0000115>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/linkml/data_collection_state -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/linkml/data_collection_state">
+        <obo:IAO_0000112 xml:lang="en">Not Applicable; Missing; Not Collected; Not Provided; Restricted Access</obo:IAO_0000112>
+        <obo:IAO_0000115 xml:lang="en">A value (string or URI) indicating the data collection state an instance of a slot has.</obo:IAO_0000115>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/linkml/description -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/linkml/description">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <obo:IAO_0000115 xml:lang="en">A description of the element&apos;s purpose and use</obo:IAO_0000115>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/linkml/exact_mappings -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/linkml/exact_mappings">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <obo:IAO_0000115 xml:lang="en">A list of terms from different schemas or terminology systems that have identical meaning.</obo:IAO_0000115>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/linkml/from_schema -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/linkml/from_schema">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
+        <obo:IAO_0000115 xml:lang="en">Id of the schema that defined the element.</obo:IAO_0000115>
+    </owl:DatatypeProperty>
     
 
 
@@ -593,15 +656,45 @@ I believe time dependency relations (conditions) don&apos;t imply existence by t
     
 
 
+    <!-- https://w3id.org/linkml/imported_from -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/linkml/imported_from">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <obo:IAO_0000115 xml:lang="en">The imports entry that this element was derived from. Empty means primary source</obo:IAO_0000115>
+    </owl:DatatypeProperty>
+    
+
+
     <!-- https://w3id.org/linkml/local_name_source -->
 
-    <owl:DatatypeProperty rdf:about="https://w3id.org/linkml/local_name_source"/>
+    <owl:DatatypeProperty rdf:about="https://w3id.org/linkml/local_name_source">
+        <rdfs:domain rdf:resource="https://w3id.org/linkml/LocalName"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#NCName"/>
+        <obo:IAO_0000115 xml:lang="en">The ncname of the source of the name.</obo:IAO_0000115>
+        <obo:IAO_0000117 rdf:resource="http://orcid.org/0000-0002-8844-9165"/>
+        <odes_field:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-04-26T22:15:07Z</odes_field:date>
+        <rdfs:label xml:lang="en">local_name_source</rdfs:label>
+    </owl:DatatypeProperty>
     
 
 
     <!-- https://w3id.org/linkml/local_name_value -->
 
-    <owl:DatatypeProperty rdf:about="https://w3id.org/linkml/local_name_value"/>
+    <owl:DatatypeProperty rdf:about="https://w3id.org/linkml/local_name_value">
+        <rdfs:domain rdf:resource="https://w3id.org/linkml/LocalName"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <obo:IAO_0000115 xml:lang="en">A name assigned to an element in a given ontology.</obo:IAO_0000115>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/linkml/maximum_value -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/linkml/maximum_value">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+        <obo:IAO_0000115 xml:lang="en">For slots with ranges of type number, the value must be equal to or lowe than this</obo:IAO_0000115>
+    </owl:DatatypeProperty>
     
 
 
@@ -611,15 +704,126 @@ I believe time dependency relations (conditions) don&apos;t imply existence by t
     
 
 
+    <!-- https://w3id.org/linkml/minimum_value -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/linkml/minimum_value">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+        <obo:IAO_0000115 xml:lang="en">For slots with ranges of type number, the value must be equal to or higher than this</obo:IAO_0000115>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/linkml/multivalued -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/linkml/multivalued">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <obo:IAO_0000115 xml:lang="en">true means that slot can have more than one value</obo:IAO_0000115>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/linkml/name -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/linkml/name">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <obo:IAO_0000115 xml:lang="en">The unique name of the element within the context of the schema. Name is combined with the default prefix to form the globally unique subject of the target class.</obo:IAO_0000115>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/linkml/pattern -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/linkml/pattern">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <obo:IAO_0000115 xml:lang="en">The string value of the slot must conform to this regular expression</obo:IAO_0000115>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/linkml/permissible_values -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/linkml/permissible_values">
+        <obo:IAO_0000115 xml:lang="en">A list of possible values for a slot range.</obo:IAO_0000115>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/linkml/recommended -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/linkml/recommended">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <obo:IAO_0000115 xml:lang="en">true if this slot is not required, but is recommended.</obo:IAO_0000115>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/linkml/required -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/linkml/required">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <obo:IAO_0000115 xml:lang="en">true means that the slot must be present in the loaded definition.</obo:IAO_0000115>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/linkml/see_also -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/linkml/see_also">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
+        <obo:IAO_0000115 xml:lang="en">A reference.</obo:IAO_0000115>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/linkml/status -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/linkml/status">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
+        <obo:IAO_0000112 xml:lang="en">IAO:0000122 (&apos;ready for release&apos;)</obo:IAO_0000112>
+        <obo:IAO_0000115 xml:lang="en">status of the element.</obo:IAO_0000115>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/linkml/type_uri -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/linkml/type_uri">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
+        <obo:IAO_0000115 xml:lang="en">The uri that defines the possible values for the type definition</obo:IAO_0000115>
+        <rdfs:comment xml:lang="en">URI is typically drawn from the set of URI&apos;s defined in OWL (https://www.w3.org/TR/2012/REC-owl2-syntax-20121211/#Datatype_Maps)</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
     <!-- https://w3id.org/linkml/value -->
 
-    <owl:DatatypeProperty rdf:about="https://w3id.org/linkml/value"/>
+    <owl:DatatypeProperty rdf:about="https://w3id.org/linkml/value">
+        <rdfs:domain rdf:resource="https://w3id.org/linkml/Example"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
     
 
 
     <!-- https://w3id.org/linkml/value_description -->
 
-    <owl:DatatypeProperty rdf:about="https://w3id.org/linkml/value_description"/>
+    <owl:DatatypeProperty rdf:about="https://w3id.org/linkml/value_description">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="https://w3id.org/linkml/Example"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <obo:IAO_0000115 xml:lang="en">Description of what the value is doing.</obo:IAO_0000115>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/linkml/values_from -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/linkml/values_from">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
+        <obo:IAO_0000115 rdf:resource="http://purl.obolibrary.org/obo/genepio/imports/The identifier of a &quot;value set&quot; -- a set of identifiers that form the possible values for the range of a slot"/>
+    </owl:DatatypeProperty>
     
 
 
@@ -12402,6 +12606,35 @@ GENEPIO:0001896 # phone type</obo:GENEPIO_0001763>
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001778">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000106"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002180"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0002468"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/OBI_0001927"/>
+                                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001559"/>
+                            </owl:Restriction>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://www.w3.org/2004/02/skos/core#exactMatch"/>
+                                <owl:hasValue rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0002201"/>
+                            </owl:Restriction>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="https://w3id.org/linkml/type_uri"/>
+                                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                            </owl:Restriction>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="https://w3id.org/linkml/name"/>
+                                <owl:hasValue>PulseNet:Outbreak</owl:hasValue>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:onClass>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000428"/>
         <obo:IAO_0000115 xml:lang="en">The PulseNet Canada Salmonella submission standard details the fields required in a PuseNet Canada pathogen submission report for Salmonella in spreadsheet format</obo:IAO_0000115>
         <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
@@ -22499,8 +22732,8 @@ https://www.ncbi.nlm.nih.gov/genbank/acc_prefix/</linkml:see_also>
         <oboInOwl:hasSynonym xml:lang="en">black tiger shrimp</oboInOwl:hasSynonym>
     </rdf:Description>
     <rdf:Description rdf:about="http://purl.obolibrary.org/obo/FOODON_03530153">
-        <oboInOwl:hasSynonym xml:lang="en">gathered</oboInOwl:hasSynonym>
         <oboInOwl:hasSynonym xml:lang="en">wild</oboInOwl:hasSynonym>
+        <oboInOwl:hasSynonym xml:lang="en">gathered</oboInOwl:hasSynonym>
     </rdf:Description>
     <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0000098">
         <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
@@ -22718,8 +22951,8 @@ https://www.ncbi.nlm.nih.gov/genbank/acc_prefix/</linkml:see_also>
         <obo:GENEPIO_0000006>cfu/mL</obo:GENEPIO_0000006>
     </rdf:Description>
     <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_000546">
-        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000123"/>
         <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
+        <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000123"/>
     </rdf:Description>
     <rdf:Description rdf:about="http://www.ebi.ac.uk/efo/EFO_0000246">
         <oboInOwl:hasDbXref rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://purl.obolibrary.org/obo/PATO_0000011</oboInOwl:hasDbXref>

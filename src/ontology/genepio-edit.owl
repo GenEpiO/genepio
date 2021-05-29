@@ -2007,6 +2007,10 @@ AnnotationAssertion(obo:IAO_0000115 linkml:local_names "An object relation betwe
 #   Data Properties
 ############################
 
+# Data Property: obo:OBI_0002135 (has specified value)
+
+SubDataPropertyOf(obo:OBI_0002135 owl:topDataProperty)
+
 # Data Property: linkml:abstract (linkml:abstract)
 
 AnnotationAssertion(obo:IAO_0000115 linkml:abstract "An abstract class is a high level class or slot that is typically used to group common slots together and cannot be directly instantiated."@en)
@@ -2017,13 +2021,12 @@ DataPropertyRange(linkml:abstract xsd:boolean)
 
 AnnotationAssertion(obo:IAO_0000115 linkml:comments "Notes and comments about an element intended for external consumption."@en)
 SubDataPropertyOf(linkml:comments owl:topDataProperty)
-DataPropertyRange(linkml:comments xsd:string)
 
 # Data Property: linkml:created_on (linkml:created_on)
 
 AnnotationAssertion(obo:IAO_0000115 linkml:created_on "Date/time at which the element was created."@en)
 SubDataPropertyOf(linkml:created_on owl:topDataProperty)
-DataPropertyRange(linkml:created_on xsd:dateTime)
+DataPropertyRange(linkml:created_on DataUnionOf(xsd:date xsd:dateTime xsd:dateTimeStamp))
 
 # Data Property: linkml:data_collection_state (linkml:data_collection_state)
 
@@ -2035,7 +2038,6 @@ SubDataPropertyOf(linkml:data_collection_state owl:topDataProperty)
 
 AnnotationAssertion(obo:IAO_0000115 linkml:description "A description of the element's purpose and use"@en)
 SubDataPropertyOf(linkml:description owl:topDataProperty)
-DataPropertyRange(linkml:description xsd:string)
 
 # Data Property: linkml:exact_mappings (linkml:exact_mappings)
 
@@ -2046,6 +2048,10 @@ SubDataPropertyOf(linkml:exact_mappings owl:topDataProperty)
 
 AnnotationAssertion(obo:IAO_0000115 linkml:from_schema "Id of the schema that defined the element."@en)
 DataPropertyRange(linkml:from_schema xsd:anyURI)
+
+# Data Property: linkml:identifier (linkml:identifier)
+
+SubDataPropertyOf(linkml:identifier owl:topDataProperty)
 
 # Data Property: linkml:imported_from (linkml:imported_from)
 
@@ -2060,23 +2066,31 @@ AnnotationAssertion(obo:IAO_0000117 linkml:local_name_source <http://orcid.org/0
 AnnotationAssertion(odes_field:date linkml:local_name_source "2021-04-26T22:15:07Z"^^xsd:dateTime)
 AnnotationAssertion(<http://purl.obolibrary.org/obo/genepio/imports/temp_import.owl#date> linkml:local_name_source "2021-04-26T22:15:07Z"^^xsd:dateTime)
 AnnotationAssertion(rdfs:label linkml:local_name_source "local_name_source"@en)
+SubDataPropertyOf(linkml:local_name_source owl:topDataProperty)
 DataPropertyDomain(linkml:local_name_source linkml:LocalName)
 DataPropertyRange(linkml:local_name_source xsd:NCName)
 
 # Data Property: linkml:local_name_value (linkml:local_name_value)
 
 AnnotationAssertion(obo:IAO_0000115 linkml:local_name_value "A name assigned to an element in a given ontology."@en)
+SubDataPropertyOf(linkml:local_name_value owl:topDataProperty)
 DataPropertyDomain(linkml:local_name_value linkml:LocalName)
 DataPropertyRange(linkml:local_name_value xsd:string)
 
 # Data Property: linkml:maximum_value (linkml:maximum_value)
 
 AnnotationAssertion(obo:IAO_0000115 linkml:maximum_value "For slots with ranges of type number, the value must be equal to or lowe than this"@en)
+SubDataPropertyOf(linkml:maximum_value owl:topDataProperty)
 DataPropertyRange(linkml:maximum_value xsd:int)
+
+# Data Property: linkml:meaning (linkml:meaning)
+
+SubDataPropertyOf(linkml:meaning owl:topDataProperty)
 
 # Data Property: linkml:minimum_value (linkml:minimum_value)
 
 AnnotationAssertion(obo:IAO_0000115 linkml:minimum_value "For slots with ranges of type number, the value must be equal to or higher than this"@en)
+SubDataPropertyOf(linkml:minimum_value owl:topDataProperty)
 DataPropertyRange(linkml:minimum_value xsd:int)
 
 # Data Property: linkml:multivalued (linkml:multivalued)
@@ -2088,20 +2102,24 @@ DataPropertyRange(linkml:multivalued xsd:boolean)
 # Data Property: linkml:name (linkml:name)
 
 AnnotationAssertion(obo:IAO_0000115 linkml:name "The unique name of the element within the context of the schema. Name is combined with the default prefix to form the globally unique subject of the target class."@en)
+SubDataPropertyOf(linkml:name owl:topDataProperty)
 DataPropertyRange(linkml:name xsd:string)
 
 # Data Property: linkml:pattern (linkml:pattern)
 
 AnnotationAssertion(obo:IAO_0000115 linkml:pattern "The string value of the slot must conform to this regular expression"@en)
+SubDataPropertyOf(linkml:pattern owl:topDataProperty)
 DataPropertyRange(linkml:pattern xsd:string)
 
 # Data Property: linkml:permissible_values (linkml:permissible_values)
 
 AnnotationAssertion(obo:IAO_0000115 linkml:permissible_values "A list of possible values for a slot range."@en)
+SubDataPropertyOf(linkml:permissible_values owl:topDataProperty)
 
 # Data Property: linkml:recommended (linkml:recommended)
 
 AnnotationAssertion(obo:IAO_0000115 linkml:recommended "true if this slot is not required, but is recommended."@en)
+SubDataPropertyOf(linkml:recommended owl:topDataProperty)
 DataPropertyRange(linkml:recommended xsd:boolean)
 
 # Data Property: linkml:required (linkml:required)
@@ -2120,18 +2138,19 @@ DataPropertyRange(linkml:see_also xsd:anyURI)
 
 AnnotationAssertion(obo:IAO_0000112 linkml:status "IAO:0000122 ('ready for release')"@en)
 AnnotationAssertion(obo:IAO_0000115 linkml:status "status of the element."@en)
+SubDataPropertyOf(linkml:status owl:topDataProperty)
 DataPropertyRange(linkml:status xsd:anyURI)
 
 # Data Property: linkml:type_uri (linkml:type_uri)
 
 AnnotationAssertion(obo:IAO_0000115 linkml:type_uri "The uri that defines the possible values for the type definition"@en)
 AnnotationAssertion(rdfs:comment linkml:type_uri "URI is typically drawn from the set of URI's defined in OWL (https://www.w3.org/TR/2012/REC-owl2-syntax-20121211/#Datatype_Maps)"@en)
-DataPropertyRange(linkml:type_uri xsd:anyURI)
+SubDataPropertyOf(linkml:type_uri owl:topDataProperty)
 
 # Data Property: linkml:value (linkml:value)
 
+SubDataPropertyOf(linkml:value owl:topDataProperty)
 DataPropertyDomain(linkml:value linkml:Example)
-DataPropertyRange(linkml:value xsd:string)
 
 # Data Property: linkml:value_description (linkml:value_description)
 
@@ -2143,6 +2162,7 @@ DataPropertyRange(linkml:value_description xsd:string)
 # Data Property: linkml:values_from (linkml:values_from)
 
 AnnotationAssertion(obo:IAO_0000115 linkml:values_from <The identifier of a "value set" -- a set of identifiers that form the possible values for the range of a slot>)
+SubDataPropertyOf(linkml:values_from owl:topDataProperty)
 DataPropertyRange(linkml:values_from xsd:anyURI)
 
 
@@ -2210,7 +2230,7 @@ SubClassOf(obo:APOLLO_SV_00000021 obo:STATO_0000047)
 
 SubClassOf(obo:APOLLO_SV_00000022 obo:STATO_0000047)
 
-# Class: obo:APOLLO_SV_00000031 (simulation of population)
+# Class: obo:APOLLO_SV_00000031 (simulated population)
 
 SubClassOf(obo:APOLLO_SV_00000031 obo:IAO_0000027)
 
@@ -13796,7 +13816,7 @@ DataPropertyAssertion(linkml:comments obo:GENEPIO_0001133 "Guidance: Store the u
 DataPropertyAssertion(linkml:created_on obo:GENEPIO_0001133 "2021-04-27T03:38:14Z")
 DataPropertyAssertion(linkml:description obo:GENEPIO_0001133 "The INSDC accession number assigned to the umbrella BioProject for the Canadian SARS-CoV-2 sequencing effort."@en)
 DataPropertyAssertion(linkml:pattern obo:GENEPIO_0001133 "UPPER")
-DataPropertyAssertion(linkml:see_also obo:GENEPIO_0001133 "https://www.ncbi.nlm.nih.gov/books/NBK54015/")
+DataPropertyAssertion(linkml:see_also obo:GENEPIO_0001133 "https://www.ncbi.nlm.nih.gov/books/NBK54015/"^^xsd:anyURI)
 DataPropertyAssertion(linkml:type_uri obo:GENEPIO_0001133 "select")
 
 # Individual: obo:GENEPIO_0001134 (CanCOGeN:bioproject accession example)
@@ -13829,7 +13849,7 @@ ObjectPropertyAssertion(linkml:local_names obo:GENEPIO_0001136 obo:GENEPIO_00011
 DataPropertyAssertion(linkml:comments obo:GENEPIO_0001136 "Guidance: Store the BioProject accession number. BioProjects are an organizing tool that links together raw sequence data, assemblies, and their associated metadata. Each province will be assigned a different bioproject accession number by the National Microbiology Lab. A valid NCBI BioProject accession has prefix PRJN e.g., PRJNA12345, and is created once at the beginning of a new sequencing project."@en)
 DataPropertyAssertion(linkml:description obo:GENEPIO_0001136 "The INSDC accession number of the BioProject(s) to which the BioSample belongs."@en)
 DataPropertyAssertion(linkml:pattern obo:GENEPIO_0001136 "UPPER")
-DataPropertyAssertion(linkml:see_also obo:GENEPIO_0001136 "https://www.ncbi.nlm.nih.gov/bioproject/")
+DataPropertyAssertion(linkml:see_also obo:GENEPIO_0001136 "https://www.ncbi.nlm.nih.gov/bioproject/"^^xsd:anyURI)
 DataPropertyAssertion(linkml:type_uri obo:GENEPIO_0001136 "xs:token")
 
 # Individual: obo:GENEPIO_0001137 (CanCOGeN:biosample accession example)
@@ -13862,7 +13882,7 @@ DataPropertyAssertion(linkml:comments obo:GENEPIO_0001139 "Guidance: Store the a
 DataPropertyAssertion(linkml:created_on obo:GENEPIO_0001139 "2021-04-27T04:06:03Z")
 DataPropertyAssertion(linkml:description obo:GENEPIO_0001139 "The identifier assigned to a BioSample in INSDC archives."@en)
 DataPropertyAssertion(linkml:pattern obo:GENEPIO_0001139 "UPPER")
-DataPropertyAssertion(linkml:see_also obo:GENEPIO_0001139 "https://www.ncbi.nlm.nih.gov/biosample")
+DataPropertyAssertion(linkml:see_also obo:GENEPIO_0001139 "https://www.ncbi.nlm.nih.gov/biosample"^^xsd:anyURI)
 DataPropertyAssertion(linkml:type_uri obo:GENEPIO_0001139 "xs:token")
 
 # Individual: obo:GENEPIO_0001140 (CanCOGeN:SRA accession example)
@@ -13895,7 +13915,7 @@ DataPropertyAssertion(linkml:comments obo:GENEPIO_0001142 "Guidance: Store the a
 DataPropertyAssertion(linkml:created_on obo:GENEPIO_0001142 "2021-04-27T04:19:10Z")
 DataPropertyAssertion(linkml:description obo:GENEPIO_0001142 "The Sequence Read Archive (SRA) identifier linking raw read data, methodological metadata and quality control metrics submitted to the INSDC."@en)
 DataPropertyAssertion(linkml:pattern obo:GENEPIO_0001142 "UPPER")
-DataPropertyAssertion(linkml:see_also obo:GENEPIO_0001142 "https://www.ncbi.nlm.nih.gov/sra")
+DataPropertyAssertion(linkml:see_also obo:GENEPIO_0001142 "https://www.ncbi.nlm.nih.gov/sra"^^xsd:anyURI)
 DataPropertyAssertion(linkml:type_uri obo:GENEPIO_0001142 "xs:token")
 
 # Individual: obo:GENEPIO_0001143 (CanCOGeN:GenBank accession example)
@@ -13928,8 +13948,8 @@ DataPropertyAssertion(linkml:comments obo:GENEPIO_0001145 "Guidance: Store the a
 DataPropertyAssertion(linkml:created_on obo:GENEPIO_0001145 "2021-04-27T04:27:48Z")
 DataPropertyAssertion(linkml:description obo:GENEPIO_0001145 "The GenBank identifier assigned to the sequence in the INSDC archives."@en)
 DataPropertyAssertion(linkml:pattern obo:GENEPIO_0001145 "UPPER")
-DataPropertyAssertion(linkml:see_also obo:GENEPIO_0001145 "https://www.ncbi.nlm.nih.gov/genbank/,
-https://www.ncbi.nlm.nih.gov/genbank/acc_prefix/")
+DataPropertyAssertion(linkml:see_also obo:GENEPIO_0001145 "https://www.ncbi.nlm.nih.gov/genbank/"^^xsd:anyURI)
+DataPropertyAssertion(linkml:see_also obo:GENEPIO_0001145 "https://www.ncbi.nlm.nih.gov/genbank/acc_prefix/"^^xsd:anyURI)
 DataPropertyAssertion(linkml:type_uri obo:GENEPIO_0001145 "xs:token")
 
 # Individual: obo:GENEPIO_0001146 (CanCOGeN:GISAID accession example)
@@ -13952,7 +13972,7 @@ DataPropertyAssertion(linkml:comments obo:GENEPIO_0001147 "Guidance: Store the a
 DataPropertyAssertion(linkml:created_on obo:GENEPIO_0001147 "2021-04-27T04:36:10Z")
 DataPropertyAssertion(linkml:description obo:GENEPIO_0001147 "The GISAID accession number assigned to the sequence."@en)
 DataPropertyAssertion(linkml:pattern obo:GENEPIO_0001147 "UPPER")
-DataPropertyAssertion(linkml:see_also obo:GENEPIO_0001147 "https://www.gisaid.org/help/publish-with-data-from-gisaid/")
+DataPropertyAssertion(linkml:see_also obo:GENEPIO_0001147 "https://www.gisaid.org/help/publish-with-data-from-gisaid/"^^xsd:anyURI)
 DataPropertyAssertion(linkml:type_uri obo:GENEPIO_0001147 "xs:token")
 
 # Individual: obo:GENEPIO_0001148 (CanCOGeN:third party lab sample ID example)
@@ -13974,7 +13994,7 @@ ObjectPropertyAssertion(linkml:examples obo:GENEPIO_0001149 obo:GENEPIO_0001148)
 DataPropertyAssertion(linkml:comments obo:GENEPIO_0001149 "Guidance: Store the identifier supplied by the third party for the sample."@en)
 DataPropertyAssertion(linkml:created_on obo:GENEPIO_0001149 "2021-04-28T18:51:40Z")
 DataPropertyAssertion(linkml:description obo:GENEPIO_0001149 "The identifier assigned to a sample by a third party service provider."@en)
-DataPropertyAssertion(linkml:see_also obo:GENEPIO_0001149 "https://www.switchhealth.ca/en/")
+DataPropertyAssertion(linkml:see_also obo:GENEPIO_0001149 "https://www.switchhealth.ca/en/"^^xsd:anyURI)
 DataPropertyAssertion(linkml:type_uri obo:GENEPIO_0001149 "xs:token")
 
 # Individual: obo:GENEPIO_0001153 (CanCOGeN:sample collected by)
@@ -14175,7 +14195,7 @@ AnnotationAssertion(rdfs:label obo:GENEPIO_0001181 "CanCOGeN:geo_loc_name (count
 ClassAssertion(obo:GENEPIO_0001150 obo:GENEPIO_0001181)
 ObjectPropertyAssertion(linkml:examples obo:GENEPIO_0001181 obo:GENEPIO_0001180)
 DataPropertyAssertion(linkml:comments obo:GENEPIO_0001181 "Guidance: Provide the country name from the controlled vocabulary provided."@en)
-DataPropertyAssertion(linkml:created_on obo:GENEPIO_0001181 "2021-05-05T20:00:35Z")
+DataPropertyAssertion(linkml:created_on obo:GENEPIO_0001181 "2021-05-05T20:00:35Z"^^xsd:dateTime)
 DataPropertyAssertion(linkml:data_collection_state obo:GENEPIO_0001181 "Not Applicable; Missing; Not Collected; Not Provided; Restricted Access"@en)
 DataPropertyAssertion(linkml:description obo:GENEPIO_0001181 "The country where the sample was collected."@en)
 DataPropertyAssertion(linkml:required obo:GENEPIO_0001181 "true"^^xsd:boolean)
@@ -14198,7 +14218,7 @@ AnnotationAssertion(rdfs:label obo:GENEPIO_0001185 "CanCOGeN:geo_loc_name (state
 ClassAssertion(obo:GENEPIO_0001150 obo:GENEPIO_0001185)
 ObjectPropertyAssertion(linkml:examples obo:GENEPIO_0001185 obo:GENEPIO_0001184)
 DataPropertyAssertion(linkml:comments obo:GENEPIO_0001185 "Guidance: Provide the province/territory name from the controlled vocabulary provided."@en)
-DataPropertyAssertion(linkml:created_on obo:GENEPIO_0001185 "2021-05-05T20:05:18Z"@en)
+DataPropertyAssertion(linkml:created_on obo:GENEPIO_0001185 "2021-05-05T20:05:18Z"^^xsd:dateTime)
 DataPropertyAssertion(linkml:data_collection_state obo:GENEPIO_0001185 "Not Applicable; Missing; Not Collected; Not Provided; Restricted Access"@en)
 DataPropertyAssertion(linkml:description obo:GENEPIO_0001185 "The province/territory where the sample was collected."@en)
 DataPropertyAssertion(linkml:required obo:GENEPIO_0001185 "true"^^xsd:boolean)
@@ -14221,9 +14241,9 @@ AnnotationAssertion(rdfs:label obo:GENEPIO_0001189 "CanCOGeN:geo_loc_name (city)
 ClassAssertion(obo:GENEPIO_0001150 obo:GENEPIO_0001189)
 ObjectPropertyAssertion(linkml:examples obo:GENEPIO_0001189 obo:GENEPIO_0001188)
 DataPropertyAssertion(linkml:comments obo:GENEPIO_0001189 "Guidance: Provide the city name. Use this look-up service to identify the standardized term: https://www.ebi.ac.uk/ols/ontologies/gaz"@en)
-DataPropertyAssertion(linkml:created_on obo:GENEPIO_0001189 "2021-05-05T20:09:29Z")
+DataPropertyAssertion(linkml:created_on obo:GENEPIO_0001189 "2021-05-05T20:09:29Z"^^xsd:dateTime)
 DataPropertyAssertion(linkml:description obo:GENEPIO_0001189 "The city where the sample was collected."@en)
-DataPropertyAssertion(linkml:type_uri obo:GENEPIO_0001189 "xs:token"@en)
+DataPropertyAssertion(linkml:type_uri obo:GENEPIO_0001189 "xs:token")
 
 # Individual: obo:GENEPIO_0001190 (CanCOGeN:organism example)
 

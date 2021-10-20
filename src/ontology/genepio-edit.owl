@@ -2439,7 +2439,7 @@ SubClassOf(obo:APOLLO_SV_00000021 obo:STATO_0000047)
 
 SubClassOf(obo:APOLLO_SV_00000022 obo:STATO_0000047)
 
-# Class: obo:APOLLO_SV_00000031 (simulated population)
+# Class: obo:APOLLO_SV_00000031 (simulation of population)
 
 SubClassOf(obo:APOLLO_SV_00000031 obo:IAO_0000027)
 
@@ -8321,10 +8321,11 @@ SubClassOf(obo:GENEPIO_0001645 obo:GENEPIO_0001607)
 AnnotationAssertion(obo:GENEPIO_0000005 obo:GENEPIO_0001646 "GenEpiO"@en)
 AnnotationAssertion(obo:IAO_0000114 obo:GENEPIO_0001646 obo:IAO_0000428)
 AnnotationAssertion(obo:IAO_0000115 obo:GENEPIO_0001646 "A data protection role is a role (or user permission) that a user has with respect to particular data."@en)
-AnnotationAssertion(obo:IAO_0000116 obo:GENEPIO_0001646 "A data server may be able to provide a protected(modified) dataset with metadata ndicating what parts have a protection role with respect to the user requesting this information. A data protection role would be inherited from a user's relation to an entitiy to the entity's components or subclasses"@en)
+AnnotationAssertion(obo:IAO_0000116 obo:GENEPIO_0001646 "A data server may be able to provide a protected(modified) dataset with metadata indicating what parts have a protection role with respect to the user requesting this information. A data protection role would be inherited from a user's relation to an entitiy to the entity's components or subclasses."@en)
 AnnotationAssertion(obo:IAO_0000117 obo:GENEPIO_0001646 "Damion Dooley"@en)
 AnnotationAssertion(rdfs:label obo:GENEPIO_0001646 "data protection role"@en)
-SubClassOf(obo:GENEPIO_0001646 obo:GENEPIO_0002029)
+AnnotationAssertion(rdfs:seeAlso obo:GENEPIO_0001646 <https://community.i2b2.org/wiki/display/ServerSideDesign/DATA+PERMISSION>)
+SubClassOf(obo:GENEPIO_0001646 obo:BFO_0000023)
 
 # Class: obo:GENEPIO_0001647 (original submission)
 
@@ -9371,9 +9372,7 @@ SubClassOf(obo:GENEPIO_0001791 ObjectSomeValuesFrom(obo:OBI_0001927 obo:GENEPIO_
 # Class: obo:GENEPIO_0001792 (data obfuscated)
 
 AnnotationAssertion(obo:IAO_0000114 obo:GENEPIO_0001792 obo:IAO_0000428)
-AnnotationAssertion(obo:IAO_0000115 obo:GENEPIO_0001792 "The 'data obfuscated' role between a user and given data entails that the user is authorized to see particular fields that have been transformed consistently such that statistics performed on those fields would yeild the same results as statistics applied to the un-obfuscated data. The purpose of obfuscation is to prevent related individuals or commercial organizations from being identified.
-
-Aggregated results are by nature obfuscated (example: patient count)."@en)
+AnnotationAssertion(obo:IAO_0000115 obo:GENEPIO_0001792 "The 'data obfuscated' role between a user and given data entails that the user is authorized to see particular fields that have been transformed consistently such that statistics performed on those fields would yeild the same results as statistics applied to the un-obfuscated data. The purpose of obfuscation is to prevent related individuals or organizations from being identified."@en)
 AnnotationAssertion(obo:IAO_0000117 obo:GENEPIO_0001792 "Damion Dooley"@en)
 AnnotationAssertion(rdfs:label obo:GENEPIO_0001792 "data obfuscated"@en)
 AnnotationAssertion(rdfs:seeAlso obo:GENEPIO_0001792 "https://www.hhs.gov/hipaa/for-professionals/privacy/special-topics/de-identification/"^^xsd:anyURI)
@@ -9891,16 +9890,12 @@ SubClassOf(Annotation(rdfs:label "discharged"@en) obo:GENEPIO_0001849 obo:GENEPI
 # Class: obo:GENEPIO_0001850 (datum status)
 
 AnnotationAssertion(obo:IAO_0000114 obo:GENEPIO_0001850 obo:IAO_0000428)
-AnnotationAssertion(obo:IAO_0000115 obo:GENEPIO_0001850 "A datum status is the state of a measurable datum - whether it has been collected or determined, etc. - at some point in time (by default, the last known state) during a measurement process."@en)
+AnnotationAssertion(obo:IAO_0000115 obo:GENEPIO_0001850 "A data item which is about the collection state of a datum at some point in time."@en)
 AnnotationAssertion(obo:IAO_0000116 obo:GENEPIO_0001850 "Damion Dooley note: We'll need to incorporate NIAID GSCID-BRC Sample data standards mention:
 Unknown/Not Applicable/Censored Allowed
 Unknown/not applicable/not available/ available upon request"@en)
 AnnotationAssertion(obo:IAO_0000117 obo:GENEPIO_0001850 "Damion Dooley"@en)
-AnnotationAssertion(rdfs:comment obo:GENEPIO_0001850 "A given datum's status value is metadata, i.e. a statement about a particular datum, usually in the case where no actual data entry or categorical choice for that datum has been made.
-
-A datum's information privacy constraints can be defined mainly by way of the \"data protection item\".
-
-A datum status's given states (missing, recorded, etc.) may be accompanied by values that they are represented as in 3rd party databases by using the \"has database crossreference\" hasDbXref relation, e.g. \"hasDbXref 'NCBI Biosample: 'not collected'\""@en)
+AnnotationAssertion(rdfs:comment obo:GENEPIO_0001850 "A given datum's datum status value is metadata, i.e. a statement about a particular datum, often when no actual data entry or categorical choice for that datum has been made."@en)
 AnnotationAssertion(rdfs:label obo:GENEPIO_0001850 "datum status"@en)
 AnnotationAssertion(rdfs:seeAlso obo:GENEPIO_0001850 "INSDC missing value reporting terms:
 http://www.ebi.ac.uk/ena/about/missing-values-reporting"@en)
@@ -9909,8 +9904,9 @@ SubClassOf(obo:GENEPIO_0001850 obo:IAO_0000027)
 # Class: obo:GENEPIO_0001851 (recorded)
 
 AnnotationAssertion(obo:IAO_0000114 obo:GENEPIO_0001851 obo:IAO_0000428)
-AnnotationAssertion(obo:IAO_0000115 obo:GENEPIO_0001851 "Acategorical choice indicating that a datum is available for retrieval. Theoretically any datum that has a recorded value has this for its metadata \"datum status\""@en)
+AnnotationAssertion(obo:IAO_0000115 obo:GENEPIO_0001851 "A categorical choice indicating that a datum is available for retrieval."@en)
 AnnotationAssertion(obo:IAO_0000117 obo:GENEPIO_0001851 "Damion Dooley"@en)
+AnnotationAssertion(rdfs:comment obo:GENEPIO_0001851 "In theory any datum that has a recorded value has 'recorded' for its datum status."@en)
 AnnotationAssertion(rdfs:label obo:GENEPIO_0001851 "recorded"@en)
 SubClassOf(obo:GENEPIO_0001851 obo:GENEPIO_0001850)
 
@@ -12443,13 +12439,11 @@ AnnotationAssertion(dc11:date obo:GENEPIO_0002684 "2020-04-24T22:55:31Z"^^xsd:da
 AnnotationAssertion(rdfs:label obo:GENEPIO_0002684 "SOLiD sequening platform"@en)
 SubClassOf(obo:GENEPIO_0002684 obo:GENEPIO_0000071)
 
-# Class: obo:GENEPIO_0002713 (drag swab)
+# Class: obo:GENEPIO_0002713 (obsolete: drag swab)
 
-AnnotationAssertion(obo:IAO_0000114 obo:GENEPIO_0002713 obo:IAO_0000428)
-AnnotationAssertion(obo:IAO_0000117 obo:GENEPIO_0002713 "Damion Dooley"^^xsd:string)
-AnnotationAssertion(dc11:date obo:GENEPIO_0002713 "2019-06-27T23:51:58Z"^^xsd:dateTime)
-AnnotationAssertion(rdfs:label obo:GENEPIO_0002713 "drag swab"@en)
-SubClassOf(obo:GENEPIO_0002713 obo:NCIT_C17627)
+AnnotationAssertion(obo:IAO_0100001 obo:GENEPIO_0002713 obo:OBI_0002822)
+AnnotationAssertion(rdfs:label obo:GENEPIO_0002713 "obsolete: drag swab"@en)
+AnnotationAssertion(owl:deprecated obo:GENEPIO_0002713 "true"^^xsd:boolean)
 
 # Class: obo:GENEPIO_0002749 (rinse)
 
@@ -12470,14 +12464,11 @@ AnnotationAssertion(rdfs:label obo:GENEPIO_0002750 "animal rinse"@en)
 EquivalentClasses(obo:GENEPIO_0002750 ObjectIntersectionOf(obo:GENEPIO_0001636 obo:GENEPIO_0002749))
 SubClassOf(obo:GENEPIO_0002750 obo:GENEPIO_0002749)
 
-# Class: obo:GENEPIO_0003358 (surface wipe)
+# Class: obo:GENEPIO_0003358 (obsolete: surface wipe)
 
-AnnotationAssertion(obo:IAO_0000114 obo:GENEPIO_0003358 obo:IAO_0000122)
-AnnotationAssertion(obo:IAO_0000115 obo:GENEPIO_0003358 "A surface wipe is a type of swab designed to collect specimen material from some envirronmental surface using a fabric or other material."@en)
-AnnotationAssertion(obo:IAO_0000117 obo:GENEPIO_0003358 "Damion Dooley"^^xsd:string)
-AnnotationAssertion(dc11:date obo:GENEPIO_0003358 "2019-06-28T19:42:45Z"^^xsd:dateTime)
-AnnotationAssertion(rdfs:label obo:GENEPIO_0003358 "surface wipe"@en)
-SubClassOf(obo:GENEPIO_0003358 obo:NCIT_C17627)
+AnnotationAssertion(obo:IAO_0100001 obo:GENEPIO_0003358 obo:OBI_0002824)
+AnnotationAssertion(rdfs:label obo:GENEPIO_0003358 "obsolete: surface wipe"@en)
+AnnotationAssertion(owl:deprecated obo:GENEPIO_0003358 "true"^^xsd:boolean)
 
 # Class: obo:GEO_000000788 (geodetic datum)
 
@@ -13309,6 +13300,14 @@ SubClassOf(obo:OBI_0002048 obo:GENEPIO_0001939)
 # Class: obo:OBI_0002049 (Illumina HiSeq 4000)
 
 SubClassOf(obo:OBI_0002049 obo:GENEPIO_0001939)
+
+# Class: obo:OBI_0002822 (drag swab)
+
+SubClassOf(obo:OBI_0002822 obo:NCIT_C17627)
+
+# Class: obo:OBI_0002824 (surface wipe)
+
+SubClassOf(obo:OBI_0002824 obo:NCIT_C17627)
 
 # Class: obo:OBI_0100051 (specimen)
 

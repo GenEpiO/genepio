@@ -66,8 +66,8 @@
         <obo:IAO_0000117 xml:lang="en">PERSON:Bill Bug</obo:IAO_0000117>
         <obo:IAO_0000117 xml:lang="en">PERSON:Melanie Courtot</obo:IAO_0000117>
         <obo:IAO_0000119 xml:lang="en">OBI_0000281</obo:IAO_0000119>
+        <rdfs:label>has curation status</rdfs:label>
         <rdfs:label xml:lang="en">has curation status</rdfs:label>
-        <rdfs:label rdf:datatype="&xsd;string">has curation status</rdfs:label>
     </owl:AnnotationProperty> -->
     
 
@@ -115,17 +115,25 @@ We also have the outstanding issue of how to aim different definitions to differ
 
     <!-- http://purl.obolibrary.org/obo/IAO_0000116 -->
 
-    <!-- <owl:AnnotationProperty rdf:about="&obo;IAO_0000116"/> -->
+    <!-- <owl:AnnotationProperty rdf:about="&obo;IAO_0000116">
+        <obo:IAO_0000114 rdf:resource="&obo;IAO_0000122"/>
+        <oboInOwl:hasDbXref>IAO:0000116</oboInOwl:hasDbXref>
+        <oboInOwl:hasOBONamespace>uberon</oboInOwl:hasOBONamespace>
+        <oboInOwl:id>editor_note</oboInOwl:id>
+        <oboInOwl:is_metadata_tag rdf:datatype="&xsd;boolean">true</oboInOwl:is_metadata_tag>
+        <oboInOwl:shorthand>editor_note</oboInOwl:shorthand>
+        <rdfs:isDefinedBy rdf:resource="&obo;iao.owl"/>
+        <rdfs:label>editor note</rdfs:label>
+        <rdfs:label xml:lang="en">editor note</rdfs:label>
+    </owl:AnnotationProperty> -->
     
 
 
     <!-- http://purl.obolibrary.org/obo/IAO_0000117 -->
 
     <!-- <owl:AnnotationProperty rdf:about="&obo;IAO_0000117">
-        <obo:IAO_0000111 xml:lang="en">definition editor</obo:IAO_0000111>
         <obo:IAO_0000111 xml:lang="en">term editor</obo:IAO_0000111>
         <obo:IAO_0000114 rdf:resource="&obo;IAO_0000122"/>
-        <obo:IAO_0000115 xml:lang="en">Name of editor entering the definition in the file. The definition editor is a point of contact for information regarding the term. The definition editor may be, but is not always, the author of the definition, which may have been worked upon by several people</obo:IAO_0000115>
         <obo:IAO_0000115 xml:lang="en">Name of editor entering the term in the file. The term editor is a point of contact for information regarding the term. The term editor may be, but is not always, the author of the definition, which may have been worked upon by several people</obo:IAO_0000115>
         <obo:IAO_0000116 xml:lang="en">20110707, MC: label update to term editor and definition modified accordingly. See https://github.com/information-artifact-ontology/IAO/issues/115.</obo:IAO_0000116>
         <obo:IAO_0000117 xml:lang="en">PERSON:Daniel Schober</obo:IAO_0000117>
@@ -166,6 +174,12 @@ We also have the outstanding issue of how to aim different definitions to differ
     
 
 
+    <!-- http://purl.obolibrary.org/obo/definition -->
+
+    <!-- <owl:AnnotationProperty rdf:about="&obo;definition"/> -->
+    
+
+
     <!-- http://www.geneontology.org/formats/oboInOwl#hasAlternativeId -->
 
     <!-- <owl:AnnotationProperty rdf:about="&oboInOwl;hasAlternativeId">
@@ -185,6 +199,7 @@ We also have the outstanding issue of how to aim different definitions to differ
     <!-- http://www.geneontology.org/formats/oboInOwl#hasDbXref -->
 
     <!-- <owl:AnnotationProperty rdf:about="&oboInOwl;hasDbXref">
+        <rdfs:isDefinedBy rdf:resource="http://www.geneontology.org/formats/oboinowl.owl"/>
         <rdfs:label rdf:datatype="&xsd;string">database_cross_reference</rdfs:label>
     </owl:AnnotationProperty> -->
     
@@ -197,7 +212,6 @@ We also have the outstanding issue of how to aim different definitions to differ
         <obo:IAO_0000115 rdf:datatype="&xsd;string">An alternative label for a given entity such as a commonly used abbreviation or synonym. </obo:IAO_0000115>
         <oboInOwl:hasExactSynonym>FULL_SYN</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym>Synonym with Source Data</oboInOwl:hasExactSynonym>
-        <rdfs:label rdf:datatype="&xsd;string">alternative_term</rdfs:label>
         <rdfs:label rdf:datatype="&xsd;string">has exact synonym</rdfs:label>
         <rdfs:label rdf:datatype="&xsd;string">has_exact_synonym</rdfs:label>
     </owl:AnnotationProperty> -->
@@ -212,11 +226,37 @@ We also have the outstanding issue of how to aim different definitions to differ
     
 
 
+    <!-- http://www.geneontology.org/formats/oboInOwl#hasOBONamespace -->
+
+    <!-- <owl:AnnotationProperty rdf:about="&oboInOwl;hasOBONamespace">
+        <rdfs:label>has_obo_namespace</rdfs:label>
+    </owl:AnnotationProperty> -->
+    
+
+
+    <!-- http://www.geneontology.org/formats/oboInOwl#id -->
+
+    <!-- <owl:AnnotationProperty rdf:about="&oboInOwl;id"/> -->
+    
+
+
     <!-- http://www.geneontology.org/formats/oboInOwl#inSubset -->
 
     <!-- <owl:AnnotationProperty rdf:about="&oboInOwl;inSubset">
         <rdfs:label rdf:datatype="&xsd;string">in_subset</rdfs:label>
     </owl:AnnotationProperty> -->
+    
+
+
+    <!-- http://www.geneontology.org/formats/oboInOwl#is_metadata_tag -->
+
+    <!-- <owl:AnnotationProperty rdf:about="&oboInOwl;is_metadata_tag"/> -->
+    
+
+
+    <!-- http://www.geneontology.org/formats/oboInOwl#shorthand -->
+
+    <!-- <owl:AnnotationProperty rdf:about="&oboInOwl;shorthand"/> -->
     
 
 
@@ -236,6 +276,7 @@ We also have the outstanding issue of how to aim different definitions to differ
 
     <!-- <owl:AnnotationProperty rdf:about="&rdfs;label">
         <obo:IAO_0000111>label</obo:IAO_0000111>
+        <rdfs:isDefinedBy rdf:resource="http://www.w3.org/2000/01/rdf-schema.owl"/>
         <rdfs:label>label</rdfs:label>
     </owl:AnnotationProperty> -->
     
@@ -249,6 +290,15 @@ We also have the outstanding issue of how to aim different definitions to differ
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/HANCESTRO_0308 -->
+
+    <owl:ObjectProperty rdf:about="&obo;HANCESTRO_0308">
+        <obo:IAO_0000412 rdf:resource="&obo;hancestro.owl"/>
+        <rdfs:label xml:lang="en">hasCountryOfOrigin</rdfs:label>
+    </owl:ObjectProperty>
     
 
 
@@ -410,7 +460,6 @@ Any ideas?  I’ve considered and rejected allowing individual organisms to be f
     <!-- http://purl.obolibrary.org/obo/APOLLO_SV_00000033 -->
 
     <owl:Class rdf:about="&obo;APOLLO_SV_00000033">
-        <rdfs:subClassOf rdf:resource="&obo;OBI_0000011"/>
         <obo:IAO_0000115 xml:lang="en">The planned process of finding the number of elements in a finite set of objects.</obo:IAO_0000115>
         <obo:IAO_0000117>Mathias Brochhausen</obo:IAO_0000117>
         <obo:IAO_0000119>http://en.wikipedia.org/wiki/Counting</obo:IAO_0000119>
@@ -1281,6 +1330,7 @@ Any ideas?  I’ve considered and rejected allowing individual organisms to be f
 
     <owl:Class rdf:about="&obo;BFO_0000001">
         <obo:IAO_0000412 rdf:resource="&obo;apollo_sv.owl"/>
+        <obo:IAO_0000412 rdf:resource="&obo;hp.owl"/>
         <rdfs:label xml:lang="en">entity</rdfs:label>
     </owl:Class>
     
@@ -1291,35 +1341,8 @@ Any ideas?  I’ve considered and rejected allowing individual organisms to be f
     <owl:Class rdf:about="&obo;BFO_0000002">
         <rdfs:subClassOf rdf:resource="&obo;BFO_0000001"/>
         <obo:IAO_0000115 xml:lang="en">An entity that exists in full at any time in which it exists at all, persists through time while maintaining its identity and has no temporal parts.</obo:IAO_0000115>
-        <obo:IAO_0000412 rdf:resource="&obo;apollo_sv.owl"/>
         <obo:IAO_0000412 rdf:resource="&obo;hp.owl"/>
-        <obo:IAO_0000412 rdf:resource="&obo;pato.owl"/>
-        <obo:IAO_0000412 rdf:resource="&obo;po.owl"/>
         <rdfs:label xml:lang="en">continuant</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/BFO_0000003 -->
-
-    <owl:Class rdf:about="&obo;BFO_0000003">
-        <rdfs:subClassOf rdf:resource="&obo;BFO_0000001"/>
-        <obo:IAO_0000115 xml:lang="en">An entity that has temporal parts and that happens, unfolds or develops through time.</obo:IAO_0000115>
-        <obo:IAO_0000412 rdf:resource="&obo;apollo_sv.owl"/>
-        <rdfs:label xml:lang="en">occurrent</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/BFO_0000004 -->
-
-    <owl:Class rdf:about="&obo;BFO_0000004">
-        <rdfs:subClassOf rdf:resource="&obo;BFO_0000002"/>
-        <obo:IAO_0000115 xml:lang="en">A continuant that is a bearer of quality and realizable entity entities, in which other entities inhere and which itself cannot inhere in anything.</obo:IAO_0000115>
-        <obo:IAO_0000115 xml:lang="en">b is an independent continuant = Def. b is a continuant which is such that there is no c and no t such that b s-depends_on c at t. (axiom label in BFO2 Reference: [017-002])</obo:IAO_0000115>
-        <obo:IAO_0000412 rdf:resource="&obo;apollo_sv.owl"/>
-        <obo:IAO_0000412 rdf:resource="&obo;po.owl"/>
-        <rdfs:label xml:lang="en">independent continuant</rdfs:label>
     </owl:Class>
     
 
@@ -1327,7 +1350,6 @@ Any ideas?  I’ve considered and rejected allowing individual organisms to be f
     <!-- http://purl.obolibrary.org/obo/BFO_0000015 -->
 
     <owl:Class rdf:about="&obo;BFO_0000015">
-        <rdfs:subClassOf rdf:resource="&obo;BFO_0000003"/>
         <obo:IAO_0000115 xml:lang="en">An occurrent that has temporal proper parts and for some time t, p s-depends_on some material entity at t.</obo:IAO_0000115>
         <obo:IAO_0000115 xml:lang="en">p is a process = Def. p is an occurrent that has temporal proper parts and for some time t, p s-depends_on some material entity at t. (axiom label in BFO2 Reference: [083-003])</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;apollo_sv.owl"/>
@@ -1352,7 +1374,8 @@ Any ideas?  I’ve considered and rejected allowing individual organisms to be f
 
     <owl:Class rdf:about="&obo;BFO_0000019">
         <rdfs:subClassOf rdf:resource="&obo;BFO_0000020"/>
-        <obo:IAO_0000412 rdf:resource="&obo;pato.owl"/>
+        <obo:IAO_0000412 rdf:resource="&obo;hp.owl"/>
+        <rdfs:label>quality</rdfs:label>
         <rdfs:label xml:lang="en">quality</rdfs:label>
     </owl:Class>
     
@@ -1364,7 +1387,6 @@ Any ideas?  I’ve considered and rejected allowing individual organisms to be f
         <rdfs:subClassOf rdf:resource="&obo;BFO_0000002"/>
         <obo:IAO_0000115 xml:lang="en">A continuant that inheres in or is borne by other entities. Every instance of A requires some specific instance of B which must always be the same.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;hp.owl"/>
-        <obo:IAO_0000412 rdf:resource="&obo;pato.owl"/>
         <rdfs:label xml:lang="en">specifically dependent continuant</rdfs:label>
     </owl:Class>
     
@@ -1394,11 +1416,7 @@ Any ideas?  I’ve considered and rejected allowing individual organisms to be f
     <!-- http://purl.obolibrary.org/obo/BFO_0000031 -->
 
     <owl:Class rdf:about="&obo;BFO_0000031">
-        <rdfs:subClassOf rdf:resource="&obo;BFO_0000002"/>
-        <obo:IAO_0000115 xml:lang="en">A continuant that is dependent on one or other independent continuant bearers. For every instance of A requires some instance of (an independent continuant type) B but which instance of B serves can change from time to time.</obo:IAO_0000115>
-        <obo:IAO_0000115 xml:lang="en">b is a generically dependent continuant = Def. b is a continuant that g-depends_on one or more other entities. (axiom label in BFO2 Reference: [074-001])</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;apollo_sv.owl"/>
-        <rdfs:label xml:lang="en">generically dependent continuant</rdfs:label>
     </owl:Class>
     
 
@@ -1406,11 +1424,9 @@ Any ideas?  I’ve considered and rejected allowing individual organisms to be f
     <!-- http://purl.obolibrary.org/obo/BFO_0000040 -->
 
     <owl:Class rdf:about="&obo;BFO_0000040">
-        <rdfs:subClassOf rdf:resource="&obo;BFO_0000004"/>
         <obo:IAO_0000115 rdf:datatype="&xsd;string">A material entity is an entity that exists in full during the length of time of its existence, persists through this time while maintaining its identity and has no temporal parts. For example a heart, a human, a fly, a microarray.</obo:IAO_0000115>
         <obo:IAO_0000115 xml:lang="en">An independent continuant that is spatially extended whose identity is independent of that of other entities and can be maintained through time.</obo:IAO_0000115>
         <obo:IAO_0000117 rdf:datatype="&xsd;string">James Malone</obo:IAO_0000117>
-        <obo:IAO_0000412 rdf:resource="&obo;apollo_sv.owl"/>
         <obo:IAO_0000412 rdf:resource="&obo;chmo.owl"/>
         <obo:IAO_0000412 rdf:resource="&obo;ido.owl"/>
         <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
@@ -1621,7 +1637,7 @@ Any ideas?  I’ve considered and rejected allowing individual organisms to be f
         <obo:IAO_0000117 rdf:datatype="&xsd;string">Tomasz Adamusiak</obo:IAO_0000117>
         <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">GO:0007610</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MSH:D001519</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MeSH:D001519</oboInOwl:hasDbXref>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NCIt:C16326</oboInOwl:hasDbXref>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">Acceptance Process</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">Acceptance Processes</oboInOwl:hasExactSynonym>
@@ -1649,7 +1665,7 @@ Any ideas?  I’ve considered and rejected allowing individual organisms to be f
         <oboInOwl:hasAlternativeId rdf:datatype="&xsd;string">GO:0000004</oboInOwl:hasAlternativeId>
         <oboInOwl:hasAlternativeId rdf:datatype="&xsd;string">GO:0007582</oboInOwl:hasAlternativeId>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">GO:0008150</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MSH:D055705</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MeSH:D055705</oboInOwl:hasDbXref>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NCIt:C17828</oboInOwl:hasDbXref>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">Wikipedia:Biological_process</oboInOwl:hasDbXref>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">Physiological Processes</oboInOwl:hasExactSynonym>
@@ -1688,10 +1704,8 @@ Any ideas?  I’ve considered and rejected allowing individual organisms to be f
     <!-- http://purl.obolibrary.org/obo/HANCESTRO_0004 -->
 
     <owl:Class rdf:about="&obo;HANCESTRO_0004">
-        <rdfs:subClassOf rdf:resource="&obo;OBI_0000181"/>
         <obo:IAO_0000115>Population category defined using ancestry informative markers (AIMs) based on genetic/genomic data</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;hancestro.owl"/>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
         <oboInOwl:hasExactSynonym>ancestral group</oboInOwl:hasExactSynonym>
         <rdfs:label>ancestry category</rdfs:label>
     </owl:Class>
@@ -1705,7 +1719,6 @@ Any ideas?  I’ve considered and rejected allowing individual organisms to be f
         <obo:IAO_0000115 xml:lang="en">Includes individuals who either self-report or have been described by authors as
 European, Caucasian, White or one of the sub-populations from this region (e.g Dutch). This category also includes individuals who genetically cluster with reference populations from this region, for example 1000 Genomes and/or HapMap CEU, FIN, GBR, IBS and TSI populations.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;hancestro.owl"/>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
         <oboInOwl:hasExactSynonym>Caucasian</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym>white</oboInOwl:hasExactSynonym>
         <rdfs:label>European</rdfs:label>
@@ -1720,7 +1733,6 @@ European, Caucasian, White or one of the sub-populations from this region (e.g D
         <obo:IAO_0000115 xml:lang="en">Includes individuals who either self-report or have been described by authors as South Asian or one of the sub-populations from this region (e.g Asian Indian). This category also includes individuals who genetically cluster with reference populations from this region, for example 1000 Genomes and/or HapMap
 BEB, GIH, ITU, PJL and STU populations.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;hancestro.owl"/>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
         <rdfs:label>South Asian</rdfs:label>
     </owl:Class>
     
@@ -1743,7 +1755,6 @@ BEB, GIH, ITU, PJL and STU populations.</obo:IAO_0000115>
         <rdfs:subClassOf rdf:resource="&obo;HANCESTRO_0004"/>
         <obo:IAO_0000115 xml:lang="en">Includes individuals that either self-report or have been described as Asian but there was not sufficient information to allow classification as East Asian, Central Asian, South Asian or South-East Asian.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;hancestro.owl"/>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
         <oboInOwl:hasExactSynonym>Asian unspecified</oboInOwl:hasExactSynonym>
         <rdfs:label>Asian</rdfs:label>
     </owl:Class>
@@ -1756,7 +1767,6 @@ BEB, GIH, ITU, PJL and STU populations.</obo:IAO_0000115>
         <rdfs:subClassOf rdf:resource="&obo;HANCESTRO_0008"/>
         <obo:IAO_0000115 xml:lang="en">Includes individuals who either self-report or have been described by authors as East Asian or one of the sub-populations from this region (e.g Chinese). This category also includes individuals who genetically cluster with reference populations from this region, for example 1000 Genomes and/or HapMap CDX, CHB, CHS and JPT populations.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;hancestro.owl"/>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
         <rdfs:label>East Asian</rdfs:label>
     </owl:Class>
     
@@ -1768,7 +1778,6 @@ BEB, GIH, ITU, PJL and STU populations.</obo:IAO_0000115>
         <rdfs:subClassOf rdf:resource="&obo;HANCESTRO_0004"/>
         <obo:IAO_0000115 xml:lang="en">Includes individuals that either self-report or have been described as African, but there was not sufficient information to allow classification as African American, AfroCaribbean or Sub-Saharan African.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;hancestro.owl"/>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
         <oboInOwl:hasExactSynonym xml:lang="en">African unspecified</oboInOwl:hasExactSynonym>
         <rdfs:label>African</rdfs:label>
     </owl:Class>
@@ -1782,7 +1791,6 @@ BEB, GIH, ITU, PJL and STU populations.</obo:IAO_0000115>
         <obo:IAO_0000115 xml:lang="en">Includes individuals who either self-report or have been described by authors as SubSaharan African or one of the subpopulations from this region (e.g. Yoruban).
 This category also includes individuals who genetically cluster with reference populations from this region for example 1000 Genomes and/or HapMap ESN, LWK, GWD, MSL, MKK and YRI populations.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;hancestro.owl"/>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
         <rdfs:label>Sub-Saharan African</rdfs:label>
     </owl:Class>
     
@@ -1794,7 +1802,6 @@ This category also includes individuals who genetically cluster with reference p
         <rdfs:subClassOf rdf:resource="&obo;HANCESTRO_0004"/>
         <obo:IAO_0000115 xml:lang="en">Includes indigenous individuals of North, Central and South America, descended from the original human migration into the Americas from Siberia. We note that there does not appear to be a suitable reference population for this category and efforts are required to fill this gap.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;hancestro.owl"/>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
         <oboInOwl:hasExactSynonym>American Indian</oboInOwl:hasExactSynonym>
         <rdfs:label xml:lang="en">Native American</rdfs:label>
     </owl:Class>
@@ -1810,7 +1817,6 @@ from this region. This category includes individuals with known admixture of pri
         <obo:IAO_0000117>Jackie MacArthur</obo:IAO_0000117>
         <obo:IAO_0000117>Joannella Morales</obo:IAO_0000117>
         <obo:IAO_0000412 rdf:resource="&obo;hancestro.owl"/>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
         <rdfs:label>Hispanic or Latin American</rdfs:label>
     </owl:Class>
     
@@ -1822,7 +1828,6 @@ from this region. This category includes individuals with known admixture of pri
         <rdfs:subClassOf rdf:resource="&obo;HANCESTRO_0004"/>
         <obo:IAO_0000115 xml:lang="en">Includes individuals who self-report or were described by authors as Middle Eastern, North African, Persian or one of the subpopulations from this region (e.g. Saudi Arabian). We note there is heterogeneity in this category with different degrees of admixture as well as levels of genetic isolation. We note that there does not appear to be a suitable reference population for this category and efforts are required to fill this gap.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;hancestro.owl"/>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
         <oboInOwl:hasExactSynonym>Middle Eastern/North African</oboInOwl:hasExactSynonym>
         <rdfs:label xml:lang="en">Greater Middle Eastern  (Middle Eastern, North African or Persian)</rdfs:label>
     </owl:Class>
@@ -1835,7 +1840,6 @@ from this region. This category includes individuals with known admixture of pri
         <rdfs:subClassOf rdf:resource="&obo;HANCESTRO_0004"/>
         <obo:IAO_0000115>Includes individuals who either self-report or have been described by authors as African American or Afro-Caribbean. This category also includes individuals who genetically cluster with reference populations from this region, for example 1000 Genomes and/or HapMap ACB or ASW populations. We note that there is likely to be significant admixture with European ancestry populations.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;hancestro.owl"/>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
         <rdfs:label>African American or Afro-Caribbean</rdfs:label>
     </owl:Class>
     
@@ -1848,7 +1852,6 @@ from this region. This category includes individuals with known admixture of pri
         <obo:IAO_0000115 xml:lang="en">Includes individuals that either self-report or have been described by authors as
 Oceanian or one of the sub-populations from this region (e.g. Native Hawaiian). We note that there does not appear to be a suitable reference population for this category and efforts are required to fill this gap.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;hancestro.owl"/>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
         <rdfs:label>Oceanian</rdfs:label>
     </owl:Class>
     
@@ -1870,7 +1873,6 @@ Oceanian or one of the sub-populations from this region (e.g. Native Hawaiian). 
     <owl:Class rdf:about="&obo;HANCESTRO_0019">
         <rdfs:subClassOf rdf:resource="&obo;HANCESTRO_0009"/>
         <obo:IAO_0000412 rdf:resource="&obo;hancestro.owl"/>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
         <rdfs:label>Japanese</rdfs:label>
     </owl:Class>
     
@@ -1892,7 +1894,6 @@ Oceanian or one of the sub-populations from this region (e.g. Native Hawaiian). 
     <owl:Class rdf:about="&obo;HANCESTRO_0021">
         <rdfs:subClassOf rdf:resource="&obo;HANCESTRO_0009"/>
         <obo:IAO_0000412 rdf:resource="&obo;hancestro.owl"/>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
         <rdfs:label>Chinese</rdfs:label>
     </owl:Class>
     
@@ -1903,7 +1904,6 @@ Oceanian or one of the sub-populations from this region (e.g. Native Hawaiian). 
     <owl:Class rdf:about="&obo;HANCESTRO_0022">
         <rdfs:subClassOf rdf:resource="&obo;HANCESTRO_0009"/>
         <obo:IAO_0000412 rdf:resource="&obo;hancestro.owl"/>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
         <rdfs:label>Korean</rdfs:label>
     </owl:Class>
     
@@ -1954,7 +1954,6 @@ Oceanian or one of the sub-populations from this region (e.g. Native Hawaiian). 
     <owl:Class rdf:about="&obo;HANCESTRO_0027">
         <rdfs:subClassOf rdf:resource="&obo;HANCESTRO_0021"/>
         <obo:IAO_0000412 rdf:resource="&obo;hancestro.owl"/>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
         <rdfs:label>Han Chinese</rdfs:label>
     </owl:Class>
     
@@ -1977,7 +1976,6 @@ Oceanian or one of the sub-populations from this region (e.g. Native Hawaiian). 
         <rdfs:subClassOf rdf:resource="&obo;HANCESTRO_0004"/>
         <obo:IAO_0000115>A population with increased genetic homogeneity and reduced genetic variation due to cultural or geographic isolation</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;hancestro.owl"/>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
         <oboInOwl:hasExactSynonym>founder population</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym>population isolate</oboInOwl:hasExactSynonym>
         <rdfs:label xml:lang="en">genetically isolated population</rdfs:label>
@@ -2695,7 +2693,6 @@ Oceanian or one of the sub-populations from this region (e.g. Native Hawaiian). 
     <owl:Class rdf:about="&obo;HANCESTRO_0383">
         <rdfs:subClassOf rdf:resource="&obo;HANCESTRO_0005"/>
         <obo:IAO_0000412 rdf:resource="&obo;hancestro.owl"/>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
         <rdfs:label xml:lang="en">Irish</rdfs:label>
     </owl:Class>
     
@@ -3247,7 +3244,6 @@ Oceanian or one of the sub-populations from this region (e.g. Native Hawaiian). 
     <owl:Class rdf:about="&obo;HANCESTRO_0438">
         <rdfs:subClassOf rdf:resource="&obo;HANCESTRO_0015"/>
         <obo:IAO_0000412 rdf:resource="&obo;hancestro.owl"/>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
         <rdfs:label xml:lang="en">Iranian</rdfs:label>
     </owl:Class>
     
@@ -3489,7 +3485,6 @@ Oceanian or one of the sub-populations from this region (e.g. Native Hawaiian). 
     <owl:Class rdf:about="&obo;HANCESTRO_0462">
         <rdfs:subClassOf rdf:resource="&obo;HANCESTRO_0005"/>
         <obo:IAO_0000412 rdf:resource="&obo;hancestro.owl"/>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
         <rdfs:label xml:lang="en">British</rdfs:label>
     </owl:Class>
     
@@ -3500,7 +3495,6 @@ Oceanian or one of the sub-populations from this region (e.g. Native Hawaiian). 
     <owl:Class rdf:about="&obo;HANCESTRO_0463">
         <rdfs:subClassOf rdf:resource="&obo;HANCESTRO_0566"/>
         <obo:IAO_0000412 rdf:resource="&obo;hancestro.owl"/>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
         <rdfs:label xml:lang="en">American</rdfs:label>
     </owl:Class>
     
@@ -3741,7 +3735,6 @@ Oceanian or one of the sub-populations from this region (e.g. Native Hawaiian). 
     <owl:Class rdf:about="&obo;HANCESTRO_0487">
         <rdfs:subClassOf rdf:resource="&obo;HANCESTRO_0006"/>
         <obo:IAO_0000412 rdf:resource="&obo;hancestro.owl"/>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
         <oboInOwl:hasExactSynonym>Asian Indian</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym>Indian Asian</oboInOwl:hasExactSynonym>
         <rdfs:label xml:lang="en">Indian</rdfs:label>
@@ -3854,7 +3847,6 @@ Oceanian or one of the sub-populations from this region (e.g. Native Hawaiian). 
     <owl:Class rdf:about="&obo;HANCESTRO_0498">
         <rdfs:subClassOf rdf:resource="&obo;HANCESTRO_0008"/>
         <obo:IAO_0000412 rdf:resource="&obo;hancestro.owl"/>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
         <rdfs:label xml:lang="en">Filipino</rdfs:label>
     </owl:Class>
     
@@ -4526,7 +4518,6 @@ Australian Aboriginal. These are expected to be descendents of early human migra
         <rdfs:subClassOf rdf:resource="&obo;HANCESTRO_0004"/>
         <obo:IAO_0000115>Population for which insufficient information is available to allocate it to a specific ancestral group or which contain individuals from a range of known ancestry categories, eg American</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;hancestro.owl"/>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
         <rdfs:label>undefined ancestry population</rdfs:label>
     </owl:Class>
     
@@ -4548,7 +4539,6 @@ Australian Aboriginal. These are expected to be descendents of early human migra
     <owl:Class rdf:about="&obo;HANCESTRO_0568">
         <rdfs:subClassOf rdf:resource="&obo;HANCESTRO_0016"/>
         <obo:IAO_0000412 rdf:resource="&obo;hancestro.owl"/>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
         <rdfs:label>African American</rdfs:label>
     </owl:Class>
     
@@ -4570,7 +4560,6 @@ Australian Aboriginal. These are expected to be descendents of early human migra
     <owl:Class rdf:about="&obo;HANCESTRO_0570">
         <rdfs:subClassOf rdf:resource="&obo;HANCESTRO_0013"/>
         <obo:IAO_0000412 rdf:resource="&obo;hancestro.owl"/>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
         <rdfs:label>Pima Indian</rdfs:label>
     </owl:Class>
     
@@ -4601,7 +4590,6 @@ Australian Aboriginal. These are expected to be descendents of early human migra
     <owl:Class rdf:about="&obo;HANCESTRO_0573">
         <rdfs:subClassOf rdf:resource="&obo;HANCESTRO_0017"/>
         <obo:IAO_0000412 rdf:resource="&obo;hancestro.owl"/>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
         <rdfs:label>Native Hawaiian</rdfs:label>
     </owl:Class>
     
@@ -4612,7 +4600,6 @@ Australian Aboriginal. These are expected to be descendents of early human migra
     <owl:Class rdf:about="&obo;HANCESTRO_0574">
         <rdfs:subClassOf rdf:resource="&obo;HANCESTRO_0017"/>
         <obo:IAO_0000412 rdf:resource="&obo;hancestro.owl"/>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
         <rdfs:label>Pacific Islander</rdfs:label>
     </owl:Class>
     
@@ -4623,7 +4610,6 @@ Australian Aboriginal. These are expected to be descendents of early human migra
     <owl:Class rdf:about="&obo;HANCESTRO_0575">
         <rdfs:subClassOf rdf:resource="&obo;HANCESTRO_0011"/>
         <obo:IAO_0000412 rdf:resource="&obo;hancestro.owl"/>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
         <rdfs:label>Yoruban</rdfs:label>
     </owl:Class>
     
@@ -5073,20 +5059,6 @@ Australian Aboriginal. These are expected to be descendents of early human migra
     
 
 
-    <!-- http://purl.obolibrary.org/obo/HP_0000359 -->
-
-    <owl:Class rdf:about="&obo;HP_0000359">
-        <rdfs:subClassOf rdf:resource="&obo;HP_0031703"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">An abnormality of the inner ear.</obo:IAO_0000115>
-        <obo:IAO_0000412 rdf:resource="&obo;hp.owl"/>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">UMLS:C4021809</oboInOwl:hasDbXref>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">Abnormality of the inner ear</oboInOwl:hasExactSynonym>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">Inner ear abnormality</oboInOwl:hasExactSynonym>
-        <rdfs:label rdf:datatype="&xsd;string">Abnormality of the inner ear</rdfs:label>
-    </owl:Class>
-    
-
-
     <!-- http://purl.obolibrary.org/obo/HP_0000478 -->
 
     <owl:Class rdf:about="&obo;HP_0000478">
@@ -5236,6 +5208,10 @@ Australian Aboriginal. These are expected to be descendents of early human migra
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">Behavioral problems</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">Behavioral/psychiatric abnormalities</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">Behavioural abnormality</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">Behavioural changes</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">Behavioural disorders</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">Behavioural disturbances</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">Behavioural problems</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">Behavioural/Psychiatric abnormality</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">Psychiatric disorders</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">Psychiatric disturbances</oboInOwl:hasExactSynonym>
@@ -5520,13 +5496,14 @@ Australian Aboriginal. These are expected to be descendents of early human migra
 
     <owl:Class rdf:about="&obo;HP_0001824">
         <rdfs:subClassOf rdf:resource="&obo;HP_0004325"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">Reduction inexisting body weight.</obo:IAO_0000115>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">Reduction of total body weight.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;hp.owl"/>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MSH:D015431</oboInOwl:hasDbXref>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">SNOMEDCT_US:161832001</oboInOwl:hasDbXref>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">SNOMEDCT_US:262285001</oboInOwl:hasDbXref>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">SNOMEDCT_US:89362005</oboInOwl:hasDbXref>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">UMLS:C1262477</oboInOwl:hasDbXref>
+        <oboInOwl:hasExactSynonym>Loss of weight</oboInOwl:hasExactSynonym>
         <rdfs:label rdf:datatype="&xsd;string">Weight loss</rdfs:label>
     </owl:Class>
     
@@ -5546,7 +5523,9 @@ Australian Aboriginal. These are expected to be descendents of early human migra
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">UMLS:C0850715</oboInOwl:hasDbXref>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">UMLS:C4020864</oboInOwl:hasDbXref>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">Abnormality of blood and blood-forming tissues</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">Abnormality of the haematopoietic system</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">Abnormality of the hematopoietic system</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">Haematological abnormality</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">Hematological abnormality</oboInOwl:hasExactSynonym>
         <rdfs:comment rdf:datatype="&xsd;string">The hematopoietic system comprises the organs that are involved in the production of blood, primarily the bone marrow, spleen, tonsils, and lymph nodes.</rdfs:comment>
         <rdfs:label rdf:datatype="&xsd;string">Abnormality of blood and blood-forming tissues</rdfs:label>
@@ -5613,7 +5592,7 @@ Australian Aboriginal. These are expected to be descendents of early human migra
 
     <owl:Class rdf:about="&obo;HP_0001945">
         <rdfs:subClassOf rdf:resource="&obo;HP_0004370"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">Elevated body temperature due to failed thermoregulation.</obo:IAO_0000115>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">Body temperature elevated above the normal range.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;hp.owl"/>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MSH:D005334</oboInOwl:hasDbXref>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">SNOMEDCT_US:386661006</oboInOwl:hasDbXref>
@@ -5622,7 +5601,7 @@ Australian Aboriginal. These are expected to be descendents of early human migra
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">Fever</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">Hyperthermia</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">Pyrexia</oboInOwl:hasExactSynonym>
-        <rdfs:comment rdf:datatype="&xsd;string">Hyperthermia is defined as a temperature greater than 37.5-38.3 degree celsius (100-101 degree Fahrenheit).</rdfs:comment>
+        <rdfs:comment rdf:datatype="&xsd;string">Fever has been defined as a state of elevated core temperature, which is often, but not necessarily, part of the defensive responses of multicellular organisms (host) to the invasion of live (microorganisms) or inanimate matter recognized as pathogenic or alien by the host. The febrile response (of which fever is a component) is a complex physiologic reaction to disease, involving a cytokine-mediated rise in core temperature, generation of acute phase reactants, and activation of numerous physiologic, endocrinologic, and immunologic systems. The rise in temperature during fever is to be distinguished from that occurring during episodes of hyperthermia. Unlike fever, hyperthermia involves an unregulated rise in body temperature in which pyrogenic cytokines are not directly involved and against which standard antipyretics are ineffective. It represents a failure of thermoregulatory homeostasis, in which there is uncontrolled heat production, inadequate heat dissipation, or defective hypothalamic thermoregulation.</rdfs:comment>
         <rdfs:label rdf:datatype="&xsd;string">Fever</rdfs:label>
     </owl:Class>
     
@@ -5844,6 +5823,7 @@ Australian Aboriginal. These are expected to be descendents of early human migra
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MSH:D006471</oboInOwl:hasDbXref>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">SNOMEDCT_US:74474003</oboInOwl:hasDbXref>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">UMLS:C0017181</oboInOwl:hasDbXref>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">GI haemorrhage</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">GI hemorrhage</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">Gastrointestinal bleeding</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">Gastrointestinal haemorrhage</oboInOwl:hasExactSynonym>
@@ -5867,6 +5847,7 @@ Australian Aboriginal. These are expected to be descendents of early human migra
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">SNOMEDCT_US:35064005</oboInOwl:hasDbXref>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">UMLS:C0025222</oboInOwl:hasDbXref>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">UMLS:C0474585</oboInOwl:hasDbXref>
+        <oboInOwl:hasNarrowSynonym rdf:datatype="&xsd;string">Black faeces</oboInOwl:hasNarrowSynonym>
         <oboInOwl:hasNarrowSynonym>Black feces</oboInOwl:hasNarrowSynonym>
         <rdfs:label rdf:datatype="&xsd;string">Melena</rdfs:label>
     </owl:Class>
@@ -5881,6 +5862,7 @@ Australian Aboriginal. These are expected to be descendents of early human migra
         <obo:IAO_0000412 rdf:resource="&obo;hp.owl"/>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">UMLS:C0239181</oboInOwl:hasDbXref>
         <oboInOwl:hasExactSynonym>Episodic diarrhea</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">Episodic diarrhoea</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">Intermittent diarrhoea</oboInOwl:hasExactSynonym>
         <rdfs:label rdf:datatype="&xsd;string">Intermittent diarrhea</rdfs:label>
     </owl:Class>
@@ -6118,6 +6100,7 @@ Australian Aboriginal. These are expected to be descendents of early human migra
         <oboInOwl:hasAlternativeId rdf:datatype="&xsd;string">HP:0003668</oboInOwl:hasAlternativeId>
         <oboInOwl:hasAlternativeId rdf:datatype="&xsd;string">HP:0011007</oboInOwl:hasAlternativeId>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MSH:D017668</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>MeSH:D017668</oboInOwl:hasDbXref>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">UMLS:C0206132</oboInOwl:hasDbXref>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">Age of onset</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym>Age symptoms begin</oboInOwl:hasExactSynonym>
@@ -6238,6 +6221,7 @@ Australian Aboriginal. These are expected to be descendents of early human migra
 
     <owl:Class rdf:about="&obo;HP_0004395">
         <rdfs:subClassOf rdf:resource="&obo;HP_0011458"/>
+        <obo:IAO_0000115>A deficiency in the intake of energy and nutrients.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;hp.owl"/>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MSH:D044342</oboInOwl:hasDbXref>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">SNOMEDCT_US:248325000</oboInOwl:hasDbXref>
@@ -6256,10 +6240,12 @@ Australian Aboriginal. These are expected to be descendents of early human migra
 
     <owl:Class rdf:about="&obo;HP_0004396">
         <rdfs:subClassOf rdf:resource="&obo;HP_0011458"/>
+        <obo:IAO_0000115>A reduced desire to eat.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;hp.owl"/>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">SNOMEDCT_US:64379006</oboInOwl:hasDbXref>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">UMLS:C0232462</oboInOwl:hasDbXref>
         <oboInOwl:hasExactSynonym>Decreased appetite</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym>Loss of appetite</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">Poor appetite</oboInOwl:hasExactSynonym>
         <rdfs:label rdf:datatype="&xsd;string">Poor appetite</rdfs:label>
     </owl:Class>
@@ -6482,7 +6468,7 @@ Australian Aboriginal. These are expected to be descendents of early human migra
     <!-- http://purl.obolibrary.org/obo/HP_0011389 -->
 
     <owl:Class rdf:about="&obo;HP_0011389">
-        <rdfs:subClassOf rdf:resource="&obo;HP_0000359"/>
+        <rdfs:subClassOf rdf:resource="&obo;HP_0031704"/>
         <obo:IAO_0000115 rdf:datatype="&xsd;string">An abnormality of the function of the inner ear.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;hp.owl"/>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">UMLS:C4023382</oboInOwl:hasDbXref>
@@ -6929,8 +6915,10 @@ Australian Aboriginal. These are expected to be descendents of early human migra
         <rdfs:subClassOf rdf:resource="&obo;HP_0002013"/>
         <obo:IAO_0000115>Vomiting of material that is of fecal origin.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;hp.owl"/>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">Faecal vomiting</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym>Fecal vomiting</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym>Stercoraceous vomiting</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">Vomiting faecal matter</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym>Vomiting fecal matter</oboInOwl:hasExactSynonym>
         <rdfs:comment>Feculent vomiting is usually due to mechanical intestinal obstruction but it can be due to paralytic obstruction (adynamic ileus).</rdfs:comment>
         <rdfs:label xml:lang="en">Feculent vomiting</rdfs:label>
@@ -6944,7 +6932,7 @@ Australian Aboriginal. These are expected to be descendents of early human migra
         <rdfs:subClassOf rdf:resource="&obo;HP_0000118"/>
         <obo:IAO_0000115>A symptom or manifestation indicating a systemic or general effect of a disease and that may affect the general well-being or status of an individual.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;hp.owl"/>
-        <rdfs:comment>Note that we use the preferred term label constitutional symptom because this reflects common usage, but we do not restrict the term or its descendents to the narrow meaning of symptom, i.e., a complaint related by a patient to a physician. There is no generally accepted classification of what defines a constitutional symptom, but examples  include weight loss, fatigue, general weakness, night sweats, shaking, chills, fever, and vomiting.</rdfs:comment>
+        <rdfs:comment>Note that we use the preferred term label constitutional symptom because this reflects common usage, but we do not restrict the term or its descendents to the narrow meaning of symptom, i.e., a complaint related by a patient to a physician. There is no generally accepted classification of what defines a constitutional symptom, but examples include weight loss, fatigue, general weakness, night sweats, shaking, chills, fever, and vomiting.</rdfs:comment>
         <rdfs:label xml:lang="en">Constitutional symptom</rdfs:label>
     </owl:Class>
     
@@ -6956,9 +6944,11 @@ Australian Aboriginal. These are expected to be descendents of early human migra
         <rdfs:subClassOf rdf:resource="&obo;HP_0012719"/>
         <obo:IAO_0000115>Any physiological abnormality of the esophagus.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;hp.owl"/>
+        <oboInOwl:hasExactSynonym>Abnormality of esophagus physiology</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">Abnormality of oesophagus physiology</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym>Functional abnormality of the esophagus</oboInOwl:hasExactSynonym>
-        <rdfs:label xml:lang="en">Abnormality of esophagus physiology</rdfs:label>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">Functional abnormality of the oesophagus</oboInOwl:hasExactSynonym>
+        <rdfs:label xml:lang="en">Abnormal esophagus physiology</rdfs:label>
     </owl:Class>
     
 
@@ -7002,10 +6992,11 @@ Australian Aboriginal. These are expected to be descendents of early human migra
 
     <owl:Class rdf:about="&obo;HP_0030143">
         <rdfs:subClassOf rdf:resource="&obo;HP_0030142"/>
-        <obo:IAO_0000115>An increased amount of bowel sounds.</obo:IAO_0000115>
+        <obo:IAO_0000115>Abnormally increased gurgling/rumbling sounds made by the movement of fluid and gas in the intestines.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;hp.owl"/>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">SNOMEDCT_US:18101008</oboInOwl:hasDbXref>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">UMLS:C0232694</oboInOwl:hasDbXref>
+        <oboInOwl:hasExactSynonym>Borborygmi</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym>Increased bowel sounds</oboInOwl:hasExactSynonym>
         <rdfs:label>Hyperactive bowel sounds</rdfs:label>
     </owl:Class>
@@ -7080,14 +7071,13 @@ Australian Aboriginal. These are expected to be descendents of early human migra
     
 
 
-    <!-- http://purl.obolibrary.org/obo/HP_0031703 -->
+    <!-- http://purl.obolibrary.org/obo/HP_0031704 -->
 
-    <owl:Class rdf:about="&obo;HP_0031703">
+    <owl:Class rdf:about="&obo;HP_0031704">
         <rdfs:subClassOf rdf:resource="&obo;HP_0000598"/>
-        <obo:IAO_0000115>Any structural anomaly of the ear.</obo:IAO_0000115>
+        <obo:IAO_0000115>Any functional anomaly of the ear.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;hp.owl"/>
-        <oboInOwl:hasDbXref>Fyler:4867</oboInOwl:hasDbXref>
-        <rdfs:label>Abnormal ear morphology</rdfs:label>
+        <rdfs:label>Abnormal ear physiology</rdfs:label>
     </owl:Class>
     
 
@@ -7249,6 +7239,7 @@ In most clinical settings, closure of acute and chronic wounds is considered the
         <obo:IAO_0000115>Passage of an increased number of stools containing mucus, a thick fluid substance secreted by mucous membranes.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;hp.owl"/>
         <oboInOwl:hasExactSynonym>Mucous diarrhea</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">Mucous diarrhoea</oboInOwl:hasExactSynonym>
         <rdfs:label>Mucoid diarrhea</rdfs:label>
     </owl:Class>
     
@@ -7295,6 +7286,41 @@ In most clinical settings, closure of acute and chronic wounds is considered the
         <obo:IAO_0000115>Intermittent abdominal pain with diarrhea and/or constipation.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;hp.owl"/>
         <rdfs:label>Bowel irritability</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/HP_0033842 -->
+
+    <owl:Class rdf:about="&obo;HP_0033842">
+        <rdfs:subClassOf rdf:resource="&obo;HP_0011458"/>
+        <obo:IAO_0000115>The condition of being unable to eat a full meal because of a feeling of fullness (satiety), or or feeling very full after eating only a small amount of food.</obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="&obo;hp.owl"/>
+        <oboInOwl:hasExactSynonym>Feeling full quickly when eating</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym>Not able to finish a normal-sized meal</oboInOwl:hasExactSynonym>
+        <rdfs:label>Early satiety</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/HP_0033843 -->
+
+    <owl:Class rdf:about="&obo;HP_0033843">
+        <rdfs:subClassOf rdf:resource="&obo;HP_0011458"/>
+        <obo:IAO_0000115>Feeling excessively full after meals.</obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="&obo;hp.owl"/>
+        <rdfs:label>Postprandial fullness</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/HP_0033994 -->
+
+    <owl:Class rdf:about="&obo;HP_0033994">
+        <rdfs:subClassOf rdf:resource="&obo;HP_0011968"/>
+        <obo:IAO_0000115>Inability to ingest sufficient quantities of nutrition by mouth or by tube-feeding with the corresponding requirement for intravenous administration of nutrition.</obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="&obo;hp.owl"/>
+        <rdfs:label>Dependency on parenteral nutrition</rdfs:label>
     </owl:Class>
     
 
@@ -7378,17 +7404,11 @@ In most clinical settings, closure of acute and chronic wounds is considered the
     <!-- http://purl.obolibrary.org/obo/IAO_0000027 -->
 
     <owl:Class rdf:about="&obo;IAO_0000027">
-        <rdfs:subClassOf rdf:resource="&obo;IAO_0000030"/>
-        <obo:IAO_0000111 xml:lang="en">data item</obo:IAO_0000111>
         <obo:IAO_0000111 rdf:datatype="&xsd;string">data item</obo:IAO_0000111>
         <obo:IAO_0000114 rdf:resource="&obo;IAO_0000125"/>
-        <obo:IAO_0000115 xml:lang="en">An information content entity that is intended to be a truthful statement about something (modulo, e.g., measurement precision or other systematic errors) and is constructed/acquired by a method which reliably tends to produce (approximately) truthful statements.</obo:IAO_0000115>
         <obo:IAO_0000115 xml:lang="en">a data item is an information content entity that is intended to be a truthful statement about something (modulo, e.g., measurement precision or other systematic errors) and is constructed/acquired by a method which reliably tends to produce (approximately) truthful statements.</obo:IAO_0000115>
-        <obo:IAO_0000117 xml:lang="en">PERSON: Alan Ruttenberg</obo:IAO_0000117>
         <obo:IAO_0000117 rdf:datatype="&xsd;string">PERSON: Alan Ruttenberg</obo:IAO_0000117>
-        <obo:IAO_0000117 xml:lang="en">PERSON: Chris Stoeckert</obo:IAO_0000117>
         <obo:IAO_0000117 rdf:datatype="&xsd;string">PERSON: Chris Stoeckert</obo:IAO_0000117>
-        <obo:IAO_0000117 xml:lang="en">PERSON: Jonathan Rees</obo:IAO_0000117>
         <obo:IAO_0000117 rdf:datatype="&xsd;string">PERSON: Jonathan Rees</obo:IAO_0000117>
         <obo:IAO_0000412 rdf:resource="&obo;apollo_sv.owl"/>
         <rdfs:label xml:lang="en">data item</rdfs:label>
@@ -7403,13 +7423,10 @@ In most clinical settings, closure of acute and chronic wounds is considered the
         <obo:IAO_0000111 xml:lang="en">information content entity</obo:IAO_0000111>
         <obo:IAO_0000114 rdf:resource="&obo;IAO_0000122"/>
         <obo:IAO_0000114 rdf:resource="&obo;IAO_0000125"/>
-        <obo:IAO_0000115 xml:lang="en">A generically dependent continuant that is about some thing.</obo:IAO_0000115>
         <obo:IAO_0000115 rdf:datatype="&xsd;string">An information entity is an entity that represents information about some other entity.  For example, a measurement, a clustered data set.</obo:IAO_0000115>
         <obo:IAO_0000115 xml:lang="en">an information content entity is an entity that is generically dependent on some artifact and stands in relation of aboutness to some entity</obo:IAO_0000115>
         <obo:IAO_0000117 rdf:datatype="&xsd;string">James Malone</obo:IAO_0000117>
-        <obo:IAO_0000117 xml:lang="en">PERSON: Chris Stoeckert</obo:IAO_0000117>
         <obo:IAO_0000117 rdf:datatype="&xsd;string">PERSON: Chris Stoeckert</obo:IAO_0000117>
-        <obo:IAO_0000119 xml:lang="en">OBI_0000142</obo:IAO_0000119>
         <obo:IAO_0000119 rdf:datatype="&xsd;string">OBI_0000142</obo:IAO_0000119>
         <obo:IAO_0000412 rdf:resource="&obo;apollo_sv.owl"/>
         <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
@@ -7424,9 +7441,7 @@ In most clinical settings, closure of acute and chronic wounds is considered the
 
     <owl:Class rdf:about="&obo;IAO_0000032">
         <rdfs:subClassOf rdf:resource="&obo;IAO_0000109"/>
-        <obo:IAO_0000111 xml:lang="en">scalar measurement datum</obo:IAO_0000111>
         <obo:IAO_0000114 rdf:resource="&obo;IAO_0000120"/>
-        <obo:IAO_0000115 xml:lang="en">A scalar measurement datum is a measurement datum that is composed of two parts, numerals and a unit label.</obo:IAO_0000115>
         <obo:IAO_0000115 xml:lang="en">a scalar measurement datum is a measurement datum that is composed of two parts, numerals and a unit label.</obo:IAO_0000115>
         <obo:IAO_0000117 xml:lang="en">PERSON: Alan Ruttenberg</obo:IAO_0000117>
         <obo:IAO_0000117 xml:lang="en">PERSON: Melanie Courtot</obo:IAO_0000117>
@@ -7439,14 +7454,12 @@ In most clinical settings, closure of acute and chronic wounds is considered the
     <!-- http://purl.obolibrary.org/obo/IAO_0000100 -->
 
     <owl:Class rdf:about="&obo;IAO_0000100">
-        <rdfs:subClassOf rdf:resource="&obo;IAO_0000027"/>
         <obo:IAO_0000111 xml:lang="en">data set</obo:IAO_0000111>
         <obo:IAO_0000114 rdf:resource="&obo;IAO_0000120"/>
         <obo:IAO_0000114 rdf:resource="&obo;IAO_0000125"/>
         <obo:IAO_0000115 xml:lang="en">A data item that is an aggregate of other data items of the same type that have something in common. Averages and distributions can be determined for data sets.</obo:IAO_0000115>
         <obo:IAO_0000117 xml:lang="en">person:Allyson Lister</obo:IAO_0000117>
         <obo:IAO_0000117 xml:lang="en">person:Chris Stoeckert</obo:IAO_0000117>
-        <obo:IAO_0000119 xml:lang="en">OBI_0000042</obo:IAO_0000119>
         <obo:IAO_0000119 rdf:datatype="&xsd;string">OBI_0000042</obo:IAO_0000119>
         <obo:IAO_0000119 xml:lang="en">group:OBI</obo:IAO_0000119>
         <obo:IAO_0000412 rdf:resource="&obo;apollo_sv.owl"/>
@@ -8464,6 +8477,7 @@ In most clinical settings, closure of acute and chronic wounds is considered the
         <oboInOwl:hasExactSynonym>Organism Strain</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym>STRAIN</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym>Strain</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym>Strain Number</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym>strain</oboInOwl:hasExactSynonym>
         <rdfs:label>Organism Strain</rdfs:label>
     </owl:Class>
@@ -9062,6 +9076,9 @@ In most clinical settings, closure of acute and chronic wounds is considered the
         <oboInOwl:hasExactSynonym>Survival Status</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym>Vital Status</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym>Vital Status (at date of last contact)</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym>Vital_Status</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym>vital status</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym>vital_status</oboInOwl:hasExactSynonym>
         <rdfs:label>Vital Status</rdfs:label>
     </owl:Class>
     
@@ -10285,15 +10302,7 @@ In most clinical settings, closure of acute and chronic wounds is considered the
 
     <owl:Class rdf:about="&obo;OBI_0000011">
         <rdfs:subClassOf rdf:resource="&obo;BFO_0000015"/>
-        <obo:IAO_0000111 xml:lang="en">planned process</obo:IAO_0000111>
-        <obo:IAO_0000114 rdf:resource="&obo;IAO_0000122"/>
-        <obo:IAO_0000115 xml:lang="en">A process that realizes a plan which is the concretization of a plan specification.</obo:IAO_0000115>
-        <obo:IAO_0000115 xml:lang="en">A processual entity that realizes a plan which is the concretization of a plan specification.</obo:IAO_0000115>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">Bjoern Peters</obo:IAO_0000117>
-        <obo:IAO_0000119 rdf:datatype="&xsd;string">branch derived</obo:IAO_0000119>
-        <obo:IAO_0000412 rdf:resource="&obo;apollo_sv.owl"/>
         <obo:IAO_0000412 rdf:resource="&obo;chmo.owl"/>
-        <rdfs:label xml:lang="en">planned process</rdfs:label>
         <rdfs:label rdf:datatype="&xsd;string">planned process</rdfs:label>
     </owl:Class>
     
@@ -10306,28 +10315,6 @@ In most clinical settings, closure of acute and chronic wounds is considered the
         <obo:IAO_0000115 rdf:datatype="&xsd;string">A planned process which results in physical changes in a specified input material.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;chmo.owl"/>
         <rdfs:label rdf:datatype="&xsd;string">material processing</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/OBI_0000181 -->
-
-    <owl:Class rdf:about="&obo;OBI_0000181">
-        <rdfs:subClassOf rdf:resource="&obo;BFO_0000040"/>
-        <obo:IAO_0000111 xml:lang="en">population</obo:IAO_0000111>
-        <obo:IAO_0000114 rdf:resource="&obo;IAO_0000125"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">A population is a group of material entities consisting of individuals which share a particular characteristic such as inhabiting a particular region or area or ability to interbreed.</obo:IAO_0000115>
-        <obo:IAO_0000115 xml:lang="en">a population is a collection of individuals from the same taxonomic class living, counted or sampled at a particular site or in a particular area</obo:IAO_0000115>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">James Malone modified from original OBI definition</obo:IAO_0000117>
-        <obo:IAO_0000117 xml:lang="en">PERSON: Philippe Rocca-Serra</obo:IAO_0000117>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">Tomasz Adamusiak modified from original OBI definition</obo:IAO_0000117>
-        <obo:IAO_0000119 xml:lang="en">adapted from Oxford English Dictionnary</obo:IAO_0000119>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MSH:D011153</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NIFSTD:sao2254405550</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">SNOMEDCT:385436007</oboInOwl:hasDbXref>
-        <rdfs:label xml:lang="en">population</rdfs:label>
-        <rdfs:label rdf:datatype="&xsd;string">population</rdfs:label>
     </owl:Class>
     
 
@@ -10446,8 +10433,6 @@ In most clinical settings, closure of acute and chronic wounds is considered the
         <obo:IAO_0000111 xml:lang="en">organism</obo:IAO_0000111>
         <obo:IAO_0000114 rdf:resource="&obo;IAO_0000121"/>
         <obo:IAO_0000115 xml:lang="en">A material entity that is an individual living system, such as animal, plant, bacteria or virus, that is capable of replicating or reproducing, growth and maintenance in the right environment. An organism may be unicellular or made up, like humans, of many billions of cells divided into specialized tissues and organs.</obo:IAO_0000115>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">GROUP: OBI Biomaterial Branch</obo:IAO_0000117>
-        <obo:IAO_0000119 xml:lang="en">WEB: http://en.wikipedia.org/wiki/Organism</obo:IAO_0000119>
         <obo:IAO_0000412 rdf:resource="&obo;apollo_sv.owl"/>
         <obo:IAO_0000412 rdf:resource="&obo;ido.owl"/>
         <rdfs:label xml:lang="en">organism</rdfs:label>
@@ -10847,6 +10832,7 @@ In most clinical settings, closure of acute and chronic wounds is considered the
         <rdfs:subClassOf rdf:resource="&obo;PATO_0001894"/>
         <obo:IAO_0000115 rdf:datatype="&xsd;string">A biological sex quality inhering in an organism or a population with both male and female sexual organs in one individual.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;pato.owl"/>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">hermaphroditic</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">intersex</oboInOwl:hasExactSynonym>
         <oboInOwl:inSubset rdf:resource="http://purl.oboInOwllibrary.org/oboInOwl/pato#value_slim"/>
         <rdfs:label rdf:datatype="&xsd;string">hermaphrodite</rdfs:label>
@@ -10921,7 +10907,7 @@ In most clinical settings, closure of acute and chronic wounds is considered the
 
     <owl:Class rdf:about="&obo;PATO_0001595">
         <rdfs:subClassOf rdf:resource="&obo;PATO_0001708"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">A 1-D extent quality inhering in a bearer by virtue of the bearer&apos;s downward or backward or inward dimenision.</obo:IAO_0000115>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">A 1-D extent quality inhering in a bearer by virtue of the bearer&apos;s downward or backward or inward dimension.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;pato.owl"/>
         <oboInOwl:inSubset rdf:resource="http://purl.oboInOwllibrary.org/oboInOwl/pato#attribute_slim"/>
         <oboInOwl:inSubset rdf:resource="http://purl.oboInOwllibrary.org/oboInOwl/pato#scalar_slim"/>
@@ -11138,6 +11124,91 @@ In most clinical settings, closure of acute and chronic wounds is considered the
     
 
 
+    <!-- http://purl.obolibrary.org/obo/PATO_0040050 -->
+
+    <owl:Class rdf:about="&obo;PATO_0040050">
+        <rdfs:subClassOf rdf:resource="&obo;PATO_0001894"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">A phenotypic sex quality inhering in a  plant organism or a population of plants in which the flowers have two stamens.</obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="&obo;pato.owl"/>
+        <rdfs:label rdf:datatype="&xsd;string">diandrous</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/PATO_0040051 -->
+
+    <owl:Class rdf:about="&obo;PATO_0040051">
+        <rdfs:subClassOf rdf:resource="&obo;PATO_0001894"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">A phenotypic sex quality inhering in a  plant organism or a population of plants in which the flowers have only one stamen.</obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="&obo;pato.owl"/>
+        <rdfs:label rdf:datatype="&xsd;string">monandrous</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/PATO_0040052 -->
+
+    <owl:Class rdf:about="&obo;PATO_0040052">
+        <rdfs:subClassOf rdf:resource="&obo;PATO_0070000"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">A sequential hermaphroditic quality whereby organisms start out as female and change to male at a later life stage.</obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="&obo;pato.owl"/>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">protogyny</oboInOwl:hasExactSynonym>
+        <rdfs:label rdf:datatype="&xsd;string">protogynous</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/PATO_0040053 -->
+
+    <owl:Class rdf:about="&obo;PATO_0040053">
+        <rdfs:subClassOf rdf:resource="&obo;PATO_0070000"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">A sequential hermaphroditic quality whereby organisms start out as male and change to female at a later life stage.</obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="&obo;pato.owl"/>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">protandry</oboInOwl:hasExactSynonym>
+        <rdfs:label rdf:datatype="&xsd;string">protandrous</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/PATO_0040054 -->
+
+    <owl:Class rdf:about="&obo;PATO_0040054">
+        <rdfs:subClassOf rdf:resource="&obo;PATO_0040052"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">A protogynous quality whereby organisms start out as female and change to hermaphrodite at a later life stage.</obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="&obo;pato.owl"/>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">protogynous hermaphrodite</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">protogynous hermaphroditic</oboInOwl:hasExactSynonym>
+        <rdfs:label rdf:datatype="&xsd;string">protogynous hermaphroditism</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/PATO_0040055 -->
+
+    <owl:Class rdf:about="&obo;PATO_0040055">
+        <rdfs:subClassOf rdf:resource="&obo;PATO_0040053"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">A protandrous quality whereby organisms start out as male and change to hermaphrodite at a later life stage.</obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="&obo;pato.owl"/>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">protandrous hermaphrodite</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">protandrous hermaphroditic</oboInOwl:hasExactSynonym>
+        <rdfs:label rdf:datatype="&xsd;string">protandrous hermaphroditism</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/PATO_0070000 -->
+
+    <owl:Class rdf:about="&obo;PATO_0070000">
+        <rdfs:subClassOf rdf:resource="&obo;PATO_0001340"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">A hermaphroditic quality that inheres in a population or organism where an organism changes is a different sexes during different life stages.</obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="&obo;pato.owl"/>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">sequential hermaphroditic</oboInOwl:hasExactSynonym>
+        <rdfs:comment rdf:datatype="&xsd;string">Sequential hermaphrodity is generally characterized by an organism producing female gametes and male gametes during different life stages.</rdfs:comment>
+        <rdfs:label rdf:datatype="&xsd;string">sequential hermaphrodite</rdfs:label>
+    </owl:Class>
+    
+
+
     <!-- http://purl.obolibrary.org/obo/PCO_0000031 -->
 
     <owl:Class rdf:about="&obo;PCO_0000031">
@@ -11314,7 +11385,6 @@ In most clinical settings, closure of acute and chronic wounds is considered the
     <!-- http://purl.obolibrary.org/obo/PO_0009001 -->
 
     <owl:Class rdf:about="&obo;PO_0009001">
-        <rdfs:subClassOf rdf:resource="&obo;BFO_0000004"/>
         <rdfs:subClassOf rdf:resource="&obo;PO_0025496"/>
         <obo:IAO_0000115 rdf:datatype="&xsd;string">A multi-tissue plant structure (PO:0025496) that develops from a gynoecium (PO:0009062), or a single carpel (PO:0009030), and at maturity may have as parts one or more seeds (PO:0009010).</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;po.owl"/>
@@ -11326,7 +11396,6 @@ In most clinical settings, closure of acute and chronic wounds is considered the
     <!-- http://purl.obolibrary.org/obo/PO_0009010 -->
 
     <owl:Class rdf:about="&obo;PO_0009010">
-        <rdfs:subClassOf rdf:resource="&obo;BFO_0000004"/>
         <rdfs:subClassOf rdf:resource="&obo;PO_0025496"/>
         <obo:IAO_0000115 rdf:datatype="&xsd;string">A multi-tissue plant structure (PO:0025496) that develops from a plant ovule (PO:0020003) and has as parts a plant embryo (PO:0009009) enclosed in a seed coat (PO:0009088).</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;po.owl"/>
@@ -11590,8 +11659,8 @@ In most clinical settings, closure of acute and chronic wounds is considered the
     <!-- http://purl.obolibrary.org/obo/RBO_00000017 -->
 
     <owl:Class rdf:about="&obo;RBO_00000017">
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">That part of the Earth exposed to the Earth atmosphere.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;rbo.owl"/>
+        <obo:definition rdf:datatype="&xsd;string">That part of the Earth exposed to the Earth atmosphere.</obo:definition>
         <rdfs:label rdf:datatype="&xsd;string">Earth surface</rdfs:label>
     </owl:Class>
     
@@ -13140,7 +13209,7 @@ https://stats.stackexchange.com/questions/31908/what-is-percentage-of-variance-i
     <owl:Class rdf:about="&obo;UO_0000328">
         <rdfs:subClassOf rdf:resource="&obo;UO_0000244"/>
         <obo:IAO_0000412 rdf:resource="&obo;uo.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">kilobasepair</rdfs:label>
+        <rdfs:label rdf:datatype="&xsd;string">kilo base pair</rdfs:label>
     </owl:Class>
     
 
@@ -14142,7 +14211,7 @@ https://stats.stackexchange.com/questions/31908/what-is-percentage-of-variance-i
         <obo:IAO_0000115 rdf:datatype="&xsd;string">A temporal measurement of the period after successful treatment in which there is no appearance of the symptoms or effects of the disease.</obo:IAO_0000115>
         <obo:IAO_0000117 rdf:datatype="&xsd;string">James Malone</obo:IAO_0000117>
         <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MSH:D018572</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MeSH:D018572</oboInOwl:hasDbXref>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string"> Disease-Free Survival</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">morbidity-free survival</oboInOwl:hasExactSynonym>
         <rdfs:label rdf:datatype="&xsd;string">disease free survival</rdfs:label>
@@ -14252,7 +14321,7 @@ https://stats.stackexchange.com/questions/31908/what-is-percentage-of-variance-i
         <obo:IAO_0000115 rdf:datatype="&xsd;string">Time of survival is an information entity which is about the length of time a material entity has survived after some adverse event, such as infection from a disease.</obo:IAO_0000115>
         <obo:IAO_0000117 rdf:datatype="&xsd;string">James Malone</obo:IAO_0000117>
         <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MSH:D013534</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MeSH:D013534</oboInOwl:hasDbXref>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NCIt:C17177</oboInOwl:hasDbXref>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">PERSON: James Malone</oboInOwl:hasDbXref>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">SNOMEDCT:445320007</oboInOwl:hasDbXref>
@@ -14294,6 +14363,7 @@ https://stats.stackexchange.com/questions/31908/what-is-percentage-of-variance-i
 
     <owl:Class rdf:about="http://www.ebi.ac.uk/efo/EFO_0001444">
         <obo:IAO_0000115 rdf:datatype="&xsd;string">A measurement is an information entity that is a recording of the output of a measurement such as produced by an instrument.</obo:IAO_0000115>
+        <obo:IAO_0000117></obo:IAO_0000117>
         <obo:IAO_0000117 rdf:datatype="&xsd;string">James Malone</obo:IAO_0000117>
         <obo:IAO_0000117 rdf:datatype="&xsd;string">Jie Zheng</obo:IAO_0000117>
         <obo:IAO_0000117 rdf:datatype="&xsd;string">Tomasz Adamusiak</obo:IAO_0000117>
@@ -14364,7 +14434,8 @@ https://stats.stackexchange.com/questions/31908/what-is-percentage-of-variance-i
         <obo:IAO_0000117 rdf:datatype="&xsd;string">Tomasz Adamusiak</obo:IAO_0000117>
         <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">ICD10:Z34</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MSH:D011247</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MeSH:D011247</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MedDRA:10036556</oboInOwl:hasDbXref>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NCIt:C25742</oboInOwl:hasDbXref>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">SNOMEDCT:289908002</oboInOwl:hasDbXref>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">Gestation</oboInOwl:hasExactSynonym>
@@ -14382,7 +14453,7 @@ https://stats.stackexchange.com/questions/31908/what-is-percentage-of-variance-i
         <obo:IAO_0000115 rdf:datatype="&xsd;string">Inhaling and exhaling the smoke of tobacco or something similar to tobacco.</obo:IAO_0000115>
         <obo:IAO_0000117 rdf:datatype="&xsd;string">Dani Welter</obo:IAO_0000117>
         <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MSH:D012907</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MeSH:D012907</oboInOwl:hasDbXref>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NCIt:C20134</oboInOwl:hasDbXref>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">smoking</oboInOwl:hasExactSynonym>
         <rdfs:label rdf:datatype="&xsd;string">smoking behavior</rdfs:label>
@@ -14396,7 +14467,7 @@ https://stats.stackexchange.com/questions/31908/what-is-percentage-of-variance-i
         <obo:IAO_0000115 rdf:datatype="&xsd;string">Measurements of the height, weight, length, area, etc., of the human and animal body or its parts.</obo:IAO_0000115>
         <obo:IAO_0000117 rdf:datatype="&xsd;string">Dani Welter</obo:IAO_0000117>
         <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MSH:D001837</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MeSH:D001837</oboInOwl:hasDbXref>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">body measures</oboInOwl:hasExactSynonym>
         <rdfs:label rdf:datatype="&xsd;string">body weights and measures</rdfs:label>
     </owl:Class>
@@ -14412,7 +14483,8 @@ https://stats.stackexchange.com/questions/31908/what-is-percentage-of-variance-i
         <obo:IAO_0000119 rdf:datatype="&xsd;string">https://en.wikipedia.org/wiki/Body_mass_index</obo:IAO_0000119>
         <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">ICD9:V85-V85.99</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MSH:D015992</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MeSH:D015992</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MedDRA:10005894</oboInOwl:hasDbXref>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NCIt:C16358</oboInOwl:hasDbXref>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">SNOMEDCT:60621009</oboInOwl:hasDbXref>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">BMI</oboInOwl:hasExactSynonym>
@@ -14429,8 +14501,8 @@ https://stats.stackexchange.com/questions/31908/what-is-percentage-of-variance-i
         <obo:IAO_0000115 rdf:datatype="&xsd;string">Quantification of the number of deaths in a population.</obo:IAO_0000115>
         <obo:IAO_0000117 rdf:datatype="&xsd;string">Dani Welter</obo:IAO_0000117>
         <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MSH:D009026</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MSH:Q000401</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MeSH:D009026</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MeSH:Q000401</oboInOwl:hasDbXref>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NCIt:C16880</oboInOwl:hasDbXref>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">SNOMEDCT:409651001</oboInOwl:hasDbXref>
         <oboInOwl:hasExactSynonym>mortality measurement</oboInOwl:hasExactSynonym>
@@ -14591,6 +14663,7 @@ https://stats.stackexchange.com/questions/31908/what-is-percentage-of-variance-i
         <obo:IAO_0000115 rdf:datatype="&xsd;string">The recurrence of a disease after treatment</obo:IAO_0000115>
         <obo:IAO_0000117 rdf:datatype="&xsd;string">Helen Parkinson</obo:IAO_0000117>
         <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MedDRA:10061819</oboInOwl:hasDbXref>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">relapse</oboInOwl:hasExactSynonym>
         <rdfs:label rdf:datatype="&xsd;string">disease recurrence</rdfs:label>
     </owl:Class>
@@ -14630,7 +14703,7 @@ https://stats.stackexchange.com/questions/31908/what-is-percentage-of-variance-i
         <obo:IAO_0000115 rdf:datatype="&xsd;string">The age of the conceptus, beginning from the time of FERTILIZATION. In clinical obstetrics, the gestational age is often estimated as the time from the last day of the last MENSTRUATION which is about 2 weeks before OVULATION and fertilization.</obo:IAO_0000115>
         <obo:IAO_0000117 rdf:datatype="&xsd;string">Dani Welter</obo:IAO_0000117>
         <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MSH:D005865</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MeSH:D005865</oboInOwl:hasDbXref>
         <rdfs:label rdf:datatype="&xsd;string">gestational age</rdfs:label>
     </owl:Class>
     
@@ -14753,6 +14826,30 @@ https://stats.stackexchange.com/questions/31908/what-is-percentage-of-variance-i
         <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
         <oboInOwl:hasDbXref>UMLS:C1843392</oboInOwl:hasDbXref>
         <rdfs:label>death in childhood</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ebi.ac.uk/efo/EFO_0020044 -->
+
+    <owl:Class rdf:about="http://www.ebi.ac.uk/efo/EFO_0020044">
+        <rdfs:subClassOf rdf:resource="http://www.ebi.ac.uk/efo/EFO_0005112"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">The determination of the amount of eicosanoids present in a sample, typically blood </obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">PMID:34503513</oboInOwl:hasDbXref>
+        <rdfs:label rdf:datatype="&xsd;string">ecosanoids measurement</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ebi.ac.uk/efo/EFO_0020045 -->
+
+    <owl:Class rdf:about="http://www.ebi.ac.uk/efo/EFO_0020045">
+        <rdfs:subClassOf rdf:resource="http://www.ebi.ac.uk/efo/EFO_0020044"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">The determination of the amount of prostaglandins present in a sample, typically blood </obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">PMID:34503513</oboInOwl:hasDbXref>
+        <rdfs:label rdf:datatype="&xsd;string">prostaglandins measurement</rdfs:label>
     </owl:Class>
     
 
@@ -15340,9 +15437,6 @@ https://stats.stackexchange.com/questions/31908/what-is-percentage-of-variance-i
     <rdf:Description>
         <obo:IAO_0000412 rdf:resource="&obo;apollo_sv.owl"/>
     </rdf:Description>
-    <rdf:Description>
-        <obo:IAO_0000412 rdf:resource="&obo;apollo_sv.owl"/>
-    </rdf:Description>
     
 
 
@@ -15627,11 +15721,11 @@ https://stats.stackexchange.com/questions/31908/what-is-percentage-of-variance-i
         <obo:IAO_0000412 rdf:resource="&obo;uo.owl"/>
     </rdf:Description>
     <rdf:Description rdf:about="&obo;UO_0000329">
-        <rdfs:label rdf:datatype="&xsd;string">megabasepair</rdfs:label>
+        <rdfs:label rdf:datatype="&xsd;string">mega base pair</rdfs:label>
         <obo:IAO_0000412 rdf:resource="&obo;uo.owl"/>
     </rdf:Description>
     <rdf:Description rdf:about="&obo;UO_0000330">
-        <rdfs:label rdf:datatype="&xsd;string">gigabasepair</rdfs:label>
+        <rdfs:label rdf:datatype="&xsd;string">giga base pair</rdfs:label>
         <obo:IAO_0000412 rdf:resource="&obo;uo.owl"/>
     </rdf:Description>
     <rdf:Description rdf:about="&obo;UO_0010002">

@@ -15,7 +15,7 @@ robot template --template PHA4GE.tsv \
 Windows 10 command line users should remove the `\` and input as a single line:
 
 ```
-robot template --template PHA4GE.tsv --input "../../genepio-merged.owl" --ontology-iri "http://purl.obolibrary.org/obo/genepio/imports/genepio-imports_PHA4GE.owl" --output ../genepio-imports_PHA4GE.ow
+robot template --template PHA4GE.tsv --input "../../genepio-merged.owl" --ontology-iri "http://purl.obolibrary.org/obo/genepio/imports/genepio-imports_PHA4GE.owl" --output ../genepio-imports_PHA4GE.owl
 ```
 
 ## ROBOT Command Overview

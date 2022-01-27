@@ -130,7 +130,6 @@ Declaration(Class(obo:ENVO_00000005))
 Declaration(Class(obo:ENVO_00000428))
 Declaration(Class(obo:ENVO_00002173))
 Declaration(Class(obo:ENVO_00002222))
-Declaration(Class(obo:ENVO_00002297))
 Declaration(Class(obo:ENVO_00010483))
 Declaration(Class(obo:ENVO_01000254))
 Declaration(Class(obo:ENVO_01000703))
@@ -265,6 +264,7 @@ Declaration(Class(obo:GAZ_00004031))
 Declaration(Class(obo:GAZ_00004040))
 Declaration(Class(obo:GAZ_00004095))
 Declaration(Class(obo:GAZ_00004098))
+Declaration(Class(obo:GAZ_00004125))
 Declaration(Class(obo:GAZ_00004135))
 Declaration(Class(obo:GAZ_00004187))
 Declaration(Class(obo:GAZ_00004373))
@@ -2143,7 +2143,7 @@ AnnotationAssertion(rdfs:label obo:RO_0000057 "has participant")
 
 AnnotationAssertion(rdfs:label obo:RO_0001015 "location of")
 
-# Object Property: obo:RO_0001025 (located in)
+# Object Property: obo:RO_0001025 (located_in (type level))
 
 AnnotationAssertion(rdfs:label obo:RO_0001025 "located in")
 
@@ -2439,7 +2439,7 @@ SubClassOf(obo:APOLLO_SV_00000021 obo:STATO_0000047)
 
 SubClassOf(obo:APOLLO_SV_00000022 obo:STATO_0000047)
 
-# Class: obo:APOLLO_SV_00000031 (simulation of population)
+# Class: obo:APOLLO_SV_00000031 (simulated population)
 
 SubClassOf(obo:APOLLO_SV_00000031 obo:IAO_0000027)
 
@@ -2524,7 +2524,9 @@ SubClassOf(obo:ARO_3004360 obo:IAO_0000033)
 # Class: obo:ARO_3004366 (Clinical and Laboratory Standards Institute (CLSI))
 
 AnnotationAssertion(oboInOwl:hasAlternativeId obo:ARO_3004366 "CLSI"^^rdfs:Literal)
-EquivalentClasses(obo:ARO_3004366 obo:GENEPIO_0002067)
+AnnotationAssertion(oboInOwl:hasExactSynonym obo:ARO_3004366 "NCCLS"@en)
+AnnotationAssertion(oboInOwl:hasExactSynonym obo:ARO_3004366 "National Committee on Clinical Laboratory Standards (NCCLS)"@en)
+AnnotationAssertion(rdfs:comment obo:ARO_3004366 "On January 1, 2005 the National Committee on Clinical Laboratory Standards (NCCLS) changed its name to CLSI"@en)
 
 # Class: obo:ARO_3004371 (MIC value)
 
@@ -2585,13 +2587,53 @@ AnnotationAssertion(oboInOwl:hasDbXref obo:BFO_0000023 "http://purl.obolibrary.o
 
 AnnotationAssertion(rdfs:comment obo:BFO_0000029 "Note that this can refer to a material entity like an organ or muscle, or an immaterial entity (a site or fiat boundary) like skin, stomach cavity or lung surface."@en)
 
+# Class: obo:BTO_0000003 (intestinal cell line)
+
+SubClassOf(obo:BTO_0000003 obo:CLO_0000031)
+
+# Class: obo:BTO_0000067 (kidney cell line)
+
+SubClassOf(obo:BTO_0000067 obo:CLO_0000031)
+
 # Class: obo:BTO_0000155 (bronchoalveolar lavage (BAL))
 
 SubClassOf(obo:BTO_0000155 obo:GENEPIO_0001432)
 
+# Class: obo:BTO_0000353 (lung cell line)
+
+SubClassOf(obo:BTO_0000353 obo:CLO_0000031)
+
+# Class: obo:BTO_0000578 (hepatoma cell line)
+
+SubClassOf(obo:BTO_0000578 obo:CLO_0000031)
+
+# Class: obo:BTO_0000711 (glioma cell line)
+
+SubClassOf(obo:BTO_0000711 obo:CLO_0000031)
+
+# Class: obo:BTO_0001120 (epithelial cell line)
+
+SubClassOf(obo:BTO_0001120 obo:CLO_0000031)
+
 # Class: obo:BTO_0001762 (neonate)
 
 SubClassOf(obo:BTO_0001762 obo:GENEPIO_0001432)
+
+# Class: obo:BTO_0002181 (HEK-293T cell)
+
+SubClassOf(obo:BTO_0002181 obo:CLO_0000031)
+
+# Class: obo:BTO_0002637 (respiratory epithelium cell line)
+
+SubClassOf(obo:BTO_0002637 obo:CLO_0000031)
+
+# Class: obo:BTO_0002886 (renal epithelium cell line)
+
+SubClassOf(obo:BTO_0002886 obo:CLO_0000031)
+
+# Class: obo:BTO_0004755 (VERO C1008 cell)
+
+SubClassOf(obo:BTO_0004755 obo:CLO_0000031)
 
 # Class: obo:CHEBI_124991 (cefalotin)
 
@@ -11207,14 +11249,13 @@ AnnotationAssertion(oboInOwl:hasAlternativeId obo:GENEPIO_0002066 "EUCAST"^^rdfs
 AnnotationAssertion(rdfs:label obo:GENEPIO_0002066 "obsolete: European Committe on Antimicrobial Susceptibility Testing (EUCAST)"@en)
 AnnotationAssertion(owl:deprecated obo:GENEPIO_0002066 "true"^^xsd:boolean)
 
-# Class: obo:GENEPIO_0002067 (National Committee on Clinical Laboratory Standards (NCCLS))
+# Class: obo:GENEPIO_0002067 (obsolete: National Committee on Clinical Laboratory Standards (NCCLS))
 
-AnnotationAssertion(obo:IAO_0000115 obo:GENEPIO_0002067 "On January 1, 2005 the National Committee on Clinical Laboratory Standards (NCCLS) changed its name to CLSI"@en)
 AnnotationAssertion(obo:IAO_0000117 obo:GENEPIO_0002067 "Damion Dooley")
 AnnotationAssertion(obo:IAO_0100001 obo:GENEPIO_0002067 obo:ARO_3004366)
 AnnotationAssertion(oboInOwl:hasAlternativeId obo:GENEPIO_0002067 "NCCLS"^^rdfs:Literal)
-AnnotationAssertion(rdfs:label obo:GENEPIO_0002067 "National Committee on Clinical Laboratory Standards (NCCLS)"@en)
-SubClassOf(obo:GENEPIO_0002067 obo:ARO_3004360)
+AnnotationAssertion(rdfs:label obo:GENEPIO_0002067 "obsolete: National Committee on Clinical Laboratory Standards (NCCLS)"@en)
+AnnotationAssertion(owl:deprecated obo:GENEPIO_0002067 "true"^^xsd:boolean)
 
 # Class: obo:GENEPIO_0002068 (obsolete: Société Française de Microbiologie (SFM))
 
@@ -12572,7 +12613,7 @@ AnnotationAssertion(obo:IAO_0000115 obo:NCBITaxon_2157 "The Archaea constitute a
 AnnotationAssertion(obo:IAO_0000117 obo:NCBITaxon_2157 "Damion Dooley"@en)
 AnnotationAssertion(obo:IAO_0000119 obo:NCBITaxon_2157 "https://en.wikipedia.org/wiki/Archaea"^^xsd:anyURI)
 
-# Class: obo:NCBITaxon_7742 (Vertebrata <Metazoa>)
+# Class: obo:NCBITaxon_7742 (Vertebrata <vertebrates>)
 
 SubClassOf(obo:NCBITaxon_7742 ObjectSomeValuesFrom(obo:RO_0000086 obo:PATO_0001894))
 
@@ -13471,7 +13512,7 @@ SubClassOf(obo:PCO_0000033 obo:GENEPIO_0001444)
 
 SubClassOf(obo:PECO_0007027 obo:BFO_0000003)
 
-# Class: obo:PO_0009011 (plant structure)
+# Class: obo:PO_0009011 (obo:PO_0009011)
 
 SubClassOf(obo:PO_0009011 obo:GENEPIO_0000025)
 
@@ -13501,24 +13542,17 @@ AnnotationAssertion(obo:IAO_0000114 obo:SO_0001026 obo:IAO_0000122)
 AnnotationAssertion(obo:IAO_0000117 obo:SO_0001026 "Damion Dooley")
 SubClassOf(obo:SO_0001026 obo:BFO_0000027)
 
-# Class: obo:SO_0001027 (genotype)
-
-SubClassOf(obo:SO_0001027 obo:GENEPIO_0001688)
-
 # Class: obo:SO_0001260 (sequence_collection)
 
 SubClassOf(obo:SO_0001260 obo:BFO_0000027)
 
 # Class: obo:SO_0001462 (contig_collection)
 
-SubClassOf(obo:SO_0001462 obo:GENEPIO_0001425)
 SubClassOf(obo:SO_0001462 ObjectSomeValuesFrom(obo:RO_0002351 obo:SO_0000149))
 
 # Class: obo:SO_0001505 (reference_genome)
 
 AnnotationAssertion(oboInOwl:hasExactSynonym obo:SO_0001505 "http://purl.obolibrary.org/obo/ERO_0002173"^^xsd:anyURI)
-SubClassOf(obo:SO_0001505 obo:IAO_0000027)
-SubClassOf(obo:SO_0001505 ObjectSomeValuesFrom(obo:IAO_0000136 obo:OBI_0100026))
 
 # Class: obo:STATO_0000010 (coordinate system)
 
@@ -13574,10 +13608,6 @@ SubClassOf(obo:STATO_0000087 obo:STATO_0000252)
 
 SubClassOf(obo:STATO_0000090 obo:STATO_0000087)
 
-# Class: obo:STATO_0000184 (ratio)
-
-SubClassOf(obo:STATO_0000184 obo:BFO_0000141)
-
 # Class: obo:STATO_0000190 (threshold cycle)
 
 SubClassOf(obo:STATO_0000190 obo:STATO_0000232)
@@ -13615,7 +13645,7 @@ SubClassOf(obo:SYMP_0000092 obo:ARO_3004430)
 
 SubClassOf(obo:SYMP_0000462 obo:BFO_0000019)
 
-# Class: obo:TRANS_0000000 (transmission of infection)
+# Class: obo:TRANS_0000000 (transmission process)
 
 AnnotationAssertion(obo:IAO_0000115 obo:TRANS_0000000 "A process that is the means during which the pathogen is transmitted directly or indirectly from its natural reservoir, a susceptible host or source to a new host."@en)
 AnnotationAssertion(obo:IAO_0000119 obo:TRANS_0000000 "https://www.ebi.ac.uk/ols/ontologies/trans"^^xsd:anyURI)
@@ -13696,10 +13726,6 @@ SubClassOf(obo:UBERON_0000463 ObjectSomeValuesFrom(obo:RO_0003001 obo:OBI_010002
 # Class: obo:UBERON_0001003 (skin epidermis)
 
 SubClassOf(obo:UBERON_0001003 obo:ARO_3004430)
-
-# Class: obo:UBERON_0001062 (anatomical entity)
-
-SubClassOf(obo:UBERON_0001062 obo:BFO_0000040)
 
 # Class: obo:UBERON_0001090 (synovial fluid)
 
@@ -17482,6 +17508,6 @@ AnnotationAssertion(obo:IAO_0000117 obo:UO_0000213 "Damion Dooley")
 AnnotationAssertion(obo:IAO_0000114 resource:SIO_000546 obo:IAO_0000123)
 AnnotationAssertion(obo:IAO_0000117 resource:SIO_000546 "Damion Dooley"@en)
 AnnotationAssertion(oboInOwl:hasDbXref efo:EFO_0000246 "http://purl.obolibrary.org/obo/PATO_0000011"^^xsd:anyURI)
-AnnotationAssertion(owl:qualifiedCardinality _:genid2147483873 "2"^^xsd:nonNegativeInteger)
-AnnotationAssertion(owl:qualifiedCardinality _:genid2147483874 "2"^^xsd:nonNegativeInteger)
+AnnotationAssertion(owl:qualifiedCardinality _:genid2147483879 "2"^^xsd:nonNegativeInteger)
+AnnotationAssertion(owl:qualifiedCardinality _:genid2147483880 "2"^^xsd:nonNegativeInteger)
 )

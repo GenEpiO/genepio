@@ -34,7 +34,7 @@
      xmlns:odes_field="&obo;genepio/imports/odes_field.owl#"
      xmlns:temp_import="&obo;genepio/imports/temp_import.owl#">
     <owl:Ontology rdf:about="&obo;genepio.owl">
-        <owl:versionIRI rdf:resource="&obo;genepio/releases/2022-01-26/genepio.owl"/>
+        <owl:versionIRI rdf:resource="&obo;genepio/releases/2022-01-29/genepio.owl"/>
         <owl:imports rdf:resource="&obo;bfo/2.0/bfo.owl"/>
         <owl:imports rdf:resource="&obo;genepio/imports/chebi_import.owl"/>
         <owl:imports rdf:resource="&obo;genepio/imports/doid_import.owl"/>
@@ -42,6 +42,7 @@
         <owl:imports rdf:resource="&obo;genepio/imports/foodon_import.owl"/>
         <owl:imports rdf:resource="&obo;genepio/imports/gaz_insdc_mapping.owl"/>
         <owl:imports rdf:resource="&obo;genepio/imports/gazetteer_import.owl"/>
+        <owl:imports rdf:resource="&obo;genepio/imports/genepio-imports_PHA4GE.owl"/>
         <owl:imports rdf:resource="&obo;genepio/imports/general_import.owl"/>
         <owl:imports rdf:resource="&obo;genepio/imports/hardcoded.owl"/>
         <owl:imports rdf:resource="&obo;genepio/imports/model_import.owl"/>
@@ -50,7 +51,7 @@
         <owl:imports rdf:resource="&obo;genepio/imports/ontology-metadata.owl"/>
         <owl:imports rdf:resource="&obo;genepio/imports/ro_import.owl"/>
         <owl:imports rdf:resource="&obo;genepio/imports/uberon_import.owl"/>
-        <terms:date rdf:datatype="&xsd;date">2022-01-26</terms:date>
+        <terms:date rdf:datatype="&xsd;date">2022-01-29</terms:date>
         <terms:description xml:lang="en">The Genomic Epidemiology Ontology aims to provide a comprehensive controlled vocabulary for infectious disease surveillance and outbreak investigations. It is an application ontology that draws on many other ontologies including anatomy, taxonomy, disease, symptoms, environment and food types for foodborn pathogen metadata.</terms:description>
         <terms:license rdf:resource="http://creativecommons.org/licenses/by/3.0/"/>
         <terms:title xml:lang="en">Genomic Epidemiology Ontology</terms:title>
@@ -2133,6 +2134,12 @@ ARO:3004301 # resistant</obo:GENEPIO_0001763>
         <obo:GENEPIO_0000006 xml:lang="en">specimen extraction matrix</obo:GENEPIO_0000006>
         <rdfs:comment xml:lang="en">&quot;This observable is important where process of capturing sample can affect dna extraction.&quot;</rdfs:comment>
     </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/CLO_0000031 -->
+
+    <owl:Class rdf:about="&obo;CLO_0000031"/>
     
 
 
@@ -14789,9 +14796,7 @@ http://www.ebi.ac.uk/ena/about/missing-values-reporting</rdfs:seeAlso>
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0001935 -->
 
     <owl:Class rdf:about="&obo;GENEPIO_0001935">
-        <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0001921"/>
         <oboInOwl:hasDbXref>NCBI SRA: Ion Torrent PGM</oboInOwl:hasDbXref>
-        <rdfs:label xml:lang="en">Ion Torrent PGM</rdfs:label>
     </owl:Class>
     
 
@@ -14829,10 +14834,7 @@ http://www.ebi.ac.uk/ena/about/missing-values-reporting</rdfs:seeAlso>
 
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0001939 -->
 
-    <owl:Class rdf:about="&obo;GENEPIO_0001939">
-        <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0001921"/>
-        <rdfs:label xml:lang="en">Illumina HiSeq Sequencer</rdfs:label>
-    </owl:Class>
+    <owl:Class rdf:about="&obo;GENEPIO_0001939"/>
     
 
 
@@ -18751,6 +18753,38 @@ contamination.</obo:IAO_0000115>
     
 
 
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0100300 -->
+
+    <rdf:Description rdf:about="&obo;GENEPIO_0100300">
+        <rdfs:subClassOf rdf:resource="&obo;IAO_0000027"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0100301 -->
+
+    <rdf:Description rdf:about="&obo;GENEPIO_0100301">
+        <rdfs:subClassOf rdf:resource="&obo;IAO_0000027"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0100302 -->
+
+    <rdf:Description rdf:about="&obo;GENEPIO_0100302">
+        <rdfs:subClassOf rdf:resource="&obo;IAO_0000027"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0100303 -->
+
+    <rdf:Description rdf:about="&obo;GENEPIO_0100303">
+        <rdfs:subClassOf rdf:resource="&obo;IAO_0000027"/>
+    </rdf:Description>
+    
+
+
     <!-- http://purl.obolibrary.org/obo/GEO_000000788 -->
 
     <rdf:Description rdf:about="&obo;GEO_000000788">
@@ -20948,21 +20982,6 @@ male | female | pooled male and female | neuter | hermaphrodite | intersex | not
     <owl:Class rdf:about="&obo;SO_0001505">
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;anyURI">http://purl.obolibrary.org/obo/ERO_0002173</oboInOwl:hasExactSynonym>
     </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/STATO_0000010 -->
-
-    <rdf:Description rdf:about="&obo;STATO_0000010">
-        <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0001859"/>
-        <obo:GENEPIO_0000006 xml:lang="en">n-dimensional coordinate system</obo:GENEPIO_0000006>
-        <rdfs:comment xml:lang="en">Damion Dooley&apos;s note:Damion Dooley&apos;s note: Outstanding issue: How to attach units to each dimension?  This depends on the instance of the problem involving a dimension?
-
-Linear offset can be decimal or integer or complex, or a count.
-  - Can have a unit: meter, kilometer, foot, light-year, oranges, apples, fruit
-
-Angular offset can be radians or degrees.</rdfs:comment>
-    </rdf:Description>
     
 
 
@@ -26833,6 +26852,15 @@ Risk Factor: A variable associated with an increased risk of disease or infectio
     </rdf:Description>
     <rdf:Description rdf:about="&obo;RO_0002352">
         <rdfs:label xml:lang="en">input of</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="&obo;STATO_0000010">
+        <rdfs:comment xml:lang="en">Damion Dooley&apos;s note:Damion Dooley&apos;s note: Outstanding issue: How to attach units to each dimension?  This depends on the instance of the problem involving a dimension?
+
+Linear offset can be decimal or integer or complex, or a count.
+  - Can have a unit: meter, kilometer, foot, light-year, oranges, apples, fruit
+
+Angular offset can be radians or degrees.</rdfs:comment>
+        <obo:GENEPIO_0000006 xml:lang="en">n-dimensional coordinate system</obo:GENEPIO_0000006>
     </rdf:Description>
     <rdf:Description rdf:about="&obo;UBERON_0001052">
         <oboInOwl:hasSynonym xml:lang="en">rectal</oboInOwl:hasSynonym>

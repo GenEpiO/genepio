@@ -18,7 +18,7 @@ test: reason
 # Run a basic reasoner to find inconsistencies
 .PHONY: reason
 reason: genepio-merged.owl
-	$(ROBOT) reason --input $< --reasoner ELK
+	$(ROBOT) reason --input $< --reasoner ELK --equivalent-classes-allowed none
 
 prepare_release: all 
 	cp $(ONT).owl $(RELEASEDIR) &&\

@@ -788,6 +788,8 @@ Declaration(Class(obo:GENEPIO_0001498))
 Declaration(Class(obo:GENEPIO_0001499))
 Declaration(Class(obo:GENEPIO_0001506))
 Declaration(Class(obo:GENEPIO_0001516))
+Declaration(Class(obo:GENEPIO_0001522))
+Declaration(Class(obo:GENEPIO_0001523))
 Declaration(Class(obo:GENEPIO_0001532))
 Declaration(Class(obo:GENEPIO_0001533))
 Declaration(Class(obo:GENEPIO_0001534))
@@ -1372,6 +1374,9 @@ Declaration(Class(obo:GENEPIO_0002713))
 Declaration(Class(obo:GENEPIO_0002749))
 Declaration(Class(obo:GENEPIO_0002750))
 Declaration(Class(obo:GENEPIO_0003358))
+Declaration(Class(obo:GENEPIO_0100289))
+Declaration(Class(obo:GENEPIO_0100290))
+Declaration(Class(obo:GENEPIO_0100291))
 Declaration(Class(obo:GO_0000003))
 Declaration(Class(obo:GO_0008150))
 Declaration(Class(obo:HP_0012830))
@@ -1550,6 +1555,7 @@ Declaration(Class(obo:UO_0000212))
 Declaration(Class(obo:UO_0000328))
 Declaration(Class(obo:XCO_0000412))
 Declaration(Class(obo:hancestro_0004))
+Declaration(Class(<http://purl.obolibrary.org/obo/GENEPIO:0100292>))
 Declaration(Class(<http://purl.phyloviz.net/ontology/typon#MLVA>))
 Declaration(Class(resource:SIO_000507))
 Declaration(Class(resource:SIO_000666))
@@ -2441,7 +2447,7 @@ SubClassOf(obo:APOLLO_SV_00000021 obo:STATO_0000047)
 
 SubClassOf(obo:APOLLO_SV_00000022 obo:STATO_0000047)
 
-# Class: obo:APOLLO_SV_00000031 (simulation of population)
+# Class: obo:APOLLO_SV_00000031 (simulated population)
 
 SubClassOf(obo:APOLLO_SV_00000031 obo:IAO_0000027)
 
@@ -4376,7 +4382,7 @@ AnnotationAssertion(obo:IAO_0000115 obo:GENEPIO_0000026 "Health or disease statu
 AnnotationAssertion(obo:IAO_0000116 obo:GENEPIO_0000026 "Currently this does not differ from the 'subject health status (GSCID-BRC)' item. It may be revised to have more options in the future."@en)
 AnnotationAssertion(obo:IAO_0000117 obo:GENEPIO_0000026 "Damion Dooley"@en)
 AnnotationAssertion(rdfs:label obo:GENEPIO_0000026 "subject health status at time of specimen collection"@en)
-SubClassOf(obo:GENEPIO_0000026 obo:GENEPIO_0001222)
+SubClassOf(obo:GENEPIO_0000026 obo:GENEPIO_0002018)
 
 # Class: obo:GENEPIO_0000027 (specimen source context)
 
@@ -7480,6 +7486,27 @@ AnnotationAssertion(obo:IAO_0000117 obo:GENEPIO_0001516 <https://orcid.org/0000-
 AnnotationAssertion(dc11:date obo:GENEPIO_0001516 "2021-06-06T16:36:02Z"^^xsd:dateTime)
 AnnotationAssertion(rdfs:label obo:GENEPIO_0001516 "draft CanCOGeN DataHarmonizer field - contributor acknowledgement")
 SubClassOf(obo:GENEPIO_0001516 obo:GENEPIO_0001121)
+
+# Class: obo:GENEPIO_0001522 (enumeration)
+
+AnnotationAssertion(obo:IAO_0000114 obo:GENEPIO_0001522 "requires discussion"@en)
+AnnotationAssertion(obo:IAO_0000115 obo:GENEPIO_0001522 "A data item that is a set of entities, referenced by mention, that don't necessarily have something in common."@en)
+AnnotationAssertion(obo:IAO_0000117 obo:GENEPIO_0001522 "0000-0002-8844-9165"@en)
+AnnotationAssertion(obo:IAO_0000117 obo:GENEPIO_0001522 "0000-0002-9578-0788")
+AnnotationAssertion(dc11:date obo:GENEPIO_0001522 "2022-01-31T03:45:04Z"^^xsd:dateTime)
+AnnotationAssertion(rdfs:comment obo:GENEPIO_0001522 "While \"enumeration\" is a \"data item\" not everything referenced within an enumeration qualifies as a \"data item\". Not to be confused with \"data set\" which describes \"data item\"s of the same type that have something in common."@en)
+AnnotationAssertion(rdfs:label obo:GENEPIO_0001522 "enumeration")
+SubClassOf(obo:GENEPIO_0001522 obo:IAO_0000027)
+
+# Class: obo:GENEPIO_0001523 (signs and symptoms)
+
+AnnotationAssertion(obo:IAO_0000115 obo:GENEPIO_0001523 "An analytic datum which describes the observed or detectable signs, and experienced symptomps of an illness, injury, or condition."@en)
+AnnotationAssertion(obo:IAO_0000117 obo:GENEPIO_0001523 "0000-0002-9578-0788")
+AnnotationAssertion(obo:IAO_0000119 obo:GENEPIO_0001523 "https://en.wikipedia.org/wiki/Signs_and_symptoms")
+AnnotationAssertion(dc11:date obo:GENEPIO_0001523 "2022-01-31T23:08:50Z"^^xsd:dateTime)
+AnnotationAssertion(oboInOwl:hasSynonym obo:GENEPIO_0001523 "signs & symptoms"@en)
+AnnotationAssertion(rdfs:label obo:GENEPIO_0001523 "signs and symptoms")
+SubClassOf(obo:GENEPIO_0001523 obo:GENEPIO_0001192)
 
 # Class: obo:GENEPIO_0001532 (food specimen datum)
 
@@ -12506,6 +12533,39 @@ AnnotationAssertion(obo:IAO_0100001 obo:GENEPIO_0003358 obo:OBI_0002824)
 AnnotationAssertion(rdfs:label obo:GENEPIO_0003358 "obsolete: surface wipe"@en)
 AnnotationAssertion(owl:deprecated obo:GENEPIO_0003358 "true"^^xsd:boolean)
 
+# Class: obo:GENEPIO_0100289 (host health complications at time of specimen collection)
+
+AnnotationAssertion(obo:IAO_0000114 obo:GENEPIO_0100289 "requires discussion"@en)
+AnnotationAssertion(obo:IAO_0000115 obo:GENEPIO_0100289 "A  personal health datum which specifies host health complications at time of specimen collection."@en)
+AnnotationAssertion(obo:IAO_0000117 obo:GENEPIO_0100289 "0000-0002-9578-0788")
+AnnotationAssertion(dc11:date obo:GENEPIO_0100289 "2022-01-31T23:52:14Z"^^xsd:dateTime)
+AnnotationAssertion(rdfs:label obo:GENEPIO_0100289 "host health complications at time of specimen collection")
+SubClassOf(obo:GENEPIO_0100289 obo:GENEPIO_0002018)
+SubClassOf(obo:GENEPIO_0100289 ObjectSomeValuesFrom(obo:IAO_0000136 obo:NCIT_C2959))
+SubClassOf(obo:GENEPIO_0100289 ObjectSomeValuesFrom(obo:IAO_0000136 obo:OBI_0001619))
+
+# Class: obo:GENEPIO_0100290 (pre-existing conditions and risk factors at time of specimen collection)
+
+AnnotationAssertion(obo:IAO_0000114 obo:GENEPIO_0100290 "requires discussion"@en)
+AnnotationAssertion(obo:IAO_0000115 obo:GENEPIO_0100290 "A personal health datum which specifies host pre-existing conditions and risk factors at time of specimen collection."@en)
+AnnotationAssertion(obo:IAO_0000117 obo:GENEPIO_0100290 "0000-0002-9578-0788")
+AnnotationAssertion(dc11:date obo:GENEPIO_0100290 "2022-01-31T23:52:41Z"^^xsd:dateTime)
+AnnotationAssertion(rdfs:label obo:GENEPIO_0100290 "pre-existing conditions and risk factors at time of specimen collection")
+SubClassOf(obo:GENEPIO_0100290 obo:GENEPIO_0002018)
+SubClassOf(obo:GENEPIO_0100290 ObjectSomeValuesFrom(obo:IAO_0000136 obo:GENEPIO_0001548))
+SubClassOf(obo:GENEPIO_0100290 ObjectSomeValuesFrom(obo:IAO_0000136 obo:OBI_0001619))
+
+# Class: obo:GENEPIO_0100291 (signs and symptoms at time of specimen collection)
+
+AnnotationAssertion(obo:IAO_0000114 obo:GENEPIO_0100291 "requires discussion"@en)
+AnnotationAssertion(obo:IAO_0000115 obo:GENEPIO_0100291 "A personal health datum which specifies host signs and symptoms at time of specimen collection."@en)
+AnnotationAssertion(obo:IAO_0000117 obo:GENEPIO_0100291 "0000-0002-9578-0788")
+AnnotationAssertion(dc11:date obo:GENEPIO_0100291 "2022-01-31T23:53:13Z"^^xsd:dateTime)
+AnnotationAssertion(rdfs:label obo:GENEPIO_0100291 "signs and symptoms at time of specimen collection")
+SubClassOf(obo:GENEPIO_0100291 obo:GENEPIO_0002018)
+SubClassOf(obo:GENEPIO_0100291 ObjectSomeValuesFrom(obo:IAO_0000136 obo:GENEPIO_0001523))
+SubClassOf(obo:GENEPIO_0100291 ObjectSomeValuesFrom(obo:IAO_0000136 obo:OBI_0001619))
+
 # Class: obo:GENEPIO_0100300 (patient signs and symptoms enumeration)
 
 SubClassOf(obo:GENEPIO_0100300 obo:IAO_0000027)
@@ -13846,6 +13906,17 @@ SubClassOf(obo:hancestro_0004 obo:GENEPIO_0001170)
 AnnotationAssertion(obo:IAO_0000114 obo:sep_00196 obo:IAO_0000122)
 AnnotationAssertion(obo:IAO_0000117 obo:sep_00196 "Damion Dooley")
 SubClassOf(obo:sep_00196 obo:GENEPIO_0001790)
+
+# Class: <http://purl.obolibrary.org/obo/GENEPIO:0100292> (host role at time of specimen collection)
+
+AnnotationAssertion(obo:IAO_0000114 <http://purl.obolibrary.org/obo/GENEPIO:0100292> "requires discussion"@en)
+AnnotationAssertion(obo:IAO_0000115 <http://purl.obolibrary.org/obo/GENEPIO:0100292> "A personal health datum which specifies host role at time of specimen collection."@en)
+AnnotationAssertion(obo:IAO_0000117 <http://purl.obolibrary.org/obo/GENEPIO:0100292> "0000-0002-9578-0788")
+AnnotationAssertion(dc11:date <http://purl.obolibrary.org/obo/GENEPIO:0100292> "2022-01-31T23:53:59Z"^^xsd:dateTime)
+AnnotationAssertion(rdfs:label <http://purl.obolibrary.org/obo/GENEPIO:0100292> "host role at time of specimen collection")
+SubClassOf(<http://purl.obolibrary.org/obo/GENEPIO:0100292> obo:GENEPIO_0002018)
+SubClassOf(<http://purl.obolibrary.org/obo/GENEPIO:0100292> ObjectSomeValuesFrom(obo:IAO_0000136 obo:IDO_0000629))
+SubClassOf(<http://purl.obolibrary.org/obo/GENEPIO:0100292> ObjectSomeValuesFrom(obo:IAO_0000136 obo:OBI_0001619))
 
 # Class: NCBITaxon:_taxonomic_rank (taxonomic rank)
 

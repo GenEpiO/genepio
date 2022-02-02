@@ -1538,6 +1538,8 @@ Declaration(Class(obo:STATO_0000232))
 Declaration(Class(obo:STATO_0000251))
 Declaration(Class(obo:STATO_0000252))
 Declaration(Class(obo:STATO_0000258))
+Declaration(Class(obo:SYMP_0000092))
+Declaration(Class(obo:SYMP_0000462))
 Declaration(Class(obo:TRANS_0000000))
 Declaration(Class(obo:TRANS_0000001))
 Declaration(Class(obo:TRANS_0000002))
@@ -1601,7 +1603,6 @@ Declaration(ObjectProperty(obo:RO_0002233))
 Declaration(ObjectProperty(obo:RO_0002234))
 Declaration(ObjectProperty(obo:RO_0002350))
 Declaration(ObjectProperty(obo:RO_0002351))
-Declaration(ObjectProperty(<http://purl.obolibrary.org/obo/uo#is_unit_of>))
 Declaration(ObjectProperty(<http://www.w3.org/2004/02/skos/core#exactMatch>))
 Declaration(ObjectProperty(linkml:examples))
 Declaration(ObjectProperty(linkml:local_names))
@@ -2126,7 +2127,6 @@ ObjectPropertyRange(obo:GENEPIO_0002471 obo:OBI_0001930)
 # Object Property: obo:IAO_0000039 (has measurement unit label)
 
 AnnotationAssertion(obo:GENEPIO_0000006 obo:IAO_0000039 "has unit"@en)
-InverseObjectProperties(obo:IAO_0000039 <http://purl.obolibrary.org/obo/uo#is_unit_of>)
 
 # Object Property: obo:IAO_0000136 (is about)
 
@@ -2197,10 +2197,6 @@ AnnotationAssertion(rdfs:label obo:RO_0002351 "has member")
 # Object Property: obo:RO_0002353 (output of)
 
 AnnotationAssertion(rdfs:label obo:RO_0002353 "output of"@en)
-
-# Object Property: <http://purl.obolibrary.org/obo/uo#is_unit_of> (is unit of)
-
-AnnotationAssertion(rdfs:label <http://purl.obolibrary.org/obo/uo#is_unit_of> "is unit of")
 
 # Object Property: <http://www.w3.org/2004/02/skos/core#exactMatch> (exactMatch)
 
@@ -2445,7 +2441,7 @@ SubClassOf(obo:APOLLO_SV_00000021 obo:STATO_0000047)
 
 SubClassOf(obo:APOLLO_SV_00000022 obo:STATO_0000047)
 
-# Class: obo:APOLLO_SV_00000031 (simulated population)
+# Class: obo:APOLLO_SV_00000031 (simulation of population)
 
 SubClassOf(obo:APOLLO_SV_00000031 obo:IAO_0000027)
 
@@ -7653,6 +7649,7 @@ AnnotationAssertion(oboInOwl:inSubset obo:GENEPIO_0001561 "GENEPIO"@en)
 AnnotationAssertion(rdfs:comment obo:GENEPIO_0001561 "As noted in Quast documentation: \" The total assembly size may increase (and in some cases exceeds the genome size) due to contaminants (see Chitsaz et al. (2011)), misassembled contigs, repeats, and hubs that contribute to multiple contigs. \""@en)
 AnnotationAssertion(rdfs:label obo:GENEPIO_0001561 "assembly genome size"@en)
 SubClassOf(obo:GENEPIO_0001561 obo:GENEPIO_0001568)
+SubClassOf(obo:GENEPIO_0001561 ObjectSomeValuesFrom(obo:IAO_0000039 obo:UO_0000244))
 
 # Class: obo:GENEPIO_0001562 (reference genome identifier)
 
@@ -13582,6 +13579,7 @@ SubClassOf(obo:RBO_00000017 obo:ENVO_01000254)
 AnnotationAssertion(obo:IAO_0000114 obo:SO_0000149 obo:IAO_0000428)
 AnnotationAssertion(obo:IAO_0000117 obo:SO_0000149 "Damion Dooley")
 SubClassOf(obo:SO_0000149 obo:GENEPIO_0001425)
+SubClassOf(obo:SO_0000149 ObjectSomeValuesFrom(obo:IAO_0000039 obo:UO_0000244))
 SubClassOf(obo:SO_0000149 ObjectSomeValuesFrom(obo:RO_0002350 obo:SO_0001462))
 
 # Class: obo:SO_0000353 (sequence_assembly)
@@ -13683,11 +13681,11 @@ SubClassOf(obo:STATO_0000252 obo:STATO_0000258)
 AnnotationAssertion(obo:GENEPIO_0000006 obo:STATO_0000258 "variable type"@en)
 SubClassOf(obo:STATO_0000258 obo:IAO_0000030)
 
-# Class: obo:SYMP_0000092 (skin lesion)
+# Class: obo:SYMP_0000092 (obo:SYMP_0000092)
 
 SubClassOf(obo:SYMP_0000092 obo:ARO_3004430)
 
-# Class: obo:SYMP_0000462 (symptom)
+# Class: obo:SYMP_0000462 (obo:SYMP_0000462)
 
 SubClassOf(obo:SYMP_0000462 obo:BFO_0000019)
 
@@ -17572,6 +17570,6 @@ AnnotationAssertion(obo:IAO_0000117 obo:UO_0000213 "Damion Dooley")
 AnnotationAssertion(obo:IAO_0000114 resource:SIO_000546 obo:IAO_0000123)
 AnnotationAssertion(obo:IAO_0000117 resource:SIO_000546 "Damion Dooley"@en)
 AnnotationAssertion(oboInOwl:hasDbXref efo:EFO_0000246 "http://purl.obolibrary.org/obo/PATO_0000011"^^xsd:anyURI)
-AnnotationAssertion(owl:qualifiedCardinality _:genid2147510261 "2"^^xsd:nonNegativeInteger)
-AnnotationAssertion(owl:qualifiedCardinality _:genid2147510262 "2"^^xsd:nonNegativeInteger)
+AnnotationAssertion(owl:qualifiedCardinality _:genid2147483879 "2"^^xsd:nonNegativeInteger)
+AnnotationAssertion(owl:qualifiedCardinality _:genid2147483880 "2"^^xsd:nonNegativeInteger)
 )

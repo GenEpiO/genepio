@@ -21,11 +21,14 @@ Declaration(Class(<http://purl.obolibrary.org/obo/GENEPIO_0001457>))
 Declaration(Class(<http://purl.obolibrary.org/obo/GENEPIO_0001498>))
 Declaration(Class(<http://purl.obolibrary.org/obo/GENEPIO_0001506>))
 Declaration(Class(<http://purl.obolibrary.org/obo/GENEPIO_0001516>))
+Declaration(Class(linkml:EnumDefinition))
 Declaration(Class(linkml:Example))
 Declaration(Class(linkml:LocalName))
+Declaration(Class(linkml:PermissibleValue))
 Declaration(Class(linkml:SlotDefinition))
 Declaration(ObjectProperty(linkml:examples))
 Declaration(ObjectProperty(linkml:local_names))
+Declaration(ObjectProperty(linkml:permissible_values))
 Declaration(DataProperty(linkml:maximum_value))
 Declaration(DataProperty(linkml:minimum_value))
 Declaration(NamedIndividual(<http://purl.obolibrary.org/obo/GENEPIO_0001123>))
@@ -311,11 +314,13 @@ Declaration(AnnotationProperty(linkml:data_collection_state))
 Declaration(AnnotationProperty(linkml:description))
 Declaration(AnnotationProperty(linkml:identifier))
 Declaration(AnnotationProperty(linkml:local_name_value))
+Declaration(AnnotationProperty(linkml:meaning))
 Declaration(AnnotationProperty(linkml:multivalued))
 Declaration(AnnotationProperty(linkml:pattern))
 Declaration(AnnotationProperty(linkml:recommended))
 Declaration(AnnotationProperty(linkml:required))
 Declaration(AnnotationProperty(linkml:see_also))
+Declaration(AnnotationProperty(linkml:text))
 Declaration(AnnotationProperty(linkml:type_uri))
 Declaration(AnnotationProperty(linkml:value))
 Declaration(Datatype(xsd:date))
@@ -343,6 +348,24 @@ AnnotationAssertion(rdfs:label <http://purl.obolibrary.org/obo/IAO_0000117> "ter
 
 AnnotationAssertion(rdfs:label <http://purl.obolibrary.org/obo/IAO_0100001> "term replaced by"@en)
 
+# Annotation Property: linkml:meaning (linkml:meaning)
+
+AnnotationPropertyDomain(linkml:meaning linkml:PermissibleValue)
+
+# Annotation Property: linkml:text (linkml:text)
+
+AnnotationPropertyDomain(linkml:text linkml:PermissibleValue)
+
+
+############################
+#   Object Properties
+############################
+
+# Object Property: linkml:permissible_values (linkml:permissible_values)
+
+ObjectPropertyDomain(linkml:permissible_values linkml:EnumDefinition)
+ObjectPropertyDomain(linkml:permissible_values linkml:PermissibleValue)
+ObjectPropertyRange(linkml:permissible_values linkml:PermissibleValue)
 
 
 

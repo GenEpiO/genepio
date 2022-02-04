@@ -58,7 +58,9 @@
 
     <!-- http://purl.obolibrary.org/obo/IAO_0000118 -->
 
-    <owl:AnnotationProperty rdf:about="http://purl.obolibrary.org/obo/IAO_0000118"/>
+    <owl:AnnotationProperty rdf:about="http://purl.obolibrary.org/obo/IAO_0000118">
+        <rdfs:label xml:lang="en">alternative term</rdfs:label>
+    </owl:AnnotationProperty>
     
 
 
@@ -124,6 +126,14 @@
     
 
 
+    <!-- https://w3id.org/linkml/meaning -->
+
+    <owl:AnnotationProperty rdf:about="https://w3id.org/linkml/meaning">
+        <rdfs:domain rdf:resource="https://w3id.org/linkml/PermissibleValue"/>
+    </owl:AnnotationProperty>
+    
+
+
     <!-- https://w3id.org/linkml/multivalued -->
 
     <owl:AnnotationProperty rdf:about="https://w3id.org/linkml/multivalued"/>
@@ -151,6 +161,14 @@
     <!-- https://w3id.org/linkml/see_also -->
 
     <owl:AnnotationProperty rdf:about="https://w3id.org/linkml/see_also"/>
+    
+
+
+    <!-- https://w3id.org/linkml/text -->
+
+    <owl:AnnotationProperty rdf:about="https://w3id.org/linkml/text">
+        <rdfs:domain rdf:resource="https://w3id.org/linkml/PermissibleValue"/>
+    </owl:AnnotationProperty>
     
 
 
@@ -186,6 +204,16 @@
     <!-- https://w3id.org/linkml/local_names -->
 
     <owl:ObjectProperty rdf:about="https://w3id.org/linkml/local_names"/>
+    
+
+
+    <!-- https://w3id.org/linkml/permissible_values -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/linkml/permissible_values">
+        <rdfs:domain rdf:resource="https://w3id.org/linkml/EnumDefinition"/>
+        <rdfs:domain rdf:resource="https://w3id.org/linkml/PermissibleValue"/>
+        <rdfs:range rdf:resource="https://w3id.org/linkml/PermissibleValue"/>
+    </owl:ObjectProperty>
     
 
 
@@ -348,6 +376,12 @@
     
 
 
+    <!-- https://w3id.org/linkml/EnumDefinition -->
+
+    <owl:Class rdf:about="https://w3id.org/linkml/EnumDefinition"/>
+    
+
+
     <!-- https://w3id.org/linkml/Example -->
 
     <owl:Class rdf:about="https://w3id.org/linkml/Example"/>
@@ -357,6 +391,12 @@
     <!-- https://w3id.org/linkml/LocalName -->
 
     <owl:Class rdf:about="https://w3id.org/linkml/LocalName"/>
+    
+
+
+    <!-- https://w3id.org/linkml/PermissibleValue -->
+
+    <owl:Class rdf:about="https://w3id.org/linkml/PermissibleValue"/>
     
 
 
@@ -392,6 +432,107 @@
         <linkml:description xml:lang="en">The user-defined name for the sample.</linkml:description>
         <linkml:identifier rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</linkml:identifier>
         <linkml:required rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</linkml:required>
+        <linkml:type_uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">xsd:token</linkml:type_uri>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001124 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001124">
+        <rdf:type rdf:resource="https://w3id.org/linkml/Example"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:NML submitted specimen primary ID example</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">NML submitted specimen primary ID example</rdfs:label>
+        <linkml:value rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SR20-12345</linkml:value>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001125 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001125">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/genepio/GENEPIO_0001122"/>
+        <linkml:examples rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001124"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000117 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://orcid.org/0000-0002-9578-0788</obo:IAO_0000117>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:NML submitted specimen primary ID</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">NML submitted specimen primary ID</rdfs:label>
+        <linkml:comments xml:lang="en">Guidance: Store the identifier for the specimen submitted through the NML LaSER system.</linkml:comments>
+        <linkml:created_on rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-04-27T02:56:23Z</linkml:created_on>
+        <linkml:description xml:lang="en">The primary ID of the specimen submitted thorough the National Microbiology Laboratory (NML) LaSER.</linkml:description>
+        <linkml:type_uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">xsd:token</linkml:type_uri>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001127 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001127">
+        <rdf:type rdf:resource="https://w3id.org/linkml/Example"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000117 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://orcid.org/0000-0002-9578-0788</obo:IAO_0000117>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:NML related specimen primary ID example</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">NML related specimen primary ID example</rdfs:label>
+        <linkml:value rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SR20-12345</linkml:value>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001128 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001128">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/genepio/GENEPIO_0001122"/>
+        <linkml:examples rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001127"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000117 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://orcid.org/0000-0002-9578-0788</obo:IAO_0000117>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:NML related specimen primary ID</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">NML related specimen primary ID</rdfs:label>
+        <linkml:comments xml:lang="en">Guidance: Store the primary ID of the related specimen previously submitted thorough LaSER</linkml:comments>
+        <linkml:created_on rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-04-27T03:10:30Z</linkml:created_on>
+        <linkml:data_collection_state rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Not Applicable; Missing; Not Collected; Not Provided; Restricted Access</linkml:data_collection_state>
+        <linkml:description xml:lang="en">The primary ID of the related specimen previously submitted thorough the National Microbiology Laboratory (NML) LaSER.</linkml:description>
+        <linkml:type_uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">xsd:token</linkml:type_uri>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001129 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001129">
+        <rdf:type rdf:resource="https://w3id.org/linkml/Example"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:IRIDA sample name example</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">IRIDA sample name example</rdfs:label>
+        <linkml:value rdf:datatype="http://www.w3.org/2001/XMLSchema#string">prov_rona_99</linkml:value>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001130 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001130">
+        <rdf:type rdf:resource="https://w3id.org/linkml/LocalName"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:IRIDA sample name local name</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">IRIDA sample name local name</rdfs:label>
+        <linkml:local_name_value rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://purl.obolibrary.org/obo/GENEPIO_0001829</linkml:local_name_value>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001131 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001131">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/genepio/GENEPIO_0001122"/>
+        <linkml:examples rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001129"/>
+        <linkml:local_names rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001130"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:IRIDA sample name</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">IRIDA sample name</rdfs:label>
+        <linkml:comments xml:lang="en">Guidance: Store the IRIDA sample name. The IRIDA sample name will be created by the individual entering data into the IRIDA platform. IRIDA samples may be linked to metadata and sequence data, or just metadata alone. It is recommended that the IRIDA sample name be the same as, or contain, the specimen collector sample ID for better traceability. It is also recommended that the IRIDA sample name mirror the GISAID accession. IRIDA sample names cannot contain slashes. Slashes should be replaced by underscores. See IRIDA documentation for more information regarding special characters (https://irida.corefacility.ca/documentation/user/user/samples/#adding-a-new-sample).</linkml:comments>
+        <linkml:created_on rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-04-27T03:24:03Z</linkml:created_on>
+        <linkml:description xml:lang="en">The identifier assigned to a sequenced isolate in IRIDA.</linkml:description>
         <linkml:type_uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">xsd:token</linkml:type_uri>
     </owl:NamedIndividual>
     
@@ -600,6 +741,36 @@
     
 
 
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001146 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001146">
+        <rdf:type rdf:resource="https://w3id.org/linkml/Example"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:GISAID accession example</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">GISAID accession example</rdfs:label>
+        <linkml:value rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EPI_ISL_436489</linkml:value>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001147 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001147">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/genepio/GENEPIO_0001122"/>
+        <linkml:examples rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001146"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:GISAID accession</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">GISAID accession</rdfs:label>
+        <linkml:comments xml:lang="en">Guidance: Store the accession returned from the GISAID submission.</linkml:comments>
+        <linkml:created_on rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-04-27T04:36:10Z</linkml:created_on>
+        <linkml:description xml:lang="en">The GISAID accession number assigned to the sequence.</linkml:description>
+        <linkml:pattern rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UPPER</linkml:pattern>
+        <linkml:see_also rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.gisaid.org/help/publish-with-data-from-gisaid/&quot;^^xsd:anyURI</linkml:see_also>
+        <linkml:type_uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">xsd:token</linkml:type_uri>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0001148 -->
 
     <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001148">
@@ -649,7 +820,7 @@
         <linkml:created_on rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-05-04T05:12:55Z</linkml:created_on>
         <linkml:data_collection_state rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Not Applicable; Missing; Not Collected; Not Provided; Restricted Access</linkml:data_collection_state>
         <linkml:description xml:lang="en">The name of the agency that collected the original sample.</linkml:description>
-        <linkml:required rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</linkml:required>
+        <linkml:required rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</linkml:required>
         <linkml:type_uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">xsd:token</linkml:type_uri>
     </owl:NamedIndividual>
     
@@ -662,7 +833,7 @@
         <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
         <obo:IAO_0000118 xml:lang="en">CanCOGeN:sample collector contact email example</obo:IAO_0000118>
         <rdfs:label xml:lang="en">sample collector contact email example</rdfs:label>
-        <linkml:value rdf:datatype="http://www.w3.org/2001/XMLSchema#string">uk.ac.manchester.cs.owl.owlapi.OWLLiteralImplString@9720fce3</linkml:value>
+        <linkml:value rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RespLab@lab.ca</linkml:value>
     </owl:NamedIndividual>
     
 
@@ -723,7 +894,7 @@
         <linkml:created_on rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-05-04T05:28:14Z</linkml:created_on>
         <linkml:data_collection_state rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Not Applicable; Missing; Not Collected; Not Provided; Restricted Access</linkml:data_collection_state>
         <linkml:description xml:lang="en">The name of the agency that generated the sequence.</linkml:description>
-        <linkml:required rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</linkml:required>
+        <linkml:required rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</linkml:required>
         <linkml:type_uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">select</linkml:type_uri>
     </owl:NamedIndividual>
     
@@ -748,7 +919,7 @@
         <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
         <obo:IAO_0000118 xml:lang="en">CanCOGeN:sequence submitter contact email example</obo:IAO_0000118>
         <rdfs:label xml:lang="en">sequence submitter contact email example</rdfs:label>
-        <linkml:value rdf:datatype="http://www.w3.org/2001/XMLSchema#string">uk.ac.manchester.cs.owl.owlapi.OWLLiteralImplString@9720fce3</linkml:value>
+        <linkml:value rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RespLab@lab.ca</linkml:value>
     </owl:NamedIndividual>
     
 
@@ -821,7 +992,7 @@
         <linkml:created_on rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-05-05T05:27:36Z</linkml:created_on>
         <linkml:data_collection_state rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Not Applicable; Missing; Not Collected; Not Provided; Restricted Access</linkml:data_collection_state>
         <linkml:description xml:lang="en">The date on which the sample was collected.</linkml:description>
-        <linkml:required rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</linkml:required>
+        <linkml:required rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</linkml:required>
         <linkml:type_uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">xsd:date</linkml:type_uri>
     </owl:NamedIndividual>
     
@@ -850,7 +1021,7 @@
         <linkml:comments xml:lang="en">Guidance: Provide the precision of granularity to the &quot;day&quot;, &quot;month&quot;, or &quot;year&quot; for the date provided in the &quot;sample collection date&quot; field. The &quot;sample collection date&quot; will be truncated to the precision specified upon export; &quot;day&quot; for &quot;YYYY-MM-DD&quot;, &quot;month&quot; for &quot;YYYY-MM&quot;, or &quot;year&quot; for &quot;YYYY&quot;.</linkml:comments>
         <linkml:created_on rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-05-05T19:51:36Z</linkml:created_on>
         <linkml:description xml:lang="en">The precision to which the &quot;sample collection date&quot; was provided.</linkml:description>
-        <linkml:required rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</linkml:required>
+        <linkml:required rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</linkml:required>
         <linkml:type_uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">select</linkml:type_uri>
     </owl:NamedIndividual>
     
@@ -909,7 +1080,7 @@
         <linkml:created_on rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-05-05T20:00:35Z</linkml:created_on>
         <linkml:data_collection_state rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Not Applicable; Missing; Not Collected; Not Provided; Restricted Access</linkml:data_collection_state>
         <linkml:description xml:lang="en">The country where the sample was collected.</linkml:description>
-        <linkml:required rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</linkml:required>
+        <linkml:required rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</linkml:required>
         <linkml:type_uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">select</linkml:type_uri>
     </owl:NamedIndividual>
     
@@ -922,101 +1093,7 @@
         <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
         <obo:IAO_0000118 xml:lang="en">CanCOGeN:geo_loc_name (state/province/territory) example</obo:IAO_0000118>
         <rdfs:label xml:lang="en">geo_loc_name (state/province/territory) example</rdfs:label>
-        <linkml:value rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Saskatchewan															requires discussion	
-GENEPIO:0001147	GISAID accession	CanCOGeN:GISAID accession	DataHarmonizer field - database identifiers	The GISAID accession number assigned to the sequence.			GISAID accession example			xsd:token	https://www.gisaid.org/help/publish-with-data-from-gisaid/&quot;^^xsd:anyURI			UPPER							2021-04-27T04:36:10Z	Guidance: Store the accession returned from the GISAID submission.		requires discussion	
-GENEPIO:0001146	GISAID accession example	CanCOGeN:GISAID accession example	https://w3id.org/linkml/Example						EPI_ISL_436489															requires discussion	
-GENEPIO:0001386	host (common name)	CanCOGeN:host (common name)	DataHarmonizer field - host information	The commonly used name of the host.			host (common name) example			select										Not Applicable; Missing; Not Collected; Not Provided; Restricted Access	2021-06-06T01:12:52Z	Guidance: Common name or scientific name are required if there was a host. Both can be provided, if known. Use terms from the pick lists in the template. Common name e.g. human, bat. If the sample was environmental, put &quot;not applicable&quot;.		requires discussion	
-GENEPIO:0001278	host (common name) example	CanCOGeN:host (common name) example	https://w3id.org/linkml/Example						Human															requires discussion	
-GENEPIO:0001387	host (scientific name)	CanCOGeN:host (scientific name)	DataHarmonizer field - host information	The taxonomic, or scientific name of the host.			host (scientific name) example			select		true&quot;^^xsd:boolean								2021-06-06T01:15:53Z|Not Applicable; Missing; Not Collected; Not Provided; Restricted Access		Guidance: Common name or scientific name are required if there was a host. Both can be provided, if known. Use terms from the pick lists in the template. Scientific name e.g. Homo sapiens, If the sample was environmental, put &quot;not applicable&quot;.		requires discussion	
-GENEPIO:0001279	host (scientific name) example	CanCOGeN:host (scientific name) example	https://w3id.org/linkml/Example						Homo sapiens															requires discussion	
-GENEPIO:0001392	host age	CanCOGeN:host age	DataHarmonizer field - host information	Age of host at the time of sampling.			host age example			xsd:decimal		true&quot;^^xsd:boolean				0&quot;^^xsd:integer	130&quot;^^xsd:integer			Not Applicable; Missing; Not Collected; Not Provided; Restricted Access	2021-06-06T01:33:44Z	Guidance: Enter the age of the host in years. If not available, provide a null value. If there is not host, put &quot;Not Applicable&quot;.		requires discussion	
-GENEPIO:0001394	host age bin	CanCOGeN:host age bin	DataHarmonizer field - host information	Age of host at the time of sampling, expressed as an age group.			host age bin example			select		true&quot;^^xsd:boolean								Not Applicable; Missing; Not Collected; Not Provided; Restricted Access	2021-06-06T01:40:27Z	Guidance: Select the corresponding host age bin from the pick list provided in the template. If not available, provide a null value.		requires discussion	
-GENEPIO:0001288	host age bin example	CanCOGeN:host age bin example	https://w3id.org/linkml/Example						60 - 69															requires discussion	
-GENEPIO:0001284	host age example	CanCOGeN:host age example	https://w3id.org/linkml/Example						79&quot;^^xsd:integer															requires discussion	
-GENEPIO:0001393	host age unit	CanCOGeN:host age unit	DataHarmonizer field - host information	The unit used to measure the host age, in either months or years.			host age unit example			select		true&quot;^^xsd:boolean								Not Applicable; Missing; Not Collected; Not Provided; Restricted Access	2021-06-06T01:37:16Z	Guidance: Indicate whether the host age is in months or years. Age indicated in months will be binned to the 0 - 9 year age bin.		requires discussion	
-GENEPIO:0001285	host age unit example	CanCOGeN:host age unit example	https://w3id.org/linkml/Example						years															requires discussion	
-GENEPIO:0001391	host disease	CanCOGeN:host disease	DataHarmonizer field - host information	The name of the disease experienced by the host.			host disease example			select		true&quot;^^xsd:boolean								Not Applicable; Missing; Not Collected; Not Provided; Restricted Access	2021-06-06T01:30:00Z	Guidance: Select &quot;COVID-19&quot; from the pick list provided in the template.		requires discussion	
-GENEPIO:0001283	host disease example	CanCOGeN:host disease example	https://w3id.org/linkml/Example						COVID-19															requires discussion	
-GENEPIO:0001395	host gender	CanCOGeN:host gender	DataHarmonizer field - host information	The gender of the host at the time of sample collection.			host gender example			select		true&quot;^^xsd:boolean		Title						Not Applicable; Missing; Not Collected; Not Provided; Restricted Access	2021-06-06T01:43:06Z	Guidance: Select the corresponding host gender from the pick list provided in the template. If not available, provide a null value. If there is no host, put &quot;Not Applicable&quot;..		requires discussion	
-GENEPIO:0001290	host gender example	CanCOGeN:host gender example	https://w3id.org/linkml/Example						male															requires discussion	
-GENEPIO:0001390	host health outcome	CanCOGeN:host health outcome	DataHarmonizer field - host information	Disease outcome in the host.			host health outcome example			select										Not Applicable; Missing; Not Collected; Not Provided; Restricted Access	2021-06-06T01:25:19Z	Guidance: If known, select a descriptor from the pick list provided in the template.		requires discussion	
-GENEPIO:0001282	host health outcome example	CanCOGeN:host health outcome example	https://w3id.org/linkml/Example						Recovered															requires discussion	
-GENEPIO:0001388	host health state	CanCOGeN:host health state	DataHarmonizer field - host information	Health status of the host at the time of sample collection.			host health state example			select										Not Applicable; Missing; Not Collected; Not Provided; Restricted Access	2021-06-06T01:19:17Z	Guidance: If known, select a descriptor from the pick list provided in the template.		requires discussion	
-GENEPIO:0001280	host health state example	CanCOGeN:host health state example	https://w3id.org/linkml/Example						Symptomatic															requires discussion	
-GENEPIO:0001389	host health status details	CanCOGeN:host health status details	DataHarmonizer field - host information	Further details pertaining to the health or disease status of the host at time of collection.			host health status details example			select										Not Applicable; Missing; Not Collected; Not Provided; Restricted Access	2021-06-06T01:21:56Z	Guidance: If known, select a descriptor from the pick list provided in the template.		requires discussion	
-GENEPIO:0001281	host health status details example	CanCOGeN:host health status details example	https://w3id.org/linkml/Example						Hospitalized (ICU)															requires discussion	
-GENEPIO:0001396	host residence geo_loc name (country)	CanCOGeN:host residence geo_loc name (country)	DataHarmonizer field - host information	The country of residence of the host.			host residence geo_loc name (country) example			select										Not Applicable; Missing; Not Collected; Not Provided; Restricted Access	2021-06-06T01:46:24Z	Guidance: Select the country name from pick list provided in the template.		requires discussion	
-GENEPIO:0001294	host residence geo_loc name (country) example	CanCOGeN:host residence geo_loc name (country) example	https://w3id.org/linkml/Example						United Kingdom															requires discussion	
-GENEPIO:0001397	host residence geo_loc name (state/province/territory)	CanCOGeN:host residence geo_loc name (state/province/territory)	DataHarmonizer field - host information	The state/province/territory of residence of the host.			host residence geo_loc name (state/province/territory) example			select										Not Applicable; Missing; Not Collected; Not Provided; Restricted Access	2021-06-06T01:49:16Z	Guidance: Select the province/territory name from pick list provided in the template.		requires discussion	
-GENEPIO:0001295	host residence geo_loc name (state/province/territory) example	CanCOGeN:host residence geo_loc name (state/province/territory) example	https://w3id.org/linkml/Example						Quebec															requires discussion	
-GENEPIO:0001419	host role	CanCOGeN:host role	DataHarmonizer field - host exposure information	The role of the host in relation to the exposure setting.			host role example			multiple					true&quot;^^xsd:boolean						2021-06-06T03:11:55Z	Guidance: Select the host&apos;s personal role(s) from the pick list provided in the template. If the desired term is missing, contact the curation team.		requires discussion	
-GENEPIO:0001317	host role example	CanCOGeN:host role example	https://w3id.org/linkml/Example						Patient															requires discussion	
-GENEPIO:0001398	host subject ID	CanCOGeN:host subject ID	DataHarmonizer field - host information	A unique identifier by which each host can be referred to e.g. #131			host subject ID example			xsd:token											2021-06-06T01:51:47Z	Guidance: Provide the host identifier. Should be a unique, user-defined identifier.		requires discussion	
-GENEPIO:0001296	host subject ID example	CanCOGeN:host subject ID example	https://w3id.org/linkml/Example						BCxy123															requires discussion	
-GENEPIO:0001404	host vaccination status	CanCOGeN:host vaccination status	DataHarmonizer field - host vaccination information	The vaccination status of the host (fully vaccinated, partially vaccinated, or not vaccinated).			host vaccination status example			select										Not Applicable; Missing; Not Collected; Not Provided; Restricted Access	2021-06-06T02:26:47Z	Guidance: Select the vaccination status of the host from the pick list.		requires discussion	
-GENEPIO:0001303	host vaccination status example	CanCOGeN:host vaccination status example	https://w3id.org/linkml/Example						Fully Vaccinated															requires discussion	
-GENEPIO:0001131	IRIDA sample name	CanCOGeN:IRIDA sample name	DataHarmonizer field - database identifiers	The identifier assigned to a sequenced isolate in IRIDA.			IRIDA sample name example	IRIDA sample name local name		xsd:token											2021-04-27T03:24:03Z	Guidance: Store the IRIDA sample name. The IRIDA sample name will be created by the individual entering data into the IRIDA platform. IRIDA samples may be linked to metadata and sequence data, or just metadata alone. It is recommended that the IRIDA sample name be the same as, or contain, the specimen collector sample ID for better traceability. It is also recommended that the IRIDA sample name mirror the GISAID accession. IRIDA sample names cannot contain slashes. Slashes should be replaced by underscores. See IRIDA documentation for more information regarding special characters (https://irida.corefacility.ca/documentation/user/user/samples/#adding-a-new-sample).		requires discussion	
-GENEPIO:0001129	IRIDA sample name example	CanCOGeN:IRIDA sample name example	https://w3id.org/linkml/Example						prov_rona_99															requires discussion	
-GENEPIO:0001130	IRIDA sample name local name	CanCOGeN:IRIDA sample name local name	https://w3id.org/linkml/LocalName															http://purl.obolibrary.org/obo/GENEPIO_0001829						requires discussion	
-GENEPIO:0001195	isolate	CanCOGeN:isolate	DataHarmonizer field - sample collection and processing	Identifier of the specific isolate.			isolate example			xsd:token		true&quot;^^xsd:boolean								Not Applicable; Missing; Not Collected; Not Provided; Restricted Access	2021-05-05T20:19:08Z	Guidance: Provide the GISAID virus name, which should be written in the format “hCov-19/CANADA/xxxxx/2020”.		requires discussion	
-GENEPIO:0001194	isolate example	CanCOGeN:isolate example	https://w3id.org/linkml/Example						hCov-19/CANADA/prov_rona_99/2020															requires discussion	
-GENEPIO:0001255	lab host	CanCOGeN:lab host	DataHarmonizer field - sample collection and processing	Name and description of the laboratory host used to propagate the source organism or material from which the sample was obtained.			lab host example			select			true&quot;^^xsd:boolean							Not Applicable; Missing; Not Collected; Not Provided; Restricted Access	2021-06-05T16:01:34Z	Guidance: Type of cell line used for propagation. Provide the name of the cell line using the picklist in the template. If not passaged, put &quot;Not Applicable&quot;..		requires discussion	
-GENEPIO:0001254	lab host example	CanCOGeN:lab host example	https://w3id.org/linkml/Example						Vero E6 cell line															requires discussion	
-GENEPIO:0001408	last dose vaccination date	CanCOGeN:last dose vaccination date	DataHarmonizer field - host vaccination information	The date the host received their last dose of vaccine.			last dose vaccination date example			xsd:date											2021-06-06T02:40:02Z	Guidance: Provide the date that the last dose of the vaccine was administered. Provide the last dose vaccination date in ISO 8601 standard format &quot;YYYY-MM-DD&quot;.		requires discussion	
-GENEPIO:0001307	last dose vaccination date example	CanCOGeN:last dose vaccination date example	https://w3id.org/linkml/Example						2021-04-09															requires discussion	
-GENEPIO:0001448	library ID	CanCOGeN:library ID	DataHarmonizer field - sequencing	The user-specified identifier for the library prepared for sequencing.			library ID example			xsd:token			true&quot;^^xsd:boolean								2021-06-06T04:08:07Z	Guidance: The library name should be unique, and can be an autogenerated ID from your LIMS, or modification of the isolate ID.		requires discussion	
-GENEPIO:0001329	library ID example	CanCOGeN:library ID example	https://w3id.org/linkml/Example						XYZ_123345															requires discussion	
-GENEPIO:0001450	library preparation kit	CanCOGeN:library preparation kit	DataHarmonizer field - sequencing	The name of the DNA library preparation kit used to generate the library being sequenced.			library preparation kit example			xsd:token											2021-06-06T04:12:44Z	Guidance: Provide the name of the library preparation kit used.		requires discussion	
-GENEPIO:0001331	library preparation kit example	CanCOGeN:library preparation kit example	https://w3id.org/linkml/Example						Nextera XT															requires discussion	
-GENEPIO:0001501	lineage/clade analysis software name	CanCOGeN:lineage/clade analysis software name	DataHarmonizer field - lineage and variant information	The name of the software used to determine the lineage/clade.						xsd:token											2021-06-06T15:35:38Z	Guidance: Provide the name of the software used to determine the lineage/clade.		requires discussion	
-GENEPIO:0001364	lineage/clade analysis software name example	CanCOGeN:lineage/clade analysis software name example	https://w3id.org/linkml/Example						Pangolin															requires discussion	
-GENEPIO:0001502	lineage/clade analysis software version	CanCOGeN:lineage/clade analysis software version	DataHarmonizer field - lineage and variant information	The version of the software used to determine the lineage/clade.						xsd:token											2021-06-06T15:38:00Z	Guidance: Provide the version of the software used ot determine the lineage/clade.		requires discussion	
-GENEPIO:0001365	lineage/clade analysis software version example	CanCOGeN:lineage/clade analysis software version example	https://w3id.org/linkml/Example						2.1.10															requires discussion	
-GENEPIO:0001500	lineage/clade name	CanCOGeN:lineage/clade name	DataHarmonizer field - lineage and variant information	The name of the lineage or clade.						xsd:token											2021-06-06T15:32:22Z	Guidance: Provide the Pangolin or Nextstrain lineage/clade name.		requires discussion	
-GENEPIO:0001363	lineage/clade name example	CanCOGeN:lineage/clade name example	https://w3id.org/linkml/Example						B.1.1.7															requires discussion	
-GENEPIO:0001410	location of exposure geo_loc name (country)	CanCOGeN:location of exposure geo_loc name (country)	DataHarmonizer field - host exposure information	The country where the host was likely exposed to the causative agent of the illness.			location of exposure geo_loc name (country) example			select										Not Applicable; Missing; Not Collected; Not Provided; Restricted Access	2021-06-06T02:46:05Z	Guidance: Select the country name from pick list provided in the template.		requires discussion	
-GENEPIO:0001308	location of exposure geo_loc name (country) example	CanCOGeN:location of exposure geo_loc name (country) example	https://w3id.org/linkml/Example						Canada															requires discussion	
-GENEPIO:0001414	most recent travel departure date	CanCOGeN:most recent travel departure date	DataHarmonizer field - host exposure information	The date of a person&apos;s most recent departure from their primary residence (at that time) on a journey to one or more other locations.			most recent travel departure date example			xsd:date										Not Applicable; Missing; Not Collected; Not Provided; Restricted Access	2021-06-06T02:59:30Z	Guidance: Provide the travel departure date.		requires discussion	
-GENEPIO:0001312	most recent travel departure date example	CanCOGeN:most recent travel departure date example	https://w3id.org/linkml/Example						2020-03-16															requires discussion	
-GENEPIO:0001415	most recent travel return date	CanCOGeN:most recent travel return date	DataHarmonizer field - host exposure information	The date of a person&apos;s most recent return to some residence from a journey originating at that residence.			most recent travel return date example			xsd:date										Not Applicable; Missing; Not Collected; Not Provided; Restricted Access	2021-06-06T03:02:03Z	Guidance: Provide the travel return date.		requires discussion	
-GENEPIO:0001313	most recent travel return date example	CanCOGeN:most recent travel return date example	https://w3id.org/linkml/Example						2020-04-26															requires discussion	
-GENEPIO:0001128	NML related specimen primary ID	CanCOGeN:NML related specimen primary ID	DataHarmonizer field - database identifiers	The primary ID of the related specimen previously submitted thorough the National Microbiology Laboratory (NML) LaSER.			NML related specimen primary ID example			xsd:token										Not Applicable; Missing; Not Collected; Not Provided; Restricted Access	2021-04-27T03:10:30Z	Guidance: Store the primary ID of the related specimen previously submitted thorough LaSER	https://orcid.org/0000-0002-9578-0788	requires discussion	
-GENEPIO:0001127	NML related specimen primary ID example	CanCOGeN:NML related specimen primary ID example	https://w3id.org/linkml/Example						SR20-12345														https://orcid.org/0000-0002-9578-0788	requires discussion	
-GENEPIO:0001209	NML related specimen relationship type	CanCOGeN:NML related specimen relationship type	DataHarmonizer field - sample collection and processing	The relationship of the related specimen to the previous National Microbiology Laboratory (NML) submission.			NML related specimen relationship type example			select											2021-05-11T00:33:44Z	Guidance: Provide the specimen type of the original sample submitted from the pick list provided, so that additional specimen testing can be tracked in the system.		requires discussion	
-GENEPIO:0001207	NML related specimen relationship type example	CanCOGeN:NML related specimen relationship type example	https://w3id.org/linkml/Example						Follow-up															requires discussion	
-GENEPIO:0001125	NML submitted specimen primary ID	CanCOGeN:NML submitted specimen primary ID	DataHarmonizer field - database identifiers	The primary ID of the specimen submitted thorough the National Microbiology Laboratory (NML) LaSER.			NML submitted specimen primary ID example			xsd:token											2021-04-27T02:56:23Z	Guidance: Store the identifier for the specimen submitted through the NML LaSER system.	https://orcid.org/0000-0002-9578-0788	requires discussion	
-GENEPIO:0001124	NML submitted specimen primary ID example	CanCOGeN:NML submitted specimen primary ID example	https://w3id.org/linkml/Example						SR20-12345															requires discussion	
-GENEPIO:0001204	NML submitted specimen type	CanCOGeN:NML submitted specimen type	DataHarmonizer field - sample collection and processing	The type of specimen submitted to the National Microbiology Laboratory (NML) for testing.			NML submitted specimen type example			select		true&quot;^^xsd:boolean									2021-05-11T00:28:44Z	Guidance: This information is required for upload through the CNPHI LaSER system. Select the specimen type from the pick list provided. If sequence data is being submitted rather than a specimen for testing, select “Not Applicable”.		requires discussion	
-GENEPIO:0001203	NML submitted specimen type example	CanCOGeN:NML submitted specimen type example	https://w3id.org/linkml/Example						swab															requires discussion	
-GENEPIO:0001484	Ns per 100 kbp	CanCOGeN:Ns per 100 kbp	DataHarmonizer field - bioinformatics and QC metrics	The number of N symbols present in the consensus fasta sequence, per 100kbp of sequence.						xsd:decimal						0&quot;^^xsd:integer					2021-06-06T15:18:08Z	Guidance: Provide a numerical value (no need to include units).		requires discussion	
-GENEPIO:0001360	Ns per 100 kbp example	CanCOGeN:Ns per 100 kbp example	https://w3id.org/linkml/Example						330&quot;^^xsd:integer															requires discussion	
-GENEPIO:0001482	number of base pairs sequenced	CanCOGeN:number of base pairs sequenced	DataHarmonizer field - bioinformatics and QC metrics	The number of total base pairs generated by the sequencing process.						xsd:nonNegativeInteger											2021-06-06T15:10:14Z	Guidance: Provide a numerical value (no need to include units).		requires discussion	
-GENEPIO:0001358	number of base pairs sequenced example	CanCOGeN:number of base pairs sequenced example	https://w3id.org/linkml/Example						387566&quot;^^xsd:integer															requires discussion	
-GENEPIO:0001406	number of vaccine doses received	CanCOGeN:number of vaccine doses received	DataHarmonizer field - host vaccination information	The number of doses of the vaccine recived by the host.			number of vaccine doses received example			xsd:nonNegativeInteger											2021-06-06T02:31:41Z	Guidance: Record how many doses of the vaccine the host has received.		requires discussion	
-GENEPIO:0001305	number of vaccine doses received example	CanCOGeN:number of vaccine doses received example	https://w3id.org/linkml/Example						2&quot;^^xsd:integer															requires discussion	
-GENEPIO:0001191	organism	CanCOGeN:organism	DataHarmonizer field - sample collection and processing	Taxonomic name of the organism.			organism example			select		true&quot;^^xsd:boolean								Not Applicable; Missing; Not Collected; Not Provided; Restricted Access	2021-05-05T20:13:16Z	Guidance: Use &quot;Severe acute respiratory syndrome coronavirus 2&quot;. This value is provided in the template.		requires discussion	
-GENEPIO:0001190	organism example	CanCOGeN:organism example	https://w3id.org/linkml/Example						Severe acute respiratory syndrome coronavirus 2															requires discussion	
-GENEPIO:0001264	passage method	CanCOGeN:passage method	DataHarmonizer field - sample collection and processing	Description of how organism was passaged.						xsd:token			true&quot;^^xsd:boolean							Not Applicable; Missing; Not Collected; Not Provided; Restricted Access	2021-06-05T16:16:51Z	Guidance: Free text. Provide a very short description (&lt;10 words). If not passaged, put &quot;Not Applicable&quot;..		requires discussion	
-GENEPIO:0001263	passage method example	CanCOGeN:passage method example	https://w3id.org/linkml/Example						0.25% trypsin + 0.02% EDTA															requires discussion	
-GENEPIO:0001261	passage number	CanCOGeN:passage number	DataHarmonizer field - sample collection and processing	Number of passages.						xsd:nonNegativeInteger											2021-06-05T16:06:51Z	Guidance: Provide number of known passages. If not passaged, put &quot;Not Applicable&quot;..		requires discussion	
-GENEPIO:0001256	passage number example	CanCOGeN:passage number example	https://w3id.org/linkml/Example				passage number example		3&quot;^^xsd:integer	xs:nonNegativeInteger			true&quot;^^xsd:boolean							Not Applicable; Missing; Not Collected; Not Provided; Restricted Access	2021-06-05T16:04:42Z			requires discussion	
-GENEPIO:0001401	pre-existing conditions and risk factors	CanCOGeN:pre-existing conditions and risk factors	DataHarmonizer field - host information	Patient pre-existing conditions and risk factors. 1) Pre-existing condition: A medical condition that existed prior to the current infection. 2) Risk Factor: A variable associated with an increased risk of disease or infection.			pre-existing conditions and risk factors example			multiple					true&quot;^^xsd:boolean					Not Applicable; Missing; Not Collected; Not Provided; Restricted Access	2021-06-06T02:01:27Z	Guidance: Select all of the pre-existing conditions and risk factors experienced by the host from the pick list. If the desired term is missing, contact the curation team.		requires discussion	
-GENEPIO:0001300	pre-existing conditions and risk factors example	CanCOGeN:pre-existing conditions and risk factors example	https://w3id.org/linkml/Example						Asthma; Pregnancy; Smoking															requires discussion	
-GENEPIO:0001438	prior SARS-CoV-2 antiviral treatment	CanCOGeN:prior SARS-CoV-2 antiviral treatment	DataHarmonizer field - host reinfection information	Whether there was prior SARS-CoV-2 treatment with an antiviral agent.			prior SARS-CoV-2 antiviral treatment example			select										Not Applicable; Missing; Not Collected; Not Provided; Restricted Access	2021-06-06T03:50:07Z	Guidance: If known, provide information about whether the individual had a previous SARS-CoV-2 antiviral treatment. Select a value from the pick list.		requires discussion	
-GENEPIO:0001439	prior SARS-CoV-2 antiviral treatment agent	CanCOGeN:prior SARS-CoV-2 antiviral treatment agent	DataHarmonizer field - host reinfection information	The name of the antiviral treatment agent administered during the prior SARS-CoV-2 infection.			prior SARS-CoV-2 antiviral treatment agent example			xsd:token											2021-06-06T03:52:27Z	Guidance: Provide the name of the antiviral treatment agent administered during the most recent prior infection. If no treatment was administered, put &quot;No treatment&quot;. If multiple antiviral agents were administered, list them all separated by commas.		requires discussion	
-GENEPIO:0001324	prior SARS-CoV-2 antiviral treatment agent example	CanCOGeN:prior SARS-CoV-2 antiviral treatment agent example	https://w3id.org/linkml/Example						Remdesivir															requires discussion	
-GENEPIO:0001440	prior SARS-CoV-2 antiviral treatment date	CanCOGeN:prior SARS-CoV-2 antiviral treatment date	DataHarmonizer field - host reinfection information	The date treatment was first administered during the prior SARS-CoV-2 infection.			prior SARS-CoV-2 antiviral treatment date example			xsd:date											2021-06-06T03:55:02Z	Guidance: Provide the date that the antiviral treatment agent was first administered during the most recenrt prior infection. Provide the prior SARS-CoV-2 treatment date in ISO 8601 standard format &quot;YYYY-MM-DD&quot;.		requires discussion	
-GENEPIO:0001325	prior SARS-CoV-2 antiviral treatment date example	CanCOGeN:prior SARS-CoV-2 antiviral treatment date example	https://w3id.org/linkml/Example						2021-01-28															requires discussion	
-GENEPIO:0001323	prior SARS-CoV-2 antiviral treatment example	CanCOGeN:prior SARS-CoV-2 antiviral treatment example	https://w3id.org/linkml/Example						No prior antiviral treatment															requires discussion	
-GENEPIO:0001435	prior SARS-CoV-2 infection	CanCOGeN:prior SARS-CoV-2 infection	DataHarmonizer field - host reinfection information	Whether there was prior SARS-CoV-2 infection.			prior SARS-CoV-2 infection example			select										Not Applicable; Missing; Not Collected; Not Provided; Restricted Access	2021-06-06T03:40:19Z	Guidance: If known, provide information about whether the individual had a previous SARS-CoV-2 infection. Select a value from the pick list.		requires discussion	
-GENEPIO:0001437	prior SARS-CoV-2 infection date	CanCOGeN:prior SARS-CoV-2 infection date	DataHarmonizer field - host reinfection information	The date of diagnosis of the prior SARS-CoV-2 infection.			prior SARS-CoV-2 infection date example			xsd:date											2021-06-06T03:47:22Z	Guidance: Provide the date that the most recent prior infection was diagnosed. Provide the prior SARS-CoV-2 infection date in ISO 8601 standard format &quot;YYYY-MM-DD&quot;.		requires discussion	
-GENEPIO:0001322	prior SARS-CoV-2 infection date example	CanCOGeN:prior SARS-CoV-2 infection date example	https://w3id.org/linkml/Example						2021-01-23															requires discussion	
-GENEPIO:0001320	prior SARS-CoV-2 infection example	CanCOGeN:prior SARS-CoV-2 infection example	https://w3id.org/linkml/Example						Yes															requires discussion	
-GENEPIO:0001436	prior SARS-CoV-2 infection isolate	CanCOGeN:prior SARS-CoV-2 infection isolate	DataHarmonizer field - host reinfection information	The identifier of the isolate found in the prior SARS-CoV-2 infection.			prior SARS-CoV-2 infection isolate example			xsd:token											2021-06-06T03:43:38Z	Guidance: Provide the isolate name of the most recent prior infection. Structure the &quot;isolate&quot; name to be ICTV/INSDC compliant in the following format: &quot;SARS-CoV-2/host/country/sampleID/date&quot;.		requires discussion	
-GENEPIO:0001321	prior SARS-CoV-2 infection isolate example	CanCOGeN:prior SARS-CoV-2 infection isolate example	https://w3id.org/linkml/Example						SARS-CoV-2/human/USA/CA-CDPH-001/2020															requires discussion	
-GENEPIO:0001198	purpose of sampling	CanCOGeN:purpose of sampling	DataHarmonizer field - sample collection and processing	The reason that the sample was collected.			purpose of sampling example			select		true&quot;^^xsd:boolean								Not Applicable; Missing; Not Collected; Not Provided; Restricted Access	2021-05-05T20:23:41Z	Guidance: The reason a sample was collected may provide information about potential biases in sampling strategy. Provide the purpose of sampling from the picklist in the template. Most likely, the sample was collected for Diagnostic testing. The reason why a sample was originally collected may differ from the reason why it was selected for sequencing, which should be indicated in the &quot;purpose of sequencing&quot; field.		requires discussion	
-GENEPIO:0001200	purpose of sampling details	CanCOGeN:purpose of sampling details	DataHarmonizer field - sample collection and processing	The description of why the sample was collected, providing specific details.			purpose of sampling details example			xsd:token		true&quot;^^xsd:boolean								Not Applicable; Missing; Not Collected; Not Provided; Restricted Access	2021-05-05T20:29:50Z	Guidance: Provide an expanded description of why the sample was collected using free text. The description may include the importance of the sample for a particular public health investigation/surveillance activity/research question. If details are not available, provide a null value.		requires discussion	
-GENEPIO:0001199	purpose of sampling details example	CanCOGeN:purpose of sampling details example	https://w3id.org/linkml/Example						The sample was collected to investigate the prevalence of variants associated with mink-to-human transmission in Canada.</linkml:value>
+        <linkml:value rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Saskatchewan</linkml:value>
     </owl:NamedIndividual>
     
 
@@ -1033,7 +1110,7 @@ GENEPIO:0001199	purpose of sampling details example	CanCOGeN:purpose of sampling
         <linkml:created_on rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-05-05T20:05:18Z</linkml:created_on>
         <linkml:data_collection_state rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Not Applicable; Missing; Not Collected; Not Provided; Restricted Access</linkml:data_collection_state>
         <linkml:description xml:lang="en">The province/territory where the sample was collected.</linkml:description>
-        <linkml:required rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</linkml:required>
+        <linkml:required rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</linkml:required>
         <linkml:type_uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">select</linkml:type_uri>
     </owl:NamedIndividual>
     
@@ -1067,6 +1144,66 @@ GENEPIO:0001199	purpose of sampling details example	CanCOGeN:purpose of sampling
     
 
 
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001190 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001190">
+        <rdf:type rdf:resource="https://w3id.org/linkml/Example"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:organism example</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">organism example</rdfs:label>
+        <linkml:value rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Severe acute respiratory syndrome coronavirus 2</linkml:value>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001191 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001191">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/genepio/GENEPIO_0001150"/>
+        <linkml:examples rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001190"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:organism</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">organism</rdfs:label>
+        <linkml:comments xml:lang="en">Guidance: Use &quot;Severe acute respiratory syndrome coronavirus 2&quot;. This value is provided in the template.</linkml:comments>
+        <linkml:created_on rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-05-05T20:13:16Z</linkml:created_on>
+        <linkml:data_collection_state rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Not Applicable; Missing; Not Collected; Not Provided; Restricted Access</linkml:data_collection_state>
+        <linkml:description xml:lang="en">Taxonomic name of the organism.</linkml:description>
+        <linkml:required rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</linkml:required>
+        <linkml:type_uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">select</linkml:type_uri>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001194 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001194">
+        <rdf:type rdf:resource="https://w3id.org/linkml/Example"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:isolate example</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">isolate example</rdfs:label>
+        <linkml:value rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hCov-19/CANADA/prov_rona_99/2020</linkml:value>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001195 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001195">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/genepio/GENEPIO_0001150"/>
+        <linkml:examples rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001194"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:isolate</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">isolate</rdfs:label>
+        <linkml:comments xml:lang="en">Guidance: Provide the GISAID virus name, which should be written in the format “hCov-19/CANADA/xxxxx/2020”.</linkml:comments>
+        <linkml:created_on rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-05-05T20:19:08Z</linkml:created_on>
+        <linkml:data_collection_state rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Not Applicable; Missing; Not Collected; Not Provided; Restricted Access</linkml:data_collection_state>
+        <linkml:description xml:lang="en">Identifier of the specific isolate.</linkml:description>
+        <linkml:required rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</linkml:required>
+        <linkml:type_uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">xsd:token</linkml:type_uri>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0001197 -->
 
     <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001197">
@@ -1075,6 +1212,54 @@ GENEPIO:0001199	purpose of sampling details example	CanCOGeN:purpose of sampling
         <obo:IAO_0000118 xml:lang="en">CanCOGeN:purpose of sampling example</obo:IAO_0000118>
         <rdfs:label xml:lang="en">purpose of sampling example</rdfs:label>
         <linkml:value rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Diagnostic testing</linkml:value>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001198 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001198">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/genepio/GENEPIO_0001150"/>
+        <linkml:examples rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001197"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:purpose of sampling</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">purpose of sampling</rdfs:label>
+        <linkml:comments xml:lang="en">Guidance: The reason a sample was collected may provide information about potential biases in sampling strategy. Provide the purpose of sampling from the picklist in the template. Most likely, the sample was collected for Diagnostic testing. The reason why a sample was originally collected may differ from the reason why it was selected for sequencing, which should be indicated in the &quot;purpose of sequencing&quot; field.</linkml:comments>
+        <linkml:created_on rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-05-05T20:23:41Z</linkml:created_on>
+        <linkml:data_collection_state rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Not Applicable; Missing; Not Collected; Not Provided; Restricted Access</linkml:data_collection_state>
+        <linkml:description xml:lang="en">The reason that the sample was collected.</linkml:description>
+        <linkml:required rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</linkml:required>
+        <linkml:type_uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">select</linkml:type_uri>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001199 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001199">
+        <rdf:type rdf:resource="https://w3id.org/linkml/Example"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:purpose of sampling details example</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">purpose of sampling details example</rdfs:label>
+        <linkml:value rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The sample was collected to investigate the prevalence of variants associated with mink-to-human transmission in Canada.</linkml:value>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001200 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001200">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/genepio/GENEPIO_0001150"/>
+        <linkml:examples rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001199"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:purpose of sampling details</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">purpose of sampling details</rdfs:label>
+        <linkml:comments xml:lang="en">Guidance: Provide an expanded description of why the sample was collected using free text. The description may include the importance of the sample for a particular public health investigation/surveillance activity/research question. If details are not available, provide a null value.</linkml:comments>
+        <linkml:created_on rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-05-05T20:29:50Z</linkml:created_on>
+        <linkml:data_collection_state rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Not Applicable; Missing; Not Collected; Not Provided; Restricted Access</linkml:data_collection_state>
+        <linkml:description xml:lang="en">The description of why the sample was collected, providing specific details.</linkml:description>
+        <linkml:required rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</linkml:required>
+        <linkml:type_uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">xsd:token</linkml:type_uri>
     </owl:NamedIndividual>
     
 
@@ -1107,6 +1292,63 @@ GENEPIO:0001199	purpose of sampling details example	CanCOGeN:purpose of sampling
     
 
 
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001203 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001203">
+        <rdf:type rdf:resource="https://w3id.org/linkml/Example"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:NML submitted specimen type example</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">NML submitted specimen type example</rdfs:label>
+        <linkml:value rdf:datatype="http://www.w3.org/2001/XMLSchema#string">swab</linkml:value>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001204 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001204">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/genepio/GENEPIO_0001150"/>
+        <linkml:examples rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001203"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:NML submitted specimen type</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">NML submitted specimen type</rdfs:label>
+        <linkml:comments xml:lang="en">Guidance: This information is required for upload through the CNPHI LaSER system. Select the specimen type from the pick list provided. If sequence data is being submitted rather than a specimen for testing, select “Not Applicable”.</linkml:comments>
+        <linkml:created_on rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-05-11T00:28:44Z</linkml:created_on>
+        <linkml:description xml:lang="en">The type of specimen submitted to the National Microbiology Laboratory (NML) for testing.</linkml:description>
+        <linkml:required rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</linkml:required>
+        <linkml:type_uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">select</linkml:type_uri>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001207 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001207">
+        <rdf:type rdf:resource="https://w3id.org/linkml/Example"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:NML related specimen relationship type example</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">NML related specimen relationship type example</rdfs:label>
+        <linkml:value rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Follow-up</linkml:value>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001209 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001209">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/genepio/GENEPIO_0001150"/>
+        <linkml:examples rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001207"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:NML related specimen relationship type</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">NML related specimen relationship type</rdfs:label>
+        <linkml:comments xml:lang="en">Guidance: Provide the specimen type of the original sample submitted from the pick list provided, so that additional specimen testing can be tracked in the system.</linkml:comments>
+        <linkml:created_on rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-05-11T00:33:44Z</linkml:created_on>
+        <linkml:description xml:lang="en">The relationship of the related specimen to the previous National Microbiology Laboratory (NML) submission.</linkml:description>
+        <linkml:type_uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">select</linkml:type_uri>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0001210 -->
 
     <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001210">
@@ -1131,7 +1373,7 @@ GENEPIO:0001199	purpose of sampling details example	CanCOGeN:purpose of sampling
         <linkml:created_on rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-05-11T00:37:36Z</linkml:created_on>
         <linkml:data_collection_state rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Not Applicable; Missing; Not Collected; Not Provided; Restricted Access</linkml:data_collection_state>
         <linkml:description xml:lang="en">A substance obtained from an anatomical part of an organism e.g. tissue, blood.</linkml:description>
-        <linkml:required rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</linkml:required>
+        <linkml:required rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</linkml:required>
         <linkml:type_uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">select</linkml:type_uri>
     </owl:NamedIndividual>
     
@@ -1160,7 +1402,7 @@ GENEPIO:0001199	purpose of sampling details example	CanCOGeN:purpose of sampling
         <linkml:comments xml:lang="en">Guidance: Provide a descriptor if an anatomical part was sampled. Use the picklist provided in the template. If a desired term is missing from the picklist, contact emma.griffiths@bccdc.ca. If not applicable, do not leave blank. Choose a null value.</linkml:comments>
         <linkml:data_collection_state rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Not Applicable; Missing; Not Collected; Not Provided; Restricted Access</linkml:data_collection_state>
         <linkml:description xml:lang="en">An anatomical part of an organism e.g. oropharynx.</linkml:description>
-        <linkml:required rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</linkml:required>
+        <linkml:required rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</linkml:required>
         <linkml:type_uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">select</linkml:type_uri>
     </owl:NamedIndividual>
     
@@ -1190,7 +1432,7 @@ GENEPIO:0001199	purpose of sampling details example	CanCOGeN:purpose of sampling
         <linkml:created_on rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-05-11T00:45:08Z</linkml:created_on>
         <linkml:data_collection_state rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Not Applicable; Missing; Not Collected; Not Provided; Restricted Access</linkml:data_collection_state>
         <linkml:description xml:lang="en">A substance excreted/secreted from an organism e.g. feces, urine, sweat.</linkml:description>
-        <linkml:required rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</linkml:required>
+        <linkml:required rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</linkml:required>
         <linkml:type_uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">select</linkml:type_uri>
     </owl:NamedIndividual>
     
@@ -1220,7 +1462,7 @@ GENEPIO:0001199	purpose of sampling details example	CanCOGeN:purpose of sampling
         <linkml:created_on rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-06-05T04:51:30Z</linkml:created_on>
         <linkml:data_collection_state rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Not Applicable; Missing; Not Collected; Not Provided; Restricted Access</linkml:data_collection_state>
         <linkml:description xml:lang="en">A substance obtained from the natural or man-made environment e.g. soil, water, sewage.</linkml:description>
-        <linkml:required rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</linkml:required>
+        <linkml:required rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</linkml:required>
         <linkml:type_uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">select</linkml:type_uri>
     </owl:NamedIndividual>
     
@@ -1250,7 +1492,7 @@ GENEPIO:0001199	purpose of sampling details example	CanCOGeN:purpose of sampling
         <linkml:created_on rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-06-05T04:57:02Z</linkml:created_on>
         <linkml:data_collection_state rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Not Applicable; Missing; Not Collected; Not Provided; Restricted Access</linkml:data_collection_state>
         <linkml:description xml:lang="en">An environmental location may describe a site in the natural or built environment e.g. contact surface, metal can, hospital, wet market, bat cave.</linkml:description>
-        <linkml:required rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</linkml:required>
+        <linkml:required rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</linkml:required>
         <linkml:type_uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">select</linkml:type_uri>
     </owl:NamedIndividual>
     
@@ -1280,7 +1522,7 @@ GENEPIO:0001199	purpose of sampling details example	CanCOGeN:purpose of sampling
         <linkml:created_on rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-06-05T05:02:28Z</linkml:created_on>
         <linkml:data_collection_state rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Not Applicable; Missing; Not Collected; Not Provided; Restricted Access</linkml:data_collection_state>
         <linkml:description xml:lang="en">The instrument or container used to collect the sample e.g. swab.</linkml:description>
-        <linkml:required rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</linkml:required>
+        <linkml:required rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</linkml:required>
         <linkml:type_uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">select</linkml:type_uri>
     </owl:NamedIndividual>
     
@@ -1310,7 +1552,7 @@ GENEPIO:0001199	purpose of sampling details example	CanCOGeN:purpose of sampling
         <linkml:created_on rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-06-05T05:06:36Z</linkml:created_on>
         <linkml:data_collection_state rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Not Applicable; Missing; Not Collected; Not Provided; Restricted Access</linkml:data_collection_state>
         <linkml:description xml:lang="en">The process used to collect the sample e.g. phlebotamy, necropsy.</linkml:description>
-        <linkml:required rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</linkml:required>
+        <linkml:required rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</linkml:required>
         <linkml:type_uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">select</linkml:type_uri>
         <linkml:value rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bronchoalveolar lavage (BAL)</linkml:value>
     </owl:NamedIndividual>
@@ -1369,9 +1611,100 @@ GENEPIO:0001199	purpose of sampling details example	CanCOGeN:purpose of sampling
         <linkml:created_on rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-06-05T05:16:02Z</linkml:created_on>
         <linkml:data_collection_state rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Not Applicable; Missing; Not Collected; Not Provided; Restricted Access</linkml:data_collection_state>
         <linkml:description xml:lang="en">Any processing applied to the sample during or after receiving the sample.</linkml:description>
-        <linkml:multivalued rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</linkml:multivalued>
-        <linkml:recommended rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</linkml:recommended>
+        <linkml:multivalued rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</linkml:multivalued>
+        <linkml:recommended rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</linkml:recommended>
         <linkml:type_uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">multiple</linkml:type_uri>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001254 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001254">
+        <rdf:type rdf:resource="https://w3id.org/linkml/Example"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:lab host example</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">lab host example</rdfs:label>
+        <linkml:value rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Vero E6 cell line</linkml:value>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001255 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001255">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/genepio/GENEPIO_0001150"/>
+        <linkml:examples rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001254"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:lab host</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">lab host</rdfs:label>
+        <linkml:comments xml:lang="en">Guidance: Type of cell line used for propagation. Provide the name of the cell line using the picklist in the template. If not passaged, put &quot;Not Applicable&quot;..</linkml:comments>
+        <linkml:created_on rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-06-05T16:01:34Z</linkml:created_on>
+        <linkml:data_collection_state rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Not Applicable; Missing; Not Collected; Not Provided; Restricted Access</linkml:data_collection_state>
+        <linkml:description xml:lang="en">Name and description of the laboratory host used to propagate the source organism or material from which the sample was obtained.</linkml:description>
+        <linkml:recommended rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</linkml:recommended>
+        <linkml:type_uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">select</linkml:type_uri>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001256 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001256">
+        <rdf:type rdf:resource="https://w3id.org/linkml/Example"/>
+        <linkml:examples rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001256"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:passage number example</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">passage number example</rdfs:label>
+        <linkml:created_on rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-06-05T16:04:42Z</linkml:created_on>
+        <linkml:data_collection_state rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Not Applicable; Missing; Not Collected; Not Provided; Restricted Access</linkml:data_collection_state>
+        <linkml:recommended rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</linkml:recommended>
+        <linkml:type_uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">xs:nonNegativeInteger</linkml:type_uri>
+        <linkml:value rdf:datatype="http://www.w3.org/2001/XMLSchema#string">3&quot;^^xsd:integer</linkml:value>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001261 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001261">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/genepio/GENEPIO_0001150"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:passage number</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">passage number</rdfs:label>
+        <linkml:comments xml:lang="en">Guidance: Provide number of known passages. If not passaged, put &quot;Not Applicable&quot;..</linkml:comments>
+        <linkml:created_on rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-06-05T16:06:51Z</linkml:created_on>
+        <linkml:description xml:lang="en">Number of passages.</linkml:description>
+        <linkml:type_uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">xsd:nonNegativeInteger</linkml:type_uri>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001263 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001263">
+        <rdf:type rdf:resource="https://w3id.org/linkml/Example"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:passage method example</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">passage method example</rdfs:label>
+        <linkml:value rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.25% trypsin + 0.02% EDTA</linkml:value>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001264 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001264">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/genepio/GENEPIO_0001150"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:passage method</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">passage method</rdfs:label>
+        <linkml:comments xml:lang="en">Guidance: Free text. Provide a very short description (&lt;10 words). If not passaged, put &quot;Not Applicable&quot;..</linkml:comments>
+        <linkml:created_on rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-06-05T16:16:51Z</linkml:created_on>
+        <linkml:data_collection_state rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Not Applicable; Missing; Not Collected; Not Provided; Restricted Access</linkml:data_collection_state>
+        <linkml:description xml:lang="en">Description of how organism was passaged.</linkml:description>
+        <linkml:recommended rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</linkml:recommended>
+        <linkml:type_uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">xsd:token</linkml:type_uri>
     </owl:NamedIndividual>
     
 
@@ -1405,6 +1738,162 @@ GENEPIO:0001199	purpose of sampling details example	CanCOGeN:purpose of sampling
     
 
 
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001278 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001278">
+        <rdf:type rdf:resource="https://w3id.org/linkml/Example"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:host (common name) example</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">host (common name) example</rdfs:label>
+        <linkml:value rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Human</linkml:value>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001279 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001279">
+        <rdf:type rdf:resource="https://w3id.org/linkml/Example"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:host (scientific name) example</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">host (scientific name) example</rdfs:label>
+        <linkml:value rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Homo sapiens</linkml:value>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001280 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001280">
+        <rdf:type rdf:resource="https://w3id.org/linkml/Example"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:host health state example</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">host health state example</rdfs:label>
+        <linkml:value rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Symptomatic</linkml:value>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001281 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001281">
+        <rdf:type rdf:resource="https://w3id.org/linkml/Example"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:host health status details example</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">host health status details example</rdfs:label>
+        <linkml:value rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Hospitalized (ICU)</linkml:value>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001282 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001282">
+        <rdf:type rdf:resource="https://w3id.org/linkml/Example"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:host health outcome example</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">host health outcome example</rdfs:label>
+        <linkml:value rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Recovered</linkml:value>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001283 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001283">
+        <rdf:type rdf:resource="https://w3id.org/linkml/Example"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:host disease example</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">host disease example</rdfs:label>
+        <linkml:value rdf:datatype="http://www.w3.org/2001/XMLSchema#string">COVID-19</linkml:value>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001284 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001284">
+        <rdf:type rdf:resource="https://w3id.org/linkml/Example"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:host age example</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">host age example</rdfs:label>
+        <linkml:value rdf:datatype="http://www.w3.org/2001/XMLSchema#string">79&quot;^^xsd:integer</linkml:value>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001285 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001285">
+        <rdf:type rdf:resource="https://w3id.org/linkml/Example"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:host age unit example</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">host age unit example</rdfs:label>
+        <linkml:value rdf:datatype="http://www.w3.org/2001/XMLSchema#string">years</linkml:value>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001288 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001288">
+        <rdf:type rdf:resource="https://w3id.org/linkml/Example"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:host age bin example</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">host age bin example</rdfs:label>
+        <linkml:value rdf:datatype="http://www.w3.org/2001/XMLSchema#string">60 - 69</linkml:value>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001290 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001290">
+        <rdf:type rdf:resource="https://w3id.org/linkml/Example"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:host gender example</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">host gender example</rdfs:label>
+        <linkml:value rdf:datatype="http://www.w3.org/2001/XMLSchema#string">male</linkml:value>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001294 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001294">
+        <rdf:type rdf:resource="https://w3id.org/linkml/Example"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:host residence geo_loc name (country) example</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">host residence geo_loc name (country) example</rdfs:label>
+        <linkml:value rdf:datatype="http://www.w3.org/2001/XMLSchema#string">United Kingdom</linkml:value>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001295 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001295">
+        <rdf:type rdf:resource="https://w3id.org/linkml/Example"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:host residence geo_loc name (state/province/territory) example</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">host residence geo_loc name (state/province/territory) example</rdfs:label>
+        <linkml:value rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Quebec</linkml:value>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001296 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001296">
+        <rdf:type rdf:resource="https://w3id.org/linkml/Example"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:host subject ID example</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">host subject ID example</rdfs:label>
+        <linkml:value rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BCxy123</linkml:value>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0001298 -->
 
     <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001298">
@@ -1429,6 +1918,18 @@ GENEPIO:0001199	purpose of sampling details example	CanCOGeN:purpose of sampling
     
 
 
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001300 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001300">
+        <rdf:type rdf:resource="https://w3id.org/linkml/Example"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:pre-existing conditions and risk factors example</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">pre-existing conditions and risk factors example</rdfs:label>
+        <linkml:value rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Asthma; Pregnancy; Smoking</linkml:value>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0001301 -->
 
     <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001301">
@@ -1437,6 +1938,18 @@ GENEPIO:0001199	purpose of sampling details example	CanCOGeN:purpose of sampling
         <obo:IAO_0000118 xml:lang="en">CanCOGeN:complications example</obo:IAO_0000118>
         <rdfs:label xml:lang="en">complications example</rdfs:label>
         <linkml:value rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Acute Respiratory Failure; Coma; Septicemia</linkml:value>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001303 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001303">
+        <rdf:type rdf:resource="https://w3id.org/linkml/Example"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:host vaccination status example</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">host vaccination status example</rdfs:label>
+        <linkml:value rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Fully Vaccinated</linkml:value>
     </owl:NamedIndividual>
     
 
@@ -1453,6 +1966,18 @@ GENEPIO:0001199	purpose of sampling details example	CanCOGeN:purpose of sampling
     
 
 
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001305 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001305">
+        <rdf:type rdf:resource="https://w3id.org/linkml/Example"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:number of vaccine doses received example</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">number of vaccine doses received example</rdfs:label>
+        <linkml:value rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2&quot;^^xsd:integer</linkml:value>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0001306 -->
 
     <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001306">
@@ -1461,6 +1986,30 @@ GENEPIO:0001199	purpose of sampling details example	CanCOGeN:purpose of sampling
         <obo:IAO_0000118 xml:lang="en">CanCOGeN:first dose vaccination date example</obo:IAO_0000118>
         <rdfs:label xml:lang="en">first dose vaccination date example</rdfs:label>
         <linkml:value rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2021-02-26</linkml:value>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001307 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001307">
+        <rdf:type rdf:resource="https://w3id.org/linkml/Example"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:last dose vaccination date example</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">last dose vaccination date example</rdfs:label>
+        <linkml:value rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2021-04-09</linkml:value>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001308 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001308">
+        <rdf:type rdf:resource="https://w3id.org/linkml/Example"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:location of exposure geo_loc name (country) example</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">location of exposure geo_loc name (country) example</rdfs:label>
+        <linkml:value rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Canada</linkml:value>
     </owl:NamedIndividual>
     
 
@@ -1501,6 +2050,30 @@ GENEPIO:0001199	purpose of sampling details example	CanCOGeN:purpose of sampling
     
 
 
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001312 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001312">
+        <rdf:type rdf:resource="https://w3id.org/linkml/Example"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:most recent travel departure date example</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">most recent travel departure date example</rdfs:label>
+        <linkml:value rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2020-03-16</linkml:value>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001313 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001313">
+        <rdf:type rdf:resource="https://w3id.org/linkml/Example"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:most recent travel return date example</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">most recent travel return date example</rdfs:label>
+        <linkml:value rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2020-04-26</linkml:value>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0001314 -->
 
     <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001314">
@@ -1537,6 +2110,18 @@ GENEPIO:0001199	purpose of sampling details example	CanCOGeN:purpose of sampling
     
 
 
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001317 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001317">
+        <rdf:type rdf:resource="https://w3id.org/linkml/Example"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:host role example</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">host role example</rdfs:label>
+        <linkml:value rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Patient</linkml:value>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0001318 -->
 
     <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001318">
@@ -1557,6 +2142,78 @@ GENEPIO:0001199	purpose of sampling details example	CanCOGeN:purpose of sampling
         <obo:IAO_0000118 xml:lang="en">CanCOGeN:exposure details example</obo:IAO_0000118>
         <rdfs:label xml:lang="en">exposure details example</rdfs:label>
         <linkml:value rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Host role - Other: Bus Driver</linkml:value>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001320 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001320">
+        <rdf:type rdf:resource="https://w3id.org/linkml/Example"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:prior SARS-CoV-2 infection example</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">prior SARS-CoV-2 infection example</rdfs:label>
+        <linkml:value rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Yes</linkml:value>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001321 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001321">
+        <rdf:type rdf:resource="https://w3id.org/linkml/Example"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:prior SARS-CoV-2 infection isolate example</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">prior SARS-CoV-2 infection isolate example</rdfs:label>
+        <linkml:value rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SARS-CoV-2/human/USA/CA-CDPH-001/2020</linkml:value>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001322 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001322">
+        <rdf:type rdf:resource="https://w3id.org/linkml/Example"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:prior SARS-CoV-2 infection date example</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">prior SARS-CoV-2 infection date example</rdfs:label>
+        <linkml:value rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2021-01-23</linkml:value>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001323 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001323">
+        <rdf:type rdf:resource="https://w3id.org/linkml/Example"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:prior SARS-CoV-2 antiviral treatment example</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">prior SARS-CoV-2 antiviral treatment example</rdfs:label>
+        <linkml:value rdf:datatype="http://www.w3.org/2001/XMLSchema#string">No prior antiviral treatment</linkml:value>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001324 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001324">
+        <rdf:type rdf:resource="https://w3id.org/linkml/Example"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:prior SARS-CoV-2 antiviral treatment agent example</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">prior SARS-CoV-2 antiviral treatment agent example</rdfs:label>
+        <linkml:value rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Remdesivir</linkml:value>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001325 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001325">
+        <rdf:type rdf:resource="https://w3id.org/linkml/Example"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:prior SARS-CoV-2 antiviral treatment date example</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">prior SARS-CoV-2 antiviral treatment date example</rdfs:label>
+        <linkml:value rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2021-01-28</linkml:value>
     </owl:NamedIndividual>
     
 
@@ -1597,6 +2254,18 @@ GENEPIO:0001199	purpose of sampling details example	CanCOGeN:purpose of sampling
     
 
 
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001329 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001329">
+        <rdf:type rdf:resource="https://w3id.org/linkml/Example"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:library ID example</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">library ID example</rdfs:label>
+        <linkml:value rdf:datatype="http://www.w3.org/2001/XMLSchema#string">XYZ_123345</linkml:value>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0001330 -->
 
     <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001330">
@@ -1605,6 +2274,18 @@ GENEPIO:0001199	purpose of sampling details example	CanCOGeN:purpose of sampling
         <obo:IAO_0000118 xml:lang="en">CanCOGeN:amplicon size example</obo:IAO_0000118>
         <rdfs:label xml:lang="en">amplicon size example</rdfs:label>
         <linkml:value rdf:datatype="http://www.w3.org/2001/XMLSchema#string">300bp</linkml:value>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001331 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001331">
+        <rdf:type rdf:resource="https://w3id.org/linkml/Example"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:library preparation kit example</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">library preparation kit example</rdfs:label>
+        <linkml:value rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Nextera XT</linkml:value>
     </owl:NamedIndividual>
     
 
@@ -1873,6 +2554,18 @@ GENEPIO:0001199	purpose of sampling details example	CanCOGeN:purpose of sampling
     
 
 
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001358 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001358">
+        <rdf:type rdf:resource="https://w3id.org/linkml/Example"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:number of base pairs sequenced example</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">number of base pairs sequenced example</rdfs:label>
+        <linkml:value rdf:datatype="http://www.w3.org/2001/XMLSchema#string">387566&quot;^^xsd:integer</linkml:value>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0001359 -->
 
     <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001359">
@@ -1881,6 +2574,18 @@ GENEPIO:0001199	purpose of sampling details example	CanCOGeN:purpose of sampling
         <obo:IAO_0000118 xml:lang="en">CanCOGeN:consensus genome length example</obo:IAO_0000118>
         <rdfs:label xml:lang="en">consensus genome length example</rdfs:label>
         <linkml:value rdf:datatype="http://www.w3.org/2001/XMLSchema#string">38677&quot;^^xsd:integer</linkml:value>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001360 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001360">
+        <rdf:type rdf:resource="https://w3id.org/linkml/Example"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:Ns per 100 kbp example</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">Ns per 100 kbp example</rdfs:label>
+        <linkml:value rdf:datatype="http://www.w3.org/2001/XMLSchema#string">330&quot;^^xsd:integer</linkml:value>
     </owl:NamedIndividual>
     
 
@@ -1905,6 +2610,42 @@ GENEPIO:0001199	purpose of sampling details example	CanCOGeN:purpose of sampling
         <obo:IAO_0000118 xml:lang="en">CanCOGeN:bioinformatics protocol example</obo:IAO_0000118>
         <rdfs:label xml:lang="en">bioinformatics protocol example</rdfs:label>
         <linkml:value rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://www.protocols.io/groups/cphln-sarscov2-sequencing-consortium/members</linkml:value>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001363 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001363">
+        <rdf:type rdf:resource="https://w3id.org/linkml/Example"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:lineage/clade name example</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">lineage/clade name example</rdfs:label>
+        <linkml:value rdf:datatype="http://www.w3.org/2001/XMLSchema#string">B.1.1.7</linkml:value>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001364 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001364">
+        <rdf:type rdf:resource="https://w3id.org/linkml/Example"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:lineage/clade analysis software name example</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">lineage/clade analysis software name example</rdfs:label>
+        <linkml:value rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pangolin</linkml:value>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001365 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001365">
+        <rdf:type rdf:resource="https://w3id.org/linkml/Example"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:lineage/clade analysis software version example</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">lineage/clade analysis software version example</rdfs:label>
+        <linkml:value rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2.1.10</linkml:value>
     </owl:NamedIndividual>
     
 
@@ -2077,6 +2818,234 @@ GENEPIO:0001199	purpose of sampling details example	CanCOGeN:purpose of sampling
     
 
 
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001386 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001386">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/genepio/GENEPIO_0001268"/>
+        <linkml:examples rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001278"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:host (common name)</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">host (common name)</rdfs:label>
+        <linkml:comments xml:lang="en">Guidance: Common name or scientific name are required if there was a host. Both can be provided, if known. Use terms from the pick lists in the template. Common name e.g. human, bat. If the sample was environmental, put &quot;not applicable&quot;.</linkml:comments>
+        <linkml:created_on rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-06-06T01:12:52Z</linkml:created_on>
+        <linkml:data_collection_state rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Not Applicable; Missing; Not Collected; Not Provided; Restricted Access</linkml:data_collection_state>
+        <linkml:description xml:lang="en">The commonly used name of the host.</linkml:description>
+        <linkml:type_uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">select</linkml:type_uri>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001387 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001387">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/genepio/GENEPIO_0001268"/>
+        <linkml:examples rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001279"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:host (scientific name)</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">host (scientific name)</rdfs:label>
+        <linkml:comments xml:lang="en">Guidance: Common name or scientific name are required if there was a host. Both can be provided, if known. Use terms from the pick lists in the template. Scientific name e.g. Homo sapiens, If the sample was environmental, put &quot;not applicable&quot;.</linkml:comments>
+        <linkml:data_collection_state rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2021-06-06T01:15:53Z|Not Applicable; Missing; Not Collected; Not Provided; Restricted Access</linkml:data_collection_state>
+        <linkml:description xml:lang="en">The taxonomic, or scientific name of the host.</linkml:description>
+        <linkml:required rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</linkml:required>
+        <linkml:type_uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">select</linkml:type_uri>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001388 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001388">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/genepio/GENEPIO_0001268"/>
+        <linkml:examples rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001280"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:host health state</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">host health state</rdfs:label>
+        <linkml:comments xml:lang="en">Guidance: If known, select a descriptor from the pick list provided in the template.</linkml:comments>
+        <linkml:created_on rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-06-06T01:19:17Z</linkml:created_on>
+        <linkml:data_collection_state rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Not Applicable; Missing; Not Collected; Not Provided; Restricted Access</linkml:data_collection_state>
+        <linkml:description xml:lang="en">Health status of the host at the time of sample collection.</linkml:description>
+        <linkml:type_uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">select</linkml:type_uri>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001389 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001389">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/genepio/GENEPIO_0001268"/>
+        <linkml:examples rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001281"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:host health status details</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">host health status details</rdfs:label>
+        <linkml:comments xml:lang="en">Guidance: If known, select a descriptor from the pick list provided in the template.</linkml:comments>
+        <linkml:created_on rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-06-06T01:21:56Z</linkml:created_on>
+        <linkml:data_collection_state rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Not Applicable; Missing; Not Collected; Not Provided; Restricted Access</linkml:data_collection_state>
+        <linkml:description xml:lang="en">Further details pertaining to the health or disease status of the host at time of collection.</linkml:description>
+        <linkml:type_uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">select</linkml:type_uri>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001390 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001390">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/genepio/GENEPIO_0001268"/>
+        <linkml:examples rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001282"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:host health outcome</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">host health outcome</rdfs:label>
+        <linkml:comments xml:lang="en">Guidance: If known, select a descriptor from the pick list provided in the template.</linkml:comments>
+        <linkml:created_on rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-06-06T01:25:19Z</linkml:created_on>
+        <linkml:data_collection_state rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Not Applicable; Missing; Not Collected; Not Provided; Restricted Access</linkml:data_collection_state>
+        <linkml:description xml:lang="en">Disease outcome in the host.</linkml:description>
+        <linkml:type_uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">select</linkml:type_uri>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001391 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001391">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/genepio/GENEPIO_0001268"/>
+        <linkml:examples rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001283"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:host disease</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">host disease</rdfs:label>
+        <linkml:comments xml:lang="en">Guidance: Select &quot;COVID-19&quot; from the pick list provided in the template.</linkml:comments>
+        <linkml:created_on rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-06-06T01:30:00Z</linkml:created_on>
+        <linkml:data_collection_state rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Not Applicable; Missing; Not Collected; Not Provided; Restricted Access</linkml:data_collection_state>
+        <linkml:description xml:lang="en">The name of the disease experienced by the host.</linkml:description>
+        <linkml:required rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</linkml:required>
+        <linkml:type_uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">select</linkml:type_uri>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001392 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001392">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/genepio/GENEPIO_0001268"/>
+        <linkml:examples rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001284"/>
+        <linkml:maximum_value rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">130&quot;</linkml:maximum_value>
+        <linkml:minimum_value rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0&quot;</linkml:minimum_value>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:host age</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">host age</rdfs:label>
+        <linkml:comments xml:lang="en">Guidance: Enter the age of the host in years. If not available, provide a null value. If there is not host, put &quot;Not Applicable&quot;.</linkml:comments>
+        <linkml:created_on rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-06-06T01:33:44Z</linkml:created_on>
+        <linkml:data_collection_state rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Not Applicable; Missing; Not Collected; Not Provided; Restricted Access</linkml:data_collection_state>
+        <linkml:description xml:lang="en">Age of host at the time of sampling.</linkml:description>
+        <linkml:required rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</linkml:required>
+        <linkml:type_uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">xsd:decimal</linkml:type_uri>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001393 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001393">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/genepio/GENEPIO_0001268"/>
+        <linkml:examples rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001285"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:host age unit</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">host age unit</rdfs:label>
+        <linkml:comments xml:lang="en">Guidance: Indicate whether the host age is in months or years. Age indicated in months will be binned to the 0 - 9 year age bin.</linkml:comments>
+        <linkml:created_on rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-06-06T01:37:16Z</linkml:created_on>
+        <linkml:data_collection_state rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Not Applicable; Missing; Not Collected; Not Provided; Restricted Access</linkml:data_collection_state>
+        <linkml:description xml:lang="en">The unit used to measure the host age, in either months or years.</linkml:description>
+        <linkml:required rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</linkml:required>
+        <linkml:type_uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">select</linkml:type_uri>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001394 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001394">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/genepio/GENEPIO_0001268"/>
+        <linkml:examples rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001288"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:host age bin</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">host age bin</rdfs:label>
+        <linkml:comments xml:lang="en">Guidance: Select the corresponding host age bin from the pick list provided in the template. If not available, provide a null value.</linkml:comments>
+        <linkml:created_on rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-06-06T01:40:27Z</linkml:created_on>
+        <linkml:data_collection_state rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Not Applicable; Missing; Not Collected; Not Provided; Restricted Access</linkml:data_collection_state>
+        <linkml:description xml:lang="en">Age of host at the time of sampling, expressed as an age group.</linkml:description>
+        <linkml:required rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</linkml:required>
+        <linkml:type_uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">select</linkml:type_uri>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001395 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001395">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/genepio/GENEPIO_0001268"/>
+        <linkml:examples rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001290"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:host gender</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">host gender</rdfs:label>
+        <linkml:comments xml:lang="en">Guidance: Select the corresponding host gender from the pick list provided in the template. If not available, provide a null value. If there is no host, put &quot;Not Applicable&quot;..</linkml:comments>
+        <linkml:created_on rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-06-06T01:43:06Z</linkml:created_on>
+        <linkml:data_collection_state rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Not Applicable; Missing; Not Collected; Not Provided; Restricted Access</linkml:data_collection_state>
+        <linkml:description xml:lang="en">The gender of the host at the time of sample collection.</linkml:description>
+        <linkml:pattern rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Title</linkml:pattern>
+        <linkml:required rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</linkml:required>
+        <linkml:type_uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">select</linkml:type_uri>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001396 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001396">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/genepio/GENEPIO_0001268"/>
+        <linkml:examples rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001294"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:host residence geo_loc name (country)</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">host residence geo_loc name (country)</rdfs:label>
+        <linkml:comments xml:lang="en">Guidance: Select the country name from pick list provided in the template.</linkml:comments>
+        <linkml:created_on rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-06-06T01:46:24Z</linkml:created_on>
+        <linkml:data_collection_state rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Not Applicable; Missing; Not Collected; Not Provided; Restricted Access</linkml:data_collection_state>
+        <linkml:description xml:lang="en">The country of residence of the host.</linkml:description>
+        <linkml:type_uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">select</linkml:type_uri>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001397 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001397">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/genepio/GENEPIO_0001268"/>
+        <linkml:examples rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001295"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:host residence geo_loc name (state/province/territory)</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">host residence geo_loc name (state/province/territory)</rdfs:label>
+        <linkml:comments xml:lang="en">Guidance: Select the province/territory name from pick list provided in the template.</linkml:comments>
+        <linkml:created_on rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-06-06T01:49:16Z</linkml:created_on>
+        <linkml:data_collection_state rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Not Applicable; Missing; Not Collected; Not Provided; Restricted Access</linkml:data_collection_state>
+        <linkml:description xml:lang="en">The state/province/territory of residence of the host.</linkml:description>
+        <linkml:type_uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">select</linkml:type_uri>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001398 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001398">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/genepio/GENEPIO_0001268"/>
+        <linkml:examples rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001296"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:host subject ID</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">host subject ID</rdfs:label>
+        <linkml:comments xml:lang="en">Guidance: Provide the host identifier. Should be a unique, user-defined identifier.</linkml:comments>
+        <linkml:created_on rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-06-06T01:51:47Z</linkml:created_on>
+        <linkml:description xml:lang="en">A unique identifier by which each host can be referred to e.g. #131</linkml:description>
+        <linkml:type_uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">xsd:token</linkml:type_uri>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0001399 -->
 
     <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001399">
@@ -2106,7 +3075,25 @@ GENEPIO:0001199	purpose of sampling details example	CanCOGeN:purpose of sampling
         <linkml:created_on rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-06-06T01:58:29Z</linkml:created_on>
         <linkml:data_collection_state rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Not Applicable; Missing; Not Collected; Not Provided; Restricted Access</linkml:data_collection_state>
         <linkml:description xml:lang="en">A perceived change in function or sensation, (loss, disturbance or appearance) indicative of a disease, reported by a patient or clinician.</linkml:description>
-        <linkml:multivalued rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</linkml:multivalued>
+        <linkml:multivalued rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</linkml:multivalued>
+        <linkml:type_uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">multiple</linkml:type_uri>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001401 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001401">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/genepio/GENEPIO_0001268"/>
+        <linkml:examples rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001300"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:pre-existing conditions and risk factors</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">pre-existing conditions and risk factors</rdfs:label>
+        <linkml:comments xml:lang="en">Guidance: Select all of the pre-existing conditions and risk factors experienced by the host from the pick list. If the desired term is missing, contact the curation team.</linkml:comments>
+        <linkml:created_on rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-06-06T02:01:27Z</linkml:created_on>
+        <linkml:data_collection_state rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Not Applicable; Missing; Not Collected; Not Provided; Restricted Access</linkml:data_collection_state>
+        <linkml:description xml:lang="en">Patient pre-existing conditions and risk factors. 1) Pre-existing condition: A medical condition that existed prior to the current infection. 2) Risk Factor: A variable associated with an increased risk of disease or infection.</linkml:description>
+        <linkml:multivalued rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</linkml:multivalued>
         <linkml:type_uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">multiple</linkml:type_uri>
     </owl:NamedIndividual>
     
@@ -2124,8 +3111,25 @@ GENEPIO:0001199	purpose of sampling details example	CanCOGeN:purpose of sampling
         <linkml:created_on rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-06-06T02:06:19Z</linkml:created_on>
         <linkml:data_collection_state rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Not Applicable; Missing; Not Collected; Not Provided; Restricted Access</linkml:data_collection_state>
         <linkml:description xml:lang="en">Patient medical complications that are believed to have occurred as a result of host disease.</linkml:description>
-        <linkml:multivalued rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</linkml:multivalued>
+        <linkml:multivalued rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</linkml:multivalued>
         <linkml:type_uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">multiple</linkml:type_uri>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001404 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001404">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/genepio/GENEPIO_0001403"/>
+        <linkml:examples rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001303"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:host vaccination status</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">host vaccination status</rdfs:label>
+        <linkml:comments xml:lang="en">Guidance: Select the vaccination status of the host from the pick list.</linkml:comments>
+        <linkml:created_on rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-06-06T02:26:47Z</linkml:created_on>
+        <linkml:data_collection_state rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Not Applicable; Missing; Not Collected; Not Provided; Restricted Access</linkml:data_collection_state>
+        <linkml:description xml:lang="en">The vaccination status of the host (fully vaccinated, partially vaccinated, or not vaccinated).</linkml:description>
+        <linkml:type_uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">select</linkml:type_uri>
     </owl:NamedIndividual>
     
 
@@ -2146,6 +3150,22 @@ GENEPIO:0001199	purpose of sampling details example	CanCOGeN:purpose of sampling
     
 
 
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001406 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001406">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/genepio/GENEPIO_0001403"/>
+        <linkml:examples rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001305"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:number of vaccine doses received</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">number of vaccine doses received</rdfs:label>
+        <linkml:comments xml:lang="en">Guidance: Record how many doses of the vaccine the host has received.</linkml:comments>
+        <linkml:created_on rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-06-06T02:31:41Z</linkml:created_on>
+        <linkml:description xml:lang="en">The number of doses of the vaccine recived by the host.</linkml:description>
+        <linkml:type_uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">xsd:nonNegativeInteger</linkml:type_uri>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0001407 -->
 
     <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001407">
@@ -2158,6 +3178,39 @@ GENEPIO:0001199	purpose of sampling details example	CanCOGeN:purpose of sampling
         <linkml:created_on rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-06-06T02:37:31Z</linkml:created_on>
         <linkml:description xml:lang="en">The date the host was first vaccinated.</linkml:description>
         <linkml:type_uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">xsd:date</linkml:type_uri>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001408 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001408">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/genepio/GENEPIO_0001403"/>
+        <linkml:examples rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001307"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:last dose vaccination date</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">last dose vaccination date</rdfs:label>
+        <linkml:comments xml:lang="en">Guidance: Provide the date that the last dose of the vaccine was administered. Provide the last dose vaccination date in ISO 8601 standard format &quot;YYYY-MM-DD&quot;.</linkml:comments>
+        <linkml:created_on rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-06-06T02:40:02Z</linkml:created_on>
+        <linkml:description xml:lang="en">The date the host received their last dose of vaccine.</linkml:description>
+        <linkml:type_uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">xsd:date</linkml:type_uri>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001410 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001410">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/genepio/GENEPIO_0001409"/>
+        <linkml:examples rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001308"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:location of exposure geo_loc name (country)</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">location of exposure geo_loc name (country)</rdfs:label>
+        <linkml:comments xml:lang="en">Guidance: Select the country name from pick list provided in the template.</linkml:comments>
+        <linkml:created_on rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-06-06T02:46:05Z</linkml:created_on>
+        <linkml:data_collection_state rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Not Applicable; Missing; Not Collected; Not Provided; Restricted Access</linkml:data_collection_state>
+        <linkml:description xml:lang="en">The country where the host was likely exposed to the causative agent of the illness.</linkml:description>
+        <linkml:type_uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">select</linkml:type_uri>
     </owl:NamedIndividual>
     
 
@@ -2206,6 +3259,40 @@ GENEPIO:0001199	purpose of sampling details example	CanCOGeN:purpose of sampling
         <linkml:data_collection_state rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Not Applicable; Missing; Not Collected; Not Provided; Restricted Access</linkml:data_collection_state>
         <linkml:description xml:lang="en">The name of the country that was the destination of most recent travel.</linkml:description>
         <linkml:type_uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">select</linkml:type_uri>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001414 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001414">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/genepio/GENEPIO_0001409"/>
+        <linkml:examples rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001312"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:most recent travel departure date</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">most recent travel departure date</rdfs:label>
+        <linkml:comments xml:lang="en">Guidance: Provide the travel departure date.</linkml:comments>
+        <linkml:created_on rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-06-06T02:59:30Z</linkml:created_on>
+        <linkml:data_collection_state rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Not Applicable; Missing; Not Collected; Not Provided; Restricted Access</linkml:data_collection_state>
+        <linkml:description xml:lang="en">The date of a person&apos;s most recent departure from their primary residence (at that time) on a journey to one or more other locations.</linkml:description>
+        <linkml:type_uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">xsd:date</linkml:type_uri>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001415 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001415">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/genepio/GENEPIO_0001409"/>
+        <linkml:examples rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001313"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:most recent travel return date</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">most recent travel return date</rdfs:label>
+        <linkml:comments xml:lang="en">Guidance: Provide the travel return date.</linkml:comments>
+        <linkml:created_on rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-06-06T03:02:03Z</linkml:created_on>
+        <linkml:data_collection_state rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Not Applicable; Missing; Not Collected; Not Provided; Restricted Access</linkml:data_collection_state>
+        <linkml:description xml:lang="en">The date of a person&apos;s most recent return to some residence from a journey originating at that residence.</linkml:description>
+        <linkml:type_uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">xsd:date</linkml:type_uri>
     </owl:NamedIndividual>
     
 
@@ -2260,6 +3347,23 @@ GENEPIO:0001199	purpose of sampling details example	CanCOGeN:purpose of sampling
     
 
 
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001419 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001419">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/genepio/GENEPIO_0001409"/>
+        <linkml:examples rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001317"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:host role</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">host role</rdfs:label>
+        <linkml:comments xml:lang="en">Guidance: Select the host&apos;s personal role(s) from the pick list provided in the template. If the desired term is missing, contact the curation team.</linkml:comments>
+        <linkml:created_on rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-06-06T03:11:55Z</linkml:created_on>
+        <linkml:description xml:lang="en">The role of the host in relation to the exposure setting.</linkml:description>
+        <linkml:multivalued rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</linkml:multivalued>
+        <linkml:type_uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">multiple</linkml:type_uri>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0001428 -->
 
     <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001428">
@@ -2271,7 +3375,7 @@ GENEPIO:0001199	purpose of sampling details example	CanCOGeN:purpose of sampling
         <linkml:comments xml:lang="en">Guidance: Select the host exposure setting(s) from the pick list provided in the template. If a desired term is missing, contact the curation team.</linkml:comments>
         <linkml:created_on rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-06-06T03:14:25Z</linkml:created_on>
         <linkml:description xml:lang="en">The setting leading to exposure.</linkml:description>
-        <linkml:multivalued rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</linkml:multivalued>
+        <linkml:multivalued rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</linkml:multivalued>
         <linkml:type_uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">multiple</linkml:type_uri>
     </owl:NamedIndividual>
     
@@ -2293,6 +3397,104 @@ GENEPIO:0001199	purpose of sampling details example	CanCOGeN:purpose of sampling
     
 
 
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001435 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001435">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/genepio/GENEPIO_0001434"/>
+        <linkml:examples rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001320"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:prior SARS-CoV-2 infection</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">prior SARS-CoV-2 infection</rdfs:label>
+        <linkml:comments xml:lang="en">Guidance: If known, provide information about whether the individual had a previous SARS-CoV-2 infection. Select a value from the pick list.</linkml:comments>
+        <linkml:created_on rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-06-06T03:40:19Z</linkml:created_on>
+        <linkml:data_collection_state rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Not Applicable; Missing; Not Collected; Not Provided; Restricted Access</linkml:data_collection_state>
+        <linkml:description xml:lang="en">Whether there was prior SARS-CoV-2 infection.</linkml:description>
+        <linkml:type_uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">select</linkml:type_uri>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001436 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001436">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/genepio/GENEPIO_0001434"/>
+        <linkml:examples rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001321"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:prior SARS-CoV-2 infection isolate</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">prior SARS-CoV-2 infection isolate</rdfs:label>
+        <linkml:comments xml:lang="en">Guidance: Provide the isolate name of the most recent prior infection. Structure the &quot;isolate&quot; name to be ICTV/INSDC compliant in the following format: &quot;SARS-CoV-2/host/country/sampleID/date&quot;.</linkml:comments>
+        <linkml:created_on rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-06-06T03:43:38Z</linkml:created_on>
+        <linkml:description xml:lang="en">The identifier of the isolate found in the prior SARS-CoV-2 infection.</linkml:description>
+        <linkml:type_uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">xsd:token</linkml:type_uri>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001437 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001437">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/genepio/GENEPIO_0001434"/>
+        <linkml:examples rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001322"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:prior SARS-CoV-2 infection date</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">prior SARS-CoV-2 infection date</rdfs:label>
+        <linkml:comments xml:lang="en">Guidance: Provide the date that the most recent prior infection was diagnosed. Provide the prior SARS-CoV-2 infection date in ISO 8601 standard format &quot;YYYY-MM-DD&quot;.</linkml:comments>
+        <linkml:created_on rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-06-06T03:47:22Z</linkml:created_on>
+        <linkml:description xml:lang="en">The date of diagnosis of the prior SARS-CoV-2 infection.</linkml:description>
+        <linkml:type_uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">xsd:date</linkml:type_uri>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001438 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001438">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/genepio/GENEPIO_0001434"/>
+        <linkml:examples rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001323"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:prior SARS-CoV-2 antiviral treatment</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">prior SARS-CoV-2 antiviral treatment</rdfs:label>
+        <linkml:comments xml:lang="en">Guidance: If known, provide information about whether the individual had a previous SARS-CoV-2 antiviral treatment. Select a value from the pick list.</linkml:comments>
+        <linkml:created_on rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-06-06T03:50:07Z</linkml:created_on>
+        <linkml:data_collection_state rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Not Applicable; Missing; Not Collected; Not Provided; Restricted Access</linkml:data_collection_state>
+        <linkml:description xml:lang="en">Whether there was prior SARS-CoV-2 treatment with an antiviral agent.</linkml:description>
+        <linkml:type_uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">select</linkml:type_uri>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001439 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001439">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/genepio/GENEPIO_0001434"/>
+        <linkml:examples rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001324"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:prior SARS-CoV-2 antiviral treatment agent</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">prior SARS-CoV-2 antiviral treatment agent</rdfs:label>
+        <linkml:comments xml:lang="en">Guidance: Provide the name of the antiviral treatment agent administered during the most recent prior infection. If no treatment was administered, put &quot;No treatment&quot;. If multiple antiviral agents were administered, list them all separated by commas.</linkml:comments>
+        <linkml:created_on rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-06-06T03:52:27Z</linkml:created_on>
+        <linkml:description xml:lang="en">The name of the antiviral treatment agent administered during the prior SARS-CoV-2 infection.</linkml:description>
+        <linkml:type_uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">xsd:token</linkml:type_uri>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001440 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001440">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/genepio/GENEPIO_0001434"/>
+        <linkml:examples rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001325"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:prior SARS-CoV-2 antiviral treatment date</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">prior SARS-CoV-2 antiviral treatment date</rdfs:label>
+        <linkml:comments xml:lang="en">Guidance: Provide the date that the antiviral treatment agent was first administered during the most recenrt prior infection. Provide the prior SARS-CoV-2 treatment date in ISO 8601 standard format &quot;YYYY-MM-DD&quot;.</linkml:comments>
+        <linkml:created_on rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-06-06T03:55:02Z</linkml:created_on>
+        <linkml:description xml:lang="en">The date treatment was first administered during the prior SARS-CoV-2 infection.</linkml:description>
+        <linkml:type_uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">xsd:date</linkml:type_uri>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0001445 -->
 
     <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001445">
@@ -2305,8 +3507,8 @@ GENEPIO:0001199	purpose of sampling details example	CanCOGeN:purpose of sampling
         <linkml:created_on rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-06-06T03:59:00Z</linkml:created_on>
         <linkml:data_collection_state rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Not Applicable; Missing; Not Collected; Not Provided; Restricted Access</linkml:data_collection_state>
         <linkml:description xml:lang="en">The reason that the sample was sequenced.</linkml:description>
-        <linkml:multivalued rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</linkml:multivalued>
-        <linkml:required rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</linkml:required>
+        <linkml:multivalued rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</linkml:multivalued>
+        <linkml:required rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</linkml:required>
         <linkml:type_uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">multiple</linkml:type_uri>
     </owl:NamedIndividual>
     
@@ -2324,7 +3526,7 @@ GENEPIO:0001199	purpose of sampling details example	CanCOGeN:purpose of sampling
         <linkml:created_on rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-06-06T04:02:15Z</linkml:created_on>
         <linkml:data_collection_state rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Not Applicable; Missing; Not Collected; Not Provided; Restricted Access</linkml:data_collection_state>
         <linkml:description xml:lang="en">The description of why the sample was sequenced providing specific details.</linkml:description>
-        <linkml:required rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</linkml:required>
+        <linkml:required rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</linkml:required>
         <linkml:type_uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">xsd:token</linkml:type_uri>
     </owl:NamedIndividual>
     
@@ -2347,6 +3549,23 @@ GENEPIO:0001199	purpose of sampling details example	CanCOGeN:purpose of sampling
     
 
 
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001448 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001448">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/genepio/GENEPIO_0001441"/>
+        <linkml:examples rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001329"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:library ID</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">library ID</rdfs:label>
+        <linkml:comments xml:lang="en">Guidance: The library name should be unique, and can be an autogenerated ID from your LIMS, or modification of the isolate ID.</linkml:comments>
+        <linkml:created_on rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-06-06T04:08:07Z</linkml:created_on>
+        <linkml:description xml:lang="en">The user-specified identifier for the library prepared for sequencing.</linkml:description>
+        <linkml:recommended rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</linkml:recommended>
+        <linkml:type_uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">xsd:token</linkml:type_uri>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0001449 -->
 
     <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001449">
@@ -2358,6 +3577,22 @@ GENEPIO:0001199	purpose of sampling details example	CanCOGeN:purpose of sampling
         <linkml:comments xml:lang="en">Guidance: Provide the amplicon size, including the units.</linkml:comments>
         <linkml:created_on rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-06-06T04:10:22Z</linkml:created_on>
         <linkml:description xml:lang="en">The length of the amplicon generated by PCR amplification.</linkml:description>
+        <linkml:type_uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">xsd:token</linkml:type_uri>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001450 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001450">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/genepio/GENEPIO_0001441"/>
+        <linkml:examples rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001331"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:library preparation kit</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">library preparation kit</rdfs:label>
+        <linkml:comments xml:lang="en">Guidance: Provide the name of the library preparation kit used.</linkml:comments>
+        <linkml:created_on rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-06-06T04:12:44Z</linkml:created_on>
+        <linkml:description xml:lang="en">The name of the DNA library preparation kit used to generate the library being sequenced.</linkml:description>
         <linkml:type_uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">xsd:token</linkml:type_uri>
     </owl:NamedIndividual>
     
@@ -2391,8 +3626,8 @@ GENEPIO:0001199	purpose of sampling details example	CanCOGeN:purpose of sampling
         <linkml:created_on rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-06-06T04:17:50Z</linkml:created_on>
         <linkml:data_collection_state rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Not Applicable; Missing; Not Collected; Not Provided; Restricted Access</linkml:data_collection_state>
         <linkml:description xml:lang="en">The model of the sequencing instrument used.</linkml:description>
-        <linkml:multivalued rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</linkml:multivalued>
-        <linkml:required rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</linkml:required>
+        <linkml:multivalued rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</linkml:multivalued>
+        <linkml:required rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</linkml:required>
         <linkml:type_uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">multiple</linkml:type_uri>
     </owl:NamedIndividual>
     
@@ -2409,7 +3644,7 @@ GENEPIO:0001199	purpose of sampling details example	CanCOGeN:purpose of sampling
         <linkml:comments xml:lang="en">Guidance: Provide the name and version of the sequencing protocol e.g. 1D_DNA_MinION</linkml:comments>
         <linkml:created_on rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-06-06T04:21:01Z</linkml:created_on>
         <linkml:description xml:lang="en">The name and version number of the sequencing protocol used.</linkml:description>
-        <linkml:recommended rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</linkml:recommended>
+        <linkml:recommended rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</linkml:recommended>
         <linkml:type_uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">xsd:token</linkml:type_uri>
     </owl:NamedIndividual>
     
@@ -2472,7 +3707,7 @@ GENEPIO:0001199	purpose of sampling details example	CanCOGeN:purpose of sampling
         <linkml:comments xml:lang="en">Guidance: Provide the software name followed by the version e.g. Trimmomatic v. 0.38, Porechop v. 0.2.3</linkml:comments>
         <linkml:created_on rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-06-06T04:34:17Z</linkml:created_on>
         <linkml:description xml:lang="en">The names of the software and version number used for raw data processing such as removing barcodes, adapter trimming, filtering etc.</linkml:description>
-        <linkml:recommended rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</linkml:recommended>
+        <linkml:recommended rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</linkml:recommended>
         <linkml:type_uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">xsd:token</linkml:type_uri>
     </owl:NamedIndividual>
     
@@ -2548,7 +3783,7 @@ GENEPIO:0001199	purpose of sampling details example	CanCOGeN:purpose of sampling
         <linkml:comments xml:lang="en">Guidance: Provide the name of the software used to generate the consensus sequence.</linkml:comments>
         <linkml:created_on rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-06-06T04:53:51Z</linkml:created_on>
         <linkml:description xml:lang="en">The name of software used to generate the consensus sequence.The name of software used to generate the consensus sequence.</linkml:description>
-        <linkml:required rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</linkml:required>
+        <linkml:required rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</linkml:required>
         <linkml:type_uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">xsd:token</linkml:type_uri>
     </owl:NamedIndividual>
     
@@ -2564,7 +3799,7 @@ GENEPIO:0001199	purpose of sampling details example	CanCOGeN:purpose of sampling
         <linkml:comments xml:lang="en">Guidance: Provide the version of the software used to generate the consensus sequence.</linkml:comments>
         <linkml:created_on rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-06-06T04:56:20Z</linkml:created_on>
         <linkml:description xml:lang="en">The version of the software used to generate the consensus sequence.</linkml:description>
-        <linkml:required rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</linkml:required>
+        <linkml:required rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</linkml:required>
         <linkml:type_uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">xsd:token</linkml:type_uri>
     </owl:NamedIndividual>
     
@@ -2625,7 +3860,7 @@ GENEPIO:0001199	purpose of sampling details example	CanCOGeN:purpose of sampling
         <linkml:comments xml:lang="en">Guidance: Provide the r1 FASTQ filename.</linkml:comments>
         <linkml:created_on rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-06-06T05:05:51Z</linkml:created_on>
         <linkml:description xml:lang="en">The user-specified filename of the r1 FASTQ file.</linkml:description>
-        <linkml:recommended rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</linkml:recommended>
+        <linkml:recommended rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</linkml:recommended>
         <linkml:type_uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">xsd:token</linkml:type_uri>
     </owl:NamedIndividual>
     
@@ -2641,7 +3876,7 @@ GENEPIO:0001199	purpose of sampling details example	CanCOGeN:purpose of sampling
         <linkml:comments xml:lang="en">Guidance: Provide the r2 FASTQ filename.</linkml:comments>
         <linkml:created_on rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-06-06T05:09:13Z</linkml:created_on>
         <linkml:description xml:lang="en">The user-specified filename of the r2 FASTQ file.</linkml:description>
-        <linkml:recommended rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</linkml:recommended>
+        <linkml:recommended rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</linkml:recommended>
         <linkml:type_uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">xsd:token</linkml:type_uri>
     </owl:NamedIndividual>
     
@@ -2707,6 +3942,21 @@ GENEPIO:0001199	purpose of sampling details example	CanCOGeN:purpose of sampling
     
 
 
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001482 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001482">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/genepio/GENEPIO_0001457"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:number of base pairs sequenced</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">number of base pairs sequenced</rdfs:label>
+        <linkml:comments xml:lang="en">Guidance: Provide a numerical value (no need to include units).</linkml:comments>
+        <linkml:created_on rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-06-06T15:10:14Z</linkml:created_on>
+        <linkml:description xml:lang="en">The number of total base pairs generated by the sequencing process.</linkml:description>
+        <linkml:type_uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">xsd:nonNegativeInteger</linkml:type_uri>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0001483 -->
 
     <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001483">
@@ -2718,6 +3968,22 @@ GENEPIO:0001199	purpose of sampling details example	CanCOGeN:purpose of sampling
         <linkml:created_on rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-06-06T15:13:54Z</linkml:created_on>
         <linkml:description xml:lang="en">Size of the reconstructed genome described as the number of base pairs.</linkml:description>
         <linkml:type_uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">xsd:nonNegativeInteger</linkml:type_uri>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001484 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001484">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/genepio/GENEPIO_0001457"/>
+        <linkml:minimum_value rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0&quot;</linkml:minimum_value>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:Ns per 100 kbp</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">Ns per 100 kbp</rdfs:label>
+        <linkml:comments xml:lang="en">Guidance: Provide a numerical value (no need to include units).</linkml:comments>
+        <linkml:created_on rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-06-06T15:18:08Z</linkml:created_on>
+        <linkml:description xml:lang="en">The number of N symbols present in the consensus fasta sequence, per 100kbp of sequence.</linkml:description>
+        <linkml:type_uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">xsd:decimal</linkml:type_uri>
     </owl:NamedIndividual>
     
 
@@ -2747,6 +4013,51 @@ GENEPIO:0001199	purpose of sampling details example	CanCOGeN:purpose of sampling
         <linkml:comments xml:lang="en">Guidance: Further details regarding the methods used to process raw data, and/or generate assemblies, and/or generate consensus sequences can be provided in an SOP or protocol. Provide the name and version number of the protocol.</linkml:comments>
         <linkml:created_on rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-06-06T15:23:18Z</linkml:created_on>
         <linkml:description xml:lang="en">The name and version number of the bioinformatics protocol used.</linkml:description>
+        <linkml:type_uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">xsd:token</linkml:type_uri>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001500 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001500">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/genepio/GENEPIO_0001498"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:lineage/clade name</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">lineage/clade name</rdfs:label>
+        <linkml:comments xml:lang="en">Guidance: Provide the Pangolin or Nextstrain lineage/clade name.</linkml:comments>
+        <linkml:created_on rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-06-06T15:32:22Z</linkml:created_on>
+        <linkml:description xml:lang="en">The name of the lineage or clade.</linkml:description>
+        <linkml:type_uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">xsd:token</linkml:type_uri>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001501 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001501">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/genepio/GENEPIO_0001498"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:lineage/clade analysis software name</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">lineage/clade analysis software name</rdfs:label>
+        <linkml:comments xml:lang="en">Guidance: Provide the name of the software used to determine the lineage/clade.</linkml:comments>
+        <linkml:created_on rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-06-06T15:35:38Z</linkml:created_on>
+        <linkml:description xml:lang="en">The name of the software used to determine the lineage/clade.</linkml:description>
+        <linkml:type_uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">xsd:token</linkml:type_uri>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0001502 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001502">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/genepio/GENEPIO_0001498"/>
+        <obo:IAO_0000114 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000118 xml:lang="en">CanCOGeN:lineage/clade analysis software version</obo:IAO_0000118>
+        <rdfs:label xml:lang="en">lineage/clade analysis software version</rdfs:label>
+        <linkml:comments xml:lang="en">Guidance: Provide the version of the software used ot determine the lineage/clade.</linkml:comments>
+        <linkml:created_on rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-06-06T15:38:00Z</linkml:created_on>
+        <linkml:description xml:lang="en">The version of the software used to determine the lineage/clade.</linkml:description>
         <linkml:type_uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">xsd:token</linkml:type_uri>
     </owl:NamedIndividual>
     
@@ -2947,7 +4258,7 @@ GENEPIO:0001199	purpose of sampling details example	CanCOGeN:purpose of sampling
         <linkml:comments xml:lang="en">Guidance: Include the first and last names of all individuals that should be attributed, separated by a comma.</linkml:comments>
         <linkml:created_on rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-06-06T16:37:30Z</linkml:created_on>
         <linkml:description xml:lang="en">Names of individuals contributing to the processes of sample collection, sequence generation, analysis, and data submission.</linkml:description>
-        <linkml:recommended rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</linkml:recommended>
+        <linkml:recommended rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</linkml:recommended>
         <linkml:type_uri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">xsd:token</linkml:type_uri>
     </owl:NamedIndividual>
     

@@ -459,6 +459,7 @@ Any ideas?  I’ve considered and rejected allowing individual organisms to be f
     <!-- http://purl.obolibrary.org/obo/APOLLO_SV_00000033 -->
 
     <owl:Class rdf:about="&obo;APOLLO_SV_00000033">
+        <rdfs:subClassOf rdf:resource="&obo;OBI_0000011"/>
         <obo:IAO_0000115 xml:lang="en">The planned process of finding the number of elements in a finite set of objects.</obo:IAO_0000115>
         <obo:IAO_0000117>Mathias Brochhausen</obo:IAO_0000117>
         <obo:IAO_0000119>http://en.wikipedia.org/wiki/Counting</obo:IAO_0000119>
@@ -1341,15 +1342,15 @@ Any ideas?  I’ve considered and rejected allowing individual organisms to be f
         <obo:IAO_0000412 rdf:resource="&obo;apollo_sv.owl"/>
         <obo:IAO_0000412 rdf:resource="&obo;clo.owl"/>
         <obo:IAO_0000412 rdf:resource="&obo;ecto.owl"/>
-        <obo:IAO_0000412 rdf:resource="&obo;ero.owl"/>
         <obo:IAO_0000412 rdf:resource="&obo;hp.owl"/>
         <obo:IAO_0000412 rdf:resource="&obo;mondo.owl"/>
         <obo:IAO_0000412 rdf:resource="&obo;pco.owl"/>
+        <obo:IAO_0000412 rdf:resource="&obo;peco.owl"/>
         <obo:IAO_0000412 rdf:resource="&obo;rbo.owl"/>
         <obo:IAO_0000412 rdf:resource="&obo;stato.owl"/>
         <obo:IAO_0000412 rdf:resource="&obo;vo.owl"/>
-        <rdfs:label>entity</rdfs:label>
         <rdfs:label xml:lang="en">entity</rdfs:label>
+        <rdfs:label rdf:datatype="&xsd;string">entity</rdfs:label>
         <rdfs:label xml:lang="zh">实体</rdfs:label>
     </owl:Class>
     
@@ -1365,6 +1366,7 @@ Any ideas?  I’ve considered and rejected allowing individual organisms to be f
         <obo:IAO_0000115>An entity that exists in full at any time in which it exists at all, persists through time while maintaining its identity and has no temporal parts.</obo:IAO_0000115>
         <obo:IAO_0000115 xml:lang="en">An entity that exists in full at any time in which it exists at all, persists through time while maintaining its identity and has no temporal parts.</obo:IAO_0000115>
         <obo:IAO_0000115 xml:lang="zh">一个在任何时候都存在的实体，它持续存在，在维持其特性的同时且没有暂时的部分。</obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="&obo;apollo_sv.owl"/>
         <obo:IAO_0000412 rdf:resource="&obo;clo.owl"/>
         <obo:IAO_0000412 rdf:resource="&obo;hp.owl"/>
         <obo:IAO_0000412 rdf:resource="&obo;mondo.owl"/>
@@ -1385,6 +1387,7 @@ Any ideas?  I’ve considered and rejected allowing individual organisms to be f
         <rdfs:subClassOf rdf:resource="&obo;BFO_0000001"/>
         <obo:IAO_0000111 xml:lang="en">occurrent</obo:IAO_0000111>
         <obo:IAO_0000115 xml:lang="en">An entity that has temporal parts and that happens, unfolds or develops through time.</obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="&obo;apollo_sv.owl"/>
         <obo:IAO_0000412 rdf:resource="&obo;ecto.owl"/>
         <obo:IAO_0000412 rdf:resource="&obo;nbo.owl"/>
         <obo:IAO_0000412 rdf:resource="&obo;pco.owl"/>
@@ -1403,6 +1406,7 @@ Any ideas?  I’ve considered and rejected allowing individual organisms to be f
         <obo:IAO_0000115 xml:lang="en">b is an independent continuant = Def. b is a continuant which is such that there is no c and no t such that b s-depends_on c at t. (axiom label in BFO2 Reference: [017-002])</obo:IAO_0000115>
         <obo:IAO_0000115 xml:lang="zh">b是一个独立常体= Def. b是一个常体，使得在t时刻不存在c，也不存在t，从而在t时刻b s-依赖_于c。 （BFO2公理标签参考：[017-002]）</obo:IAO_0000115>
         <obo:IAO_0000115 xml:lang="zh">常体是质量和可实现实体的载体，其中其他实体在其中并且本身不能在任何地方存在。</obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="&obo;apollo_sv.owl"/>
         <obo:IAO_0000412 rdf:resource="&obo;clo.owl"/>
         <obo:IAO_0000412 rdf:resource="&obo;pco.owl"/>
         <obo:IAO_0000412 rdf:resource="&obo;rbo.owl"/>
@@ -1435,9 +1439,15 @@ Any ideas?  I’ve considered and rejected allowing individual organisms to be f
 
     <owl:Class rdf:about="&obo;BFO_0000016">
         <rdfs:subClassOf rdf:resource="&obo;BFO_0000017"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">A disposition is an entity that causes a specific process or transformation in an entity in which it inheres, under specific circumstances and in conjunction with the laws of nature. For example, the disposition of vegetables to decay when not refrigerated, the disposition of blood to coagulate, the disposition of a patient with a weakened immune system to contract disease.</obo:IAO_0000115>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">James Malone modified from original</obo:IAO_0000117>
         <obo:IAO_0000412 rdf:resource="&obo;ido.owl"/>
         <obo:IAO_0000412 rdf:resource="&obo;mondo.owl"/>
+        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
+        <oboInOwl:hasAlternativeId>http://www.ifomis.org/bfo/1.1/snap#Disposition</oboInOwl:hasAlternativeId>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NCIt:C41205</oboInOwl:hasDbXref>
         <rdfs:label xml:lang="en">disposition</rdfs:label>
+        <rdfs:label rdf:datatype="&xsd;string">disposition</rdfs:label>
     </owl:Class>
     
 
@@ -1477,14 +1487,24 @@ Any ideas?  I’ve considered and rejected allowing individual organisms to be f
 
     <owl:Class rdf:about="&obo;BFO_0000020">
         <rdfs:subClassOf rdf:resource="&obo;BFO_0000002"/>
+        <rdfs:subClassOf rdf:resource="http://www.ebi.ac.uk/efo/EFO_0000001"/>
         <obo:IAO_0000111 xml:lang="en">specifically dependent continuant</obo:IAO_0000111>
         <obo:IAO_0000115 xml:lang="en">A continuant  that inheres in or is borne by other entities. Every instance of A requires some specific instance of B which must always be the same.</obo:IAO_0000115>
         <obo:IAO_0000115 xml:lang="en">A continuant that inheres in or is borne by other entities. Every instance of A requires some specific instance of B which must always be the same.</obo:IAO_0000115>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">An experimental factor which is a property or characteristic of some other entity.  For example, the mouse has the colour white.</obo:IAO_0000115>
         <obo:IAO_0000115 xml:lang="en">b is a relational specifically dependent continuant = Def. b is a specifically dependent continuant and there are n &amp;gt; 1 independent continuants c1, … cn which are not spatial regions are such that for all 1  i &amp;lt; j  n, ci  and cj share no common parts, are such that for each 1  i  n, b s-depends_on ci at every time t during the course of b’s existence (axiom label in BFO2 Reference: [131-004])</obo:IAO_0000115>
         <obo:IAO_0000115 xml:lang="en">b is a specifically dependent continuant = Def. b is a continuant &amp; there is some independent continuant c which is not a spatial region and which is such that b s-depends_on c at every time t during the course of b’s existence. (axiom label in BFO2 Reference: [050-003])</obo:IAO_0000115>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">James Malone</obo:IAO_0000117>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Sirarat Sarntivijai</obo:IAO_0000117>
         <obo:IAO_0000412 rdf:resource="&obo;hp.owl"/>
         <obo:IAO_0000412 rdf:resource="&obo;mondo.owl"/>
         <obo:IAO_0000412 rdf:resource="&obo;vo.owl"/>
+        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
+        <oboInOwl:hasAlternativeId>http://www.ifomis.org/bfo/1.1/snap#SpecificallyDependentContinuant</oboInOwl:hasAlternativeId>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">BFO:0000020</oboInOwl:hasDbXref>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">SpecificallyDependentContinuant</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">specifically dependent continuant</oboInOwl:hasExactSynonym>
+        <rdfs:label rdf:datatype="&xsd;string">material property</rdfs:label>
         <rdfs:label xml:lang="en">specifically dependent continuant</rdfs:label>
     </owl:Class>
     
@@ -1534,6 +1554,7 @@ Any ideas?  I’ve considered and rejected allowing individual organisms to be f
         <obo:IAO_0000115 xml:lang="en">An independent continuant that is spatially extended whose identity is independent of that of other entities and can be maintained through time.</obo:IAO_0000115>
         <obo:IAO_0000115 xml:lang="zh">一个独立常体，是空间扩展的，其性质独立于其他实体，可以通过时间来维持。</obo:IAO_0000115>
         <obo:IAO_0000117 rdf:datatype="&xsd;string">James Malone</obo:IAO_0000117>
+        <obo:IAO_0000412 rdf:resource="&obo;apollo_sv.owl"/>
         <obo:IAO_0000412 rdf:resource="&obo;chmo.owl"/>
         <obo:IAO_0000412 rdf:resource="&obo;clo.owl"/>
         <obo:IAO_0000412 rdf:resource="&obo;ido.owl"/>
@@ -2429,108 +2450,6 @@ The definition provided here establishes the &apos;scale&apos; of cell populatio
     
 
 
-    <!-- http://purl.obolibrary.org/obo/ERO_0000639 -->
-
-    <owl:Class rdf:about="&obo;ERO_0000639">
-        <rdfs:subClassOf rdf:resource="&obo;OBI_0000734"/>
-        <obo:IAO_0000114 rdf:resource="&obo;IAO_0000120"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">A DNA sequencing by synthesis technique used to increase the sensitivity of the DNA sequencing process and permits the use of very small amounts of DNA starting material. This is accomplished by using a temperature cycling process similar to that employed in the polymerase chain reaction.</obo:IAO_0000115>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">PERSON: Nicole Vasilevsky</obo:IAO_0000117>
-        <obo:IAO_0000119 rdf:datatype="&xsd;string">http://www.answers.com/topic/cycle-sequencing</obo:IAO_0000119>
-        <obo:IAO_0000412 rdf:resource="&obo;ero.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">cycle sequencing</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/ERO_0000833 -->
-
-    <owl:Class rdf:about="&obo;ERO_0000833">
-        <rdfs:subClassOf rdf:resource="&obo;BFO_0000001"/>
-        <obo:IAO_0000114 rdf:resource="&obo;IAO_0000120"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">An assay that generates data about the presence, abundance, structure, function, or activity of biological molecules, or a process that occurs at a molecular level of granularity.</obo:IAO_0000115>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">PERSON: Nicole Vasilevsky</obo:IAO_0000117>
-        <obo:IAO_0000119 rdf:datatype="&xsd;string">PERSON: Matthew Brush</obo:IAO_0000119>
-        <obo:IAO_0000412 rdf:resource="&obo;ero.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">molecular assay</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/ERO_0001183 -->
-
-    <owl:Class rdf:about="&obo;ERO_0001183">
-        <rdfs:subClassOf rdf:resource="&obo;OBI_0000626"/>
-        <obo:IAO_0000114 rdf:resource="&obo;IAO_0000123"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">A DNA sequencing technique that became commercially available in 2004 and is used by specific commercial platforms that embody a complex interplay of enzymology, chemistry, high-resolution optics, hardware, and software engineering. These instruments allow highly streamlined sample preparation steps prior to DNA sequencing, which provides a significant time savings and a minimal requirement for associated equipment in comparison to the highly automated, multistep pipelines necessary for clone-based high-throughput sequencing. Each technology amplifies single strands of a fragment library and perform sequencing reactions on the amplified strands. The fragment libraries are obtained by annealing platform-specific linkers to blunt-ended fragments generated directly from a genome or DNA source of interest. Because the presence of adapter sequences means that the molecules then can be selectively amplified by PCR, and no bacterial cloning step is required to amplify the genomic fragment in a bacterial intermediate as is done in traditional sequencing approaches.</obo:IAO_0000115>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">PERSON: Nicole Vasilevsky</obo:IAO_0000117>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">Genome sequencing</obo:IAO_0000118>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">High throughput DNA sequencing</obo:IAO_0000118>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">High throughput nucleotide sequencing</obo:IAO_0000118>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">NGS</obo:IAO_0000118>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">Next gen</obo:IAO_0000118>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">Next gen sequencing</obo:IAO_0000118>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">Next generation sequencing of target genes</obo:IAO_0000118>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">Nucleotide sequencing, high-throughput</obo:IAO_0000118>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">Second generation sequencing</obo:IAO_0000118>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">Sequencing, high-throughput nucleotide</obo:IAO_0000118>
-        <obo:IAO_0000119 rdf:datatype="&xsd;string">Mardis (2008) Annu. Rev. Genomics Hum. Genet. 9:387-402</obo:IAO_0000119>
-        <obo:IAO_0000412 rdf:resource="&obo;ero.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">next generation DNA sequencing</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/ERO_0001211 -->
-
-    <owl:Class rdf:about="&obo;ERO_0001211">
-        <rdfs:subClassOf rdf:resource="&obo;OBI_0000723"/>
-        <obo:IAO_0000114 rdf:resource="&obo;IAO_0000120"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">A DNA sequencing by ligation technique that involves a bead-based method that uses a complex approach of adapter ligation followed by adapter decoding, reading the sequence in increments of four nucleotides; this method made it susceptible to sequence-specific bias or loss of specific sequences.</obo:IAO_0000115>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">PERSON: Nicole Vasilevsky</obo:IAO_0000117>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">Lynx Therapeutics&apos; Massively Parallel Signature Sequencing </obo:IAO_0000118>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">MPSS</obo:IAO_0000118>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">Massively Parallel Sequencing</obo:IAO_0000118>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">Massively-Parallel Sequencing</obo:IAO_0000118>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">Sequencing, Massively-Parallel</obo:IAO_0000118>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">Sequencings, Massively-Parallel</obo:IAO_0000118>
-        <obo:IAO_0000119 rdf:datatype="&xsd;string">http://en.wikipedia.org/wiki/DNA_sequencing#High-throughput_sequencing</obo:IAO_0000119>
-        <obo:IAO_0000412 rdf:resource="&obo;ero.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">massively parallel signature sequencing</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/ERO_0001286 -->
-
-    <owl:Class rdf:about="&obo;ERO_0001286">
-        <rdfs:subClassOf rdf:resource="&obo;ERO_0000833"/>
-        <obo:IAO_0000114 rdf:resource="&obo;IAO_0000120"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">A molecular assay that generates data about the presence, abundance, structure, function, or activity of nucleic acids.</obo:IAO_0000115>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">PERSON: Nicole Vasilevsky</obo:IAO_0000117>
-        <obo:IAO_0000119 rdf:datatype="&xsd;string">PERSON: Matthew Brush</obo:IAO_0000119>
-        <obo:IAO_0000412 rdf:resource="&obo;ero.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">nucleic acid assay</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/ERO_0001642 -->
-
-    <owl:Class rdf:about="&obo;ERO_0001642">
-        <rdfs:subClassOf rdf:resource="&obo;ERO_0001183"/>
-        <obo:IAO_0000114 rdf:resource="&obo;IAO_0000123"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">A next generation sequencing that monitors the incorporation of a nucleotide into a strand of DNA by sensing pH change from the release of a hydrogen ion corresponding to a bonding event.</obo:IAO_0000115>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">PERSON: Scott Hoffmann</obo:IAO_0000117>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">Ion torrent NGS</obo:IAO_0000118>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">NGS</obo:IAO_0000118>
-        <obo:IAO_0000119 rdf:datatype="&xsd;string">http://uagc.arl.arizona.edu/index.php/next-gen-sequencing-services/ion-torrent.html</obo:IAO_0000119>
-        <obo:IAO_0000412 rdf:resource="&obo;ero.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">ion torrent next generation sequencing </rdfs:label>
-    </owl:Class>
-    
-
-
     <!-- http://purl.obolibrary.org/obo/ExO_0000002 -->
 
     <owl:Class rdf:about="&obo;ExO_0000002">
@@ -2680,6 +2599,16 @@ The definition provided here establishes the &apos;scale&apos; of cell populatio
     
 
 
+    <!-- http://purl.obolibrary.org/obo/GO_0035314 -->
+
+    <owl:Class rdf:about="&obo;GO_0035314">
+        <obo:IAO_0000115>Formation of hardened covering (a scab) at a wound site. The scab has multiple functions including limiting blood loss, providing structural stability to the wound and guarding against infection.</obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="&obo;go.owl"/>
+        <rdfs:label>scab formation</rdfs:label>
+    </owl:Class>
+    
+
+
     <!-- http://purl.obolibrary.org/obo/GO_0044409 -->
 
     <owl:Class rdf:about="&obo;GO_0044409">
@@ -2687,6 +2616,17 @@ The definition provided here establishes the &apos;scale&apos; of cell populatio
         <obo:IAO_0000115 rdf:datatype="&xsd;string">Penetration by an organism into the body, tissues, or cells of the host organism. The host is defined as the larger of the organisms involved in a symbiotic interaction.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;apollo_sv.owl"/>
         <rdfs:label xml:lang="en">entry into host</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GO_0046903 -->
+
+    <owl:Class rdf:about="&obo;GO_0046903">
+        <obo:IAO_0000115>The controlled release of a substance by a cell or a tissue.</obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="&obo;go.owl"/>
+        <oboInOwl:inSubset rdf:resource="http://purl.oboInOwllibrary.org/oboInOwl/go#goslim_pir"/>
+        <rdfs:label>secretion</rdfs:label>
     </owl:Class>
     
 
@@ -6702,8 +6642,8 @@ to esophageal inlet inferiorly, and is composed of three distinct areas: the nas
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">UMLS:C0037268</oboInOwl:hasDbXref>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">UMLS:C0037274</oboInOwl:hasDbXref>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">Abnormality of the skin</oboInOwl:hasExactSynonym>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">dermatopathy</oboInOwl:hasExactSynonym>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">dermopathy</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">Dermatopathy</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">Dermopathy</oboInOwl:hasExactSynonym>
         <oboInOwl:inSubset rdf:resource="http://purl.oboInOwllibrary.org/oboInOwl/hp#hposlim_core"/>
         <rdfs:label rdf:datatype="&xsd;string">Abnormality of the skin</rdfs:label>
     </owl:Class>
@@ -8584,6 +8524,7 @@ to esophageal inlet inferiorly, and is composed of three distinct areas: the nas
     <owl:Class rdf:about="&obo;HP_0002795">
         <rdfs:subClassOf rdf:resource="&obo;HP_0002086"/>
         <obo:IAO_0000412 rdf:resource="&obo;hp.owl"/>
+        <oboInOwl:hasAlternativeId>HP:0005952</oboInOwl:hasAlternativeId>
         <oboInOwl:hasDbXref>Fyler:4200</oboInOwl:hasDbXref>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">UMLS:C4025677</oboInOwl:hasDbXref>
         <oboInOwl:hasExactSynonym>Abnormal respiration</oboInOwl:hasExactSynonym>
@@ -9279,7 +9220,7 @@ to esophageal inlet inferiorly, and is composed of three distinct areas: the nas
     <!-- http://purl.obolibrary.org/obo/HP_0005986 -->
 
     <owl:Class rdf:about="&obo;HP_0005986">
-        <rdfs:subClassOf rdf:resource="&obo;HP_0000464"/>
+        <rdfs:subClassOf rdf:resource="&obo;HP_0025669"/>
         <obo:IAO_0000412 rdf:resource="&obo;hp.owl"/>
         <oboInOwl:hasBroadSynonym>Limited neck mobility</oboInOwl:hasBroadSynonym>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MSH:D009127</oboInOwl:hasDbXref>
@@ -9912,8 +9853,9 @@ to esophageal inlet inferiorly, and is composed of three distinct areas: the nas
         <obo:IAO_0000115 rdf:datatype="&xsd;string">An abnormality of the form, structure, or size of the skeletal system.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;hp.owl"/>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">UMLS:C4023165</oboInOwl:hasDbXref>
+        <oboInOwl:hasExactSynonym>Abnormality of skeletal morphology</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym>Abnormally shaped skeletal</oboInOwl:hasExactSynonym>
-        <rdfs:label rdf:datatype="&xsd;string">Abnormality of skeletal morphology</rdfs:label>
+        <rdfs:label rdf:datatype="&xsd;string">Abnormal skeletal morphology</rdfs:label>
     </owl:Class>
     
 
@@ -10643,6 +10585,17 @@ to esophageal inlet inferiorly, and is composed of three distinct areas: the nas
         <rdfs:subClassOf rdf:resource="&obo;HP_0032251"/>
         <obo:IAO_0000412 rdf:resource="&obo;hp.owl"/>
         <rdfs:label xml:lang="en">Abscess</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/HP_0025669 -->
+
+    <owl:Class rdf:about="&obo;HP_0025669">
+        <rdfs:subClassOf rdf:resource="&obo;HP_0000464"/>
+        <obo:IAO_0000115>Any functional anomaly of the neck region.</obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="&obo;hp.owl"/>
+        <rdfs:label xml:lang="en">Abnormal neck physiology</rdfs:label>
     </owl:Class>
     
 
@@ -11744,6 +11697,31 @@ In most clinical settings, closure of acute and chronic wounds is considered the
     
 
 
+    <!-- http://purl.obolibrary.org/obo/HP_0200039 -->
+
+    <owl:Class rdf:about="&obo;HP_0200039">
+        <rdfs:subClassOf rdf:resource="&obo;HP_0011123"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">A small elevation of the skin containing cloudy or purulent material usually consisting of necrotic inflammatory cells.</obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="&obo;hp.owl"/>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MEDDRA:10037578</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">SNOMEDCT_US:103605005</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">SNOMEDCT_US:271760008</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">SNOMEDCT_US:285305004</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">SNOMEDCT_US:47002008</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">UMLS:C0241157</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">UMLS:C0542346</oboInOwl:hasDbXref>
+        <oboInOwl:hasExactSynonym>Pimple</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">Pustula</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym>Pustular lesion</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">Pustules</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">Skin pustule</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym>Skin pustules</oboInOwl:hasExactSynonym>
+        <oboInOwl:inSubset rdf:resource="http://purl.oboInOwllibrary.org/oboInOwl/hp#hposlim_core"/>
+        <rdfs:label rdf:datatype="&xsd;string">Pustule</rdfs:label>
+    </owl:Class>
+    
+
+
     <!-- http://purl.obolibrary.org/obo/HP_0410042 -->
 
     <owl:Class rdf:about="&obo;HP_0410042">
@@ -11802,6 +11780,7 @@ In most clinical settings, closure of acute and chronic wounds is considered the
         <obo:IAO_0000111 xml:lang="en">data item</obo:IAO_0000111>
         <obo:IAO_0000111 rdf:datatype="&xsd;string">data item</obo:IAO_0000111>
         <obo:IAO_0000114 rdf:resource="&obo;IAO_0000125"/>
+        <obo:IAO_0000115 xml:lang="en">An information content entity that is intended to be a truthful statement about something (modulo, e.g., measurement precision or other systematic errors) and is constructed/acquired by a method which reliably tends to produce (approximately) truthful statements.</obo:IAO_0000115>
         <obo:IAO_0000115 xml:lang="en">a data item is an information content entity that is intended to be a truthful statement about something (modulo, e.g., measurement precision or other systematic errors) and is constructed/acquired by a method which reliably tends to produce (approximately) truthful statements.</obo:IAO_0000115>
         <obo:IAO_0000117 xml:lang="en">PERSON: Alan Ruttenberg</obo:IAO_0000117>
         <obo:IAO_0000117 rdf:datatype="&xsd;string">PERSON: Alan Ruttenberg</obo:IAO_0000117>
@@ -11846,7 +11825,9 @@ In most clinical settings, closure of acute and chronic wounds is considered the
 
     <owl:Class rdf:about="&obo;IAO_0000032">
         <rdfs:subClassOf rdf:resource="&obo;IAO_0000109"/>
+        <obo:IAO_0000111 xml:lang="en">scalar measurement datum</obo:IAO_0000111>
         <obo:IAO_0000114 rdf:resource="&obo;IAO_0000120"/>
+        <obo:IAO_0000115 xml:lang="en">A scalar measurement datum is a measurement datum that is composed of two parts, numerals and a unit label.</obo:IAO_0000115>
         <obo:IAO_0000115 xml:lang="en">a scalar measurement datum is a measurement datum that is composed of two parts, numerals and a unit label.</obo:IAO_0000115>
         <obo:IAO_0000117 xml:lang="en">PERSON: Alan Ruttenberg</obo:IAO_0000117>
         <obo:IAO_0000117 xml:lang="en">PERSON: Melanie Courtot</obo:IAO_0000117>
@@ -12455,7 +12436,7 @@ In most clinical settings, closure of acute and chronic wounds is considered the
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">disorder of lower respiratory tract</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">lower respiratory tract disease</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">lower respiratory tract disease or disorder</oboInOwl:hasExactSynonym>
-        <rdfs:label rdf:datatype="&xsd;string">lower respiratory tract disease</rdfs:label>
+        <rdfs:label rdf:datatype="&xsd;string">lower respiratory tract disorder</rdfs:label>
     </owl:Class>
     
 
@@ -12520,7 +12501,7 @@ In most clinical settings, closure of acute and chronic wounds is considered the
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">DOID:0060033</oboInOwl:hasDbXref>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">peripheral nervous system autoimmune disease</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">peripheral nervous system hypersensitivity reaction type II disease</oboInOwl:hasExactSynonym>
-        <rdfs:label rdf:datatype="&xsd;string">autoimmune disease of peripheral nervous system</rdfs:label>
+        <rdfs:label rdf:datatype="&xsd;string">autoimmune disorder of peripheral nervous system</rdfs:label>
     </owl:Class>
     
 
@@ -12567,7 +12548,9 @@ In most clinical settings, closure of acute and chronic wounds is considered the
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">thoracic disorder</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">thoracic segment of trunk disease</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">thoracic segment of trunk disease or disorder</oboInOwl:hasExactSynonym>
-        <rdfs:label rdf:datatype="&xsd;string">thoracic disease</rdfs:label>
+        <oboInOwl:inSubset rdf:resource="http://purl.oboInOwllibrary.org/oboInOwl/mondo#obsoletion_candidate"/>
+        <rdfs:comment rdf:datatype="&xsd;string">Reason: grouping class. Term to consider: none</rdfs:comment>
+        <rdfs:label rdf:datatype="&xsd;string">thoracic disorder</rdfs:label>
     </owl:Class>
     
 
@@ -12633,7 +12616,7 @@ In most clinical settings, closure of acute and chronic wounds is considered the
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">pleura disease or disorder</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">pleural disorder</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">pleural disorders</oboInOwl:hasExactSynonym>
-        <rdfs:label rdf:datatype="&xsd;string">pleural disease</rdfs:label>
+        <rdfs:label rdf:datatype="&xsd;string">pleural disorder</rdfs:label>
     </owl:Class>
     
 
@@ -12751,7 +12734,7 @@ In most clinical settings, closure of acute and chronic wounds is considered the
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">musculoskeletal system disease</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">musculoskeletal system disease or disorder</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">musculoskeletal system disorder</oboInOwl:hasExactSynonym>
-        <rdfs:label rdf:datatype="&xsd;string">musculoskeletal system disease</rdfs:label>
+        <rdfs:label rdf:datatype="&xsd;string">musculoskeletal system disorder</rdfs:label>
     </owl:Class>
     
 
@@ -12770,18 +12753,31 @@ In most clinical settings, closure of acute and chronic wounds is considered the
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">UMLS:C1335051</oboInOwl:hasDbXref>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">disease of renal system</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">disease or disorder of renal system</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">disease, urinary tract</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">disease, urologic</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">disease, urological</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">diseases, urinary tract</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">diseases, urologic</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">diseases, urological</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">disorder of renal system</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">disorder of the urinary system</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">disorder of urinary system</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">non-neoplastic urinary tract disease</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">renal system disease</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">renal system disease or disorder</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">urinary disease</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">urinary system disease</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">urinary system disorder</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">urinary tract disease</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">urinary tract diseases</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">urinary tract disorder</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">urologic disease</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">urologic disorder</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">urological disease</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">urological diseases</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">urological disorder</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">urological disorders</oboInOwl:hasExactSynonym>
-        <rdfs:label rdf:datatype="&xsd;string">urinary system disease</rdfs:label>
+        <rdfs:label rdf:datatype="&xsd;string">urinary system disorder</rdfs:label>
     </owl:Class>
     
 
@@ -12853,7 +12849,7 @@ In most clinical settings, closure of acute and chronic wounds is considered the
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">gonad disease or disorder</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">gonadal disorder</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">gonadal disorders</oboInOwl:hasExactSynonym>
-        <rdfs:label rdf:datatype="&xsd;string">gonadal disease</rdfs:label>
+        <rdfs:label rdf:datatype="&xsd;string">gonadal disorder</rdfs:label>
     </owl:Class>
     
 
@@ -12877,7 +12873,7 @@ In most clinical settings, closure of acute and chronic wounds is considered the
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">female reproductive system disease</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">female reproductive system disease or disorder</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">female reproductive system disorder</oboInOwl:hasExactSynonym>
-        <rdfs:label rdf:datatype="&xsd;string">female reproductive system disease</rdfs:label>
+        <rdfs:label rdf:datatype="&xsd;string">female reproductive system disorder</rdfs:label>
     </owl:Class>
     
 
@@ -12955,7 +12951,7 @@ In most clinical settings, closure of acute and chronic wounds is considered the
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">liver and biliary disorder</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">liver and biliary system disorder</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">liver and biliary tract disease</oboInOwl:hasExactSynonym>
-        <rdfs:label rdf:datatype="&xsd;string">hepatobiliary disease</rdfs:label>
+        <rdfs:label rdf:datatype="&xsd;string">hepatobiliary disorder</rdfs:label>
     </owl:Class>
     
 
@@ -13009,7 +13005,7 @@ In most clinical settings, closure of acute and chronic wounds is considered the
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">disease of the central nervous system</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">disease or disorder of central nervous system</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">disorder of central nervous system</oboInOwl:hasExactSynonym>
-        <rdfs:label rdf:datatype="&xsd;string">central nervous system disease</rdfs:label>
+        <rdfs:label rdf:datatype="&xsd;string">central nervous system disorder</rdfs:label>
     </owl:Class>
     
 
@@ -13037,7 +13033,7 @@ In most clinical settings, closure of acute and chronic wounds is considered the
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">disease of breast</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">disease or disorder of breast</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">disorder of breast</oboInOwl:hasExactSynonym>
-        <rdfs:label rdf:datatype="&xsd;string">breast disease</rdfs:label>
+        <rdfs:label rdf:datatype="&xsd;string">breast disorder</rdfs:label>
     </owl:Class>
     
 
@@ -13073,7 +13069,7 @@ In most clinical settings, closure of acute and chronic wounds is considered the
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">nervous system immune disorders</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">neurologic autoimmune disease</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">neurologic autoimmune diseases</oboInOwl:hasExactSynonym>
-        <rdfs:label rdf:datatype="&xsd;string">autoimmune disease of the nervous system</rdfs:label>
+        <rdfs:label rdf:datatype="&xsd;string">autoimmune disorder of the nervous system</rdfs:label>
     </owl:Class>
     
 
@@ -13101,7 +13097,7 @@ In most clinical settings, closure of acute and chronic wounds is considered the
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">male reproductive disease</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">male reproductive system disease</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">male reproductive system disease or disorder</oboInOwl:hasExactSynonym>
-        <rdfs:label rdf:datatype="&xsd;string">male reproductive system disease</rdfs:label>
+        <rdfs:label rdf:datatype="&xsd;string">male reproductive system disorder</rdfs:label>
     </owl:Class>
     
 
@@ -13192,7 +13188,7 @@ In most clinical settings, closure of acute and chronic wounds is considered the
         <oboInOwl:hasNarrowSynonym rdf:datatype="&xsd;string">peripheral nerve disease</oboInOwl:hasNarrowSynonym>
         <oboInOwl:hasNarrowSynonym rdf:datatype="&xsd;string">peripheral nerve diseases</oboInOwl:hasNarrowSynonym>
         <oboInOwl:hasNarrowSynonym rdf:datatype="&xsd;string">peripheral neuropathy</oboInOwl:hasNarrowSynonym>
-        <rdfs:label rdf:datatype="&xsd;string">peripheral nervous system disease</rdfs:label>
+        <rdfs:label rdf:datatype="&xsd;string">peripheral nervous system disorder</rdfs:label>
     </owl:Class>
     
 
@@ -13267,7 +13263,7 @@ In most clinical settings, closure of acute and chronic wounds is considered the
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">primary disorder of connective tissue</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">tissue disease, connective</oboInOwl:hasExactSynonym>
         <rdfs:comment rdf:datatype="&xsd;string">Following clinical usage of the term &apos;connective tissue disorder&apos; this grouping excludes some diseases affecting tissues classically considered to be connective tissue, such as bone.</rdfs:comment>
-        <rdfs:label rdf:datatype="&xsd;string">connective tissue disease</rdfs:label>
+        <rdfs:label rdf:datatype="&xsd;string">connective tissue disorder</rdfs:label>
     </owl:Class>
     
 
@@ -13319,7 +13315,7 @@ In most clinical settings, closure of acute and chronic wounds is considered the
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">gastrointestinal system disorder</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">git disease</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">stomach or intestinal disorder</oboInOwl:hasExactSynonym>
-        <rdfs:label rdf:datatype="&xsd;string">digestive system disease</rdfs:label>
+        <rdfs:label rdf:datatype="&xsd;string">digestive system disorder</rdfs:label>
     </owl:Class>
     
 
@@ -13390,7 +13386,7 @@ In most clinical settings, closure of acute and chronic wounds is considered the
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">lymph node disease</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">lymph node disease or disorder</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">lymph node disorder</oboInOwl:hasExactSynonym>
-        <rdfs:label rdf:datatype="&xsd;string">lymph node disease</rdfs:label>
+        <rdfs:label rdf:datatype="&xsd;string">lymph node disorder</rdfs:label>
     </owl:Class>
     
 
@@ -13471,7 +13467,7 @@ In most clinical settings, closure of acute and chronic wounds is considered the
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">disease of subdivision of hemolymphoid system</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">disease or disorder of cardiovascular system</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">disorder of cardiovascular system</oboInOwl:hasExactSynonym>
-        <rdfs:label rdf:datatype="&xsd;string">cardiovascular disease</rdfs:label>
+        <rdfs:label rdf:datatype="&xsd;string">cardiovascular disorder</rdfs:label>
     </owl:Class>
     
 
@@ -13507,7 +13503,7 @@ In most clinical settings, closure of acute and chronic wounds is considered the
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">intestinal disorder</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">intestine disease</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">intestine disease or disorder</oboInOwl:hasExactSynonym>
-        <rdfs:label rdf:datatype="&xsd;string">intestinal disease</rdfs:label>
+        <rdfs:label rdf:datatype="&xsd;string">intestinal disorder</rdfs:label>
     </owl:Class>
     
 
@@ -13561,7 +13557,7 @@ In most clinical settings, closure of acute and chronic wounds is considered the
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">reproductive system disease</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">reproductive system disease or disorder</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">reproductive system disorder</oboInOwl:hasExactSynonym>
-        <rdfs:label rdf:datatype="&xsd;string">reproductive system disease</rdfs:label>
+        <rdfs:label rdf:datatype="&xsd;string">reproductive system disorder</rdfs:label>
     </owl:Class>
     
 
@@ -13596,7 +13592,7 @@ In most clinical settings, closure of acute and chronic wounds is considered the
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">immune dysfunction</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">immune system disease or disorder</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">immune system disorder</oboInOwl:hasExactSynonym>
-        <rdfs:label rdf:datatype="&xsd;string">immune system disease</rdfs:label>
+        <rdfs:label rdf:datatype="&xsd;string">immune system disorder</rdfs:label>
     </owl:Class>
     
 
@@ -13779,7 +13775,7 @@ In most clinical settings, closure of acute and chronic wounds is considered the
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">respiratory system disease</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">respiratory system disease or disorder</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">respiratory system disorder</oboInOwl:hasExactSynonym>
-        <rdfs:label rdf:datatype="&xsd;string">respiratory system disease</rdfs:label>
+        <rdfs:label rdf:datatype="&xsd;string">respiratory system disorder</rdfs:label>
     </owl:Class>
     
 
@@ -13942,7 +13938,7 @@ In most clinical settings, closure of acute and chronic wounds is considered the
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">endocrinopathy</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">thyroid or other glandular disorders</oboInOwl:hasExactSynonym>
         <oboInOwl:inSubset rdf:resource="http://purl.oboInOwllibrary.org/oboInOwl/mondo#harrisons_view"/>
-        <rdfs:label rdf:datatype="&xsd;string">endocrine system disease</rdfs:label>
+        <rdfs:label rdf:datatype="&xsd;string">endocrine system disorder</rdfs:label>
     </owl:Class>
     
 
@@ -13975,7 +13971,7 @@ In most clinical settings, closure of acute and chronic wounds is considered the
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">liver disease</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">liver disease or disorder</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">liver disorder</oboInOwl:hasExactSynonym>
-        <rdfs:label rdf:datatype="&xsd;string">liver disease</rdfs:label>
+        <rdfs:label rdf:datatype="&xsd;string">liver disorder</rdfs:label>
     </owl:Class>
     
 
@@ -13994,7 +13990,7 @@ In most clinical settings, closure of acute and chronic wounds is considered the
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">disorder of skeletal system</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">skeletal system disease</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">skeletal system disease or disorder</oboInOwl:hasExactSynonym>
-        <rdfs:label rdf:datatype="&xsd;string">skeletal system disease</rdfs:label>
+        <rdfs:label rdf:datatype="&xsd;string">skeletal system disorder</rdfs:label>
     </owl:Class>
     
 
@@ -14014,7 +14010,7 @@ In most clinical settings, closure of acute and chronic wounds is considered the
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">muscle organ disease</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">muscle organ disease or disorder</oboInOwl:hasExactSynonym>
         <rdfs:comment rdf:datatype="&xsd;string">Editor note: consider merging with child</rdfs:comment>
-        <rdfs:label rdf:datatype="&xsd;string">muscular disease</rdfs:label>
+        <rdfs:label rdf:datatype="&xsd;string">muscular disorder</rdfs:label>
     </owl:Class>
     
 
@@ -14044,7 +14040,7 @@ In most clinical settings, closure of acute and chronic wounds is considered the
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">nephropathy</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">renal disease</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">renal disorder</oboInOwl:hasExactSynonym>
-        <rdfs:label rdf:datatype="&xsd;string">kidney disease</rdfs:label>
+        <rdfs:label rdf:datatype="&xsd;string">kidney disorder</rdfs:label>
     </owl:Class>
     
 
@@ -14112,7 +14108,7 @@ In most clinical settings, closure of acute and chronic wounds is considered the
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">heart/pericardial disease or disorder</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">heart/pericardial disorder</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">heart/pericardial trouble</oboInOwl:hasExactSynonym>
-        <rdfs:label rdf:datatype="&xsd;string">heart disease</rdfs:label>
+        <rdfs:label rdf:datatype="&xsd;string">heart disorder</rdfs:label>
     </owl:Class>
     
 
@@ -14136,11 +14132,13 @@ In most clinical settings, closure of acute and chronic wounds is considered the
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">disorder of lung</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">lung disease</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">lung disease or disorder</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">lung disorder</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">lung disorders</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">pulmonary disease</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">pulmonary diseases</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">pulmonary disorder</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">pulmonary disorders</oboInOwl:hasExactSynonym>
-        <rdfs:label rdf:datatype="&xsd;string">lung disease</rdfs:label>
+        <rdfs:label rdf:datatype="&xsd;string">lung disorder</rdfs:label>
     </owl:Class>
     
 
@@ -14256,7 +14254,6 @@ In most clinical settings, closure of acute and chronic wounds is considered the
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">ICD9:731.8</oboInOwl:hasDbXref>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">ICD9:733.99</oboInOwl:hasDbXref>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MESH:D001847</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">Orphanet:364803</oboInOwl:hasDbXref>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">SCTID:76069003</oboInOwl:hasDbXref>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">UMLS:C0005940</oboInOwl:hasDbXref>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">UMLS:CN204768</oboInOwl:hasDbXref>
@@ -14267,7 +14264,7 @@ In most clinical settings, closure of acute and chronic wounds is considered the
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">disorder of bone element</oboInOwl:hasExactSynonym>
         <oboInOwl:inSubset rdf:resource="http://purl.oboInOwllibrary.org/oboInOwl/mondo#disease_grouping"/>
         <oboInOwl:inSubset rdf:resource="http://purl.oboInOwllibrary.org/oboInOwl/mondo#ordo_group_of_disorders"/>
-        <rdfs:label rdf:datatype="&xsd;string">bone disease</rdfs:label>
+        <rdfs:label rdf:datatype="&xsd;string">bone disorder</rdfs:label>
     </owl:Class>
     
 
@@ -14295,7 +14292,7 @@ In most clinical settings, closure of acute and chronic wounds is considered the
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">vasculature disease</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">vasculature disease or disorder</oboInOwl:hasExactSynonym>
         <rdfs:comment rdf:datatype="&xsd;string">The etiology of vasculopathy is generally unknown and the condition is frequently not pathologically proven. Vasculitis, on the other hand, is a more specific term and is defined as inflammation of the wall of a blood vessel. However, the term vasculopathy is also used for “vasculitis” that has not been pathologically established.</rdfs:comment>
-        <rdfs:label rdf:datatype="&xsd;string">vascular disease</rdfs:label>
+        <rdfs:label rdf:datatype="&xsd;string">vascular disorder</rdfs:label>
     </owl:Class>
     
 
@@ -14317,10 +14314,12 @@ In most clinical settings, closure of acute and chronic wounds is considered the
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">ICD9:780.79</oboInOwl:hasDbXref>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MESH:D015673</oboInOwl:hasDbXref>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NCIT:C3037</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">Orphanet:1983</oboInOwl:hasDbXref>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">SCTID:51771007</oboInOwl:hasDbXref>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">UMLS:C0015674</oboInOwl:hasDbXref>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">CFS</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">Postviral fatigue syndrome</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">chronic fatigue immune dysfunction syndrome</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">chronic fatigue syndrome</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">myalgic encephalitis</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">myalgic encephalomyelitis</oboInOwl:hasExactSynonym>
@@ -14408,7 +14407,7 @@ In most clinical settings, closure of acute and chronic wounds is considered the
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">disorder of brain</oboInOwl:hasExactSynonym>
         <oboInOwl:hasNarrowSynonym rdf:datatype="&xsd;string">encephalopathy</oboInOwl:hasNarrowSynonym>
         <rdfs:comment rdf:datatype="&xsd;string">Editor note: NCIT has different classes for brain disease and encephalopathy</rdfs:comment>
-        <rdfs:label rdf:datatype="&xsd;string">brain disease</rdfs:label>
+        <rdfs:label rdf:datatype="&xsd;string">brain disorder</rdfs:label>
     </owl:Class>
     
 
@@ -14452,7 +14451,7 @@ In most clinical settings, closure of acute and chronic wounds is considered the
         <oboInOwl:inSubset rdf:resource="http://purl.oboInOwllibrary.org/oboInOwl/mondo#disease_grouping"/>
         <oboInOwl:inSubset rdf:resource="http://purl.oboInOwllibrary.org/oboInOwl/mondo#ordo_group_of_disorders"/>
         <rdfs:comment rdf:datatype="&xsd;string">placeholder for lymphoid disease</rdfs:comment>
-        <rdfs:label rdf:datatype="&xsd;string">hematologic disease</rdfs:label>
+        <rdfs:label rdf:datatype="&xsd;string">hematologic disorder</rdfs:label>
     </owl:Class>
     
 
@@ -14487,6 +14486,7 @@ In most clinical settings, closure of acute and chronic wounds is considered the
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">OMIM:612591</oboInOwl:hasDbXref>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">OMIM:612592</oboInOwl:hasDbXref>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">OMIM:615083</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">Orphanet:466667</oboInOwl:hasDbXref>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">SCTID:363510005</oboInOwl:hasDbXref>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">SCTID:408645001</oboInOwl:hasDbXref>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">UMLS:C0699790</oboInOwl:hasDbXref>
@@ -14598,7 +14598,7 @@ In most clinical settings, closure of acute and chronic wounds is considered the
         <oboInOwl:hasNarrowSynonym rdf:datatype="&xsd;string">lymphadenopathy</oboInOwl:hasNarrowSynonym>
         <oboInOwl:hasNarrowSynonym rdf:datatype="&xsd;string">lymphangiopathy</oboInOwl:hasNarrowSynonym>
         <rdfs:comment rdf:datatype="&xsd;string">Editor note: check alignment to anatomy, consider lymphoid system disease</rdfs:comment>
-        <rdfs:label rdf:datatype="&xsd;string">lymphatic system disease</rdfs:label>
+        <rdfs:label rdf:datatype="&xsd;string">lymphatic system disorder</rdfs:label>
     </owl:Class>
     
 
@@ -14803,7 +14803,7 @@ In most clinical settings, closure of acute and chronic wounds is considered the
     <!-- http://purl.obolibrary.org/obo/MONDO_0009971 -->
 
     <owl:Class rdf:about="&obo;MONDO_0009971">
-        <rdfs:subClassOf rdf:resource="&obo;MONDO_0017016"/>
+        <rdfs:subClassOf rdf:resource="&obo;MONDO_0017015"/>
         <rdfs:subClassOf rdf:resource="&obo;MONDO_0100131"/>
         <obo:IAO_0000115 rdf:datatype="&xsd;string">Infant acute respiratory distress syndrome is a lung disorder that affects premature infants caused by developmental insufficiency of surfactant production and structural immaturity of the lungs. The symptoms usually appear shortly after birth and may include tachypnea, tachycardia, chest wall retractions (recession), expiratory grunting, nasal flaring and cyanosis during breathing efforts.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;mondo.owl"/>
@@ -14898,6 +14898,7 @@ In most clinical settings, closure of acute and chronic wounds is considered the
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">ICD9:278.00</oboInOwl:hasDbXref>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NCIT:C3283</oboInOwl:hasDbXref>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NIFSTD:nlx_dys_20090302</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">Orphanet:521399</oboInOwl:hasDbXref>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">Orphanet:71529</oboInOwl:hasDbXref>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">SCTID:414916001</oboInOwl:hasDbXref>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">UMLS:C0028754</oboInOwl:hasDbXref>
@@ -15209,11 +15210,14 @@ In most clinical settings, closure of acute and chronic wounds is considered the
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">SCTID:328661000119108</oboInOwl:hasDbXref>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">UMLS:CN202324</oboInOwl:hasDbXref>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">ILD specific to childhood</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">chILD</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">chILD syndrome</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">childhood interstitial lung disease</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">interstitial lung disease of childhood</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">pediatric interstitial lung disease</oboInOwl:hasExactSynonym>
         <oboInOwl:inSubset rdf:resource="http://purl.oboInOwllibrary.org/oboInOwl/mondo#disease_grouping"/>
         <oboInOwl:inSubset rdf:resource="http://purl.oboInOwllibrary.org/oboInOwl/mondo#ordo_group_of_disorders"/>
+        <rdfs:comment rdf:datatype="&xsd;string">The terms chILD or chILD syndrome (not preferred) have been coined to memorize easily and to identify a phenotype that requires prompt and expert evaluation.</rdfs:comment>
         <rdfs:label rdf:datatype="&xsd;string">interstitial lung disease specific to childhood</rdfs:label>
     </owl:Class>
     
@@ -15233,23 +15237,6 @@ In most clinical settings, closure of acute and chronic wounds is considered the
         <oboInOwl:inSubset rdf:resource="http://purl.oboInOwllibrary.org/oboInOwl/mondo#gard_rare"/>
         <oboInOwl:inSubset rdf:resource="http://purl.oboInOwllibrary.org/oboInOwl/mondo#ordo_group_of_disorders"/>
         <rdfs:label rdf:datatype="&xsd;string">primary interstitial lung disease specific to childhood</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/MONDO_0017016 -->
-
-    <owl:Class rdf:about="&obo;MONDO_0017016">
-        <rdfs:subClassOf rdf:resource="&obo;MONDO_0017015"/>
-        <obo:IAO_0000412 rdf:resource="&obo;mondo.owl"/>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">Orphanet:264670</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">UMLS:CN202327</oboInOwl:hasDbXref>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">primary ILD specific to childhood due to alveolar structure disorder</oboInOwl:hasExactSynonym>
-        <oboInOwl:inSubset rdf:resource="http://purl.oboInOwllibrary.org/oboInOwl/mondo#disease_grouping"/>
-        <oboInOwl:inSubset rdf:resource="http://purl.oboInOwllibrary.org/oboInOwl/mondo#obsoletion_candidate"/>
-        <oboInOwl:inSubset rdf:resource="http://purl.oboInOwllibrary.org/oboInOwl/mondo#ordo_group_of_disorders"/>
-        <rdfs:comment rdf:datatype="&xsd;string">Reason: out of scope. This is an Orphanet grouping class that is considered out of scope for Mondo.Term to consider: interstitial lung disease&apos;</rdfs:comment>
-        <rdfs:label rdf:datatype="&xsd;string">primary interstitial lung disease specific to childhood due to alveolar structure disorder</rdfs:label>
     </owl:Class>
     
 
@@ -15647,7 +15634,7 @@ In most clinical settings, closure of acute and chronic wounds is considered the
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">nervous system infectious disorder</oboInOwl:hasExactSynonym>
         <oboInOwl:inSubset rdf:resource="http://purl.oboInOwllibrary.org/oboInOwl/mondo#disease_grouping"/>
         <oboInOwl:inSubset rdf:resource="http://purl.oboInOwllibrary.org/oboInOwl/mondo#ordo_group_of_disorders"/>
-        <rdfs:label rdf:datatype="&xsd;string">infectious disease of the nervous system</rdfs:label>
+        <rdfs:label rdf:datatype="&xsd;string">infectious disorder of the nervous system</rdfs:label>
     </owl:Class>
     
 
@@ -15705,7 +15692,7 @@ In most clinical settings, closure of acute and chronic wounds is considered the
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">central nervous system or retinal vascular disease</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">retina/CNS vascular disease</oboInOwl:hasExactSynonym>
         <rdfs:comment rdf:datatype="&xsd;string">Editor note: even though retinal diseases may be located outside the CNS, they are often indicators of CNS disease</rdfs:comment>
-        <rdfs:label rdf:datatype="&xsd;string">disease of central nervous system or retinal vasculature</rdfs:label>
+        <rdfs:label rdf:datatype="&xsd;string">disorder of central nervous system or retinal vasculature</rdfs:label>
     </owl:Class>
     
 
@@ -15909,7 +15896,7 @@ In most clinical settings, closure of acute and chronic wounds is considered the
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">disorder of the genitourinary system</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">genitourinary system disease</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">genitourinary system disease or disorder</oboInOwl:hasExactSynonym>
-        <rdfs:label rdf:datatype="&xsd;string">disease of genitourinary system</rdfs:label>
+        <rdfs:label rdf:datatype="&xsd;string">disorder of genitourinary system</rdfs:label>
     </owl:Class>
     
 
@@ -16160,7 +16147,7 @@ In most clinical settings, closure of acute and chronic wounds is considered the
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">disease or disorder of large intestine</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">disorder of large intestine</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">large intestine disease or disorder</oboInOwl:hasExactSynonym>
-        <rdfs:label rdf:datatype="&xsd;string">large intestine disease</rdfs:label>
+        <rdfs:label rdf:datatype="&xsd;string">large intestine disorder</rdfs:label>
     </owl:Class>
     
 
@@ -16168,7 +16155,6 @@ In most clinical settings, closure of acute and chronic wounds is considered the
     <!-- http://purl.obolibrary.org/obo/MONDO_0024643 -->
 
     <owl:Class rdf:about="&obo;MONDO_0024643">
-        <rdfs:subClassOf rdf:resource="&obo;MONDO_0002081"/>
         <rdfs:subClassOf rdf:resource="&obo;MONDO_0005267"/>
         <obo:IAO_0000115 rdf:datatype="&xsd;string">A disorder that affects the muscle tissue of the heart. Representative examples include myocardial infarction, myocarditis, and cardiomyopathy.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;mondo.owl"/>
@@ -16299,7 +16285,7 @@ In most clinical settings, closure of acute and chronic wounds is considered the
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">nervous system disorder of vasculature</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">neurovascular disorder</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">vasculature nervous system disorder</oboInOwl:hasExactSynonym>
-        <rdfs:label rdf:datatype="&xsd;string">neurovascular disease</rdfs:label>
+        <rdfs:label rdf:datatype="&xsd;string">neurovascular disorder</rdfs:label>
     </owl:Class>
     
 
@@ -16320,7 +16306,7 @@ In most clinical settings, closure of acute and chronic wounds is considered the
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">erythrocyte disease or disorder</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">red blood cell disease</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">red blood cell disorder</oboInOwl:hasExactSynonym>
-        <rdfs:label rdf:datatype="&xsd;string">erythrocyte disease</rdfs:label>
+        <rdfs:label rdf:datatype="&xsd;string">erythrocyte disorder</rdfs:label>
     </owl:Class>
     
 
@@ -16351,6 +16337,8 @@ In most clinical settings, closure of acute and chronic wounds is considered the
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">disease of abdominal segment of trunk</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">disease or disorder of abdominal segment of trunk</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">disorder of abdominal segment of trunk</oboInOwl:hasExactSynonym>
+        <oboInOwl:inSubset rdf:resource="http://purl.oboInOwllibrary.org/oboInOwl/mondo#obsoletion_candidate"/>
+        <rdfs:comment rdf:datatype="&xsd;string">Reason: grouping class. Term to consider: none</rdfs:comment>
         <rdfs:label rdf:datatype="&xsd;string">abdominal and pelvic region disorder</rdfs:label>
     </owl:Class>
     
@@ -16368,7 +16356,7 @@ In most clinical settings, closure of acute and chronic wounds is considered the
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">disorder of lymphoid system</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">lymphoid system disease</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">lymphoid system disease or disorder</oboInOwl:hasExactSynonym>
-        <rdfs:label rdf:datatype="&xsd;string">lymphoid system disease</rdfs:label>
+        <rdfs:label rdf:datatype="&xsd;string">lymphoid system disorder</rdfs:label>
     </owl:Class>
     
 
@@ -18567,6 +18555,19 @@ In most clinical settings, closure of acute and chronic wounds is considered the
         <oboInOwl:hasExactSynonym>Neonate</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym>Newborn</oboInOwl:hasExactSynonym>
         <rdfs:label>Newborn</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/NCIT_C16742 -->
+
+    <owl:Class rdf:about="&obo;NCIT_C16742">
+        <rdfs:subClassOf rdf:resource="&obo;NCIT_C19238"/>
+        <obo:IAO_0000115>Any object, or item of electrical or electronic equipment, which is designed to carry out a specific function or set of functions.</obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="&obo;ncit.owl"/>
+        <oboInOwl:hasExactSynonym>Instrument</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym>Instrumentation</oboInOwl:hasExactSynonym>
+        <rdfs:label>Instrumentation</rdfs:label>
     </owl:Class>
     
 
@@ -21484,6 +21485,32 @@ In most clinical settings, closure of acute and chronic wounds is considered the
     
 
 
+    <!-- http://purl.obolibrary.org/obo/NCIT_C49755 -->
+
+    <owl:Class rdf:about="&obo;NCIT_C49755">
+        <rdfs:subClassOf rdf:resource="&obo;NCIT_C19238"/>
+        <obo:IAO_0000115>A physical object that is a device or a component or accessory of a device.</obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="&obo;ncit.owl"/>
+        <oboInOwl:hasExactSynonym>Device Component or Accessory</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym>Sleeve</oboInOwl:hasExactSynonym>
+        <rdfs:label>Device Component or Accessory</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/NCIT_C49844 -->
+
+    <owl:Class rdf:about="&obo;NCIT_C49844">
+        <rdfs:subClassOf rdf:resource="&obo;NCIT_C49755"/>
+        <obo:IAO_0000115>A device consisting of a narrow loop of material moving over shafts or pulleys.</obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="&obo;ncit.owl"/>
+        <oboInOwl:hasExactSynonym>Belt</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym>Belt Device</oboInOwl:hasExactSynonym>
+        <rdfs:label>Belt Device</rdfs:label>
+    </owl:Class>
+    
+
+
     <!-- http://purl.obolibrary.org/obo/NCIT_C5044 -->
 
     <owl:Class rdf:about="&obo;NCIT_C5044">
@@ -22279,6 +22306,30 @@ In most clinical settings, closure of acute and chronic wounds is considered the
     
 
 
+    <!-- http://purl.obolibrary.org/obo/NCIT_C84327 -->
+
+    <owl:Class rdf:about="&obo;NCIT_C84327">
+        <rdfs:subClassOf rdf:resource="&obo;NCIT_C16742"/>
+        <obo:IAO_0000115>A refrigerated cabinet or room for preserving materials at or below 32F (0C).</obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="&obo;ncit.owl"/>
+        <oboInOwl:hasExactSynonym>Freezer</oboInOwl:hasExactSynonym>
+        <rdfs:label>Freezer</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/NCIT_C84328 -->
+
+    <owl:Class rdf:about="&obo;NCIT_C84328">
+        <rdfs:subClassOf rdf:resource="&obo;NCIT_C171256"/>
+        <obo:IAO_0000115>A framework for holding objects.</obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="&obo;ncit.owl"/>
+        <oboInOwl:hasExactSynonym>Rack</oboInOwl:hasExactSynonym>
+        <rdfs:label>Rack</rdfs:label>
+    </owl:Class>
+    
+
+
     <!-- http://purl.obolibrary.org/obo/NCIT_C85173 -->
 
     <owl:Class rdf:about="&obo;NCIT_C85173">
@@ -22774,8 +22825,16 @@ In most clinical settings, closure of acute and chronic wounds is considered the
 
     <owl:Class rdf:about="&obo;OBI_0000011">
         <rdfs:subClassOf rdf:resource="&obo;BFO_0000015"/>
+        <obo:IAO_0000111 xml:lang="en">planned process</obo:IAO_0000111>
+        <obo:IAO_0000114 rdf:resource="&obo;IAO_0000122"/>
+        <obo:IAO_0000115 xml:lang="en">A process that realizes a plan which is the concretization of a plan specification.</obo:IAO_0000115>
+        <obo:IAO_0000115 xml:lang="en">A processual entity that realizes a plan which is the concretization of a plan specification.</obo:IAO_0000115>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Bjoern Peters</obo:IAO_0000117>
+        <obo:IAO_0000119 rdf:datatype="&xsd;string">branch derived</obo:IAO_0000119>
+        <obo:IAO_0000412 rdf:resource="&obo;apollo_sv.owl"/>
         <obo:IAO_0000412 rdf:resource="&obo;chmo.owl"/>
         <oboInOwl:hasAlternativeId rdf:datatype="&xsd;string">CHMO:0001840</oboInOwl:hasAlternativeId>
+        <rdfs:label xml:lang="en">planned process</rdfs:label>
         <rdfs:label rdf:datatype="&xsd;string">planned process</rdfs:label>
     </owl:Class>
     
@@ -22818,21 +22877,6 @@ In most clinical settings, closure of acute and chronic wounds is considered the
     
 
 
-    <!-- http://purl.obolibrary.org/obo/OBI_0000626 -->
-
-    <owl:Class rdf:about="&obo;OBI_0000626">
-        <rdfs:subClassOf rdf:resource="&obo;ERO_0001286"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">DNA sequencing</obo:IAO_0000111>
-        <obo:IAO_0000114 rdf:resource="&obo;IAO_0000123"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">DNA sequencing is a sequencing process which uses deoxyribonucleic acid as input and results in a the creation of DNA sequence information artifact using a DNA sequencer instrument.</obo:IAO_0000115>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">Philippe Rocca-Serra</obo:IAO_0000117>
-        <obo:IAO_0000119 rdf:datatype="&xsd;string">OBI Branch derived</obo:IAO_0000119>
-        <obo:IAO_0000412 rdf:resource="&obo;ero.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">DNA sequencing</rdfs:label>
-    </owl:Class>
-    
-
-
     <!-- http://purl.obolibrary.org/obo/OBI_0000648 -->
 
     <owl:Class rdf:about="&obo;OBI_0000648">
@@ -22845,110 +22889,6 @@ In most clinical settings, closure of acute and chronic wounds is considered the
         <obo:IAO_0000118 rdf:datatype="&xsd;string">data set with assigned discovered class labels</obo:IAO_0000118>
         <obo:IAO_0000412 rdf:resource="&obo;stato.owl"/>
         <rdfs:label xml:lang="en">clustered data set</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/OBI_0000695 -->
-
-    <owl:Class rdf:about="&obo;OBI_0000695">
-        <rdfs:subClassOf rdf:resource="&obo;OBI_0000734"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">chain termination sequencing</obo:IAO_0000111>
-        <obo:IAO_0000114 rdf:resource="&obo;IAO_0000120"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">is a DNA sequencing which rely on the use of dideoxynucleotides used in 4 distinct sequencing reaction on the same DNA sample. The dideoxynucleotides, once incorporated in the complementary DNA strand being synthesized by the DNA polymerase prevent any further chain elongation. The newly generated sequences are resolved on a polyacrylamide gel using electrophoresis and labels (either fluorochrome or radioactivity) are used to determine the nucleotide present at a given position</obo:IAO_0000115>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">Philippe Rocca-Serra</obo:IAO_0000117>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">Sanger sequencing</obo:IAO_0000118>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">dye terminator sequencing</obo:IAO_0000118>
-        <obo:IAO_0000119 rdf:datatype="&xsd;string">adapted from wikipedia</obo:IAO_0000119>
-        <obo:IAO_0000412 rdf:resource="&obo;ero.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">chain termination sequencing</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/OBI_0000697 -->
-
-    <owl:Class rdf:about="&obo;OBI_0000697">
-        <rdfs:subClassOf rdf:resource="&obo;OBI_0000734"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Helicos sequencing</obo:IAO_0000111>
-        <obo:IAO_0000114 rdf:resource="&obo;IAO_0000120"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">is a DNA sequencing which allows sequence identification of billions of DNA molecules immobilized to a surface by using DNA polymerase and fluorescently labeled nucleotides added one at a time. The sequencing process does not requires amplification step and is typically able to produce reads of 25 base pair length.</obo:IAO_0000115>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">Philippe Rocca-Serra</obo:IAO_0000117>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">true single molecule sequencing</obo:IAO_0000118>
-        <obo:IAO_0000119 rdf:datatype="&xsd;string">adapted from wikipedia</obo:IAO_0000119>
-        <obo:IAO_0000412 rdf:resource="&obo;ero.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Helicos sequencing</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/OBI_0000706 -->
-
-    <owl:Class rdf:about="&obo;OBI_0000706">
-        <rdfs:subClassOf rdf:resource="&obo;OBI_0000723"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">SOLiD sequencing</obo:IAO_0000111>
-        <obo:IAO_0000114 rdf:resource="&obo;IAO_0000120"/>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">Philippe Rocca-Serra</obo:IAO_0000117>
-        <obo:IAO_0000119 rdf:datatype="&xsd;string">adapted from Wikipedia and Applied Biosystems web site</obo:IAO_0000119>
-        <obo:IAO_0000412 rdf:resource="&obo;ero.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">SOLiD sequencing</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/OBI_0000723 -->
-
-    <owl:Class rdf:about="&obo;OBI_0000723">
-        <rdfs:subClassOf rdf:resource="&obo;ERO_0001183"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">DNA sequencing by ligation</obo:IAO_0000111>
-        <obo:IAO_0000114 rdf:resource="&obo;IAO_0000123"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">is a DNA sequencing which relies on DNA ligase activity to perform chain extension during the sequencing reaction step.</obo:IAO_0000115>
-        <obo:IAO_0000412 rdf:resource="&obo;ero.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">DNA sequencing by ligation</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/OBI_0000724 -->
-
-    <owl:Class rdf:about="&obo;OBI_0000724">
-        <rdfs:subClassOf rdf:resource="&obo;OBI_0000734"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Solexa sequencing</obo:IAO_0000111>
-        <obo:IAO_0000114 rdf:resource="&obo;IAO_0000120"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">is a DNA sequencing which allows sequence identification by relying on use of DNA polymerase and reversible terminator. The methods requires immobilization of genomic DNA fragment onto a surface and a specific clonal amplification step known as bridge PCR. Reliance on reversible terminator allow cycles of DNA chain extension by DNA polymerase and imaging without the need of electrophoretic separation of newly synthesized DNA fragment as with Sanger sequencing.</obo:IAO_0000115>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">Philippe Rocca-Serra</obo:IAO_0000117>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">reversible terminator sequencing</obo:IAO_0000118>
-        <obo:IAO_0000119 rdf:datatype="&xsd;string">adapted from Wikipedia and Illumina / Solexa web site (SS_DNAsequencing.pdf document available on july 2009)</obo:IAO_0000119>
-        <obo:IAO_0000412 rdf:resource="&obo;ero.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Solexa sequencing</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/OBI_0000730 -->
-
-    <owl:Class rdf:about="&obo;OBI_0000730">
-        <rdfs:subClassOf rdf:resource="&obo;OBI_0000734"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">pyrosequencing</obo:IAO_0000111>
-        <obo:IAO_0000114 rdf:resource="&obo;IAO_0000120"/>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">Philippe Rocca-Serra</obo:IAO_0000117>
-        <obo:IAO_0000119 rdf:datatype="&xsd;string">Wikipedia (http://en.wikipedia.org/wiki/Pyrosequencing) and Roche 454 life science web site</obo:IAO_0000119>
-        <obo:IAO_0000412 rdf:resource="&obo;ero.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">pyrosequencing</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/OBI_0000734 -->
-
-    <owl:Class rdf:about="&obo;OBI_0000734">
-        <rdfs:subClassOf rdf:resource="&obo;ERO_0001183"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">DNA sequencing by synthesis</obo:IAO_0000111>
-        <obo:IAO_0000114 rdf:resource="&obo;IAO_0000123"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">is a DNA sequencing which relies on DNA polymerase activity to perform chain extension during the sequencing reaction step.</obo:IAO_0000115>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">PERSON: Philippe Rocca-Serra</obo:IAO_0000117>
-        <obo:IAO_0000412 rdf:resource="&obo;ero.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">DNA sequencing by synthesis</rdfs:label>
     </owl:Class>
     
 
@@ -23014,6 +22954,8 @@ In most clinical settings, closure of acute and chronic wounds is considered the
         <obo:IAO_0000111 xml:lang="en">organism</obo:IAO_0000111>
         <obo:IAO_0000114 rdf:resource="&obo;IAO_0000121"/>
         <obo:IAO_0000115 xml:lang="en">A material entity that is an individual living system, such as animal, plant, bacteria or virus, that is capable of replicating or reproducing, growth and maintenance in the right environment. An organism may be unicellular or made up, like humans, of many billions of cells divided into specialized tissues and organs.</obo:IAO_0000115>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">GROUP: OBI Biomaterial Branch</obo:IAO_0000117>
+        <obo:IAO_0000119 xml:lang="en">WEB: http://en.wikipedia.org/wiki/Organism</obo:IAO_0000119>
         <obo:IAO_0000412 rdf:resource="&obo;apollo_sv.owl"/>
         <obo:IAO_0000412 rdf:resource="&obo;ido.owl"/>
         <rdfs:label xml:lang="en">organism</rdfs:label>
@@ -25158,6 +25100,28 @@ https://stats.stackexchange.com/questions/31908/what-is-percentage-of-variance-i
     
 
 
+    <!-- http://purl.obolibrary.org/obo/SYMP_0000009 -->
+
+    <owl:Class rdf:about="&obo;SYMP_0000009">
+        <rdfs:subClassOf rdf:resource="&obo;SYMP_0000462"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">Blister is a skin and integumentary tissue symptom characterized as a fluid-filled elevation of the epidermis.</obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="&obo;symp.owl"/>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">blister</oboInOwl:hasExactSynonym>
+        <rdfs:label rdf:datatype="&xsd;string">blister</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/SYMP_0000462 -->
+
+    <owl:Class rdf:about="&obo;SYMP_0000462">
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">A symptom is a perceived change in function, sensation, loss, disturbance or appearance reported by a patient indicative of a disease.</obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="&obo;symp.owl"/>
+        <rdfs:label rdf:datatype="&xsd;string">symptom</rdfs:label>
+    </owl:Class>
+    
+
+
     <!-- http://purl.obolibrary.org/obo/TRANS_0000000 -->
 
     <owl:Class rdf:about="&obo;TRANS_0000000">
@@ -27062,6 +27026,24 @@ https://stats.stackexchange.com/questions/31908/what-is-percentage-of-variance-i
     
 
 
+    <!-- http://www.ebi.ac.uk/efo/EFO_0000001 -->
+
+    <owl:Class rdf:about="http://www.ebi.ac.uk/efo/EFO_0000001">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">An experimental factor in Array Express which are essentially the variable aspects of an experiment design which can be used to describe an experiment, or set of experiments, in an increasingly detailed manner. This upper level class is really used to give a root class from which applications can rely on and not be tied to upper ontology classses which do change.</obo:IAO_0000115>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Helen Parkinson</obo:IAO_0000117>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">James Malone</obo:IAO_0000117>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Jie Zheng</obo:IAO_0000117>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Tomasz Adamusiak</obo:IAO_0000117>
+        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MO:10</oboInOwl:hasDbXref>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">ExperimentalFactor</oboInOwl:hasExactSynonym>
+        <rdfs:comment rdf:datatype="&xsd;string">Concept naming convention is lower case natural naming with spaces, when necessary captials should be used, for example disease factor, HIV, breast carcinoma, Ewing&apos;s sarcoma</rdfs:comment>
+        <rdfs:label rdf:datatype="&xsd;string">experimental factor</rdfs:label>
+    </owl:Class>
+    
+
+
     <!-- http://www.ebi.ac.uk/efo/EFO_0000246 -->
 
     <owl:Class rdf:about="http://www.ebi.ac.uk/efo/EFO_0000246">
@@ -27075,6 +27057,43 @@ https://stats.stackexchange.com/questions/31908/what-is-percentage-of-variance-i
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NCIt:C25150</oboInOwl:hasDbXref>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">SNOMEDCT:397669002</oboInOwl:hasDbXref>
         <rdfs:label rdf:datatype="&xsd;string">age</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ebi.ac.uk/efo/EFO_0000408 -->
+
+    <owl:Class rdf:about="http://www.ebi.ac.uk/efo/EFO_0000408">
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000016"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">A disease is a disposition that describes states of disease associated with a particular sample and/or organism.</obo:IAO_0000115>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">A disease is a disposition to undergo pathological processes that exists in an organism because of one or more disorders in that organism.</obo:IAO_0000115>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">James Malone</obo:IAO_0000117>
+        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">DOID:4</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">ICD10:R69</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">ICD9:799.9</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MESH:D004194</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MONDO:0000001</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MeSH:D004194</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NCIT:C2991</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">OGMS:0000031</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">Orphanet:377788</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">SCTID:64572001</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">SNOMEDCT:64572001</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">UMLS:C0012634</oboInOwl:hasDbXref>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">Homo sapiens disease</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">condition</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">disease</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">disease or disorder</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">disease or disorder, non-neoplastic</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">diseases</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">diseases and disorders</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">disorder</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">disorders</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">human disease</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">medical condition</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">other disease</oboInOwl:hasExactSynonym>
+        <rdfs:label rdf:datatype="&xsd;string">disease</rdfs:label>
     </owl:Class>
     
 
@@ -27134,6 +27153,40 @@ https://stats.stackexchange.com/questions/31908/what-is-percentage-of-variance-i
         <obo:IAO_0000119 rdf:datatype="&xsd;string">http://en.wikibooks.org/wiki/Radiation_Oncology/Survival_curve_terminology</obo:IAO_0000119>
         <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
         <rdfs:label rdf:datatype="&xsd;string">event free survival time</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ebi.ac.uk/efo/EFO_0000512 -->
+
+    <owl:Class rdf:about="http://www.ebi.ac.uk/efo/EFO_0000512">
+        <rdfs:subClassOf rdf:resource="http://www.ebi.ac.uk/efo/EFO_0009663"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">A disease involving the reproductive system.</obo:IAO_0000115>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">Any disease of the reproductive system.</obo:IAO_0000115>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">James Malone</obo:IAO_0000117>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Sirarat Sarntivijai</obo:IAO_0000117>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Tomasz Adamusiak</obo:IAO_0000117>
+        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">DOID:15</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MONDO:0005039</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NCIT:C4875</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">SCTID:362968007</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">SNOMEDCT:362968007</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">UMLS:C0178829</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">Wikipedia:Reproductive_system_disease</oboInOwl:hasDbXref>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">Disorder of reproductive system</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">Disorder of reproductive system (disorder)</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">Non-neoplastic Reproductive system disease</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">disease of reproductive system</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">disease or disorder of reproductive system</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">disorder of reproductive system</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">genital disorders</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">genital system disease</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">reproductive disease</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">reproductive system disease</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">reproductive system disease or disorder</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">reproductive system disorder</oboInOwl:hasExactSynonym>
+        <rdfs:label rdf:datatype="&xsd;string">reproductive system disease</rdfs:label>
     </owl:Class>
     
 
@@ -27658,6 +27711,62 @@ https://stats.stackexchange.com/questions/31908/what-is-percentage-of-variance-i
     
 
 
+    <!-- http://www.ebi.ac.uk/efo/EFO_0009549 -->
+
+    <owl:Class rdf:about="http://www.ebi.ac.uk/efo/EFO_0009549">
+        <rdfs:subClassOf rdf:resource="http://www.ebi.ac.uk/efo/EFO_0000512"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">A disease involving the female reproductive system.</obo:IAO_0000115>
+        <obo:IAO_0000119 rdf:datatype="&xsd;string">SCTID:310789003</obo:IAO_0000119>
+        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">DOID:229</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">ICD10:N85</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">ICD10:N88</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">ICD10:N89</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">ICD10:N90</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">ICD10:N94</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">ICD9:629.9</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MESH:D005831</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MONDO:0002263</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MeSH:D005831</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NCIT:C27020</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NCIt:C27020</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">SCTID:310789003</oboInOwl:hasDbXref>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">disease of female reproductive system</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">disease or disorder of female reproductive system</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">disorder of female genital system</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">disorder of female reproductive system</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">female reproductive disease</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">female reproductive system disease</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">female reproductive system disease or disorder</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">female reproductive system disorder</oboInOwl:hasExactSynonym>
+        <rdfs:label rdf:datatype="&xsd;string">female reproductive system disease</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ebi.ac.uk/efo/EFO_0009663 -->
+
+    <owl:Class rdf:about="http://www.ebi.ac.uk/efo/EFO_0009663">
+        <rdfs:subClassOf rdf:resource="http://www.ebi.ac.uk/efo/EFO_0000408"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">A disease that involves the genitourinary system.</obo:IAO_0000115>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">A disease that involves the genitourinary system. [database_cross_reference: MONDO:patterns/location]</obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">ICD10:N00.N99</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">ICD10:N99</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MONDO:0021145</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">SCTID:42030000</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">UMLS:C0080276</oboInOwl:hasDbXref>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">disease of genitourinary system</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">disease or disorder of genitourinary system</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">disorder of genitourinary system</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">disorder of the genitourinary system</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">genitourinary system disease</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">genitourinary system disease or disorder</oboInOwl:hasExactSynonym>
+        <rdfs:label rdf:datatype="&xsd;string">disease of genitourinary system</rdfs:label>
+    </owl:Class>
+    
+
+
     <!-- http://www.ebi.ac.uk/efo/EFO_0009712 -->
 
     <owl:Class rdf:about="http://www.ebi.ac.uk/efo/EFO_0009712">
@@ -27701,6 +27810,47 @@ https://stats.stackexchange.com/questions/31908/what-is-percentage-of-variance-i
         <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
         <oboInOwl:hasDbXref>UMLS:C1843392</oboInOwl:hasDbXref>
         <rdfs:label>death in childhood</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ebi.ac.uk/efo/EFO_0020044 -->
+
+    <owl:Class rdf:about="http://www.ebi.ac.uk/efo/EFO_0020044">
+        <rdfs:subClassOf rdf:resource="http://www.ebi.ac.uk/efo/EFO_0005112"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">The determination of the amount of eicosanoids present in a sample, typically blood </obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">PMID:34503513</oboInOwl:hasDbXref>
+        <rdfs:label rdf:datatype="&xsd;string">ecosanoids measurement</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ebi.ac.uk/efo/EFO_0020045 -->
+
+    <owl:Class rdf:about="http://www.ebi.ac.uk/efo/EFO_0020045">
+        <rdfs:subClassOf rdf:resource="http://www.ebi.ac.uk/efo/EFO_0020044"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">The determination of the amount of prostaglandins present in a sample, typically blood </obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">PMID:34503513</oboInOwl:hasDbXref>
+        <rdfs:label rdf:datatype="&xsd;string">prostaglandins measurement</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ebi.ac.uk/efo/EFO_1001491 -->
+
+    <owl:Class rdf:about="http://www.ebi.ac.uk/efo/EFO_1001491">
+        <rdfs:subClassOf rdf:resource="http://www.ebi.ac.uk/efo/EFO_0009549"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">the ending of pregnancy by removing a fetus or embryo before it can survive outside the uterus.</obo:IAO_0000115>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Sirarat Sarntivijai</obo:IAO_0000117>
+        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">ICD10:O04</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">ICD10:O06</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MedDRA:10000210</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">Wikipedia:Abortion</oboInOwl:hasDbXref>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">loss of pregnancy</oboInOwl:hasExactSynonym>
+        <rdfs:label rdf:datatype="&xsd;string">abortion</rdfs:label>
     </owl:Class>
     
 
@@ -28290,25 +28440,28 @@ https://stats.stackexchange.com/questions/31908/what-is-percentage-of-variance-i
 
     <owl:NamedIndividual rdf:about="&obo;UO_0010053"/>
     <rdf:Description>
-        <obo:IAO_0000412 rdf:resource="&obo;clo.owl"/>
-    </rdf:Description>
-    <rdf:Description>
-        <obo:IAO_0000412 rdf:resource="&obo;apollo_sv.owl"/>
-    </rdf:Description>
-    <rdf:Description>
-        <obo:IAO_0000412 rdf:resource="&obo;clo.owl"/>
-    </rdf:Description>
-    <rdf:Description>
-        <obo:IAO_0000412 rdf:resource="&obo;clo.owl"/>
+        <obo:IAO_0000412 rdf:resource="&obo;ido.owl"/>
     </rdf:Description>
     <rdf:Description>
         <obo:IAO_0000412 rdf:resource="&obo;stato.owl"/>
     </rdf:Description>
     <rdf:Description>
+        <obo:IAO_0000412 rdf:resource="&obo;clo.owl"/>
+    </rdf:Description>
+    <rdf:Description>
         <obo:IAO_0000412 rdf:resource="&obo;apollo_sv.owl"/>
     </rdf:Description>
     <rdf:Description>
-        <obo:IAO_0000412 rdf:resource="&obo;ido.owl"/>
+        <obo:IAO_0000412 rdf:resource="&obo;apollo_sv.owl"/>
+    </rdf:Description>
+    <rdf:Description>
+        <obo:IAO_0000412 rdf:resource="&obo;apollo_sv.owl"/>
+    </rdf:Description>
+    <rdf:Description>
+        <obo:IAO_0000412 rdf:resource="&obo;clo.owl"/>
+    </rdf:Description>
+    <rdf:Description>
+        <obo:IAO_0000412 rdf:resource="&obo;clo.owl"/>
     </rdf:Description>
     
 

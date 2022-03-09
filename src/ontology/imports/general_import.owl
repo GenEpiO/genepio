@@ -98,6 +98,26 @@
         <obo:IAO_0000115 xml:lang="en">The official OBI definition, explaining the meaning of a class or property. Shall be Aristotelian, formalized and normalized. Can be augmented with colloquial definitions.</obo:IAO_0000115>
         <obo:IAO_0000115 xml:lang="en">The official definition, explaining the meaning of a class or property. Shall be Aristotelian, formalized and normalized. Can be augmented with colloquial definitions.</obo:IAO_0000115>
         <obo:IAO_0000115 xml:lang="zh">官方的定义，解释类或属性的含义。应该是亚里士多德式的，形式化和规范化的。 可以通过口语定义进行扩充。</obo:IAO_0000115>
+        <obo:IAO_0000116 xml:lang="en">2012-04-05: 
+Barry Smith
+
+The official OBI definition, explaining the meaning of a class or property: &apos;Shall be Aristotelian, formalized and normalized. Can be augmented with colloquial definitions&apos;  is terrible.
+
+Can you fix to something like:
+
+A statement of necessary and sufficient conditions explaining the meaning of an expression referring to a class or property.
+
+Alan Ruttenberg
+
+Your proposed definition is a reasonable candidate, except that it is very common that necessary and sufficient conditions are not given. Mostly they are necessary, occasionally they are necessary and sufficient or just sufficient. Often they use terms that are not themselves defined and so they effectively can&apos;t be evaluated by those criteria. 
+
+On the specifics of the proposed definition:
+
+We don&apos;t have definitions of &apos;meaning&apos; or &apos;expression&apos; or &apos;property&apos;. For &apos;reference&apos; in the intended sense I think we use the term &apos;denotation&apos;. For &apos;expression&apos;, I think we you mean symbol, or identifier. For &apos;meaning&apos; it differs for class and property. For class we want documentation that let&apos;s the intended reader determine whether an entity is instance of the class, or not. For property we want documentation that let&apos;s the intended reader determine, given a pair of potential relata, whether the assertion that the relation holds is true. The &apos;intended reader&apos; part suggests that we also specify who, we expect, would be able to understand the definition, and also generalizes over human and computer reader to include textual and logical definition. 
+
+Personally, I am more comfortable weakening definition to documentation, with instructions as to what is desirable. 
+
+We also have the outstanding issue of how to aim different definitions to different audiences. A clinical audience reading chebi wants a different sort of definition documentation/definition from a chemistry trained audience, and similarly there is a need for a definition that is adequate for an ontologist to work with.  </obo:IAO_0000116>
         <obo:IAO_0000117 xml:lang="en">PERSON:Daniel Schober</obo:IAO_0000117>
         <obo:IAO_0000118>DEFINITION</obo:IAO_0000118>
         <obo:IAO_0000119 xml:lang="en">GROUP:OBI:&lt;http://purl.obolibrary.org/obo/obi&gt;</obo:IAO_0000119>
@@ -114,6 +134,19 @@
     
 
 
+    <!-- http://purl.obolibrary.org/obo/IAO_0000116 -->
+
+    <!-- <owl:AnnotationProperty rdf:about="&obo;IAO_0000116">
+        <obo:IAO_0000111 xml:lang="en">editor note</obo:IAO_0000111>
+        <obo:IAO_0000114 rdf:resource="&obo;IAO_0000122"/>
+        <obo:IAO_0000115 xml:lang="en">An administrative note intended for its editor. It may not be included in the publication version of the ontology, so it should contain nothing necessary for end users to understand the ontology.</obo:IAO_0000115>
+        <obo:IAO_0000117 xml:lang="en">PERSON:Daniel Schober</obo:IAO_0000117>
+        <obo:IAO_0000119 xml:lang="en">GROUP:OBI:&lt;http://purl.obofoundry.org/obo/obi&gt;</obo:IAO_0000119>
+        <rdfs:label xml:lang="en">editor note</rdfs:label>
+    </owl:AnnotationProperty> -->
+    
+
+
     <!-- http://purl.obolibrary.org/obo/IAO_0000117 -->
 
     <!-- <owl:AnnotationProperty rdf:about="&obo;IAO_0000117">
@@ -124,12 +157,13 @@
         <obo:IAO_0000115 xml:lang="en">Name of editor entering the definition in the file. The definition editor is a point of contact for information regarding the term. The definition editor may be, but is not always, the author of the definition, which may have been worked upon by several people</obo:IAO_0000115>
         <obo:IAO_0000115 xml:lang="en">Name of editor entering the term in the file. The term editor is a point of contact for information regarding the term. The term editor may be, but is not always, the author of the definition, which may have been worked upon by several people</obo:IAO_0000115>
         <obo:IAO_0000115 xml:lang="zh">输入文件中术语编辑者的名称。术语编辑者是有关术语的信息交汇点。术语编辑者可以是，但并不总是，定义的作者，这可能是由几个人完成</obo:IAO_0000115>
+        <obo:IAO_0000116 xml:lang="en">20110707, MC: label update to term editor and definition modified accordingly. See https://github.com/information-artifact-ontology/IAO/issues/115.</obo:IAO_0000116>
         <obo:IAO_0000117 xml:lang="en">PERSON:Daniel Schober</obo:IAO_0000117>
         <obo:IAO_0000119 xml:lang="en">GROUP:OBI:&lt;http://purl.obolibrary.org/obo/obi&gt;</obo:IAO_0000119>
         <rdfs:label xml:lang="en">definition editor</rdfs:label>
         <rdfs:label rdf:datatype="&xsd;string">definition editor</rdfs:label>
+        <rdfs:label>term editor</rdfs:label>
         <rdfs:label xml:lang="en">term editor</rdfs:label>
-        <rdfs:label rdf:datatype="&xsd;string">term editor</rdfs:label>
         <rdfs:label>术语编辑者</rdfs:label>
         <rdfs:label xml:lang="zh">术语编辑者</rdfs:label>
     </owl:AnnotationProperty> -->
@@ -218,7 +252,7 @@
 
     <!-- <owl:AnnotationProperty rdf:about="&oboInOwl;hasExactSynonym">
         <obo:IAO_0000115>A property representing a fully qualified synonym, contains the string, term type, source, and an optional source code if appropriate. Each subfield is deliniated to facilitate interpretation by software.</obo:IAO_0000115>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">An alternative label for a given entity such as a commonly used abbreviation or synonym. </obo:IAO_0000115>
+        <obo:IAO_0000115>An alternative label for a given entity such as a commonly used abbreviation or synonym. </obo:IAO_0000115>
         <oboInOwl:hasExactSynonym>FULL_SYN</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym>Synonym with Source Data</oboInOwl:hasExactSynonym>
         <rdfs:label>alternative_term</rdfs:label>
@@ -291,6 +325,21 @@
     <owl:ObjectProperty rdf:about="&obo;HANCESTRO_0308">
         <obo:IAO_0000412 rdf:resource="&obo;hancestro.owl"/>
         <rdfs:label xml:lang="en">hasCountryOfOrigin</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/IAO_0000142 -->
+
+    <owl:ObjectProperty rdf:about="&obo;IAO_0000142">
+        <obo:IAO_0000114 rdf:resource="&obo;IAO_0000125"/>
+        <obo:IAO_0000115 xml:lang="en">An information artifact IA mentions an entity E exactly when it has a component/part that denotes E</obo:IAO_0000115>
+        <obo:IAO_0000116 xml:lang="en">7/6/2009 Alan Ruttenberg. P4 RC1 munges our GCI so remove it for now: mentions some entity equivalentTo has_part some (&apos;generically denotes&apos; some entity)</obo:IAO_0000116>
+        <obo:IAO_0000116 xml:lang="en">7/6/2009 Alan Ruttenberg: Add this relation following conversation with Jonathan Rees that N&amp;S GCI for is_about was too strong. Really it was simply sufficient. To effect this change we introduce this relation, which is subproperty of is_about, and have previous GCI use this relation &quot;mentions&quot; in it&apos;s (logical) definition</obo:IAO_0000116>
+        <obo:IAO_0000117 xml:lang="en">PERSON: Jonathan Rees</obo:IAO_0000117>
+        <obo:IAO_0000117 xml:lang="en">Person: Alan Ruttenberg</obo:IAO_0000117>
+        <obo:IAO_0000412 rdf:resource="&obo;iao.owl"/>
+        <rdfs:label xml:lang="en">mentions</rdfs:label>
     </owl:ObjectProperty>
     
 
@@ -1439,15 +1488,9 @@ Any ideas?  I’ve considered and rejected allowing individual organisms to be f
 
     <owl:Class rdf:about="&obo;BFO_0000016">
         <rdfs:subClassOf rdf:resource="&obo;BFO_0000017"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">A disposition is an entity that causes a specific process or transformation in an entity in which it inheres, under specific circumstances and in conjunction with the laws of nature. For example, the disposition of vegetables to decay when not refrigerated, the disposition of blood to coagulate, the disposition of a patient with a weakened immune system to contract disease.</obo:IAO_0000115>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">James Malone modified from original</obo:IAO_0000117>
         <obo:IAO_0000412 rdf:resource="&obo;ido.owl"/>
         <obo:IAO_0000412 rdf:resource="&obo;mondo.owl"/>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
-        <oboInOwl:hasAlternativeId>http://www.ifomis.org/bfo/1.1/snap#Disposition</oboInOwl:hasAlternativeId>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NCIt:C41205</oboInOwl:hasDbXref>
         <rdfs:label xml:lang="en">disposition</rdfs:label>
-        <rdfs:label rdf:datatype="&xsd;string">disposition</rdfs:label>
     </owl:Class>
     
 
@@ -1487,24 +1530,14 @@ Any ideas?  I’ve considered and rejected allowing individual organisms to be f
 
     <owl:Class rdf:about="&obo;BFO_0000020">
         <rdfs:subClassOf rdf:resource="&obo;BFO_0000002"/>
-        <rdfs:subClassOf rdf:resource="http://www.ebi.ac.uk/efo/EFO_0000001"/>
         <obo:IAO_0000111 xml:lang="en">specifically dependent continuant</obo:IAO_0000111>
         <obo:IAO_0000115 xml:lang="en">A continuant  that inheres in or is borne by other entities. Every instance of A requires some specific instance of B which must always be the same.</obo:IAO_0000115>
         <obo:IAO_0000115 xml:lang="en">A continuant that inheres in or is borne by other entities. Every instance of A requires some specific instance of B which must always be the same.</obo:IAO_0000115>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">An experimental factor which is a property or characteristic of some other entity.  For example, the mouse has the colour white.</obo:IAO_0000115>
         <obo:IAO_0000115 xml:lang="en">b is a relational specifically dependent continuant = Def. b is a specifically dependent continuant and there are n &amp;gt; 1 independent continuants c1, … cn which are not spatial regions are such that for all 1  i &amp;lt; j  n, ci  and cj share no common parts, are such that for each 1  i  n, b s-depends_on ci at every time t during the course of b’s existence (axiom label in BFO2 Reference: [131-004])</obo:IAO_0000115>
         <obo:IAO_0000115 xml:lang="en">b is a specifically dependent continuant = Def. b is a continuant &amp; there is some independent continuant c which is not a spatial region and which is such that b s-depends_on c at every time t during the course of b’s existence. (axiom label in BFO2 Reference: [050-003])</obo:IAO_0000115>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">James Malone</obo:IAO_0000117>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">Sirarat Sarntivijai</obo:IAO_0000117>
         <obo:IAO_0000412 rdf:resource="&obo;hp.owl"/>
         <obo:IAO_0000412 rdf:resource="&obo;mondo.owl"/>
         <obo:IAO_0000412 rdf:resource="&obo;vo.owl"/>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
-        <oboInOwl:hasAlternativeId>http://www.ifomis.org/bfo/1.1/snap#SpecificallyDependentContinuant</oboInOwl:hasAlternativeId>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">BFO:0000020</oboInOwl:hasDbXref>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">SpecificallyDependentContinuant</oboInOwl:hasExactSynonym>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">specifically dependent continuant</oboInOwl:hasExactSynonym>
-        <rdfs:label rdf:datatype="&xsd;string">material property</rdfs:label>
         <rdfs:label xml:lang="en">specifically dependent continuant</rdfs:label>
     </owl:Class>
     
@@ -1550,10 +1583,10 @@ Any ideas?  I’ve considered and rejected allowing individual organisms to be f
         <rdfs:subClassOf rdf:resource="&obo;BFO_0000004"/>
         <obo:IAO_0000111 xml:lang="en">material entity</obo:IAO_0000111>
         <obo:IAO_0000111 xml:lang="zh">物质实体</obo:IAO_0000111>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">A material entity is an entity that exists in full during the length of time of its existence, persists through this time while maintaining its identity and has no temporal parts. For example a heart, a human, a fly, a microarray.</obo:IAO_0000115>
+        <obo:IAO_0000115>A material entity is an entity that exists in full during the length of time of its existence, persists through this time while maintaining its identity and has no temporal parts. For example a heart, a human, a fly, a microarray.</obo:IAO_0000115>
         <obo:IAO_0000115 xml:lang="en">An independent continuant that is spatially extended whose identity is independent of that of other entities and can be maintained through time.</obo:IAO_0000115>
         <obo:IAO_0000115 xml:lang="zh">一个独立常体，是空间扩展的，其性质独立于其他实体，可以通过时间来维持。</obo:IAO_0000115>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">James Malone</obo:IAO_0000117>
+        <obo:IAO_0000117>James Malone</obo:IAO_0000117>
         <obo:IAO_0000412 rdf:resource="&obo;apollo_sv.owl"/>
         <obo:IAO_0000412 rdf:resource="&obo;chmo.owl"/>
         <obo:IAO_0000412 rdf:resource="&obo;clo.owl"/>
@@ -1561,9 +1594,8 @@ Any ideas?  I’ve considered and rejected allowing individual organisms to be f
         <obo:IAO_0000412 rdf:resource="&obo;pco.owl"/>
         <obo:IAO_0000412 rdf:resource="&obo;rbo.owl"/>
         <obo:IAO_0000412 rdf:resource="&obo;ido/brucellosis.owl"/>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
         <oboInOwl:hasAlternativeId>http://www.ifomis.org/bfo/1.1/snap#MaterialEntity</oboInOwl:hasAlternativeId>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">material type</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym>material type</oboInOwl:hasExactSynonym>
         <rdfs:label xml:lang="en">material entity</rdfs:label>
         <rdfs:label rdf:datatype="&xsd;string">material entity</rdfs:label>
         <rdfs:label xml:lang="zh">物质实体</rdfs:label>
@@ -2461,20 +2493,6 @@ The definition provided here establishes the &apos;scale&apos; of cell populatio
     
 
 
-    <!-- http://purl.obolibrary.org/obo/GO_0000003 -->
-
-    <owl:Class rdf:about="&obo;GO_0000003">
-        <rdfs:subClassOf rdf:resource="&obo;GO_0008150"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">A process in which an organism or part of an organism participates towards the generation of offspring.</obo:IAO_0000115>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">James Malone</obo:IAO_0000117>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NCIt:C21173</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">SNOMEDCT:272515006</oboInOwl:hasDbXref>
-        <rdfs:label rdf:datatype="&xsd;string">reproductive process</rdfs:label>
-    </owl:Class>
-    
-
-
     <!-- http://purl.obolibrary.org/obo/GO_0005575 -->
 
     <owl:Class rdf:about="&obo;GO_0005575">
@@ -2504,26 +2522,13 @@ The definition provided here establishes the &apos;scale&apos; of cell populatio
 
     <owl:Class rdf:about="&obo;GO_0007610">
         <rdfs:subClassOf rdf:resource="&obo;GO_0050896"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">The actions or reactions of an object or organism, usually in relation to the environment or surrounding world of stimuli. E.g. Fixed action pattern courtship behaviour in Drosophila. Forager behaviour in honey bees.</obo:IAO_0000115>
         <obo:IAO_0000115 rdf:datatype="&xsd;string">The internally coordinated responses (actions or inactions) of animals (individuals or groups) to internal or external stimuli, via a mechanism that involves nervous system activity.</obo:IAO_0000115>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">The observable response a person makes to any situation.</obo:IAO_0000115>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">James Malone</obo:IAO_0000117>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">Tomasz Adamusiak</obo:IAO_0000117>
         <obo:IAO_0000412 rdf:resource="&obo;nbo.owl"/>
         <obo:IAO_0000412 rdf:resource="&obo;pco.owl"/>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
         <oboInOwl:hasAlternativeId rdf:datatype="&xsd;string">GO:0023032</oboInOwl:hasAlternativeId>
         <oboInOwl:hasAlternativeId rdf:datatype="&xsd;string">GO:0044708</oboInOwl:hasAlternativeId>
         <oboInOwl:hasAlternativeId rdf:datatype="&xsd;string">GO:0044709</oboInOwl:hasAlternativeId>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">GO:0007610</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MeSH:D001519</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NCIt:C16326</oboInOwl:hasDbXref>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">Wikipedia:Behavior</oboInOwl:hasDbXref>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">Acceptance Process</oboInOwl:hasExactSynonym>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">Acceptance Processes</oboInOwl:hasExactSynonym>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">Behaviors</oboInOwl:hasExactSynonym>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">Process, Acceptance</oboInOwl:hasExactSynonym>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">Processes, Acceptance</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">behavioral response to stimulus</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">behaviour</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">behavioural response to stimulus</oboInOwl:hasExactSynonym>
@@ -2532,7 +2537,6 @@ The definition provided here establishes the &apos;scale&apos; of cell populatio
         <oboInOwl:inSubset rdf:resource="http://purl.oboInOwllibrary.org/oboInOwl/go#goslim_flybase_ribbon"/>
         <rdfs:comment rdf:datatype="&xsd;string">1. Note that this term is in the subset of terms that should not be used for direct gene product annotation. Instead, select a child term or, if no appropriate child term exists, please request a new term. Direct annotations to this term may be amended during annotation reviews.
 2. While a broader definition of behavior encompassing plants and single cell organisms would be justified on the basis of some usage (see PMID:20160973 for discussion), GO uses a tight definition that limits behavior to animals and to responses involving the nervous system, excluding plant responses that GO classifies under development, and responses of unicellular organisms that has general classifications for covering the responses of cells in multicellular organisms (e.g. cell chemotaxis).</rdfs:comment>
-        <rdfs:comment rdf:datatype="&xsd;string">I am trying to determine the difference between a process and a behaviour.  Is behaviour dancing any different from the process dancing?</rdfs:comment>
         <rdfs:label rdf:datatype="&xsd;string">behavior</rdfs:label>
     </owl:Class>
     
@@ -2545,25 +2549,15 @@ The definition provided here establishes the &apos;scale&apos; of cell populatio
         <obo:IAO_0000111 xml:lang="en">biological_process</obo:IAO_0000111>
         <obo:IAO_0000115 rdf:datatype="&xsd;string">A biological process represents a specific objective that the organism is genetically programmed to achieve. Biological processes are often described by their outcome or ending state, e.g., the biological process of cell division results in the creation of two daughter cells (a divided cell) from a single parent cell. A biological process is accomplished by a particular set of molecular functions carried out by specific gene products (or macromolecular complexes), often in a highly regulated manner and in a particular temporal sequence.</obo:IAO_0000115>
         <obo:IAO_0000115 xml:lang="en">Any process specifically pertinent to the functioning of integrated living units: cells, tissues, organs, and organisms. A process is a collection of molecular events with a defined beginning and end.</obo:IAO_0000115>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">Any process specifically pertinent to the functioning of integrated living units: cells, tissues, organs, and organisms. A process is a collection of molecular events with a defined beginning and end.
-</obo:IAO_0000115>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">The activities of living organisms that support life in single- or multi-cellular organisms from their origin through the progression of life.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;apollo_sv.owl"/>
         <obo:IAO_0000412 rdf:resource="&obo;nbo.owl"/>
         <obo:IAO_0000412 rdf:resource="&obo;pco.owl"/>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
         <oboInOwl:hasAlternativeId rdf:datatype="&xsd;string">GO:0000004</oboInOwl:hasAlternativeId>
         <oboInOwl:hasAlternativeId rdf:datatype="&xsd;string">GO:0007582</oboInOwl:hasAlternativeId>
         <oboInOwl:hasAlternativeId rdf:datatype="&xsd;string">GO:0044699</oboInOwl:hasAlternativeId>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">GO:0008150</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MeSH:D055705</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NCIt:C17828</oboInOwl:hasDbXref>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">Wikipedia:Biological_process</oboInOwl:hasDbXref>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">Physiological Processes</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">biological process</oboInOwl:hasExactSynonym>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">biological_process</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">physiological process</oboInOwl:hasExactSynonym>
-        <oboInOwl:hasNarrowSynonym rdf:datatype="&xsd;string">biological process unknown</oboInOwl:hasNarrowSynonym>
         <oboInOwl:inSubset rdf:resource="http://purl.oboInOwllibrary.org/oboInOwl/go#goslim_aspergillus"/>
         <oboInOwl:inSubset rdf:resource="http://purl.oboInOwllibrary.org/oboInOwl/go#goslim_candida"/>
         <oboInOwl:inSubset rdf:resource="http://purl.oboInOwllibrary.org/oboInOwl/go#goslim_chembl"/>
@@ -2573,12 +2567,8 @@ The definition provided here establishes the &apos;scale&apos; of cell populatio
         <oboInOwl:inSubset rdf:resource="http://purl.oboInOwllibrary.org/oboInOwl/go#goslim_plant"/>
         <oboInOwl:inSubset rdf:resource="http://purl.oboInOwllibrary.org/oboInOwl/go#goslim_pombe"/>
         <oboInOwl:inSubset rdf:resource="http://purl.oboInOwllibrary.org/oboInOwl/go#goslim_yeast"/>
-        <oboInOwl:inSubset rdf:resource="http://purl.oboInOwllibrary.org/oboInOwl/go#gosubset_prok"/>
-        <rdfs:comment rdf:datatype="&xsd;string">Note that, in addition to forming the root of the biological process ontology, this term is recommended for use for the annotation of gene products whose biological process is unknown. Note that when this term is used for annotation, it indicates that no information was available about the biological process of the gene product annotated as of the date the annotation was made; the evidence code ND, no data, is used to indicate this.
-</rdfs:comment>
         <rdfs:comment rdf:datatype="&xsd;string">Note that, in addition to forming the root of the biological process ontology, this term is recommended for use for the annotation of gene products whose biological process is unknown. When this term is used for annotation, it indicates that no information was available about the biological process of the gene product annotated as of the date the annotation was made; the evidence code &apos;no data&apos; (ND), is used to indicate this.</rdfs:comment>
         <rdfs:label xml:lang="en">biological process</rdfs:label>
-        <rdfs:label rdf:datatype="&xsd;string">biological process</rdfs:label>
         <rdfs:label rdf:datatype="&xsd;string">biological_process</rdfs:label>
     </owl:Class>
     
@@ -8744,10 +8734,8 @@ to esophageal inlet inferiorly, and is composed of three distinct areas: the nas
 
     <owl:Class rdf:about="&obo;HP_0003674">
         <rdfs:subClassOf rdf:resource="&obo;HP_0031797"/>
-        <rdfs:subClassOf rdf:resource="http://www.ebi.ac.uk/efo/EFO_0004949"/>
         <obo:IAO_0000115 rdf:datatype="&xsd;string">The age group in which disease manifestations appear.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;hp.owl"/>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
         <oboInOwl:hasAlternativeId rdf:datatype="&xsd;string">HP:0003588</oboInOwl:hasAlternativeId>
         <oboInOwl:hasAlternativeId rdf:datatype="&xsd;string">HP:0003590</oboInOwl:hasAlternativeId>
         <oboInOwl:hasAlternativeId rdf:datatype="&xsd;string">HP:0003597</oboInOwl:hasAlternativeId>
@@ -8762,7 +8750,6 @@ to esophageal inlet inferiorly, and is composed of three distinct areas: the nas
         <oboInOwl:hasAlternativeId rdf:datatype="&xsd;string">HP:0003668</oboInOwl:hasAlternativeId>
         <oboInOwl:hasAlternativeId rdf:datatype="&xsd;string">HP:0011007</oboInOwl:hasAlternativeId>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MSH:D017668</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref>MeSH:D017668</oboInOwl:hasDbXref>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">UMLS:C0206132</oboInOwl:hasDbXref>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">Age of onset</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym>Age symptoms begin</oboInOwl:hasExactSynonym>
@@ -8800,27 +8787,6 @@ to esophageal inlet inferiorly, and is composed of three distinct areas: the nas
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">UMLS:C0242979</oboInOwl:hasDbXref>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">UMLS:C4025573</oboInOwl:hasDbXref>
         <rdfs:label rdf:datatype="&xsd;string">Increased muscle fatiguability</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/HP_0003826 -->
-
-    <owl:Class rdf:about="&obo;HP_0003826">
-        <rdfs:subClassOf rdf:resource="http://www.ebi.ac.uk/efo/EFO_0005056"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">Death of the fetus in utero after at least 20 weeks of gestation.</obo:IAO_0000115>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
-        <oboInOwl:hasAlternativeId rdf:datatype="&xsd;string">HP:0001624</oboInOwl:hasAlternativeId>
-        <oboInOwl:hasAlternativeId rdf:datatype="&xsd;string">HP:0001625</oboInOwl:hasAlternativeId>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MSH:D005313</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MSH:D050497</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">SNOMEDCT_US:237364002</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">SNOMEDCT_US:276507005</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">UMLS:C0015927</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">UMLS:C0595939</oboInOwl:hasDbXref>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">Stillbirth</oboInOwl:hasExactSynonym>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">Stillborn</oboInOwl:hasExactSynonym>
-        <rdfs:label rdf:datatype="&xsd;string">Stillbirth</rdfs:label>
     </owl:Class>
     
 
@@ -11559,19 +11525,6 @@ In most clinical settings, closure of acute and chronic wounds is considered the
     
 
 
-    <!-- http://purl.obolibrary.org/obo/HP_0100613 -->
-
-    <owl:Class rdf:about="&obo;HP_0100613">
-        <rdfs:subClassOf rdf:resource="http://www.ebi.ac.uk/efo/EFO_0005056"/>
-        <obo:IAO_0000115>Death between the age of 16 and 40 years.</obo:IAO_0000115>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">UMLS:C4022012</oboInOwl:hasDbXref>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">Death in early adulthood</oboInOwl:hasExactSynonym>
-        <rdfs:label rdf:datatype="&xsd;string">Death in early adulthood</rdfs:label>
-    </owl:Class>
-    
-
-
     <!-- http://purl.obolibrary.org/obo/HP_0100651 -->
 
     <owl:Class rdf:about="&obo;HP_0100651">
@@ -11804,19 +11757,14 @@ In most clinical settings, closure of acute and chronic wounds is considered the
         <obo:IAO_0000114 rdf:resource="&obo;IAO_0000122"/>
         <obo:IAO_0000114 rdf:resource="&obo;IAO_0000125"/>
         <obo:IAO_0000115 xml:lang="en">A generically dependent continuant that is about some thing.</obo:IAO_0000115>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">An information entity is an entity that represents information about some other entity.  For example, a measurement, a clustered data set.</obo:IAO_0000115>
         <obo:IAO_0000115 xml:lang="en">an information content entity is an entity that is generically dependent on some artifact and stands in relation of aboutness to some entity</obo:IAO_0000115>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">James Malone</obo:IAO_0000117>
         <obo:IAO_0000117 xml:lang="en">PERSON: Chris Stoeckert</obo:IAO_0000117>
         <obo:IAO_0000117 rdf:datatype="&xsd;string">PERSON: Chris Stoeckert</obo:IAO_0000117>
         <obo:IAO_0000119 xml:lang="en">OBI_0000142</obo:IAO_0000119>
         <obo:IAO_0000119 rdf:datatype="&xsd;string">OBI_0000142</obo:IAO_0000119>
         <obo:IAO_0000412 rdf:resource="&obo;apollo_sv.owl"/>
         <obo:IAO_0000412 rdf:resource="&obo;stato.owl"/>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">information content entity</oboInOwl:hasExactSynonym>
         <rdfs:label xml:lang="en">information content entity</rdfs:label>
-        <rdfs:label rdf:datatype="&xsd;string">information entity</rdfs:label>
     </owl:Class>
     
 
@@ -12506,27 +12454,6 @@ In most clinical settings, closure of acute and chronic wounds is considered the
     
 
 
-    <!-- http://purl.obolibrary.org/obo/MONDO_0000605 -->
-
-    <owl:Class rdf:about="&obo;MONDO_0000605">
-        <rdfs:subClassOf rdf:resource="&obo;MONDO_0005046"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">An immune system disease that has basis in dysregulation of the hypersensitivity reaction, an inflammatory response to an exogenous environmental antigen or an endogenous antigen initiated by the adaptive immune system.</obo:IAO_0000115>
-        <obo:IAO_0000412 rdf:resource="&obo;mondo.owl"/>
-        <oboInOwl:hasBroadSynonym rdf:datatype="&xsd;string">sensitive</oboInOwl:hasBroadSynonym>
-        <oboInOwl:hasBroadSynonym rdf:datatype="&xsd;string">sensitivity</oboInOwl:hasBroadSynonym>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">DOID:0060056</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">EFO:1002003</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NCIT:C3114</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">SCTID:473010000</oboInOwl:hasDbXref>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">allergic reaction</oboInOwl:hasExactSynonym>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">hypersensitive</oboInOwl:hasExactSynonym>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">hypersensitivity</oboInOwl:hasExactSynonym>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">hypersensitivity reaction</oboInOwl:hasExactSynonym>
-        <rdfs:label rdf:datatype="&xsd;string">hypersensitivity reaction disease</rdfs:label>
-    </owl:Class>
-    
-
-
     <!-- http://purl.obolibrary.org/obo/MONDO_0000651 -->
 
     <owl:Class rdf:about="&obo;MONDO_0000651">
@@ -12997,6 +12924,7 @@ In most clinical settings, closure of acute and chronic wounds is considered the
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NCIT:C2934</oboInOwl:hasDbXref>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">SCTID:23853001</oboInOwl:hasDbXref>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">UMLS:C0007682</oboInOwl:hasDbXref>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">CNS disorder</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">central nervous disease</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">central nervous system disease</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">central nervous system disease or disorder</oboInOwl:hasExactSynonym>
@@ -14668,7 +14596,7 @@ In most clinical settings, closure of acute and chronic wounds is considered the
     <!-- http://purl.obolibrary.org/obo/MONDO_0007179 -->
 
     <owl:Class rdf:about="&obo;MONDO_0007179">
-        <rdfs:subClassOf rdf:resource="&obo;MONDO_0000605"/>
+        <rdfs:subClassOf rdf:resource="&obo;MONDO_0005046"/>
         <obo:IAO_0000115 rdf:datatype="&xsd;string">A disorder resulting from loss of function or tissue destruction of an organ or multiple organs, arising from humoral or cellular immune responses of the individual to their own tissue constituents. It may be systemic (e.g., systemic lupus erythematosus), or organ specific, (e.g., thyroiditis).</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;mondo.owl"/>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">DOID:417</oboInOwl:hasDbXref>
@@ -14913,12 +14841,12 @@ In most clinical settings, closure of acute and chronic wounds is considered the
     <!-- http://purl.obolibrary.org/obo/MONDO_0011382 -->
 
     <owl:Class rdf:about="&obo;MONDO_0011382">
+        <rdfs:subClassOf rdf:resource="&obo;MONDO_0005240"/>
         <rdfs:subClassOf rdf:resource="&obo;MONDO_0006025"/>
         <rdfs:subClassOf rdf:resource="&obo;MONDO_0015770"/>
         <rdfs:subClassOf rdf:resource="&obo;MONDO_0017146"/>
         <rdfs:subClassOf rdf:resource="&obo;MONDO_0018374"/>
         <rdfs:subClassOf rdf:resource="&obo;MONDO_0018384"/>
-        <rdfs:subClassOf rdf:resource="&obo;MONDO_0019747"/>
         <obo:IAO_0000115 rdf:datatype="&xsd;string">Sickle cell anemias are chronic hemolytic diseases that may induce three types of acute accidents: severe anemia, severe bacterial infections, and ischemic vasoocclusive accidents (VOA) caused by sickle-shaped red blood cells obstructing small blood vessels and capillaries. Many diverse complications can occur.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;mondo.owl"/>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">DOID:10923</oboInOwl:hasDbXref>
@@ -15137,7 +15065,6 @@ In most clinical settings, closure of acute and chronic wounds is considered the
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">ICD10:J84.9</oboInOwl:hasDbXref>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MESH:D017563</oboInOwl:hasDbXref>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MedDRA:10022611</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">OMIM:616414</oboInOwl:hasDbXref>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">Orphanet:182095</oboInOwl:hasDbXref>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">SCTID:233703007</oboInOwl:hasDbXref>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">UMLS:C0206062</oboInOwl:hasDbXref>
@@ -15581,23 +15508,6 @@ In most clinical settings, closure of acute and chronic wounds is considered the
         <oboInOwl:inSubset rdf:resource="http://purl.oboInOwllibrary.org/oboInOwl/mondo#disease_grouping"/>
         <oboInOwl:inSubset rdf:resource="http://purl.oboInOwllibrary.org/oboInOwl/mondo#ordo_group_of_disorders"/>
         <rdfs:label rdf:datatype="&xsd;string">genetic nervous system disorder</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/MONDO_0019747 -->
-
-    <owl:Class rdf:about="&obo;MONDO_0019747">
-        <rdfs:subClassOf rdf:resource="&obo;MONDO_0005240"/>
-        <rdfs:subClassOf rdf:resource="&obo;MONDO_0005570"/>
-        <obo:IAO_0000412 rdf:resource="&obo;mondo.owl"/>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">Orphanet:93614</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">UMLS:CN227684</oboInOwl:hasDbXref>
-        <oboInOwl:inSubset rdf:resource="http://purl.oboInOwllibrary.org/oboInOwl/mondo#disease_grouping"/>
-        <oboInOwl:inSubset rdf:resource="http://purl.oboInOwllibrary.org/oboInOwl/mondo#obsoletion_candidate"/>
-        <oboInOwl:inSubset rdf:resource="http://purl.oboInOwllibrary.org/oboInOwl/mondo#ordo_group_of_disorders"/>
-        <rdfs:comment rdf:datatype="&xsd;string">Reason: out of scope. This is an Orphanet grouping class that is considered out of scope for Mondo.Term to consider: hematologic disease&apos;</rdfs:comment>
-        <rdfs:label rdf:datatype="&xsd;string">hematological disorder with renal involvement</rdfs:label>
     </owl:Class>
     
 
@@ -16601,200 +16511,6 @@ In most clinical settings, closure of acute and chronic wounds is considered the
         <obo:IAO_0000115 rdf:datatype="&xsd;string">Anatomically located instance of pathological response or entity.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;mpath.owl"/>
         <rdfs:label rdf:datatype="&xsd;string">pathological anatomical entity</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/MP_0000001 -->
-
-    <owl:Class rdf:about="&obo;MP_0000001">
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">the observable morphological, physiological, behavioral and other characteristics of mammalian organisms that are manifested through development and lifespan</obo:IAO_0000115>
-        <obo:IAO_0000412 rdf:resource="&obo;mp.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">mammalian phenotype</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/MP_0000313 -->
-
-    <owl:Class rdf:about="&obo;MP_0000313">
-        <rdfs:subClassOf rdf:resource="&obo;MP_0005621"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">any anomaly in the cessation of function at the cellular level</obo:IAO_0000115>
-        <obo:IAO_0000412 rdf:resource="&obo;mp.owl"/>
-        <oboInOwl:hasAlternativeId rdf:datatype="&xsd;string">MP:0001647</oboInOwl:hasAlternativeId>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">abnormal cell viability</oboInOwl:hasExactSynonym>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">abnormal cellular death</oboInOwl:hasExactSynonym>
-        <rdfs:label rdf:datatype="&xsd;string">abnormal cell death</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/MP_0000316 -->
-
-    <owl:Class rdf:about="&obo;MP_0000316">
-        <rdfs:subClassOf rdf:resource="&obo;MP_0000313"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">pathologic death of cells, usually from irreversible damage</obo:IAO_0000115>
-        <obo:IAO_0000412 rdf:resource="&obo;mp.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">cellular necrosis</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/MP_0001790 -->
-
-    <owl:Class rdf:about="&obo;MP_0001790">
-        <rdfs:subClassOf rdf:resource="&obo;MP_0005387"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">deviation from the normal function of the immune system</obo:IAO_0000115>
-        <obo:IAO_0000412 rdf:resource="&obo;mp.owl"/>
-        <oboInOwl:hasAlternativeId rdf:datatype="&xsd;string">MP:0001789</oboInOwl:hasAlternativeId>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">GO:0006955</oboInOwl:hasDbXref>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">immune system/response abnormalities</oboInOwl:hasExactSynonym>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">immune system: response/ function abnormalities</oboInOwl:hasExactSynonym>
-        <rdfs:label rdf:datatype="&xsd;string">abnormal immune system physiology</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/MP_0001845 -->
-
-    <owl:Class rdf:about="&obo;MP_0001845">
-        <rdfs:subClassOf rdf:resource="&obo;MP_0001790"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">aberrant reaction of the microcirculation characterized by movement of fluid and leukocytes from the blood into extravascular tissues</obo:IAO_0000115>
-        <obo:IAO_0000412 rdf:resource="&obo;mp.owl"/>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">inflammation</oboInOwl:hasExactSynonym>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">inflammatory response</oboInOwl:hasExactSynonym>
-        <rdfs:label rdf:datatype="&xsd;string">abnormal inflammatory response</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/MP_0001846 -->
-
-    <owl:Class rdf:about="&obo;MP_0001846">
-        <rdfs:subClassOf rdf:resource="&obo;MP_0001845"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">greater than expected response to injury, infection, or insult</obo:IAO_0000115>
-        <obo:IAO_0000412 rdf:resource="&obo;mp.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">increased inflammatory response</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/MP_0001866 -->
-
-    <owl:Class rdf:about="&obo;MP_0001866">
-        <rdfs:subClassOf rdf:resource="&obo;MP_0002405"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">local accumulation of fluid, plasma proteins, and leukocytes in the proximal portion of the respiratory passages</obo:IAO_0000115>
-        <obo:IAO_0000412 rdf:resource="&obo;mp.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">nasal inflammation</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/MP_0001867 -->
-
-    <owl:Class rdf:about="&obo;MP_0001867">
-        <rdfs:subClassOf rdf:resource="&obo;MP_0001866"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">inflammation of the mucous membrane of the nose</obo:IAO_0000115>
-        <obo:IAO_0000412 rdf:resource="&obo;mp.owl"/>
-        <oboInOwl:hasAlternativeId rdf:datatype="&xsd;string">MP:0001113</oboInOwl:hasAlternativeId>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">nasal catarrh</oboInOwl:hasExactSynonym>
-        <rdfs:label rdf:datatype="&xsd;string">rhinitis</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/MP_0002133 -->
-
-    <owl:Class rdf:about="&obo;MP_0002133">
-        <rdfs:subClassOf rdf:resource="&obo;MP_0005388"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">any functional anomaly of the pulmonary system; inability or reduced ability to intake and exchange oxygen and carbon dioxide with the environment</obo:IAO_0000115>
-        <obo:IAO_0000412 rdf:resource="&obo;mp.owl"/>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MGI:2173593</oboInOwl:hasDbXref>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">respiratory system dysfunction</oboInOwl:hasExactSynonym>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">respiratory system physiology abnormalities</oboInOwl:hasExactSynonym>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">respiratory system: respiratory distress/failure/functional anomalies</oboInOwl:hasExactSynonym>
-        <rdfs:label rdf:datatype="&xsd;string">abnormal respiratory system physiology</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/MP_0002405 -->
-
-    <owl:Class rdf:about="&obo;MP_0002405">
-        <rdfs:subClassOf rdf:resource="&obo;MP_0001846"/>
-        <rdfs:subClassOf rdf:resource="&obo;MP_0002133"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">local accumulation of fluid, plasma proteins, and leukocytes in the respiratory system</obo:IAO_0000115>
-        <obo:IAO_0000412 rdf:resource="&obo;mp.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">respiratory system inflammation</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/MP_0005384 -->
-
-    <owl:Class rdf:about="&obo;MP_0005384">
-        <rdfs:subClassOf rdf:resource="&obo;MP_0000001"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">the observable morphological and physiological characteristics of the basic structural and functional unit of all mammalian organisms that are manifested through development and lifespan</obo:IAO_0000115>
-        <obo:IAO_0000412 rdf:resource="&obo;mp.owl"/>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">cell phenotype</oboInOwl:hasExactSynonym>
-        <rdfs:label rdf:datatype="&xsd;string">cellular phenotype</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/MP_0005387 -->
-
-    <owl:Class rdf:about="&obo;MP_0005387">
-        <rdfs:subClassOf rdf:resource="&obo;MP_0000001"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">the observable morphological and physiological characteristics of the mammalian system that protects the body from foreign substances, cells, and tissues by producing the immune response and that includes especially the thymus, spleen, lymphoid tissue, lymphocytes including the B cells and T cells, and antibodies that are manifested through development and lifespan</obo:IAO_0000115>
-        <obo:IAO_0000412 rdf:resource="&obo;mp.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">immune system phenotype</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/MP_0005388 -->
-
-    <owl:Class rdf:about="&obo;MP_0005388">
-        <rdfs:subClassOf rdf:resource="&obo;MP_0000001"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">the observable morphological and physiological characteristics of the mammalian system responsible for the exchange of oxygen and carbon dioxide with the environment that are manifested through development and lifespan</obo:IAO_0000115>
-        <obo:IAO_0000412 rdf:resource="&obo;mp.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">respiratory system phenotype</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/MP_0005621 -->
-
-    <owl:Class rdf:about="&obo;MP_0005621">
-        <rdfs:subClassOf rdf:resource="&obo;MP_0005384"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">any functional anomaly of the vital processes of the cell</obo:IAO_0000115>
-        <obo:IAO_0000412 rdf:resource="&obo;mp.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">abnormal cell physiology</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/MP_0031126 -->
-
-    <owl:Class rdf:about="&obo;MP_0031126">
-        <rdfs:subClassOf rdf:resource="&obo;MP_0000316"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">necrosis or death of soft tissue due to lack of blood flow resulting from injury, infection or other conditions that affect blood circulation</obo:IAO_0000115>
-        <obo:IAO_0000412 rdf:resource="&obo;mp.owl"/>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">gangrenous necrosis</oboInOwl:hasExactSynonym>
-        <rdfs:label rdf:datatype="&xsd;string">gangrene</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/MP_0031127 -->
-
-    <owl:Class rdf:about="&obo;MP_0031127">
-        <rdfs:subClassOf rdf:resource="&obo;MP_0031126"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">a form of coagulative necrosis that develops in ischemic tissue, where the blood supply is inadequate to keep tissue viable, in the absence of superimposed microbial infection; can be due to peripheral artery disease or acute limb ischemia; the affected body part is dry, shrunken, and dark reddish-black and can fall off (autoamputate) if not removed surgically</obo:IAO_0000115>
-        <obo:IAO_0000412 rdf:resource="&obo;mp.owl"/>
-        <rdfs:comment rdf:datatype="&xsd;string">The term dry is used only when referring to a limb or to the gut; in other locations, this same type of necrosis is called an infarction, such as myocardial infarction</rdfs:comment>
-        <rdfs:label rdf:datatype="&xsd;string">dry gangrene</rdfs:label>
     </owl:Class>
     
 
@@ -26922,30 +26638,6 @@ https://stats.stackexchange.com/questions/31908/what-is-percentage-of-variance-i
     
 
 
-    <!-- http://purl.obolibrary.org/obo/VT_0000001 -->
-
-    <owl:Class rdf:about="&obo;VT_0000001">
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">Any measurable or observable characteristic of a vertebrate organism.</obo:IAO_0000115>
-        <obo:IAO_0000412 rdf:resource="&obo;vt.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">vertebrate trait</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/VT_0002292 -->
-
-    <owl:Class rdf:about="&obo;VT_0002292">
-        <rdfs:subClassOf rdf:resource="&obo;VT_0000001"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">The length of time between when a fertilized egg implants in the wall of the uterus and the birth of offspring.</obo:IAO_0000115>
-        <obo:IAO_0000412 rdf:resource="&obo;vt.owl"/>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">ATOL:0002292</oboInOwl:hasDbXref>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">gestation length</oboInOwl:hasExactSynonym>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">gestational length</oboInOwl:hasExactSynonym>
-        <rdfs:label rdf:datatype="&xsd;string">gestation period duration</rdfs:label>
-    </owl:Class>
-    
-
-
     <!-- http://semanticscience.org/resource/SIO_000136 -->
 
     <owl:Class rdf:about="http://semanticscience.org/resource/SIO_000136">
@@ -27022,835 +26714,6 @@ https://stats.stackexchange.com/questions/31908/what-is-percentage-of-variance-i
         <obo:IAO_0000115 xml:lang="en">life status is the quality of whether something is alive or dead.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="http://semanticscience.org/ontology/sio.owl"/>
         <rdfs:label xml:lang="en">life status</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ebi.ac.uk/efo/EFO_0000001 -->
-
-    <owl:Class rdf:about="http://www.ebi.ac.uk/efo/EFO_0000001">
-        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">An experimental factor in Array Express which are essentially the variable aspects of an experiment design which can be used to describe an experiment, or set of experiments, in an increasingly detailed manner. This upper level class is really used to give a root class from which applications can rely on and not be tied to upper ontology classses which do change.</obo:IAO_0000115>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">Helen Parkinson</obo:IAO_0000117>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">James Malone</obo:IAO_0000117>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">Jie Zheng</obo:IAO_0000117>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">Tomasz Adamusiak</obo:IAO_0000117>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MO:10</oboInOwl:hasDbXref>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">ExperimentalFactor</oboInOwl:hasExactSynonym>
-        <rdfs:comment rdf:datatype="&xsd;string">Concept naming convention is lower case natural naming with spaces, when necessary captials should be used, for example disease factor, HIV, breast carcinoma, Ewing&apos;s sarcoma</rdfs:comment>
-        <rdfs:label rdf:datatype="&xsd;string">experimental factor</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ebi.ac.uk/efo/EFO_0000246 -->
-
-    <owl:Class rdf:about="http://www.ebi.ac.uk/efo/EFO_0000246">
-        <rdfs:subClassOf rdf:resource="http://www.ebi.ac.uk/efo/EFO_0000719"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">A temporal measurement of the time period elapsed since an identifiable point in the life cycle of an organism. If a developmental stage is specified, the identifiable point would be the beginning of that stage. Otherwise the identifiable point must be specified such as planting (e.g. 3 days post planting).</obo:IAO_0000115>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">James Malone</obo:IAO_0000117>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">Jie Zheng</obo:IAO_0000117>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">Tomasz Adamusiak</obo:IAO_0000117>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MO:467</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NCIt:C25150</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">SNOMEDCT:397669002</oboInOwl:hasDbXref>
-        <rdfs:label rdf:datatype="&xsd;string">age</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ebi.ac.uk/efo/EFO_0000408 -->
-
-    <owl:Class rdf:about="http://www.ebi.ac.uk/efo/EFO_0000408">
-        <rdfs:subClassOf rdf:resource="&obo;BFO_0000016"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">A disease is a disposition that describes states of disease associated with a particular sample and/or organism.</obo:IAO_0000115>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">A disease is a disposition to undergo pathological processes that exists in an organism because of one or more disorders in that organism.</obo:IAO_0000115>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">James Malone</obo:IAO_0000117>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">DOID:4</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">ICD10:R69</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">ICD9:799.9</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MESH:D004194</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MONDO:0000001</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MeSH:D004194</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NCIT:C2991</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">OGMS:0000031</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">Orphanet:377788</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">SCTID:64572001</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">SNOMEDCT:64572001</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">UMLS:C0012634</oboInOwl:hasDbXref>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">Homo sapiens disease</oboInOwl:hasExactSynonym>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">condition</oboInOwl:hasExactSynonym>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">disease</oboInOwl:hasExactSynonym>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">disease or disorder</oboInOwl:hasExactSynonym>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">disease or disorder, non-neoplastic</oboInOwl:hasExactSynonym>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">diseases</oboInOwl:hasExactSynonym>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">diseases and disorders</oboInOwl:hasExactSynonym>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">disorder</oboInOwl:hasExactSynonym>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">disorders</oboInOwl:hasExactSynonym>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">human disease</oboInOwl:hasExactSynonym>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">medical condition</oboInOwl:hasExactSynonym>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">other disease</oboInOwl:hasExactSynonym>
-        <rdfs:label rdf:datatype="&xsd;string">disease</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ebi.ac.uk/efo/EFO_0000409 -->
-
-    <owl:Class rdf:about="http://www.ebi.ac.uk/efo/EFO_0000409">
-        <rdfs:subClassOf rdf:resource="http://www.ebi.ac.uk/efo/EFO_0000482"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">A temporal measurement of the period after successful treatment in which there is no appearance of the symptoms or effects of the disease.</obo:IAO_0000115>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">James Malone</obo:IAO_0000117>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MeSH:D018572</oboInOwl:hasDbXref>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string"> Disease-Free Survival</oboInOwl:hasExactSynonym>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">morbidity-free survival</oboInOwl:hasExactSynonym>
-        <rdfs:label rdf:datatype="&xsd;string">disease free survival</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ebi.ac.uk/efo/EFO_0000412 -->
-
-    <owl:Class rdf:about="http://www.ebi.ac.uk/efo/EFO_0000412">
-        <rdfs:subClassOf rdf:resource="http://www.ebi.ac.uk/efo/EFO_0004919"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">Is a temporal measure from a defined start point e.g. diagnosis, or treatment of the period to appearance of a distant metastasis. A distant metastasis refers to cancer that has spread from the original (primary) tumor to distant organs or distant lymph nodes. Also known as distant cancer.</obo:IAO_0000115>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">Helen Parkinson</obo:IAO_0000117>
-        <obo:IAO_0000119 rdf:datatype="&xsd;string">http://www.cancer.gov/dictionary?cdrid=415317</obo:IAO_0000119>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">event distant metastases</oboInOwl:hasExactSynonym>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">time to development of distant metastases</oboInOwl:hasExactSynonym>
-        <rdfs:label rdf:datatype="&xsd;string">distant metastasis free survival</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ebi.ac.uk/efo/EFO_0000433 -->
-
-    <owl:Class rdf:about="http://www.ebi.ac.uk/efo/EFO_0000433">
-        <rdfs:subClassOf rdf:resource="http://www.ebi.ac.uk/efo/EFO_0000719"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">A temporal measurement of the time between two specified points.</obo:IAO_0000115>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">James Malone</obo:IAO_0000117>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">Tomasz Adamusiak</obo:IAO_0000117>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NCIt:C25330</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NIFSTD:birnlex_2052</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">SNOMEDCT:103335007</oboInOwl:hasDbXref>
-        <rdfs:label rdf:datatype="&xsd;string">duration</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ebi.ac.uk/efo/EFO_0000482 -->
-
-    <owl:Class rdf:about="http://www.ebi.ac.uk/efo/EFO_0000482">
-        <rdfs:subClassOf rdf:resource="http://www.ebi.ac.uk/efo/EFO_0000714"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">Is the survival of a subject (or group of subjects) measured from the date of diagnosis until  locoregional or systemic recurrence,  second malignancy, or death from any cause or disease progression or relapse, institution of new unplanned anticancer treatment, or death from any cause.</obo:IAO_0000115>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">James Malone</obo:IAO_0000117>
-        <obo:IAO_0000119 rdf:datatype="&xsd;string">http://en.wikibooks.org/wiki/Radiation_Oncology/Survival_curve_terminology</obo:IAO_0000119>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">event free survival time</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ebi.ac.uk/efo/EFO_0000512 -->
-
-    <owl:Class rdf:about="http://www.ebi.ac.uk/efo/EFO_0000512">
-        <rdfs:subClassOf rdf:resource="http://www.ebi.ac.uk/efo/EFO_0009663"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">A disease involving the reproductive system.</obo:IAO_0000115>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">Any disease of the reproductive system.</obo:IAO_0000115>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">James Malone</obo:IAO_0000117>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">Sirarat Sarntivijai</obo:IAO_0000117>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">Tomasz Adamusiak</obo:IAO_0000117>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">DOID:15</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MONDO:0005039</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NCIT:C4875</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">SCTID:362968007</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">SNOMEDCT:362968007</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">UMLS:C0178829</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">Wikipedia:Reproductive_system_disease</oboInOwl:hasDbXref>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">Disorder of reproductive system</oboInOwl:hasExactSynonym>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">Disorder of reproductive system (disorder)</oboInOwl:hasExactSynonym>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">Non-neoplastic Reproductive system disease</oboInOwl:hasExactSynonym>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">disease of reproductive system</oboInOwl:hasExactSynonym>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">disease or disorder of reproductive system</oboInOwl:hasExactSynonym>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">disorder of reproductive system</oboInOwl:hasExactSynonym>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">genital disorders</oboInOwl:hasExactSynonym>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">genital system disease</oboInOwl:hasExactSynonym>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">reproductive disease</oboInOwl:hasExactSynonym>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">reproductive system disease</oboInOwl:hasExactSynonym>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">reproductive system disease or disorder</oboInOwl:hasExactSynonym>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">reproductive system disorder</oboInOwl:hasExactSynonym>
-        <rdfs:label rdf:datatype="&xsd;string">reproductive system disease</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ebi.ac.uk/efo/EFO_0000638 -->
-
-    <owl:Class rdf:about="http://www.ebi.ac.uk/efo/EFO_0000638">
-        <rdfs:subClassOf rdf:resource="http://www.ebi.ac.uk/efo/EFO_0000714"/>
-        <rdfs:subClassOf rdf:resource="http://www.ebi.ac.uk/efo/EFO_0004557"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">A measurement of the survival rate for a group of individuals suffering from a disease.</obo:IAO_0000115>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">James Malone</obo:IAO_0000117>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">overall survival</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ebi.ac.uk/efo/EFO_0000648 -->
-
-    <owl:Class rdf:about="http://www.ebi.ac.uk/efo/EFO_0000648">
-        <rdfs:subClassOf rdf:resource="http://www.ebi.ac.uk/efo/EFO_0004949"/>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">James Malone</obo:IAO_0000117>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">period of infection</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ebi.ac.uk/efo/EFO_0000683 -->
-
-    <owl:Class rdf:about="http://www.ebi.ac.uk/efo/EFO_0000683">
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">A role played by a a biological sample in the context of an experiment where the intent is that biological or technical variation is measured.</obo:IAO_0000115>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">James Malone</obo:IAO_0000117>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NCIt:C28038</oboInOwl:hasDbXref>
-        <rdfs:label rdf:datatype="&xsd;string">replicate</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ebi.ac.uk/efo/EFO_0000689 -->
-
-    <owl:Class rdf:about="http://www.ebi.ac.uk/efo/EFO_0000689">
-        <rdfs:subClassOf rdf:resource="http://www.ebi.ac.uk/efo/EFO_0000719"/>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">James Malone</obo:IAO_0000117>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">Jie Zheng</obo:IAO_0000117>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">Tomasz Adamusiak</obo:IAO_0000117>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MO:866</oboInOwl:hasDbXref>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">sampling_time_point</oboInOwl:hasExactSynonym>
-        <rdfs:label rdf:datatype="&xsd;string">sampling time</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ebi.ac.uk/efo/EFO_0000714 -->
-
-    <owl:Class rdf:about="http://www.ebi.ac.uk/efo/EFO_0000714">
-        <rdfs:subClassOf rdf:resource="http://www.ebi.ac.uk/efo/EFO_0004949"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">Time of survival is an information entity which is about the length of time a material entity has survived after some adverse event, such as infection from a disease.</obo:IAO_0000115>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">James Malone</obo:IAO_0000117>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MeSH:D013534</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NCIt:C17177</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">PERSON: James Malone</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">SNOMEDCT:445320007</oboInOwl:hasDbXref>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">survival</oboInOwl:hasExactSynonym>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">time of survival</oboInOwl:hasExactSynonym>
-        <rdfs:label rdf:datatype="&xsd;string">survival time</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ebi.ac.uk/efo/EFO_0000719 -->
-
-    <owl:Class rdf:about="http://www.ebi.ac.uk/efo/EFO_0000719">
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">A temporal entity is an entity that has temporal parts and that happens, unfolds or develops through time. An occurrent is something which exists over time, rather than existing completely at many times</obo:IAO_0000115>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">James Malone</obo:IAO_0000117>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">temporal measurement</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ebi.ac.uk/efo/EFO_0000724 -->
-
-    <owl:Class rdf:about="http://www.ebi.ac.uk/efo/EFO_0000724">
-        <rdfs:subClassOf rdf:resource="http://www.ebi.ac.uk/efo/EFO_0000719"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">Time point at which a sample or observation is made or taken from a biomaterial as measured from some reference point.</obo:IAO_0000115>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">James Malone</obo:IAO_0000117>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">Jie Zheng</obo:IAO_0000117>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">Tomasz Adamusiak</obo:IAO_0000117>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MO:738</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NCIt:C68568</oboInOwl:hasDbXref>
-        <rdfs:label rdf:datatype="&xsd;string">timepoint</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ebi.ac.uk/efo/EFO_0001444 -->
-
-    <owl:Class rdf:about="http://www.ebi.ac.uk/efo/EFO_0001444">
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">A measurement is an information entity that is a recording of the output of a measurement such as produced by an instrument.</obo:IAO_0000115>
-        <obo:IAO_0000117></obo:IAO_0000117>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">James Malone</obo:IAO_0000117>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">Jie Zheng</obo:IAO_0000117>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">Tomasz Adamusiak</obo:IAO_0000117>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MO:144</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NCIt:C25209</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NIFSTD:sao279801585</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">SNOMEDCT:122869004</oboInOwl:hasDbXref>
-        <rdfs:label rdf:datatype="&xsd;string">measurement</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ebi.ac.uk/efo/EFO_0001799 -->
-
-    <owl:Class rdf:about="http://www.ebi.ac.uk/efo/EFO_0001799">
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">A group of people with a common cultural heritage that sets them apart from others in a variety of social relationships. (MSH); A social group characterized by a distinctive social and cultural tradition maintained from generation to generation, a common history and origin and a sense of identification with the group; members of the group have distinctive features in their way of life, shared experiences and often a common genetic heritage; these features may be reflected in their experience of health and disease. (NCI); Ethnicity - an arbitrary classification of the social group a person belongs to, and either identifies with or is identified with by others, as a result of a complex of cultural, biological, geographical and other factors such as linguistic, dietary and religion traditions; ancestry, background, allegiance, or association; and physical characteristics traditionally associated with race. Increasingly the concept is used synonymously with race but this use trend has a pragmatic basis rather than scientific. (NCI); The concept of ethnic origin is an attempt to classify people, not according to their current ethnicity, but according to where their ancestors came from. Ethnic origin has become a popular classification in statistics, where the concept of race has been largely discarded. (from Wikipedia) (NCI); a group of people with a common cultural heritage that sets them apart from others in a variety of social relationships. (CSP)</obo:IAO_0000115>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">An ethnic group is a population whose members have a common heritage that is real or presumed such as common culture, language, religion, behaviour or biological trait.</obo:IAO_0000115>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">James Malone</obo:IAO_0000117>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">Tomasz Adamusiak</obo:IAO_0000117>
-        <obo:IAO_0000119 rdf:datatype="&xsd;string">http://en.wikipedia.org/wiki/Ethnic_group</obo:IAO_0000119>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NCIt:C16564</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NIFSTD:birnlex_3016</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">SNOMEDCT:364699009</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">SNOMEDCT:372148003</oboInOwl:hasDbXref>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">Ethnicity</oboInOwl:hasExactSynonym>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">race</oboInOwl:hasExactSynonym>
-        <rdfs:label rdf:datatype="&xsd;string">ethnic group</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ebi.ac.uk/efo/EFO_0002090 -->
-
-    <owl:Class rdf:about="http://www.ebi.ac.uk/efo/EFO_0002090">
-        <rdfs:subClassOf rdf:resource="http://www.ebi.ac.uk/efo/EFO_0000683"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">A technical replicate is a replicate role where the same BioSample is use e.g. the same pool of RNA used to assess technical (as opposed to biological) variation within an experiment.</obo:IAO_0000115>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">James Malone</obo:IAO_0000117>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MO:641</oboInOwl:hasDbXref>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">technical_replicate</oboInOwl:hasExactSynonym>
-        <rdfs:label rdf:datatype="&xsd;string">technical replicate</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ebi.ac.uk/efo/EFO_0002091 -->
-
-    <owl:Class rdf:about="http://www.ebi.ac.uk/efo/EFO_0002091">
-        <rdfs:subClassOf rdf:resource="http://www.ebi.ac.uk/efo/EFO_0000683"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">A biological replicate is a replicate role that consists of independent biological replicates made from different individual biosamples.</obo:IAO_0000115>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">James Malone</obo:IAO_0000117>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MO:952</oboInOwl:hasDbXref>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">biological_replicate</oboInOwl:hasExactSynonym>
-        <rdfs:label rdf:datatype="&xsd;string">biological replicate</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ebi.ac.uk/efo/EFO_0002950 -->
-
-    <owl:Class rdf:about="http://www.ebi.ac.uk/efo/EFO_0002950">
-        <rdfs:subClassOf rdf:resource="&obo;GO_0000003"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">The state or condition of having a developing embryo or fetus in the body (uterus), after union of an ovum and spermatozoon, during the period from conception to birth.</obo:IAO_0000115>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">The status during which female mammals carry their developing young (EMBRYOS or FETUSES) in utero before birth, beginning from FERTILIZATION to BIRTH.</obo:IAO_0000115>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">Tomasz Adamusiak</obo:IAO_0000117>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">ICD10:Z34</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MeSH:D011247</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MedDRA:10036556</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NCIt:C25742</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">SNOMEDCT:289908002</oboInOwl:hasDbXref>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">Gestation</oboInOwl:hasExactSynonym>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">PREGN</oboInOwl:hasExactSynonym>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">Pregnancies</oboInOwl:hasExactSynonym>
-        <rdfs:label rdf:datatype="&xsd;string">pregnancy</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ebi.ac.uk/efo/EFO_0004318 -->
-
-    <owl:Class rdf:about="http://www.ebi.ac.uk/efo/EFO_0004318">
-        <rdfs:subClassOf rdf:resource="&obo;GO_0007610"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">Inhaling and exhaling the smoke of tobacco or something similar to tobacco.</obo:IAO_0000115>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">Dani Welter</obo:IAO_0000117>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MeSH:D012907</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NCIt:C20134</oboInOwl:hasDbXref>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">smoking</oboInOwl:hasExactSynonym>
-        <rdfs:label rdf:datatype="&xsd;string">smoking behavior</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ebi.ac.uk/efo/EFO_0004324 -->
-
-    <owl:Class rdf:about="http://www.ebi.ac.uk/efo/EFO_0004324">
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">Measurements of the height, weight, length, area, etc., of the human and animal body or its parts.</obo:IAO_0000115>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">Dani Welter</obo:IAO_0000117>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MeSH:D001837</oboInOwl:hasDbXref>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">body measures</oboInOwl:hasExactSynonym>
-        <rdfs:label rdf:datatype="&xsd;string">body weights and measures</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ebi.ac.uk/efo/EFO_0004340 -->
-
-    <owl:Class rdf:about="http://www.ebi.ac.uk/efo/EFO_0004340">
-        <rdfs:subClassOf rdf:resource="http://www.ebi.ac.uk/efo/EFO_0004324"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">An indicator of body density as determined by the relationship of BODY WEIGHT to BODY HEIGHT. BMI=weight (kg)/height squared (m2). BMI correlates with body fat (ADIPOSE TISSUE). Their relationship varies with age and gender. For adults, BMI falls into these categories: below 18.5 (underweight); 18.5-24.9 (normal); 25.0-29.9 (overweight); 30.0 and above (obese). (National Center for Health Statistics, Centers for Disease Control and Prevention)</obo:IAO_0000115>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">Dani Welter</obo:IAO_0000117>
-        <obo:IAO_0000119 rdf:datatype="&xsd;string">https://en.wikipedia.org/wiki/Body_mass_index</obo:IAO_0000119>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">ICD9:V85-V85.99</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MeSH:D015992</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MedDRA:10005894</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NCIt:C16358</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">SNOMEDCT:60621009</oboInOwl:hasDbXref>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">BMI</oboInOwl:hasExactSynonym>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">Quetelet&apos;s Index</oboInOwl:hasExactSynonym>
-        <rdfs:label rdf:datatype="&xsd;string">body mass index</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ebi.ac.uk/efo/EFO_0004352 -->
-
-    <owl:Class rdf:about="http://www.ebi.ac.uk/efo/EFO_0004352">
-        <rdfs:subClassOf rdf:resource="http://www.ebi.ac.uk/efo/EFO_0004557"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">Quantification of the number of deaths in a population.</obo:IAO_0000115>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">Dani Welter</obo:IAO_0000117>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MeSH:D009026</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MeSH:Q000401</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NCIt:C16880</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">SNOMEDCT:409651001</oboInOwl:hasDbXref>
-        <oboInOwl:hasExactSynonym>mortality measurement</oboInOwl:hasExactSynonym>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">mortality rate</oboInOwl:hasExactSynonym>
-        <rdfs:label rdf:datatype="&xsd;string">mortality</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ebi.ac.uk/efo/EFO_0004425 -->
-
-    <owl:Class rdf:about="http://www.ebi.ac.uk/efo/EFO_0004425">
-        <rdfs:subClassOf rdf:resource="http://www.ebi.ac.uk/efo/EFO_0000724"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">The first time point measured at the start of some process.</obo:IAO_0000115>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">James Malone</obo:IAO_0000117>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">initial timepoint</oboInOwl:hasExactSynonym>
-        <rdfs:label rdf:datatype="&xsd;string">initial time point</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ebi.ac.uk/efo/EFO_0004557 -->
-
-    <owl:Class rdf:about="http://www.ebi.ac.uk/efo/EFO_0004557">
-        <rdfs:subClassOf rdf:resource="http://www.ebi.ac.uk/efo/EFO_0001444"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">Is the quantification of some measureable quality of a population e.g. birth rate.</obo:IAO_0000115>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">Helen Parkinson</obo:IAO_0000117>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">population measurement</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ebi.ac.uk/efo/EFO_0004703 -->
-
-    <owl:Class rdf:about="http://www.ebi.ac.uk/efo/EFO_0004703">
-        <rdfs:subClassOf rdf:resource="http://www.ebi.ac.uk/efo/EFO_0000246"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">The age of onset of (human) menarche, the beginning of the first menstrual cycle in an individual</obo:IAO_0000115>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">Helen Parkinson</obo:IAO_0000117>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NCIt:C19666</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">SNOMEDCT:398700009</oboInOwl:hasDbXref>
-        <rdfs:label rdf:datatype="&xsd;string">age at menarche</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ebi.ac.uk/efo/EFO_0004704 -->
-
-    <owl:Class rdf:about="http://www.ebi.ac.uk/efo/EFO_0004704">
-        <rdfs:subClassOf rdf:resource="http://www.ebi.ac.uk/efo/EFO_0000246"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">The age of onset of (human) menopause, the beginning of the first menstrual cycle in an individual</obo:IAO_0000115>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">Helen Parkinson</obo:IAO_0000117>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NCIt:C106497</oboInOwl:hasDbXref>
-        <rdfs:label rdf:datatype="&xsd;string">age at menopause</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ebi.ac.uk/efo/EFO_0004847 -->
-
-    <owl:Class rdf:about="http://www.ebi.ac.uk/efo/EFO_0004847">
-        <rdfs:subClassOf rdf:resource="http://www.ebi.ac.uk/efo/EFO_0000246"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">The age at which some process, or disease started in a human individual.</obo:IAO_0000115>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">Helen Parkinson</obo:IAO_0000117>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">age at onset</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ebi.ac.uk/efo/EFO_0004918 -->
-
-    <owl:Class rdf:about="http://www.ebi.ac.uk/efo/EFO_0004918">
-        <rdfs:subClassOf rdf:resource="http://www.ebi.ac.uk/efo/EFO_0004949"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">The age, measured from some defined time point e.g. birth at which a subject (e.g. a human patient) is diagnosed with some disease e.g. breast cancer.</obo:IAO_0000115>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">Helen Parkinson</obo:IAO_0000117>
-        <obo:IAO_0000119 rdf:datatype="&xsd;string">http://purl.bioontology.org/ontology/SNOMEDCT/423493009</obo:IAO_0000119>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">SNOMEDCT:423493009</oboInOwl:hasDbXref>
-        <rdfs:label rdf:datatype="&xsd;string">age at diagnosis</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ebi.ac.uk/efo/EFO_0004919 -->
-
-    <owl:Class rdf:about="http://www.ebi.ac.uk/efo/EFO_0004919">
-        <rdfs:subClassOf rdf:resource="http://www.ebi.ac.uk/efo/EFO_0000482"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">The percentage of subjects in a study who have survived without cancer spread for a defined period of time. Usually reported as time since diagnosis or treatment. Can be reported for an individual or a study population.</obo:IAO_0000115>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">Helen Parkinson</obo:IAO_0000117>
-        <obo:IAO_0000119 rdf:datatype="&xsd;string">www.oncura.net/glossary.php</obo:IAO_0000119>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">metastasis free survival time</oboInOwl:hasExactSynonym>
-        <rdfs:label rdf:datatype="&xsd;string">metastasis free survival</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ebi.ac.uk/efo/EFO_0004920 -->
-
-    <owl:Class rdf:about="http://www.ebi.ac.uk/efo/EFO_0004920">
-        <rdfs:subClassOf rdf:resource="http://www.ebi.ac.uk/efo/EFO_0000409"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">Progression free survival is a measurement from a defined time point e.g. diagnosis and indicates that the disease did not progress i.e. tumours did not increase in size and new incidences did not occur. PFS is usually used in analyzing results of treatment for advanced disease.</obo:IAO_0000115>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">Helen Parkinson</obo:IAO_0000117>
-        <obo:IAO_0000119 rdf:datatype="&xsd;string">http://cancerguide.org/scurve_basic.html</obo:IAO_0000119>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">time before disease progression</oboInOwl:hasExactSynonym>
-        <rdfs:label rdf:datatype="&xsd;string">progression free survival</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ebi.ac.uk/efo/EFO_0004949 -->
-
-    <owl:Class rdf:about="http://www.ebi.ac.uk/efo/EFO_0004949">
-        <rdfs:subClassOf rdf:resource="http://www.ebi.ac.uk/efo/EFO_0000719"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">A temporal measurement related to disease progression</obo:IAO_0000115>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">Helen Parkinson</obo:IAO_0000117>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">clinical event</oboInOwl:hasExactSynonym>
-        <rdfs:label rdf:datatype="&xsd;string">clinical temporal measurement</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ebi.ac.uk/efo/EFO_0004950 -->
-
-    <owl:Class rdf:about="http://www.ebi.ac.uk/efo/EFO_0004950">
-        <rdfs:subClassOf rdf:resource="http://www.ebi.ac.uk/efo/EFO_0000724"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">The point in time at which an individual was born.</obo:IAO_0000115>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">Helen Parkinson</obo:IAO_0000117>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">SNOMEDCT:184099003</oboInOwl:hasDbXref>
-        <rdfs:label rdf:datatype="&xsd;string">date of birth</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ebi.ac.uk/efo/EFO_0004951 -->
-
-    <owl:Class rdf:about="http://www.ebi.ac.uk/efo/EFO_0004951">
-        <rdfs:subClassOf rdf:resource="http://www.ebi.ac.uk/efo/EFO_0004949"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">A clinical temporal measurement indicating that the subject is alive at the end of the clinical investigation.</obo:IAO_0000115>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">Helen Parkinson</obo:IAO_0000117>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">alive at endpoint</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ebi.ac.uk/efo/EFO_0004952 -->
-
-    <owl:Class rdf:about="http://www.ebi.ac.uk/efo/EFO_0004952">
-        <rdfs:subClassOf rdf:resource="http://www.ebi.ac.uk/efo/EFO_0004949"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">The recurrence of a disease after treatment</obo:IAO_0000115>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">Helen Parkinson</obo:IAO_0000117>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MedDRA:10061819</oboInOwl:hasDbXref>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">relapse</oboInOwl:hasExactSynonym>
-        <rdfs:label rdf:datatype="&xsd;string">disease recurrence</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ebi.ac.uk/efo/EFO_0004953 -->
-
-    <owl:Class rdf:about="http://www.ebi.ac.uk/efo/EFO_0004953">
-        <rdfs:subClassOf rdf:resource="http://www.ebi.ac.uk/efo/EFO_0000724"/>
-        <rdfs:subClassOf rdf:resource="http://www.ebi.ac.uk/efo/EFO_0004949"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">The point at which a clinical diagnosis is made.</obo:IAO_0000115>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">Helen Parkinson</obo:IAO_0000117>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">SNOMEDCT:432213005</oboInOwl:hasDbXref>
-        <rdfs:label rdf:datatype="&xsd;string">date of diagnosis</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ebi.ac.uk/efo/EFO_0005056 -->
-
-    <owl:Class rdf:about="http://www.ebi.ac.uk/efo/EFO_0005056">
-        <rdfs:subClassOf rdf:resource="http://www.ebi.ac.uk/efo/EFO_0000246"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">The age at which death occurs.</obo:IAO_0000115>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">Dani Welter</obo:IAO_0000117>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">age at death</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ebi.ac.uk/efo/EFO_0005112 -->
-
-    <owl:Class rdf:about="http://www.ebi.ac.uk/efo/EFO_0005112">
-        <rdfs:subClassOf rdf:resource="http://www.ebi.ac.uk/efo/EFO_0000246"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">The age of the conceptus, beginning from the time of FERTILIZATION. In clinical obstetrics, the gestational age is often estimated as the time from the last day of the last MENSTRUATION which is about 2 weeks before OVULATION and fertilization.</obo:IAO_0000115>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">Dani Welter</obo:IAO_0000117>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MeSH:D005865</oboInOwl:hasDbXref>
-        <rdfs:label rdf:datatype="&xsd;string">gestational age</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ebi.ac.uk/efo/EFO_0005602 -->
-
-    <owl:Class rdf:about="http://www.ebi.ac.uk/efo/EFO_0005602">
-        <rdfs:subClassOf rdf:resource="http://www.ebi.ac.uk/efo/EFO_0004918"/>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">Helen Parkinson</obo:IAO_0000117>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
-        <rdfs:comment rdf:datatype="&xsd;string">The age at which an alcohol diagnosis was made in a human patient</rdfs:comment>
-        <rdfs:label rdf:datatype="&xsd;string">age at alcohol diagnosis</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ebi.ac.uk/efo/EFO_0005603 -->
-
-    <owl:Class rdf:about="http://www.ebi.ac.uk/efo/EFO_0005603">
-        <rdfs:subClassOf rdf:resource="http://www.ebi.ac.uk/efo/EFO_0004918"/>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">Helen Parkinson</obo:IAO_0000117>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
-        <rdfs:comment rdf:datatype="&xsd;string">The age at which a breast cancer diagnosis was made in a human patient</rdfs:comment>
-        <rdfs:label rdf:datatype="&xsd;string">age at breast cancer diagnosis</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ebi.ac.uk/efo/EFO_0007058 -->
-
-    <owl:Class rdf:about="http://www.ebi.ac.uk/efo/EFO_0007058">
-        <rdfs:subClassOf rdf:resource="http://www.ebi.ac.uk/efo/EFO_0004949"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">The date or time of the last check of a patient by a medical professional.</obo:IAO_0000115>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">Catherine Leroy</obo:IAO_0000117>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">last follow up</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ebi.ac.uk/efo/EFO_0007888 -->
-
-    <owl:Class rdf:about="http://www.ebi.ac.uk/efo/EFO_0007888">
-        <rdfs:subClassOf rdf:resource="http://www.ebi.ac.uk/efo/EFO_0000246"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">The age of onset of (human) voice drop, the deepening of the voice of adolescents as they reach puberty</obo:IAO_0000115>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">Dani Welter</obo:IAO_0000117>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">age at voice drop</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ebi.ac.uk/efo/EFO_0008007 -->
-
-    <owl:Class rdf:about="http://www.ebi.ac.uk/efo/EFO_0008007">
-        <rdfs:subClassOf rdf:resource="http://www.ebi.ac.uk/efo/EFO_0000246"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">The age of an individual at the time an assessment takes place</obo:IAO_0000115>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">Dani Welter</obo:IAO_0000117>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">PMID:20634892</oboInOwl:hasDbXref>
-        <rdfs:label rdf:datatype="&xsd;string">age at assessment</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ebi.ac.uk/efo/EFO_0008336 -->
-
-    <owl:Class rdf:about="http://www.ebi.ac.uk/efo/EFO_0008336">
-        <rdfs:subClassOf rdf:resource="http://www.ebi.ac.uk/efo/EFO_0004949"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">quantification of some aspect of disease progression such as speed or symptom variability. Disease progression can be quantified in a number of ways, for example as a correlated measure of progression scores from different symptom areas</obo:IAO_0000115>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">Dani Welter</obo:IAO_0000117>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">PMID:28642124</oboInOwl:hasDbXref>
-        <rdfs:label rdf:datatype="&xsd;string">disease progression measurement</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ebi.ac.uk/efo/EFO_0009549 -->
-
-    <owl:Class rdf:about="http://www.ebi.ac.uk/efo/EFO_0009549">
-        <rdfs:subClassOf rdf:resource="http://www.ebi.ac.uk/efo/EFO_0000512"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">A disease involving the female reproductive system.</obo:IAO_0000115>
-        <obo:IAO_0000119 rdf:datatype="&xsd;string">SCTID:310789003</obo:IAO_0000119>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">DOID:229</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">ICD10:N85</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">ICD10:N88</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">ICD10:N89</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">ICD10:N90</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">ICD10:N94</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">ICD9:629.9</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MESH:D005831</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MONDO:0002263</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MeSH:D005831</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NCIT:C27020</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NCIt:C27020</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">SCTID:310789003</oboInOwl:hasDbXref>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">disease of female reproductive system</oboInOwl:hasExactSynonym>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">disease or disorder of female reproductive system</oboInOwl:hasExactSynonym>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">disorder of female genital system</oboInOwl:hasExactSynonym>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">disorder of female reproductive system</oboInOwl:hasExactSynonym>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">female reproductive disease</oboInOwl:hasExactSynonym>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">female reproductive system disease</oboInOwl:hasExactSynonym>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">female reproductive system disease or disorder</oboInOwl:hasExactSynonym>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">female reproductive system disorder</oboInOwl:hasExactSynonym>
-        <rdfs:label rdf:datatype="&xsd;string">female reproductive system disease</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ebi.ac.uk/efo/EFO_0009663 -->
-
-    <owl:Class rdf:about="http://www.ebi.ac.uk/efo/EFO_0009663">
-        <rdfs:subClassOf rdf:resource="http://www.ebi.ac.uk/efo/EFO_0000408"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">A disease that involves the genitourinary system.</obo:IAO_0000115>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">A disease that involves the genitourinary system. [database_cross_reference: MONDO:patterns/location]</obo:IAO_0000115>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">ICD10:N00.N99</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">ICD10:N99</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MONDO:0021145</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">SCTID:42030000</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">UMLS:C0080276</oboInOwl:hasDbXref>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">disease of genitourinary system</oboInOwl:hasExactSynonym>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">disease or disorder of genitourinary system</oboInOwl:hasExactSynonym>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">disorder of genitourinary system</oboInOwl:hasExactSynonym>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">disorder of the genitourinary system</oboInOwl:hasExactSynonym>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">genitourinary system disease</oboInOwl:hasExactSynonym>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">genitourinary system disease or disorder</oboInOwl:hasExactSynonym>
-        <rdfs:label rdf:datatype="&xsd;string">disease of genitourinary system</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ebi.ac.uk/efo/EFO_0009712 -->
-
-    <owl:Class rdf:about="http://www.ebi.ac.uk/efo/EFO_0009712">
-        <rdfs:subClassOf rdf:resource="http://www.ebi.ac.uk/efo/EFO_0000246"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">The age of a person&apos;s father at which father&apos;s death occurred.</obo:IAO_0000115>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">father&apos;s age at death</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ebi.ac.uk/efo/EFO_0009716 -->
-
-    <owl:Class rdf:about="http://www.ebi.ac.uk/efo/EFO_0009716">
-        <rdfs:subClassOf rdf:resource="http://www.ebi.ac.uk/efo/EFO_0000246"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">The age of onset of first facial hair.</obo:IAO_0000115>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">age at first facial hair</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ebi.ac.uk/efo/EFO_0009721 -->
-
-    <owl:Class rdf:about="http://www.ebi.ac.uk/efo/EFO_0009721">
-        <rdfs:subClassOf rdf:resource="http://www.ebi.ac.uk/efo/EFO_0000246"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">The age of a person&apos;s mother at which mother&apos;s death occurred.</obo:IAO_0000115>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">mother&apos;s age at death</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ebi.ac.uk/efo/EFO_0010162 -->
-
-    <owl:Class rdf:about="http://www.ebi.ac.uk/efo/EFO_0010162">
-        <rdfs:subClassOf rdf:resource="http://www.ebi.ac.uk/efo/EFO_0004352"/>
-        <rdfs:subClassOf rdf:resource="http://www.ebi.ac.uk/efo/EFO_0005056"/>
-        <obo:IAO_0000115>Death in during childhood, defined here as between the ages of 2 and 10 years.</obo:IAO_0000115>
-        <obo:IAO_0000117>Baron Koylass</obo:IAO_0000117>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
-        <oboInOwl:hasDbXref>UMLS:C1843392</oboInOwl:hasDbXref>
-        <rdfs:label>death in childhood</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ebi.ac.uk/efo/EFO_0020044 -->
-
-    <owl:Class rdf:about="http://www.ebi.ac.uk/efo/EFO_0020044">
-        <rdfs:subClassOf rdf:resource="http://www.ebi.ac.uk/efo/EFO_0005112"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">The determination of the amount of eicosanoids present in a sample, typically blood </obo:IAO_0000115>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">PMID:34503513</oboInOwl:hasDbXref>
-        <rdfs:label rdf:datatype="&xsd;string">ecosanoids measurement</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ebi.ac.uk/efo/EFO_0020045 -->
-
-    <owl:Class rdf:about="http://www.ebi.ac.uk/efo/EFO_0020045">
-        <rdfs:subClassOf rdf:resource="http://www.ebi.ac.uk/efo/EFO_0020044"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">The determination of the amount of prostaglandins present in a sample, typically blood </obo:IAO_0000115>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">PMID:34503513</oboInOwl:hasDbXref>
-        <rdfs:label rdf:datatype="&xsd;string">prostaglandins measurement</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ebi.ac.uk/efo/EFO_1001491 -->
-
-    <owl:Class rdf:about="http://www.ebi.ac.uk/efo/EFO_1001491">
-        <rdfs:subClassOf rdf:resource="http://www.ebi.ac.uk/efo/EFO_0009549"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">the ending of pregnancy by removing a fetus or embryo before it can survive outside the uterus.</obo:IAO_0000115>
-        <obo:IAO_0000117 rdf:datatype="&xsd;string">Sirarat Sarntivijai</obo:IAO_0000117>
-        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">ICD10:O04</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">ICD10:O06</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MedDRA:10000210</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">Wikipedia:Abortion</oboInOwl:hasDbXref>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">loss of pregnancy</oboInOwl:hasExactSynonym>
-        <rdfs:label rdf:datatype="&xsd;string">abortion</rdfs:label>
     </owl:Class>
     
 
@@ -28443,7 +27306,7 @@ https://stats.stackexchange.com/questions/31908/what-is-percentage-of-variance-i
         <obo:IAO_0000412 rdf:resource="&obo;ido.owl"/>
     </rdf:Description>
     <rdf:Description>
-        <obo:IAO_0000412 rdf:resource="&obo;stato.owl"/>
+        <obo:IAO_0000412 rdf:resource="&obo;apollo_sv.owl"/>
     </rdf:Description>
     <rdf:Description>
         <obo:IAO_0000412 rdf:resource="&obo;clo.owl"/>
@@ -28455,7 +27318,7 @@ https://stats.stackexchange.com/questions/31908/what-is-percentage-of-variance-i
         <obo:IAO_0000412 rdf:resource="&obo;apollo_sv.owl"/>
     </rdf:Description>
     <rdf:Description>
-        <obo:IAO_0000412 rdf:resource="&obo;apollo_sv.owl"/>
+        <obo:IAO_0000412 rdf:resource="&obo;stato.owl"/>
     </rdf:Description>
     <rdf:Description>
         <obo:IAO_0000412 rdf:resource="&obo;clo.owl"/>

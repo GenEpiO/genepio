@@ -52,7 +52,7 @@ all_imports: $(IMPORTS_OWL)
 
 # Only fetches .owl if it doesn't exist or if .txt has later timestamp.
 imports/%_import.owl: imports/%_ontofox.txt
-	curl -s -F file=@imports/$*_ontofox.txt -o $@ http://ontofox.hegroup.org/service.php
+	curl -s -F file=@imports/$*_ontofox.txt -o $@ https://ontofox.hegroup.org/service.php
 	# Extra cleanup needed on gazetteer import
 	# Only purpose of conda _test environment is to provide rdflib to python
 	if [ "$*" == "gazetteer" ] ; then \

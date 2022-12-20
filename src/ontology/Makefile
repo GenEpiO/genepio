@@ -27,14 +27,14 @@ prepare_release: all
 	(test -f subsets/*.owl && cp subsets/*.owl $(RELEASEDIR)/subsets && git add $(RELEASEDIR)/subsets/* || echo "no subsets") &&\
 	echo "Release files are now in $(RELEASEDIR) - now you should commit, push and make a release on github"
 
-#Annotates genepio.owl ( $(ONT).owl ) file with release
+#Annotates genepio.owl ( $(ONT).owl ) file with release if there is a timestamp change on genepio-edit.owl when compared to the owl output file in the source directory.
 $(ONT).owl: $(SRC)
 	$(ROBOT) reduce -i $< -r ELK annotate --xml-entities -V $(BASE)/releases/`date +%Y-%m-%d`/$(ONT).owl --typed-annotation http://purl.org/dc/terms/date `date +%Y-%m-%d` xsd:date -o "$@"
 
 # NEED TO ADD UPDATE ON dc.date too.
 
 # Merge ontology and imports into one file 	
-	$(ROBOT) merge --input $(ONT).owl --xml-entities --output $(ONT)-merged.owl
+	$(ROBOT) merge --input $(ONT).owl --xml-entities --equivalent-classes-allowed false relax reduce --output $(ONT)-merged.owl
 	sed -i '.bak' 's/<owl:imports[^>]*\/>/<!-- & -->/' $(ONT)-merged.owl
 
 # ALL OWL imports: apollo_sv chebi chmo doid efo envo eo ero evs fix gazetteer geo hardcoded hp ido irida model ncbitaxon ndf-rt oae obi ontology-metadata pato ro sio so stato symp typon uberon uo

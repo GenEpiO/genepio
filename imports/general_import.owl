@@ -149,11 +149,16 @@ We also have the outstanding issue of how to aim different definitions to differ
     <!-- http://purl.obolibrary.org/obo/IAO_0000118 -->
 
     <!-- <owl:AnnotationProperty rdf:about="&obo;IAO_0000118">
+        <obo:IAO_0000111 xml:lang="en">alternative label</obo:IAO_0000111>
         <obo:IAO_0000111 xml:lang="en">alternative term</obo:IAO_0000111>
         <obo:IAO_0000114 rdf:resource="&obo;IAO_0000125"/>
+        <obo:IAO_0000115 xml:lang="en">A label for a class or property that can be used to refer to the class or property instead of the preferred rdfs:label. Alternative labels should be used to indicate community- or context-specific labels, abbreviations, shorthand forms and the like.</obo:IAO_0000115>
         <obo:IAO_0000115 xml:lang="en">An alternative name for a class or property which means the same thing as the preferred name (semantically equivalent)</obo:IAO_0000115>
+        <obo:IAO_0000117>OBO Operations committee</obo:IAO_0000117>
         <obo:IAO_0000117 xml:lang="en">PERSON:Daniel Schober</obo:IAO_0000117>
         <obo:IAO_0000119 xml:lang="en">GROUP:OBI:&lt;http://purl.obolibrary.org/obo/obi&gt;</obo:IAO_0000119>
+        <rdfs:comment>Consider re-defing to: An alternative name for a class or property which can mean the same thing as the preferred name (semantically equivalent, narrow, broad or related).</rdfs:comment>
+        <rdfs:label xml:lang="en">alternative label</rdfs:label>
         <rdfs:label>alternative term</rdfs:label>
         <rdfs:label xml:lang="en">alternative term</rdfs:label>
     </owl:AnnotationProperty> -->
@@ -217,9 +222,11 @@ We also have the outstanding issue of how to aim different definitions to differ
 
     <!-- <owl:AnnotationProperty rdf:about="&oboInOwl;hasExactSynonym">
         <obo:IAO_0000115 rdf:datatype="&xsd;string">A property representing a fully qualified synonym, contains the string, term type, source, and an optional source code if appropriate. Each subfield is deliniated to facilitate interpretation by software.</obo:IAO_0000115>
+        <obo:IAO_0000115>An alternative label for a class or property which has the exact same meaning than the preferred name/primary label.</obo:IAO_0000115>
         <obo:IAO_0000115 rdf:datatype="&xsd;string">An alternative label for a given entity such as a commonly used abbreviation or synonym. </obo:IAO_0000115>
         <obo:IAO_0000115 rdf:datatype="&xsd;string">Exact synonym.</obo:IAO_0000115>
         <obo:IAO_0000115>Fully qualified synonym, contains the string, term type, source, and an optional source code if appropriate. Each subfield is deliniated to facilitate interpretation by software.</obo:IAO_0000115>
+        <obo:IAO_0000117 rdf:resource="http://orcid.org/0000-0001-5208-3432"/>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">FULL_SYN</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">Synonym with Source Data</oboInOwl:hasExactSynonym>
         <rdfs:label xml:lang="en">has exact synonym</rdfs:label>
@@ -267,6 +274,7 @@ We also have the outstanding issue of how to aim different definitions to differ
 
     <!-- <owl:AnnotationProperty rdf:about="&rdfs;label">
         <obo:IAO_0000111>label</obo:IAO_0000111>
+        <obo:IAO_0000111 xml:lang="en">label</obo:IAO_0000111>
         <obo:IAO_0000115 rdf:datatype="&xsd;string">A human readable name for this class.</obo:IAO_0000115>
         <rdfs:comment xml:lang="en">A human-readable name for the subject.</rdfs:comment>
         <rdfs:label xml:lang="en">label</rdfs:label>
@@ -463,7 +471,6 @@ Any ideas?  I’ve considered and rejected allowing individual organisms to be f
         <obo:IAO_0000117>Mathias Brochhausen</obo:IAO_0000117>
         <obo:IAO_0000412 rdf:resource="&obo;apollo_sv.owl"/>
         <rdfs:label xml:lang="en">simulated population</rdfs:label>
-        <rdfs:label xml:lang="en">simulation of population</rdfs:label>
     </owl:Class>
     
 
@@ -2245,19 +2252,6 @@ The definition provided here establishes the &apos;scale&apos; of cell populatio
     
 
 
-    <!-- http://purl.obolibrary.org/obo/ECTO_0000015 -->
-
-    <owl:Class rdf:about="&obo;ECTO_0000015">
-        <rdfs:subClassOf rdf:resource="&obo;ExO_0000002"/>
-        <rdfs:subClassOf rdf:resource="&obo;RO_0002310"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">A exposure event involving the interaction of an exposure receptor to environmental material.</obo:IAO_0000115>
-        <obo:IAO_0000412 rdf:resource="&obo;ecto.owl"/>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">environmental material exposure</oboInOwl:hasExactSynonym>
-        <rdfs:label rdf:datatype="&xsd;string">exposure to environmental material</rdfs:label>
-    </owl:Class>
-    
-
-
     <!-- http://purl.obolibrary.org/obo/ECTO_0600000 -->
 
     <owl:Class rdf:about="&obo;ECTO_0600000">
@@ -2384,7 +2378,6 @@ The definition provided here establishes the &apos;scale&apos; of cell populatio
     <!-- http://purl.obolibrary.org/obo/ECTO_3000005 -->
 
     <owl:Class rdf:about="&obo;ECTO_3000005">
-        <rdfs:subClassOf rdf:resource="&obo;ECTO_0000015"/>
         <rdfs:subClassOf rdf:resource="&obo;ECTO_3000000"/>
         <obo:IAO_0000115 rdf:datatype="&xsd;string">A history of exposure to Homo sapiens.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;ecto.owl"/>
@@ -9988,7 +9981,7 @@ to esophageal inlet inferiorly, and is composed of three distinct areas: the nas
     <!-- http://purl.obolibrary.org/obo/HP_0011729 -->
 
     <owl:Class rdf:about="&obo;HP_0011729">
-        <rdfs:subClassOf rdf:resource="&obo;HP_0011843"/>
+        <rdfs:subClassOf rdf:resource="&obo;HP_0034430"/>
         <obo:IAO_0000115 rdf:datatype="&xsd;string">An abnormality in the range and ease of motion of joints across their normal range.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;hp.owl"/>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">UMLS:C4023216</oboInOwl:hasDbXref>
@@ -11628,6 +11621,16 @@ In most clinical settings, closure of acute and chronic wounds is considered the
     
 
 
+    <!-- http://purl.obolibrary.org/obo/HP_0034430 -->
+
+    <owl:Class rdf:about="&obo;HP_0034430">
+        <rdfs:subClassOf rdf:resource="&obo;HP_0011843"/>
+        <obo:IAO_0000412 rdf:resource="&obo;hp.owl"/>
+        <rdfs:label>Abnormal joint physiology</rdfs:label>
+    </owl:Class>
+    
+
+
     <!-- http://purl.obolibrary.org/obo/HP_0040006 -->
 
     <owl:Class rdf:about="&obo;HP_0040006">
@@ -12132,6 +12135,20 @@ In most clinical settings, closure of acute and chronic wounds is considered the
         <obo:IAO_0000117 xml:lang="en">Person:Alan Ruttenberg</obo:IAO_0000117>
         <obo:IAO_0000412 rdf:resource="&obo;apollo_sv.owl"/>
         <rdfs:label xml:lang="en">time measurement datum</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/IAO_0000594 -->
+
+    <owl:Class rdf:about="&obo;IAO_0000594">
+        <obo:IAO_0000114 rdf:resource="&obo;IAO_0000123"/>
+        <obo:IAO_0000115 xml:lang="en">A software application is software that can be directly executed by some processing unit.</obo:IAO_0000115>
+        <obo:IAO_0000117 xml:lang="en">PERSON: Melanie Courtot</obo:IAO_0000117>
+        <obo:IAO_0000117 xml:lang="en">PERSON: Michel Dumontier</obo:IAO_0000117>
+        <obo:IAO_0000119 xml:lang="en">https://github.com/information-artifact-ontology/IAO/issues/80</obo:IAO_0000119>
+        <obo:IAO_0000412 rdf:resource="&obo;iao.owl"/>
+        <rdfs:label xml:lang="en">software application</rdfs:label>
     </owl:Class>
     
 
@@ -14624,7 +14641,6 @@ In most clinical settings, closure of acute and chronic wounds is considered the
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">cancer of the large bowel</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">colon cancer, advanced, somatic</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">colon cancer, somatic</oboInOwl:hasExactSynonym>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">colon cancer, susceptibility to, autosomal dominant, somatic mutation</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">colorectal cancer</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">colorectal cancer with chromosomal instability, somatic</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">colorectal cancer, autosomal dominant, somatic mutation</oboInOwl:hasExactSynonym>
@@ -15004,12 +15020,12 @@ In most clinical settings, closure of acute and chronic wounds is considered the
     <!-- http://purl.obolibrary.org/obo/MONDO_0011382 -->
 
     <owl:Class rdf:about="&obo;MONDO_0011382">
-        <rdfs:subClassOf rdf:resource="&obo;MONDO_0005240"/>
         <rdfs:subClassOf rdf:resource="&obo;MONDO_0006025"/>
         <rdfs:subClassOf rdf:resource="&obo;MONDO_0015770"/>
         <rdfs:subClassOf rdf:resource="&obo;MONDO_0017146"/>
         <rdfs:subClassOf rdf:resource="&obo;MONDO_0018374"/>
         <rdfs:subClassOf rdf:resource="&obo;MONDO_0018384"/>
+        <rdfs:subClassOf rdf:resource="&obo;MONDO_0100191"/>
         <obo:IAO_0000115 rdf:datatype="&xsd;string">Sickle cell anemias are chronic hemolytic diseases that may induce three types of acute accidents: severe anemia, severe bacterial infections, and ischemic vasoocclusive accidents (VOA) caused by sickle-shaped red blood cells obstructing small blood vessels and capillaries. Many diverse complications can occur.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;mondo.owl"/>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">DOID:10923</oboInOwl:hasDbXref>
@@ -16361,6 +16377,20 @@ In most clinical settings, closure of acute and chronic wounds is considered the
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">pediatric multisystem inflammatory syndrome</oboInOwl:hasExactSynonym>
         <rdfs:comment rdf:datatype="&xsd;string">The clinical presentation of MIS-C includes fever, severe illness, and the involvement of two or more organ systems, in combination with laboratory evidence of inflammation and laboratory or epidemiologic evidence of SARS-CoV-2 infection. Some features of MIS-C resemble Kawasaki Disease, toxic shock syndrome, and secondary hemophagocytic lymphohistiocytosis/macrophage activation syndrome.</rdfs:comment>
         <rdfs:label rdf:datatype="&xsd;string">COVID-19–associated multisystem inflammatory syndrome in children</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/MONDO_0100191 -->
+
+    <owl:Class rdf:about="&obo;MONDO_0100191">
+        <rdfs:subClassOf rdf:resource="&obo;MONDO_0003847"/>
+        <rdfs:subClassOf rdf:resource="&obo;MONDO_0005240"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">A type of genetic disorder manifestations of primary clinical importance in the and that primarily results from alterations in one gene or from an alternation of the genome affecting one or more gene or functional element. Said genetic or genomic alteration may be inherited from one or both parents or may occur de novo.</obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="&obo;mondo.owl"/>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">inherited kidney disease</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">inherited renal disorder</oboInOwl:hasExactSynonym>
+        <rdfs:label rdf:datatype="&xsd;string">inherited kidney disorder</rdfs:label>
     </owl:Class>
     
 
@@ -19422,6 +19452,18 @@ In most clinical settings, closure of acute and chronic wounds is considered the
     
 
 
+    <!-- http://purl.obolibrary.org/obo/NCIT_C25160 -->
+
+    <owl:Class rdf:about="&obo;NCIT_C25160">
+        <rdfs:subClassOf rdf:resource="&obo;NCIT_C16632"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">A large and densely populated urban area; a city specified in an address.</obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="&obo;ncit.owl"/>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">City</oboInOwl:hasExactSynonym>
+        <rdfs:label rdf:datatype="&xsd;string">City</rdfs:label>
+    </owl:Class>
+    
+
+
     <!-- http://purl.obolibrary.org/obo/NCIT_C25162 -->
 
     <owl:Class rdf:about="&obo;NCIT_C25162">
@@ -19768,6 +19810,18 @@ In most clinical settings, closure of acute and chronic wounds is considered the
         <obo:IAO_0000412 rdf:resource="&obo;ncit.owl"/>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">Event</oboInOwl:hasExactSynonym>
         <rdfs:label rdf:datatype="&xsd;string">Event</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/NCIT_C25577 -->
+
+    <owl:Class rdf:about="&obo;NCIT_C25577">
+        <rdfs:subClassOf rdf:resource="&obo;NCIT_C21514"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">Nearest to the present.</obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="&obo;ncit.owl"/>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">Most Recent</oboInOwl:hasExactSynonym>
+        <rdfs:label rdf:datatype="&xsd;string">Most Recent</rdfs:label>
     </owl:Class>
     
 
@@ -23480,6 +23534,20 @@ In most clinical settings, closure of acute and chronic wounds is considered the
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">age at onset of depressive disorder</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">age depressive disorder symptoms begin</oboInOwl:hasExactSynonym>
         <rdfs:label rdf:datatype="&xsd;string">age of onset of depressive disorder</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/OBA_2040167 -->
+
+    <owl:Class rdf:about="&obo;OBA_2040167">
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000020"/>
+        <rdfs:subClassOf rdf:resource="&obo;HP_0003674"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">The age at which cervical dystonia manifestations first appear.</obo:IAO_0000115>
+        <obo:IAO_0000412 rdf:resource="http://www.ebi.ac.uk/efo/efo.owl"/>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">age at onset of cervical dystonia</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">age cervical dystonia symptoms begin</oboInOwl:hasExactSynonym>
+        <rdfs:label rdf:datatype="&xsd;string">age of onset of cervical dystonia</rdfs:label>
     </owl:Class>
     
 
@@ -29411,37 +29479,37 @@ https://stats.stackexchange.com/questions/31908/what-is-percentage-of-variance-i
 
     <owl:NamedIndividual rdf:about="&obo;UO_0010053"/>
     <rdf:Description>
+        <obo:IAO_0000412 rdf:resource="&obo;ido.owl"/>
+    </rdf:Description>
+    <rdf:Description>
+        <obo:IAO_0000412 rdf:resource="&obo;clo.owl"/>
+    </rdf:Description>
+    <rdf:Description>
+        <obo:IAO_0000412 rdf:resource="&obo;ido.owl"/>
+    </rdf:Description>
+    <rdf:Description>
+        <obo:IAO_0000412 rdf:resource="&obo;clo.owl"/>
+    </rdf:Description>
+    <rdf:Description>
+        <obo:IAO_0000412 rdf:resource="&obo;omrse.owl"/>
+    </rdf:Description>
+    <rdf:Description>
         <obo:IAO_0000412 rdf:resource="&obo;apollo_sv.owl"/>
+    </rdf:Description>
+    <rdf:Description>
+        <obo:IAO_0000412 rdf:resource="&obo;clo.owl"/>
+    </rdf:Description>
+    <rdf:Description>
+        <obo:IAO_0000412 rdf:resource="&obo;apollo_sv.owl"/>
+    </rdf:Description>
+    <rdf:Description>
+        <obo:IAO_0000412 rdf:resource="&obo;omrse.owl"/>
     </rdf:Description>
     <rdf:Description>
         <obo:IAO_0000412 rdf:resource="&obo;stato.owl"/>
     </rdf:Description>
     <rdf:Description>
         <obo:IAO_0000412 rdf:resource="&obo;apollo_sv.owl"/>
-    </rdf:Description>
-    <rdf:Description>
-        <obo:IAO_0000412 rdf:resource="&obo;ido.owl"/>
-    </rdf:Description>
-    <rdf:Description>
-        <obo:IAO_0000412 rdf:resource="&obo;clo.owl"/>
-    </rdf:Description>
-    <rdf:Description>
-        <obo:IAO_0000412 rdf:resource="&obo;clo.owl"/>
-    </rdf:Description>
-    <rdf:Description>
-        <obo:IAO_0000412 rdf:resource="&obo;apollo_sv.owl"/>
-    </rdf:Description>
-    <rdf:Description>
-        <obo:IAO_0000412 rdf:resource="&obo;ido.owl"/>
-    </rdf:Description>
-    <rdf:Description>
-        <obo:IAO_0000412 rdf:resource="&obo;omrse.owl"/>
-    </rdf:Description>
-    <rdf:Description>
-        <obo:IAO_0000412 rdf:resource="&obo;omrse.owl"/>
-    </rdf:Description>
-    <rdf:Description>
-        <obo:IAO_0000412 rdf:resource="&obo;clo.owl"/>
     </rdf:Description>
     
 
@@ -29458,8 +29526,8 @@ https://stats.stackexchange.com/questions/31908/what-is-percentage-of-variance-i
         <rdfs:label xml:lang="da">transkønnet</rdfs:label>
         <obo:IAO_0000115 xml:lang="en">Transgender people have a gender identity or gender expression that differs from their assigned sex. In some select cases, transgender people are sometimes called transsexual if they desire medical assistance to transition from one sex to another. &quot;Transgender&quot; is also an umbrella term: in addition to including people whose gender identity is the opposite of their assigned sex (trans men and trans women), it may include people who are not exclusively masculine or feminine (people who are genderqueer or non-binary, including bigender, pangender, genderfluid, or agender). Other definitions of transgender also include people who belong to a third gender, or else conceptualize transgender people as a third gender.</obo:IAO_0000115>
         <rdfs:label xml:lang="fr">transgenre</rdfs:label>
-        <rdfs:comment xml:lang="en">&quot;Transgender&quot; is an adjective and should not be formed into a collective noun. This terminology is often used by anti-transgender activists aiming to dehumanize transgender people.</rdfs:comment>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;anyURI">https://lgbt.wikia.org/wiki/Transgender</oboInOwl:hasDbXref>
+        <rdfs:comment xml:lang="en">&quot;Transgender&quot; is an adjective and should not be formed into a collective noun. This terminology is often used by anti-transgender activists aiming to dehumanize transgender people.</rdfs:comment>
         <rdfs:label xml:lang="sq">transgjinor</rdfs:label>
         <rdfs:label xml:lang="tr">transcinsiyet</rdfs:label>
         <rdfs:label xml:lang="es">transgénero</rdfs:label>
@@ -29480,8 +29548,8 @@ https://stats.stackexchange.com/questions/31908/what-is-percentage-of-variance-i
         <rdfs:label xml:lang="hi">ट्रांसजेंडर</rdfs:label>
         <obo:IAO_0000412 rdf:resource="&obo;gsso.owl"/>
         <rdfs:label xml:lang="af">transgender</rdfs:label>
-        <rdfs:label xml:lang="bn">ট্রান্সজেন্ডার</rdfs:label>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;anyURI">https://en.wikipedia.org/wiki/Category:Transgender</oboInOwl:hasDbXref>
+        <rdfs:label xml:lang="bn">ট্রান্সজেন্ডার</rdfs:label>
         <obo:IAO_0000115 xml:lang="en">Not identifying with culturally conventional gender roles and categories of male or female; having changed gender identity from male to female or female to male, or identifying with elements of both, or having some other gender identity; or, pertaining to such people.</obo:IAO_0000115>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;anyURI">https://lgbtq-wiki.fandom.com/wiki/Transgender</oboInOwl:hasDbXref>
     </rdf:Description>
@@ -29492,8 +29560,8 @@ https://stats.stackexchange.com/questions/31908/what-is-percentage-of-variance-i
         <oboInOwl:hasDbXref rdf:datatype="&xsd;anyURI">https://www.wikidata.org/wiki/Q4135211</oboInOwl:hasDbXref>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;anyURI">https://en.wikipedia.org/wiki/Gender_variance</oboInOwl:hasDbXref>
         <oboInOwl:hasNarrowSynonym rdf:resource="http://purl.oboInOwllibrary.org/oboInOwl/GSSO_000128"/>
-        <obo:IAO_0000412 rdf:resource="&obo;gsso.owl"/>
         <oboInOwl:hasNarrowSynonym xml:lang="en">gender variance among youth</oboInOwl:hasNarrowSynonym>
+        <obo:IAO_0000412 rdf:resource="&obo;gsso.owl"/>
         <obo:IAO_0000115 xml:lang="en">Gender variance, or, sometimes, gender nonconformity, is behavior or gender expression exhibited by an individual that does not match cultural/social masculine and feminine gender norms and/or expectations.</obo:IAO_0000115>
     </rdf:Description>
     <rdf:Description rdf:about="&obo;GSSO_009468">

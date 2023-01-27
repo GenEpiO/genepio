@@ -32,7 +32,7 @@
      xmlns:odes_field="&obo;genepio/imports/odes_field.owl#"
      xmlns:temp_import="&obo;genepio/imports/temp_import.owl#">
     <owl:Ontology rdf:about="&obo;genepio.owl">
-        <owl:versionIRI rdf:resource="&obo;genepio/releases/2023-01-23/genepio.owl"/>
+        <owl:versionIRI rdf:resource="&obo;genepio/releases/2023-01-26/genepio.owl"/>
         <owl:imports rdf:resource="&obo;bfo/2.0/bfo.owl"/>
         <owl:imports rdf:resource="&obo;genepio/imports/chebi_import.owl"/>
         <owl:imports rdf:resource="&obo;genepio/imports/deprecation_import.owl"/>
@@ -48,12 +48,13 @@
         <owl:imports rdf:resource="&obo;genepio/imports/obi_import.owl"/>
         <owl:imports rdf:resource="&obo;genepio/imports/ontology-metadata.owl"/>
         <owl:imports rdf:resource="&obo;genepio/imports/ro_import.owl"/>
+        <owl:imports rdf:resource="&obo;genepio/imports/specification_enum_import.owl"/>
         <owl:imports rdf:resource="&obo;genepio/imports/specification_field_import.owl"/>
         <owl:imports rdf:resource="&obo;genepio/imports/specification_import.owl"/>
         <owl:imports rdf:resource="&obo;genepio/imports/specification_mint_import.owl"/>
         <owl:imports rdf:resource="&obo;genepio/imports/temporary_mint_import.owl"/>
         <owl:imports rdf:resource="&obo;genepio/imports/uberon_import.owl"/>
-        <terms:date rdf:datatype="&xsd;date">2023-01-23</terms:date>
+        <terms:date rdf:datatype="&xsd;date">2023-01-26</terms:date>
         <terms:description xml:lang="en">The Genomic Epidemiology Ontology aims to provide a comprehensive controlled vocabulary for infectious disease surveillance and outbreak investigations. It is an application ontology that draws on many other ontologies including anatomy, taxonomy, disease, symptoms, environment and food types for foodborn pathogen metadata.</terms:description>
         <terms:license rdf:resource="http://creativecommons.org/licenses/by/3.0/"/>
         <terms:title xml:lang="en">Genomic Epidemiology Ontology</terms:title>
@@ -9910,7 +9911,7 @@ Note that the health status of people associated with an exposure event can chan
         <obo:IAO_0000117>0000-0002-9578-0788</obo:IAO_0000117>
         <dc:date rdf:datatype="&xsd;dateTime">2022-01-31T03:45:04Z</dc:date>
         <rdfs:comment xml:lang="en">While &quot;enumeration&quot; is a &quot;data item&quot; not everything referenced within an enumeration qualifies as a &quot;data item&quot;. Not to be confused with &quot;data set&quot; which describes &quot;data item&quot;s of the same type that have something in common.</rdfs:comment>
-        <rdfs:label>enumeration</rdfs:label>
+        <rdfs:label xml:lang="en">data enumeration</rdfs:label>
     </owl:Class>
     
 
@@ -10091,9 +10092,11 @@ NCIT:C71898 # brand name</obo:GENEPIO_0001763>
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0001552 -->
 
     <owl:Class rdf:about="&obo;GENEPIO_0001552">
-        <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0001275"/>
         <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
-        <rdfs:label xml:lang="en">household exposure</rdfs:label>
+        <obo:IAO_0000231>Found to be redudant with another term, deprecrated in favor of said term.</obo:IAO_0000231>
+        <obo:IAO_0100001 rdf:resource="&obo;GENEPIO_0100212"/>
+        <rdfs:label>obsolete: household exposure</rdfs:label>
+        <owl:deprecated rdf:datatype="&xsd;boolean">true</owl:deprecated>
     </owl:Class>
     
 
@@ -19016,33 +19019,25 @@ contamination.</obo:IAO_0000115>
 
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0100300 -->
 
-    <owl:Class rdf:about="&obo;GENEPIO_0100300">
-        <rdfs:subClassOf rdf:resource="&obo;IAO_0000027"/>
-    </owl:Class>
+    <owl:Class rdf:about="&obo;GENEPIO_0100300"/>
     
 
 
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0100301 -->
 
-    <owl:Class rdf:about="&obo;GENEPIO_0100301">
-        <rdfs:subClassOf rdf:resource="&obo;IAO_0000027"/>
-    </owl:Class>
+    <owl:Class rdf:about="&obo;GENEPIO_0100301"/>
     
 
 
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0100302 -->
 
-    <owl:Class rdf:about="&obo;GENEPIO_0100302">
-        <rdfs:subClassOf rdf:resource="&obo;IAO_0000027"/>
-    </owl:Class>
+    <owl:Class rdf:about="&obo;GENEPIO_0100302"/>
     
 
 
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0100303 -->
 
-    <owl:Class rdf:about="&obo;GENEPIO_0100303">
-        <rdfs:subClassOf rdf:resource="&obo;IAO_0000027"/>
-    </owl:Class>
+    <owl:Class rdf:about="&obo;GENEPIO_0100303"/>
     
 
 
@@ -23174,8 +23169,8 @@ Note that this file contains examples of cities, provinces, states, territories,
         <oboInOwl:hasSynonym xml:lang="en">black tiger shrimp</oboInOwl:hasSynonym>
     </rdf:Description>
     <rdf:Description rdf:about="&obo;FOODON_03530153">
-        <oboInOwl:hasSynonym xml:lang="en">gathered</oboInOwl:hasSynonym>
         <oboInOwl:hasSynonym xml:lang="en">wild</oboInOwl:hasSynonym>
+        <oboInOwl:hasSynonym xml:lang="en">gathered</oboInOwl:hasSynonym>
     </rdf:Description>
     <rdf:Description rdf:about="&obo;GENEPIO_0000098">
         <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
@@ -23402,8 +23397,8 @@ Angular offset can be radians or degrees.</rdfs:comment>
         <obo:GENEPIO_0000006>cfu/mL</obo:GENEPIO_0000006>
     </rdf:Description>
     <rdf:Description rdf:about="http://semanticscience.org/resource/SIO_000546">
-        <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
         <obo:IAO_0000114 rdf:resource="&obo;IAO_0000123"/>
+        <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
     </rdf:Description>
     <rdf:Description rdf:about="http://www.ebi.ac.uk/efo/EFO_0000246">
         <oboInOwl:hasDbXref rdf:datatype="&xsd;anyURI">http://purl.obolibrary.org/obo/PATO_0000011</oboInOwl:hasDbXref>

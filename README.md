@@ -10,25 +10,19 @@ A handy way to view this ontology's content is via a web service like the [EBI O
 
 Many terms have been collected in the main file, **genepio.owl**, which imports terms from over 25 OBOFoundry.org ontologies (as listed in the **/imports/** folder).
 
-### Ontologies that GenEpiO draws upon
-[APOLLO SV](https://github.com/ApolloDev/apollo-sv),
+### Key ontologies that GenEpiO draws upon
 [CHEBI](http://www.ebi.ac.uk/chebi/),
 [CHMO](http://www.obofoundry.org/ontology/chmo.html),
 [DOID](http://www.disease-ontology.org/),
 [EFO](https://www.ebi.ac.uk/efo/),
 [ENVO](http://www.environmentontology.org/),
-[EO](http://planteome.org/),
-[ERO](https://open.med.harvard.edu/wiki/display/eaglei/Ontology),
 [FOODON](http://foodon.org),
-[GAZ](http://www.obofoundry.org/ontology/gaz.html),
-[GEO](http://www.obofoundry.org/ontology/geo.html),
 [HP](http://human-phenotype-ontology.github.io/),
 [IDO](https://www.bioontology.org/wiki/index.php/Infectious_Disease_Ontology),
 [NCBITaxon](http://www.obofoundry.org/ontology/ncbitaxon.html),
 [NCIT](https://github.com/NCI-Thesaurus/thesaurus-obo-edition),
 [OBI](http://www.obofoundry.org/ontology/obi.html),
 [PATO](http://www.obofoundry.org/ontology/pato.html),
-[PTO](http://planteome.org/),
 [RO](http://www.obofoundry.org/ontology/ro.html),
 [SO](http://www.obofoundry.org/ontology/so.html),
 [STATO](http://stato-ontology.org/),
@@ -41,12 +35,11 @@ Much of GenEpiO's content is geared towards fulfilling sequence repository stand
 
 Genepio owl products are generated using the linux Makefile command at command line, such as "> **make**" to generate genepio-merged.owl from genepio-edit.owl, "**make reason*"" to validate its logic, or "**make prepare_release**" to copy resulting build up to root folder of repo.
 
-If when running **make** or when running "**robot**" directly you encounter obscure robot OWLAPI errors such as "java.lang.IllegalArgumentException: URI is not absolute", install Apache jena and use the "**riot**" command to validate an owl/xml version of genepio-edit.owl .  Since genepio-edit.owl is in rdf/xml syntax it needs to be saved as owl/xml, as genepio-validate.owl :
+If when running **make** or when running "**robot**" directly you encounter obscure robot OWLAPI errors such as "java.lang.IllegalArgumentException: URI is not absolute", install Apache jena and use the "**riot**" command to validate an owl/xml version of genepio-edit.owl. (For Mac users, to install **riot**, use "> brew install jena").  In Protege, save a copy of genepio-edit.owl (which is in rdf/xml syntax) to an owl/xml syntax as genepio-validate.owl :
 
 > riot -v --validate genepio-validate.owl
 
-You can test that robot is able to read genepio correctly via:
+After a successful **make** build, you can test that robot is able to read genepio correctly via:
 
 > robot convert -i genepio-merged.owl -o genepio.json
 
-For Mac users, to install **riot**, use "> brew install jena".

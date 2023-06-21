@@ -37,6 +37,16 @@ Many terms have been collected in the main file, **genepio.owl**, which imports 
 
 Much of GenEpiO's content is geared towards fulfilling sequence repository standards.  We are developing a [Genomic Epidemiology Ontology Mart (GEEM)](http://genepio.org/geem) portal to enable users to browse GenEpiO content via web forms that detail fields for these standards.  It currently displays all of the GenEpiO "Data Representational model" data standard / data standard component / draft data standard entities found within GenEpiO.
 
-**Note that GenEpiO is under development (many terms have a curation status of "requires discussion") and its existing
-  content requires a few more editing passes for proper description of terms.**
-  
+### Build notes
+
+Genepio owl products are generated using the linux Makefile command at command line, such as "> **make**" to generate genepio-merged.owl from genepio-edit.owl, "**make reason*"" to validate its logic, or "**make prepare_release**" to copy resulting build up to root folder of repo.
+
+If when running **make** or when running "**robot**" directly you encounter obscure robot OWLAPI errors such as "java.lang.IllegalArgumentException: URI is not absolute", install Apache jena and use the "**riot**" command to validate an owl/xml version of genepio-edit.owl .  Since genepio-edit.owl is in rdf/xml syntax it needs to be saved as owl/xml, as genepio-validate.owl :
+
+> riot -v --validate genepio-validate.owl
+
+You can test that robot is able to read genepio correctly via:
+
+> robot convert -i genepio-merged.owl -o genepio.json
+
+For Mac users, to install **riot**, use "> brew install jena".

@@ -35,7 +35,7 @@ Much of GenEpiO's content is geared towards fulfilling sequence repository stand
 
 Genepio owl products are generated using the linux Makefile command at command line, such as "> **make**" to generate genepio-merged.owl from genepio-edit.owl, "**make reason*"" to validate its logic, or "**make prepare_release**" to copy resulting build up to root folder of repo.
 
-If when running **make** or when running "**robot**" directly you encounter obscure robot OWLAPI errors such as "java.lang.IllegalArgumentException: URI is not absolute", install Apache jena and use the "**riot**" command to validate an owl/xml version of genepio-edit.owl. (For Mac users, to install **riot**, use "> brew install jena").  In Protege, save a copy of genepio-edit.owl (which is in rdf/xml syntax) to an owl/xml syntax as genepio-validate.owl :
+If when running **make** or when running "**robot**" directly you encounter obscure robot OWLAPI errors such as "java.lang.IllegalArgumentException: URI is not absolute", install Apache jena and use the "[**riot**](https://jena.apache.org/documentation/io/)" command to validate an owl/xml version of genepio-edit.owl. (For Mac users, to install **riot**, use "> brew install jena").  In Protege, save a copy of genepio-edit.owl (which is in rdf/xml syntax) to an owl/xml syntax as genepio-validate.owl :
 
 > riot -v --validate genepio-validate.owl
 

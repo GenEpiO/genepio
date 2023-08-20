@@ -44,7 +44,7 @@
      xmlns:NCBITaxon="&obo;NCBITaxon#"
      xmlns:apollo_sv="&obo;apollo_sv.owl/">
     <owl:Ontology rdf:about="&obo;genepio.owl">
-        <owl:versionIRI rdf:resource="&obo;genepio/releases/2023-07-11/genepio.owl"/>
+        <owl:versionIRI rdf:resource="&obo;genepio/releases/2023-08-19/genepio.owl"/>
         <owl:imports rdf:resource="&obo;bfo/2.0/bfo.owl"/>
         <owl:imports rdf:resource="&obo;genepio/imports/chebi_import.owl"/>
         <owl:imports rdf:resource="&obo;genepio/imports/deprecation_import.owl"/>
@@ -66,7 +66,7 @@
         <owl:imports rdf:resource="&obo;genepio/imports/specification_mint_import.owl"/>
         <owl:imports rdf:resource="&obo;genepio/imports/temporary_mint_import.owl"/>
         <owl:imports rdf:resource="&obo;genepio/imports/uberon_import.owl"/>
-        <dcterms:date rdf:datatype="&xsd;date">2023-07-11</dcterms:date>
+        <dcterms:date rdf:datatype="&xsd;date">2023-08-19</dcterms:date>
         <dcterms:description xml:lang="en">The Genomic Epidemiology Ontology aims to provide a comprehensive controlled vocabulary for infectious disease surveillance and outbreak investigations. It is an application ontology that draws on many other ontologies including anatomy, taxonomy, disease, symptoms, environment and food types for foodborn pathogen metadata.</dcterms:description>
         <dcterms:license rdf:resource="http://creativecommons.org/licenses/by/3.0/"/>
         <dcterms:title xml:lang="en">Genomic Epidemiology Ontology</dcterms:title>
@@ -8584,7 +8584,7 @@ GENEPIO:0002181 # antimicrobial resistance phenotype - ECOFF</obo:GENEPIO_000176
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000112 xml:lang="en">An instance of a &quot;data field category&quot; that contains the &quot;bioproject accession field&quot;, &quot;biosample accession field&quot;, and &quot;GISAID accession field&quot;.</obo:IAO_0000112>
-        <obo:IAO_0000114 xml:lang="en">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000114 rdf:resource="&obo;IAO_0000428"/>
         <obo:IAO_0000115 xml:lang="en">A data field category which receives a range of one or more data fields.</obo:IAO_0000115>
         <dcterms:contributor rdf:resource="http://orcid.org/0000-0002-9578-0788"/>
         <dcterms:date rdf:datatype="&xsd;dateTime">2022-11-23T00:33:27.896Z</dcterms:date>
@@ -9867,7 +9867,7 @@ Note that the health status of people associated with an exposure event can chan
 
     <owl:Class rdf:about="&obo;GENEPIO_0001522">
         <rdfs:subClassOf rdf:resource="&obo;IAO_0000027"/>
-        <obo:IAO_0000114 xml:lang="en">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000114 rdf:resource="&obo;IAO_0000428"/>
         <obo:IAO_0000115 xml:lang="en">A data item that is a set of entities, referenced by mention, that don&apos;t necessarily have something in common.</obo:IAO_0000115>
         <obo:IAO_0000117 xml:lang="en">0000-0002-8844-9165</obo:IAO_0000117>
         <obo:IAO_0000117>0000-0002-9578-0788</obo:IAO_0000117>
@@ -13874,14 +13874,14 @@ GENEPIO:0001212 # subject disease outcome</obo:GENEPIO_0001763>
 
     <owl:Class rdf:about="&obo;GENEPIO_0001839">
         <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0001743"/>
-        <obo:GENEPIO_0000005 xml:lang="en">http://www.pulsenetinternational.org/</obo:GENEPIO_0000005>
+        <obo:GENEPIO_0000005 rdf:resource="http://www.pulsenetinternational.org/"/>
         <obo:IAO_0000114 rdf:resource="&obo;IAO_0000123"/>
         <obo:IAO_0000115 xml:lang="en">PulseNet, a national and international surveillance system used to identify and respond to foodborne disease outbreaks, has a standardized laboratory method and data submission standard for pathogen isolate typing test results and related isolate contextual data.  From this information clusters of disease can be identified that might represent unrecognized outbreaks.</obo:IAO_0000115>
         <obo:IAO_0000118 xml:lang="en">Pulse Net International BioSample Metadata</obo:IAO_0000118>
         <oboInOwl:hasDbXref>PulseNet</oboInOwl:hasDbXref>
         <rdfs:label xml:lang="en">PulseNet submission standard</rdfs:label>
-        <rdfs:seeAlso xml:lang="en">https://www.nml-lnm.gc.ca/Pulsenet/index-eng.htm</rdfs:seeAlso>
-        <rdfs:seeAlso rdf:datatype="&xsd;anyURI">https://www.cdc.gov/pulsenet/pathogens/index.html</rdfs:seeAlso>
+        <rdfs:seeAlso rdf:resource="https://www.cdc.gov/pulsenet/pathogens/index.html"/>
+        <rdfs:seeAlso rdf:resource="https://www.nml-lnm.gc.ca/Pulsenet/index-eng.htm"/>
     </owl:Class>
     
 
@@ -17231,7 +17231,10 @@ GENEPIO:0002049 # Platform</obo:GENEPIO_0001763>
     <owl:Class rdf:about="&obo;GENEPIO_0002125">
         <rdfs:subClassOf rdf:resource="&obo;NCIT_C43167"/>
         <obo:IAO_0000114 rdf:resource="&obo;IAO_0000122"/>
+        <obo:IAO_0000115 xml:lang="en">A shovel-like utensil that has a deep curved dish and a short handle and is used for digging into a soft substance for lifting out a portion.</obo:IAO_0000115>
         <obo:IAO_0000117 xml:lang="en">Emma Griffiths</obo:IAO_0000117>
+        <dcterms:contributor rdf:resource="https://orcid.org/0000-0002-1107-9135"/>
+        <dcterms:date rdf:datatype="&xsd;dateTime">2023-06-21T13:54:32Z</dcterms:date>
         <rdfs:label xml:lang="en">hand scoop</rdfs:label>
     </owl:Class>
     
@@ -18796,6 +18799,37 @@ contamination.</obo:IAO_0000115>
     
 
 
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0004432 -->
+
+    <owl:Class rdf:about="&obo;GENEPIO_0004432">
+        <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0100126"/>
+        <obo:IAO_0000114 rdf:resource="&obo;IAO_0000428"/>
+        <obo:IAO_0000115 xml:lang="en">A DNA sequencer which is manufactured by the Illumina corporation using sequence-by-synthesis chemistry that fits on a benchtop and uses P1 and P2 flow cells.</obo:IAO_0000115>
+        <obo:IAO_0000116>Planned Obsolescence: this term is a placeholder for a term requested in another ontology. Once the appropriate ontology term is available, this term’s identifier will be obsoleted with a “term replaced by” id of the other term.</obo:IAO_0000116>
+        <dcterms:contributor rdf:resource="https://orcid.org/0000-0001-5275-8866"/>
+        <dcterms:contributor rdf:resource="https://orcid.org/0000-0002-1107-9135"/>
+        <dcterms:date rdf:datatype="&xsd;dateTime">2023-06-21T12:33:56Z</dcterms:date>
+        <rdfs:label>Illumina NextSeq 1000</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0004433 -->
+
+    <owl:Class rdf:about="&obo;GENEPIO_0004433">
+        <rdfs:subClassOf rdf:resource="&obo;GENEPIO_0100140"/>
+        <obo:IAO_0000114 rdf:resource="&obo;IAO_0000428"/>
+        <obo:IAO_0000115 xml:lang="en">An adapter for MinION or GridION DNA sequencers manufactured by the Oxford Nanopore corporation that enables sequencing on smaller, single-use flow cells.</obo:IAO_0000115>
+        <obo:IAO_0000116>Planned Obsolescence: this term is a placeholder for a term requested in another ontology. Once the appropriate ontology term is available, this term’s identifier will be obsoleted with a “term replaced by” id of the other term.</obo:IAO_0000116>
+        <obo:IAO_0000119 rdf:datatype="&xsd;anyURI">https://store.nanoporetech.com/flongle.html</obo:IAO_0000119>
+        <dcterms:contributor rdf:resource="https://orcid.org/0000-0001-5275-8866"/>
+        <dcterms:contributor rdf:resource="https://orcid.org/0000-0002-1107-9135"/>
+        <dcterms:date rdf:datatype="&xsd;dateTime">2023-06-21T13:02:13Z</dcterms:date>
+        <rdfs:label>Oxford Nanopore Flongle</rdfs:label>
+    </owl:Class>
+    
+
+
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0100289 -->
 
     <owl:Class rdf:about="&obo;GENEPIO_0100289">
@@ -18812,7 +18846,7 @@ contamination.</obo:IAO_0000115>
                 <owl:someValuesFrom rdf:resource="&obo;OBI_0001619"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <obo:IAO_0000114 xml:lang="en">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000114 rdf:resource="&obo;IAO_0000428"/>
         <obo:IAO_0000115 xml:lang="en">A  personal health datum which specifies host health complications at time of specimen collection.</obo:IAO_0000115>
         <obo:IAO_0000117>0000-0002-9578-0788</obo:IAO_0000117>
         <dcterms:date rdf:datatype="&xsd;dateTime">2022-01-31T23:52:14Z</dcterms:date>
@@ -18837,7 +18871,7 @@ contamination.</obo:IAO_0000115>
                 <owl:someValuesFrom rdf:resource="&obo;OBI_0001619"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <obo:IAO_0000114 xml:lang="en">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000114 rdf:resource="&obo;IAO_0000428"/>
         <obo:IAO_0000115 xml:lang="en">A personal health datum which specifies host pre-existing conditions and risk factors at time of specimen collection.</obo:IAO_0000115>
         <obo:IAO_0000117>0000-0002-9578-0788</obo:IAO_0000117>
         <dcterms:date rdf:datatype="&xsd;dateTime">2022-01-31T23:52:41Z</dcterms:date>
@@ -18862,7 +18896,7 @@ contamination.</obo:IAO_0000115>
                 <owl:someValuesFrom rdf:resource="&obo;OBI_0001619"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <obo:IAO_0000114 xml:lang="en">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000114 rdf:resource="&obo;IAO_0000428"/>
         <obo:IAO_0000115 xml:lang="en">A personal health datum which specifies host signs and symptoms at time of specimen collection.</obo:IAO_0000115>
         <obo:IAO_0000117>0000-0002-9578-0788</obo:IAO_0000117>
         <dcterms:date rdf:datatype="&xsd;dateTime">2022-01-31T23:53:13Z</dcterms:date>
@@ -18960,7 +18994,7 @@ contamination.</obo:IAO_0000115>
     <owl:Class rdf:about="&obo;GENEPIO_0100586">
         <rdfs:subClassOf rdf:resource="&obo;IAO_0000027"/>
         <obo:IAO_0000112 xml:lang="en">The &quot;specimen collector sample ID&quot; is where one can store sample identifiers given by the specimen collector.</obo:IAO_0000112>
-        <obo:IAO_0000114 xml:lang="en">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000114 rdf:resource="&obo;IAO_0000428"/>
         <obo:IAO_0000115 xml:lang="en">A data item which is a location for a predetermined type of data.</obo:IAO_0000115>
         <obo:IAO_0000119>https://analystanswers.com/what-is-a-data-field-definition-types-examples/</obo:IAO_0000119>
         <dcterms:contributor rdf:resource="http://orcid.org/0000-0002-9578-0788"/>
@@ -18984,7 +19018,7 @@ contamination.</obo:IAO_0000115>
             </owl:Class>
         </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="&obo;NCIT_C16632"/>
-        <obo:IAO_0000114 xml:lang="en">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000114 rdf:resource="&obo;IAO_0000428"/>
         <obo:IAO_0000116 xml:lang="en">This &quot;or&quot; class is just to represent an equivalency with a commonly used classification, it should not have subclasses under it. (2022-12-22)</obo:IAO_0000116>
         <dcterms:contributor rdf:resource="http://orcid.org/0000-0002-9578-0788"/>
         <dcterms:date xml:lang="en">2022-12-22T22:56:03.687Z</dcterms:date>
@@ -21170,9 +21204,9 @@ male | female | pooled male and female | neuter | hermaphrodite | intersex | not
 
     <!-- http://purl.obolibrary.org/obo/PECO_0007027 -->
 
-    <rdf:Description rdf:about="&obo;PECO_0007027">
+    <owl:Class rdf:about="&obo;PECO_0007027">
         <rdfs:subClassOf rdf:resource="&obo;BFO_0000003"/>
-    </rdf:Description>
+    </owl:Class>
     
 
 
@@ -21882,7 +21916,7 @@ male | female | pooled male and female | neuter | hermaphrodite | intersex | not
                 <owl:someValuesFrom rdf:resource="&obo;OBI_0001619"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <obo:IAO_0000114 xml:lang="en">requires discussion</obo:IAO_0000114>
+        <obo:IAO_0000114 rdf:resource="&obo;IAO_0000428"/>
         <obo:IAO_0000115 xml:lang="en">A personal health datum which specifies host role at time of specimen collection.</obo:IAO_0000115>
         <obo:IAO_0000117>0000-0002-9578-0788</obo:IAO_0000117>
         <dcterms:date rdf:datatype="&xsd;dateTime">2022-01-31T23:53:59Z</dcterms:date>
@@ -22834,6 +22868,19 @@ Note that this file contains examples of cities, provinces, states, territories,
         <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
         <dcterms:date rdf:datatype="&xsd;dateTime">2019-04-17T22:47:51Z</dcterms:date>
         <rdfs:label xml:lang="en">PulseNet:UploadDate</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GENEPIO_0004434 -->
+
+    <owl:NamedIndividual rdf:about="&obo;GENEPIO_0004434">
+        <rdf:type rdf:resource="&obo;OBI_0000245"/>
+        <obo:IAO_0000115 xml:lang="en">A Canadian public research university in the province of Manitoba.</obo:IAO_0000115>
+        <obo:IAO_0000119 rdf:resource="https://umanitoba.ca"/>
+        <dcterms:contributor rdf:resource="https://orcid.org/0000-0001-5275-8866"/>
+        <dcterms:date rdf:datatype="&xsd;dateTime">2023-06-21T14:22:42Z</dcterms:date>
+        <rdfs:label>University of Manitoba (UM)</rdfs:label>
     </owl:NamedIndividual>
     
 

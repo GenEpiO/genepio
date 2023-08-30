@@ -37,12 +37,9 @@ $(ONT).owl: $(SRC)
 	$(ROBOT) merge --input $(ONT).owl --xml-entities reason --reasoner ELK --equivalent-classes-allowed false relax reduce --output $(ONT)-merged.owl
 	sed -i '.bak' 's/<owl:imports[^>]*\/>/<!-- & -->/' $(ONT)-merged.owl
 
-# ALL OWL imports: apollo_sv chebi chmo doid efo envo eo ero evs fix gazetteer geo hardcoded hp ido irida model ncbitaxon ndf-rt oae obi ontology-metadata pato ro sio so stato symp typon uberon uo
-# ALL OntoFox imports: brenda chebi chmo doid efo envo eo ero foodon gazetteer hp ido ncbitaxon ncit ndf-rt obi pato po ro sio so stato uberon uberon
-# Ontofox can't import apollo_sv at moment - yeilds empty ontology file.
-# Ontofox can't import geo either - the ids are ahead of what ontofox's geo ontology has?
+# ALL OWL imports: chebi doid envo foodon general ncbitaxon obi ro uberon 
 # 
-IMPORTS=chebi doid envo foodon gazetteer general ncbitaxon obi ro uberon 
+IMPORTS=chebi doid envo foodon general ncbitaxon obi ro uberon 
 # bfo # This one is hard-coded, doesn't change.
 
 IMPORTS_OWL=$(patsubst %, imports/%_import.owl,$(IMPORTS))
@@ -55,10 +52,10 @@ imports/%_import.owl: imports/%_ontofox.txt
 	curl -s -F file=@imports/$*_ontofox.txt -o $@ https://ontofox.hegroup.org/service.php
 	# Extra cleanup needed on gazetteer import
 	# Only purpose of conda _test environment is to provide rdflib to python
-	if [ "$*" == "gazetteer" ] ; then \
-		source activate _test; \
-		python ./gazetteer2.py "$@"; \
-	fi	
+	#if [ "$*" == "gazetteer" ] ; then \
+	#	source activate _test; \
+	#	python ./gazetteer2.py "$@"; \
+	#fi	
 
 	$(ROBOT) reduce -i "$@" -r ELK --xml-entities -o "$@"
 	# All annotations are manually curated in the ontology-metadata.owl file

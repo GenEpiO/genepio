@@ -1,33 +1,3 @@
-[URI of the OWL(RDF/XML) output file]
-http://purl.obolibrary.org/obo/genepio/imports/obi_import.owl
-
-[Source ontology]
-OBI
-
-[Low level source term URIs]
-
-http://purl.obolibrary.org/obo/IAO_0000029 # numeral (number)
-http://purl.obolibrary.org/obo/IAO_0000031 # integer numeral
-http://purl.obolibrary.org/obo/IAO_0000030 # information entity
-http://purl.obolibrary.org/obo/IAO_0000007 # action specification
-http://purl.obolibrary.org/obo/IAO_0000100 # data set
-
-http://purl.obolibrary.org/obo/IAO_0000408 # length measurement datum
-http://purl.obolibrary.org/obo/IAO_0000414 # mass measurement datum
-http://purl.obolibrary.org/obo/IAO_0000416 # time  measurement datum
-
-#http://purl.obolibrary.org/obo/BFO_0000141 # immaterial entity
-#http://purl.obolibrary.org/obo/BFO_0000040 # material entity
-
-#http://purl.obolibrary.org/obo/BFO_0000008 # Temporal region
-#includeAllChildren
-
-#http://purl.obolibrary.org/obo/BFO_0000019 # Quality
-#http://purl.obolibrary.org/obo/BFO_0000027 # Object aggregate
-#http://purl.obolibrary.org/obo/BFO_0000157 # during which exists
-#http://purl.obolibrary.org/obo/BFO_0000108 # exists at
-#http://purl.obolibrary.org/obo/BFO_0000054 # realized in
-
 http://purl.obolibrary.org/obo/OBI_0600012 # environmental material collection process
 http://purl.obolibrary.org/obo/OBI_0600005 # collecting specimen from organism
 http://purl.obolibrary.org/obo/OBI_0600044 #    lavage
@@ -92,21 +62,11 @@ http://purl.obolibrary.org/obo/OBI_0001885 # specimen repository organization 		
 http://purl.obolibrary.org/obo/OBI_0001900 # specimen identifier assigned by specimen repository  * BioSample: culture_collection
 http://purl.obolibrary.org/obo/OBI_0001901 # specimen identifier assigned by sequencing facility
 
-http://purl.obolibrary.org/obo/IAO_0000582 # time stamped measurement datum
-
 http://purl.obolibrary.org/obo/OBI_1110034 # antigen
 
-http://purl.obolibrary.org/obo/OGMS_0000031 # disease									* BioSample: host_disease*
-http://purl.obolibrary.org/obo/OGMS_0000090 # treatment
 
 # Conflicts with NCBITaxonomy_X hierarchy, so importing via ontology_metadata.owl
 #http://purl.obolibrary.org/obo/OBI_0001895 # specimen collector = BioSample:collected_by
-
-http://purl.obolibrary.org/obo/OBI_0002814 # specimen collection device
-includeAllChildren
-
-http://purl.obolibrary.org/obo/OBI_0002786 # personal protective device
-includeAllChildren
 
 http://purl.obolibrary.org/obo/OBI_0001898 # comment on investigation
 http://purl.obolibrary.org/obo/OBI_0000093 # patient role
@@ -127,12 +87,11 @@ http://purl.obolibrary.org/obo/OBI_0000893 # real time polymerase chain reaction
 http://purl.obolibrary.org/obo/OBI_0000973 # sequence_data Missing definition?
 http://purl.obolibrary.org/obo/OBI_0002565 # adapter-sequence trimming // Replaces GENEPIO_0000084
 
-
+# Brought over from ERO section of general_ontofox.txt (2023-01-21)
+http://purl.obolibrary.org/obo/OBI_0000626 # DNA sequencing
 http://purl.obolibrary.org/obo/OBI_0001177 # RNA sequencing
 http://purl.obolibrary.org/obo/OBI_0001508 # sampling time measurement datum
-http://purl.obolibrary.org/obo/BFO_0000029 # site
 
-#http://purl.obolibrary.org/obo/OGMS_0000031 # disease (above)
 http://purl.obolibrary.org/obo/OBI_1110049 # 	allergy
 http://purl.obolibrary.org/obo/OBI_1110040 # 	infectious disease
 
@@ -142,9 +101,7 @@ http://purl.obolibrary.org/obo/OBI_0001940 # N50 (too broad)
 http://purl.obolibrary.org/obo/OBI_0001941 #	contig N50
 http://purl.obolibrary.org/obo/OBI_0000257 # dna extraction
 
-http://purl.obolibrary.org/obo/IAO_0000140 # setting datum
-http://purl.obolibrary.org/obo/IAO_0000009 # datum label 
-http://purl.obolibrary.org/obo/IAO_0000003 # 	measurement unit label  (used just to map over to UO)
+
 http://purl.obolibrary.org/obo/OBI_0000963 # 	categorical datum label
 
 
@@ -154,43 +111,81 @@ http://purl.obolibrary.org/obo/OBI_0001933 # value specification ("An informatio
 http://purl.obolibrary.org/obo/OBI_0001931 # 	scalar value specification
 http://purl.obolibrary.org/obo/OBI_0001930 # 	categorical value specification
 
-#http://purl.obolibrary.org/obo/VO_0000002 # vaccination # USING NCIT Instead.  This one is a process.
-
-# RELATIONS
-#http://purl.obolibrary.org/obo/BFO_0000051 # has part
-http://purl.obolibrary.org/obo/IAO_0000039 #    has measurement unit label
-http://purl.obolibrary.org/obo/IAO_0000583 #	has measurement datum
-http://purl.obolibrary.org/obo/OBI_0000999 #	has category label
-http://purl.obolibrary.org/obo/OBI_0001938 #	has value specification
-http://purl.obolibrary.org/obo/RO_0002351 # 	has member
-# - has coordinate unit label
-# - has time stamp
-http://purl.obolibrary.org/obo/OBI_0002135 # has specified value
-
 http://purl.obolibrary.org/obo/OBI_0000079 # culture medium
-
-http://purl.obolibrary.org/obo/IAO_0000136 # is about "Relates an information artifact to an entity"
-http://purl.obolibrary.org/obo/IAO_0000219 #    denotes
-http://purl.obolibrary.org/obo/OBI_0001927 #    specifies value of  "A relation between a value specification and an entity which the specification is about."
-#- mentions
-#- is quality measurement of
-#- is duration of
-#- is quality specification of
-
-http://purl.obolibrary.org/obo/IAO_0000634   # document notes section
-
-http://purl.obolibrary.org/obo/RO_0000052 # inheres in
 
 http://purl.obolibrary.org/obo/OBI_0000571 # manufacturer role
 http://purl.obolibrary.org/obo/OBI_0000018 # material supplier role
-http://purl.obolibrary.org/obo/OBI_0000304 # is manufactured by
+
+
+http://purl.obolibrary.org/obo/OBI_0002814 # specimen collection device
+#includeAllChildren
+http://purl.obolibrary.org/obo/OBI_0002819 # 	specimen pad
+http://purl.obolibrary.org/obo/OBI_0002820 # 	specimen collection swab stick
+http://purl.obolibrary.org/obo/OBI_0002823 # 		pre-moistened swab stick
+http://purl.obolibrary.org/obo/OBI_0002822 # 	drag swab
+http://purl.obolibrary.org/obo/OBI_0002824 # 	surface wipe
+
+http://purl.obolibrary.org/obo/OBI_0002786 # personal protective device
+#includeAllChildren
+http://purl.obolibrary.org/obo/OBI_0002787 # 	face mask
+http://purl.obolibrary.org/obo/OBI_0002788 # 		non-medical mask
+http://purl.obolibrary.org/obo/OBI_0002789 # 		medical mask
+http://purl.obolibrary.org/obo/OBI_0002790 # 		N95 respirator
+http://purl.obolibrary.org/obo/OBI_0002809 # 			surgical N95 respirator
+http://purl.obolibrary.org/obo/OBI_0002791 # 	face shield
+http://purl.obolibrary.org/obo/OBI_0002800 # 	personal protective clothing item
+http://purl.obolibrary.org/obo/OBI_0002792 # 		patient gown
+http://purl.obolibrary.org/obo/OBI_0002794 # 			reusable patient gown
+http://purl.obolibrary.org/obo/OBI_0002795 # 			disposable patient gown
+http://purl.obolibrary.org/obo/OBI_0002793 # 		scrubs
+http://purl.obolibrary.org/obo/OBI_0002796 # 		medical gown
+http://purl.obolibrary.org/obo/OBI_0002798 # 			surgical gown
+http://purl.obolibrary.org/obo/OBI_0002799 # 		personal protective glove
+http://purl.obolibrary.org/obo/OBI_0002803 # 			medical glove
+http://purl.obolibrary.org/obo/OBI_0002804 # 			nitrile glove
+http://purl.obolibrary.org/obo/OBI_0002802 # 		laboratory coat
+http://purl.obolibrary.org/obo/OBI_0002806 # 		footwear cover
+http://purl.obolibrary.org/obo/OBI_0002807 # 			disposable footwear cover
+http://purl.obolibrary.org/obo/OBI_0002808 # 			reusable footwear cover
+http://purl.obolibrary.org/obo/OBI_0002810 # 		protective coverall
+http://purl.obolibrary.org/obo/OBI_0002811 # 		protective sleeve
+http://purl.obolibrary.org/obo/OBI_0002812 # 		protective apron
+http://purl.obolibrary.org/obo/OBI_0002813 # 		medical cap
 
 http://purl.obolibrary.org/obo/OBI_0400103 # DNA Sequencer
-includeAllChildren
-http://purl.obolibrary.org/obo/OBI_0000703 #   Illumina Genome Analyzer II
-includeAllChildren
-http://purl.obolibrary.org/obo/OBI_0000696 #   AB SOLiD System
-includeAllChildren
+#includeAllChildren
+http://purl.obolibrary.org/obo/OBI_0000689 # 	454 Genome Sequence 20
+http://purl.obolibrary.org/obo/OBI_0000691 # 	ABI 377 automated sequencer
+http://purl.obolibrary.org/obo/OBI_0000696 # 	AB SOLiD System
+http://purl.obolibrary.org/obo/OBI_0002007 # 		SOLiD 3 Plus System
+http://purl.obolibrary.org/obo/OBI_0002024 # 		SOLiD 4 System
+http://purl.obolibrary.org/obo/OBI_0000702 # 	454 Genome Sequencer FLX
+http://purl.obolibrary.org/obo/OBI_0000703 # 	Illumina Genome Analyzer II
+http://purl.obolibrary.org/obo/OBI_0002000 # 		Genome Analyzer IIx
+http://purl.obolibrary.org/obo/OBI_0002027 # 		Genome Analyzer IIe
+http://purl.obolibrary.org/obo/OBI_0000710 # 	Li-Cor 4300 DNA Analysis System
+http://purl.obolibrary.org/obo/OBI_0000717 # 	HeliScope Single Molecule Sequencer
+http://purl.obolibrary.org/obo/OBI_0002001 # 	Illumina HiSeq 2000
+http://purl.obolibrary.org/obo/OBI_0002002 # 	Illumina HiSeq 2500
+http://purl.obolibrary.org/obo/OBI_0002003 # 	MiSeq
+http://purl.obolibrary.org/obo/OBI_0002012 # 	PacBio RS II
+http://purl.obolibrary.org/obo/OBI_0002021 # 	NextSeq 500
+http://purl.obolibrary.org/obo/OBI_0002022 # 	Illumina HiSeq 1000
+http://purl.obolibrary.org/obo/OBI_0002048 # 	Illumina HiSeq 3000
+http://purl.obolibrary.org/obo/OBI_0002049 # 	Illumina HiSeq 4000
+http://purl.obolibrary.org/obo/OBI_0002128 # 	Illumina Genome Analyzer
+http://purl.obolibrary.org/obo/OBI_0002129 # 	Illumina HiSeq X Ten
+http://purl.obolibrary.org/obo/OBI_0002630 # 	Illumina NovaSeq 6000
+http://purl.obolibrary.org/obo/OBI_0002632 # 	PacBio Sequel
+http://purl.obolibrary.org/obo/OBI_0002633 # 	PacBio Sequel II
+http://purl.obolibrary.org/obo/OBI_0002750 # 	Oxford Nanopore MinION
+http://purl.obolibrary.org/obo/OBI_0002751 # 	Oxford Nanopore GridION Mk1
+http://purl.obolibrary.org/obo/OBI_0002752 # 	Oxford Nanopore PromethION
+http://purl.obolibrary.org/obo/OBI_0003114 # 	Illumina MiniSeq
+http://purl.obolibrary.org/obo/OBI_0003386 # 	Illumina HiSeq 1500
+http://purl.obolibrary.org/obo/OBI_0003387 # 	NextSeq 550
+
+
 
 # INDIVIDUALS
 # PROBLEM: THESE are being imported with an rdf:type rdf:resource="...ERRORX"
@@ -212,8 +207,14 @@ http://purl.obolibrary.org/obo/OBI_0001557 # material storage service
 
 # OBJECT PROPERTIES
 
-http://purl.obolibrary.org/obo/BFO_0000066 # occurs in
-http://purl.obolibrary.org/obo/BFO_0000067 # contains process
+# RELATIONS
+http://purl.obolibrary.org/obo/OBI_0000999 #	has category label
+http://purl.obolibrary.org/obo/OBI_0001938 #	has value specification
+http://purl.obolibrary.org/obo/OBI_0002135 # 	has specified value
+
+http://purl.obolibrary.org/obo/OBI_0001927 #    specifies value of  "A relation between a value specification and an entity which the specification is about."
+http://purl.obolibrary.org/obo/OBI_0000304 # 	is manufactured by
+
 
 # PHA4GE ADDITONS
 
@@ -237,10 +238,11 @@ http://purl.obolibrary.org/obo/OBI_0000136 # incubator
 http://purl.obolibrary.org/obo/OBI_0302885 # filtration (process)
 http://purl.obolibrary.org/obo/OBI_0002814 # specimen collection device
 
-
+# PROCESS
+http://purl.obolibrary.org/obo/OBI_0002600 # collecting specimen with swab
 
 # THESE AREN'T DEFINED YET
-http://purl.obolibrary.org/obo/OBI_0002600
+
 http://purl.obolibrary.org/obo/OBI_0002825
 http://purl.obolibrary.org/obo/OBI_0002826
 http://purl.obolibrary.org/obo/OBI_0002827
@@ -258,45 +260,13 @@ http://purl.obolibrary.org/obo/IAO_0000030 # information content entity
 http://purl.obolibrary.org/obo/BFO_0000040 # material entity
 http://purl.obolibrary.org/obo/BFO_0000141 # immaterial entity
 http://purl.obolibrary.org/obo/BFO_0000015 # process
-http://purl.obolibrary.org/obo/BFO_0000019 #     quality
-http://purl.obolibrary.org/obo/BFO_0000016 #     disposition
-http://purl.obolibrary.org/obo/BFO_0000023 # 	 role
+http://purl.obolibrary.org/obo/BFO_0000019 # quality
+http://purl.obolibrary.org/obo/BFO_0000016 # disposition
+http://purl.obolibrary.org/obo/BFO_0000023 # role
 
 http://purl.obolibrary.org/obo/BFO_0000003 # occurent
 http://purl.obolibrary.org/obo/BFO_0000008 # 	 occurant > temporal region
 
 
-# Brought over from ERO section of general_ontofox.txt (2023-01-21)
-http://purl.obolibrary.org/obo/OBI_0000626 #        DNA sequencing
 
 
-[Source term retrieval setting]
-includeAllIntermediates
-
-[Source annotation URIs]
-http://www.w3.org/2000/01/rdf-schema#label
-http://www.w3.org/2000/01/rdf-schema#comment
-
-http://purl.obolibrary.org/obo/IAO_0000111 # editor prefered label
-http://purl.obolibrary.org/obo/IAO_0000114 # curation status
-http://purl.obolibrary.org/obo/IAO_0000115 # definition
-http://purl.obolibrary.org/obo/IAO_0000117 # term editor
-http://purl.obolibrary.org/obo/IAO_0000119 # definition source
-
-http://www.geneontology.org/formats/oboInOwl#hasDbXref
-http://www.geneontology.org/formats/oboInOwl#hasExactSynonym
-http://www.geneontology.org/formats/oboInOwl#hasNarrowSynonym
-http://www.geneontology.org/formats/oboInOwl#hasBroadSynonym
-http://www.geneontology.org/formats/oboInOwl#inSubset
-http://www.geneontology.org/formats/oboInOwl#hasAlternativeId
-
-[Source annotation URIs to be excluded]
-#http://org.semanticweb.owlapi/error#Error1 # hide some errors coming through on sequencer organization records.
-#http://org.semanticweb.owlapi/error#Error2
-#http://org.semanticweb.owlapi/error#Error3
-#http://org.semanticweb.owlapi/error#Error4
-#http://org.semanticweb.owlapi/error#Error5
-#http://org.semanticweb.owlapi/error#Error6
-#http://org.semanticweb.owlapi/error#Error7
-#http://org.semanticweb.owlapi/error#Error8
-#http://org.semanticweb.owlapi/error#Error9

@@ -701,11 +701,11 @@ Other dates associated with a process fall within a range that has a start and e
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001881">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001880"/>
-        <obo:GENEPIO_0001920 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">$year/$month/$day</obo:GENEPIO_0001920>
+        <obo:GENEPIO_0001920>$year/$month/$day</obo:GENEPIO_0001920>
         <obo:GENEPIO_1919 rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">/^(:&lt;year&gt;(19|20)\d\d)([- /.])(:&lt;month&gt;0[1-9]|1[012])\2(:&lt;day&gt;0[1-9]|[12][0-9]|3[01])$/
 /^(:&lt;month&gt;0[1-9]|1[012])([- /.])(:&lt;day&gt;0[1-9]|[12][0-9]|3[01])\2(:&lt;year&gt;(19|20)\d\d)$/ 
 /^(:&lt;day&gt;0[1-9]|[12][0-9]|3[01])([- /.])(:&lt;month&gt;0[1-9]|1[012])\2(:&lt;year&gt;(19|20)\d\d)$/</obo:GENEPIO_1919>
-        <obo:GENEPIO_1921 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">$year/$month/$day</obo:GENEPIO_1921>
+        <obo:GENEPIO_1921>$year/$month/$day</obo:GENEPIO_1921>
         <rdfs:comment xml:lang="en">The instant is subject to the level of granularity of the observed time.  Year / Month / Day / Hour / Minute / Second</rdfs:comment>
         <rdfs:label xml:lang="en">datetime set item</rdfs:label>
     </owl:Class>
@@ -789,7 +789,7 @@ Other dates associated with a process fall within a range that has a start and e
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001888">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/NCIT_C25621"/>
-        <obo:GENEPIO_1919 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">/^((:&lt;FSA&gt;[ABCEGHJKLMNPRSTVXY][0-9][ABCEGHJKLMNPRSTVWXYZ])) ?(:&lt;LDU&gt;[0-9][ABCEGHJKLMNPRSTVWXYZ][0-9])$/i, $FSA $LDU</obo:GENEPIO_1919>
+        <obo:GENEPIO_1919>/^((:&lt;FSA&gt;[ABCEGHJKLMNPRSTVXY][0-9][ABCEGHJKLMNPRSTVWXYZ])) ?(:&lt;LDU&gt;[0-9][ABCEGHJKLMNPRSTVWXYZ][0-9])$/i, $FSA $LDU</obo:GENEPIO_1919>
         <rdfs:label xml:lang="en">Canada postal code</rdfs:label>
     </owl:Class>
     
@@ -799,7 +799,7 @@ Other dates associated with a process fall within a range that has a start and e
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001889">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/IAO_0000577"/>
-        <obo:GENEPIO_1919 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">/^((:&lt;FSA&gt;[ABCEGHJKLMNPRSTVXY][0-9][ABCEGHJKLMNPRSTVWXYZ]))$/i, $FSA</obo:GENEPIO_1919>
+        <obo:GENEPIO_1919>/^((:&lt;FSA&gt;[ABCEGHJKLMNPRSTVXY][0-9][ABCEGHJKLMNPRSTVWXYZ]))$/i, $FSA</obo:GENEPIO_1919>
         <obo:IAO_0000115 xml:lang="en">The &quot;Canadia postal code FSA&quot; is the leading FSA (Forward Sortation Area) 3 character portion of a full 6 character Canadian postal code.  It can be used to reduce the geographic granularity of a postal code for data generalization or obfuscation.</obo:IAO_0000115>
         <rdfs:label xml:lang="en">Canada postal code FSA</rdfs:label>
     </owl:Class>
@@ -928,8 +928,8 @@ Strings are only indirectly ordered insofar as strings can be sorted by characte
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0001904 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001904">
-        <obo:GENEPIO_1919 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">/^(:&lt;area&gt;(\([0-9]{3})\)|[0-9]{3})(:&lt;sep&gt;[- ])?(:&lt;central&gt;\d{3})\2(:&lt;station&gt;\d{4})$/, $area $central $station</obo:GENEPIO_1919>
-        <obo:GENEPIO_1921 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">($area) $central-$station</obo:GENEPIO_1921>
+        <obo:GENEPIO_1919>/^(:&lt;area&gt;(\([0-9]{3})\)|[0-9]{3})(:&lt;sep&gt;[- ])?(:&lt;central&gt;\d{3})\2(:&lt;station&gt;\d{4})$/, $area $central $station</obo:GENEPIO_1919>
+        <obo:GENEPIO_1921>($area) $central-$station</obo:GENEPIO_1921>
         <rdfs:label xml:lang="en">phone number (North America)</rdfs:label>
     </owl:Class>
     
@@ -1000,7 +1000,7 @@ Strings are only indirectly ordered insofar as strings can be sorted by characte
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001910">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001919"/>
-        <obo:GENEPIO_1919 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">^([+-]?[1-9]\d*|0)(\.\d+)?$</obo:GENEPIO_1919>
+        <obo:GENEPIO_1919>^([+-]?[1-9]\d*|0)(\.\d+)?$</obo:GENEPIO_1919>
         <rdfs:label xml:lang="en">decimal</rdfs:label>
     </owl:Class>
     
@@ -1009,7 +1009,7 @@ Strings are only indirectly ordered insofar as strings can be sorted by characte
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0001911 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001911">
-        <obo:GENEPIO_1919 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">^([-+]?[1-9]\d*|0)$</obo:GENEPIO_1919>
+        <obo:GENEPIO_1919>^([-+]?[1-9]\d*|0)$</obo:GENEPIO_1919>
         <rdfs:label xml:lang="en">integer</rdfs:label>
     </owl:Class>
     
@@ -1192,12 +1192,6 @@ Strings are only indirectly ordered insofar as strings can be sorted by characte
     
 
 
-    <!-- http://purl.obolibrary.org/obo/PR_000000001 -->
-
-    <owl:Class rdf:about="http://purl.obolibrary.org/obo/PR_000000001"/>
-    
-
-
     <!-- http://purl.obolibrary.org/obo/SO_0000149 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/SO_0000149"/>
@@ -1279,7 +1273,7 @@ Strings are only indirectly ordered insofar as strings can be sorted by characte
     <!-- http://purl.obolibrary.org/obo/UO_0000244 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/UO_0000244">
-        <obo:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A count unit which contains one nucleotide.</obo:IAO_0000115>
+        <obo:IAO_0000115>A count unit which contains one nucleotide.</obo:IAO_0000115>
     </owl:Class>
     
 
@@ -1392,5 +1386,5 @@ Strings are only indirectly ordered insofar as strings can be sorted by characte
 
 
 
-<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+<!-- Generated by the OWL API (version 4.5.25.2023-02-15T19:15:49Z) https://github.com/owlcs/owlapi -->
 

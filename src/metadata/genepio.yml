@@ -1,0 +1,28 @@
+# PURL configuration for http://purl.obolibrary.org/obo/genepio
+
+idspace: GENEPIO
+base_url: /obo/genepio
+
+products:
+- genepio.owl: https://raw.githubusercontent.com/GenEpiO/genepio/main/genepio.owl
+- genepio.obo: https://raw.githubusercontent.com/GenEpiO/genepio/main/genepio.obo
+
+term_browser: ontobee
+example_terms:
+- GENEPIO_0000000
+
+entries:
+
+- prefix: /releases/
+  replacement: https://raw.githubusercontent.com/GenEpiO/genepio/v
+
+- prefix: /tracker/
+  replacement: https://github.com/GenEpiO/genepio/issues
+
+- prefix: /about/
+  replacement: http://www.ontobee.org/ontology/GENEPIO?iri=http://purl.obolibrary.org/obo/
+
+## generic fall-through, serve direct from github by default
+- prefix: /
+  replacement: https://raw.githubusercontent.com/GenEpiO/genepio/main/
+

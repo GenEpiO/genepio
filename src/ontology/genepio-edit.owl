@@ -27,7 +27,6 @@ Import(<http://purl.obolibrary.org/obo/genepio/imports/gaz_insdc_mapping.owl>)
 Import(<http://purl.obolibrary.org/obo/genepio/imports/gazetteer_import.owl>)
 Import(<http://purl.obolibrary.org/obo/genepio/imports/general_import.owl>)
 Import(<http://purl.obolibrary.org/obo/genepio/imports/hardcoded.owl>)
-Import(<http://purl.obolibrary.org/obo/genepio/imports/model_import.owl>)
 Import(<http://purl.obolibrary.org/obo/genepio/imports/ncbitaxon_import.owl>)
 Import(<http://purl.obolibrary.org/obo/genepio/imports/obi_import.owl>)
 Import(<http://purl.obolibrary.org/obo/genepio/imports/ro_import.owl>)
@@ -1537,7 +1536,6 @@ Declaration(Class(obo:PATO_0001585))
 Declaration(Class(obo:PATO_0001894))
 Declaration(Class(obo:PCO_0000000))
 Declaration(Class(obo:PCO_0000033))
-Declaration(Class(obo:PECO_0007027))
 Declaration(Class(obo:PO_0009011))
 Declaration(Class(obo:RBO_00000017))
 Declaration(Class(obo:SO_0000353))
@@ -2194,7 +2192,7 @@ ObjectPropertyDomain(obo:IAO_0000136 obo:IAO_0000030)
 
 AnnotationAssertion(obo:GENEPIO_0000006 obo:OBI_0001927 "specifies"@en)
 
-# Object Property: obo:RO_0000052 (characteristic of)
+# Object Property: obo:RO_0000052 (inheres in)
 
 AnnotationAssertion(rdfs:label obo:RO_0000052 "inheres in"@en)
 
@@ -3044,6 +3042,14 @@ SubClassOf(obo:CHEBI_9997 obo:GENEPIO_0001187)
 
 AnnotationAssertion(obo:GENEPIO_0000006 obo:CHMO_0002743 "specimen extraction matrix"@en)
 AnnotationAssertion(rdfs:comment obo:CHMO_0002743 "\"This observable is important where process of capturing sample can affect dna extraction.\""@en)
+
+# Class: obo:CIDO_0000019 (COVID-19 RT-PCR assay)
+
+SubClassOf(obo:CIDO_0000019 obo:OBI_0000070)
+
+# Class: obo:CIDO_0000027 (COVID-19 diagnostic process by viral genome sequencing)
+
+SubClassOf(obo:CIDO_0000027 obo:OGMS_0000104)
 
 # Class: obo:CVDO_0000597 (congenital disease)
 
@@ -13649,10 +13655,6 @@ SubClassOf(obo:PCO_0000031 obo:BFO_0000040)
 AnnotationAssertion(obo:GENEPIO_0000006 obo:PCO_0000033 "social gathering"@en)
 SubClassOf(obo:PCO_0000033 obo:GENEPIO_0001444)
 
-# Class: obo:PECO_0007027 (obo:PECO_0007027)
-
-SubClassOf(obo:PECO_0007027 obo:BFO_0000003)
-
 # Class: obo:PO_0009011 (plant structure)
 
 SubClassOf(obo:PO_0009011 obo:GENEPIO_0000025)
@@ -14099,6 +14101,10 @@ SubClassOf(efo:EFO_0001444 obo:IAO_0000027)
 AnnotationAssertion(obo:IAO_0000600 efo:EFO_0001799 "A social group characterized by a distinctive social and cultural tradition maintained from generation to generation, a common history and origin and a sense of identification with the group; members of the group have distinctive features in their way of life, shared experiences and often a common genetic heritage; these features may be reflected in their experience of health and disease. (NCI); Ethnicity - an arbitrary classification of the social group a person belongs to, and either identifies with or is identified with by others, as a result of a complex of cultural, biological, geographical and other factors such as linguistic, dietary and religion traditions; ancestry, background, allegiance, or association; and physical characteristics traditionally associated with race. Increasingly the concept is used synonymously with race but this use trend has a pragmatic basis rather than scientific. (NCI); The concept of ethnic origin is an attempt to classify people, not according to their current ethnicity, but according to where their ancestors came from. Ethnic origin has become a popular classification in statistics, where the concept of race has been largely discarded. (from Wikipedia) (NCI); a group of people with a common cultural heritage that sets them apart from others in a variety of social relationships. (CSP)"@en)
 SubClassOf(efo:EFO_0001799 obo:OBI_0000181)
 SubClassOf(efo:EFO_0001799 ObjectSomeValuesFrom(obo:RO_0002351 obo:NCBITaxon_9606))
+
+# Class: efo:EFO_0002571 (medical procedure)
+
+SubClassOf(efo:EFO_0002571 obo:OBI_0000011)
 
 # Class: efo:EFO_0004324 (body weights and measures)
 
@@ -14666,7 +14672,6 @@ AnnotationAssertion(oboInOwl:hasSynonym obo:FOODON_03412612 "asian tiger shrimp"
 AnnotationAssertion(oboInOwl:hasSynonym obo:FOODON_03412612 "black tiger shrimp"@en)
 AnnotationAssertion(oboInOwl:hasSynonym obo:FOODON_03530153 "gathered"@en)
 AnnotationAssertion(oboInOwl:hasSynonym obo:FOODON_03530153 "wild"@en)
-AnnotationAssertion(obo:IAO_0000117 obo:GENEPIO_0000098 "Damion Dooley")
 AnnotationAssertion(obo:IAO_0000114 obo:GENEPIO_0000116 obo:IAO_0000428)
 AnnotationAssertion(obo:IAO_0000115 obo:GENEPIO_0000116 "This is a catch-all category for Gazetteer items that have \"located in\" relations but not an imported GAZETTEER class parent in GenEpiO."@en)
 AnnotationAssertion(obo:IAO_0000117 obo:GENEPIO_0000116 "Damion Dooley")

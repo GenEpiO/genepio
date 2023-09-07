@@ -228,9 +228,7 @@ We also have the outstanding issue of how to aim different definitions to differ
     <owl:AnnotationProperty rdf:about="&oboInOwl;hasExactSynonym">
         <obo:IAO_0000115>An alternative label for a class or property which has the exact same meaning than the preferred name/primary label.</obo:IAO_0000115>
         <obo:IAO_0000115>An alternative label for a given entity such as a commonly used abbreviation or synonym. </obo:IAO_0000115>
-        <obo:IAO_0000115>Fully qualified synonym, contains the string, term type, source, and an optional source code if appropriate. Each subfield is deliniated to facilitate interpretation by software.</obo:IAO_0000115>
         <obo:IAO_0000115>A property representing a fully qualified synonym, contains the string, term type, source, and an optional source code if appropriate. Each subfield is deliniated to facilitate interpretation by software.</obo:IAO_0000115>
-        <obo:IAO_0000115>Exact synonym.</obo:IAO_0000115>
         <obo:IAO_0000117 rdf:resource="http://orcid.org/0000-0001-5208-3432"/>
         <oboInOwl:hasExactSynonym>FULL_SYN</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym>Synonym with Source Data</oboInOwl:hasExactSynonym>
@@ -464,15 +462,6 @@ every c that is a concretization of g specifically denotes r</obo:IAO_0000116>
 
     <owl:ObjectProperty rdf:about="&obo;is_unit_of">
         <obo:IAO_0000412 rdf:resource="&obo;uo.owl"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://www.w3.org/2000/01/rdf-schema#subClassOf -->
-
-    <owl:ObjectProperty rdf:about="&rdfs;subClassOf">
-        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
-        <obo:IAO_0000412 rdf:resource="&obo;cido.owl"/>
     </owl:ObjectProperty>
     
 
@@ -1546,7 +1535,6 @@ An infection is acquired from an infectious organism or a contaminated thing.
         <rdfs:subClassOf rdf:resource="&owl;Thing"/>
         <obo:IAO_0000111 xml:lang="en">entity</obo:IAO_0000111>
         <obo:IAO_0000412 rdf:resource="&obo;apollo_sv.owl"/>
-        <obo:IAO_0000412 rdf:resource="&obo;cido.owl"/>
         <obo:IAO_0000412 rdf:resource="&obo;clo.owl"/>
         <obo:IAO_0000412 rdf:resource="&obo;ecto.owl"/>
         <obo:IAO_0000412 rdf:resource="&obo;envo.owl"/>
@@ -1592,11 +1580,9 @@ An infection is acquired from an infectious organism or a contaminated thing.
 
     <owl:Class rdf:about="&obo;BFO_0000003">
         <rdfs:subClassOf rdf:resource="&obo;BFO_0000001"/>
-        <obo:IAO_0000111 xml:lang="en">occurrent</obo:IAO_0000111>
         <obo:IAO_0000115>An entity that has temporal parts and that happens, unfolds or develops through time.</obo:IAO_0000115>
         <obo:IAO_0000115 xml:lang="en">An entity that has temporal parts and that happens, unfolds or develops through time.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;apollo_sv.owl"/>
-        <obo:IAO_0000412 rdf:resource="&obo;cido.owl"/>
         <obo:IAO_0000412 rdf:resource="&obo;ecto.owl"/>
         <obo:IAO_0000412 rdf:resource="&obo;nbo.owl"/>
         <obo:IAO_0000412 rdf:resource="&obo;ogms.owl"/>
@@ -1634,7 +1620,6 @@ An infection is acquired from an infectious organism or a contaminated thing.
 
     <owl:Class rdf:about="&obo;BFO_0000015">
         <rdfs:subClassOf rdf:resource="&obo;BFO_0000003"/>
-        <obo:IAO_0000111 xml:lang="en">process</obo:IAO_0000111>
         <obo:IAO_0000115>A process is an entity that exists in time by occurring or happening, has temporal parts and always involves and depends on some entity during the time it occurs.</obo:IAO_0000115>
         <obo:IAO_0000115>An occurrent that has temporal proper parts and for some time t, p s-depends_on some material entity at t.</obo:IAO_0000115>
         <obo:IAO_0000115 xml:lang="en">An occurrent that has temporal proper parts and for some time t, p s-depends_on some material entity at t.</obo:IAO_0000115>
@@ -1643,7 +1628,6 @@ An infection is acquired from an infectious organism or a contaminated thing.
         <obo:IAO_0000117>James Malone</obo:IAO_0000117>
         <obo:IAO_0000412 rdf:resource="&obo;apollo_sv.owl"/>
         <obo:IAO_0000412 rdf:resource="&obo;chmo.owl"/>
-        <obo:IAO_0000412 rdf:resource="&obo;cido.owl"/>
         <obo:IAO_0000412 rdf:resource="&obo;ecto.owl"/>
         <obo:IAO_0000412 rdf:resource="&obo;envo.owl"/>
         <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
@@ -2269,7 +2253,6 @@ An infection is acquired from an infectious organism or a contaminated thing.
     <!-- http://purl.obolibrary.org/obo/CIDO_0000019 -->
 
     <owl:Class rdf:about="&obo;CIDO_0000019">
-        <rdfs:subClassOf rdf:resource="&obo;CIDO_0000259"/>
         <obo:IAO_0000117>A COVID-19 nucleic acid diagnostic assay that uses RT-PCR</obo:IAO_0000117>
         <obo:IAO_0000117>Oliver He, Asiyah Yu Lin</obo:IAO_0000117>
         <obo:IAO_0000118>SARS COV-2 RT-PCR</obo:IAO_0000118>
@@ -2284,64 +2267,11 @@ An infection is acquired from an infectious organism or a contaminated thing.
     <!-- http://purl.obolibrary.org/obo/CIDO_0000027 -->
 
     <owl:Class rdf:about="&obo;CIDO_0000027">
-        <rdfs:subClassOf rdf:resource="&obo;CIDO_0000424"/>
         <obo:IAO_0000115>A COVID-19 diagnostic process by viral genome sequencing and identification of the SARS-CoV-2 based on the genome sequence.</obo:IAO_0000115>
         <obo:IAO_0000117>Oliver He, Asiyah Yu Lin, Hong Yu</obo:IAO_0000117>
         <obo:IAO_0000119>https://www.ncbi.nlm.nih.gov/pubmed/32245835</obo:IAO_0000119>
         <obo:IAO_0000412 rdf:resource="&obo;cido.owl"/>
         <rdfs:label xml:lang="en">COVID-19 diagnostic process by viral genome sequencing</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/CIDO_0000258 -->
-
-    <owl:Class rdf:about="&obo;CIDO_0000258">
-        <rdfs:subClassOf rdf:resource="&obo;OBI_0000070"/>
-        <obo:IAO_0000115>An assay that is used for COVID-19 diagnosis</obo:IAO_0000115>
-        <obo:IAO_0000117>Oliver He, Hong Yu</obo:IAO_0000117>
-        <obo:IAO_0000119>https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7683783/</obo:IAO_0000119>
-        <obo:IAO_0000119>https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7780074/</obo:IAO_0000119>
-        <obo:IAO_0000412 rdf:resource="&obo;cido.owl"/>
-        <rdfs:label xml:lang="en">COVID-19 diagnostic assay</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/CIDO_0000259 -->
-
-    <owl:Class rdf:about="&obo;CIDO_0000259">
-        <rdfs:subClassOf rdf:resource="&obo;CIDO_0000258"/>
-        <obo:IAO_0000115>A COVID-19 diagnosti ssay that uses a nucleic acid sample</obo:IAO_0000115>
-        <obo:IAO_0000117>Oliver He, Hong Yu</obo:IAO_0000117>
-        <obo:IAO_0000412 rdf:resource="&obo;cido.owl"/>
-        <rdfs:label xml:lang="en">COVID-19 nucleic acid diagnostic assay</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/CIDO_0000423 -->
-
-    <owl:Class rdf:about="&obo;CIDO_0000423">
-        <rdfs:subClassOf rdf:resource="&obo;OGMS_0000104"/>
-        <obo:IAO_0000115>A diagnostic process for detecting coronavirus disease from a patient</obo:IAO_0000115>
-        <obo:IAO_0000117>Oliver He, Hong Yu</obo:IAO_0000117>
-        <obo:IAO_0000118>coronavirus diagnostic process</obo:IAO_0000118>
-        <obo:IAO_0000118>coronavirus disease diagnostic process</obo:IAO_0000118>
-        <obo:IAO_0000412 rdf:resource="&obo;cido.owl"/>
-        <rdfs:label xml:lang="en">coronavirus disease diagnostic process</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/CIDO_0000424 -->
-
-    <owl:Class rdf:about="&obo;CIDO_0000424">
-        <rdfs:subClassOf rdf:resource="&obo;CIDO_0000423"/>
-        <obo:IAO_0000115>A diagnostic process for detecting coronavirus from a patient</obo:IAO_0000115>
-        <obo:IAO_0000117>Oliver He, Hong Yu</obo:IAO_0000117>
-        <obo:IAO_0000412 rdf:resource="&obo;cido.owl"/>
-        <rdfs:label xml:lang="en">COVID-19 diagnostic process</rdfs:label>
     </owl:Class>
     
 
@@ -44014,7 +43944,6 @@ Cons sometimes specifies a quality which is not a realizable.</obo:IAO_0000116>
     <owl:Class rdf:about="&obo;OBI_0000011">
         <rdfs:subClassOf rdf:resource="&obo;BFO_0000015"/>
         <obo:IAO_0000111 xml:lang="en">planned process</obo:IAO_0000111>
-        <obo:IAO_0000111>planned process</obo:IAO_0000111>
         <obo:IAO_0000114 rdf:resource="&obo;IAO_0000122"/>
         <obo:IAO_0000115 xml:lang="en">A process that realizes a plan which is the concretization of a plan specification.</obo:IAO_0000115>
         <obo:IAO_0000115 xml:lang="en">A processual entity that realizes a plan which is the concretization of a plan specification.</obo:IAO_0000115>
@@ -44022,12 +43951,11 @@ Cons sometimes specifies a quality which is not a realizable.</obo:IAO_0000116>
         <obo:IAO_0000119>branch derived</obo:IAO_0000119>
         <obo:IAO_0000412 rdf:resource="&obo;apollo_sv.owl"/>
         <obo:IAO_0000412 rdf:resource="&obo;chmo.owl"/>
-        <obo:IAO_0000412 rdf:resource="&obo;cido.owl"/>
         <obo:IAO_0000412 rdf:resource="&obo;foodon.owl"/>
         <obo:IAO_0000412 rdf:resource="&obo;ogms.owl"/>
         <oboInOwl:hasAlternativeId>CHMO:0001840</oboInOwl:hasAlternativeId>
-        <rdfs:label xml:lang="en">planned process</rdfs:label>
         <rdfs:label>planned process</rdfs:label>
+        <rdfs:label xml:lang="en">planned process</rdfs:label>
     </owl:Class>
     
 
@@ -44042,23 +43970,6 @@ Cons sometimes specifies a quality which is not a realizable.</obo:IAO_0000116>
         <obo:IAO_0000117 xml:lang="en">PERSON: Alan Ruttenberg</obo:IAO_0000117>
         <obo:IAO_0000412 rdf:resource="&obo;clo.owl"/>
         <rdfs:label xml:lang="en">processed material</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/OBI_0000070 -->
-
-    <owl:Class rdf:about="&obo;OBI_0000070">
-        <rdfs:subClassOf rdf:resource="&obo;OBI_0000011"/>
-        <obo:IAO_0000111 xml:lang="en">assay</obo:IAO_0000111>
-        <obo:IAO_0000114 rdf:resource="&obo;IAO_0000122"/>
-        <obo:IAO_0000115 xml:lang="en">A planned process with the objective to produce information about the material entity that is the evaluant, by physically examining it or its proxies.</obo:IAO_0000115>
-        <obo:IAO_0000117 xml:lang="en">PlanAndPlannedProcess Branch</obo:IAO_0000117>
-        <obo:IAO_0000118 xml:lang="en">measuring</obo:IAO_0000118>
-        <obo:IAO_0000118 xml:lang="en">scientific observation</obo:IAO_0000118>
-        <obo:IAO_0000119 xml:lang="en">OBI branch derived</obo:IAO_0000119>
-        <obo:IAO_0000412 rdf:resource="&obo;cido.owl"/>
-        <rdfs:label xml:lang="en">assay</rdfs:label>
     </owl:Class>
     
 
@@ -44231,11 +44142,11 @@ Sagar Jain</obo:IAO_0000117>
     <!-- http://purl.obolibrary.org/obo/OGMS_0000104 -->
 
     <owl:Class rdf:about="&obo;OGMS_0000104">
-        <rdfs:subClassOf rdf:resource="&obo;OBI_0000011"/>
+        <rdfs:subClassOf rdf:resource="&obo;OGMS_0000096"/>
         <obo:IAO_0000115 xml:lang="en">A health care process that involves the interpretation of a clinical picture from a given patient (input) and the assertion to the effect that the patient has a disease, disorder, or syndrome of a certain type, or none of these (output).</obo:IAO_0000115>
         <obo:IAO_0000117>Albert Goldfain</obo:IAO_0000117>
         <obo:IAO_0000119>http://groups.google.com/group/ogms-discuss/browse_thread/thread/2a7008f311fac766/e7de486c94dfd82e</obo:IAO_0000119>
-        <obo:IAO_0000412 rdf:resource="&obo;cido.owl"/>
+        <obo:IAO_0000412 rdf:resource="&obo;ogms.owl"/>
         <rdfs:label>diagnostic process</rdfs:label>
     </owl:Class>
     
@@ -59482,7 +59393,6 @@ https://stats.stackexchange.com/questions/31908/what-is-percentage-of-variance-i
         <oboInOwl:hasExactSynonym>reproductive system disease</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym>reproductive system disease or disorder</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym>reproductive system disorder</oboInOwl:hasExactSynonym>
-        <oboInOwl:inSubset rdf:resource="http://purl.oboInOwllibrary.org/oboInOwl/mondo#rare_grouping"/>
         <rdfs:label>reproductive system disease</rdfs:label>
     </owl:Class>
     
@@ -59636,7 +59546,6 @@ https://stats.stackexchange.com/questions/31908/what-is-percentage-of-variance-i
     <!-- http://www.ebi.ac.uk/efo/EFO_0002571 -->
 
     <owl:Class rdf:about="&efo;EFO_0002571">
-        <rdfs:subClassOf rdf:resource="&efo;EFO_0002694"/>
         <obo:IAO_0000115>An activity that produces an effect, or that is intended to alter the course of a disease in a patient or population. This is a general term that encompasses the medical, social, behavioral, and environmental acts that can have preventive, therapeutic, or palliative effects.</obo:IAO_0000115>
         <obo:IAO_0000117>Jie Zheng</obo:IAO_0000117>
         <obo:IAO_0000117>Tomasz Adamusiak</obo:IAO_0000117>
@@ -59653,20 +59562,6 @@ https://stats.stackexchange.com/questions/31908/what-is-percentage-of-variance-i
         <oboInOwl:hasExactSynonym>SURGICAL AND MEDICAL PROCEDURES</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym>interventionDescription</oboInOwl:hasExactSynonym>
         <rdfs:label>medical procedure</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ebi.ac.uk/efo/EFO_0002694 -->
-
-    <owl:Class rdf:about="&efo;EFO_0002694">
-        <rdfs:subClassOf rdf:resource="&efo;EFO_0004542"/>
-        <obo:IAO_0000115>A process performed as part of an experiment or wider study, i.e. intentionally designed.</obo:IAO_0000115>
-        <obo:IAO_0000412 rdf:resource="&efo;efo.owl"/>
-        <oboInOwl:hasDbXref>NCIt:C42790</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref>NIFSTD:birnlex_2117</oboInOwl:hasDbXref>
-        <oboInOwl:hasExactSynonym>Experiment</oboInOwl:hasExactSynonym>
-        <rdfs:label>experimental process</rdfs:label>
     </owl:Class>
     
 
@@ -59783,18 +59678,6 @@ https://stats.stackexchange.com/questions/31908/what-is-percentage-of-variance-i
         <obo:IAO_0000412 rdf:resource="&efo;efo.owl"/>
         <oboInOwl:hasExactSynonym>initial timepoint</oboInOwl:hasExactSynonym>
         <rdfs:label>initial time point</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ebi.ac.uk/efo/EFO_0004542 -->
-
-    <owl:Class rdf:about="&efo;EFO_0004542">
-        <rdfs:subClassOf rdf:resource="&obo;BFO_0000015"/>
-        <obo:IAO_0000115>A processual entity that realizes a plan which is the concretization of a plan specification.</obo:IAO_0000115>
-        <obo:IAO_0000119>OBI_0000011</obo:IAO_0000119>
-        <obo:IAO_0000412 rdf:resource="&efo;efo.owl"/>
-        <rdfs:label>planned process</rdfs:label>
     </owl:Class>
     
 
@@ -60986,22 +60869,19 @@ https://stats.stackexchange.com/questions/31908/what-is-percentage-of-variance-i
 
     <owl:NamedIndividual rdf:about="&obo;UO_0010068"/>
     <rdf:Description>
-        <obo:IAO_0000412 rdf:resource="&obo;apollo_sv.owl"/>
+        <obo:IAO_0000412 rdf:resource="&obo;ido.owl"/>
     </rdf:Description>
     <rdf:Description>
-        <obo:IAO_0000412 rdf:resource="&obo;apollo_sv.owl"/>
+        <obo:IAO_0000412 rdf:resource="&obo;stato.owl"/>
     </rdf:Description>
     <rdf:Description>
-        <obo:IAO_0000412 rdf:resource="&obo;apollo_sv.owl"/>
+        <obo:IAO_0000412 rdf:resource="&obo;omrse.owl"/>
     </rdf:Description>
     <rdf:Description>
         <obo:IAO_0000412 rdf:resource="&obo;omrse.owl"/>
     </rdf:Description>
     <rdf:Description>
         <obo:IAO_0000412 rdf:resource="&obo;iao.owl"/>
-    </rdf:Description>
-    <rdf:Description>
-        <obo:IAO_0000412 rdf:resource="&obo;ido.owl"/>
     </rdf:Description>
     <rdf:Description>
         <obo:IAO_0000412 rdf:resource="&obo;iao.owl"/>
@@ -61010,19 +60890,22 @@ https://stats.stackexchange.com/questions/31908/what-is-percentage-of-variance-i
         <obo:IAO_0000412 rdf:resource="&obo;envo.owl"/>
     </rdf:Description>
     <rdf:Description>
-        <obo:IAO_0000412 rdf:resource="&obo;ido.owl"/>
-    </rdf:Description>
-    <rdf:Description>
         <obo:IAO_0000412 rdf:resource="&obo;iao.owl"/>
     </rdf:Description>
     <rdf:Description>
-        <obo:IAO_0000412 rdf:resource="&obo;stato.owl"/>
+        <obo:IAO_0000412 rdf:resource="&obo;ido.owl"/>
+    </rdf:Description>
+    <rdf:Description>
+        <obo:IAO_0000412 rdf:resource="&obo;apollo_sv.owl"/>
+    </rdf:Description>
+    <rdf:Description>
+        <obo:IAO_0000412 rdf:resource="&obo;apollo_sv.owl"/>
+    </rdf:Description>
+    <rdf:Description>
+        <obo:IAO_0000412 rdf:resource="&obo;apollo_sv.owl"/>
     </rdf:Description>
     <rdf:Description>
         <obo:IAO_0000412 rdf:resource="&obo;clo.owl"/>
-    </rdf:Description>
-    <rdf:Description>
-        <obo:IAO_0000412 rdf:resource="&obo;omrse.owl"/>
     </rdf:Description>
     <rdf:Description>
         <obo:IAO_0000412 rdf:resource="&obo;clo.owl"/>

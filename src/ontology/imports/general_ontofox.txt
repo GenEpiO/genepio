@@ -218,18 +218,14 @@ http://www.geneontology.org/formats/oboInOwl#hasAlternativeId
 
 #################################################
 
+# PROBLEM: CIDO has extranious rdfs:subClassOf [TransitiveObjectProperty...] that leads to ODK DL profile error.
+# Moved these entries into Hardcoded instead.
 [Source ontology]
 CIDO
 
 [Low level source term URIs]
 http://purl.obolibrary.org/obo/CIDO_0000019 # COVID-19 RT-PCR assay
 http://purl.obolibrary.org/obo/CIDO_0000027 # COVID-19 diagnostic process by viral genome sequencing
-
-[Top level source term URIs and target direct superclass URIs]
-http://purl.obolibrary.org/obo/BFO_0000001
-
-[Source term retrieval setting]
-includeAllIntermediates
 
 [Source annotation URIs]
 http://www.w3.org/2000/01/rdf-schema#label
@@ -240,13 +236,6 @@ http://purl.obolibrary.org/obo/IAO_0000115 # definition
 http://purl.obolibrary.org/obo/IAO_0000117 # term editor
 http://purl.obolibrary.org/obo/IAO_0000118 # alternate terms
 http://purl.obolibrary.org/obo/IAO_0000119 # definition source
-http://www.geneontology.org/formats/oboInOwl#hasDbXref
-http://www.geneontology.org/formats/oboInOwl#hasExactSynonym
-http://www.geneontology.org/formats/oboInOwl#hasNarrowSynonym
-http://www.geneontology.org/formats/oboInOwl#hasBroadSynonym
-http://www.geneontology.org/formats/oboInOwl#inSubset
-http://www.geneontology.org/formats/oboInOwl#hasAlternativeId
-
 
 #################################################
 
@@ -453,23 +442,16 @@ includeAllChildren
 
 http://www.ebi.ac.uk/efo/EFO_0004951 # alive at endpoint
 http://www.ebi.ac.uk/efo/EFO_0004952 # disease recurrence
-http://www.ebi.ac.uk/efo/EFO_0009642 # follow-up
+http://www.ebi.ac.uk/efo/EFO_0009642 # 	follow-up
 
 http://www.ebi.ac.uk/efo/EFO_0000683 # replicate
 http://www.ebi.ac.uk/efo/EFO_0002091 #   biological replicate
 http://www.ebi.ac.uk/efo/EFO_0002090 #   technical replicate
 
 [Top level source term URIs and target direct superclass URIs]
-#http://www.ebi.ac.uk/efo/EFO_0000001 # experimental factor # HAS BFO STUFF UNDER IT
-#http://www.ebi.ac.uk/efo/EFO_0001799 # ethnic group
-#Ensures we can control its placement
-#http://www.ebi.ac.uk/efo/EFO_0001444 # measurement
-#http://www.ebi.ac.uk/efo/EFO_0000719 # 	 temporal measurement
-#http://www.ebi.ac.uk/efo/EFO_0004324 # body weights and measures
-#http://www.ebi.ac.uk/efo/EFO_0000683 # replicate
-
 http://purl.obolibrary.org/obo/BFO_0000020 # material property
-http://purl.obolibrary.org/obo/BFO_0000015 # process
+http://purl.obolibrary.org/obo/BFO_0000015 # process # manually placing medical procedure rather than using EFO planned process.
+http://www.ebi.ac.uk/efo/EFO_0002571 # medical procedure
 http://purl.obolibrary.org/obo/BFO_0000040 # material entity
 http://purl.obolibrary.org/obo/BFO_0000029 # site
 http://purl.obolibrary.org/obo/IAO_0000030 # information content entity
@@ -479,20 +461,6 @@ http://purl.obolibrary.org/obo/IAO_0000030 # information content entity
 includeAllIntermediates
 
 [Source annotation URIs]
-
-
-#http://www.ebi.ac.uk/efo/alternative_term
-#mapTo http://www.geneontology.org/formats/oboInOwl#hasExactSynonym
-
-http://www.ebi.ac.uk/efo/SNOMEDCT_definition_citation
-mapTo http://www.geneontology.org/formats/oboInOwl#hasDbXref
-http://www.ebi.ac.uk/efo/MSH_definition_citation
-mapTo http://www.geneontology.org/formats/oboInOwl#hasDbXref
-http://www.ebi.ac.uk/efo/NCI_Thesaurus_definition_citation
-mapTo http://www.geneontology.org/formats/oboInOwl#hasDbXref
-http://www.ebi.ac.uk/efo/NIFSTD_definition_citation
-mapTo http://www.geneontology.org/formats/oboInOwl#hasDbXref
-
 http://www.ebi.ac.uk/efo/definition_editor
 mapTo http://purl.obolibrary.org/obo/IAO_0000117 # term editor
 
@@ -504,8 +472,7 @@ mapTo http://purl.obolibrary.org/obo/IAO_0000115
 http://www.ebi.ac.uk/efo/definition_citation 
 mapTo http://purl.obolibrary.org/obo/IAO_0000119 
 
-
-http://www.w3.org/2000/01/rdf-schema#subClassOf
+#http://www.w3.org/2000/01/rdf-schema#subClassOf
 
 http://www.w3.org/2000/01/rdf-schema#label
 http://www.w3.org/2000/01/rdf-schema#comment
@@ -520,13 +487,11 @@ http://purl.obolibrary.org/obo/OBI_0001886 # NIAID GSCID-BRC alternative term
 http://www.geneontology.org/formats/oboInOwl#hasDbXref
 http://www.geneontology.org/formats/oboInOwl#hasExactSynonym
 http://www.geneontology.org/formats/oboInOwl#hasNarrowSynonym
-http://www.geneontology.org/formats/oboInOwl#hasBroadSynonym
-http://www.geneontology.org/formats/oboInOwl#inSubset
 http://www.geneontology.org/formats/oboInOwl#hasAlternativeId
 
 [Source annotation URIs to be excluded]  
-http://www.w3.org/2002/07/owl#AnnotationProperty            
-http://www.w3.org/2000/01/rdf-schema#subPropertyOf   
+#http://www.w3.org/2002/07/owl#AnnotationProperty            
+#http://www.w3.org/2000/01/rdf-schema#subPropertyOf   
 
 #################################################
 
@@ -1853,6 +1818,7 @@ OGMS
 [Low level source term URIs]
 http://purl.obolibrary.org/obo/OGMS_0000031 # disease	* BioSample: host_disease*
 http://purl.obolibrary.org/obo/OGMS_0000090 # treatment
+http://purl.obolibrary.org/obo/OGMS_0000104 # diagnostic process
 
 [Top level source term URIs and target direct superclass URIs]
 http://purl.obolibrary.org/obo/BFO_0000020

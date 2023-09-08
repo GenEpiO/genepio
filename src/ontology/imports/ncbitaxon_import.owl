@@ -7,6 +7,7 @@
     <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
     <!ENTITY xml "http://www.w3.org/XML/1998/namespace" >
     <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY NCBITaxon "http://purl.obolibrary.org/obo/NCBITaxon#" >
     <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
 ]>
 
@@ -18,7 +19,8 @@
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:NCBITaxon="&obo;NCBITaxon#">
     <owl:Ontology rdf:about="&obo;genepio/imports/ncbitaxon_import.owl"/>
     
 
@@ -36,21 +38,21 @@
 
     <!-- http://purl.obolibrary.org/obo/IAO_0000111 -->
 
-    <!-- <owl:AnnotationProperty rdf:about="&obo;IAO_0000111"/> -->
+    <owl:AnnotationProperty rdf:about="&obo;IAO_0000111"/>
     
 
 
     <!-- http://purl.obolibrary.org/obo/IAO_0000118 -->
 
-    <!-- <owl:AnnotationProperty rdf:about="&obo;IAO_0000118"/> -->
+    <owl:AnnotationProperty rdf:about="&obo;IAO_0000118"/>
     
 
 
     <!-- http://purl.obolibrary.org/obo/IAO_0000412 -->
 
-    <!-- <owl:AnnotationProperty rdf:about="&obo;IAO_0000412">
+    <owl:AnnotationProperty rdf:about="&obo;IAO_0000412">
         <rdfs:label xml:lang="en">imported from</rdfs:label>
-    </owl:AnnotationProperty> -->
+    </owl:AnnotationProperty>
     
 
 
@@ -68,9 +70,9 @@
     <!-- http://purl.obolibrary.org/obo/NCBITaxon_1 -->
 
     <owl:Class rdf:about="&obo;NCBITaxon_1">
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">root</obo:IAO_0000111>
+        <obo:IAO_0000111>root</obo:IAO_0000111>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">root</rdfs:label>
+        <rdfs:label>root</rdfs:label>
     </owl:Class>
     
 
@@ -79,11 +81,11 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_10090">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_9989"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Mus musculus</obo:IAO_0000111>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">house mouse</obo:IAO_0000118>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">mouse</obo:IAO_0000118>
+        <obo:IAO_0000111>Mus musculus</obo:IAO_0000111>
+        <obo:IAO_0000118>house mouse</obo:IAO_0000118>
+        <obo:IAO_0000118>mouse</obo:IAO_0000118>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Mus musculus</rdfs:label>
+        <rdfs:label>Mus musculus</rdfs:label>
     </owl:Class>
     
 
@@ -92,10 +94,10 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_10091">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_10090"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Mus musculus castaneus</obo:IAO_0000111>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">southeastern Asian house mouse</obo:IAO_0000118>
+        <obo:IAO_0000111>Mus musculus castaneus</obo:IAO_0000111>
+        <obo:IAO_0000118>southeastern Asian house mouse</obo:IAO_0000118>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Mus musculus castaneus</rdfs:label>
+        <rdfs:label>Mus musculus castaneus</rdfs:label>
     </owl:Class>
     
 
@@ -104,10 +106,10 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_10092">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_10090"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Mus musculus domesticus</obo:IAO_0000111>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">western European house mouse</obo:IAO_0000118>
+        <obo:IAO_0000111>Mus musculus domesticus</obo:IAO_0000111>
+        <obo:IAO_0000118>western European house mouse</obo:IAO_0000118>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Mus musculus domesticus</rdfs:label>
+        <rdfs:label>Mus musculus domesticus</rdfs:label>
     </owl:Class>
     
 
@@ -116,11 +118,11 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_10141">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_9989"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Cavia porcellus</obo:IAO_0000111>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">domestic guinea pig</obo:IAO_0000118>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">guinea pig</obo:IAO_0000118>
+        <obo:IAO_0000111>Cavia porcellus</obo:IAO_0000111>
+        <obo:IAO_0000118>domestic guinea pig</obo:IAO_0000118>
+        <obo:IAO_0000118>guinea pig</obo:IAO_0000118>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Cavia porcellus</rdfs:label>
+        <rdfs:label>Cavia porcellus</rdfs:label>
     </owl:Class>
     
 
@@ -129,9 +131,9 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_10239">
         <rdfs:subClassOf rdf:resource="&obo;OBI_0100026"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Viruses</obo:IAO_0000111>
+        <obo:IAO_0000111>Viruses</obo:IAO_0000111>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Viruses</rdfs:label>
+        <rdfs:label>Viruses</rdfs:label>
     </owl:Class>
     
 
@@ -140,10 +142,10 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_10244">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_10239"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Monkeypox virus</obo:IAO_0000111>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">monkey pox virus</obo:IAO_0000118>
+        <obo:IAO_0000111>Monkeypox virus</obo:IAO_0000111>
+        <obo:IAO_0000118>monkey pox virus</obo:IAO_0000118>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Monkeypox virus</rdfs:label>
+        <rdfs:label>Monkeypox virus</rdfs:label>
     </owl:Class>
     
 
@@ -152,9 +154,9 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_1045010">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_562"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Escherichia coli O157</obo:IAO_0000111>
+        <obo:IAO_0000111>Escherichia coli O157</obo:IAO_0000111>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Escherichia coli O157</rdfs:label>
+        <rdfs:label>Escherichia coli O157</rdfs:label>
     </owl:Class>
     
 
@@ -163,9 +165,9 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_1055535">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_562"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Escherichia coli O111</obo:IAO_0000111>
+        <obo:IAO_0000111>Escherichia coli O111</obo:IAO_0000111>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Escherichia coli O111</rdfs:label>
+        <rdfs:label>Escherichia coli O111</rdfs:label>
     </owl:Class>
     
 
@@ -174,9 +176,9 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_1055536">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_562"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Escherichia coli O103</obo:IAO_0000111>
+        <obo:IAO_0000111>Escherichia coli O103</obo:IAO_0000111>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Escherichia coli O103</rdfs:label>
+        <rdfs:label>Escherichia coli O103</rdfs:label>
     </owl:Class>
     
 
@@ -185,9 +187,9 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_1078021">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_562"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Escherichia coli O113:H21</obo:IAO_0000111>
+        <obo:IAO_0000111>Escherichia coli O113:H21</obo:IAO_0000111>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Escherichia coli O113:H21</rdfs:label>
+        <rdfs:label>Escherichia coli O113:H21</rdfs:label>
     </owl:Class>
     
 
@@ -196,9 +198,9 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_1078032">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_562"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Escherichia coli O45:H2</obo:IAO_0000111>
+        <obo:IAO_0000111>Escherichia coli O45:H2</obo:IAO_0000111>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Escherichia coli O45:H2</rdfs:label>
+        <rdfs:label>Escherichia coli O45:H2</rdfs:label>
     </owl:Class>
     
 
@@ -207,9 +209,9 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_108619">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_59201"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Salmonella enterica subsp. enterica serovar Newport</obo:IAO_0000111>
+        <obo:IAO_0000111>Salmonella enterica subsp. enterica serovar Newport</obo:IAO_0000111>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Salmonella enterica subsp. enterica serovar Newport</rdfs:label>
+        <rdfs:label>Salmonella enterica subsp. enterica serovar Newport</rdfs:label>
     </owl:Class>
     
 
@@ -218,9 +220,9 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_1095706">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_562"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Escherichia coli O18</obo:IAO_0000111>
+        <obo:IAO_0000111>Escherichia coli O18</obo:IAO_0000111>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Escherichia coli O18</rdfs:label>
+        <rdfs:label>Escherichia coli O18</rdfs:label>
     </owl:Class>
     
 
@@ -229,25 +231,9 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_116058">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_10090"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Mus musculus brevirostris</obo:IAO_0000111>
+        <obo:IAO_0000111>Mus musculus brevirostris</obo:IAO_0000111>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Mus musculus brevirostris</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/NCBITaxon_1224 -->
-
-    <owl:Class rdf:about="&obo;NCBITaxon_1224">
-        <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_2"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Proteobacteria</obo:IAO_0000111>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">purple bacteria</obo:IAO_0000118>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">purple bacteria and relatives</obo:IAO_0000118>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">purple non-sulfur bacteria</obo:IAO_0000118>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">purple photosynthetic bacteria</obo:IAO_0000118>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">purple photosynthetic bacteria and relatives</obo:IAO_0000118>
-        <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Proteobacteria</rdfs:label>
+        <rdfs:label>Mus musculus brevirostris</rdfs:label>
     </owl:Class>
     
 
@@ -256,9 +242,9 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_1232152">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_562"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Escherichia coli O103:H11</obo:IAO_0000111>
+        <obo:IAO_0000111>Escherichia coli O103:H11</obo:IAO_0000111>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Escherichia coli O103:H11</rdfs:label>
+        <rdfs:label>Escherichia coli O103:H11</rdfs:label>
     </owl:Class>
     
 
@@ -267,9 +253,9 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_1266728">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_10090"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Mus musculus domesticus x M. m. molossinus</obo:IAO_0000111>
+        <obo:IAO_0000111>Mus musculus domesticus x M. m. molossinus</obo:IAO_0000111>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Mus musculus domesticus x M. m. molossinus</rdfs:label>
+        <rdfs:label>Mus musculus domesticus x M. m. molossinus</rdfs:label>
     </owl:Class>
     
 
@@ -278,9 +264,9 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_131567">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_1"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">cellular organisms</obo:IAO_0000111>
+        <obo:IAO_0000111>cellular organisms</obo:IAO_0000111>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">cellular organisms</rdfs:label>
+        <rdfs:label>cellular organisms</rdfs:label>
     </owl:Class>
     
 
@@ -289,9 +275,9 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_1365258">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_562"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Escherichia coli 151_06</obo:IAO_0000111>
+        <obo:IAO_0000111>Escherichia coli 151_06</obo:IAO_0000111>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Escherichia coli 151_06</rdfs:label>
+        <rdfs:label>Escherichia coli 151_06</rdfs:label>
     </owl:Class>
     
 
@@ -300,9 +286,9 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_1385377">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_10090"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Mus musculus gansuensis</obo:IAO_0000111>
+        <obo:IAO_0000111>Mus musculus gansuensis</obo:IAO_0000111>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Mus musculus gansuensis</rdfs:label>
+        <rdfs:label>Mus musculus gansuensis</rdfs:label>
     </owl:Class>
     
 
@@ -311,9 +297,9 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_1437010">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_32524"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Boreoeutheria</obo:IAO_0000111>
+        <obo:IAO_0000111>Boreoeutheria</obo:IAO_0000111>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Boreoeutheria</rdfs:label>
+        <rdfs:label>Boreoeutheria</rdfs:label>
     </owl:Class>
     
 
@@ -322,9 +308,9 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_149385">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_59201"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Salmonella enterica subsp. enterica serovar Hadar</obo:IAO_0000111>
+        <obo:IAO_0000111>Salmonella enterica subsp. enterica serovar Hadar</obo:IAO_0000111>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Salmonella enterica subsp. enterica serovar Hadar</rdfs:label>
+        <rdfs:label>Salmonella enterica subsp. enterica serovar Hadar</rdfs:label>
     </owl:Class>
     
 
@@ -333,10 +319,10 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_149539">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_59201"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Salmonella enterica subsp. enterica serovar Enteritidis</obo:IAO_0000111>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">Salmonella enterica serovar Enteritidis</obo:IAO_0000118>
+        <obo:IAO_0000111>Salmonella enterica subsp. enterica serovar Enteritidis</obo:IAO_0000111>
+        <obo:IAO_0000118>Salmonella enterica serovar Enteritidis</obo:IAO_0000118>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Salmonella enterica subsp. enterica serovar Enteritidis</rdfs:label>
+        <rdfs:label>Salmonella enterica subsp. enterica serovar Enteritidis</rdfs:label>
     </owl:Class>
     
 
@@ -345,9 +331,9 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_1549675">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_8825"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Galloanserae</obo:IAO_0000111>
+        <obo:IAO_0000111>Galloanserae</obo:IAO_0000111>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Galloanserae</rdfs:label>
+        <rdfs:label>Galloanserae</rdfs:label>
     </owl:Class>
     
 
@@ -356,9 +342,9 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_1637">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_1783272"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Listeria</obo:IAO_0000111>
+        <obo:IAO_0000111>Listeria</obo:IAO_0000111>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Listeria</rdfs:label>
+        <rdfs:label>Listeria</rdfs:label>
     </owl:Class>
     
 
@@ -367,9 +353,9 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_1639">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_1637"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Listeria monocytogenes</obo:IAO_0000111>
+        <obo:IAO_0000111>Listeria monocytogenes</obo:IAO_0000111>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Listeria monocytogenes</rdfs:label>
+        <rdfs:label>Listeria monocytogenes</rdfs:label>
     </owl:Class>
     
 
@@ -378,9 +364,9 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_1643390">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_10090"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Mus musculus helgolandicus</obo:IAO_0000111>
+        <obo:IAO_0000111>Mus musculus helgolandicus</obo:IAO_0000111>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Mus musculus helgolandicus</rdfs:label>
+        <rdfs:label>Mus musculus helgolandicus</rdfs:label>
     </owl:Class>
     
 
@@ -389,9 +375,9 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_1773">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_1783272"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Mycobacterium tuberculosis</obo:IAO_0000111>
+        <obo:IAO_0000111>Mycobacterium tuberculosis</obo:IAO_0000111>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Mycobacterium tuberculosis</rdfs:label>
+        <rdfs:label>Mycobacterium tuberculosis</rdfs:label>
     </owl:Class>
     
 
@@ -400,9 +386,9 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_1783272">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_2"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Terrabacteria group</obo:IAO_0000111>
+        <obo:IAO_0000111>Terrabacteria group</obo:IAO_0000111>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Terrabacteria group</rdfs:label>
+        <rdfs:label>Terrabacteria group</rdfs:label>
     </owl:Class>
     
 
@@ -411,9 +397,9 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_179238">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_10090"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Mus musculus homourus</obo:IAO_0000111>
+        <obo:IAO_0000111>Mus musculus homourus</obo:IAO_0000111>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Mus musculus homourus</rdfs:label>
+        <rdfs:label>Mus musculus homourus</rdfs:label>
     </owl:Class>
     
 
@@ -422,9 +408,9 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_1879032">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_10090"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Mus musculus isatissus</obo:IAO_0000111>
+        <obo:IAO_0000111>Mus musculus isatissus</obo:IAO_0000111>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Mus musculus isatissus</rdfs:label>
+        <rdfs:label>Mus musculus isatissus</rdfs:label>
     </owl:Class>
     
 
@@ -433,9 +419,9 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_192953">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_59201"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Salmonella enterica subsp. enterica serovar Stanley</obo:IAO_0000111>
+        <obo:IAO_0000111>Salmonella enterica subsp. enterica serovar Stanley</obo:IAO_0000111>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Salmonella enterica subsp. enterica serovar Stanley</rdfs:label>
+        <rdfs:label>Salmonella enterica subsp. enterica serovar Stanley</rdfs:label>
     </owl:Class>
     
 
@@ -443,10 +429,10 @@
     <!-- http://purl.obolibrary.org/obo/NCBITaxon_194 -->
 
     <owl:Class rdf:about="&obo;NCBITaxon_194">
-        <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_1224"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Campylobacter</obo:IAO_0000111>
+        <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_2"/>
+        <obo:IAO_0000111>Campylobacter</obo:IAO_0000111>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Campylobacter</rdfs:label>
+        <rdfs:label>Campylobacter</rdfs:label>
     </owl:Class>
     
 
@@ -455,9 +441,9 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_197">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_194"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Campylobacter jejuni</obo:IAO_0000111>
+        <obo:IAO_0000111>Campylobacter jejuni</obo:IAO_0000111>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Campylobacter jejuni</rdfs:label>
+        <rdfs:label>Campylobacter jejuni</rdfs:label>
     </owl:Class>
     
 
@@ -466,10 +452,10 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_2">
         <rdfs:subClassOf rdf:resource="&obo;OBI_0100026"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Bacteria</obo:IAO_0000111>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">eubacteria</obo:IAO_0000118>
+        <obo:IAO_0000111>Bacteria</obo:IAO_0000111>
+        <obo:IAO_0000118>eubacteria</obo:IAO_0000118>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Bacteria</rdfs:label>
+        <rdfs:label>Bacteria</rdfs:label>
     </owl:Class>
     
 
@@ -478,9 +464,9 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_2157">
         <rdfs:subClassOf rdf:resource="&obo;OBI_0100026"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Archaea</obo:IAO_0000111>
+        <obo:IAO_0000111>Archaea</obo:IAO_0000111>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Archaea</rdfs:label>
+        <rdfs:label>Archaea</rdfs:label>
     </owl:Class>
     
 
@@ -489,9 +475,9 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_244317">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_562"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Escherichia coli O128:H2</obo:IAO_0000111>
+        <obo:IAO_0000111>Escherichia coli O128:H2</obo:IAO_0000111>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Escherichia coli O128:H2</rdfs:label>
+        <rdfs:label>Escherichia coli O128:H2</rdfs:label>
     </owl:Class>
     
 
@@ -500,9 +486,9 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_244319">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_562"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Escherichia coli O26:H11</obo:IAO_0000111>
+        <obo:IAO_0000111>Escherichia coli O26:H11</obo:IAO_0000111>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Escherichia coli O26:H11</rdfs:label>
+        <rdfs:label>Escherichia coli O26:H11</rdfs:label>
     </owl:Class>
     
 
@@ -511,16 +497,16 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_2697049">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_694009"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Severe acute respiratory syndrome coronavirus 2</obo:IAO_0000111>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">2019-nCoV</obo:IAO_0000118>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">COVID-19 virus</obo:IAO_0000118>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">HCoV-19</obo:IAO_0000118>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">Human coronavirus 2019</obo:IAO_0000118>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">SARS-2</obo:IAO_0000118>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">SARS-CoV2</obo:IAO_0000118>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">SARS2</obo:IAO_0000118>
+        <obo:IAO_0000111>Severe acute respiratory syndrome coronavirus 2</obo:IAO_0000111>
+        <obo:IAO_0000118>2019-nCoV</obo:IAO_0000118>
+        <obo:IAO_0000118>COVID-19 virus</obo:IAO_0000118>
+        <obo:IAO_0000118>HCoV-19</obo:IAO_0000118>
+        <obo:IAO_0000118>Human coronavirus 2019</obo:IAO_0000118>
+        <obo:IAO_0000118>SARS-2</obo:IAO_0000118>
+        <obo:IAO_0000118>SARS-CoV2</obo:IAO_0000118>
+        <obo:IAO_0000118>SARS2</obo:IAO_0000118>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Severe acute respiratory syndrome coronavirus 2</rdfs:label>
+        <rdfs:label>Severe acute respiratory syndrome coronavirus 2</rdfs:label>
     </owl:Class>
     
 
@@ -529,11 +515,11 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_2709072">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_694009"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Bat coronavirus RaTG13</obo:IAO_0000111>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">Bat coronavirus Ra4991</obo:IAO_0000118>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">Bat coronavirus isolate RaTG13</obo:IAO_0000118>
+        <obo:IAO_0000111>Bat coronavirus RaTG13</obo:IAO_0000111>
+        <obo:IAO_0000118>Bat coronavirus Ra4991</obo:IAO_0000118>
+        <obo:IAO_0000118>Bat coronavirus isolate RaTG13</obo:IAO_0000118>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Bat coronavirus RaTG13</rdfs:label>
+        <rdfs:label>Bat coronavirus RaTG13</rdfs:label>
     </owl:Class>
     
 
@@ -542,11 +528,11 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_2759">
         <rdfs:subClassOf rdf:resource="&obo;OBI_0100026"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Eukaryota</obo:IAO_0000111>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">eucaryotes</obo:IAO_0000118>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">eukaryotes</obo:IAO_0000118>
+        <obo:IAO_0000111>Eukaryota</obo:IAO_0000111>
+        <obo:IAO_0000118>eucaryotes</obo:IAO_0000118>
+        <obo:IAO_0000118>eukaryotes</obo:IAO_0000118>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Eukaryota</rdfs:label>
+        <rdfs:label>Eukaryota</rdfs:label>
     </owl:Class>
     
 
@@ -555,9 +541,9 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_28901">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_590"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Salmonella enterica</obo:IAO_0000111>
+        <obo:IAO_0000111>Salmonella enterica</obo:IAO_0000111>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Salmonella enterica</rdfs:label>
+        <rdfs:label>Salmonella enterica</rdfs:label>
     </owl:Class>
     
 
@@ -566,9 +552,9 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_314145">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_1437010"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Laurasiatheria</obo:IAO_0000111>
+        <obo:IAO_0000111>Laurasiatheria</obo:IAO_0000111>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Laurasiatheria</rdfs:label>
+        <rdfs:label>Laurasiatheria</rdfs:label>
     </owl:Class>
     
 
@@ -577,9 +563,9 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_314146">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_1437010"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Euarchontoglires</obo:IAO_0000111>
+        <obo:IAO_0000111>Euarchontoglires</obo:IAO_0000111>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Euarchontoglires</rdfs:label>
+        <rdfs:label>Euarchontoglires</rdfs:label>
     </owl:Class>
     
 
@@ -588,10 +574,10 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_314147">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_314146"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Glires</obo:IAO_0000111>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">Rodents and rabbits</obo:IAO_0000118>
+        <obo:IAO_0000111>Glires</obo:IAO_0000111>
+        <obo:IAO_0000118>Rodents and rabbits</obo:IAO_0000118>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Glires</rdfs:label>
+        <rdfs:label>Glires</rdfs:label>
     </owl:Class>
     
 
@@ -600,10 +586,10 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_32524">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_7776"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Amniota</obo:IAO_0000111>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">amniotes</obo:IAO_0000118>
+        <obo:IAO_0000111>Amniota</obo:IAO_0000111>
+        <obo:IAO_0000118>amniotes</obo:IAO_0000118>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Amniota</rdfs:label>
+        <rdfs:label>Amniota</rdfs:label>
     </owl:Class>
     
 
@@ -612,12 +598,12 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_33090">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_2759"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Viridiplantae</obo:IAO_0000111>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">Chlorophyta/Embryophyta group</obo:IAO_0000118>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">chlorophyte/embryophyte group</obo:IAO_0000118>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">green plants</obo:IAO_0000118>
+        <obo:IAO_0000111>Viridiplantae</obo:IAO_0000111>
+        <obo:IAO_0000118>Chlorophyta/Embryophyta group</obo:IAO_0000118>
+        <obo:IAO_0000118>chlorophyte/embryophyte group</obo:IAO_0000118>
+        <obo:IAO_0000118>green plants</obo:IAO_0000118>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Viridiplantae</rdfs:label>
+        <rdfs:label>Viridiplantae</rdfs:label>
     </owl:Class>
     
 
@@ -626,9 +612,9 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_33213">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_2759"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Bilateria</obo:IAO_0000111>
+        <obo:IAO_0000111>Bilateria</obo:IAO_0000111>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Bilateria</rdfs:label>
+        <rdfs:label>Bilateria</rdfs:label>
     </owl:Class>
     
 
@@ -637,9 +623,9 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_33317">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_33213"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Protostomia</obo:IAO_0000111>
+        <obo:IAO_0000111>Protostomia</obo:IAO_0000111>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Protostomia</rdfs:label>
+        <rdfs:label>Protostomia</rdfs:label>
     </owl:Class>
     
 
@@ -648,10 +634,10 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_33554">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_314145"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Carnivora</obo:IAO_0000111>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">carnivores</obo:IAO_0000118>
+        <obo:IAO_0000111>Carnivora</obo:IAO_0000111>
+        <obo:IAO_0000118>carnivores</obo:IAO_0000118>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Carnivora</rdfs:label>
+        <rdfs:label>Carnivora</rdfs:label>
     </owl:Class>
     
 
@@ -660,10 +646,10 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_35531">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_10090"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Mus musculus bactrianus</obo:IAO_0000111>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">southwestern Asian house mouse</obo:IAO_0000118>
+        <obo:IAO_0000111>Mus musculus bactrianus</obo:IAO_0000111>
+        <obo:IAO_0000118>southwestern Asian house mouse</obo:IAO_0000118>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Mus musculus bactrianus</rdfs:label>
+        <rdfs:label>Mus musculus bactrianus</rdfs:label>
     </owl:Class>
     
 
@@ -672,9 +658,9 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_363569">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_59201"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Salmonella enterica subsp. enterica serovar Javiana</obo:IAO_0000111>
+        <obo:IAO_0000111>Salmonella enterica subsp. enterica serovar Javiana</obo:IAO_0000111>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Salmonella enterica subsp. enterica serovar Javiana</rdfs:label>
+        <rdfs:label>Salmonella enterica subsp. enterica serovar Javiana</rdfs:label>
     </owl:Class>
     
 
@@ -683,9 +669,9 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_376725">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_562"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Escherichia coli O103:H2</obo:IAO_0000111>
+        <obo:IAO_0000111>Escherichia coli O103:H2</obo:IAO_0000111>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Escherichia coli O103:H2</rdfs:label>
+        <rdfs:label>Escherichia coli O103:H2</rdfs:label>
     </owl:Class>
     
 
@@ -694,9 +680,9 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_379583">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_33554"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Feliformia</obo:IAO_0000111>
+        <obo:IAO_0000111>Feliformia</obo:IAO_0000111>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Feliformia</rdfs:label>
+        <rdfs:label>Feliformia</rdfs:label>
     </owl:Class>
     
 
@@ -705,9 +691,9 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_379584">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_33554"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Caniformia</obo:IAO_0000111>
+        <obo:IAO_0000111>Caniformia</obo:IAO_0000111>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Caniformia</rdfs:label>
+        <rdfs:label>Caniformia</rdfs:label>
     </owl:Class>
     
 
@@ -716,10 +702,10 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_39442">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_10090"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Mus musculus musculus</obo:IAO_0000111>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">eastern European house mouse</obo:IAO_0000118>
+        <obo:IAO_0000111>Mus musculus musculus</obo:IAO_0000111>
+        <obo:IAO_0000118>eastern European house mouse</obo:IAO_0000118>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Mus musculus musculus</rdfs:label>
+        <rdfs:label>Mus musculus musculus</rdfs:label>
     </owl:Class>
     
 
@@ -728,9 +714,9 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_397454">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_562"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Escherichia coli O142:H6</obo:IAO_0000111>
+        <obo:IAO_0000111>Escherichia coli O142:H6</obo:IAO_0000111>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Escherichia coli O142:H6</rdfs:label>
+        <rdfs:label>Escherichia coli O142:H6</rdfs:label>
     </owl:Class>
     
 
@@ -739,9 +725,9 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_404394">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_562"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Escherichia coli O26:NM</obo:IAO_0000111>
+        <obo:IAO_0000111>Escherichia coli O26:NM</obo:IAO_0000111>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Escherichia coli O26:NM</rdfs:label>
+        <rdfs:label>Escherichia coli O26:NM</rdfs:label>
     </owl:Class>
     
 
@@ -750,9 +736,9 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_404399">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_562"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Escherichia coli O26</obo:IAO_0000111>
+        <obo:IAO_0000111>Escherichia coli O26</obo:IAO_0000111>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Escherichia coli O26</rdfs:label>
+        <rdfs:label>Escherichia coli O26</rdfs:label>
     </owl:Class>
     
 
@@ -761,9 +747,9 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_43738">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_33317"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Schizophora</obo:IAO_0000111>
+        <obo:IAO_0000111>Schizophora</obo:IAO_0000111>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Schizophora</rdfs:label>
+        <rdfs:label>Schizophora</rdfs:label>
     </owl:Class>
     
 
@@ -772,11 +758,11 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_452646">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_379584"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Neogale vison</obo:IAO_0000111>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">American mink</obo:IAO_0000118>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">mink</obo:IAO_0000118>
+        <obo:IAO_0000111>Neogale vison</obo:IAO_0000111>
+        <obo:IAO_0000118>American mink</obo:IAO_0000118>
+        <obo:IAO_0000118>mink</obo:IAO_0000118>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Neogale vison</rdfs:label>
+        <rdfs:label>Neogale vison</rdfs:label>
     </owl:Class>
     
 
@@ -785,9 +771,9 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_46456">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_10090"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Mus musculus wagneri</obo:IAO_0000111>
+        <obo:IAO_0000111>Mus musculus wagneri</obo:IAO_0000111>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Mus musculus wagneri</rdfs:label>
+        <rdfs:label>Mus musculus wagneri</rdfs:label>
     </owl:Class>
     
 
@@ -796,9 +782,9 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_477815">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_10090"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Mus musculus musculus x M. m. domesticus</obo:IAO_0000111>
+        <obo:IAO_0000111>Mus musculus musculus x M. m. domesticus</obo:IAO_0000111>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Mus musculus musculus x M. m. domesticus</rdfs:label>
+        <rdfs:label>Mus musculus musculus x M. m. domesticus</rdfs:label>
     </owl:Class>
     
 
@@ -807,9 +793,9 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_477816">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_10090"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Mus musculus musculus x Mus musculus castaneus</obo:IAO_0000111>
+        <obo:IAO_0000111>Mus musculus musculus x Mus musculus castaneus</obo:IAO_0000111>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Mus musculus musculus x Mus musculus castaneus</rdfs:label>
+        <rdfs:label>Mus musculus musculus x Mus musculus castaneus</rdfs:label>
     </owl:Class>
     
 
@@ -818,9 +804,9 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_48409">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_59201"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Salmonella enterica subsp. enterica serovar Virchow</obo:IAO_0000111>
+        <obo:IAO_0000111>Salmonella enterica subsp. enterica serovar Virchow</obo:IAO_0000111>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Salmonella enterica subsp. enterica serovar Virchow</rdfs:label>
+        <rdfs:label>Salmonella enterica subsp. enterica serovar Virchow</rdfs:label>
     </owl:Class>
     
 
@@ -828,10 +814,10 @@
     <!-- http://purl.obolibrary.org/obo/NCBITaxon_543 -->
 
     <owl:Class rdf:about="&obo;NCBITaxon_543">
-        <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_1224"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Enterobacteriaceae</obo:IAO_0000111>
+        <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_2"/>
+        <obo:IAO_0000111>Enterobacteriaceae</obo:IAO_0000111>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Enterobacteriaceae</rdfs:label>
+        <rdfs:label>Enterobacteriaceae</rdfs:label>
     </owl:Class>
     
 
@@ -840,9 +826,9 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_54736">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_590"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Salmonella bongori</obo:IAO_0000111>
+        <obo:IAO_0000111>Salmonella bongori</obo:IAO_0000111>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Salmonella bongori</rdfs:label>
+        <rdfs:label>Salmonella bongori</rdfs:label>
     </owl:Class>
     
 
@@ -851,11 +837,11 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_562">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_543"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Escherichia coli</obo:IAO_0000111>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">E. coli</obo:IAO_0000118>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">Escherichia/Shigella coli</obo:IAO_0000118>
+        <obo:IAO_0000111>Escherichia coli</obo:IAO_0000111>
+        <obo:IAO_0000118>E. coli</obo:IAO_0000118>
+        <obo:IAO_0000118>Escherichia/Shigella coli</obo:IAO_0000118>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Escherichia coli</rdfs:label>
+        <rdfs:label>Escherichia coli</rdfs:label>
     </owl:Class>
     
 
@@ -864,10 +850,10 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_57486">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_10090"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Mus musculus molossinus</obo:IAO_0000111>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">Japanese wild mouse</obo:IAO_0000118>
+        <obo:IAO_0000111>Mus musculus molossinus</obo:IAO_0000111>
+        <obo:IAO_0000118>Japanese wild mouse</obo:IAO_0000118>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Mus musculus molossinus</rdfs:label>
+        <rdfs:label>Mus musculus molossinus</rdfs:label>
     </owl:Class>
     
 
@@ -876,10 +862,10 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_58055">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_9397"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Rhinolophidae</obo:IAO_0000111>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">Old World leaf-nosed bats</obo:IAO_0000118>
+        <obo:IAO_0000111>Rhinolophidae</obo:IAO_0000111>
+        <obo:IAO_0000118>Old World leaf-nosed bats</obo:IAO_0000118>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Rhinolophidae</rdfs:label>
+        <rdfs:label>Rhinolophidae</rdfs:label>
     </owl:Class>
     
 
@@ -888,9 +874,9 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_590">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_543"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Salmonella</obo:IAO_0000111>
+        <obo:IAO_0000111>Salmonella</obo:IAO_0000111>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Salmonella</rdfs:label>
+        <rdfs:label>Salmonella</rdfs:label>
     </owl:Class>
     
 
@@ -899,9 +885,9 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_59201">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_28901"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Salmonella enterica subsp. enterica</obo:IAO_0000111>
+        <obo:IAO_0000111>Salmonella enterica subsp. enterica</obo:IAO_0000111>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Salmonella enterica subsp. enterica</rdfs:label>
+        <rdfs:label>Salmonella enterica subsp. enterica</rdfs:label>
     </owl:Class>
     
 
@@ -910,10 +896,10 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_59477">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_58055"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Rhinolophus affinis</obo:IAO_0000111>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">intermediate horseshoe bat</obo:IAO_0000118>
+        <obo:IAO_0000111>Rhinolophus affinis</obo:IAO_0000111>
+        <obo:IAO_0000118>intermediate horseshoe bat</obo:IAO_0000118>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Rhinolophus affinis</rdfs:label>
+        <rdfs:label>Rhinolophus affinis</rdfs:label>
     </owl:Class>
     
 
@@ -922,9 +908,9 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_595">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_59201"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Salmonella enterica subsp. enterica serovar Infantis</obo:IAO_0000111>
+        <obo:IAO_0000111>Salmonella enterica subsp. enterica serovar Infantis</obo:IAO_0000111>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Salmonella enterica subsp. enterica serovar Infantis</rdfs:label>
+        <rdfs:label>Salmonella enterica subsp. enterica serovar Infantis</rdfs:label>
     </owl:Class>
     
 
@@ -933,9 +919,9 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_611">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_59201"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Salmonella enterica subsp. enterica serovar Heidelberg</obo:IAO_0000111>
+        <obo:IAO_0000111>Salmonella enterica subsp. enterica serovar Heidelberg</obo:IAO_0000111>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Salmonella enterica subsp. enterica serovar Heidelberg</rdfs:label>
+        <rdfs:label>Salmonella enterica subsp. enterica serovar Heidelberg</rdfs:label>
     </owl:Class>
     
 
@@ -944,11 +930,11 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_6447">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_33317"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Mollusca</obo:IAO_0000111>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">molluscs</obo:IAO_0000118>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">mollusks</obo:IAO_0000118>
+        <obo:IAO_0000111>Mollusca</obo:IAO_0000111>
+        <obo:IAO_0000118>molluscs</obo:IAO_0000118>
+        <obo:IAO_0000118>mollusks</obo:IAO_0000118>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Mollusca</rdfs:label>
+        <rdfs:label>Mollusca</rdfs:label>
     </owl:Class>
     
 
@@ -957,12 +943,12 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_694009">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_10239"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Severe acute respiratory syndrome-related coronavirus</obo:IAO_0000111>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">Human coronavirus (strain SARS)</obo:IAO_0000118>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">SARS-like coronavirus</obo:IAO_0000118>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">SARS-related coronavirus</obo:IAO_0000118>
+        <obo:IAO_0000111>Severe acute respiratory syndrome-related coronavirus</obo:IAO_0000111>
+        <obo:IAO_0000118>Human coronavirus (strain SARS)</obo:IAO_0000118>
+        <obo:IAO_0000118>SARS-like coronavirus</obo:IAO_0000118>
+        <obo:IAO_0000118>SARS-related coronavirus</obo:IAO_0000118>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Severe acute respiratory syndrome-related coronavirus</rdfs:label>
+        <rdfs:label>Severe acute respiratory syndrome-related coronavirus</rdfs:label>
     </owl:Class>
     
 
@@ -971,12 +957,12 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_7215">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_43738"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Drosophila &lt;flies,genus&gt;</obo:IAO_0000111>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">Drosophila</obo:IAO_0000118>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">fruit flies</obo:IAO_0000118>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">fruit fly</obo:IAO_0000118>
+        <obo:IAO_0000111>Drosophila &lt;flies,genus&gt;</obo:IAO_0000111>
+        <obo:IAO_0000118>Drosophila</obo:IAO_0000118>
+        <obo:IAO_0000118>fruit flies</obo:IAO_0000118>
+        <obo:IAO_0000118>fruit fly</obo:IAO_0000118>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Drosophila &lt;flies,genus&gt;</rdfs:label>
+        <rdfs:label>Drosophila &lt;flies,genus&gt;</rdfs:label>
     </owl:Class>
     
 
@@ -985,10 +971,10 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_7370">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_43738"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Musca domestica</obo:IAO_0000111>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">house fly</obo:IAO_0000118>
+        <obo:IAO_0000111>Musca domestica</obo:IAO_0000111>
+        <obo:IAO_0000118>house fly</obo:IAO_0000118>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Musca domestica</rdfs:label>
+        <rdfs:label>Musca domestica</rdfs:label>
     </owl:Class>
     
 
@@ -997,11 +983,11 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_7742">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_33213"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Vertebrata &lt;vertebrates&gt;</obo:IAO_0000111>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">Vertebrata</obo:IAO_0000118>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">vertebrates</obo:IAO_0000118>
+        <obo:IAO_0000111>Vertebrata &lt;vertebrates&gt;</obo:IAO_0000111>
+        <obo:IAO_0000118>Vertebrata</obo:IAO_0000118>
+        <obo:IAO_0000118>vertebrates</obo:IAO_0000118>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Vertebrata &lt;vertebrates&gt;</rdfs:label>
+        <rdfs:label>Vertebrata &lt;vertebrates&gt;</rdfs:label>
     </owl:Class>
     
 
@@ -1010,11 +996,11 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_7776">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_7742"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Gnathostomata &lt;vertebrates&gt;</obo:IAO_0000111>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">Gnathostomata</obo:IAO_0000118>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">jawed vertebrates</obo:IAO_0000118>
+        <obo:IAO_0000111>Gnathostomata &lt;vertebrates&gt;</obo:IAO_0000111>
+        <obo:IAO_0000118>Gnathostomata</obo:IAO_0000118>
+        <obo:IAO_0000118>jawed vertebrates</obo:IAO_0000118>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Gnathostomata &lt;vertebrates&gt;</rdfs:label>
+        <rdfs:label>Gnathostomata &lt;vertebrates&gt;</rdfs:label>
     </owl:Class>
     
 
@@ -1023,12 +1009,12 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_7777">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_7776"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Chondrichthyes</obo:IAO_0000111>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">cartilaginous fishes</obo:IAO_0000118>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">fish</obo:IAO_0000118>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">fishes</obo:IAO_0000118>
+        <obo:IAO_0000111>Chondrichthyes</obo:IAO_0000111>
+        <obo:IAO_0000118>cartilaginous fishes</obo:IAO_0000118>
+        <obo:IAO_0000118>fish</obo:IAO_0000118>
+        <obo:IAO_0000118>fishes</obo:IAO_0000118>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Chondrichthyes</rdfs:label>
+        <rdfs:label>Chondrichthyes</rdfs:label>
     </owl:Class>
     
 
@@ -1037,9 +1023,9 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_80274">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_10090"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Mus musculus gentilulus</obo:IAO_0000111>
+        <obo:IAO_0000111>Mus musculus gentilulus</obo:IAO_0000111>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Mus musculus gentilulus</rdfs:label>
+        <rdfs:label>Mus musculus gentilulus</rdfs:label>
     </owl:Class>
     
 
@@ -1048,9 +1034,9 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_816">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_2"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Bacteroides</obo:IAO_0000111>
+        <obo:IAO_0000111>Bacteroides</obo:IAO_0000111>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Bacteroides</rdfs:label>
+        <rdfs:label>Bacteroides</rdfs:label>
     </owl:Class>
     
 
@@ -1059,10 +1045,10 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_8782">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_32524"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Aves</obo:IAO_0000111>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">birds</obo:IAO_0000118>
+        <obo:IAO_0000111>Aves</obo:IAO_0000111>
+        <obo:IAO_0000118>birds</obo:IAO_0000118>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Aves</rdfs:label>
+        <rdfs:label>Aves</rdfs:label>
     </owl:Class>
     
 
@@ -1071,9 +1057,9 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_8825">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_8782"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Neognathae</obo:IAO_0000111>
+        <obo:IAO_0000111>Neognathae</obo:IAO_0000111>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Neognathae</rdfs:label>
+        <rdfs:label>Neognathae</rdfs:label>
     </owl:Class>
     
 
@@ -1082,13 +1068,13 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_8839">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_1549675"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Anas platyrhynchos</obo:IAO_0000111>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">duck</obo:IAO_0000118>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">mallard</obo:IAO_0000118>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">mallard duck</obo:IAO_0000118>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">mallard ducks</obo:IAO_0000118>
+        <obo:IAO_0000111>Anas platyrhynchos</obo:IAO_0000111>
+        <obo:IAO_0000118>duck</obo:IAO_0000118>
+        <obo:IAO_0000118>mallard</obo:IAO_0000118>
+        <obo:IAO_0000118>mallard duck</obo:IAO_0000118>
+        <obo:IAO_0000118>mallard ducks</obo:IAO_0000118>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Anas platyrhynchos</rdfs:label>
+        <rdfs:label>Anas platyrhynchos</rdfs:label>
     </owl:Class>
     
 
@@ -1097,10 +1083,10 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_8930">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_8825"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Columbidae</obo:IAO_0000111>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">pigeons</obo:IAO_0000118>
+        <obo:IAO_0000111>Columbidae</obo:IAO_0000111>
+        <obo:IAO_0000118>pigeons</obo:IAO_0000118>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Columbidae</rdfs:label>
+        <rdfs:label>Columbidae</rdfs:label>
     </owl:Class>
     
 
@@ -1109,10 +1095,10 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_9005">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_1549675"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Phasianidae</obo:IAO_0000111>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">turkeys</obo:IAO_0000118>
+        <obo:IAO_0000111>Phasianidae</obo:IAO_0000111>
+        <obo:IAO_0000118>turkeys</obo:IAO_0000118>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Phasianidae</rdfs:label>
+        <rdfs:label>Phasianidae</rdfs:label>
     </owl:Class>
     
 
@@ -1121,13 +1107,13 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_9031">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_9005"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Gallus gallus</obo:IAO_0000111>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">Gallus domesticus</obo:IAO_0000118>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">bantam</obo:IAO_0000118>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">chicken</obo:IAO_0000118>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">chickens</obo:IAO_0000118>
+        <obo:IAO_0000111>Gallus gallus</obo:IAO_0000111>
+        <obo:IAO_0000118>Gallus domesticus</obo:IAO_0000118>
+        <obo:IAO_0000118>bantam</obo:IAO_0000118>
+        <obo:IAO_0000118>chicken</obo:IAO_0000118>
+        <obo:IAO_0000118>chickens</obo:IAO_0000118>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Gallus gallus</rdfs:label>
+        <rdfs:label>Gallus gallus</rdfs:label>
     </owl:Class>
     
 
@@ -1136,9 +1122,9 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_90371">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_59201"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Salmonella enterica subsp. enterica serovar Typhimurium</obo:IAO_0000111>
+        <obo:IAO_0000111>Salmonella enterica subsp. enterica serovar Typhimurium</obo:IAO_0000111>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Salmonella enterica subsp. enterica serovar Typhimurium</rdfs:label>
+        <rdfs:label>Salmonella enterica subsp. enterica serovar Typhimurium</rdfs:label>
     </owl:Class>
     
 
@@ -1147,10 +1133,10 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_9091">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_9005"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Coturnix coturnix</obo:IAO_0000111>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">Common quail</obo:IAO_0000118>
+        <obo:IAO_0000111>Coturnix coturnix</obo:IAO_0000111>
+        <obo:IAO_0000118>Common quail</obo:IAO_0000118>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Coturnix coturnix</rdfs:label>
+        <rdfs:label>Coturnix coturnix</rdfs:label>
     </owl:Class>
     
 
@@ -1159,12 +1145,12 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_9103">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_9005"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Meleagris gallopavo</obo:IAO_0000111>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">common turkey</obo:IAO_0000118>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">turkey</obo:IAO_0000118>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">wild turkey</obo:IAO_0000118>
+        <obo:IAO_0000111>Meleagris gallopavo</obo:IAO_0000111>
+        <obo:IAO_0000118>common turkey</obo:IAO_0000118>
+        <obo:IAO_0000118>turkey</obo:IAO_0000118>
+        <obo:IAO_0000118>wild turkey</obo:IAO_0000118>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Meleagris gallopavo</rdfs:label>
+        <rdfs:label>Meleagris gallopavo</rdfs:label>
     </owl:Class>
     
 
@@ -1173,10 +1159,10 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_91561">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_314145"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Artiodactyla</obo:IAO_0000111>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">whales, hippos, ruminants, pigs, camels etc.</obo:IAO_0000118>
+        <obo:IAO_0000111>Artiodactyla</obo:IAO_0000111>
+        <obo:IAO_0000118>whales, hippos, ruminants, pigs, camels etc.</obo:IAO_0000118>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Artiodactyla</rdfs:label>
+        <rdfs:label>Artiodactyla</rdfs:label>
     </owl:Class>
     
 
@@ -1185,10 +1171,10 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_9397">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_314145"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Chiroptera</obo:IAO_0000111>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">bats</obo:IAO_0000118>
+        <obo:IAO_0000111>Chiroptera</obo:IAO_0000111>
+        <obo:IAO_0000118>bats</obo:IAO_0000118>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Chiroptera</rdfs:label>
+        <rdfs:label>Chiroptera</rdfs:label>
     </owl:Class>
     
 
@@ -1197,9 +1183,9 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_947985">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_10090"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Mus musculus albula</obo:IAO_0000111>
+        <obo:IAO_0000111>Mus musculus albula</obo:IAO_0000111>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Mus musculus albula</rdfs:label>
+        <rdfs:label>Mus musculus albula</rdfs:label>
     </owl:Class>
     
 
@@ -1208,10 +1194,10 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_9605">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_314146"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Homo</obo:IAO_0000111>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">humans</obo:IAO_0000118>
+        <obo:IAO_0000111>Homo</obo:IAO_0000111>
+        <obo:IAO_0000118>humans</obo:IAO_0000118>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Homo</rdfs:label>
+        <rdfs:label>Homo</rdfs:label>
     </owl:Class>
     
 
@@ -1220,10 +1206,10 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_9606">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_9605"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Homo sapiens</obo:IAO_0000111>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">human</obo:IAO_0000118>
+        <obo:IAO_0000111>Homo sapiens</obo:IAO_0000111>
+        <obo:IAO_0000118>human</obo:IAO_0000118>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Homo sapiens</rdfs:label>
+        <rdfs:label>Homo sapiens</rdfs:label>
     </owl:Class>
     
 
@@ -1232,11 +1218,11 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_9615">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_379584"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Canis lupus familiaris</obo:IAO_0000111>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">dog</obo:IAO_0000118>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">dogs</obo:IAO_0000118>
+        <obo:IAO_0000111>Canis lupus familiaris</obo:IAO_0000111>
+        <obo:IAO_0000118>dog</obo:IAO_0000118>
+        <obo:IAO_0000118>dogs</obo:IAO_0000118>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Canis lupus familiaris</rdfs:label>
+        <rdfs:label>Canis lupus familiaris</rdfs:label>
     </owl:Class>
     
 
@@ -1245,10 +1231,10 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_9673">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_379583"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Viverridae</obo:IAO_0000111>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">civets</obo:IAO_0000118>
+        <obo:IAO_0000111>Viverridae</obo:IAO_0000111>
+        <obo:IAO_0000118>civets</obo:IAO_0000118>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Viverridae</rdfs:label>
+        <rdfs:label>Viverridae</rdfs:label>
     </owl:Class>
     
 
@@ -1257,10 +1243,10 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_9681">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_379583"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Felidae</obo:IAO_0000111>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">cat family</obo:IAO_0000118>
+        <obo:IAO_0000111>Felidae</obo:IAO_0000111>
+        <obo:IAO_0000118>cat family</obo:IAO_0000118>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Felidae</rdfs:label>
+        <rdfs:label>Felidae</rdfs:label>
     </owl:Class>
     
 
@@ -1269,12 +1255,12 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_9685">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_9681"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Felis catus</obo:IAO_0000111>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">cat</obo:IAO_0000118>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">cats</obo:IAO_0000118>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">domestic cat</obo:IAO_0000118>
+        <obo:IAO_0000111>Felis catus</obo:IAO_0000111>
+        <obo:IAO_0000118>cat</obo:IAO_0000118>
+        <obo:IAO_0000118>cats</obo:IAO_0000118>
+        <obo:IAO_0000118>domestic cat</obo:IAO_0000118>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Felis catus</rdfs:label>
+        <rdfs:label>Felis catus</rdfs:label>
     </owl:Class>
     
 
@@ -1283,9 +1269,9 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_9688">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_9681"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Panthera</obo:IAO_0000111>
+        <obo:IAO_0000111>Panthera</obo:IAO_0000111>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Panthera</rdfs:label>
+        <rdfs:label>Panthera</rdfs:label>
     </owl:Class>
     
 
@@ -1294,10 +1280,10 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_9689">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_9688"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Panthera leo</obo:IAO_0000111>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">lion</obo:IAO_0000118>
+        <obo:IAO_0000111>Panthera leo</obo:IAO_0000111>
+        <obo:IAO_0000118>lion</obo:IAO_0000118>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Panthera leo</rdfs:label>
+        <rdfs:label>Panthera leo</rdfs:label>
     </owl:Class>
     
 
@@ -1306,10 +1292,10 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_9694">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_9688"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Panthera tigris</obo:IAO_0000111>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">tiger</obo:IAO_0000118>
+        <obo:IAO_0000111>Panthera tigris</obo:IAO_0000111>
+        <obo:IAO_0000118>tiger</obo:IAO_0000118>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Panthera tigris</rdfs:label>
+        <rdfs:label>Panthera tigris</rdfs:label>
     </owl:Class>
     
 
@@ -1318,12 +1304,12 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_9796">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_314145"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Equus caballus</obo:IAO_0000111>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">domestic horse</obo:IAO_0000118>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">equine</obo:IAO_0000118>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">horse</obo:IAO_0000118>
+        <obo:IAO_0000111>Equus caballus</obo:IAO_0000111>
+        <obo:IAO_0000118>domestic horse</obo:IAO_0000118>
+        <obo:IAO_0000118>equine</obo:IAO_0000118>
+        <obo:IAO_0000118>horse</obo:IAO_0000118>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Equus caballus</rdfs:label>
+        <rdfs:label>Equus caballus</rdfs:label>
     </owl:Class>
     
 
@@ -1332,10 +1318,10 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_9825">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_91561"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Sus scrofa domesticus</obo:IAO_0000111>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">domestic pig</obo:IAO_0000118>
+        <obo:IAO_0000111>Sus scrofa domesticus</obo:IAO_0000111>
+        <obo:IAO_0000118>domestic pig</obo:IAO_0000118>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Sus scrofa domesticus</rdfs:label>
+        <rdfs:label>Sus scrofa domesticus</rdfs:label>
     </owl:Class>
     
 
@@ -1344,9 +1330,9 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_9895">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_91561"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Bovidae</obo:IAO_0000111>
+        <obo:IAO_0000111>Bovidae</obo:IAO_0000111>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Bovidae</rdfs:label>
+        <rdfs:label>Bovidae</rdfs:label>
     </owl:Class>
     
 
@@ -1355,17 +1341,17 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_9913">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_9895"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Bos taurus</obo:IAO_0000111>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">bovine</obo:IAO_0000118>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">cattle</obo:IAO_0000118>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">cow</obo:IAO_0000118>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">dairy cow</obo:IAO_0000118>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">domestic cattle</obo:IAO_0000118>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">domestic cow</obo:IAO_0000118>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">ox</obo:IAO_0000118>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">oxen</obo:IAO_0000118>
+        <obo:IAO_0000111>Bos taurus</obo:IAO_0000111>
+        <obo:IAO_0000118>bovine</obo:IAO_0000118>
+        <obo:IAO_0000118>cattle</obo:IAO_0000118>
+        <obo:IAO_0000118>cow</obo:IAO_0000118>
+        <obo:IAO_0000118>dairy cow</obo:IAO_0000118>
+        <obo:IAO_0000118>domestic cattle</obo:IAO_0000118>
+        <obo:IAO_0000118>domestic cow</obo:IAO_0000118>
+        <obo:IAO_0000118>ox</obo:IAO_0000118>
+        <obo:IAO_0000118>oxen</obo:IAO_0000118>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Bos taurus</rdfs:label>
+        <rdfs:label>Bos taurus</rdfs:label>
     </owl:Class>
     
 
@@ -1374,9 +1360,9 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_991913">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_562"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Escherichia coli O103:H25</obo:IAO_0000111>
+        <obo:IAO_0000111>Escherichia coli O103:H25</obo:IAO_0000111>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Escherichia coli O103:H25</rdfs:label>
+        <rdfs:label>Escherichia coli O103:H25</rdfs:label>
     </owl:Class>
     
 
@@ -1385,9 +1371,9 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_991915">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_562"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Escherichia coli O121:H19</obo:IAO_0000111>
+        <obo:IAO_0000111>Escherichia coli O121:H19</obo:IAO_0000111>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Escherichia coli O121:H19</rdfs:label>
+        <rdfs:label>Escherichia coli O121:H19</rdfs:label>
     </owl:Class>
     
 
@@ -1396,9 +1382,9 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_991919">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_562"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Escherichia coli O145:NM</obo:IAO_0000111>
+        <obo:IAO_0000111>Escherichia coli O145:NM</obo:IAO_0000111>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Escherichia coli O145:NM</rdfs:label>
+        <rdfs:label>Escherichia coli O145:NM</rdfs:label>
     </owl:Class>
     
 
@@ -1407,9 +1393,9 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_9922">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_9963"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Capra</obo:IAO_0000111>
+        <obo:IAO_0000111>Capra</obo:IAO_0000111>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Capra</rdfs:label>
+        <rdfs:label>Capra</rdfs:label>
     </owl:Class>
     
 
@@ -1418,11 +1404,11 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_9923">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_9922"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Capra aegagrus</obo:IAO_0000111>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">bezoar ibex</obo:IAO_0000118>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">wild goat</obo:IAO_0000118>
+        <obo:IAO_0000111>Capra aegagrus</obo:IAO_0000111>
+        <obo:IAO_0000118>bezoar ibex</obo:IAO_0000118>
+        <obo:IAO_0000118>wild goat</obo:IAO_0000118>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Capra aegagrus</rdfs:label>
+        <rdfs:label>Capra aegagrus</rdfs:label>
     </owl:Class>
     
 
@@ -1431,12 +1417,12 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_9925">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_9922"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Capra hircus</obo:IAO_0000111>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">domestic goat</obo:IAO_0000118>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">goat</obo:IAO_0000118>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">goats</obo:IAO_0000118>
+        <obo:IAO_0000111>Capra hircus</obo:IAO_0000111>
+        <obo:IAO_0000118>domestic goat</obo:IAO_0000118>
+        <obo:IAO_0000118>goat</obo:IAO_0000118>
+        <obo:IAO_0000118>goats</obo:IAO_0000118>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Capra hircus</rdfs:label>
+        <rdfs:label>Capra hircus</rdfs:label>
     </owl:Class>
     
 
@@ -1445,13 +1431,13 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_9940">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_9963"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Ovis aries</obo:IAO_0000111>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">domestic sheep</obo:IAO_0000118>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">lambs</obo:IAO_0000118>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">sheep</obo:IAO_0000118>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">wild sheep</obo:IAO_0000118>
+        <obo:IAO_0000111>Ovis aries</obo:IAO_0000111>
+        <obo:IAO_0000118>domestic sheep</obo:IAO_0000118>
+        <obo:IAO_0000118>lambs</obo:IAO_0000118>
+        <obo:IAO_0000118>sheep</obo:IAO_0000118>
+        <obo:IAO_0000118>wild sheep</obo:IAO_0000118>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Ovis aries</rdfs:label>
+        <rdfs:label>Ovis aries</rdfs:label>
     </owl:Class>
     
 
@@ -1460,9 +1446,9 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_9963">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_9895"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Caprinae</obo:IAO_0000111>
+        <obo:IAO_0000111>Caprinae</obo:IAO_0000111>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Caprinae</rdfs:label>
+        <rdfs:label>Caprinae</rdfs:label>
     </owl:Class>
     
 
@@ -1471,9 +1457,9 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_9973">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_314145"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Manis</obo:IAO_0000111>
+        <obo:IAO_0000111>Manis</obo:IAO_0000111>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Manis</rdfs:label>
+        <rdfs:label>Manis</rdfs:label>
     </owl:Class>
     
 
@@ -1482,12 +1468,12 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_9974">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_9973"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Manis javanica</obo:IAO_0000111>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">Javan pangolin</obo:IAO_0000118>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">Malayan pangolin</obo:IAO_0000118>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">Sunda pangolin</obo:IAO_0000118>
+        <obo:IAO_0000111>Manis javanica</obo:IAO_0000111>
+        <obo:IAO_0000118>Javan pangolin</obo:IAO_0000118>
+        <obo:IAO_0000118>Malayan pangolin</obo:IAO_0000118>
+        <obo:IAO_0000118>Sunda pangolin</obo:IAO_0000118>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Manis javanica</rdfs:label>
+        <rdfs:label>Manis javanica</rdfs:label>
     </owl:Class>
     
 
@@ -1496,14 +1482,14 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_9986">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_314147"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Oryctolagus cuniculus</obo:IAO_0000111>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">European rabbit</obo:IAO_0000118>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">Japanese white rabbit</obo:IAO_0000118>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">domestic rabbit</obo:IAO_0000118>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">rabbit</obo:IAO_0000118>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">rabbits</obo:IAO_0000118>
+        <obo:IAO_0000111>Oryctolagus cuniculus</obo:IAO_0000111>
+        <obo:IAO_0000118>European rabbit</obo:IAO_0000118>
+        <obo:IAO_0000118>Japanese white rabbit</obo:IAO_0000118>
+        <obo:IAO_0000118>domestic rabbit</obo:IAO_0000118>
+        <obo:IAO_0000118>rabbit</obo:IAO_0000118>
+        <obo:IAO_0000118>rabbits</obo:IAO_0000118>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Oryctolagus cuniculus</rdfs:label>
+        <rdfs:label>Oryctolagus cuniculus</rdfs:label>
     </owl:Class>
     
 
@@ -1512,10 +1498,10 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_9989">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_314147"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">Rodentia</obo:IAO_0000111>
-        <obo:IAO_0000118 rdf:datatype="&xsd;string">rodent</obo:IAO_0000118>
+        <obo:IAO_0000111>Rodentia</obo:IAO_0000111>
+        <obo:IAO_0000118>rodent</obo:IAO_0000118>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">Rodentia</rdfs:label>
+        <rdfs:label>Rodentia</rdfs:label>
     </owl:Class>
     
 
@@ -1524,9 +1510,9 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_genus">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon#_taxonomic_rank"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">genus</obo:IAO_0000111>
+        <obo:IAO_0000111>genus</obo:IAO_0000111>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">genus</rdfs:label>
+        <rdfs:label>genus</rdfs:label>
     </owl:Class>
     
 
@@ -1535,9 +1521,9 @@
 
     <owl:Class rdf:about="&obo;NCBITaxon_species">
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon#_taxonomic_rank"/>
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">species</obo:IAO_0000111>
+        <obo:IAO_0000111>species</obo:IAO_0000111>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">species</rdfs:label>
+        <rdfs:label>species</rdfs:label>
     </owl:Class>
     
 
@@ -1551,13 +1537,13 @@
     <!-- http://purl.obolibrary.org/obo/NCBITaxon#_taxonomic_rank -->
 
     <owl:Class rdf:about="&obo;NCBITaxon#_taxonomic_rank">
-        <obo:IAO_0000111 rdf:datatype="&xsd;string">taxonomic rank</obo:IAO_0000111>
+        <obo:IAO_0000111>taxonomic rank</obo:IAO_0000111>
         <obo:IAO_0000412 rdf:resource="&obo;ncbitaxon.owl"/>
-        <rdfs:label rdf:datatype="&xsd;string">taxonomic rank</rdfs:label>
+        <rdfs:label>taxonomic rank</rdfs:label>
     </owl:Class>
 </rdf:RDF>
 
 
 
-<!-- Generated by the OWL API (version 4.5.6) https://github.com/owlcs/owlapi -->
+<!-- Generated by the OWL API (version 4.5.25) https://github.com/owlcs/owlapi -->
 

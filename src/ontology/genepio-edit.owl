@@ -30,6 +30,7 @@ Import(<http://purl.obolibrary.org/obo/genepio/imports/hardcoded.owl>)
 Import(<http://purl.obolibrary.org/obo/genepio/imports/ncbitaxon_import.owl>)
 Import(<http://purl.obolibrary.org/obo/genepio/imports/obi_import.owl>)
 Import(<http://purl.obolibrary.org/obo/genepio/imports/ro_import.owl>)
+Import(<http://purl.obolibrary.org/obo/genepio/imports/robot_pokay_import.owl>)
 Import(<http://purl.obolibrary.org/obo/genepio/imports/specification_enum_import.owl>)
 Import(<http://purl.obolibrary.org/obo/genepio/imports/specification_field_import.owl>)
 Import(<http://purl.obolibrary.org/obo/genepio/imports/specification_import.owl>)
@@ -1401,6 +1402,12 @@ Declaration(Class(obo:GENEPIO_0100930))
 Declaration(Class(obo:GENEPIO_0100932))
 Declaration(Class(obo:GENEPIO_0100933))
 Declaration(Class(obo:GENEPIO_0100934))
+Declaration(Class(obo:GENEPIO_0700000))
+Declaration(Class(obo:GENEPIO_0700001))
+Declaration(Class(obo:GENEPIO_0700002))
+Declaration(Class(obo:GENEPIO_0700003))
+Declaration(Class(obo:GENEPIO_0700004))
+Declaration(Class(obo:GENEPIO_0700005))
 Declaration(Class(obo:GO_0000003))
 Declaration(Class(obo:GO_0008150))
 Declaration(Class(obo:HP_0000118))
@@ -3326,7 +3333,7 @@ SubClassOf(obo:FOODON_03400361 obo:BFO_0000040)
 
 SubClassOf(obo:FOODON_03411347 obo:GENEPIO_0002016)
 
-# Class: obo:FOODON_03411564 (organismal source)
+# Class: obo:FOODON_03411564 (organism by alternate grouping)
 
 SubClassOf(obo:FOODON_03411564 obo:ENVO_00010483)
 
@@ -12780,6 +12787,38 @@ AnnotationAssertion(dcterms:date obo:GENEPIO_0100934 "2023-11-29T11:47:51Z"^^xsd
 AnnotationAssertion(rdfs:label obo:GENEPIO_0100934 "soil coring")
 SubClassOf(obo:GENEPIO_0100934 obo:OBI_0600012)
 
+# Class: obo:GENEPIO_0700000 (gene orientation)
+
+AnnotationAssertion(obo:IAO_0000115 obo:GENEPIO_0700000 "A genomic orientation which is the orientation of a gene on a stranded molecule.")
+AnnotationAssertion(rdfs:label obo:GENEPIO_0700000 "gene orientation"@en)
+SubClassOf(obo:GENEPIO_0700000 obo:GENEPIO_0100597)
+
+# Class: obo:GENEPIO_0700001 (strand orientation)
+
+AnnotationAssertion(obo:IAO_0000115 obo:GENEPIO_0700001 "A genomic orientation which is the orientation of a strand on a stranded molecule.")
+AnnotationAssertion(rdfs:label obo:GENEPIO_0700001 "strand orientation"@en)
+SubClassOf(obo:GENEPIO_0700001 obo:GENEPIO_0100597)
+
+# Class: obo:GENEPIO_0700002 (sense strand orientation)
+
+AnnotationAssertion(rdfs:label obo:GENEPIO_0700002 "sense strand orientation"@en)
+SubClassOf(obo:GENEPIO_0700002 obo:GENEPIO_0700001)
+
+# Class: obo:GENEPIO_0700003 (antisense strand orientation)
+
+AnnotationAssertion(rdfs:label obo:GENEPIO_0700003 "antisense strand orientation"@en)
+SubClassOf(obo:GENEPIO_0700003 obo:GENEPIO_0700001)
+
+# Class: obo:GENEPIO_0700004 (forward gene orientation)
+
+AnnotationAssertion(rdfs:label obo:GENEPIO_0700004 "forward gene orientation"@en)
+SubClassOf(obo:GENEPIO_0700004 obo:GENEPIO_0700000)
+
+# Class: obo:GENEPIO_0700005 (reverse gene orientation)
+
+AnnotationAssertion(rdfs:label obo:GENEPIO_0700005 "reverse gene orientation"@en)
+SubClassOf(obo:GENEPIO_0700005 obo:GENEPIO_0700000)
+
 # Class: obo:GEO_000000788 (geodetic datum)
 
 SubClassOf(obo:GEO_000000788 obo:GENEPIO_0001866)
@@ -13044,7 +13083,7 @@ SubClassOf(obo:NCIT_C1908 obo:BFO_0000040)
 
 SubClassOf(obo:NCIT_C20108 obo:NCIT_C103180)
 
-# Class: obo:NCIT_C20587 (Age Group)
+# Class: obo:NCIT_C20587 (Age Related Group)
 
 SubClassOf(obo:NCIT_C20587 obo:PCO_0000001)
 
@@ -13809,7 +13848,7 @@ SubClassOf(obo:PO_0009011 obo:GENEPIO_0000025)
 
 SubClassOf(obo:PR_000000001 obo:CHEBI_16670)
 
-# Class: obo:RBO_00000017 (Earth surface)
+# Class: obo:RBO_00000017 (earth surface)
 
 SubClassOf(obo:RBO_00000017 obo:ENVO_01000254)
 

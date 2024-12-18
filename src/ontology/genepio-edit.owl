@@ -19,8 +19,6 @@ Prefix(apollo_sv:=<http://purl.obolibrary.org/obo/apollo_sv.owl/>)
 
 
 Ontology(<http://purl.obolibrary.org/obo/genepio.owl>
-<http://purl.obolibrary.org/obo/genepio/releases/2018-09-07/genepio.owl>
-Import(<http://purl.obolibrary.org/obo/bfo/2.0/bfo.owl>)
 Import(<http://purl.obolibrary.org/obo/genepio/imports/chebi_import.owl>)
 Import(<http://purl.obolibrary.org/obo/genepio/imports/deprecation_import.owl>)
 Import(<http://purl.obolibrary.org/obo/genepio/imports/gaz_insdc_mapping.owl>)
@@ -1401,7 +1399,6 @@ Declaration(Class(obo:GENEPIO_0100930))
 Declaration(Class(obo:GENEPIO_0100932))
 Declaration(Class(obo:GENEPIO_0100933))
 Declaration(Class(obo:GENEPIO_0100934))
-Declaration(Class(obo:GO_0000003))
 Declaration(Class(obo:GO_0008150))
 Declaration(Class(obo:HP_0000118))
 Declaration(Class(obo:HP_0012830))
@@ -1555,6 +1552,7 @@ Declaration(Class(obo:PATO_0000384))
 Declaration(Class(obo:PATO_0001585))
 Declaration(Class(obo:PATO_0001894))
 Declaration(Class(obo:PCO_0000000))
+Declaration(Class(obo:PCO_0000001))
 Declaration(Class(obo:PCO_0000033))
 Declaration(Class(obo:PO_0009011))
 Declaration(Class(obo:RBO_00000017))
@@ -1608,7 +1606,6 @@ Declaration(Class(obo:hancestro_0004))
 Declaration(Class(<http://purl.obolibrary.org/obo/GENEPIO:0100292>))
 Declaration(Class(<http://purl.phyloviz.net/ontology/typon#MLVA>))
 Declaration(Class(resource:SIO_000507))
-Declaration(Class(resource:SIO_000666))
 Declaration(Class(resource:SIO_000729))
 Declaration(Class(resource:SIO_000811))
 Declaration(Class(resource:SIO_000964))
@@ -1775,6 +1772,7 @@ Declaration(AnnotationProperty(obo:IAO_0000412))
 Declaration(AnnotationProperty(obo:IAO_0000596))
 Declaration(AnnotationProperty(obo:IAO_0000597))
 Declaration(AnnotationProperty(obo:IAO_0000598))
+Declaration(AnnotationProperty(obo:IAO_0000600))
 Declaration(AnnotationProperty(obo:IAO_0100001))
 Declaration(AnnotationProperty(obo:OBI_0001886))
 Declaration(AnnotationProperty(obo:RO_0001900))
@@ -2212,7 +2210,7 @@ ObjectPropertyDomain(obo:IAO_0000136 obo:IAO_0000030)
 
 AnnotationAssertion(obo:GENEPIO_0000006 obo:OBI_0001927 "specifies"@en)
 
-# Object Property: obo:RO_0000052 (inheres in)
+# Object Property: obo:RO_0000052 (characteristic of)
 
 AnnotationAssertion(rdfs:label obo:RO_0000052 "inheres in"@en)
 
@@ -2657,10 +2655,6 @@ AnnotationAssertion(oboInOwl:hasDbXref obo:BFO_0000019 "http://purl.obolibrary.o
 
 AnnotationAssertion(oboInOwl:hasDbXref obo:BFO_0000023 "http://purl.obolibrary.org/obo/CHEBI_50906"^^xsd:anyURI)
 
-# Class: obo:BFO_0000029 (site)
-
-AnnotationAssertion(rdfs:comment obo:BFO_0000029 "Note that this can refer to a material entity like an organ or muscle, or an immaterial entity (a site or fiat boundary) like skin, stomach cavity or lung surface."@en)
-
 # Class: obo:BTO_0000003 (intestinal cell line)
 
 SubClassOf(obo:BTO_0000003 obo:CLO_0000031)
@@ -3063,14 +3057,6 @@ SubClassOf(obo:CHEBI_9997 obo:GENEPIO_0001187)
 AnnotationAssertion(obo:GENEPIO_0000006 obo:CHMO_0002743 "specimen extraction matrix"@en)
 AnnotationAssertion(rdfs:comment obo:CHMO_0002743 "\"This observable is important where process of capturing sample can affect dna extraction.\""@en)
 
-# Class: obo:CIDO_0000019 (COVID-19 RT-PCR assay)
-
-SubClassOf(obo:CIDO_0000019 obo:OBI_0000070)
-
-# Class: obo:CIDO_0000027 (COVID-19 diagnostic process by viral genome sequencing)
-
-SubClassOf(obo:CIDO_0000027 obo:OGMS_0000104)
-
 # Class: obo:CVDO_0000597 (congenital disease)
 
 SubClassOf(obo:CVDO_0000597 obo:GENEPIO_0001843)
@@ -3112,14 +3098,12 @@ SubClassOf(obo:DOID_9471 obo:GENEPIO_0001682)
 
 # Class: obo:ENVO_00000004 (administrative region)
 
-SubClassOf(obo:ENVO_00000004 obo:BFO_0000029)
+SubClassOf(obo:ENVO_00000004 obo:BFO_0000040)
 
 # Class: obo:ENVO_00000005 (first-order administrative region)
 
 AnnotationAssertion(obo:GENEPIO_0000006 obo:ENVO_00000005 "state / province / territory / region"@en)
 AnnotationAssertion(obo:GENEPIO_0001763 obo:ENVO_00000005 "lookup:http://purl.obolibrary.org/obo/GAZ_00000448")
-SubClassOf(obo:ENVO_00000005 resource:SIO_000415)
-SubClassOf(obo:ENVO_00000005 ObjectSomeValuesFrom(obo:RO_0001025 obo:NCIT_C25464))
 
 # Class: obo:ENVO_00000014 (canal)
 
@@ -3326,7 +3310,7 @@ SubClassOf(obo:FOODON_03400361 obo:BFO_0000040)
 
 SubClassOf(obo:FOODON_03411347 obo:GENEPIO_0002016)
 
-# Class: obo:FOODON_03411564 (organismal source)
+# Class: obo:FOODON_03411564 (organism by alternate grouping)
 
 SubClassOf(obo:FOODON_03411564 obo:ENVO_00010483)
 
@@ -6138,10 +6122,11 @@ SubClassOf(obo:GENEPIO_0001047 obo:GENEPIO_0001154)
 
 # Class: obo:GENEPIO_0001048 (infectious disease exposure event)
 
-AnnotationAssertion(obo:IAO_0000115 obo:GENEPIO_0001048 "An event (occuring at some location and for some duration of time) where"@en)
+AnnotationAssertion(obo:IAO_0000114 obo:GENEPIO_0001048 obo:IAO_0000428)
+AnnotationAssertion(obo:IAO_0000115 obo:GENEPIO_0001048 "An event where one or more hosts are exposed to an infectious pathogen"@en)
 AnnotationAssertion(obo:IAO_0000117 obo:GENEPIO_0001048 "Damion Dooley")
 AnnotationAssertion(rdfs:label obo:GENEPIO_0001048 "infectious disease exposure event"@en)
-SubClassOf(obo:GENEPIO_0001048 obo:BFO_0000011)
+SubClassOf(obo:GENEPIO_0001048 obo:BFO_0000015)
 
 # Class: obo:GENEPIO_0001049 (human related exposure event)
 
@@ -6494,7 +6479,7 @@ SubClassOf(obo:GENEPIO_0001097 obo:GENEPIO_0001039)
 # Class: obo:GENEPIO_0001098 (tuberculosis infection anatomical site)
 
 AnnotationAssertion(rdfs:label obo:GENEPIO_0001098 "tuberculosis infection anatomical site"@en)
-SubClassOf(obo:GENEPIO_0001098 obo:BFO_0000029)
+SubClassOf(obo:GENEPIO_0001098 obo:UBERON_0001062)
 
 # Class: obo:GENEPIO_0001099 (obsolete: NCBI Antibiogram model)
 
@@ -7535,7 +7520,7 @@ AnnotationAssertion(obo:IAO_0000117 obo:GENEPIO_0001538 "Damion Dooley")
 AnnotationAssertion(rdfs:label obo:GENEPIO_0001538 "exposed person role"@en)
 SubClassOf(obo:GENEPIO_0001538 obo:GENEPIO_0001537)
 
-# Class: obo:GENEPIO_0001541 (parent-guardian role)
+# Class: obo:GENEPIO_0001541 (obsolete: parent-guardian role)
 
 AnnotationAssertion(rdfs:label obo:GENEPIO_0001541 "parent-guardian role"@en)
 SubClassOf(obo:GENEPIO_0001541 obo:GENEPIO_0001537)
@@ -9016,6 +9001,7 @@ AnnotationAssertion(obo:IAO_0000115 obo:GENEPIO_0001742 "A subnational region is
 AnnotationAssertion(obo:IAO_0000117 obo:GENEPIO_0001742 "Damion Dooley")
 AnnotationAssertion(rdfs:label obo:GENEPIO_0001742 "subnational region"@en)
 SubClassOf(obo:GENEPIO_0001742 obo:ENVO_00000005)
+SubClassOf(obo:GENEPIO_0001742 obo:NCIT_C16632)
 DisjointClasses(obo:GENEPIO_0001742 obo:NCIT_C25632)
 DisjointClasses(obo:GENEPIO_0001742 obo:NCIT_C87194)
 DisjointClasses(obo:GENEPIO_0001742 obo:NCIT_C89811)
@@ -10070,7 +10056,7 @@ SubClassOf(obo:GENEPIO_0001885 ObjectSomeValuesFrom(obo:BFO_0000051 obo:GENEPIO_
 AnnotationAssertion(obo:IAO_0000114 obo:GENEPIO_0001886 obo:IAO_0000428)
 AnnotationAssertion(obo:IAO_0000114 obo:GENEPIO_0001886 "A designated area on earth is one or more areas defined by one or more boundaries.  A boundary can be defined by a polygon perimeter, a lat/long and radius, or a fiat-boundary geographic featureset like a named river channel or mountain ridge; it may have one or more names associated with it. Note that areas associated with a name may change their boundary definitions over time."@en)
 AnnotationAssertion(obo:IAO_0000117 obo:GENEPIO_0001886 "Damion Dooley")
-SubClassOf(obo:GENEPIO_0001886 obo:BFO_0000029)
+SubClassOf(obo:GENEPIO_0001886 obo:NCIT_C16632)
 
 # Class: obo:GENEPIO_0001888 (Canada postal code)
 
@@ -12182,7 +12168,7 @@ SubClassOf(obo:GENEPIO_0002161 ObjectSomeValuesFrom(obo:OBI_0001927 ObjectUnionO
 AnnotationAssertion(obo:IAO_0000115 obo:GENEPIO_0002162 "A specification for a geographic location that a specimen was collected at."@en)
 AnnotationAssertion(rdfs:label obo:GENEPIO_0002162 "specimen collection site specification"@en)
 SubClassOf(obo:GENEPIO_0002162 obo:OBI_0001930)
-SubClassOf(obo:GENEPIO_0002162 ObjectSomeValuesFrom(obo:OBI_0001927 resource:SIO_000415))
+SubClassOf(obo:GENEPIO_0002162 ObjectSomeValuesFrom(obo:OBI_0001927 obo:NCIT_C16632))
 
 # Class: obo:GENEPIO_0002163 (subject organism common name specification)
 
@@ -12226,7 +12212,6 @@ AnnotationAssertion(obo:IAO_0000117 obo:GENEPIO_0002167 "Damion Dooley"@en)
 AnnotationAssertion(rdfs:label obo:GENEPIO_0002167 "specimen collection site"@en)
 AnnotationAssertion(rdfs:seeAlso obo:GENEPIO_0002167 obo:NCIT_C87913)
 SubClassOf(obo:GENEPIO_0002167 obo:GENEPIO_0001886)
-SubClassOf(obo:GENEPIO_0002167 ObjectUnionOf(obo:ENVO_00000005 obo:NCIT_C25464 obo:NCIT_C80234))
 
 # Class: obo:GENEPIO_0002168 (drug MIC unit specification)
 
@@ -12707,6 +12692,10 @@ AnnotationAssertion(rdfs:label obo:GENEPIO_0100634 "State or Province or Territo
 EquivalentClasses(obo:GENEPIO_0100634 ObjectUnionOf(obo:NCIT_C25632 obo:NCIT_C87194 obo:NCIT_C89811))
 SubClassOf(obo:GENEPIO_0100634 obo:NCIT_C16632)
 
+# Class: obo:GENEPIO_0100750 (available data types enumeration)
+
+SubClassOf(obo:GENEPIO_0100750 obo:IAO_0000027)
+
 # Class: obo:GENEPIO_0100898 (digestive tract substance)
 
 AnnotationAssertion(obo:IAO_0000115 obo:GENEPIO_0100898 "Undigested food material, microbiota, and other materials found in the digestive tract."@en)
@@ -13044,13 +13033,9 @@ SubClassOf(obo:NCIT_C1908 obo:BFO_0000040)
 
 SubClassOf(obo:NCIT_C20108 obo:NCIT_C103180)
 
-# Class: obo:NCIT_C20587 (Age Group)
+# Class: obo:NCIT_C20587 (Age Related Group)
 
 SubClassOf(obo:NCIT_C20587 obo:PCO_0000001)
-
-# Class: obo:NCIT_C25155 (Birth)
-
-SubClassOf(obo:NCIT_C25155 obo:GO_0000003)
 
 # Class: obo:NCIT_C25189 (Mother)
 
@@ -13076,7 +13061,6 @@ SubClassOf(obo:NCIT_C25392 obo:OBI_0000245)
 # Class: obo:NCIT_C25464 (Country)
 
 AnnotationAssertion(rdfs:seeAlso obo:NCIT_C25464 "http://purl.obolibrary.org/obo/GEO_000000396"^^xsd:anyURI)
-SubClassOf(obo:NCIT_C25464 resource:SIO_000415)
 
 # Class: obo:NCIT_C25610 (Pathologic)
 
@@ -13114,7 +13098,7 @@ SubClassOf(obo:NCIT_C25717 obo:GENEPIO_0001170)
 # Class: obo:NCIT_C25720 (Zip Code)
 
 AnnotationAssertion(obo:GENEPIO_1919 obo:NCIT_C25720 "/^(:<zip>\\d{5}(-\\d{4})?)/, $zip")
-SubClassOf(obo:NCIT_C25720 ObjectIntersectionOf(ObjectSomeValuesFrom(obo:IAO_0000136 ObjectIntersectionOf(obo:BFO_0000029 ObjectSomeValuesFrom(obo:RO_0001025 obo:GAZ_00002459))) ObjectSomeValuesFrom(obo:OBI_0001927 obo:NCIT_C25621)))
+SubClassOf(obo:NCIT_C25720 ObjectIntersectionOf(ObjectSomeValuesFrom(obo:IAO_0000136 ObjectIntersectionOf(obo:NCIT_C16632 ObjectSomeValuesFrom(obo:RO_0001025 obo:GAZ_00002459))) ObjectSomeValuesFrom(obo:OBI_0001927 obo:NCIT_C25621)))
 SubClassOf(obo:NCIT_C25720 DataAllValuesFrom(obo:OBI_0002135 DatatypeRestriction(xsd:string xsd:pattern "[A-Za-z0-9]+([_.\\-][A-Za-z0-9]+)*\\@[A-Za-z0-9]+([.\\-][A-Za-z0-9]+){1,3}")))
 
 # Class: obo:NCIT_C25741 (Physician)
@@ -13296,10 +13280,6 @@ SubClassOf(obo:NCIT_C71898 obo:IAO_0000300)
 
 SubClassOf(obo:NCIT_C74723 obo:GENEPIO_0001626)
 
-# Class: obo:NCIT_C77683 (Incision Site)
-
-SubClassOf(obo:NCIT_C77683 obo:BFO_0000029)
-
 # Class: obo:NCIT_C79916 (investigative subject)
 
 AnnotationAssertion(obo:IAO_0000115 obo:NCIT_C79916 "An entity, either biologic or otherwise, of interest in an investigation. [def-source: NCI]"@en)
@@ -13312,8 +13292,6 @@ SubClassOf(obo:NCIT_C79916 obo:BFO_0000040)
 
 AnnotationAssertion(obo:GENEPIO_0001763 obo:NCIT_C80234 "lookup:http://purl.obolibrary.org/obo/GAZ_00000448")
 AnnotationAssertion(rdfs:seeAlso obo:NCIT_C80234 "http://semanticscience.org/resource/SIO_000665"@en)
-SubClassOf(obo:NCIT_C80234 obo:ENVO_00000062)
-SubClassOf(obo:NCIT_C80234 resource:SIO_000415)
 
 # Class: obo:NCIT_C82508 (Life Threatening)
 
@@ -13439,10 +13417,6 @@ SubClassOf(obo:OBI_0000717 obo:GENEPIO_0001921)
 
 AnnotationAssertion(rdfs:label obo:OBI_0000718 "pathogen role")
 SubClassOf(obo:OBI_0000718 obo:GENEPIO_0001172)
-
-# Class: obo:OBI_0000732 (restriction enzyme)
-
-SubClassOf(obo:OBI_0000732 obo:PR_000000001)
 
 # Class: obo:OBI_0000925 (infectious agent)
 
@@ -13604,7 +13578,7 @@ SubClassOf(obo:OBI_0002001 obo:GENEPIO_0001939)
 
 SubClassOf(obo:OBI_0002002 obo:GENEPIO_0001939)
 
-# Class: obo:OBI_0002003 (MiSeq)
+# Class: obo:OBI_0002003 (Illumina MiSeq)
 
 AnnotationAssertion(oboInOwl:hasDbXref obo:OBI_0002003 "NCBI SRA: Illumina MiSeq")
 SubClassOf(obo:OBI_0002003 obo:GENEPIO_0001921)
@@ -13614,7 +13588,7 @@ SubClassOf(obo:OBI_0002003 obo:GENEPIO_0001921)
 AnnotationAssertion(oboInOwl:hasDbXref obo:OBI_0002012 "NCBI SRA: PacBio RS")
 SubClassOf(obo:OBI_0002012 obo:GENEPIO_0001921)
 
-# Class: obo:OBI_0002021 (NextSeq 500)
+# Class: obo:OBI_0002021 (Illumina NextSeq 500)
 
 AnnotationAssertion(oboInOwl:hasDbXref obo:OBI_0002021 "NCBI SRA: Illumina NextSeq")
 SubClassOf(obo:OBI_0002021 obo:GENEPIO_0001921)
@@ -13784,11 +13758,11 @@ AnnotationAssertion(obo:IAO_0000119 obo:PATO_0001894 "NCBI: http://www.ncbi.nlm.
 AnnotationAssertion(obo:IAO_0000114 obo:PATO_0002390 obo:IAO_0000428)
 AnnotationAssertion(rdfs:comment obo:PATO_0002390 "Damion Dooley's note: We can't say radius is a subclass of \"linear coordinate\" because length is considered a quality/specifically dependent continuant, which is disjoint with immaterial entity/independent continuant .  I.e. \"length\" as quality unfortunately can't pertain to abstract entities, only \"real\" ones."@en)
 
-# Class: obo:PCO_0000000 (obo:PCO_0000000)
+# Class: obo:PCO_0000000 (collection of organisms)
 
 SubClassOf(obo:PCO_0000000 obo:BFO_0000040)
 
-# Class: obo:PCO_0000001 (population of organisms)
+# Class: obo:PCO_0000001 (obo:PCO_0000001)
 
 SubClassOf(obo:PCO_0000001 obo:BFO_0000027)
 
@@ -13804,14 +13778,6 @@ SubClassOf(obo:PCO_0000033 obo:GENEPIO_0001444)
 # Class: obo:PO_0009011 (plant structure)
 
 SubClassOf(obo:PO_0009011 obo:GENEPIO_0000025)
-
-# Class: obo:PR_000000001 (protein)
-
-SubClassOf(obo:PR_000000001 obo:CHEBI_16670)
-
-# Class: obo:RBO_00000017 (Earth surface)
-
-SubClassOf(obo:RBO_00000017 obo:ENVO_01000254)
 
 # Class: obo:SO_0000149 (contig)
 
@@ -13978,10 +13944,6 @@ AnnotationAssertion(obo:IAO_0000115 obo:TRANS_0000012 "Vehicle-borne ingestion t
 AnnotationAssertion(obo:IAO_0000119 obo:TRANS_0000012 "https://www.ebi.ac.uk/ols/ontologies/trans"^^xsd:anyURI)
 AnnotationAssertion(rdfs:label obo:TRANS_0000012 "vehicle-born ingestion"@en)
 SubClassOf(obo:TRANS_0000012 obo:TRANS_0000002)
-
-# Class: obo:UBERON_0000000 (processual entity)
-
-SubClassOf(obo:UBERON_0000000 obo:BFO_0000003)
 
 # Class: obo:UBERON_0000061 (anatomical structure)
 
@@ -14175,11 +14137,6 @@ SubClassOf(resource:SIO_000505 obo:GENEPIO_0001996)
 
 SubClassOf(resource:SIO_000507 obo:GENEPIO_0001744)
 
-# Class: resource:SIO_000666 (resource:SIO_000666)
-
-SubClassOf(resource:SIO_000666 obo:ENVO_01000658)
-SubClassOf(resource:SIO_000666 obo:NCIT_C80234)
-
 # Class: resource:SIO_000729 (record identifier)
 
 AnnotationAssertion(oboInOwl:hasDbXref resource:SIO_000729 "PulseNet: Key"@en)
@@ -14189,7 +14146,7 @@ SubClassOf(resource:SIO_000729 obo:IAO_0000577)
 
 SubClassOf(resource:SIO_000811 obo:IAO_0000577)
 
-# Class: resource:SIO_000964 (resource:SIO_000964)
+# Class: resource:SIO_000964 (standard operating procedure)
 
 SubClassOf(resource:SIO_000964 resource:SIO_000136)
 
@@ -14798,6 +14755,7 @@ AnnotationAssertion(oboInOwl:hasAlternativeId obo:ARO_3004367 "DIN"^^rdfs:Litera
 AnnotationAssertion(oboInOwl:hasAlternativeId obo:ARO_3004368 "EUCAST"^^rdfs:Literal)
 AnnotationAssertion(oboInOwl:hasAlternativeId obo:ARO_3004369 "SFM"^^rdfs:Literal)
 AnnotationAssertion(rdfs:comment obo:BFO_0000008 "Damion Dooley's note: this BFO class is incompatible with \"immaterial entity\" \"n-dimensional concept\"."@en)
+AnnotationAssertion(rdfs:comment obo:BFO_0000029 "Note that this can refer to a material entity like an organ or muscle, or an immaterial entity (a site or fiat boundary) like skin, stomach cavity or lung surface."@en)
 AnnotationAssertion(obo:GENEPIO_0000006 obo:CHEBI_33290 "food role"@en)
 AnnotationAssertion(obo:GENEPIO_0000006 obo:ENVO_00000002 "constructed feature"@en)
 AnnotationAssertion(oboInOwl:hasExactSynonym obo:ENVO_00000009 "http://purl.obolibrary.org/obo/NCIT_C25464"@en)

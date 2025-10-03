@@ -50,6 +50,11 @@ http://purl.obolibrary.org/obo/APOLLO_SV_00000511
 http://purl.obolibrary.org/obo/BFO_0000015 # process
 http://purl.obolibrary.org/obo/BFO_0000040 # material entity
 http://purl.obolibrary.org/obo/IAO_0000030 # information
+http://purl.obolibrary.org/obo/BFO_0000020 # characteristic
+http://purl.obolibrary.org/obo/PATO_0000001 # characteristic
+subClassOf http://purl.obolibrary.org/obo/BFO_0000020
+http://purl.obolibrary.org/obo/BFO_0000141 # immaterial entity
+http://purl.obolibrary.org/obo/BFO_0000031 # generically dependent continuant (COB characteristic)
 
 [Source term retrieval setting]
 includeAllIntermediates
@@ -74,9 +79,9 @@ http://purl.obolibrary.org/obo/OBI_0001886 # NIAID GSCID-BRC alternative term
 
 [Source annotation URIs to be excluded]
 #http://purl.obolibrary.org/obo/APOLLO_SV_0000040 #???
-http://purl.obolibrary.org/obo/RO_0000053
-http://purl.obolibrary.org/obo/BFO_0000108 
-http://purl.obolibrary.org/obo/BFO_0000157
+# http://purl.obolibrary.org/obo/RO_0000053
+# http://purl.obolibrary.org/obo/BFO_0000108 
+# http://purl.obolibrary.org/obo/BFO_0000157
 
 
 #################################################
@@ -315,7 +320,7 @@ http://purl.obolibrary.org/obo/DOID_863 # nervous system disease
 
 
 http://purl.obolibrary.org/obo/DOID_1287 # cardiovascular system disease
-http://purl.obolibrary.org/obo/DOID_0050829 #pericardium disease
+http://purl.obolibrary.org/obo/DOID_0050829 # pericardium disease
 http://purl.obolibrary.org/obo/DOID_114 # heart disease
 
 http://purl.obolibrary.org/obo/DOID_15 # reproductive system disease
@@ -328,8 +333,6 @@ http://purl.obolibrary.org/obo/DOID_75 # lymphatic system disease
 http://purl.obolibrary.org/obo/DOID_9942 # lymph node disease
 
 http://purl.obolibrary.org/obo/DOID_10690 # mastitisis
-#http://purl.obolibrary.org/obo/SYMP_0000672 # abscess
-http://purl.obolibrary.org/obo/SYMP_0000092 # skin lesion
 
 # NON-existent term
 #http://purl.obolibrary.org/obo/DOID_9219 # pregnancy complication
@@ -347,6 +350,10 @@ includeAllChildren
 
 http://purl.obolibrary.org/obo/DOID_4379 # nut allergy
 includeAllChildren
+
+http://purl.obolibrary.org/obo/DOID_1287
+http://purl.obolibrary.org/obo/DOID_77
+http://purl.obolibrary.org/obo/DOID_850
 
 [Top level source term URIs and target direct superclass URIs]
 http://purl.obolibrary.org/obo/DOID_4 #disease
@@ -943,7 +950,7 @@ http://purl.obolibrary.org/obo/GSSO_004005
 # Can't do default BFO 00000001 because GSSO uses SIO 'attribute' in path:
 http://purl.obolibrary.org/obo/BFO_0000020 # characteristic
 http://purl.obolibrary.org/obo/NCIT_C19332 # personal attribute
-
+http://purl.obolibrary.org/obo/BFO_0000019 # quality
 
 [Source term retrieval setting]
 includeAllIntermediates
@@ -1870,8 +1877,9 @@ OBA
 http://purl.obolibrary.org/obo/OBA_1000039 # Mollusk shell length
 
 [Top level source term URIs and target direct superclass URIs]
-http://purl.obolibrary.org/obo/PATO_0001241 # physical object quality
-
+http://purl.obolibrary.org/obo/OBA_2045412 # anatomical entity morphology
+subClassOf http://purl.obolibrary.org/obo/PATO_0001241 # physical object quality
+http://purl.obolibrary.org/obo/PATO_0000122 # length
 
 [Source term retrieval setting]
 includeAllIntermediates
@@ -1930,6 +1938,8 @@ http://purl.obolibrary.org/obo/OGMS_0000104 # diagnostic process
 
 [Top level source term URIs and target direct superclass URIs]
 http://purl.obolibrary.org/obo/BFO_0000020 # characteristic
+http://purl.obolibrary.org/obo/BFO_0000015 # process
+http://purl.obolibrary.org/obo/BFO_0000016 # disposition
 
 [Source term retrieval setting]
 includeAllIntermediates
@@ -1973,8 +1983,8 @@ http://purl.obolibrary.org/obo/OMIT_0020918 # Shiga Toxin 2
 
 [Top level source term URIs and target direct superclass URIs]
 # ISSUE: OMIT terms are positioned under "quality" but so many of them aren't qualities
-http://purl.obolibrary.org/obo/BFO_0000019
-
+http://purl.obolibrary.org/obo/BFO_0000019 # quality
+http://purl.obolibrary.org/obo/BFO_0000020 # specifically dependent continuant (COB characteristic)
 
 [Source term retrieval setting]
 includeAllIntermediates
@@ -2107,6 +2117,13 @@ http://purl.obolibrary.org/obo/PCO_0000039
 
 [Top level source term URIs and target direct superclass URIs]
 http://purl.obolibrary.org/obo/PCO_0000000 # collection of organisms
+http://purl.obolibrary.org/obo/IAO_0000030 # information
+http://purl.obolibrary.org/obo/BFO_0000020 # characteristic
+http://purl.obolibrary.org/obo/PATO_0000001 # characteristic
+subClassOf http://purl.obolibrary.org/obo/BFO_0000020
+http://purl.obolibrary.org/obo/BFO_0000141 # immaterial entity
+http://purl.obolibrary.org/obo/BFO_0000040 # material entity
+http://purl.obolibrary.org/obo/BFO_0000015 # process
 
 [Source term retrieval setting]
 includeAllIntermediates
@@ -2351,6 +2368,8 @@ SYMP
 
 [Low level source term URIs]
 http://purl.obolibrary.org/obo/SYMP_0000009 # blister
+#http://purl.obolibrary.org/obo/SYMP_0000672 # abscess
+http://purl.obolibrary.org/obo/SYMP_0000092 # skin lesion
 
 [Top level source term URIs and target direct superclass URIs]
 http://purl.obolibrary.org/obo/SYMP_0000462 # symptom // Top level
@@ -2651,10 +2670,13 @@ http://purl.obolibrary.org/obo/UBERON_2001427
 # multi-homing is knocking some of these out?
 http://purl.obolibrary.org/obo/UBERON_0000061 # anatomical structure
 http://purl.obolibrary.org/obo/UBERON_0000105 # life cycle stage
-
-# ISSUE: THESE CARO terms are showing up as a result of archaic UBERON subClassOf compatibility axioms?
-#http://purl.obolibrary.org/obo/CARO_0000000
-#mapTo http://purl.obolibrary.org/obo/UBERON_0000061 
+http://purl.obolibrary.org/obo/UBERON_0001062 # anatomical entity (COB TERM)
+http://purl.obolibrary.org/obo/BFO_0000020 # specifically dependent continuant / characteristic
+http://purl.obolibrary.org/obo/PATO_0000001 # characteristic
+subClassOf http://purl.obolibrary.org/obo/BFO_0000020
+http://purl.obolibrary.org/obo/BFO_0000141 # immaterial entity
+http://purl.obolibrary.org/obo/BFO_0000040 # material entity
+http://purl.obolibrary.org/obo/BFO_0000015 # process
 
 
 [Source term retrieval setting]

@@ -1,5 +1,5 @@
 format-version: 1.2
-data-version: genepio/releases/2023-09-06/genepio-simple.owl
+data-version: genepio/releases/2025-10-03/genepio-simple.owl
 subsetdef: core:slim.owl ""
 subsetdef: http://purl.obolibrary.org/obo/valid_for_go_annotation_extension ""
 subsetdef: http://purl.obolibrary.org/obo/valid_for_go_gp2term ""
@@ -8,11 +8,15 @@ subsetdef: http://purl.obolibrary.org/obo/valid_for_gocam ""
 subsetdef: ro-eco ""
 subsetdef: RO:0002259 ""
 default-namespace: GENEPIO
+idspace: dc http://purl.org/dc/elements/1.1/ 
+idspace: foaf http://xmlns.com/foaf/0.1/ 
+idspace: oboInOwl http://www.geneontology.org/formats/oboInOwl# 
+idspace: terms http://purl.org/dc/terms/ 
 ontology: genepio/genepio-simple
-property_value: http://purl.org/dc/terms/description "The Genomic Epidemiology Ontology aims to provide a comprehensive controlled vocabulary for infectious disease surveillance and outbreak investigations. It is an application ontology that draws on many other ontologies including anatomy, taxonomy, disease, symptoms, environment and food types for foodborn pathogen metadata." xsd:string
-property_value: http://purl.org/dc/terms/license http://creativecommons.org/licenses/by/3.0/
-property_value: http://purl.org/dc/terms/title "Genomic Epidemiology Ontology" xsd:string
-property_value: owl:versionInfo "2023-09-06" xsd:string
+property_value: owl:versionInfo "2025-10-03" xsd:string
+property_value: terms:description "The Genomic Epidemiology Ontology aims to provide a comprehensive controlled vocabulary for infectious disease surveillance and outbreak investigations. It is an application ontology that draws on many other ontologies including anatomy, taxonomy, disease, symptoms, environment and food types for foodborn pathogen metadata." xsd:string
+property_value: terms:license http://creativecommons.org/licenses/by/3.0/
+property_value: terms:title "Genomic Epidemiology Ontology" xsd:string
 
 [Term]
 id: GENEPIO:0000002
@@ -45,7 +49,7 @@ property_value: IAO:0000119 "http://www.nature.com/nbt/journal/v29/n5/full/nbt.1
 [Term]
 id: GENEPIO:0000009
 name: other (metadata value)
-def: "\"other (metadata choice)\" indicates that for the given categorical variable, a respondent has chosen an other or additional response not listed." []
+def: "A data item that indicates for the given categorical variable, a respondent has chosen an other or additional response not listed." []
 property_value: IAO:0000114 IAO:0000428
 property_value: IAO:0000116 "This class cannot be referred to directly as a subclass of more than one class without involving inference from the respective classes.  Instances of it may exist as a kind of metadata.  Usually a reference to a parent categorical class, but not a subordinate, carries the same information." xsd:string
 property_value: IAO:0000117 "Damion Dooley" xsd:string
@@ -76,7 +80,7 @@ property_value: IAO:0000119 "https://www.ncbi.nlm.nih.gov/books/NBK54364/" xsd:a
 [Term]
 id: GENEPIO:0000013
 name: other capture type
-def: "\"other capture type\" is a free text description provided to indicate a target capture specification not covered by the other types." []
+def: "A data item that is a free text description provided to indicate a target capture specification not covered by the other types." []
 property_value: IAO:0000114 IAO:0000122
 property_value: IAO:0000117 "Damion Dooley" xsd:string
 property_value: IAO:0000119 "https://www.ncbi.nlm.nih.gov/books/NBK54364/" xsd:anyURI
@@ -151,7 +155,7 @@ property_value: IAO:0000119 "GROUP: IRIDA Ontology (Emma)" xsd:string
 [Term]
 id: GENEPIO:0000023
 name: isolate received date
-def: "date lab received isolate" []
+def: "A date which describes when a laboratory received an isolate." []
 subset: core:slim.owl
 is_a: GENEPIO:0001491 ! isolate history item
 property_value: GENEPIO:0000001 "Collection" xsd:string
@@ -163,7 +167,7 @@ property_value: IAO:0000119 "NML LIMS" xsd:string
 [Term]
 id: GENEPIO:0000024
 name: isolate upload date
-def: "date the isolate was entered into the database" []
+def: "A date which describes when the isolate was entered into the database." []
 subset: core:slim.owl
 xref: PulseNet: UploadDate
 is_a: GENEPIO:0001491 ! isolate history item
@@ -274,7 +278,7 @@ property_value: IAO:0000119 "URI: http://www.who.int/water_sanitation_health/dwq
 [Term]
 id: GENEPIO:0000034
 name: conductivity measurement datum
-def: "electrical conductivity of water" []
+def: "An environmental datum which describes the electrical conductivity of water." []
 subset: core:slim.owl
 is_a: GENEPIO:0001626 ! environmental datum
 property_value: GENEPIO:0000001 "Environmental Isolate" xsd:string
@@ -286,7 +290,7 @@ property_value: IAO:0000119 "GROUP: MIxS enviro package" xsd:string
 [Term]
 id: GENEPIO:0000035
 name: dissolved oxygen concentration
-def: "concentration of dissolved oxygen" []
+def: "An environmental datum which describes the concentration of dissolved oxygen in a sample." []
 subset: core:slim.owl
 is_a: GENEPIO:0001626 ! environmental datum
 property_value: GENEPIO:0000001 "Environmental Isolate" xsd:string
@@ -307,7 +311,7 @@ property_value: seeAlso "http://www.globalmicrobialidentifier.org/-/media/Sites/
 [Term]
 id: GENEPIO:0000037
 name: soluble inorganic material
-def: "concentration of substances such as ammonia, road-salt, sea-salt, cyanide, hydrogen sulfide, thiocyanates, thiosulfates, etc." []
+def: "A test specification which describes the concentration of substances such as ammonia, road-salt, sea-salt, cyanide, hydrogen sulfide, thiocyanates and thiosulfate in a sample." []
 subset: core:slim.owl
 is_a: GENEPIO:0001688 ! test specification
 property_value: GENEPIO:0000001 "Environmental Isolate" xsd:string
@@ -328,7 +332,7 @@ property_value: GENEPIO:0000005 "GROUP: MIxS" xsd:string
 [Term]
 id: GENEPIO:0000039
 name: nitrite concentration
-def: "concentration of nitrite" []
+def: "An environmental datum which describes the concentration of nitrite of a sample." []
 subset: core:slim.owl
 is_a: GENEPIO:0001626 ! environmental datum
 property_value: GENEPIO:0000001 "Environmental Isolate" xsd:string
@@ -340,7 +344,7 @@ property_value: IAO:0000119 "GROUP: MIxS enviro package" xsd:string
 [Term]
 id: GENEPIO:0000040
 name: nitrate concentration
-def: "concentration of nitrate" []
+def: "An environmental datum which describes the concentration of nitrate of a sample." []
 subset: core:slim.owl
 is_a: GENEPIO:0001626 ! environmental datum
 property_value: GENEPIO:0000001 "Environmental Isolate" xsd:string
@@ -352,7 +356,8 @@ property_value: IAO:0000119 "GROUP: MIxS enviro package" xsd:string
 [Term]
 id: GENEPIO:0000041
 name: total phosphorous concentration
-def: "total phosphorus concentration, calculated by: total phosphorus = total dissolved phosphorus + particulate phosphorus. Can also be measured without filtering, reported as phosphorus" []
+def: "An environmental datum which describes the total phosphorus concentration in a sample." []
+comment: Total phosphorus concentration, calculated by: total phosphorus = total dissolved phosphorus + particulate phosphorus. Can also be measured without filtering, reported as phosphorus.
 subset: core:slim.owl
 is_a: GENEPIO:0001626 ! environmental datum
 property_value: GENEPIO:0000001 "Environmental Isolate" xsd:string
@@ -376,7 +381,7 @@ property_value: IAO:0000119 "GROUP: Environment Canada Metadata" xsd:string
 [Term]
 id: GENEPIO:0000043
 name: bacteria density
-def: "number of bacteria in sample" []
+def: "An environmental datum which describes the number of bacteria in a sample." []
 subset: core:slim.owl
 is_a: GENEPIO:0001626 ! environmental datum
 property_value: GENEPIO:0000001 "Environmental Isolate" xsd:string
@@ -478,7 +483,7 @@ property_value: IAO:0000600 "Some bacteria like E coli have a highly variable ge
 [Term]
 id: GENEPIO:0000052
 name: CGF type
-def: "output of CGF" []
+def: "Output of CGF." []
 subset: core:slim.owl
 is_a: GENEPIO:0001688 ! test specification
 property_value: GENEPIO:0000001 "Lab Analytic" xsd:string
@@ -501,7 +506,7 @@ property_value: IAO:0000119 "URI: http://www.illumina.com/applications/microbiol
 [Term]
 id: GENEPIO:0000054
 name: Stx toxin type datum
-def: "pathogenic shiga toxin produced by STEC E. coli" []
+def: "A pathogenic shiga toxin produced by STEC E. coli." []
 subset: core:slim.owl
 property_value: GENEPIO:0000001 "Lab Analytic" xsd:string
 property_value: GENEPIO:0000004 "Stx toxin type" xsd:string
@@ -512,7 +517,7 @@ property_value: IAO:0000119 "GROUP: IRIDA Ontology (Emma)" xsd:string
 [Term]
 id: GENEPIO:0000055
 name: Stx toxin subtype datum
-def: "shiga toxin variant" []
+def: "A shiga toxin variant." []
 subset: core:slim.owl
 property_value: GENEPIO:0000001 "Lab Analytic" xsd:string
 property_value: GENEPIO:0000004 "Stx toxin subtype" xsd:string
@@ -523,7 +528,7 @@ property_value: IAO:0000119 "GROUP: IRIDA Ontology (Emma)" xsd:string
 [Term]
 id: GENEPIO:0000056
 name: Stx1 Toxin PCR result
-def: "qPCR result of Stx1 gene amplification" []
+def: "A qPCR measurement result of Stx1 gene amplification." []
 subset: core:slim.owl
 property_value: GENEPIO:0000001 "Lab Analytic" xsd:string
 property_value: GENEPIO:0000004 "Stx1 Toxin PCR result" xsd:string
@@ -534,7 +539,7 @@ property_value: IAO:0000119 "GROUP: IRIDA Ontology (Emma)" xsd:string
 [Term]
 id: GENEPIO:0000057
 name: Stx1 cell culture level
-def: "level of Stx1 toxin derived tissue culture toxicity" []
+def: "A measurement datum which describes the level of Stx1 toxin derived tissue culture toxicity." []
 subset: core:slim.owl
 property_value: GENEPIO:0000001 "Lab Analytic" xsd:string
 property_value: GENEPIO:0000004 "Stx1 Cell Culture" xsd:string
@@ -544,7 +549,7 @@ property_value: IAO:0000119 "GROUP: IRIDA Ontology (Emma)" xsd:string
 [Term]
 id: GENEPIO:0000058
 name: Stx2 Toxin PCR result
-def: "qPCR result of Stx2 gene amplification" []
+def: "A qPCR measurement result of Stx2 gene amplification." []
 subset: core:slim.owl
 property_value: GENEPIO:0000001 "Lab Analytic" xsd:string
 property_value: GENEPIO:0000004 "Stx2 Toxin PCR result" xsd:string
@@ -555,7 +560,7 @@ property_value: IAO:0000119 "GROUP: IRIDA Ontology (Emma)" xsd:string
 [Term]
 id: GENEPIO:0000059
 name: Stx2 cell culture level
-def: "level of Stx2 toxin derived tissue culture toxicity" []
+def: "A measurement datum which describes the level of Stx2 toxin derived tissue culture toxicity." []
 subset: core:slim.owl
 property_value: GENEPIO:0000001 "Lab Analytic" xsd:string
 property_value: GENEPIO:0000004 "Stx2 Cell Culture" xsd:string
@@ -612,14 +617,15 @@ property_value: IAO:0000119 http://www.ncbi.nlm.nih.gov/pmc/articles/PMC92620/
 [Term]
 id: GENEPIO:0000065
 name: Qualicon (DuPont) RiboPrinter Microbial Characterization System
-def: "an automated system that takes a purified bacterial suspension, lyses the cells, extracts the DNA, restriction endonuclease digests the DNA, separates the digest on a gel, transfers the DNA bands to a membrane, probes the bands with non-radioisotope-labeled, 5S-16S-23S rRNA-specific probes (Southern hybridization), photographs the membrane, and finally compares the bar code-like pattern to databases in order to identify the genus and species." []
+def: "A device that generates an automated genetic fingerprint of a bacterium from a bacterial suspension." []
+comment: an automated system that takes a purified bacterial suspension, lyses the cells, extracts the DNA, restriction endonuclease digests the DNA, separates the digest on a gel, transfers the DNA bands to a membrane, probes the bands with non-radioisotope-labeled, 5S-16S-23S rRNA-specific probes (Southern hybridization), photographs the membrane, and finally compares the bar code-like pattern to databases in order to identify the genus and species.
 subset: core:slim.owl
 property_value: IAO:0000119 http://www.ncbi.nlm.nih.gov/pmc/articles/PMC92620/
 
 [Term]
 id: GENEPIO:0000066
 name: DuPont identification pattern library
-def: "a library of RiboPrinter recognised patterns" []
+def: "A dataset which is a library of RiboPrinter recognised patterns." []
 subset: core:slim.owl
 
 [Term]
@@ -661,7 +667,7 @@ property_value: IAO:0000119 "GROUP: IRIDA Ontology (Emma)" xsd:string
 [Term]
 id: GENEPIO:0000070
 name: sequencing location
-def: "location the sequencing run was performed" []
+def: "A laboratory sequencing datum which describes the location the sequencing run was performed." []
 subset: core:slim.owl
 is_a: GENEPIO:0001681 ! laboratory sequencing datum
 property_value: GENEPIO:0000001 "Sequencing" xsd:string
@@ -684,7 +690,7 @@ property_value: IAO:0000119 "GROUP: IRIDA Ontology (Emma)" xsd:string
 [Term]
 id: GENEPIO:0000072
 name: sequencing workflow
-def: "the workflow is the pre-defined sequence of steps to run the automated sequencing pipeline." []
+def: "A lab sequencing datum which describes a pre-defined sequence of steps to run the automated sequencing pipeline." []
 subset: core:slim.owl
 is_a: GENEPIO:0001681 ! laboratory sequencing datum
 property_value: GENEPIO:0000001 "Sequencing" xsd:string
@@ -696,7 +702,7 @@ property_value: IAO:0000119 "GROUP: IRIDA Ontology (Emma)" xsd:string
 [Term]
 id: GENEPIO:0000073
 name: sequencing application
-def: "the sequencing application is the use or purpose of the sequencing" []
+def: "A lab sequencing datum which describes a pre-defined sequence of steps to run the automated sequencing pipeline." []
 subset: core:slim.owl
 is_a: GENEPIO:0001681 ! laboratory sequencing datum
 property_value: GENEPIO:0000001 "Sequencing" xsd:string
@@ -717,7 +723,7 @@ replaced_by: OBI:0600047
 [Term]
 id: GENEPIO:0000075
 name: sequencing chemistry
-def: "lab method to determine the order of nucleotides in a DNA molecule" []
+def: "A laboratory sequencing datum which describes the method and chemistry used to determine the order of nucleotides in a DNA molecule." []
 subset: core:slim.owl
 is_a: GENEPIO:0001681 ! laboratory sequencing datum
 property_value: GENEPIO:0000001 "Sequencing" xsd:string
@@ -729,7 +735,7 @@ property_value: IAO:0000119 "GROUP: IRIDA Ontology (Emma)" xsd:string
 [Term]
 id: GENEPIO:0000076
 name: read length
-def: "number of base pairs per read" []
+def: "A datum of the number of base pairs per read." []
 subset: core:slim.owl
 is_a: GENEPIO:0001681 ! laboratory sequencing datum
 property_value: GENEPIO:0000001 "Sequencing" xsd:string
@@ -880,7 +886,7 @@ property_value: IAO:0000119 "URI: https://www.broadinstitute.org/files/shared/il
 [Term]
 id: GENEPIO:0000089
 name: phred quality score
-def: "percentage of reads with a Phred quality score over 30, which indicates less than a 1/1000 chance that the base was called incorrectly" []
+def: "An assembly quality control datum that describes the quality of the identification of nucleobases generated in sequencing, where the score is logarithimically related to the probability of an error in base calling." []
 subset: core:slim.owl
 is_a: GENEPIO:0001568 ! assembly quality control datum
 property_value: GENEPIO:0000001 "Run QC" xsd:string
@@ -904,7 +910,8 @@ property_value: IAO:0000119 "GROUP: MIxS" xsd:string
 [Term]
 id: GENEPIO:0000091
 name: assembly status
-def: "\"Attempting to convey the relative integrity and reliability of the data, six levels or terms have been proposed and applied to describe genome sequences.\"   See subclass choices." []
+def: "An assembly quality control datum that describes the status of the assembly which is categorised from draft to finished." []
+comment: "Attempting to convey the relative integrity and reliability of the data, six levels or terms have been proposed and applied to describe genome sequences."   See subclass choices.
 subset: core:slim.owl
 is_a: GENEPIO:0001568 ! assembly quality control datum
 property_value: GENEPIO:0000001 "Assembly QC" xsd:string
@@ -988,8 +995,14 @@ property_value: IAO:0000117 "Damion Dooley" xsd:string
 
 [Term]
 id: GENEPIO:0000102
+name: IRIDA case ID
+def: "An IRIDA case ID is a tracking identifier for a case used in the IRIDA.ca software system.  It is used to cross-reference anonymized IDs." []
 is_a: GENEPIO:0001659 ! case identifier
+property_value: GENEPIO:0000001 "ID Tracker" xsd:string
+property_value: GENEPIO:0000004 "IRIDA ID" xsd:string
+property_value: GENEPIO:0000005 "ontology group" xsd:string
 property_value: IAO:0000117 "Damion Dooley" xsd:string
+property_value: IAO:0000119 "GROUP: IRIDA Ontology (Emma)" xsd:string
 
 [Term]
 id: GENEPIO:0000104
@@ -1312,6 +1325,7 @@ property_value: IAO:0000117 "Damion Dooley" xsd:string
 [Term]
 id: GENEPIO:0000145
 name: draft WGS lab bioinformatics process record
+def: "A data specification which records the bioinformatics process of a draft whole genome sequencing product." []
 is_a: GENEPIO:0001342 ! data specification
 property_value: IAO:0000114 IAO:0000123
 property_value: IAO:0000117 "Damion Dooley" xsd:string
@@ -1319,6 +1333,7 @@ property_value: IAO:0000117 "Damion Dooley" xsd:string
 [Term]
 id: GENEPIO:0000146
 name: draft WGS lab sequencing record
+def: "A data specification which records the sequencing datum of a draft whole genome sequencing product." []
 is_a: GENEPIO:0001342 ! data specification
 property_value: IAO:0000114 IAO:0000123
 property_value: IAO:0000117 "Damion Dooley" xsd:string
@@ -1359,6 +1374,7 @@ property_value: IAO:0000117 "Damion Dooley" xsd:string
 [Term]
 id: GENEPIO:0000151
 name: bioinformatics pipeline name
+def: "A laboratory sequencing datum which describes the name of the bioinformatics pipeline used." []
 is_a: GENEPIO:0001681 ! laboratory sequencing datum
 property_value: IAO:0000114 IAO:0000428
 property_value: IAO:0000117 "Damion Dooley" xsd:string
@@ -1366,6 +1382,7 @@ property_value: IAO:0000117 "Damion Dooley" xsd:string
 [Term]
 id: GENEPIO:0000152
 name: bioinformatics pipeline version
+def: "A laboratory sequencing datum which describes the version of the bioinformatics pipeline used." []
 is_a: GENEPIO:0001681 ! laboratory sequencing datum
 property_value: IAO:0000114 IAO:0000428
 property_value: IAO:0000117 "Damion Dooley" xsd:string
@@ -1373,6 +1390,7 @@ property_value: IAO:0000117 "Damion Dooley" xsd:string
 [Term]
 id: GENEPIO:0000153
 name: bioinformatics pipeline protocol
+def: "A laboratory sequencing datum which describes the protocol for the bioinformatics pipeline." []
 is_a: GENEPIO:0001681 ! laboratory sequencing datum
 property_value: IAO:0000114 IAO:0000428
 property_value: IAO:0000117 "Damion Dooley" xsd:string
@@ -1380,6 +1398,7 @@ property_value: IAO:0000117 "Damion Dooley" xsd:string
 [Term]
 id: GENEPIO:0000154
 name: draft WGS lab sequencing quality metrics record
+def: "A data specification which records the sequencing quality datum of a draft whole genome sequencing product." []
 is_a: GENEPIO:0001342 ! data specification
 property_value: IAO:0000114 IAO:0000123
 property_value: IAO:0000117 "Damion Dooley" xsd:string
@@ -1387,6 +1406,7 @@ property_value: IAO:0000117 "Damion Dooley" xsd:string
 [Term]
 id: GENEPIO:0000155
 name: draft WGS lab assembly quality metrics record
+def: "A data specification which records the assembly quality datum of a draft whole genome sequencing product." []
 is_a: GENEPIO:0001342 ! data specification
 property_value: IAO:0000114 IAO:0000123
 property_value: IAO:0000117 "Damion Dooley" xsd:string
@@ -1801,7 +1821,8 @@ is_a: GENEPIO:0001154 ! treated water - ambient temperature
 [Term]
 id: GENEPIO:0001048
 name: infectious disease exposure event
-def: "An event (occuring at some location and for some duration of time) where" []
+def: "An event where one or more hosts are exposed to an infectious pathogen" []
+property_value: IAO:0000114 IAO:0000428
 property_value: IAO:0000117 "Damion Dooley" xsd:string
 
 [Term]
@@ -1854,16 +1875,18 @@ property_value: IAO:0000119 "https://en.wiktionary.org/wiki/pathotype" xsd:strin
 
 [Term]
 id: GENEPIO:0001056
-name: pet treat
-is_a: GENEPIO:0001271 ! animal exposure event by material
+name: obsolete: pet treat
 property_value: IAO:0000117 "Damion Dooley" xsd:string
+property_value: IAO:0000231 "Duplicate term, replaced by more appropriate FOODON term FOODON:00003357 'pet treat'." xsd:string
+is_obsolete: true
 replaced_by: FOODON:00003357
 
 [Term]
 id: GENEPIO:0001057
-name: pet food (raw)
-is_a: GENEPIO:0001271 ! animal exposure event by material
+name: obsolete: pet food (raw)
 property_value: IAO:0000117 "Damion Dooley" xsd:string
+property_value: IAO:0000231 "Duplicate term, replaced by more appropriate FOODON term, FOODON:00003356" xsd:string
+is_obsolete: true
 replaced_by: FOODON:00003356
 
 [Term]
@@ -2287,35 +2310,35 @@ is_a: GENEPIO:0002008 ! Mycobacterium tuberculosis lineage
 id: GENEPIO:0001117
 name: organs or organ parts
 def: "An object aggregate which has as members whole organs or parts of organs, possibly from different organisms." []
-property_value: http://purl.org/dc/terms/date "2021-04-19T23:36:25Z" xsd:dateTime
 property_value: IAO:0000114 IAO:0000122
 property_value: IAO:0000117 http://orcid.org/0000-0002-8844-9165
+property_value: terms:date "2021-04-19T23:36:25Z" xsd:dateTime
 
 [Term]
 id: GENEPIO:0001118
 name: travel outside Canada
 def: "A travel destination which a given human has travelled to on a particular trip and is outside Canada." []
 is_a: GENEPIO:0001783 ! travel destination
-property_value: http://purl.org/dc/terms/date "2021-05-27T04:35:17Z" xsd:dateTime
 property_value: IAO:0000117 https://orcid.org/0000-0002-9578-0788
+property_value: terms:date "2021-05-27T04:35:17Z" xsd:dateTime
 
 [Term]
 id: GENEPIO:0001119
 name: travel outside province/territory
 def: "A travel destination which a given human has travelled to on a particular trip and is outside a given province/territory of interest." []
 is_a: GENEPIO:0001783 ! travel destination
-property_value: http://purl.org/dc/terms/date "2021-05-27T04:36:13Z" xsd:dateTime
 property_value: IAO:0000117 https://orcid.org/0000-0002-9578-0788
+property_value: terms:date "2021-05-27T04:36:13Z" xsd:dateTime
 
 [Term]
 id: GENEPIO:0001121
 name: data field category
 def: "A data field category which receives a range of one or more data fields." []
 relationship: RO:0002351 GENEPIO:0100586 ! has member data field
-property_value: http://purl.org/dc/terms/contributor http://orcid.org/0000-0002-9578-0788
-property_value: http://purl.org/dc/terms/date "2022-11-23T00:33:27.896Z" xsd:dateTime
 property_value: IAO:0000112 "An instance of a \"data field category\" that contains the \"bioproject accession field\", \"biosample accession field\", and \"GISAID accession field\"." xsd:string
 property_value: IAO:0000114 IAO:0000428
+property_value: terms:contributor http://orcid.org/0000-0002-9578-0788
+property_value: terms:date "2022-11-23T00:33:27.896Z" xsd:dateTime
 
 [Term]
 id: GENEPIO:0001126
@@ -2379,7 +2402,7 @@ property_value: seeAlso NCIT:C25190
 [Term]
 id: GENEPIO:0001171
 name: organism role
-def: "a role which inheres in an organism and is realized by the process of being alive" []
+def: "A role which inheres in an organism and is realized by the process of being alive." []
 
 [Term]
 id: GENEPIO:0001172
@@ -3021,10 +3044,10 @@ id: GENEPIO:0001522
 name: data enumeration
 def: "A data item that is a set of entities, referenced by mention, that don't necessarily have something in common." []
 comment: While "enumeration" is a "data item" not everything referenced within an enumeration qualifies as a "data item". Not to be confused with "data set" which describes "data item"s of the same type that have something in common.
-property_value: http://purl.org/dc/terms/date "2022-01-31T03:45:04Z" xsd:dateTime
 property_value: IAO:0000114 IAO:0000428
 property_value: IAO:0000117 "0000-0002-8844-9165" xsd:string
 property_value: IAO:0000117 "0000-0002-9578-0788" xsd:string
+property_value: terms:date "2022-01-31T03:45:04Z" xsd:dateTime
 
 [Term]
 id: GENEPIO:0001523
@@ -3032,9 +3055,9 @@ name: signs and symptoms
 def: "An analytic datum which describes the observed or detectable signs, and experienced symptomps of an illness, injury, or condition." []
 synonym: "signs & symptoms" EXACT []
 is_a: GENEPIO:0001192 ! analytic datum
-property_value: http://purl.org/dc/terms/date "2022-01-31T23:08:50Z" xsd:dateTime
 property_value: IAO:0000117 "0000-0002-9578-0788" xsd:string
 property_value: IAO:0000119 "https://en.wikipedia.org/wiki/Signs_and_symptoms" xsd:string
+property_value: terms:date "2022-01-31T23:08:50Z" xsd:dateTime
 
 [Term]
 id: GENEPIO:0001532
@@ -3571,7 +3594,7 @@ is_a: GENEPIO:0001342 ! data specification
 [Term]
 id: GENEPIO:0001610
 name: subject age
-def: "A subject age is the age since birth of a given organism that is involved in an investigation or study at a given time." []
+def: "An age measurement datum which is the age since birth of a given organism that is involved in an investigation or study at a given time." []
 property_value: IAO:0000114 IAO:0000428
 property_value: IAO:0000117 "Damion Dooley" xsd:string
 
@@ -3618,7 +3641,7 @@ property_value: IAO:0000117 "Damion Dooley" xsd:string
 [Term]
 id: GENEPIO:0001617
 name: subject disease
-def: "Name of disease in a subject that is related to a given investigation, study and/or specimen." []
+def: "A name of disease in a subject that is related to a given investigation, study and/or specimen." []
 comment: Controlled vocabulary. Human specimen source: https://bioportal.bioontology.org/ontologies/DOID\nor https://www.ncbi.nlm.nih.gov/mesh/1000067
 relationship: RO:0000052 GENEPIO:0002077 ! characteristic of subject organism
 property_value: IAO:0000114 IAO:0000428
@@ -3734,7 +3757,7 @@ property_value: IAO:0000117 "Damion Dooley" xsd:string
 [Term]
 id: GENEPIO:0001633
 name: contig L50
-def: "Contig L50 is the number of contigs equal to or longer than contig N50. The length of the assembly itself is used in the calculation." []
+def: "An assembly quality control datum which is defined as number of contigs equal to or longer than the contig N50, when the assembly itself is factored into the calculation." []
 is_a: GENEPIO:0000093 ! contig count
 property_value: GENEPIO:0000001 "Assembly QC" xsd:string
 property_value: IAO:0000114 "http://purl.obolibrary.org/obo/IAO_0000428" xsd:string
@@ -3945,7 +3968,7 @@ property_value: IAO:0000117 "Damion Dooley" xsd:string
 [Term]
 id: GENEPIO:0001661
 name: pooled male and female
-def: "'pooled male and female' is a categorical value used when the male and female categories or levels of a factor are combined. If used to describe a single organism, then the organism will be one or the other." []
+def: "A phenotypic sex quality 'pooled male and female' is a categorical value used when the male and female categories or levels of a factor are combined. If used to describe a single organism, then the organism will be one or the other." []
 xref: NCBI BioSample: 'pooled male and female'
 property_value: GENEPIO:0000005 "NCBI BioSample" xsd:string
 property_value: IAO:0000116 "Not a PATO phenotypic sex catigorical value." xsd:string
@@ -4000,7 +4023,7 @@ property_value: IAO:0000117 "Damion Dooley" xsd:string
 [Term]
 id: GENEPIO:0001668
 name: not provided
-def: "a categorical choice indicating that information of an expected format was not given; a value may be given at the later stage." []
+def: "A categorical choice indicating that information of an expected format was not given a value may be given at the later stage." []
 xref: GENEPIO:0001666
 is_a: GENEPIO:0001618 ! missing
 property_value: GENEPIO:0000005 "INSDC term (lower level)" xsd:string
@@ -4450,7 +4473,6 @@ property_value: IAO:0000117 "Damion Dooley" xsd:string
 id: GENEPIO:0001742
 name: subnational region
 def: "A subnational region is a type of subnational entity similar to a nation's state, province, or territory." []
-is_a: GENEPIO:0001886 ! designated area on Earth
 property_value: GENEPIO:0000006 "region" xsd:string
 property_value: GENEPIO:0001763 "lookup:http://purl.obolibrary.org/obo/GAZ_00000448" xsd:string
 property_value: IAO:0000114 IAO:0000428
@@ -4657,7 +4679,7 @@ property_value: IAO:0000117 "Damion Dooley" xsd:string
 [Term]
 id: GENEPIO:0001773
 name: contig LG50
-def: "Contig L50 is the number of contigs equal to or longer than contig N50. The length of the assembly itself is used in the calculation." []
+def: "An assembly quality control datum which is defined as number of contigs equal to or longer than the contig N50, when the genome size is factored into the calculation." []
 is_a: GENEPIO:0000093 ! contig count
 property_value: GENEPIO:0000001 "Assembly QC" xsd:string
 property_value: IAO:0000114 "http://purl.obolibrary.org/obo/IAO_0000428" xsd:string
@@ -4948,7 +4970,6 @@ property_value: IAO:0000119 https://ena-docs.readthedocs.io/en/latest/submit/sam
 [Term]
 id: GENEPIO:0001811
 name: State (United States of America)
-is_a: GENEPIO:0001886 ! designated area on Earth
 is_a: GENEPIO:0100634 ! State or Province or Territory
 
 [Term]
@@ -5212,7 +5233,8 @@ property_value: IAO:0000117 "Damion Dooley" xsd:string
 [Term]
 id: GENEPIO:0001844
 name: origin
-def: "\"In mathematics, the origin of a Euclidean space is a special point, usually denoted by the letter O, used as a fixed point of reference for the geometry of the surrounding space.\n\nIn physical problems, the choice of origin is often arbitrary, meaning any choice of origin will ultimately give the same answer. This allows one to pick an origin point that makes the mathematics as simple as possible, often by taking advantage of some kind of geometric symmetry.\"" []
+def: "A point in zero-dimensional (0D) space in which the origin is a fixed point of reference for the geometry of the surrounding space." []
+comment: "In mathematics, the origin of a Euclidean space is a special point, usually denoted by the letter O, used as a fixed point of reference for the geometry of the surrounding space.\n\nIn physical problems, the choice of origin is often arbitrary, meaning any choice of origin will ultimately give the same answer. This allows one to pick an origin point that makes the mathematics as simple as possible, often by taking advantage of some kind of geometric symmetry."
 is_a: GENEPIO:0001744 ! 0D space
 property_value: IAO:0000112 "(0,0) is the origin of the cartesian coordinate system." xsd:string
 property_value: IAO:0000117 "Damion Dooley" xsd:string
@@ -5572,8 +5594,6 @@ property_value: IAO:0000117 "Damion Dooley" xsd:string
 [Term]
 id: GENEPIO:0001886
 name: designated area on Earth
-relationship: RO:0001025 GENEPIO:0001338 ! located in obsolete: earth surface
-relationship: RO:0002001 GENEPIO:0001885 ! aligned with surface area
 property_value: IAO:0000114 "A designated area on earth is one or more areas defined by one or more boundaries.  A boundary can be defined by a polygon perimeter, a lat/long and radius, or a fiat-boundary geographic featureset like a named river channel or mountain ridge; it may have one or more names associated with it. Note that areas associated with a name may change their boundary definitions over time." xsd:string
 property_value: IAO:0000114 IAO:0000428
 property_value: IAO:0000117 "Damion Dooley" xsd:string
@@ -6581,8 +6601,8 @@ is_a: GENEPIO:0002032 ! consent datum
 [Term]
 id: GENEPIO:0002034
 name: draft ISO sequence repository field
-property_value: http://purl.org/dc/terms/date "2019-11-17T00:43:00Z" xsd:dateTime
 property_value: IAO:0000117 http://orcid.org/0000-0002-8844-9165
+property_value: terms:date "2019-11-17T00:43:00Z" xsd:dateTime
 
 [Term]
 id: GENEPIO:0002035
@@ -6815,7 +6835,7 @@ replaced_by: ARO:3004366
 
 [Term]
 id: GENEPIO:0002065
-name: Deutsches Institut für Normung
+name: obsolete: Deutsches Institut für Normung
 name: obsolete: German Institute for Standardization (DIN)
 alt_id: DIN
 def: "DIN is recognized by the Federal Government of Germany as the competent standards organization for Germany and as the national standards body representing Germany in non-governmental international standards organizations." []
@@ -7112,7 +7132,7 @@ property_value: IAO:0000117 "Damion Dooley" xsd:string
 [Term]
 id: GENEPIO:0002101
 name: test drug minimum concentration
-def: "This is the minimum concentration of a drug applied during an an assay." []
+def: "A data item which describes the minimum concentration of a drug applied during an an assay" []
 property_value: IAO:0000114 IAO:0000428
 property_value: IAO:0000117 "Damion Dooley" xsd:string
 
@@ -7249,15 +7269,17 @@ property_value: IAO:0000117 "Emma Griffiths" xsd:string
 [Term]
 id: GENEPIO:0002120
 name: tube containing media or preservative
+def: "A tube that contains media or preservative" []
+comment: NOTE: there are different types of tubes with coloured caps indicating different preservatives etc.
 property_value: IAO:0000114 IAO:0000122
 property_value: IAO:0000117 "Emma Griffiths" xsd:string
-property_value: IAO:0000600 "NOTE: there are different types of tubes with coloured caps indicating different preservatives etc." xsd:string
 
 [Term]
 id: GENEPIO:0002121
 name: tube containing antimicrobial
+def: "A tube that contains antimicrobials" []
+comment: NOTE: there are different types of tubes with coloured caps indicating different preservatives etc.
 property_value: IAO:0000117 "Emma Griffiths" xsd:string
-property_value: IAO:0000600 "NOTE: there are different types of tubes with coloured caps indicating different preservatives etc." xsd:string
 
 [Term]
 id: GENEPIO:0002122
@@ -7282,10 +7304,10 @@ property_value: IAO:0000117 "Emma Griffiths" xsd:string
 id: GENEPIO:0002125
 name: hand scoop
 def: "A shovel-like utensil that has a deep curved dish and a short handle and is used for digging into a soft substance for lifting out a portion." []
-property_value: http://purl.org/dc/terms/contributor https://orcid.org/0000-0002-1107-9135
-property_value: http://purl.org/dc/terms/date "2023-06-21T13:54:32Z" xsd:dateTime
 property_value: IAO:0000114 IAO:0000122
 property_value: IAO:0000117 "Emma Griffiths" xsd:string
+property_value: terms:contributor https://orcid.org/0000-0002-1107-9135
+property_value: terms:date "2023-06-21T13:54:32Z" xsd:dateTime
 
 [Term]
 id: GENEPIO:0002126
@@ -7376,8 +7398,6 @@ def: "A data item which is the amount of a reference sequence covered by a seque
 xref: OBI:0002879
 is_a: GENEPIO:0001568 ! assembly quality control datum
 property_value: GENEPIO:0001763 "help:Breadth of coverage should be reported as a percentage value (e.g. 95%) to a fold of coverage (e.g. 10X)." xsd:string
-property_value: http://purl.org/dc/terms/contributor https://orcid.org/0000-0002-1107-9135
-property_value: http://purl.org/dc/terms/contributor https://orcid.org/0000-0002-9578-0788
 property_value: IAO:0000111 "breadth of coverage" xsd:string
 property_value: IAO:0000112 "Eighty percent of the reference genome was covered by sequence fragments with a coverage depth of 4X; therefore, the breadth of coverage was 80% (4:5)." xsd:string
 property_value: IAO:0000112 "Eighty percent of the reference genome was covered by sequence fragments with a coverage depth of 4X; therefore, the breadth of coverage was 80% (4:5)." xsd:string
@@ -7386,6 +7406,8 @@ property_value: IAO:0000114 IAO:0000428
 property_value: IAO:0000117 "https://orcid.org/0000-0002-1107-9135" xsd:string
 property_value: IAO:0000119 "Emma Griffiths" xsd:string
 property_value: IAO:0000233 "https://github.com/obi-ontology/obi/issues/1579" xsd:string
+property_value: terms:contributor https://orcid.org/0000-0002-1107-9135
+property_value: terms:contributor https://orcid.org/0000-0002-9578-0788
 
 [Term]
 id: GENEPIO:0002138
@@ -7467,7 +7489,7 @@ relationship: OBI:0001927 GENEPIO:0001429 ! specifies value of strain identifier
 [Term]
 id: GENEPIO:0002150
 name: MIC diffusion measurement specification
-def: "A MIC test measurement resulting from a laboratory diffusion method." []
+def: "A value specification for a MIC test measurement resulting from a laboratory diffusion method." []
 property_value: IAO:0000117 "Damion Dooley" xsd:string
 
 [Term]
@@ -7485,7 +7507,7 @@ is_a: GENEPIO:0002142 ! decimal value specification
 [Term]
 id: GENEPIO:0002153
 name: MIC dilution measurement specification
-def: "A MIC test measurement resulting from a laboratory dilution method." []
+def: "A value specification for a MIC test measurement resulting from a laboratory dilution method." []
 property_value: IAO:0000117 "Damion Dooley" xsd:string
 
 [Term]
@@ -7502,7 +7524,7 @@ is_a: GENEPIO:0002148 ! date value specification (ISO 8601)
 [Term]
 id: GENEPIO:0002156
 name: subject age specification
-def: "A subject age is the age since birth of a given organism that is involved in an investigation or study at a given time." []
+def: "A value specification which describes the age since birth of a given organism that is involved in an investigation or study at a given time." []
 is_a: GENEPIO:0002176 ! duration specification
 relationship: IAO:0000136 GENEPIO:0002077 ! is about subject organism
 property_value: IAO:0000117 "Damion Dooley" xsd:string
@@ -7557,7 +7579,7 @@ property_value: IAO:0000117 "Damion Dooley" xsd:string
 [Term]
 id: GENEPIO:0002165
 name: subject disease specification
-def: "Name of disease in a subject that is related to a given investigation, study and/or specimen." []
+def: "A value specification which describes the name of a disease in a subject that is related to a given investigation, study and/or specimen." []
 comment: Controlled vocabulary. Human specimen source: https://bioportal.bioontology.org/ontologies/DOID\nor https://www.ncbi.nlm.nih.gov/mesh/1000067
 relationship: IAO:0000136 GENEPIO:0001617 ! is about subject disease
 property_value: IAO:0000117 "Damion Dooley" xsd:string
@@ -7597,7 +7619,7 @@ property_value: IAO:0000598 "A datum specification for the maximum concentration
 [Term]
 id: GENEPIO:0002170
 name: test drug minimum concentration specification
-def: "This is the minimum concentration of a drug applied during an an assay." []
+def: "A value specification which describes the minimum concentration of a drug applied during an an assay." []
 is_a: GENEPIO:0002142 ! decimal value specification
 relationship: OBI:0001927 GENEPIO:0002101 ! specifies value of test drug minimum concentration
 property_value: IAO:0000117 "Damion Dooley" xsd:string
@@ -7616,14 +7638,14 @@ is_a: GENEPIO:0002468 ! string value specification
 [Term]
 id: GENEPIO:0002173
 name: travel destination specification
-def: "A travel destination is a destination city (or populated place of some scale) which a given human has travelled to on a particular trip." []
+def: "A value specification which describes the travel destination a given human has travelled to on a particular trip." []
 relationship: IAO:0000136 GENEPIO:0001783 ! is about travel destination
 property_value: IAO:0000117 "Damion Dooley" xsd:string
 
 [Term]
 id: GENEPIO:0002174
 name: specimen source substance specification
-def: "A specimen source substance is an organism substance or food product or environmental substance from which the specimen was extracted." []
+def: "A data specification for a specimen source substance, which is an organism substance or food product or environmental substance from which the specimen was extracted." []
 is_a: GENEPIO:0001342 ! data specification
 relationship: IAO:0000136 GENEPIO:0000134 ! is about specimen source substance
 property_value: IAO:0000117 "Damion Dooley" xsd:string
@@ -7642,9 +7664,7 @@ is_a: GENEPIO:0002142 ! decimal value specification
 [Term]
 id: GENEPIO:0002178
 name: obsolete: field specification
-def: "A field specification is the specification of a data field used in a data standard or database table. This includes at least a database field name, and optionally display name, description, and data type (binary blob, numeric, categorical, textual or cross-reference)." []
-property_value: http://purl.org/dc/terms/date "2019-04-17T23:04:53Z" xsd:dateTime
-property_value: IAO:0000117 "Damion Dooley" xsd:string
+property_value: terms:date "2019-04-17T23:04:53Z" xsd:dateTime
 is_obsolete: true
 replaced_by: https://w3id.org/linkml/SlotDefinition
 
@@ -7658,94 +7678,94 @@ replaced_by: http://purl.obolibrary.org/obo/ARO_3004431
 [Term]
 id: GENEPIO:0002185
 name: PulseNet Canada field
-property_value: http://purl.org/dc/terms/date "2019-04-17T23:41:35Z" xsd:dateTime
 property_value: IAO:0000117 "Damion Dooley" xsd:string
+property_value: terms:date "2019-04-17T23:41:35Z" xsd:dateTime
 
 [Term]
 id: GENEPIO:0002186
 name: PulseNet Canada Salmonella field
 is_a: GENEPIO:0002185 ! PulseNet Canada field
-property_value: http://purl.org/dc/terms/date "2019-04-17T23:41:56Z" xsd:dateTime
 property_value: IAO:0000117 "Damion Dooley" xsd:string
+property_value: terms:date "2019-04-17T23:41:56Z" xsd:dateTime
 
 [Term]
 id: GENEPIO:0002222
 name: specimen collection service
 is_a: GENEPIO:0002225 ! specimen related service
-property_value: http://purl.org/dc/terms/date "2019-05-03T02:44:38Z" xsd:dateTime
 property_value: IAO:0000117 "Damion Dooley" xsd:string
+property_value: terms:date "2019-05-03T02:44:38Z" xsd:dateTime
 
 [Term]
 id: GENEPIO:0002223
 name: bioinformatics analysis service
 is_a: GENEPIO:0002225 ! specimen related service
-property_value: http://purl.org/dc/terms/date "2019-05-03T02:49:24Z" xsd:dateTime
 property_value: IAO:0000117 "Damion Dooley" xsd:string
+property_value: terms:date "2019-05-03T02:49:24Z" xsd:dateTime
 
 [Term]
 id: GENEPIO:0002224
-name: IAO:0000428
 name: isolate preparation service
 def: "An isolate preparation service prepares isolates for molecular sequencing." []
 is_a: GENEPIO:0002225 ! specimen related service
-property_value: http://purl.org/dc/terms/date "2019-05-03T02:51:51Z" xsd:dateTime
+property_value: IAO:0000114 IAO:0000428
 property_value: IAO:0000117 "Damion Dooley" xsd:string
+property_value: terms:date "2019-05-03T02:51:51Z" xsd:dateTime
 
 [Term]
 id: GENEPIO:0002225
 name: specimen related service
 property_value: GENEPIO:0001763 "order:\nGENEPIO:0002222 # specimen collection service\nGENEPIO:0002226 # specimen repository/biobank service\nGENEPIO:0002224 # isolate preparation service\nOBI:0001904 # sequencing service\nOBI:0000992 # DNA sequencing service\nGENEPIO:0002223 # bioinformatics analysis service" xsd:string
-property_value: http://purl.org/dc/terms/date "2019-05-03T02:52:19Z" xsd:dateTime
 property_value: IAO:0000117 "Damion Dooley" xsd:string
+property_value: terms:date "2019-05-03T02:52:19Z" xsd:dateTime
 
 [Term]
 id: GENEPIO:0002226
 name: specimen repository/biobank service
 is_a: GENEPIO:0002225 ! specimen related service
-property_value: http://purl.org/dc/terms/date "2019-05-03T03:24:33Z" xsd:dateTime
 property_value: IAO:0000117 "Damion Dooley" xsd:string
+property_value: terms:date "2019-05-03T03:24:33Z" xsd:dateTime
 
 [Term]
 id: GENEPIO:0002228
 name: critical health status
-def: "Vital signs are unstable and not within normal limits. Patient may be unconscious. Indicators are unfavorable." []
+def: "An organism datum about subject health status in which vital signs are unstable and not within normal limits, patient may be unconscious and indicators are unfavorable." []
 synonym: "grave" BROAD []
 is_a: GENEPIO:0002024 {name="critical"} ! subject health status (UK NHS)
 is_a: GENEPIO:0002025 {name="critical"} ! subject health status (AHA)
 relationship: RO:0002083 GENEPIO:0001846 ! before critical but stable health status
 relationship: RO:0002350 GENEPIO:0001837 ! member of AHA HIPPA standard
 relationship: RO:0002350 GENEPIO:0001845 ! member of NHS standard
-property_value: http://purl.org/dc/terms/date "2019-11-19T22:17:43Z" xsd:dateTime
 property_value: IAO:0000114 IAO:0000122
 property_value: IAO:0000117 http://orcid.org/0000-0002-8844-9165
+property_value: terms:date "2019-11-19T22:17:43Z" xsd:dateTime
 
 [Term]
 id: GENEPIO:0002230
 name: Salmonella subspecies
 def: "A datum indicating one of six defined subspecies of Salmonella." []
 is_a: GENEPIO:0001170 ! organism datum
-property_value: http://purl.org/dc/terms/date "2019-11-25T08:45:41Z" xsd:dateTime
 property_value: IAO:0000117 http://orcid.org/0000-0002-8844-9165
 property_value: IAO:0000119 https://en.wikipedia.org/wiki/Salmonella
 property_value: seeAlso https://www.researchgate.net/publication/267739557_Salmonella-Host_Interactions_-_Modulation_of_the_Host_Innate_Immune_System/figures?lo=1
+property_value: terms:date "2019-11-25T08:45:41Z" xsd:dateTime
 
 [Term]
 id: GENEPIO:0002231
 name: PFGE Spel pattern
 def: "A PFGE pattern resulting from DNA fragmentation induced by the Spel enzyme." []
 is_a: GENEPIO:0001289 ! PFGE pattern
-property_value: http://purl.org/dc/terms/date "2019-11-25T09:07:26Z" xsd:dateTime
 property_value: IAO:0000117 http://orcid.org/0000-0002-8844-9165
+property_value: terms:date "2019-11-25T09:07:26Z" xsd:dateTime
 
 [Term]
 id: GENEPIO:0002232
 name: fecal indicator
 def: "A collection of organisms that is indicative of faecal\ncontamination." []
 comment: Fecal indicator organism collections include bacterial groups such as thermotolerant coliforms or E. coli. Hence, they only infer that pathogens may be present
-property_value: http://purl.org/dc/terms/date "2020-02-08T20:15:43Z" xsd:dateTime
 property_value: IAO:0000114 IAO:0000122
 property_value: IAO:0000117 http://orcid.org/0000-0002-8844-9165
 property_value: IAO:0000119 https://www.who.int/water_sanitation_health/dwq/iwachap13.pdf
+property_value: terms:date "2020-02-08T20:15:43Z" xsd:dateTime
 
 [Term]
 id: GENEPIO:0002233
@@ -7753,18 +7773,18 @@ name: food isolate
 def: "An isolate derived from a food sample." []
 is_a: GENEPIO:0000134 ! specimen source substance
 relationship: RO:0001000 GENEPIO:0000134 ! derives from specimen source substance
-property_value: http://purl.org/dc/terms/date "2019-06-28T23:41:26Z" xsd:dateTime
 property_value: IAO:0000114 IAO:0000122
 property_value: IAO:0000117 "Damion Dooley" xsd:string
+property_value: terms:date "2019-06-28T23:41:26Z" xsd:dateTime
 
 [Term]
 id: GENEPIO:0002234
 name: microbial 16S RNA typing
 def: "A method for typing The RNA component of the small (30S) subunit of prokaryotic ribosomes." []
 is_a: GENEPIO:0001420 ! diagnostic test
-property_value: http://purl.org/dc/terms/date "2020-04-24T19:06:05Z" xsd:dateTime
 property_value: IAO:0000114 IAO:0000428
 property_value: IAO:0000117 http://orcid.org/0000-0002-8844-9165
+property_value: terms:date "2020-04-24T19:06:05Z" xsd:dateTime
 
 [Term]
 id: GENEPIO:0002464
@@ -7788,25 +7808,25 @@ id: GENEPIO:0002682
 name: Helicos platform
 def: "A sequencing platform brand provided by Helicos corporation (now defunct)." []
 is_a: GENEPIO:0000071 ! sequencing platform (brand)
-property_value: http://purl.org/dc/terms/date "2020-04-24T22:50:49Z" xsd:dateTime
 property_value: IAO:0000117 http://orcid.org/0000-0002-8844-9165
+property_value: terms:date "2020-04-24T22:50:49Z" xsd:dateTime
 
 [Term]
 id: GENEPIO:0002683
 name: Ion Torrent platform
 def: "A sequencing platform provided by the Ion Torrent company." []
 is_a: GENEPIO:0000071 ! sequencing platform (brand)
-property_value: http://purl.org/dc/terms/date "2020-04-24T22:54:06Z" xsd:dateTime
 property_value: IAO:0000117 http://orcid.org/0000-0002-8844-9165
+property_value: terms:date "2020-04-24T22:54:06Z" xsd:dateTime
 
 [Term]
 id: GENEPIO:0002684
 name: SOLiD sequening platform
 def: "A sequencing platform provided by Life Technologies Corporation" []
 is_a: GENEPIO:0000071 ! sequencing platform (brand)
-property_value: http://purl.org/dc/terms/date "2020-04-24T22:55:31Z" xsd:dateTime
 property_value: IAO:0000117 http://orcid.org/0000-0002-8844-9165
 property_value: IAO:0000118 "Sequencing by Oligonucleotide Ligation and Detection" xsd:string
+property_value: terms:date "2020-04-24T22:55:31Z" xsd:dateTime
 
 [Term]
 id: GENEPIO:0002713
@@ -7820,9 +7840,9 @@ name: rinse
 def: "Rinse is the liquid output of rinsing plant, animal or other material with liquid with the objective of extracting specimen material from that liquid." []
 relationship: RO:0001000 GENEPIO:0000134 ! derives from specimen source substance
 relationship: RO:0002353 GENEPIO:0002116 ! output of rinsing for specimen collection
-property_value: http://purl.org/dc/terms/date "2019-06-28T20:07:25Z" xsd:dateTime
 property_value: IAO:0000114 IAO:0000122
 property_value: IAO:0000117 "Damion Dooley" xsd:string
+property_value: terms:date "2019-06-28T20:07:25Z" xsd:dateTime
 
 [Term]
 id: GENEPIO:0002750
@@ -7830,8 +7850,8 @@ name: animal rinse
 def: "Animal rinse is a rinse derived from animal material of one or more animals." []
 is_a: GENEPIO:0001636 ! animal body product
 is_a: GENEPIO:0002749 ! rinse
-property_value: http://purl.org/dc/terms/date "2019-06-28T20:11:45Z" xsd:dateTime
 property_value: IAO:0000117 "Damion Dooley" xsd:string
+property_value: terms:date "2019-06-28T20:11:45Z" xsd:dateTime
 
 [Term]
 id: GENEPIO:0003358
@@ -7843,123 +7863,168 @@ replaced_by: OBI:0002824
 id: GENEPIO:0004318
 name: culture plate
 def: "A low flat-bottomed laboratory container for growing a layer of organisms such as bacteria, molds, and cells on a thin layer of nutrient medium." []
-property_value: http://purl.org/dc/terms/date "2022-09-23T10:59:09Z" xsd:dateTime
 property_value: IAO:0000119 "https://en.wikipedia.org/wiki/Culture_plate" xsd:string
+property_value: terms:date "2022-09-23T10:59:09Z" xsd:dateTime
 
 [Term]
 id: GENEPIO:0004323
 name: fluid from meat rinse
 def: "A fluid that is obtained from rinsing meat for the purpose of collecting materials and organisms that are on its surface." []
 is_a: GENEPIO:0002750 ! animal rinse
-property_value: http://purl.org/dc/terms/contributor https://orcid.org/0000-0002-1107-9135
-property_value: http://purl.org/dc/terms/date "2022-09-23T11:24:53Z" xsd:dateTime
+property_value: terms:contributor https://orcid.org/0000-0002-1107-9135
+property_value: terms:date "2022-09-23T11:24:53Z" xsd:dateTime
 
 [Term]
 id: GENEPIO:0004324
 name: BGI Genomics platform
 def: "A sequencing platform provided by the BGI Genomics company." []
 is_a: GENEPIO:0000071 ! sequencing platform (brand)
-property_value: http://purl.org/dc/terms/contributor https://orcid.org/0000-0001-5275-8866
-property_value: http://purl.org/dc/terms/date "2022-09-23T11:41:23Z" xsd:dateTime
 property_value: IAO:0000119 "https://en.wikipedia.org/wiki/BGI_Group" xsd:string
+property_value: terms:contributor https://orcid.org/0000-0001-5275-8866
+property_value: terms:date "2022-09-23T11:41:23Z" xsd:dateTime
 
 [Term]
 id: GENEPIO:0004325
 name: MGI platform
 def: "A sequencing platform provided by the MGI company." []
 is_a: GENEPIO:0000071 ! sequencing platform (brand)
-property_value: http://purl.org/dc/terms/contributor https://orcid.org/0000-0001-5275-8866
-property_value: http://purl.org/dc/terms/date "2022-09-23T11:43:21Z" xsd:dateTime
 property_value: IAO:0000119 "https://en.wikipedia.org/wiki/MGI_(company)" xsd:string
+property_value: terms:contributor https://orcid.org/0000-0001-5275-8866
+property_value: terms:date "2022-09-23T11:43:21Z" xsd:dateTime
 
 [Term]
 id: GENEPIO:0004326
 name: fecal grab
 def: "A fecal specimen collection method in which feces is obtained by inserting the collection device into the anus of the host, or the feces is captured as it is excreted." []
 is_a: GENEPIO:0002114 ! feces collection
-property_value: http://purl.org/dc/terms/contributor https://orcid.org/0000-0002-1107-9135
-property_value: http://purl.org/dc/terms/date "2022-09-23T11:47:33Z" xsd:dateTime
 property_value: IAO:0000119 "Emma J Griffiths" xsd:string
+property_value: terms:contributor https://orcid.org/0000-0002-1107-9135
+property_value: terms:date "2022-09-23T11:47:33Z" xsd:dateTime
 
 [Term]
 id: GENEPIO:0004432
 name: Illumina NextSeq 1000
 def: "A DNA sequencer which is manufactured by the Illumina corporation using sequence-by-synthesis chemistry that fits on a benchtop and uses P1 and P2 flow cells." []
 is_a: GENEPIO:0100126 ! Illumina NextSeq
-property_value: http://purl.org/dc/terms/contributor https://orcid.org/0000-0001-5275-8866
-property_value: http://purl.org/dc/terms/contributor https://orcid.org/0000-0002-1107-9135
-property_value: http://purl.org/dc/terms/date "2023-06-21T12:33:56Z" xsd:dateTime
 property_value: IAO:0000114 IAO:0000428
 property_value: IAO:0000116 "Planned Obsolescence: this term is a placeholder for a term requested in another ontology. Once the appropriate ontology term is available, this term’s identifier will be obsoleted with a “term replaced by” id of the other term." xsd:string
+property_value: terms:contributor https://orcid.org/0000-0001-5275-8866
+property_value: terms:contributor https://orcid.org/0000-0002-1107-9135
+property_value: terms:date "2023-06-21T12:33:56Z" xsd:dateTime
 
 [Term]
 id: GENEPIO:0004433
 name: Oxford Nanopore Flongle
 def: "An adapter for MinION or GridION DNA sequencers manufactured by the Oxford Nanopore corporation that enables sequencing on smaller, single-use flow cells." []
 is_a: GENEPIO:0100140 ! Oxford Nanopore sequencing instrument model
-property_value: http://purl.org/dc/terms/contributor https://orcid.org/0000-0001-5275-8866
-property_value: http://purl.org/dc/terms/contributor https://orcid.org/0000-0002-1107-9135
-property_value: http://purl.org/dc/terms/date "2023-06-21T13:02:13Z" xsd:dateTime
 property_value: IAO:0000114 IAO:0000428
 property_value: IAO:0000116 "Planned Obsolescence: this term is a placeholder for a term requested in another ontology. Once the appropriate ontology term is available, this term’s identifier will be obsoleted with a “term replaced by” id of the other term." xsd:string
 property_value: IAO:0000119 "https://store.nanoporetech.com/flongle.html" xsd:anyURI
+property_value: terms:contributor https://orcid.org/0000-0001-5275-8866
+property_value: terms:contributor https://orcid.org/0000-0002-1107-9135
+property_value: terms:date "2023-06-21T13:02:13Z" xsd:dateTime
+
+[Term]
+id: GENEPIO:0004511
+name: stomach content
+def: "Undigested food material, microbiota, and other materials found in the stomach." []
+is_a: GENEPIO:0100898 ! digestive tract substance
+property_value: terms:contributor https://orcid.org/0000-0001-5275-8866
+property_value: terms:date "2023-11-28T14:17:24Z" xsd:dateTime
+
+[Term]
+id: GENEPIO:0004512
+name: fecal composite
+def: "A mixture of feces obtained from multiple individuals." []
+is_a: GENEPIO:0001636 ! animal body product
+property_value: IAO:0000116 "Planned Obsolescence: this term is a placeholder for a term requested in another ontology. Once the appropriate ontology term is available, this term’s identifier will be obsoleted with a “term replaced by” id of the other term." xsd:string
+property_value: terms:contributor https://orcid.org/0000-0001-5275-8866
+property_value: terms:contributor https://orcid.org/0000-0002-1107-9135
+property_value: terms:date "2023-11-28T14:45:32Z" xsd:dateTime
+
+[Term]
+id: GENEPIO:0004513
+name: feces (fresh)
+def: "Feces that was recently excreted." []
+is_a: GENEPIO:0001636 ! animal body product
+property_value: IAO:0000116 "Planned Obsolescence: this term is a placeholder for a term requested in another ontology. Once the appropriate ontology term is available, this term’s identifier will be obsoleted with a “term replaced by” id of the other term." xsd:string
+property_value: terms:contributor https://orcid.org/0000-0001-5275-8866
+property_value: terms:contributor https://orcid.org/0000-0002-1107-9135
+property_value: terms:date "2023-11-28T14:28:34Z" xsd:dateTime
+
+[Term]
+id: GENEPIO:0004514
+name: feces (environmental)
+def: "Feces which is deposited in the environment." []
+is_a: GENEPIO:0001636 ! animal body product
+property_value: IAO:0000116 "Planned Obsolescence: this term is a placeholder for a term requested in another ontology. Once the appropriate ontology term is available, this term’s identifier will be obsoleted with a “term replaced by” id of the other term." xsd:string
+property_value: terms:contributor https://orcid.org/0000-0001-5275-8866
+property_value: terms:contributor https://orcid.org/0000-0002-1107-9135
+
+[Term]
+id: GENEPIO:0004522
+name: box corer
+def: "A specimen collection device that is used to collect soft sediments in lakes or oceans." []
+property_value: IAO:0000116 "Planned Obsolescence: this term is a placeholder for a term requested in another ontology. Once the appropriate ontology term is available, this term’s identifier will be obsoleted with a “term replaced by” id of the other term." xsd:string
+property_value: terms:contributor https://orcid.org/0000-0001-5275-8866
+property_value: terms:date "2023-11-29T14:18:43Z" xsd:dateTime
 
 [Term]
 id: GENEPIO:0100126
 name: Illumina NextSeq
 def: "A DNA sequencer which is manufactured by the Illumina corporation using sequence-by-synthesis chemistry that fits on a benchtop and has an output capacity of 1.65-7.5 Gb." []
 is_a: GENEPIO:0001921 ! sequencing instrument model
-property_value: http://purl.org/dc/terms/contributor "https://orcid.org/0000-0002-1107-9135" xsd:string
-property_value: http://purl.org/dc/terms/contributor "https://orcid.org/0000-0002-8844-9165" xsd:string
-property_value: http://purl.org/dc/terms/contributor "https://orcid.org/0000-0002-9578-0788" xsd:string
-property_value: http://purl.org/dc/terms/date "2022-01-19T18:23:15.862Z" xsd:dateTime
-property_value: IAO:0000114 IAO:0000428
+property_value: IAO:0000114 "requires discussion" xsd:string
 property_value: IAO:0000116 "Planned Obsolescence: this term is a placeholder for a term requested in another ontology. Once the appropriate ontology term is available, this term’s identifier will be obsoleted with a “term replaced by” id of the other term." xsd:string
+property_value: terms:contributor "https://orcid.org/0000-0002-1107-9135" xsd:string
+property_value: terms:contributor "https://orcid.org/0000-0002-8844-9165" xsd:string
+property_value: terms:contributor "https://orcid.org/0000-0002-9578-0788" xsd:string
+property_value: terms:date "2022-01-19T18:23:15.862Z" xsd:dateTime
 
 [Term]
 id: GENEPIO:0100140
 name: Oxford Nanopore sequencing instrument model
 def: "A DNA sequencer manufactured by the Oxford Nanopore corporation." []
 is_a: GENEPIO:0001921 ! sequencing instrument model
-property_value: http://purl.org/dc/terms/contributor "https://orcid.org/0000-0002-1107-9135" xsd:string
-property_value: http://purl.org/dc/terms/contributor "https://orcid.org/0000-0002-8844-9165" xsd:string
-property_value: http://purl.org/dc/terms/contributor "https://orcid.org/0000-0002-9578-0788" xsd:string
-property_value: http://purl.org/dc/terms/date "2022-01-19T18:23:15.862Z" xsd:dateTime
-property_value: IAO:0000114 IAO:0000428
+property_value: IAO:0000114 "requires discussion" xsd:string
 property_value: IAO:0000116 "Planned Obsolescence: this term is a placeholder for a term requested in another ontology. Once the appropriate ontology term is available, this term’s identifier will be obsoleted with a “term replaced by” id of the other term." xsd:string
+property_value: terms:contributor "https://orcid.org/0000-0002-1107-9135" xsd:string
+property_value: terms:contributor "https://orcid.org/0000-0002-8844-9165" xsd:string
+property_value: terms:contributor "https://orcid.org/0000-0002-9578-0788" xsd:string
+property_value: terms:date "2022-01-19T18:23:15.862Z" xsd:dateTime
 
 [Term]
 id: GENEPIO:0100212
 name: household exposure process
 def: "A process occuring within or in the vicinity of a household that exposes the recipient organism to a material entity." []
 is_a: GENEPIO:0001275 ! human to human exposure process
-property_value: http://purl.org/dc/terms/contributor "https://orcid.org/0000-0002-1107-9135" xsd:string
-property_value: http://purl.org/dc/terms/contributor "https://orcid.org/0000-0002-8844-9165" xsd:string
-property_value: http://purl.org/dc/terms/contributor "https://orcid.org/0000-0002-9578-0788" xsd:string
-property_value: http://purl.org/dc/terms/date "2022-01-19T18:23:15.862Z" xsd:dateTime
-property_value: IAO:0000114 IAO:0000428
+property_value: IAO:0000114 "requires discussion" xsd:string
 property_value: IAO:0000116 "Planned Obsolescence: this term is a placeholder for a term requested in another ontology. Once the appropriate ontology term is available, this term’s identifier will be obsoleted with a “term replaced by” id of the other term." xsd:string
 property_value: IAO:0000118 "Household" xsd:string
+property_value: terms:contributor "https://orcid.org/0000-0002-1107-9135" xsd:string
+property_value: terms:contributor "https://orcid.org/0000-0002-8844-9165" xsd:string
+property_value: terms:contributor "https://orcid.org/0000-0002-9578-0788" xsd:string
+property_value: terms:date "2022-01-19T18:23:15.862Z" xsd:dateTime
 
 [Term]
 id: GENEPIO:0100219
 name: sampling strategy specification
 def: "A directive information entity which realizes sample strategy specifications." []
-property_value: http://purl.org/dc/terms/contributor "https://orcid.org/0000-0002-1107-9135" xsd:string
-property_value: http://purl.org/dc/terms/contributor "https://orcid.org/0000-0002-8844-9165" xsd:string
-property_value: http://purl.org/dc/terms/contributor "https://orcid.org/0000-0002-9578-0788" xsd:string
-property_value: http://purl.org/dc/terms/date "2022-01-19T18:23:15.862Z" xsd:dateTime
-property_value: IAO:0000114 IAO:0000428
+property_value: IAO:0000114 "requires discussion" xsd:string
 property_value: IAO:0000116 "Planned Obsolescence: this term is a placeholder for a term requested in another ontology. Once the appropriate ontology term is available, this term’s identifier will be obsoleted with a “term replaced by” id of the other term." xsd:string
+property_value: terms:contributor "https://orcid.org/0000-0002-1107-9135" xsd:string
+property_value: terms:contributor "https://orcid.org/0000-0002-8844-9165" xsd:string
+property_value: terms:contributor "https://orcid.org/0000-0002-9578-0788" xsd:string
+property_value: terms:date "2022-01-19T18:23:15.862Z" xsd:dateTime
 
 [Term]
 id: GENEPIO:0100289
 name: host health complications at time of specimen collection
 def: "A  personal health datum which specifies host health complications at time of specimen collection." []
 is_a: GENEPIO:0002018 ! personal health datum
-property_value: http://purl.org/dc/terms/date "2022-01-31T23:52:14Z" xsd:dateTime
 property_value: IAO:0000114 IAO:0000428
 property_value: IAO:0000117 "0000-0002-9578-0788" xsd:string
+property_value: terms:date "2022-01-31T23:52:14Z" xsd:dateTime
 
 [Term]
 id: GENEPIO:0100290
@@ -7967,9 +8032,9 @@ name: pre-existing conditions and risk factors at time of specimen collection
 def: "A personal health datum which specifies host pre-existing conditions and risk factors at time of specimen collection." []
 is_a: GENEPIO:0002018 ! personal health datum
 relationship: IAO:0000136 GENEPIO:0001548 ! is about pre-existing condition
-property_value: http://purl.org/dc/terms/date "2022-01-31T23:52:41Z" xsd:dateTime
 property_value: IAO:0000114 IAO:0000428
 property_value: IAO:0000117 "0000-0002-9578-0788" xsd:string
+property_value: terms:date "2022-01-31T23:52:41Z" xsd:dateTime
 
 [Term]
 id: GENEPIO:0100291
@@ -7977,20 +8042,20 @@ name: signs and symptoms at time of specimen collection
 def: "A personal health datum which specifies host signs and symptoms at time of specimen collection." []
 is_a: GENEPIO:0002018 ! personal health datum
 relationship: IAO:0000136 GENEPIO:0001523 ! is about signs and symptoms
-property_value: http://purl.org/dc/terms/date "2022-01-31T23:53:13Z" xsd:dateTime
 property_value: IAO:0000114 IAO:0000428
 property_value: IAO:0000117 "0000-0002-9578-0788" xsd:string
+property_value: terms:date "2022-01-31T23:53:13Z" xsd:dateTime
 
 [Term]
 id: GENEPIO:0100300
 name: health signs and symptoms enumeration
 def: "A data enumeration which references a set of named signs and symptoms entities." []
 is_a: GENEPIO:0001522 ! data enumeration
-property_value: http://purl.org/dc/terms/contributor "https://orcid.org/0000-0002-8844-9165" xsd:string
-property_value: http://purl.org/dc/terms/contributor "https://orcid.org/0000-0002-9578-0788" xsd:string
-property_value: http://purl.org/dc/terms/date "2022-01-19T18:23:15.862Z" xsd:dateTime
-property_value: IAO:0000114 IAO:0000428
+property_value: IAO:0000114 "requires discussion" xsd:string
 property_value: IAO:0000118 "signs and symptoms" xsd:string
+property_value: terms:contributor "https://orcid.org/0000-0002-8844-9165" xsd:string
+property_value: terms:contributor "https://orcid.org/0000-0002-9578-0788" xsd:string
+property_value: terms:date "2022-01-19T18:23:15.862Z" xsd:dateTime
 
 [Term]
 id: GENEPIO:0100301
@@ -7998,22 +8063,22 @@ name: pre-existing conditions and risk factors enumeration
 def: "A data enumeration which references a set of named pre-existing conditions and risk factors entities." []
 is_a: GENEPIO:0001192 ! analytic datum
 is_a: GENEPIO:0001522 ! data enumeration
-property_value: http://purl.org/dc/terms/contributor "https://orcid.org/0000-0002-8844-9165" xsd:string
-property_value: http://purl.org/dc/terms/contributor "https://orcid.org/0000-0002-9578-0788" xsd:string
-property_value: http://purl.org/dc/terms/date "2022-01-19T18:23:15.862Z" xsd:dateTime
-property_value: IAO:0000114 IAO:0000428
+property_value: IAO:0000114 "requires discussion" xsd:string
 property_value: IAO:0000118 "pre-existing conditions and risk factors" xsd:string
+property_value: terms:contributor "https://orcid.org/0000-0002-8844-9165" xsd:string
+property_value: terms:contributor "https://orcid.org/0000-0002-9578-0788" xsd:string
+property_value: terms:date "2022-01-19T18:23:15.862Z" xsd:dateTime
 
 [Term]
 id: GENEPIO:0100302
 name: health complications enumeration
 def: "A data enumeration which references a set of named complications entities." []
 is_a: GENEPIO:0001522 ! data enumeration
-property_value: http://purl.org/dc/terms/contributor "https://orcid.org/0000-0002-8844-9165" xsd:string
-property_value: http://purl.org/dc/terms/contributor "https://orcid.org/0000-0002-9578-0788" xsd:string
-property_value: http://purl.org/dc/terms/date "2022-01-19T18:23:15.862Z" xsd:dateTime
-property_value: IAO:0000114 IAO:0000428
+property_value: IAO:0000114 "requires discussion" xsd:string
 property_value: IAO:0000118 "complications" xsd:string
+property_value: terms:contributor "https://orcid.org/0000-0002-8844-9165" xsd:string
+property_value: terms:contributor "https://orcid.org/0000-0002-9578-0788" xsd:string
+property_value: terms:date "2022-01-19T18:23:15.862Z" xsd:dateTime
 
 [Term]
 id: GENEPIO:0100303
@@ -8021,86 +8086,149 @@ name: person role enumeration
 def: "A data enumeration which references a set of named person role entities." []
 is_a: GENEPIO:0001170 ! organism datum
 is_a: GENEPIO:0001522 ! data enumeration
-property_value: http://purl.org/dc/terms/contributor "https://orcid.org/0000-0002-8844-9165" xsd:string
-property_value: http://purl.org/dc/terms/contributor "https://orcid.org/0000-0002-9578-0788" xsd:string
-property_value: IAO:0000114 IAO:0000428
+property_value: IAO:0000114 "requires discussion" xsd:string
 property_value: IAO:0000118 "host role" xsd:string
+property_value: terms:contributor "https://orcid.org/0000-0002-8844-9165" xsd:string
+property_value: terms:contributor "https://orcid.org/0000-0002-9578-0788" xsd:string
 
 [Term]
 id: GENEPIO:0100548
-name: environmental testing sampling strategy
-name: environmental testing strategy
+name: environmental testing sampling
 def: "A sampling strategy in which environments are sampled in the context of testing for the presence of, or change in the levels of, chemicals, pathogens or other phenomena." []
-def: "A sampling strategy in which samples are taken during real-life experiments which test directly whether proposed interventions actually work." []
-subset: GRDI
 is_a: GENEPIO:0100219 ! sampling strategy specification
-property_value: http://purl.org/dc/terms/contributor https://orcid.org/0000-0001-5275-8866
-property_value: http://purl.org/dc/terms/date "2023-01-23T00:42:19.315Z" xsd:dateTime
 property_value: IAO:0000118 "Environmental testing" xsd:string
+property_value: terms:contributor https://orcid.org/0000-0001-5275-8866
+property_value: terms:date "2023-01-23T00:42:19.315Z" xsd:dateTime
 
 [Term]
 id: GENEPIO:0100549
+name: clinical trial sampling
 name: clinical trial sampling strategy
-name: clinical trial strategy
 def: "A sampling strategy in which individuals are sampled in the context of experiments or observations performed as part of clinical research." []
-subset: GRDI
 is_a: GENEPIO:0100219 ! sampling strategy specification
-property_value: http://purl.org/dc/terms/contributor https://orcid.org/0000-0001-5275-8866
-property_value: http://purl.org/dc/terms/date "2022-09-23T11:08:21Z" xsd:dateTime
-property_value: http://purl.org/dc/terms/date "2023-01-23T00:42:19.315Z" xsd:dateTime
 property_value: IAO:0000118 "Clinical trial" xsd:string
+property_value: terms:contributor https://orcid.org/0000-0001-5275-8866
+property_value: terms:date "2022-09-23T11:08:21Z" xsd:dateTime
+property_value: terms:date "2023-01-23T00:42:19.315Z" xsd:dateTime
 
 [Term]
 id: GENEPIO:0100550
-name: field experiment sampling strategy
-name: field experiment strategy
+name: field experiment sampling
 def: "A sampling strategy in which samples are taken during real-life experiments which test directly whether proposed interventions actually work." []
-subset: GRDI
 is_a: GENEPIO:0100219 ! sampling strategy specification
-property_value: http://purl.org/dc/terms/contributor https://orcid.org/0000-0001-5275-8866
-property_value: http://purl.org/dc/terms/date "2022-09-23T11:12:34Z" xsd:dateTime
-property_value: http://purl.org/dc/terms/date "2023-01-23T00:42:19.315Z" xsd:dateTime
 property_value: IAO:0000118 "Field experiment" xsd:string
 property_value: IAO:0000119 "https://en.wikipedia.org/wiki/Field_experiment" xsd:string
+property_value: terms:contributor https://orcid.org/0000-0001-5275-8866
+property_value: terms:date "2022-09-23T11:12:34Z" xsd:dateTime
+property_value: terms:date "2023-01-23T00:42:19.315Z" xsd:dateTime
 
 [Term]
 id: GENEPIO:0100581
 name: Environmental Pathogen Attribute Package (Pathogen.env)
 def: "A collection of contextual data attributes pertaining to a pathogen in an environmental sample, as specified by the International Nucleotide Sequence Database Collaboration (INSDC)." []
 is_a: GENEPIO:0000115 ! NCBI standard
-property_value: http://purl.org/dc/terms/contributor https://orcid.org/0000-0002-1107-9135
-property_value: http://purl.org/dc/terms/date "2022-09-23T10:54:21Z" xsd:dateTime
+property_value: terms:contributor https://orcid.org/0000-0002-1107-9135
+property_value: terms:date "2022-09-23T10:54:21Z" xsd:dateTime
 
 [Term]
 id: GENEPIO:0100582
-name: survey study
+name: survey study sampling
 name: survey study sampling strategy
 def: "A sampling strategy in which individuals and/or materials are sampled for surveillance performed for research purposes." []
-subset: GRDI
 is_a: GENEPIO:0100219 ! sampling strategy specification
-property_value: http://purl.org/dc/terms/contributor https://orcid.org/0000-0001-5275-8866
-property_value: http://purl.org/dc/terms/date "2022-09-23T11:04:13Z" xsd:dateTime
-property_value: http://purl.org/dc/terms/date "2023-01-23T00:42:19.315Z" xsd:dateTime
 property_value: IAO:0000118 "Survey study" xsd:string
+property_value: terms:contributor https://orcid.org/0000-0001-5275-8866
+property_value: terms:date "2022-09-23T11:04:13Z" xsd:dateTime
+property_value: terms:date "2023-01-23T00:42:19.315Z" xsd:dateTime
 
 [Term]
 id: GENEPIO:0100586
 name: data field
 def: "A data item which is a location for a predetermined type of data." []
 synonym: "data slot" EXACT []
-property_value: http://purl.org/dc/terms/contributor http://orcid.org/0000-0002-9578-0788
-property_value: http://purl.org/dc/terms/date "2022-11-23T00:33:27.896Z" xsd:dateTime
 property_value: IAO:0000112 "The \"specimen collector sample ID\" is where one can store sample identifiers given by the specimen collector." xsd:string
 property_value: IAO:0000114 IAO:0000428
 property_value: IAO:0000119 "https://analystanswers.com/what-is-a-data-field-definition-types-examples/" xsd:string
+property_value: terms:contributor http://orcid.org/0000-0002-9578-0788
+property_value: terms:date "2022-11-23T00:33:27.896Z" xsd:dateTime
 
 [Term]
 id: GENEPIO:0100634
 name: State or Province or Territory
-property_value: http://purl.org/dc/terms/contributor http://orcid.org/0000-0002-9578-0788
-property_value: http://purl.org/dc/terms/date "2022-12-22T22:56:03.687Z" xsd:string
 property_value: IAO:0000114 IAO:0000428
 property_value: IAO:0000116 "This \"or\" class is just to represent an equivalency with a commonly used classification, it should not have subclasses under it. (2022-12-22)" xsd:string
+property_value: terms:contributor http://orcid.org/0000-0002-9578-0788
+property_value: terms:date "2022-12-22T22:56:03.687Z" xsd:string
+
+[Term]
+id: GENEPIO:0100750
+name: available data types enumeration
+
+[Term]
+id: GENEPIO:0100898
+name: digestive tract substance
+def: "Undigested food material, microbiota, and other materials found in the digestive tract." []
+property_value: terms:contributor https://orcid.org/0000-0001-5275-8866
+property_value: terms:date "2023-11-28T14:09:34Z" xsd:dateTime
+
+[Term]
+id: GENEPIO:0100899
+name: caecal content
+def: "Undigested food material, microbiota, and other materials found in the cecum" []
+is_a: GENEPIO:0100898 ! digestive tract substance
+property_value: IAO:0000119 "https://www.britannica.com/science/cecum" xsd:string
+property_value: terms:contributor https://orcid.org/0000-0001-5275-8866
+property_value: terms:date "2023-11-28T13:29:31Z" xsd:dateTime
+
+[Term]
+id: GENEPIO:0100900
+name: intestinal content
+def: "Undigested food material, microbiota, and other materials found in the intestine." []
+is_a: GENEPIO:0100898 ! digestive tract substance
+property_value: IAO:0000119 Lower_gastrointestinal_tract
+property_value: terms:contributor https://orcid.org/0000-0001-5275-8866
+property_value: terms:date "2023-11-28T13:54:45Z" xsd:dateTime
+
+[Term]
+id: GENEPIO:0100929
+name: PONAR grab sampler
+def: "A specimen collection device that is designed to collect sediment samples from the hard bottoms of a body of water i.e. sand, gravel, consolidated marl or clay." []
+property_value: IAO:0000116 "Planned Obsolescence: this term is a placeholder for a term requested in another ontology. Once the appropriate ontology term is available, this term’s identifier will be obsoleted with a “term replaced by” id of the other term." xsd:string
+property_value: terms:contributor https://orcid.org/0000-0001-5275-8866
+property_value: terms:date "2023-11-29T14:21:43Z" xsd:dateTime
+
+[Term]
+id: GENEPIO:0100930
+name: soil sample probe
+def: "A specimen collection device designed to penetrate soil with a hollow tube to collect soil sample cores." []
+property_value: IAO:0000116 "Planned Obsolescence: this term is a placeholder for a term requested in another ontology. Once the appropriate ontology term is available, this term’s identifier will be obsoleted with a “term replaced by” id of the other term." xsd:string
+property_value: terms:contributor https://orcid.org/0000-0001-5275-8866
+property_value: terms:date "2023-11-29T12:15:31Z" xsd:dateTime
+
+[Term]
+id: GENEPIO:0100932
+name: specimen collection by scooping
+def: "A specimen collection process that is used to dig out an amount of sample using a scoop." []
+property_value: IAO:0000116 "Planned Obsolescence: this term is a placeholder for a term requested in another ontology. Once the appropriate ontology term is available, this term’s identifier will be obsoleted with a “term replaced by” id of the other term." xsd:string
+property_value: terms:contributor https://orcid.org/0000-0001-5275-8866
+property_value: terms:contributor https://orcid.org/0000-0002-1107-9135
+property_value: terms:date "2023-11-29T11:21:54Z" xsd:dateTime
+
+[Term]
+id: GENEPIO:0100933
+name: sediment sampling
+def: "A specimen collection process that is used to collect a sediment sample." []
+property_value: IAO:0000116 "Planned Obsolescence: this term is a placeholder for a term requested in another ontology. Once the appropriate ontology term is available, this term’s identifier will be obsoleted with a “term replaced by” id of the other term." xsd:string
+property_value: terms:contributor https://orcid.org/0000-0001-5275-8866
+property_value: terms:date "2023-11-29T11:40:32Z" xsd:dateTime
+
+[Term]
+id: GENEPIO:0100934
+name: soil coring
+def: "A specimen collection process that is used to collect soil sample cores." []
+property_value: IAO:0000116 "Planned Obsolescence: this term is a placeholder for a term requested in another ontology. Once the appropriate ontology term is available, this term’s identifier will be obsoleted with a “term replaced by” id of the other term." xsd:string
+property_value: terms:contributor https://orcid.org/0000-0001-5275-8866
+property_value: terms:date "2023-11-29T11:47:51Z" xsd:dateTime
 
 [Term]
 id: http://purl.obolibrary.org/obo/GENEPIO_0000025
@@ -8229,18 +8357,19 @@ property_value: IAO:0000112 "this fragility is a characteristic of this vase" xs
 property_value: IAO:0000112 "this red color is a characteristic of this apple" xsd:string
 property_value: IAO:0000118 "inheres_in" xsd:string
 property_value: RO:0001900 RO:0001901
+is_functional: true
 
 [Typedef]
 id: RO:0000057
 name: has participant
 def: "a relation between a process and a continuant, in which the continuant is somehow involved in the process" []
-property_value: http://purl.org/dc/terms/source "http://www.obofoundry.org/ro/#OBO_REL:has_participant" xsd:string
 property_value: IAO:0000111 "has participant" xsd:string
 property_value: IAO:0000112 "this blood coagulation has participant this blood clot" xsd:string
 property_value: IAO:0000112 "this investigation has participant this investigator" xsd:string
 property_value: IAO:0000112 "this process has participant this input material (or this output material)" xsd:string
 property_value: IAO:0000116 "Has_participant is a primitive instance-level relation between a process, a continuant, and a time at which the continuant participates in some way in the process. The relation obtains, for example, when this particular process of oxygen exchange across this particular alveolar membrane has_participant this particular sample of hemoglobin at this particular time." xsd:string
 property_value: IAO:0000118 "has_participant" xsd:string
+property_value: terms:source "http://www.obofoundry.org/ro/#OBO_REL:has_participant" xsd:string
 holds_over_chain: BFO:0000051 RO:0000057
 
 [Typedef]
@@ -8281,6 +8410,8 @@ property_value: IAO:0000112 "this cage is the location of this rat" xsd:string
 property_value: IAO:0000116 "Most location relations will only hold at certain times, but this is difficult to specify in OWL. See http://purl.obolibrary.org/obo/ro/docs/temporal-semantics/" xsd:string
 property_value: IAO:0000118 "location_of" xsd:string
 property_value: RO:0001900 RO:0001901
+is_transitive: true
+inverse_of: RO:0001025 ! located in
 
 [Typedef]
 id: RO:0001025
@@ -8289,7 +8420,6 @@ name: located_in
 name: located_in (type level)
 def: "a relation between two independent continuants, the target and the location, in which the target is entirely within the location" []
 subset: http://purl.obolibrary.org/obo/valid_for_go_gp2term
-property_value: http://purl.org/dc/terms/source "http://www.obofoundry.org/ro/#OBO_REL:located_in" xsd:string
 property_value: IAO:0000111 "located in" xsd:string
 property_value: IAO:0000112 "my brain is located in my head" xsd:string
 property_value: IAO:0000112 "this rat is located in this cage" xsd:string
@@ -8299,6 +8429,7 @@ property_value: IAO:0000118 "located_in" xsd:string
 property_value: IAO:0000412 http://purl.obolibrary.org/obo/gaz.owl
 property_value: RO:0001900 RO:0001901
 property_value: seeAlso "https://wiki.geneontology.org/Located_in" xsd:anyURI
+property_value: terms:source "http://www.obofoundry.org/ro/#OBO_REL:located_in" xsd:string
 is_transitive: true
 transitive_over: BFO:0000050 ! part of
 
@@ -8309,6 +8440,7 @@ property_value: IAO:0000114 IAO:0000125
 property_value: IAO:0000116 "May be obsoleted, see https://github.com/oborel/obo-relations/issues/260" xsd:string
 property_value: IAO:0000117 https://orcid.org/0000-0002-7073-9172
 property_value: RO:0001900 RO:0001901
+is_transitive: true
 
 [Typedef]
 id: RO:0002083
@@ -8316,13 +8448,14 @@ name: before
 def: "T1 before t2 iff:= t1 before_or_simulataneous_with t2 and not (t1 simultaeous_with t2)" []
 comment: t1 before t2 iff:=  t1 before_or_simulataneous_with t2  and not (t1 simultaeous_with t2)
 subset: ro-eco
-property_value: IAO:0000117 "David Osumi-Sutherland" xsd:string
+property_value: IAO:0000117 https://orcid.org/0000-0002-7073-9172
+is_transitive: true
 
 [Typedef]
 id: RO:0002087
 name: immediately preceded by
 comment: X immediately_preceded_by Y iff: end(X) simultaneous_with start(Y)
-property_value: IAO:0000117 "David Osumi-Sutherland" xsd:string
+property_value: IAO:0000117 https://orcid.org/0000-0002-7073-9172
 property_value: IAO:0000118 "starts_at_end_of" xsd:string
 is_a: BFO:0000062
 
@@ -8346,7 +8479,7 @@ def: "x adjacent to y if and only if x and y share a boundary." []
 subset: http://purl.obolibrary.org/obo/valid_for_go_annotation_extension
 subset: http://purl.obolibrary.org/obo/valid_for_go_ontology
 subset: http://purl.obolibrary.org/obo/valid_for_gocam
-property_value: IAO:0000112 "A caterpillar walking on the surface of a leaf is adjacent_to the leaf, if one of the caterpillar appendages is touching the leaf. In contrast, a butterfly flying close to a flower is not considered adjacent, unless there are any touching parts." xsd:string {http://www.w3.org/2000/01/rdf-schema#seeAlso="issuecomment-218584934"}
+property_value: IAO:0000112 "A caterpillar walking on the surface of a leaf is adjacent_to the leaf, if one of the caterpillar appendages is touching the leaf. In contrast, a butterfly flying close to a flower is not considered adjacent, unless there are any touching parts." xsd:string {seeAlso="issuecomment-218584934"}
 property_value: IAO:0000112 "The epidermis layer of a vertebrate is adjacent to the dermis." xsd:string
 property_value: IAO:0000112 "The plasma membrane of a cell is adjacent to the cytoplasm, and also to the cell lumen which the cytoplasm occupies." xsd:string
 property_value: IAO:0000112 "The skin of the forelimb is adjacent to the skin of the torso if these are considered anatomical subdivisions with a defined border. Otherwise a relation such as continuous_with would be used." xsd:string
@@ -8383,6 +8516,7 @@ property_value: IAO:0000117 https://orcid.org/0000-0002-6601-2165
 property_value: IAO:0000118 "produces" xsd:string
 property_value: seeAlso "https://wiki.geneontology.org/Has_output" xsd:anyURI
 is_a: RO:0000057 ! has participant
+inverse_of: RO:0002353 ! output of
 
 [Typedef]
 id: RO:0002350
@@ -8394,6 +8528,7 @@ property_value: IAO:0000118 "member part of" xsd:string
 property_value: IAO:0000119 "SIO" xsd:string
 property_value: RO:0001900 RO:0001901
 is_a: BFO:0000050 ! part of
+inverse_of: RO:0002351 ! has member
 is_asymmetric: true
 
 [Typedef]

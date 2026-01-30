@@ -37,9 +37,10 @@ mirror/general_import.owl:
 	echo "No mirror for $@"
 
 # Only fetches .owl if it doesn't exist or if .txt has later timestamp.
+# Blocks bad rdf:type as annotation from coming in ontofox
 imports/general_import.owl: imports/general_ontofox.txt
 	if [ $(IMP) = true ]; then curl -s -F file=@imports/general_ontofox.txt -o $@ https://ontofox.hegroup.org/service.php; \
-	$(ROBOT) reduce -i "$@" -r ELK --xml-entities -o "$@"; fi
+	$(ROBOT) reduce -i "$@" -r ELK --xml-entities remove --term rdf:type -o "$@"; fi
 
 .PRECIOUS: imports/general_import.owl
 

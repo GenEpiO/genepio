@@ -3,21 +3,109 @@ http://purl.obolibrary.org/obo/genepio/imports/general_import.owl
 
 #################################################
 
+
+[Source ontology]
+COB
+
+[Low level source term URIs]
+http://purl.obolibrary.org/obo/IAO_0000030 # information
+http://purl.obolibrary.org/obo/IAO_0000027 #	data item ()           
+http://purl.obolibrary.org/obo/IAO_0000109 #		measurement datum  
+http://purl.obolibrary.org/obo/IAO_0000033 #	directive information entity
+http://purl.obolibrary.org/obo/COB_0000077 #		action specification
+http://purl.obolibrary.org/obo/IAO_0000007 # action specification
+http://purl.obolibrary.org/obo/IAO_0000005 #		objective specification
+http://purl.obolibrary.org/obo/IAO_0000104 #		plan specification 
+# http://purl.obolibrary.org/obo/IAO_0000310 #	document NOT IN COB
+
+http://purl.obolibrary.org/obo/COB_0000502 # characteristic
+
+http://purl.obolibrary.org/obo/PATO_0000125 # mass
+http://purl.obolibrary.org/obo/BFO_0000017 # realizable entity
+http://purl.obolibrary.org/obo/BFO_0000023 #   role
+http://purl.obolibrary.org/obo/BFO_0000016 #   disposition
+http://purl.obolibrary.org/obo/BFO_0000034 #     function
+
+
+http://purl.obolibrary.org/obo/BFO_0000141 # immaterial entity
+includeAllChildren
+# http://purl.obolibrary.org/obo/COB_0000032 # geographical location # Deprecated?
+
+http://purl.obolibrary.org/obo/BFO_0000040 # material entity
+http://purl.obolibrary.org/obo/COB_0000026 # processed material entity
+http://purl.obolibrary.org/obo/COB_0000080 # 	complex of molecular entities
+http://purl.obolibrary.org/obo/GO_0032991 # 		protein-containing macromolecular complex
+http://purl.obolibrary.org/obo/CL_0000000  # cell
+http://purl.obolibrary.org/obo/GO_0110165 # cellular anatomical entity
+http://purl.obolibrary.org/obo/PCO_0000000 # collection of organisms
+http://purl.obolibrary.org/obo/ENVO_01000813 # geophysical entity (astronomical body part)
+http://purl.obolibrary.org/obo/COB_0001300 # device
+http://purl.obolibrary.org/obo/COB_0000021 # gross anatomical part
+http://purl.obolibrary.org/obo/COB_0000011 # atom
+http://purl.obolibrary.org/obo/CHEBI_33252 # atomic nucleus
+http://purl.obolibrary.org/obo/COB_0000013 # molecular entity
+includeAllChildren
+
+
+http://purl.obolibrary.org/obo/COB_0000022 # organism
+includeAllChildren
+http://purl.obolibrary.org/obo/NCBITaxon_131567 # Cellular Organisms
+
+
+#http://purl.obolibrary.org/obo/OBI_0000245 # organization NOT IN COB AT MOMENT
+# http://purl.obolibrary.org/obo/OBI_0000047 # processed material entity # label different from OBI issue
+
+http://purl.obolibrary.org/obo/BFO_0000015 # process
+http://purl.obolibrary.org/obo/COB_0000083 # 	failed process
+http://purl.obolibrary.org/obo/COB_0000035 # 	completely executed planned process
+http://purl.obolibrary.org/obo/COB_0000110 # 		material processing
+
+# OBJECT AND DATA PROPERTIES.  Some are only in COB, not in RO.
+
+# http://purl.obolibrary.org/obo/STATO_0000102 # executes NOT IN COB
+http://purl.obolibrary.org/obo/COB_0000511 # has quantity
+
+[Top level source term URIs and target direct superclass URIs]
+http://purl.obolibrary.org/obo/UBERON_0001062 # anatomical entity
+http://purl.obolibrary.org/obo/COB_0000502 # characteristic
+http://purl.obolibrary.org/obo/BFO_0000141 # immaterial entity
+http://purl.obolibrary.org/obo/IAO_0000030 # information
+http://purl.obolibrary.org/obo/BFO_0000040 # material entity
+http://purl.obolibrary.org/obo/BFO_0000015 # process 
+
+http://purl.obolibrary.org/obo/BFO_0000017 # realizable entity
+subClassOf http://purl.obolibrary.org/obo/COB_0000502 # characteristic // NOT SURE WHY THIS IS NEEDED!
+
+[Source term retrieval setting]
+includeAllIntermediates
+
+[Source annotation URIs]
+http://www.w3.org/2000/01/rdf-schema#label
+http://purl.obolibrary.org/obo/IAO_0000115 
+http://purl.obolibrary.org/obo/IAO_0000114
+http://purl.obolibrary.org/obo/IAO_0000118
+http://purl.obolibrary.org/obo/IAO_0000119
+http://www.geneontology.org/formats/oboInOwl#oboInOwl:hasExactSynonym
+http://www.w3.org/2002/07/owl#deprecated
+http://purl.obolibrary.org/obo/IAO_0100001 # replaced by
+
+#################################################
+
 [Source ontology]
 APOLLO_SV
 
 [Low level source term URIs]
 
-http://purl.obolibrary.org/obo/APOLLO_SV_00000016
-http://purl.obolibrary.org/obo/APOLLO_SV_00000017
+http://purl.obolibrary.org/obo/APOLLO_SV_00000016 # infectious period duration
+http://purl.obolibrary.org/obo/APOLLO_SV_00000017 # latent period duration
 http://purl.obolibrary.org/obo/APOLLO_SV_00000019 # simulated exposed population
 http://purl.obolibrary.org/obo/APOLLO_SV_00000020 # simulated contagious population
 http://purl.obolibrary.org/obo/APOLLO_SV_00000021 # simulated resistant population
 http://purl.obolibrary.org/obo/APOLLO_SV_00000022 # simulated population
 
-http://purl.obolibrary.org/obo/APOLLO_SV_00000153 # 
-http://purl.obolibrary.org/obo/APOLLO_SV_00000173 # 
-http://purl.obolibrary.org/obo/APOLLO_SV_00000498 # 
+http://purl.obolibrary.org/obo/APOLLO_SV_00000153 # population census
+http://purl.obolibrary.org/obo/APOLLO_SV_00000173 # census
+http://purl.obolibrary.org/obo/APOLLO_SV_00000498 # count of cases in an epidemic
 http://purl.obolibrary.org/obo/APOLLO_SV_00000031 # count of simulated population
 
 http://purl.obolibrary.org/obo/APOLLO_SV_00000033 # counting
@@ -30,16 +118,14 @@ includeAllChildren
 http://purl.obolibrary.org/obo/APOLLO_SV_00000240 # census reference date
 http://purl.obolibrary.org/obo/APOLLO_SV_00000498 # count of cases in an epidemic
 
-http://purl.obolibrary.org/obo/APOLLO_SV_00000173 # census
-
 http://purl.obolibrary.org/obo/APOLLO_SV_00000281 # number of doses in a treatment course
 
-http://purl.obolibrary.org/obo/APOLLO_SV_00000236
-http://purl.obolibrary.org/obo/APOLLO_SV_00000258
-http://purl.obolibrary.org/obo/APOLLO_SV_00000267
-http://purl.obolibrary.org/obo/APOLLO_SV_00000280
-http://purl.obolibrary.org/obo/APOLLO_SV_00000291
-http://purl.obolibrary.org/obo/APOLLO_SV_00000511
+http://purl.obolibrary.org/obo/APOLLO_SV_00000236 # asymptomatic host
+http://purl.obolibrary.org/obo/APOLLO_SV_00000258 # delay from symptoms to treatment
+http://purl.obolibrary.org/obo/APOLLO_SV_00000267 # time delay to case detection
+http://purl.obolibrary.org/obo/APOLLO_SV_00000280 # duration of treatment course
+http://purl.obolibrary.org/obo/APOLLO_SV_00000291 # time delay of treatment detection
+http://purl.obolibrary.org/obo/APOLLO_SV_00000511 # infection acquisition through sexual activity with infectious host
 
 # population surveyClass:population survey  Definition: A planned process involving counting numbers of a organism population, possibly including counting sub-populations fulfilling specific criteria.
 #- population immunity survey
@@ -50,6 +136,25 @@ http://purl.obolibrary.org/obo/APOLLO_SV_00000511
 http://purl.obolibrary.org/obo/BFO_0000015 # process
 http://purl.obolibrary.org/obo/BFO_0000040 # material entity
 http://purl.obolibrary.org/obo/IAO_0000030 # information
+
+http://purl.obolibrary.org/obo/APOLLO_SV_00000033 # counting
+subClassOf http://purl.obolibrary.org/obo/COB_0000035 # completely executed planned process
+
+http://purl.obolibrary.org/obo/APOLLO_SV_00000236 # asymptomatic host
+subClassOf http://purl.obolibrary.org/obo/IDO_0000531 # host
+
+http://purl.obolibrary.org/obo/APOLLO_SV_00000070 # simulation
+subClassOf http://purl.obolibrary.org/obo/IAO_0000030 # ICE
+
+http://purl.obolibrary.org/obo/PATO_0000001 # characteristic
+subClassOf http://purl.obolibrary.org/obo/COB_0000502
+
+http://purl.obolibrary.org/obo/IDO_0000540 # infectious agent vector
+subClassOf http://purl.obolibrary.org/obo/COB_0000022 # organism
+
+
+
+http://purl.obolibrary.org/obo/BFO_0000141 # immaterial entity
 
 [Source term retrieval setting]
 includeAllIntermediates
@@ -74,9 +179,9 @@ http://purl.obolibrary.org/obo/OBI_0001886 # NIAID GSCID-BRC alternative term
 
 [Source annotation URIs to be excluded]
 #http://purl.obolibrary.org/obo/APOLLO_SV_0000040 #???
-http://purl.obolibrary.org/obo/RO_0000053
-http://purl.obolibrary.org/obo/BFO_0000108 
-http://purl.obolibrary.org/obo/BFO_0000157
+# http://purl.obolibrary.org/obo/RO_0000053
+# http://purl.obolibrary.org/obo/BFO_0000108 
+# http://purl.obolibrary.org/obo/BFO_0000157
 
 
 #################################################
@@ -121,9 +226,9 @@ includeAllChildren
 
 [Top level source term URIs and target direct superclass URIs]
 http://purl.obolibrary.org/obo/IAO_0000030 # information
-http://purl.obolibrary.org/obo/BFO_0000020 # characteristic
+
 http://purl.obolibrary.org/obo/PATO_0000001 # characteristic
-subClassOf http://purl.obolibrary.org/obo/BFO_0000020
+subClassOf http://purl.obolibrary.org/obo/COB_0000502
 http://purl.obolibrary.org/obo/BFO_0000141 # immaterial entity
 http://purl.obolibrary.org/obo/BFO_0000040 # material entity
 http://purl.obolibrary.org/obo/BFO_0000015 # process
@@ -199,12 +304,14 @@ CHMO
 
 [Low level source term URIs]
 http://purl.obolibrary.org/obo/CHMO_0000993 # portion of material
+http://purl.obolibrary.org/obo/CHMO_0002743 #    matrix // (collection matrix)
 http://purl.obolibrary.org/obo/CHMO_0002316 # pulsed-field gel electrophoresis
-http://purl.obolibrary.org/obo/CHMO_0002743 # matrix (collection matrix)
+
 
 [Top level source term URIs and target direct superclass URIs]
-http://purl.obolibrary.org/obo/BFO_0000015 # process
 http://purl.obolibrary.org/obo/BFO_0000040 # material entity
+http://purl.obolibrary.org/obo/CHMO_0000999 # electrphoresis
+subClassof http://purl.obolibrary.org/obo/OBI_0600014 # material component separation
 
 [Source term retrieval setting]
 includeAllIntermediates
@@ -249,6 +356,11 @@ http://purl.obolibrary.org/obo/CLO_0000001 # cell line cell
 
 [Top level source term URIs and target direct superclass URIs]
 http://purl.obolibrary.org/obo/BFO_0000040 # material entity
+http://purl.obolibrary.org/obo/CL_0000578 # experimentally modified cell in vitro
+subClassOf http://purl.obolibrary.org/obo/COB_0000022 # cellular organisms
+
+http://purl.obolibrary.org/obo/OBI_0100060 # cultured cell population 
+subClassOf http://purl.obolibrary.org/obo/COB_0000026 # processed material entity
 
 [Source term retrieval setting]
 includeAllIntermediates
@@ -315,7 +427,7 @@ http://purl.obolibrary.org/obo/DOID_863 # nervous system disease
 
 
 http://purl.obolibrary.org/obo/DOID_1287 # cardiovascular system disease
-http://purl.obolibrary.org/obo/DOID_0050829 #pericardium disease
+http://purl.obolibrary.org/obo/DOID_0050829 # pericardium disease
 http://purl.obolibrary.org/obo/DOID_114 # heart disease
 
 http://purl.obolibrary.org/obo/DOID_15 # reproductive system disease
@@ -328,8 +440,6 @@ http://purl.obolibrary.org/obo/DOID_75 # lymphatic system disease
 http://purl.obolibrary.org/obo/DOID_9942 # lymph node disease
 
 http://purl.obolibrary.org/obo/DOID_10690 # mastitisis
-#http://purl.obolibrary.org/obo/SYMP_0000672 # abscess
-http://purl.obolibrary.org/obo/SYMP_0000092 # skin lesion
 
 # NON-existent term
 #http://purl.obolibrary.org/obo/DOID_9219 # pregnancy complication
@@ -347,6 +457,10 @@ includeAllChildren
 
 http://purl.obolibrary.org/obo/DOID_4379 # nut allergy
 includeAllChildren
+
+http://purl.obolibrary.org/obo/DOID_1287
+http://purl.obolibrary.org/obo/DOID_77
+http://purl.obolibrary.org/obo/DOID_850
 
 [Top level source term URIs and target direct superclass URIs]
 http://purl.obolibrary.org/obo/DOID_4 #disease
@@ -455,12 +569,18 @@ http://www.ebi.ac.uk/efo/EFO_0002091 #   biological replicate
 http://www.ebi.ac.uk/efo/EFO_0002090 #   technical replicate
 
 [Top level source term URIs and target direct superclass URIs]
-http://purl.obolibrary.org/obo/BFO_0000020 # material property
-http://purl.obolibrary.org/obo/BFO_0000015 # process # manually placing medical procedure rather than using EFO planned process.
+http://purl.obolibrary.org/obo/BFO_0000023 # role
+http://purl.obolibrary.org/obo/BFO_0000016 # disposition 
+
+
 http://www.ebi.ac.uk/efo/EFO_0002571 # medical procedure
+subClassOf http://purl.obolibrary.org/obo/OGMS_0000090 # treatment
+
 http://purl.obolibrary.org/obo/BFO_0000040 # material entity
 http://purl.obolibrary.org/obo/IAO_0000030 # information content entity
 
+http://purl.obolibrary.org/obo/GO_0008150 # biological process
+subClassOf http://purl.obolibrary.org/obo/BFO_0000015 # process
 
 [Source term retrieval setting]
 includeAllIntermediates
@@ -775,6 +895,8 @@ http://purl.obolibrary.org/obo/ENVO_03501256
 http://purl.obolibrary.org/obo/ENVO_00000004 # to intercept ENVO 05 and 09.
 http://purl.obolibrary.org/obo/BFO_0000040 # material entity
 http://purl.obolibrary.org/obo/BFO_0000015 # process
+http://purl.obolibrary.org/obo/PATO_0000001 # characteristic
+subClassOf http://purl.obolibrary.org/obo/COB_0000502
 
 [Source term retrieval setting]
 includeAllIntermediates
@@ -836,7 +958,7 @@ http://purl.obolibrary.org/obo/FOODON_00003356 # pet food (raw)
 
 http://purl.obolibrary.org/obo/FOODON_03400361 # food product type
 
-http://purl.obolibrary.org/obo/FOODON_00002381 # food product by organism
+# DEPRECATED http://purl.obolibrary.org/obo/FOODON_00002381 # food product by organism -> organism material
 # includeAllChildren
 
 http://purl.obolibrary.org/obo/FOODON_03311737 # processed food product
@@ -858,7 +980,7 @@ http://purl.obolibrary.org/obo/FOODON_03430113 # physical state shape or form
 includeAllChildren
 http://purl.obolibrary.org/obo/FOODON_03510136 # consumer type
 includeAllChildren
-http://purl.obolibrary.org/obo/FOODON_03420116 # part of plant or animal
+http://purl.obolibrary.org/obo/FOODON_03420116 # organism material (was part of plant or animal)
 #includeAllChildren
 #http://purl.obolibrary.org/obo/FOODON_03510032 # food dietairy use/claim REPLACED BY label claim
 http://purl.obolibrary.org/obo/FOODON_03602001 # label claim
@@ -878,9 +1000,8 @@ http://purl.obolibrary.org/obo/FOODON_03460111 # treatment applied # Suggest not
 
 [Top level source term URIs and target direct superclass URIs]
 http://purl.obolibrary.org/obo/IAO_0000030 # information
-http://purl.obolibrary.org/obo/BFO_0000020 # characteristic
 http://purl.obolibrary.org/obo/PATO_0000001 # characteristic
-subClassOf http://purl.obolibrary.org/obo/BFO_0000020
+subClassOf http://purl.obolibrary.org/obo/COB_0000502
 http://purl.obolibrary.org/obo/BFO_0000141 # immaterial entity
 http://purl.obolibrary.org/obo/BFO_0000040 # material entity
 http://purl.obolibrary.org/obo/BFO_0000015 # process
@@ -935,15 +1056,12 @@ http://www.geneontology.org/formats/oboInOwl#hasAlternativeId
 GSSO
 
 [Low level source term URIs]
-http://purl.obolibrary.org/obo/GSSO_000132
-http://purl.obolibrary.org/obo/GSSO_004004
-http://purl.obolibrary.org/obo/GSSO_004005
+http://purl.obolibrary.org/obo/GSSO_000096 # transgender
+includeAllChildren
 
 [Top level source term URIs and target direct superclass URIs]
-# Can't do default BFO 00000001 because GSSO uses SIO 'attribute' in path:
-http://purl.obolibrary.org/obo/BFO_0000020 # characteristic
-http://purl.obolibrary.org/obo/NCIT_C19332 # personal attribute
-
+http://purl.obolibrary.org/obo/NCIT_C62263 # gender diversity
+subClassOf http://purl.obolibrary.org/obo/NCIT_C19332 # personal attribute
 
 [Source term retrieval setting]
 includeAllIntermediates
@@ -1037,6 +1155,8 @@ http://purl.obolibrary.org/obo/HP_0003326 # myalgia / synonym muscle pain
 http://purl.obolibrary.org/obo/HP_0003470 # paralysis , but also NBO_0000032 ?
 http://purl.obolibrary.org/obo/HP_0011458 # abdominal symptom
 includeAllChildren
+
+
 http://purl.obolibrary.org/obo/HP_0003674 # age of onset
 http://purl.obolibrary.org/obo/HP_0002027 # abdominal pain
 http://purl.obolibrary.org/obo/HP_0002315 # headache
@@ -1064,7 +1184,7 @@ http://purl.obolibrary.org/obo/HP_0200039 # Skin pustule
 #http://purl.obolibrary.org/obo/HP_0002167 # Neurological speech impairment
 
 #PROBLEM: Subterms lack definitions; while top term goes to HP_0000001
-#http://purl.obolibrary.org/obo/HP_0012830 # Position of phenotype abnormality
+http://purl.obolibrary.org/obo/HP_0012830 # Position (of phenotype abnormality)
 
 # PHA4GE ADDITIONS
 http://purl.obolibrary.org/obo/HP_0011009
@@ -1186,7 +1306,22 @@ http://purl.obolibrary.org/obo/HP_0001081 # Cholelithiasis
 
 [Top level source term URIs and target direct superclass URIs]
 http://purl.obolibrary.org/obo/HP_0000118 # phenotypic abnormality
-#http://purl.obolibrary.org/obo/HP_0012823 # clinical modifier
+
+http://purl.obolibrary.org/obo/HP_0011420 # age of death
+subClassOf http://purl.obolibrary.org/obo/COB_0000502 # characteristic
+
+http://purl.obolibrary.org/obo/HP_0003674 # onset
+subClassOf http://purl.obolibrary.org/obo/COB_0000502 # characteristic
+
+http://purl.obolibrary.org/obo/HP_0011008 # temporal pattern
+subClassOf http://purl.obolibrary.org/obo/COB_0000502 # characteristic
+
+http://purl.obolibrary.org/obo/HP_0000005 # mode of inheritance
+http://purl.obolibrary.org/obo/HP_0012830 # position of phenotypic abnormality.
+subClassOf http://purl.obolibrary.org/obo/COB_0000502 # characteristic
+
+http://purl.obolibrary.org/obo/HP_0012823 # clinical modifier
+subClassOf http://purl.obolibrary.org/obo/COB_0000502 # characteristic
 
 [Source term retrieval setting]
 includeAllIntermediates
@@ -1366,6 +1501,15 @@ http://purl.obolibrary.org/obo/BFO_0000040 # material entity
 http://purl.obolibrary.org/obo/BFO_0000016 # disposition
 http://purl.obolibrary.org/obo/BFO_0000015 # process
 
+http://purl.obolibrary.org/obo/IDO_0000540 # Infectious agent vector
+subClassOf http://purl.obolibrary.org/obo/COB_0000022 # organism
+
+http://purl.obolibrary.org/obo/IDO_0000659 # susceptible organism
+subClassOf http://purl.obolibrary.org/obo/COB_0000022 # organism
+
+http://purl.obolibrary.org/obo/IDO_0000531 # host
+subClassOf http://purl.obolibrary.org/obo/COB_0000022 # organism
+
 [Source term retrieval setting]
 includeAllIntermediates
 
@@ -1426,8 +1570,8 @@ MMO
 http://purl.obolibrary.org/obo/MMO_0000344
 
 [Top level source term URIs and target direct superclass URIs]
-http://purl.obolibrary.org/obo/MMO_0000000 # measurement method
-#subClassOf http://purl.obolibrary.org/obo/OBI_0000011
+http://purl.obolibrary.org/obo/MMO_0000343 # autopsy
+subClassOf http://purl.obolibrary.org/obo/OBI_0000066 #investigation
 
 [Source term retrieval setting]
 includeAllIntermediates
@@ -1506,12 +1650,16 @@ http://purl.obolibrary.org/obo/MONDO_0021666 # Otitis
 
 [Top level source term URIs and target direct superclass URIs]
 http://purl.obolibrary.org/obo/IAO_0000030 # information
-http://purl.obolibrary.org/obo/BFO_0000020 # characteristic
+
+
 http://purl.obolibrary.org/obo/PATO_0000001 # characteristic
-subClassOf http://purl.obolibrary.org/obo/BFO_0000020
+subClassOf http://purl.obolibrary.org/obo/COB_0000502
 http://purl.obolibrary.org/obo/BFO_0000141 # immaterial entity
 http://purl.obolibrary.org/obo/BFO_0000040 # material entity
 http://purl.obolibrary.org/obo/BFO_0000015 # process
+
+http://purl.obolibrary.org/obo/BFO_0000017 # realizable entity
+subClassOf http://purl.obolibrary.org/obo/COB_0000502 # characteristic
 
 [Source term retrieval setting]
 includeAllIntermediates
@@ -1842,13 +1990,71 @@ http://purl.obolibrary.org/obo/NCIT_C161352 # Nitrate Measurement
 http://purl.obolibrary.org/obo/NCIT_C64810 # Nitrite Measurement
 http://purl.obolibrary.org/obo/NCIT_C51953 # Microbial Colony Count
 
+
+
 [Top level source term URIs and target direct superclass URIs]
 http://purl.obolibrary.org/obo/NCIT_C14419 # organism strain / trying to stop importing parents.
 http://purl.obolibrary.org/obo/NCIT_C7057 # Disease, Disorder or Finding
 http://purl.obolibrary.org/obo/NCIT_C20189 # Property or Attribute
+
 http://purl.obolibrary.org/obo/NCIT_C17828 # Biological Process
+subClassOf http://purl.obolibrary.org/obo/BFO_0000015 # process
+
+http://purl.obolibrary.org/obo/NCIT_C43431 # Activity
+subClassOf http://purl.obolibrary.org/obo/BFO_0000015 # process
+
 http://purl.obolibrary.org/obo/NCIT_C1908 # Drug, Food, Chemical or Biomedical Material
 http://purl.obolibrary.org/obo/NCIT_C97325 # Manufactured Object
+subClassOf http://purl.obolibrary.org/obo/BFO_0000015 # process
+
+http://purl.obolibrary.org/obo/NCIT_C40978 # telephone number
+subClassOf http://purl.obolibrary.org/obo/IAO_0000030 # ICE
+
+http://purl.obolibrary.org/obo/NCIT_C25717 # Vital status
+subClassOf http://purl.obolibrary.org/obo/GENEPIO_0001170 # organism datum
+
+http://purl.obolibrary.org/obo/NCIT_C25190 # Person
+subClassOf http://purl.obolibrary.org/obo/COB_0000022 # organism
+
+http://purl.obolibrary.org/obo/NCIT_C85540 # Microbial Succeptibility Test
+subClassOf http://purl.obolibrary.org/obo/OBI_0000070 # assay
+
+http://purl.obolibrary.org/obo/NCIT_C171083 # organism chartacteristic
+subClassOf http://purl.obolibrary.org/obo/COB_0000502 # characteristic 
+
+http://purl.obolibrary.org/obo/NCIT_C19332 # personal attribute
+subClassOf http://purl.obolibrary.org/obo/COB_0000502 # characteristic 
+
+http://purl.obolibrary.org/obo/NCIT_C12219 # Anatomic Structure, System, or Substance
+subClassOf http://purl.obolibrary.org/obo/COB_0000502 # characteristic 
+
+http://purl.obolibrary.org/obo/NCIT_C171256 # Non-Medical Object or Device
+subClassOf http://purl.obolibrary.org/obo/ENVO_00003074 # manufactured product
+
+http://purl.obolibrary.org/obo/NCIT_C16830 # Medical device 
+subClassOf http://purl.obolibrary.org/obo/COB_0001300 # device
+
+http://purl.obolibrary.org/obo/NCIT_C49844 # belt device
+subClassOf http://purl.obolibrary.org/obo/COB_0001300 # device
+
+http://purl.obolibrary.org/obo/NCIT_C84327 # Freezer
+subClassOf http://purl.obolibrary.org/obo/OBI_0001034 # environemntal control device
+
+http://purl.obolibrary.org/obo/NCIT_C84328 # rack
+subClassOf http://purl.obolibrary.org/obo/COB_0001300 # device
+
+http://purl.obolibrary.org/obo/NCIT_C45322 # storage unit
+subClassOf http://purl.obolibrary.org/obo/COB_0001300 # device
+
+http://purl.obolibrary.org/obo/NCIT_C113122 # blood collection tube
+subClassOf http://purl.obolibrary.org/obo/OBI_0002088 # container
+
+http://purl.obolibrary.org/obo/NCIT_C16143 # Repository
+subClassOf http://purl.obolibrary.org/obo/ENVO_00000073 # building
+
+
+
+subClassOf http://purl.obolibrary.org/obo/ENVO_00000073 # building
 
 [Source term retrieval setting]
 includeAllIntermediates
@@ -1867,14 +2073,14 @@ http://www.geneontology.org/formats/oboInOwl#hasNarrowSynonym
 OBA
 
 [Low level source term URIs]
-http://purl.obolibrary.org/obo/OBA_1000039 # Mollusk shell length
+http://purl.obolibrary.org/obo/OBA_1000039 # Mollusc shell length
 
 [Top level source term URIs and target direct superclass URIs]
-http://purl.obolibrary.org/obo/PATO_0001241 # physical object quality
-
+http://purl.obolibrary.org/obo/OBA_1000039 # Mollusc shell length
+subClassOf http://purl.obolibrary.org/obo/PATO_0001241 # physical object quality
 
 [Source term retrieval setting]
-includeAllIntermediates
+includeNoIntermediates
 
 [Source annotation URIs]
 http://www.w3.org/2000/01/rdf-schema#label
@@ -1929,7 +2135,14 @@ http://purl.obolibrary.org/obo/OGMS_0000090 # treatment
 http://purl.obolibrary.org/obo/OGMS_0000104 # diagnostic process
 
 [Top level source term URIs and target direct superclass URIs]
-http://purl.obolibrary.org/obo/BFO_0000020 # characteristic
+http://purl.obolibrary.org/obo/PATO_0000001 # characteristic
+subClassOf http://purl.obolibrary.org/obo/COB_0000502
+
+http://purl.obolibrary.org/obo/BFO_0000015 # process
+http://purl.obolibrary.org/obo/BFO_0000016 # disposition
+
+http://purl.obolibrary.org/obo/OGMS_0000096 # healthcare process
+subClassOf http://purl.obolibrary.org/obo/COB_0000035 # CE planned process
 
 [Source term retrieval setting]
 includeAllIntermediates
@@ -1973,7 +2186,28 @@ http://purl.obolibrary.org/obo/OMIT_0020918 # Shiga Toxin 2
 
 [Top level source term URIs and target direct superclass URIs]
 # ISSUE: OMIT terms are positioned under "quality" but so many of them aren't qualities
-http://purl.obolibrary.org/obo/BFO_0000019
+http://purl.obolibrary.org/obo/BFO_0000019 # quality
+subClassOf http://purl.obolibrary.org/obo/COB_0000502
+
+http://purl.obolibrary.org/obo/PATO_0000001 # characteristic
+subClassOf http://purl.obolibrary.org/obo/COB_0000502
+http://purl.obolibrary.org/obo/OMIT_0026433 # Biological Processes
+subClassOf http://purl.obolibrary.org/obo/BFO_0000015 # process
+
+http://purl.obolibrary.org/obo/OMIT_0001004 # Chemicals and Drugs Category
+subClassOf http://purl.obolibrary.org/obo/BFO_0000040 # material entity
+
+http://purl.obolibrary.org/obo/OMIT_0020789 # Disease Attributes
+subClassOf http://purl.obolibrary.org/obo/COB_0000502
+
+http://purl.obolibrary.org/obo/OMIT_0019904 # Diagnostic Techniques 
+subClassOf http://purl.obolibrary.org/obo/COB_0000035 # CE planned process
+
+http://purl.obolibrary.org/obo/OMIT_0009969 # Investigative Techniques
+subClassOf http://purl.obolibrary.org/obo/COB_0000035 # CE planned process
+
+http://purl.obolibrary.org/obo/OMIT_0021247 # 
+subClassOf http://purl.obolibrary.org/obo/COB_0000035 # CE planned process
 
 
 [Source term retrieval setting]
@@ -2059,9 +2293,9 @@ http://purl.obolibrary.org/obo/PATO_0001779 # decreased strength / weakness
 
 [Top level source term URIs and target direct superclass URIs]
 http://purl.obolibrary.org/obo/IAO_0000030 # information
-http://purl.obolibrary.org/obo/BFO_0000020 # characteristic
+
 http://purl.obolibrary.org/obo/PATO_0000001 # characteristic
-subClassOf http://purl.obolibrary.org/obo/BFO_0000020
+subClassOf http://purl.obolibrary.org/obo/COB_0000502
 http://purl.obolibrary.org/obo/BFO_0000141 # immaterial entity
 http://purl.obolibrary.org/obo/BFO_0000040 # material entity
 http://purl.obolibrary.org/obo/BFO_0000015 # process
@@ -2107,6 +2341,13 @@ http://purl.obolibrary.org/obo/PCO_0000039
 
 [Top level source term URIs and target direct superclass URIs]
 http://purl.obolibrary.org/obo/PCO_0000000 # collection of organisms
+http://purl.obolibrary.org/obo/IAO_0000030 # information
+
+http://purl.obolibrary.org/obo/PATO_0000001 # characteristic
+subClassOf http://purl.obolibrary.org/obo/COB_0000502
+http://purl.obolibrary.org/obo/BFO_0000141 # immaterial entity
+http://purl.obolibrary.org/obo/BFO_0000040 # material entity
+http://purl.obolibrary.org/obo/BFO_0000015 # process
 
 [Source term retrieval setting]
 includeAllIntermediates
@@ -2314,11 +2555,8 @@ SO
 http://purl.obolibrary.org/obo/SO_0001027 #genotype
 http://purl.obolibrary.org/obo/SO_0001026 #genome
 http://purl.obolibrary.org/obo/SO_0001505   #reference genome sequence
-
 http://purl.obolibrary.org/obo/SO_0000353 #sequence_assembly
 http://purl.obolibrary.org/obo/SO_0000149   #contig
-
-
 http://purl.obolibrary.org/obo/SO_0001462   #contig_collection
 
 [Top level source term URIs and target direct superclass URIs]
@@ -2351,6 +2589,7 @@ SYMP
 
 [Low level source term URIs]
 http://purl.obolibrary.org/obo/SYMP_0000009 # blister
+http://purl.obolibrary.org/obo/SYMP_0000092 # skin lesion
 
 [Top level source term URIs and target direct superclass URIs]
 http://purl.obolibrary.org/obo/SYMP_0000462 # symptom // Top level
@@ -2458,8 +2697,6 @@ http://purl.obolibrary.org/obo/UBERON_0000071 # death stage
 http://purl.obolibrary.org/obo/UBERON_0000178 #	animal - blood 
 http://purl.obolibrary.org/obo/UBERON_0000174 #	animal - body excretion, unspecified
 includeAllChildren
-#http://purl.obolibrary.org/obo/UBERON_0001988 # animal - feces
-#http://purl.obolibrary.org/obo/UBERON_0001088 # animal - Fluid - Urine
 
 http://purl.obolibrary.org/obo/UBERON_0000179 # haemolymphatic fluid
 includeAllChildren # blood, lymph, blood plasma
@@ -2481,7 +2718,6 @@ http://purl.obolibrary.org/obo/UBERON_0000992 #    ovary
 http://purl.obolibrary.org/obo/UBERON_0003668 #    animal - organ - synovial bursa
 http://purl.obolibrary.org/obo/UBERON_0002109 #    animal - organ - nose - pair of nares
 
-#http://purl.obolibrary.org/obo/UBERON_0001630 # muscle organ
 http://purl.obolibrary.org/obo/UBERON_0002385 # muscle tissue
 http://purl.obolibrary.org/obo/UBERON_0002384 # connective tissue
 http://purl.obolibrary.org/obo/UBERON_0001555 # digestive tract
@@ -2516,43 +2752,20 @@ http://purl.obolibrary.org/obo/UBERON_0000065 # resperatory tract
 http://purl.obolibrary.org/obo/UBERON_0002167 # right lung
 http://purl.obolibrary.org/obo/UBERON_0002185 # bronchus
 http://purl.obolibrary.org/obo/UBERON_0009060 # air sac
-
-
 http://purl.obolibrary.org/obo/UBERON_0002110 # gall bladder
 http://purl.obolibrary.org/obo/UBERON_0001255 # urinary bladder
 http://purl.obolibrary.org/obo/UBERON_0000057 # urethra
-
 http://purl.obolibrary.org/obo/UBERON_0000002 # uterine cervix
-
 http://purl.obolibrary.org/obo/UBERON_0002371 # bone marrow
-
 http://purl.obolibrary.org/obo/UBERON_0000569 # ileocecal valve
-
-#	http://purl.obolibrary.org/obo/ #	plant - tissue sample
-#	http://purl.obolibrary.org/obo/ #	plant - compost (green)
-#	http://purl.obolibrary.org/obo/ #	plant - rinse
-
-#	http://purl.obolibrary.org/obo/ N/A	#	animal - bronchoalveolar lavage
-#	http://purl.obolibrary.org/obo/ #	animal - caecum contents
-#	http://purl.obolibrary.org/obo/ #	animal - invasive
-#	http://purl.obolibrary.org/obo/ # animal - part (unknown)
-
 http://purl.obolibrary.org/obo/UBERON_0002355 # pelvis
-
 http://purl.obolibrary.org/obo/UBERON_0003672 # dentition
-
 http://purl.obolibrary.org/obo/UBERON_0009472 # axilla
-
 http://purl.obolibrary.org/obo/UBERON_0011374 # prepuce
-
 http://purl.obolibrary.org/obo/UBERON_0001488 # ankle joint
 
 # COLLECTION MATRIX
-#ABOVE http://purl.obolibrary.org/obo/ # Fluid - Blood
-#ABOVE http://purl.obolibrary.org/obo/UBERON_0000174 # Fluid - Body excretion, Unspecified	
-#http://purl.obolibrary.org/obo/ # Fluid - Bronchoalveolar lavage	BTO_0000155
 http://purl.obolibrary.org/obo/UBERON_0001359 # Fluid - Cerebral spinal fluid	
-#http://purl.obolibrary.org/obo/ # Fluid - Food	
 http://purl.obolibrary.org/obo/UBERON_0001090 # Fluid - Joint (sinovial)	
 http://purl.obolibrary.org/obo/UBERON_0001268 # Fluid - Peritoneal	
 http://purl.obolibrary.org/obo/UBERON_0001969 # Fluid - Plasma	
@@ -2560,19 +2773,11 @@ http://purl.obolibrary.org/obo/UBERON_0001977 # Fluid - Serum
 http://purl.obolibrary.org/obo/UBERON_0007311 # Fluid - Sputum	
 http://purl.obolibrary.org/obo/UBERON_0001914 # colostrum
 
-http://purl.obolibrary.org/obo/UBERON_0006314 # Fluid - Unspecified	
-
-#http://purl.obolibrary.org/obo/ # Solid - Food	
-#http://purl.obolibrary.org/obo/ # Solid - Other	
+http://purl.obolibrary.org/obo/UBERON_0006314 # Fluid - Unspecified		
 http://purl.obolibrary.org/obo/UBERON_0000922 # Solid - Placental (fetal) tissue / Embryo
 
 http://purl.obolibrary.org/obo/UBERON_0004921 # subdivision of digestive tract
 includeAllChildren
-#http://purl.obolibrary.org/obo/UBERON_0001052 # Rectum (Solid - Rectal)	
-#http://purl.obolibrary.org/obo/UBERON_0006866 # terminal part of digestive tract (Solid - Rectal)
-
-#ABOVE http://purl.obolibrary.org/obo/UBERON_0001988 # Solid - Stool	
-#ABOVE http://purl.obolibrary.org/obo/UBERON_0000479 # Solid - Tissue	
 
 # CREATED THE FOLLOWING IN GenEpiO:
 #Swab - Food contact surface	
@@ -2649,12 +2854,21 @@ http://purl.obolibrary.org/obo/UBERON_2001427
 
 [Top level source term URIs and target direct superclass URIs]
 # multi-homing is knocking some of these out?
+http://purl.obolibrary.org/obo/UBERON_0001062 # anatomical entity (COB TERM)
 http://purl.obolibrary.org/obo/UBERON_0000061 # anatomical structure
-http://purl.obolibrary.org/obo/UBERON_0000105 # life cycle stage
 
-# ISSUE: THESE CARO terms are showing up as a result of archaic UBERON subClassOf compatibility axioms?
-#http://purl.obolibrary.org/obo/CARO_0000000
-#mapTo http://purl.obolibrary.org/obo/UBERON_0000061 
+http://purl.obolibrary.org/obo/UBERON_0000105 # life cycle stage
+subClassOf http://purl.obolibrary.org/obo/BFO_0000015 # process
+
+http://purl.obolibrary.org/obo/UBERON_0000104 # life cycle
+subClassOf http://purl.obolibrary.org/obo/BFO_0000015 # process
+
+http://purl.obolibrary.org/obo/PATO_0000001 # characteristic
+subClassOf http://purl.obolibrary.org/obo/COB_0000502 # characteristic
+
+http://purl.obolibrary.org/obo/BFO_0000141 # immaterial entity
+http://purl.obolibrary.org/obo/BFO_0000040 # material entity
+http://purl.obolibrary.org/obo/BFO_0000015 # process
 
 
 [Source term retrieval setting]

@@ -1,5 +1,5 @@
 format-version: 1.2
-data-version: genepio/releases/2025-10-03/genepio-base.owl
+data-version: genepio/releases/2026-02-10/genepio-base.owl
 default-namespace: GENEPIO
 idspace: dc http://purl.org/dc/elements/1.1/ 
 idspace: dcterms http://purl.org/dc/terms/ 
@@ -16,7 +16,7 @@ property_value: dc:type IAO:8000001
 property_value: dcterms:description "The Genomic Epidemiology Ontology aims to provide a comprehensive controlled vocabulary for infectious disease surveillance and outbreak investigations. It is an application ontology that draws on many other ontologies including anatomy, taxonomy, disease, symptoms, environment and food types for foodborn pathogen metadata." xsd:string
 property_value: dcterms:license http://creativecommons.org/licenses/by/3.0/
 property_value: dcterms:title "Genomic Epidemiology Ontology" xsd:string
-property_value: owl:versionInfo "2025-10-03" xsd:string
+property_value: owl:versionInfo "2026-02-10" xsd:string
 
 [Term]
 id: GENEPIO:0000002
@@ -648,7 +648,7 @@ name: Qualicon (DuPont) RiboPrinter Microbial Characterization System
 def: "A device that generates an automated genetic fingerprint of a bacterium from a bacterial suspension." []
 comment: an automated system that takes a purified bacterial suspension, lyses the cells, extracts the DNA, restriction endonuclease digests the DNA, separates the digest on a gel, transfers the DNA bands to a membrane, probes the bands with non-radioisotope-labeled, 5S-16S-23S rRNA-specific probes (Southern hybridization), photographs the membrane, and finally compares the bar code-like pattern to databases in order to identify the genus and species.
 subset: core:slim.owl
-is_a: OBI:0000968
+is_a: COB:0001300
 property_value: IAO:0000119 http://www.ncbi.nlm.nih.gov/pmc/articles/PMC92620/
 
 [Term]
@@ -831,7 +831,7 @@ id: GENEPIO:0000081
 name: sequencing kit
 def: "Pre-filled, ready-to-use reagent cartridges. Used to produce improved chemistry, cluster density and read length as well as improve quality (Q) scores. Reagent components are encoded to interact with the sequencing system to validate compatibility with user-defined applications." []
 subset: core:slim.owl
-is_a: OBI:0000047
+is_a: COB:0000026
 property_value: GENEPIO:0000001 "Sequencing" xsd:string
 property_value: GENEPIO:0000004 "Sequencing Kit" xsd:string
 property_value: GENEPIO:0000005 "Derived from Illumina Sample Sheet" xsd:string
@@ -2787,7 +2787,7 @@ is_a: GENEPIO:0001151 ! untreated water
 id: GENEPIO:0001170
 name: organism datum
 is_a: IAO:0000027
-relationship: IAO:0000136 OBI:0100026
+relationship: IAO:0000136 COB:0000022
 property_value: seeAlso efo:EFO_0004324
 property_value: seeAlso GENEPIO:0000114
 property_value: seeAlso GENEPIO:0001183
@@ -2806,7 +2806,7 @@ id: GENEPIO:0001171
 name: organism role
 def: "A role which inheres in an organism and is realized by the process of being alive." []
 is_a: BFO:0000023
-relationship: RO:0000052 OBI:0100026
+relationship: RO:0000052 COB:0000022
 
 [Term]
 id: GENEPIO:0001172
@@ -6019,7 +6019,7 @@ id: GENEPIO:0001636
 name: animal body product
 def: "A product of an animal, as in blood, feces, sputum, etc. that has no particular anatomical site" []
 is_a: GENEPIO:0000028 ! subject body product
-relationship: RO:0003001 OBI:0100026
+relationship: RO:0003001 COB:0000022
 property_value: IAO:0000114 IAO:0000428
 property_value: IAO:0000117 "Damion Dooley" xsd:string
 
@@ -6629,7 +6629,7 @@ id: GENEPIO:0001724
 name: subject organism common name
 def: "The natural language (non-taxonomic) name of the type of organism (human or animal) that is the subject of a given investigation, study and/or specimen." []
 is_a: NCIT:C42614
-relationship: IAO:0000219 OBI:0100026
+relationship: IAO:0000219 COB:0000022
 property_value: IAO:0000112 "human; dog; horse" xsd:string
 property_value: IAO:0000116 "Damion Dooley's note: as of 2017 this is a problematic field for NCBI Biosample because it is slotted into \"host\" field, yet field is listed as \"host common name\" which does not fit with requirement that scientific name be provided." xsd:string
 property_value: IAO:0000117 "Person: Damion Dooley" xsd:string
@@ -7110,19 +7110,16 @@ def: "This is a catch-all category for listing specimen related terms" []
 is_a: IAO:0000027
 relationship: IAO:0000136 OBI:0100051
 property_value: IAO:0000117 "Damion Dooley" xsd:string
-property_value: seeAlso GENEPIO:0000027
 property_value: seeAlso GENEPIO:0001196
 property_value: seeAlso GENEPIO:0001429
-property_value: seeAlso GENEPIO:0001532
 property_value: seeAlso GENEPIO:0001724
-property_value: seeAlso GENEPIO:0001808
-property_value: seeAlso GENEPIO:0002094
 property_value: seeAlso "http://purl.obolibrary.org/obo/GENEPIO_0002105" xsd:string
 property_value: seeAlso "http://purl.obolibrary.org/obo/OBI_0001616" xsd:anyURI
 property_value: seeAlso OBI:0000659
 property_value: seeAlso OBI:0001884
 property_value: seeAlso OBI:0001889
 property_value: seeAlso OBI:0001903
+property_value: seeAlso OBI:0002814
 property_value: seeAlso OBI:0100051
 
 [Term]
@@ -9080,7 +9077,7 @@ replaced_by: http://purl.obolibrary.org/obo/NCIT_C85555
 id: GENEPIO:0002047
 name: antimicrobial resistance testing method device or reagent
 def: "The commercial kit or product used to determine the MIC e.g. E-Test. If a commercial product was not used, include the type of media used." []
-is_a: OBI:0000968
+is_a: COB:0001300
 property_value: IAO:0000114 IAO:0000428
 property_value: IAO:0000117 "Damion Dooley" xsd:string
 
@@ -10314,7 +10311,7 @@ replaced_by: OBI:0002824
 id: GENEPIO:0004318
 name: culture plate
 def: "A low flat-bottomed laboratory container for growing a layer of organisms such as bacteria, molds, and cells on a thin layer of nutrient medium." []
-is_a: OBI:0000047
+is_a: COB:0000026
 property_value: dcterms:date "2022-09-23T10:59:09Z" xsd:dateTime
 property_value: IAO:0000119 "https://en.wikipedia.org/wiki/Culture_plate" xsd:string
 
@@ -11749,7 +11746,7 @@ id: GENEPIO:0100104
 name: mRNA extract
 def: "An extract which is the output of an extraction process in which messenger RNA molecules are isolated from a specimen." []
 synonym: "messenger RNA extract" EXACT []
-is_a: OBI:0000047
+is_a: COB:0000026
 property_value: dcterms:contributor "https://orcid.org/0000-0002-1107-9135" xsd:string
 property_value: dcterms:contributor "https://orcid.org/0000-0002-8844-9165" xsd:string
 property_value: dcterms:contributor "https://orcid.org/0000-0002-9578-0788" xsd:string
@@ -16936,7 +16933,7 @@ property_value: IAO:0000233 "https://github.com/obi-ontology/obi/issues/1579" xs
 id: GENEPIO:0100614
 name: virus transport medium
 def: "A processed material which is a medium designed to promote longevity of a viral sample." []
-is_a: OBI:0000047
+is_a: COB:0000026
 property_value: IAO:0000111 "virus transport medium" xsd:string
 property_value: IAO:0000114 IAO:0000122
 property_value: IAO:0000116 "Planned Obsolescence: this term is a placeholder for a term requested in another ontology. Once the appropriate ontology term is available, this term’s identifier will be obsoleted with a “term replaced by” id of the other term." xsd:string

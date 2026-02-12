@@ -183,6 +183,7 @@ name: specimen source context
 def: "Describes the physical, environmental and/or local geographical source of the biological sample from which the sample was derived." []
 is_a: GENEPIO:0001790 ! specimen datum
 relationship: RO:0002180 GENEPIO:0002174 {maxCardinality="1"} ! has component specimen source substance specification
+relationship: RO:0002180 GENEPIO:0002174 ! has component specimen source substance specification
 property_value: GENEPIO:0000001 "Environmental Isolate" xsd:string
 property_value: IAO:0000112 "sediment, chicken feces, cheese" xsd:string
 property_value: IAO:0000114 IAO:0000428
@@ -375,7 +376,9 @@ name: PFGE test specification
 subset: core:slim.owl
 is_a: GENEPIO:0001688 ! test specification
 relationship: RO:0002180 GENEPIO:0000046 {maxCardinality="1"} ! has component PFGE primary test
+relationship: RO:0002180 GENEPIO:0000046 ! has component PFGE primary test
 relationship: RO:0002180 GENEPIO:0000048 {maxCardinality="1"} ! has component PFGE secondary test
+relationship: RO:0002180 GENEPIO:0000048 ! has component PFGE secondary test
 property_value: IAO:0000114 IAO:0000428
 
 [Term]
@@ -2768,12 +2771,8 @@ property_value: IAO:0000117 "Damion Dooley" xsd:string
 
 [Term]
 id: GENEPIO:0001541
-name: obsolete: parent-guardian role
 name: parent-guardian role
 is_a: GENEPIO:0001537 ! person role
-property_value: IAO:0000231 "Redundant with \"term replaced by\" entity." xsd:string
-is_obsolete: true
-replaced_by: GENEPIO:0100269
 
 [Term]
 id: GENEPIO:0001543
@@ -3896,7 +3895,9 @@ property_value: IAO:0000119 "NCBI BioSample" xsd:string
 id: GENEPIO:0001718
 name: serotype specification
 is_a: GENEPIO:0001688 ! test specification
+relationship: RO:0002180 GENEPIO:0001686 ! has component E. coli serotype specification
 relationship: RO:0002180 GENEPIO:0001686 {maxCardinality="1"} ! has component E. coli serotype specification
+relationship: RO:0002180 GENEPIO:0001687 ! has component Salmonella serovar specification
 relationship: RO:0002180 GENEPIO:0001687 {maxCardinality="1"} ! has component Salmonella serovar specification
 property_value: IAO:0000114 IAO:0000428
 
@@ -4023,8 +4024,6 @@ property_value: IAO:0000117 "Damion Dooley" xsd:string
 
 [Term]
 id: GENEPIO:0001744
-name: 0D space
-is_a: GENEPIO:0001854 ! n-dimensional space
 property_value: IAO:0000114 IAO:0000428
 property_value: IAO:0000117 "Damion Dooley" xsd:string
 
@@ -4660,8 +4659,10 @@ name: NCBI BioProject standard
 def: "The National Center for Biotechnology Information BioProject standard is a collection of datums that describe biological data related to a single initiative, originating from a single organization or from a consortium.  A BioProject record provides users a single place to find links to the diverse data types generated for that project." []
 comment: NCBI lists project data type and other controlled vocabulary fields at : https://www.ncbi.nlm.nih.gov/books/NBK54364/
 is_a: GENEPIO:0000115 ! NCBI standard
+relationship: RO:0002180 GENEPIO:0002128 ! has component investigation identifier specification
 relationship: RO:0002180 GENEPIO:0002128 {maxCardinality="1", comment="The format of the BioProject Accession is five alpha-letters followed by one to six numbers. For example PRJNA43021", name="Project Accession"} ! has component investigation identifier specification
 relationship: RO:0002180 GENEPIO:0002147 {maxCardinality="1"} ! has component sequencing facility name specification
+relationship: RO:0002180 GENEPIO:0002147 ! has component sequencing facility name specification
 property_value: IAO:0000114 IAO:0000120
 property_value: IAO:0000117 "Damion Dooley" xsd:string
 property_value: IAO:0000119 "http://www.ncbi.nlm.nih.gov/bioproject/" xsd:string
@@ -4753,7 +4754,7 @@ id: GENEPIO:0001844
 name: origin
 def: "A point in zero-dimensional (0D) space in which the origin is a fixed point of reference for the geometry of the surrounding space." []
 comment: "In mathematics, the origin of a Euclidean space is a special point, usually denoted by the letter O, used as a fixed point of reference for the geometry of the surrounding space.\n\nIn physical problems, the choice of origin is often arbitrary, meaning any choice of origin will ultimately give the same answer. This allows one to pick an origin point that makes the mathematics as simple as possible, often by taking advantage of some kind of geometric symmetry."
-is_a: GENEPIO:0001744 ! 0D space
+is_a: GENEPIO:0001744
 property_value: IAO:0000112 "(0,0) is the origin of the cartesian coordinate system." xsd:string
 property_value: IAO:0000117 "Damion Dooley" xsd:string
 property_value: IAO:0000119 "https://en.wikipedia.org/wiki/Origin_(mathematics)" xsd:anyURI
@@ -4851,74 +4852,13 @@ property_value: IAO:0000114 IAO:0000428
 property_value: IAO:0000117 "Damion Dooley" xsd:string
 
 [Term]
-id: GENEPIO:0001854
-name: n-dimensional space
-comment: An N-dimensional space consists of n dimensions, each with an origin.  It can be translated via various coordinate systems, and can be populated with N and lesser dimensional vectors.
-is_a: GENEPIO:0001859 ! n-dimensional concept
-property_value: IAO:0000114 IAO:0000428
-property_value: IAO:0000117 "Damion Dooley" xsd:string
-
-[Term]
-id: GENEPIO:0001855
-name: 1D space
-comment: A distance metric exists between any two members of a one-dimensional set.\nShould have vector as subclass?
-is_a: GENEPIO:0001854 ! n-dimensional space
-relationship: BFO:0000051 GENEPIO:0001864 ! has part 1D coordinate system
-property_value: IAO:0000114 IAO:0000428
-property_value: IAO:0000117 "Damion Dooley" xsd:string
-
-[Term]
-id: GENEPIO:0001856
-name: 2D space
-def: "This data type is for an item that can map to a point, line, set or area on a surface (2 dimensional space) or to the surface itself.  It can be a slice of a higher dimensional space.\n\nIt can be defined by a cartesian or radial coordinate system." []
-is_a: GENEPIO:0001854 ! n-dimensional space
-relationship: BFO:0000051 GENEPIO:0001865 ! has part 2D coordinate system
-property_value: IAO:0000114 IAO:0000428
-property_value: IAO:0000117 "Damion Dooley" xsd:string
-
-[Term]
-id: GENEPIO:0001857
-name: 3D space
-is_a: GENEPIO:0001854 ! n-dimensional space
-relationship: BFO:0000051 GENEPIO:0001866 ! has part 3D coordinate system
-property_value: IAO:0000114 IAO:0000428
-property_value: IAO:0000117 "Damion Dooley" xsd:string
-
-[Term]
-id: GENEPIO:0001858
-name: n-dimensional coordinate
-is_a: GENEPIO:0001859 ! n-dimensional concept
-property_value: IAO:0000114 IAO:0000428
-property_value: IAO:0000117 "Damion Dooley" xsd:string
-
-[Term]
 id: GENEPIO:0001859
-name: n-dimensional concept
 def: "This covers the description of data and abstract structure in n-dimensional space.  Within space there are coordinate systems, coordinates, and entities made up of coordinates." []
 property_value: IAO:0000114 IAO:0000428
 property_value: IAO:0000117 "Damion Dooley" xsd:string
 
 [Term]
-id: GENEPIO:0001860
-name: 1D coordinate
-comment: This should cover all interval data
-is_a: GENEPIO:0001858 ! n-dimensional coordinate
-relationship: RO:0002180 GENEPIO:0001864 {cardinality="1"} ! has component 1D coordinate system
-relationship: RO:0002180 GENEPIO:0001919 {cardinality="1"} ! has component number
-property_value: IAO:0000114 IAO:0000428
-property_value: IAO:0000117 "Damion Dooley" xsd:string
-
-[Term]
-id: GENEPIO:0001861
-name: 2D coordinate
-is_a: GENEPIO:0001858 ! n-dimensional coordinate
-relationship: RO:0002180 GENEPIO:0001860 {cardinality="2"} ! has component 1D coordinate
-property_value: IAO:0000114 IAO:0000428
-property_value: IAO:0000117 "Damion Dooley" xsd:string
-
-[Term]
 id: GENEPIO:0001862
-name: latitude specification (ISO 6709)
 def: "A decimal latitude measurement in degrees in conformance with the ISO 6709 standard." []
 property_value: GENEPIO:0001920 "/^[N+](:<lat>\\d(\\.\\d+)?)$/, $lat\n/^S(:<lat>\\d(\\.\\d+)?)$/,  '-' + $lat" xsd:string
 property_value: GENEPIO:1919 "/^(:<lat>[-S+N])?(:<degree>[1-8]?[0-9](:<decimal>\\.\\d{1,6})?)$/, $lat$degree.$decimal\n/^(:<lat>[-S+N])?(:<degree>90(:<decimal>\\.0{1,6})?))$/, $lat$degree.$decimal" xsd:string
@@ -4929,7 +4869,6 @@ property_value: IAO:0000117 "Damion Dooley" xsd:string
 
 [Term]
 id: GENEPIO:0001863
-name: longitude specification (ISO 6709)
 def: "A decimal longitude measurement in degrees in conformance with the ISO 6709 standard." []
 property_value: GENEPIO:1919 "/^(:<long>[-W+E])?(:<degree>(1[0-7]|[1-9])?[0-9])(:<decimal>\\.\\d{1,6})?)$/, $long$degree.$decimal\n/^(:<long>[-W+E])?(:<degree>180(:<decimal>\\.0{1,6})?)$,$long$degree.$decimal" xsd:string
 property_value: IAO:0000114 IAO:0000428
@@ -4937,69 +4876,22 @@ property_value: IAO:0000117 "Damion Dooley" xsd:string
 
 [Term]
 id: GENEPIO:0001864
-name: 1D coordinate system
 property_value: IAO:0000114 IAO:0000428
 property_value: IAO:0000117 "Damion Dooley" xsd:string
 
 [Term]
 id: GENEPIO:0001865
-name: 2D coordinate system
 def: "A 2D coordinate system is a coordinate system in 2 dimensional space.  Each coordinate is composed of an offset from the origin of each dimension" []
-relationship: RO:0002180 GENEPIO:0001864 {cardinality="2"} ! has component 1D coordinate system
 property_value: IAO:0000114 IAO:0000428
 property_value: IAO:0000117 "Damion Dooley" xsd:string
 
 [Term]
 id: GENEPIO:0001866
-name: 3D coordinate system
-relationship: RO:0002180 GENEPIO:0001864 {cardinality="3"} ! has component 1D coordinate system
 property_value: IAO:0000114 IAO:0000428
 property_value: IAO:0000117 "Damion Dooley" xsd:string
 
 [Term]
 id: GENEPIO:0001867
-name: radial coordinate system
-comment: A coordinate system composed of a radius from the origin of one dimension combined with angular offsets from the origins of the remaining dimensions.
-relationship: RO:0002180 GENEPIO:0001868 {minCardinality="1"} ! has component angular coordinate
-property_value: IAO:0000114 IAO:0000428
-property_value: IAO:0000117 "Damion Dooley" xsd:string
-
-[Term]
-id: GENEPIO:0001868
-name: angular coordinate
-is_a: GENEPIO:0001860 ! 1D coordinate
-property_value: IAO:0000114 IAO:0000428
-property_value: IAO:0000116 "Damion Dooley's note: IAO lat/long can't be made a subclass of \"angular coordinate\" or disjoint contradiction arises with \"immaterial entity\"" xsd:string
-property_value: IAO:0000117 "Damion Dooley" xsd:string
-
-[Term]
-id: GENEPIO:0001869
-name: linear coordinate
-comment: A coordinate composed of a given dimension and the offset from the origin of the dimension to some point
-is_a: GENEPIO:0001860 ! 1D coordinate
-property_value: IAO:0000117 "Damion Dooley" xsd:string
-property_value: IAO:0000117 IAO:0000428
-
-[Term]
-id: GENEPIO:0001870
-name: area calculation
-def: "An area calculation datum is a functional mapping of a two dimensional surface area (can be anything from an abstract polygon, to a postal code or country) to a 1 dimensional scalar.  The original surface area may be curved, e.g. spheroid.  The surface area can also be described using only one input - for example the radius scalar of a polar coordinate plane described by pi*r^2." []
-is_a: GENEPIO:0001869 ! linear coordinate
-relationship: RO:0002180 GENEPIO:0001908 {cardinality="1"} ! has component plane
-property_value: IAO:0000114 IAO:0000428
-property_value: IAO:0000117 "Damion Dooley" xsd:string
-
-[Term]
-id: GENEPIO:0001871
-name: geographic coordinate
-is_a: GENEPIO:0001861 ! 2D coordinate
-property_value: IAO:0000114 IAO:0000428
-property_value: IAO:0000117 "Damion Dooley" xsd:string
-
-[Term]
-id: GENEPIO:0001872
-name: removed date
-is_a: GENEPIO:0001883 ! entity history item
 property_value: IAO:0000114 IAO:0000428
 property_value: IAO:0000117 "Damion Dooley" xsd:string
 
@@ -5013,25 +4905,8 @@ relationship: RO:0002083 GENEPIO:0001877 ! before datetime range end
 property_value: IAO:0000117 "Damion Dooley" xsd:string
 
 [Term]
-id: GENEPIO:0001874
-name: updated date
-is_a: GENEPIO:0001883 ! entity history item
-property_value: IAO:0000114 IAO:0000428
-property_value: IAO:0000117 "Damion Dooley" xsd:string
-
-[Term]
-id: GENEPIO:0001875
-name: datetime range member - UNUSED?
-is_a: GENEPIO:0001876 ! datetime range item
-relationship: BFO:0000062 GENEPIO:0001878 ! datetime range start
-relationship: BFO:0000063 GENEPIO:0001877 ! datetime range end
-property_value: IAO:0000116 "This seems to be covered by 'datetime range intermediate'" xsd:string
-property_value: IAO:0000117 "Damion Dooley" xsd:string
-
-[Term]
 id: GENEPIO:0001876
 name: datetime range item
-is_a: GENEPIO:0001881 ! datetime set item
 property_value: IAO:0000114 IAO:0000428
 property_value: IAO:0000117 "Damion Dooley" xsd:string
 
@@ -5051,93 +4926,27 @@ relationship: BFO:0000063 GENEPIO:0001877 ! datetime range end
 property_value: IAO:0000117 "Damion Dooley" xsd:string
 
 [Term]
-id: GENEPIO:0001879
-name: significant digits
-def: "Wikipedia: \"The significant figures of a number are digits that carry meaning contributing to its measurement resolution.\"" []
-property_value: IAO:0000114 IAO:0000428
-property_value: IAO:0000117 "Damion Dooley" xsd:string
-
-[Term]
-id: GENEPIO:0001880
-name: datetime linear coordinate
-comment: Some dates don't belong to a range other than the overall timeline.\n\nOther dates associated with a process fall within a range that has a start and end bound.
-is_a: GENEPIO:0001869 ! linear coordinate
-property_value: IAO:0000114 IAO:0000428
-property_value: IAO:0000116 "As mentioned here: http://www.datypic.com/sc/xsd11/t-xsd_dateTimeStamp.html , we could change this to dateTimeStamp if we need to enforce a time zone?" xsd:string
-property_value: IAO:0000117 "Damion Dooley" xsd:string
-
-[Term]
-id: GENEPIO:0001881
-name: datetime set item
-def: "A datetime set item is a datetime that has been grouped semantically under a given type of process" []
-comment: The instant is subject to the level of granularity of the observed time.  Year / Month / Day / Hour / Minute / Second
-is_a: GENEPIO:0001880 ! datetime linear coordinate
-property_value: GENEPIO:0001920 "$year/$month/$day" xsd:string
-property_value: GENEPIO:1919 "/^(:<year>(19|20)\\d\\d)([- /.])(:<month>0[1-9]|1[012])\\2(:<day>0[1-9]|[12][0-9]|3[01])$/\n/^(:<month>0[1-9]|1[012])([- /.])(:<day>0[1-9]|[12][0-9]|3[01])\\2(:<year>(19|20)\\d\\d)$/ \n/^(:<day>0[1-9]|[12][0-9]|3[01])([- /.])(:<month>0[1-9]|1[012])\\2(:<year>(19|20)\\d\\d)$/" http://www.w3.org/2000/01/rdf-schema#Literal
-property_value: GENEPIO:1921 "$year/$month/$day" xsd:string
-property_value: IAO:0000114 IAO:0000428
-property_value: IAO:0000117 "Damion Dooley" xsd:string
-
-[Term]
-id: GENEPIO:0001882
-name: created date
-is_a: GENEPIO:0001883 ! entity history item
-property_value: IAO:0000114 IAO:0000428
-property_value: IAO:0000117 "Damion Dooley" xsd:string
-
-[Term]
-id: GENEPIO:0001883
-name: entity history item
-is_a: GENEPIO:0001881 ! datetime set item
-property_value: IAO:0000114 IAO:0000428
-property_value: IAO:0000117 "Damion Dooley" xsd:string
-
-[Term]
 id: GENEPIO:0001884
-name: n-dimensional entity
-is_a: GENEPIO:0001859 ! n-dimensional concept
 property_value: IAO:0000114 IAO:0000428
 property_value: IAO:0000117 "Damion Dooley" xsd:string
 
 [Term]
 id: GENEPIO:0001885
-name: surface area
-comment: Generic term allowing for different geometries.  Can encompass the infinite surface area of a plane, or some portion bounded by a circumference or polygon for example.
-is_a: GENEPIO:0001884 ! n-dimensional entity
 relationship: BFO:0000051 GENEPIO:0001996 ! has part 2D boundary
-relationship: RO:0002180 GENEPIO:0001870 {cardinality="1"} ! has component area calculation
 property_value: IAO:0000114 IAO:0000428
 property_value: IAO:0000117 "Damion Dooley" xsd:string
 
 [Term]
 id: GENEPIO:0001886
-name: designated area on Earth
 property_value: IAO:0000114 "A designated area on earth is one or more areas defined by one or more boundaries.  A boundary can be defined by a polygon perimeter, a lat/long and radius, or a fiat-boundary geographic featureset like a named river channel or mountain ridge; it may have one or more names associated with it. Note that areas associated with a name may change their boundary definitions over time." xsd:string
 property_value: IAO:0000114 IAO:0000428
 property_value: IAO:0000117 "Damion Dooley" xsd:string
 
 [Term]
-id: GENEPIO:0001887
-name: landmark
-is_a: GENEPIO:0001886 ! designated area on Earth
-property_value: IAO:0000114 IAO:0000428
-property_value: IAO:0000117 "Damion Dooley" xsd:string
-
-[Term]
 id: GENEPIO:0001888
-name: Canada postal code
 def: "A Canadian postal code is a postal code that pertains to a geographic region of Canada." []
-property_value: GENEPIO:1919 "/^((:<FSA>[ABCEGHJKLMNPRSTVXY][0-9][ABCEGHJKLMNPRSTVWXYZ])) ?(:<LDU>[0-9][ABCEGHJKLMNPRSTVWXYZ][0-9])$/i, $FSA $LDU" xsd:string
 property_value: IAO:0000114 IAO:0000428
 property_value: IAO:0000116 "Note that a Canadian postal code can cover multiple communities.  Secondly, postal codes can be retired, and then reintroduced elsewhere.  Historical data associations may need to take the date of postal code mapping into account." xsd:string
-
-[Term]
-id: GENEPIO:0001889
-name: Canada postal code FSA
-def: "The \"Canadia postal code FSA\" is the leading FSA (Forward Sortation Area) 3 character portion of a full 6 character Canadian postal code.  It can be used to reduce the geographic granularity of a postal code for data generalization or obfuscation." []
-property_value: GENEPIO:1919 "/^((:<FSA>[ABCEGHJKLMNPRSTVXY][0-9][ABCEGHJKLMNPRSTVWXYZ]))$/i, $FSA" xsd:string
-property_value: IAO:0000114 IAO:0000428
-property_value: IAO:0000117 "Damion Dooley" xsd:string
 
 [Term]
 id: GENEPIO:0001892
@@ -5154,178 +4963,53 @@ property_value: IAO:0000114 IAO:0000428
 property_value: IAO:0000117 "Damion Dooley" xsd:string
 
 [Term]
-id: GENEPIO:0001894
-name: lingual set
-is_a: GENEPIO:0001903 ! set of unordered strings
-property_value: IAO:0000114 IAO:0000428
-property_value: IAO:0000117 "Damion Dooley" xsd:string
-
-[Term]
-id: GENEPIO:0001895
-name: non-lingual set
-is_a: GENEPIO:0001903 ! set of unordered strings
-property_value: IAO:0000114 IAO:0000428
-property_value: IAO:0000117 "Damion Dooley" xsd:string
-
-[Term]
-id: GENEPIO:0001896
-name: phone type
-
-[Term]
-id: GENEPIO:0001898
-name: phone type - mobile
-is_a: GENEPIO:0001896 ! phone type
-property_value: GENEPIO:0000006 "mobile" xsd:string
-
-[Term]
-id: GENEPIO:0001899
-name: phone type - work
-is_a: GENEPIO:0001896 ! phone type
-property_value: GENEPIO:0000006 "work" xsd:string
-
-[Term]
 id: GENEPIO:0001900
-name: set
 comment: A set does not have a direct distance metric between its members.
 property_value: IAO:0000114 IAO:0000428
 property_value: IAO:0000117 "Damion Dooley" xsd:string
 
 [Term]
-id: GENEPIO:0001901
-name: ordered set
-comment: This data type is for items that have a unique order or rank with respect to each other in a set BUT NO meaningful DISTANCE metric exists between items aside from their position in the full set.  "Favorite soft drinks" or "Favorite colours" or "Closest friends" are examples.  \n\nLetters of the alphabet cannot be interpreted as ordinal with respect to their use in words, since no uniform rules exist about their placement in words.  But they can be ordinal insofar as they are stated in a particular order in listing off the alphabet.\n\nA distance metric becomes possible if the items have units, e.g. 5cm or 10degrees celcius.  The set's elements can then be mapped to one dimension.
-is_a: GENEPIO:0001900 ! set
-property_value: IAO:0000114 IAO:0000428
-property_value: IAO:0000117 "Damion Dooley" xsd:string
-
-[Term]
-id: GENEPIO:0001902
-name: unordered set
-def: "An unordered set is a set of elements which have no intrinsic (semantic) order with respect to each other. The set of all living people is not intrinsically ordered; an ordering can only be provided by looking at some partiular feature of the given set elements." []
-comment: The set can have a very large or infinite (open-ended) number of values.  \nBecause the elements are essentially open-ended, we can only offer a lookup-as-you-type function for selecting past-used items.\n\nUse "Categorical" for unordered sets where items are finite, pre-defined and not too numerous.\n\nStrings are only indirectly ordered insofar as strings can be sorted by character - but this requires picking apar the name strings, an examination which has no inherent semantic relation to the things being named.  That one email address or name comes before another is arbitrary.  Only numbers are directly ordered.
-is_a: GENEPIO:0001900 ! set
-property_value: IAO:0000114 IAO:0000428
-property_value: IAO:0000117 "Damion Dooley" xsd:string
-
-[Term]
-id: GENEPIO:0001903
-name: set of unordered strings
-comment: Subclasses here are types of string that have a particular syntactic structure or constraint to them that should be expressable using regular expressions.
-is_a: GENEPIO:0001902 ! unordered set
-property_value: IAO:0000114 IAO:0000428
-property_value: IAO:0000117 "Damion Dooley" xsd:string
-
-[Term]
 id: GENEPIO:0001904
-name: phone number (North America)
-property_value: GENEPIO:1919 "/^(:<area>(\\([0-9]{3})\\)|[0-9]{3})(:<sep>[- ])?(:<central>\\d{3})\\2(:<station>\\d{4})$/, $area $central $station" xsd:string
-property_value: GENEPIO:1921 "($area) $central-$station" xsd:string
 property_value: IAO:0000114 IAO:0000428
 property_value: IAO:0000117 "Damion Dooley" xsd:string
-
-[Term]
-id: GENEPIO:0001905
-name: points in 2 dimensions
-def: "A set of points that exist in a 2-dimensional plane. (This plane may be a cross-section of points defined in n > 2 dimensions)." []
-is_a: GENEPIO:0001884 ! n-dimensional entity
-relationship: RO:0002180 GENEPIO:0001856 {cardinality="1"} ! has component 2D space
-property_value: IAO:0000114 IAO:0000428
-property_value: IAO:0000117 "Damion Dooley" xsd:string
-
-[Term]
-id: GENEPIO:0001906
-name: quadratic surface
-def: "In Euclidean space, quadrics have dimension D = 2, and are known as quadric surfaces." []
-is_a: GENEPIO:0001856 ! 2D space
-property_value: IAO:0000114 IAO:0000428
-property_value: IAO:0000117 "Damion Dooley" xsd:string
-property_value: IAO:0000119 "https://en.wikipedia.org/wiki/Quadric" xsd:string
 
 [Term]
 id: GENEPIO:0001907
-name: spheroid
-def: "A spheroid, or ellipsoid of revolution, is a quadric surface obtained by rotating an ellipse about one of its principal axes; in other words, an ellipsoid with two equal semi-diameters." []
-is_a: GENEPIO:0001906 ! quadratic surface
-property_value: IAO:0000114 IAO:0000428
-property_value: IAO:0000117 "Damion Dooley" xsd:string
-property_value: IAO:0000119 "https://en.wikipedia.org/wiki/Spheroid" xsd:string
-
-[Term]
-id: GENEPIO:0001908
-name: plane
-def: "In mathematics, a plane is a flat, two-dimensional surface. A plane is the two-dimensional analogue of a point (zero dimensions), a line (one dimension) and three-dimensional space. Planes can arise as subspaces of some higher-dimensional space, as with the walls of a room, or they may enjoy an independent existence in their own right, as in the setting of Euclidean geometry.\"\n\n\"When working exclusively in two-dimensional Euclidean space, the definite article is used, so, the plane refers to the whole space." []
-is_a: GENEPIO:0001856 ! 2D space
-property_value: IAO:0000114 IAO:0000428
-property_value: IAO:0000117 "Damion Dooley" xsd:string
-property_value: IAO:0000119 "https://en.wikipedia.org/wiki/Plane_(geometry)" xsd:anyURI
-
-[Term]
-id: GENEPIO:0001909
-name: quantity unit
-comment: Issue: this implicitly affects 'significant digits' datum.
-
-[Term]
-id: GENEPIO:0001910
-name: decimal
-is_a: GENEPIO:0001919 ! number
-property_value: GENEPIO:1919 "^([+-]?[1-9]\\d*|0)(\\.\\d+)?$" xsd:string
 property_value: IAO:0000114 IAO:0000428
 property_value: IAO:0000117 "Damion Dooley" xsd:string
 
 [Term]
 id: GENEPIO:0001911
-name: integer
-is_a: GENEPIO:0001919 ! number
-property_value: GENEPIO:1919 "^([-+]?[1-9]\\d*|0)$" xsd:string
+is_a: GENEPIO:0001919
 property_value: IAO:0000114 IAO:0000428
 property_value: IAO:0000117 "Damion Dooley" xsd:string
 
 [Term]
 id: GENEPIO:0001912
-name: ones
-is_a: GENEPIO:0001998 ! decimal quantity unit
-relationship: RO:0002087 GENEPIO:0001916 ! immediately preceded by tenths
+relationship: RO:0002087 GENEPIO:0001916 ! immediately preceded by
 
 [Term]
 id: GENEPIO:0001913
-name: tens
-is_a: GENEPIO:0001998 ! decimal quantity unit
-relationship: RO:0002087 GENEPIO:0001912 ! immediately preceded by ones
+relationship: RO:0002087 GENEPIO:0001912 ! immediately preceded by
 
 [Term]
 id: GENEPIO:0001914
-name: hundreds
-is_a: GENEPIO:0001998 ! decimal quantity unit
-relationship: RO:0002087 GENEPIO:0001913 ! immediately preceded by tens
+relationship: RO:0002087 GENEPIO:0001913 ! immediately preceded by
 
 [Term]
 id: GENEPIO:0001915
-name: thousands
-is_a: GENEPIO:0001998 ! decimal quantity unit
-relationship: RO:0002087 GENEPIO:0001914 ! immediately preceded by hundreds
+relationship: RO:0002087 GENEPIO:0001914 ! immediately preceded by
 
 [Term]
 id: GENEPIO:0001916
-name: tenths
-is_a: GENEPIO:0001998 ! decimal quantity unit
-relationship: RO:0002087 GENEPIO:0001917 ! immediately preceded by hundredths
-
-[Term]
-id: GENEPIO:0001917
-name: hundredths
-is_a: GENEPIO:0001998 ! decimal quantity unit
+relationship: RO:0002087 GENEPIO:0001917 ! immediately preceded by
 
 [Term]
 id: GENEPIO:0001918
-name: millions
-is_a: GENEPIO:0001998 ! decimal quantity unit
-relationship: RO:0002087 GENEPIO:0001915 ! immediately preceded by thousands
+relationship: RO:0002087 GENEPIO:0001915 ! immediately preceded by
 
 [Term]
 id: GENEPIO:0001919
-name: number
-comment: Number types can have min / max limits for validation.  Regular expressions would be used mostly for data entry transformation and display.
-is_a: GENEPIO:0001855 ! 1D space
 property_value: IAO:0000114 IAO:0000428
 property_value: IAO:0000117 "Damion Dooley" xsd:string
 
@@ -5342,6 +5026,7 @@ name: circle
 def: "A circle is a simple closed shape in Euclidean geometry. It is the set of all points in a plane that are at a given distance from a given point, the centre; equivalently it is the curve traced out by a point that moves so that its distance from a given point is constant." []
 is_a: GENEPIO:0001934 ! 2D entity
 is_a: GENEPIO:0001996 ! 2D boundary
+relationship: RO:0002180 GENEPIO:0002035 ! has component centre point
 relationship: RO:0002180 GENEPIO:0002035 {cardinality="1"} ! has component centre point
 property_value: IAO:0000114 IAO:0000428
 property_value: IAO:0000117 "Damion Dooley" xsd:string
@@ -5363,6 +5048,7 @@ is_a: GENEPIO:0000071 ! sequencing platform (brand)
 [Term]
 id: GENEPIO:0001925
 name: earth area boundary census
+relationship: RO:0002180 GENEPIO:0001996 ! has component 2D boundary
 relationship: RO:0002180 GENEPIO:0001996 {cardinality="1"} ! has component 2D boundary
 relationship: RO:0002180 GENEPIO:0002017 {minCardinality="0"} ! has component geospatial name
 property_value: IAO:0000114 IAO:0000428
@@ -5420,7 +5106,7 @@ is_a: GENEPIO:0001921 ! sequencing instrument model
 id: GENEPIO:0001934
 name: 2D entity
 def: "A two dimensional entity is an entity composed of one or more points on a two dimensional surface." []
-is_a: GENEPIO:0001884 ! n-dimensional entity
+is_a: GENEPIO:0001884
 property_value: IAO:0000114 IAO:0000428
 property_value: IAO:0000117 "Damion Dooley" xsd:string
 
@@ -5852,7 +5538,7 @@ property_value: IAO:0000119 "https://www.ncbi.nlm.nih.gov/books/NBK54984/table/S
 id: GENEPIO:0001996
 name: 2D boundary
 def: "A two dimensional boundary is a continuous path (loop) defined on a two dimensional surface." []
-is_a: GENEPIO:0001884 ! n-dimensional entity
+is_a: GENEPIO:0001884
 property_value: IAO:0000114 IAO:0000428
 property_value: IAO:0000117 "Damion Dooley" xsd:string
 
@@ -5869,7 +5555,7 @@ property_value: IAO:0000117 "Damion Dooley" xsd:string
 id: GENEPIO:0001998
 name: decimal quantity unit
 def: "A multiplier in the decimal number system that has been applied to an accompanying number or set of numbers often to simplfy their appearance.  Numbers described by multipliers may have lost significant digits through rounding or trimming." []
-is_a: GENEPIO:0001909 ! quantity unit
+is_a: GENEPIO:0001909
 property_value: IAO:0000114 IAO:0000428
 property_value: IAO:0000117 "Damion Dooley" xsd:string
 
@@ -5982,7 +5668,7 @@ is_a: GENEPIO:0000028 ! subject body product
 [Term]
 id: GENEPIO:0002017
 name: geospatial name
-relationship: IAO:0000136 GENEPIO:0001886 ! is about designated area on Earth
+relationship: IAO:0000136 GENEPIO:0001886 ! is about
 
 [Term]
 id: GENEPIO:0002018
@@ -6095,7 +5781,7 @@ property_value: terms:date "2019-11-17T00:43:00Z" xsd:dateTime
 id: GENEPIO:0002035
 name: centre point
 def: "A centre point is a point used in the description of an n-dimentional entity from which other (given) aspects of the entity are most efficienty described. A point of symmetry.  The entity must have only one such point." []
-is_a: GENEPIO:0001744 ! 0D space
+is_a: GENEPIO:0001744
 property_value: IAO:0000112 "Centre of circle, ellipse or parabola; centre of mass." xsd:string
 property_value: IAO:0000114 IAO:0000428
 property_value: IAO:0000116 "Probably a better formal math defn?" xsd:string
@@ -6627,14 +6313,9 @@ def: "A data item which is the amount of a reference sequence covered by a seque
 xref: OBI:0002879
 is_a: GENEPIO:0001568 ! assembly quality control datum
 property_value: GENEPIO:0001763 "help:Breadth of coverage should be reported as a percentage value (e.g. 95%) to a fold of coverage (e.g. 10X)." xsd:string
-property_value: IAO:0000111 "breadth of coverage" xsd:string
 property_value: IAO:0000112 "Eighty percent of the reference genome was covered by sequence fragments with a coverage depth of 4X; therefore, the breadth of coverage was 80% (4:5)." xsd:string
-property_value: IAO:0000112 "Eighty percent of the reference genome was covered by sequence fragments with a coverage depth of 4X; therefore, the breadth of coverage was 80% (4:5)." xsd:string
-property_value: IAO:0000114 IAO:0000122
 property_value: IAO:0000114 IAO:0000428
-property_value: IAO:0000117 "https://orcid.org/0000-0002-1107-9135" xsd:string
 property_value: IAO:0000119 "Emma Griffiths" xsd:string
-property_value: IAO:0000233 "https://github.com/obi-ontology/obi/issues/1579" xsd:string
 property_value: terms:contributor https://orcid.org/0000-0002-1107-9135
 property_value: terms:contributor https://orcid.org/0000-0002-9578-0788
 
@@ -6825,7 +6506,7 @@ property_value: GENEPIO:0000006 "unsigned long integer" xsd:string
 id: GENEPIO:0002167
 name: specimen collection site
 def: "The physical location that a specimen was collected at.  The location may be described by geographic coordinates, city or other geopolitical entity, biome, etc." []
-is_a: GENEPIO:0001886 ! designated area on Earth
+is_a: GENEPIO:0001886
 property_value: IAO:0000114 IAO:0000428
 property_value: IAO:0000117 "Damion Dooley" xsd:string
 property_value: seeAlso NCIT:C87913
@@ -7108,7 +6789,7 @@ property_value: terms:date "2022-09-23T11:47:33Z" xsd:dateTime
 id: GENEPIO:0004432
 name: Illumina NextSeq 1000
 def: "A DNA sequencer which is manufactured by the Illumina corporation using sequence-by-synthesis chemistry that fits on a benchtop and uses P1 and P2 flow cells." []
-is_a: GENEPIO:0100126 ! Illumina NextSeq
+is_a: GENEPIO:0100126
 property_value: IAO:0000114 IAO:0000428
 property_value: IAO:0000116 "Planned Obsolescence: this term is a placeholder for a term requested in another ontology. Once the appropriate ontology term is available, this term’s identifier will be obsoleted with a “term replaced by” id of the other term." xsd:string
 property_value: terms:contributor https://orcid.org/0000-0001-5275-8866
@@ -7119,7 +6800,7 @@ property_value: terms:date "2023-06-21T12:33:56Z" xsd:dateTime
 id: GENEPIO:0004433
 name: Oxford Nanopore Flongle
 def: "An adapter for MinION or GridION DNA sequencers manufactured by the Oxford Nanopore corporation that enables sequencing on smaller, single-use flow cells." []
-is_a: GENEPIO:0100140 ! Oxford Nanopore sequencing instrument model
+is_a: GENEPIO:0100140
 property_value: IAO:0000114 IAO:0000428
 property_value: IAO:0000116 "Planned Obsolescence: this term is a placeholder for a term requested in another ontology. Once the appropriate ontology term is available, this term’s identifier will be obsoleted with a “term replaced by” id of the other term." xsd:string
 property_value: IAO:0000119 "https://store.nanoporetech.com/flongle.html" xsd:anyURI
@@ -7173,41 +6854,6 @@ property_value: terms:contributor https://orcid.org/0000-0001-5275-8866
 property_value: terms:date "2023-11-29T14:18:43Z" xsd:dateTime
 
 [Term]
-id: GENEPIO:0100126
-name: Illumina NextSeq
-def: "A DNA sequencer which is manufactured by the Illumina corporation using sequence-by-synthesis chemistry that fits on a benchtop and has an output capacity of 1.65-7.5 Gb." []
-is_a: GENEPIO:0001921 ! sequencing instrument model
-property_value: IAO:0000114 "requires discussion" xsd:string
-property_value: IAO:0000116 "Planned Obsolescence: this term is a placeholder for a term requested in another ontology. Once the appropriate ontology term is available, this term’s identifier will be obsoleted with a “term replaced by” id of the other term." xsd:string
-property_value: terms:contributor "https://orcid.org/0000-0002-1107-9135" xsd:string
-property_value: terms:contributor "https://orcid.org/0000-0002-8844-9165" xsd:string
-property_value: terms:contributor "https://orcid.org/0000-0002-9578-0788" xsd:string
-property_value: terms:date "2022-01-19T18:23:15.862Z" xsd:dateTime
-
-[Term]
-id: GENEPIO:0100140
-name: Oxford Nanopore sequencing instrument model
-def: "A DNA sequencer manufactured by the Oxford Nanopore corporation." []
-is_a: GENEPIO:0001921 ! sequencing instrument model
-property_value: IAO:0000114 "requires discussion" xsd:string
-property_value: IAO:0000116 "Planned Obsolescence: this term is a placeholder for a term requested in another ontology. Once the appropriate ontology term is available, this term’s identifier will be obsoleted with a “term replaced by” id of the other term." xsd:string
-property_value: terms:contributor "https://orcid.org/0000-0002-1107-9135" xsd:string
-property_value: terms:contributor "https://orcid.org/0000-0002-8844-9165" xsd:string
-property_value: terms:contributor "https://orcid.org/0000-0002-9578-0788" xsd:string
-property_value: terms:date "2022-01-19T18:23:15.862Z" xsd:dateTime
-
-[Term]
-id: GENEPIO:0100219
-name: sampling strategy specification
-def: "A directive information entity which realizes sample strategy specifications." []
-property_value: IAO:0000114 "requires discussion" xsd:string
-property_value: IAO:0000116 "Planned Obsolescence: this term is a placeholder for a term requested in another ontology. Once the appropriate ontology term is available, this term’s identifier will be obsoleted with a “term replaced by” id of the other term." xsd:string
-property_value: terms:contributor "https://orcid.org/0000-0002-1107-9135" xsd:string
-property_value: terms:contributor "https://orcid.org/0000-0002-8844-9165" xsd:string
-property_value: terms:contributor "https://orcid.org/0000-0002-9578-0788" xsd:string
-property_value: terms:date "2022-01-19T18:23:15.862Z" xsd:dateTime
-
-[Term]
 id: GENEPIO:0100289
 name: host health complications at time of specimen collection
 def: "A  personal health datum which specifies host health complications at time of specimen collection." []
@@ -7237,80 +6883,24 @@ property_value: IAO:0000117 "0000-0002-9578-0788" xsd:string
 property_value: terms:date "2022-01-31T23:53:13Z" xsd:dateTime
 
 [Term]
-id: GENEPIO:0100300
-name: health signs and symptoms enumeration
-def: "A data enumeration which references a set of named signs and symptoms entities." []
-is_a: GENEPIO:0001522 ! data enumeration
-property_value: IAO:0000114 "requires discussion" xsd:string
-property_value: IAO:0000118 "signs and symptoms" xsd:string
-property_value: terms:contributor "https://orcid.org/0000-0002-8844-9165" xsd:string
-property_value: terms:contributor "https://orcid.org/0000-0002-9578-0788" xsd:string
-property_value: terms:date "2022-01-19T18:23:15.862Z" xsd:dateTime
-
-[Term]
-id: GENEPIO:0100301
-name: pre-existing conditions and risk factors enumeration
-def: "A data enumeration which references a set of named pre-existing conditions and risk factors entities." []
-is_a: GENEPIO:0001192 ! analytic datum
-is_a: GENEPIO:0001522 ! data enumeration
-property_value: IAO:0000114 "requires discussion" xsd:string
-property_value: IAO:0000118 "pre-existing conditions and risk factors" xsd:string
-property_value: terms:contributor "https://orcid.org/0000-0002-8844-9165" xsd:string
-property_value: terms:contributor "https://orcid.org/0000-0002-9578-0788" xsd:string
-property_value: terms:date "2022-01-19T18:23:15.862Z" xsd:dateTime
-
-[Term]
-id: GENEPIO:0100302
-name: health complications enumeration
-def: "A data enumeration which references a set of named complications entities." []
-is_a: GENEPIO:0001522 ! data enumeration
-property_value: IAO:0000114 "requires discussion" xsd:string
-property_value: IAO:0000118 "complications" xsd:string
-property_value: terms:contributor "https://orcid.org/0000-0002-8844-9165" xsd:string
-property_value: terms:contributor "https://orcid.org/0000-0002-9578-0788" xsd:string
-property_value: terms:date "2022-01-19T18:23:15.862Z" xsd:dateTime
-
-[Term]
-id: GENEPIO:0100303
-name: person role enumeration
-def: "A data enumeration which references a set of named person role entities." []
-is_a: GENEPIO:0001170 ! organism datum
-is_a: GENEPIO:0001522 ! data enumeration
-property_value: IAO:0000114 "requires discussion" xsd:string
-property_value: IAO:0000118 "host role" xsd:string
-property_value: terms:contributor "https://orcid.org/0000-0002-8844-9165" xsd:string
-property_value: terms:contributor "https://orcid.org/0000-0002-9578-0788" xsd:string
-
-[Term]
 id: GENEPIO:0100548
-name: environmental testing sampling
-def: "A sampling strategy in which environments are sampled in the context of testing for the presence of, or change in the levels of, chemicals, pathogens or other phenomena." []
-is_a: GENEPIO:0100219 ! sampling strategy specification
-property_value: IAO:0000118 "Environmental testing" xsd:string
+is_a: GENEPIO:0100219
 property_value: terms:contributor https://orcid.org/0000-0001-5275-8866
-property_value: terms:date "2023-01-23T00:42:19.315Z" xsd:dateTime
 
 [Term]
 id: GENEPIO:0100549
-name: clinical trial sampling
 name: clinical trial sampling strategy
 def: "A sampling strategy in which individuals are sampled in the context of experiments or observations performed as part of clinical research." []
-is_a: GENEPIO:0100219 ! sampling strategy specification
-property_value: IAO:0000118 "Clinical trial" xsd:string
+is_a: GENEPIO:0100219
 property_value: terms:contributor https://orcid.org/0000-0001-5275-8866
 property_value: terms:date "2022-09-23T11:08:21Z" xsd:dateTime
-property_value: terms:date "2023-01-23T00:42:19.315Z" xsd:dateTime
 
 [Term]
 id: GENEPIO:0100550
-name: field experiment sampling
-def: "A sampling strategy in which samples are taken during real-life experiments which test directly whether proposed interventions actually work." []
-is_a: GENEPIO:0100219 ! sampling strategy specification
-property_value: IAO:0000118 "Field experiment" xsd:string
+is_a: GENEPIO:0100219
 property_value: IAO:0000119 "https://en.wikipedia.org/wiki/Field_experiment" xsd:string
 property_value: terms:contributor https://orcid.org/0000-0001-5275-8866
 property_value: terms:date "2022-09-23T11:12:34Z" xsd:dateTime
-property_value: terms:date "2023-01-23T00:42:19.315Z" xsd:dateTime
 
 [Term]
 id: GENEPIO:0100581
@@ -7322,14 +6912,11 @@ property_value: terms:date "2022-09-23T10:54:21Z" xsd:dateTime
 
 [Term]
 id: GENEPIO:0100582
-name: survey study sampling
 name: survey study sampling strategy
 def: "A sampling strategy in which individuals and/or materials are sampled for surveillance performed for research purposes." []
-is_a: GENEPIO:0100219 ! sampling strategy specification
-property_value: IAO:0000118 "Survey study" xsd:string
+is_a: GENEPIO:0100219
 property_value: terms:contributor https://orcid.org/0000-0001-5275-8866
 property_value: terms:date "2022-09-23T11:04:13Z" xsd:dateTime
-property_value: terms:date "2023-01-23T00:42:19.315Z" xsd:dateTime
 
 [Term]
 id: GENEPIO:0100586
@@ -7349,10 +6936,6 @@ property_value: IAO:0000114 IAO:0000428
 property_value: IAO:0000116 "This \"or\" class is just to represent an equivalency with a commonly used classification, it should not have subclasses under it. (2022-12-22)" xsd:string
 property_value: terms:contributor http://orcid.org/0000-0002-9578-0788
 property_value: terms:date "2022-12-22T22:56:03.687Z" xsd:string
-
-[Term]
-id: GENEPIO:0100750
-name: available data types enumeration
 
 [Term]
 id: GENEPIO:0100898
@@ -7595,8 +7178,6 @@ inverse_of: RO:0001025 ! located in
 [Typedef]
 id: RO:0001025
 name: located in
-name: located_in
-name: located_in (type level)
 def: "a relation between two independent continuants, the target and the location, in which the target is entirely within the location" []
 subset: http://purl.obolibrary.org/obo/valid_for_go_gp2term
 property_value: IAO:0000111 "located in" xsd:string
@@ -7605,7 +7186,6 @@ property_value: IAO:0000112 "this rat is located in this cage" xsd:string
 property_value: IAO:0000116 "Location as a relation between instances: The primitive instance-level relation c located_in r at t reflects the fact that each continuant is at any given time associated with exactly one spatial region, namely its exact location. Following we can use this relation to define a further instance-level location relation - not between a continuant and the region which it exactly occupies, but rather between one continuant and another. c is located in c1, in this sense, whenever the spatial region occupied by c is part_of the spatial region occupied by c1.    Note that this relation comprehends both the relation of exact location between one continuant and another which obtains when r and r1 are identical (for example, when a portion of fluid exactly fills a cavity), as well as those sorts of inexact location relations which obtain, for example, between brain and head or between ovum and uterus" xsd:string
 property_value: IAO:0000116 "Most location relations will only hold at certain times, but this is difficult to specify in OWL. See http://purl.obolibrary.org/obo/ro/docs/temporal-semantics/" xsd:string
 property_value: IAO:0000118 "located_in" xsd:string
-property_value: IAO:0000412 http://purl.obolibrary.org/obo/gaz.owl
 property_value: RO:0001900 RO:0001901
 property_value: seeAlso "https://wiki.geneontology.org/Located_in" xsd:anyURI
 property_value: terms:source "http://www.obofoundry.org/ro/#OBO_REL:located_in" xsd:string

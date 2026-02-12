@@ -1,5 +1,5 @@
 format-version: 1.2
-data-version: releases/2026-02-11
+data-version: releases/2026-02-12
 subsetdef: http://purl.obolibrary.org/obo/valid_for_go_annotation_extension ""
 subsetdef: http://purl.obolibrary.org/obo/valid_for_go_gp2term ""
 subsetdef: http://purl.obolibrary.org/obo/valid_for_go_ontology ""
@@ -21,7 +21,7 @@ ontology: genepio
 property_value: dcterms:description "The Genomic Epidemiology Ontology aims to provide a comprehensive controlled vocabulary for infectious disease surveillance and outbreak investigations. It is an application ontology that draws on many other ontologies including anatomy, taxonomy, disease, symptoms, environment and food types for foodborn pathogen metadata." xsd:string
 property_value: dcterms:license http://creativecommons.org/licenses/by/3.0/
 property_value: dcterms:title "Genomic Epidemiology Ontology" xsd:string
-property_value: owl:versionInfo "2026-02-11" xsd:string
+property_value: owl:versionInfo "2026-02-12" xsd:string
 
 [Term]
 id: APOLLO_SV:00000016
@@ -48569,6 +48569,7 @@ subset: goslim_pir
 subset: goslim_plant
 subset: goslim_yeast
 synonym: "molecular function" EXACT []
+is_a: BFO:0000015 ! process
 property_value: IAO:0000412 http://purl.obolibrary.org/obo/go.owl
 
 [Term]
@@ -63332,7 +63333,6 @@ id: NCIT:C114551
 name: Organization Role
 def: "A title that describes the function of a designated group, governing body, or institution." []
 synonym: "Organization Role" EXACT []
-is_a: BFO:0000023 ! role
 is_a: NCIT:C48835 ! Role
 property_value: IAO:0000412 http://purl.obolibrary.org/obo/ncit.owl
 
@@ -64397,7 +64397,7 @@ synonym: "Geographic Area" EXACT []
 synonym: "Geographic Location" EXACT []
 synonym: "Geographic Region" EXACT []
 synonym: "Region" EXACT []
-is_a: NCIT:C20181 ! Conceptual Entity
+is_a: BFO:0000040 ! material entity
 property_value: IAO:0000412 http://purl.obolibrary.org/obo/ncit.owl
 
 [Term]
@@ -64452,7 +64452,7 @@ synonym: "model" EXACT []
 synonym: "Model System" EXACT []
 synonym: "Modeling System" EXACT []
 synonym: "Models" EXACT []
-is_a: NCIT:C20181 ! Conceptual Entity
+is_a: IAO:0000030 ! information entity
 property_value: IAO:0000412 http://purl.obolibrary.org/obo/ncit.owl
 
 [Term]
@@ -64733,7 +64733,7 @@ name: Title
 def: "An identifying designation." []
 synonym: "Title" EXACT []
 synonym: "title" EXACT []
-is_a: NCIT:C20181 ! Conceptual Entity
+is_a: IAO:0000030 ! information entity
 property_value: IAO:0000412 http://purl.obolibrary.org/obo/ncit.owl
 
 [Term]
@@ -64867,7 +64867,7 @@ id: NCIT:C19160
 name: Occupation or Discipline
 def: "A grouping of occupations and fields of study." []
 synonym: "Occupation or Discipline" EXACT []
-is_a: NCIT:C20181 ! Conceptual Entity
+is_a: IAO:0000030 ! information entity
 property_value: IAO:0000412 http://purl.obolibrary.org/obo/ncit.owl
 
 [Term]
@@ -65070,13 +65070,6 @@ is_a: NCIT:C25162 ! Code
 property_value: IAO:0000412 http://purl.obolibrary.org/obo/ncit.owl
 
 [Term]
-id: NCIT:C20181
-name: Conceptual Entity
-def: "An organizational header for concepts representing mostly abstract entities." []
-synonym: "Conceptual Entity" EXACT []
-property_value: IAO:0000412 http://purl.obolibrary.org/obo/ncit.owl
-
-[Term]
 id: NCIT:C20200
 name: Outcome
 def: "The result of an action." []
@@ -65084,7 +65077,7 @@ synonym: "Outcome" EXACT []
 synonym: "outcome" EXACT []
 synonym: "Result" EXACT []
 synonym: "result" EXACT []
-is_a: NCIT:C20181 ! Conceptual Entity
+is_a: IAO:0000030 ! information entity
 property_value: IAO:0000412 http://purl.obolibrary.org/obo/ncit.owl
 
 [Term]
@@ -65246,7 +65239,7 @@ synonym: "Code" EXACT []
 synonym: "code" EXACT []
 synonym: "Code Name" EXACT []
 synonym: "Coding System" EXACT []
-is_a: NCIT:C20181 ! Conceptual Entity
+is_a: IAO:0000030 ! information entity
 property_value: IAO:0000412 http://purl.obolibrary.org/obo/ncit.owl
 
 [Term]
@@ -65344,7 +65337,7 @@ name: Record
 def: "Anything (e.g., a document) providing permanent evidence of or information about past events." []
 synonym: "Record" EXACT []
 synonym: "record" EXACT []
-is_a: NCIT:C20181 ! Conceptual Entity
+is_a: IAO:0000030 ! information entity
 property_value: IAO:0000412 http://purl.obolibrary.org/obo/ncit.owl
 
 [Term]
@@ -65482,7 +65475,7 @@ id: NCIT:C25499
 name: Event
 def: "Something that happens at a given place and time." []
 synonym: "Event" EXACT []
-is_a: NCIT:C20181 ! Conceptual Entity
+is_a: BFO:0000015 ! process
 property_value: IAO:0000412 http://purl.obolibrary.org/obo/ncit.owl
 
 [Term]
@@ -66498,7 +66491,6 @@ def: "The words or language units by which a thing is known." []
 synonym: "Name" EXACT []
 synonym: "name" EXACT []
 is_a: IAO:0000300 ! textual entity
-is_a: NCIT:C20181 ! Conceptual Entity
 property_value: IAO:0000412 http://purl.obolibrary.org/obo/ncit.owl
 
 [Term]
@@ -66609,7 +66601,7 @@ name: Group
 def: "Any number of entities (members) considered as a unit." []
 synonym: "Group" EXACT []
 synonym: "Panel" EXACT []
-is_a: NCIT:C20181 ! Conceptual Entity
+is_a: IAO:0000030 ! information entity
 property_value: IAO:0000412 http://purl.obolibrary.org/obo/ncit.owl
 
 [Term]
@@ -66680,7 +66672,7 @@ id: NCIT:C47955
 name: Means
 def: "A way of doing something; how a result is obtained or an end is achieved." []
 synonym: "Means" EXACT []
-is_a: NCIT:C20181 ! Conceptual Entity
+is_a: IAO:0000030 ! information entity
 property_value: IAO:0000412 http://purl.obolibrary.org/obo/ncit.owl
 
 [Term]
@@ -66697,7 +66689,7 @@ name: Information
 def: "Knowledge derived from study, experience, or instruction that has been gathered or received by communication." []
 synonym: "Info" EXACT []
 synonym: "Information" EXACT []
-is_a: NCIT:C20181 ! Conceptual Entity
+is_a: IAO:0000030 ! information entity
 property_value: IAO:0000412 http://purl.obolibrary.org/obo/ncit.owl
 
 [Term]
@@ -66774,7 +66766,7 @@ synonym: "Functional Role" EXACT []
 synonym: "Generic Role" EXACT []
 synonym: "Role" EXACT []
 synonym: "Role, Generic" EXACT []
-is_a: NCIT:C20181 ! Conceptual Entity
+is_a: BFO:0000023 ! role
 property_value: IAO:0000412 http://purl.obolibrary.org/obo/ncit.owl
 
 [Term]
@@ -67136,7 +67128,7 @@ id: NCIT:C62574
 name: Facility
 def: "Services and space and equipment provided for a particular purpose; a building or place that provides a particular service or is used for a particular industry." []
 synonym: "Facility" EXACT []
-is_a: NCIT:C20181 ! Conceptual Entity
+is_a: BFO:0000040 ! material entity
 property_value: IAO:0000412 http://purl.obolibrary.org/obo/ncit.owl
 
 [Term]
@@ -67832,7 +67824,7 @@ name: Intellectual Property
 def: "Creations of the mind, such as those created by musicians, authors, artists, and inventors." []
 synonym: "Intellectual Product" EXACT []
 synonym: "Intellectual Property" EXACT []
-is_a: NCIT:C20181 ! Conceptual Entity
+is_a: IAO:0000030 ! information entity
 property_value: IAO:0000412 http://purl.obolibrary.org/obo/ncit.owl
 
 [Term]

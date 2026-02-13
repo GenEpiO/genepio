@@ -46,11 +46,9 @@ http://purl.obolibrary.org/obo/CHEBI_33252 # atomic nucleus
 http://purl.obolibrary.org/obo/COB_0000013 # molecular entity
 includeAllChildren
 
-
 http://purl.obolibrary.org/obo/COB_0000022 # organism
 includeAllChildren
 http://purl.obolibrary.org/obo/NCBITaxon_131567 # Cellular Organisms
-
 
 #http://purl.obolibrary.org/obo/OBI_0000245 # organization NOT IN COB AT MOMENT
 # http://purl.obolibrary.org/obo/OBI_0000047 # processed material entity # label different from OBI issue
@@ -1027,9 +1025,12 @@ GO
 http://purl.obolibrary.org/obo/GO_0022414 # reproductive process
 http://purl.obolibrary.org/obo/GO_0046903 # secretion
 http://purl.obolibrary.org/obo/GO_0035314 # scab formation
+http://purl.obolibrary.org/obo/GO_0003674 # molecular function (aka gene product or complex activity)
 
 [Top level source term URIs and target direct superclass URIs]
 http://purl.obolibrary.org/obo/GO_0008150 # biological process
+http://purl.obolibrary.org/obo/GO_0003674 # molecular function
+subClassOf http://purl.obolibrary.org/obo/BFO_0000015 # disposition
 
 [Source term retrieval setting]
 includeAllIntermediates
@@ -1645,12 +1646,13 @@ http://purl.obolibrary.org/obo/MONDO_0600008
 
 http://purl.obolibrary.org/obo/MONDO_0021178 # injury
 
-
 http://purl.obolibrary.org/obo/MONDO_0021666 # Otitis
 
 [Top level source term URIs and target direct superclass URIs]
 http://purl.obolibrary.org/obo/IAO_0000030 # information
 
+http://purl.obolibrary.org/obo/MONDO_0021178 # injury
+subClassOf http://purl.obolibrary.org/obo/PATO_0000460 # abnormal
 
 http://purl.obolibrary.org/obo/PATO_0000001 # characteristic
 subClassOf http://purl.obolibrary.org/obo/COB_0000502
@@ -1878,7 +1880,7 @@ http://purl.obolibrary.org/obo/NCIT_C103180 # data standard
 http://purl.obolibrary.org/obo/NCIT_C60776 # contact information
 http://purl.obolibrary.org/obo/NCIT_C41085 # person contact information
 http://purl.obolibrary.org/obo/NCIT_C114551 # organization role
-http://purl.obolibrary.org/obo/NCIT_C48443 # standard operating proceedure
+http://purl.obolibrary.org/obo/NCIT_C48443 # standard operating procedure
 
 http://purl.obolibrary.org/obo/NCIT_C25392 # Manufacturer
 
@@ -1984,7 +1986,6 @@ http://purl.obolibrary.org/obo/NCIT_C41075 # Implant
 http://purl.obolibrary.org/obo/NCIT_C25414 # Aliquot
 http://purl.obolibrary.org/obo/NCIT_C49844 # Belt Device
 http://purl.obolibrary.org/obo/NCIT_C25577 # Most Recent
-http://purl.obolibrary.org/obo/NCIT_C26548 # Gene Product
 
 http://purl.obolibrary.org/obo/NCIT_C161352 # Nitrate Measurement 
 http://purl.obolibrary.org/obo/NCIT_C64810 # Nitrite Measurement
@@ -1993,9 +1994,14 @@ http://purl.obolibrary.org/obo/NCIT_C51953 # Microbial Colony Count
 
 
 [Top level source term URIs and target direct superclass URIs]
+
 http://purl.obolibrary.org/obo/NCIT_C14419 # organism strain / trying to stop importing parents.
-http://purl.obolibrary.org/obo/NCIT_C7057 # Disease, Disorder or Finding
-http://purl.obolibrary.org/obo/NCIT_C20189 # Property or Attribute
+
+http://purl.obolibrary.org/obo/NCIT_C2991 # Disease or Disorder
+subClassOf http://purl.obolibrary.org/obo/BFO_0000016 # disposition
+
+http://purl.obolibrary.org/obo/NCIT_C3367 # Finding
+subClassOf http://purl.obolibrary.org/obo/IAO_0000027 # data item
 
 http://purl.obolibrary.org/obo/NCIT_C17828 # Biological Process
 subClassOf http://purl.obolibrary.org/obo/BFO_0000015 # process
@@ -2004,8 +2010,9 @@ http://purl.obolibrary.org/obo/NCIT_C43431 # Activity
 subClassOf http://purl.obolibrary.org/obo/BFO_0000015 # process
 
 http://purl.obolibrary.org/obo/NCIT_C1908 # Drug, Food, Chemical or Biomedical Material
+
 http://purl.obolibrary.org/obo/NCIT_C97325 # Manufactured Object
-subClassOf http://purl.obolibrary.org/obo/BFO_0000015 # process
+subClassOf http://purl.obolibrary.org/obo/ENVO_00003074 # manufactured product
 
 http://purl.obolibrary.org/obo/NCIT_C40978 # telephone number
 subClassOf http://purl.obolibrary.org/obo/IAO_0000030 # ICE
@@ -2016,10 +2023,10 @@ subClassOf http://purl.obolibrary.org/obo/GENEPIO_0001170 # organism datum
 http://purl.obolibrary.org/obo/NCIT_C25190 # Person
 subClassOf http://purl.obolibrary.org/obo/COB_0000022 # organism
 
-http://purl.obolibrary.org/obo/NCIT_C85540 # Microbial Succeptibility Test
+http://purl.obolibrary.org/obo/NCIT_C85540 # Microbial Susceptibility Test
 subClassOf http://purl.obolibrary.org/obo/OBI_0000070 # assay
 
-http://purl.obolibrary.org/obo/NCIT_C171083 # organism chartacteristic
+http://purl.obolibrary.org/obo/NCIT_C171083 # organism characteristic
 subClassOf http://purl.obolibrary.org/obo/COB_0000502 # characteristic 
 
 http://purl.obolibrary.org/obo/NCIT_C19332 # personal attribute
@@ -2038,7 +2045,7 @@ http://purl.obolibrary.org/obo/NCIT_C49844 # belt device
 subClassOf http://purl.obolibrary.org/obo/COB_0001300 # device
 
 http://purl.obolibrary.org/obo/NCIT_C84327 # Freezer
-subClassOf http://purl.obolibrary.org/obo/OBI_0001034 # environemntal control device
+subClassOf http://purl.obolibrary.org/obo/OBI_0001034 # environmental control device
 
 http://purl.obolibrary.org/obo/NCIT_C84328 # rack
 subClassOf http://purl.obolibrary.org/obo/COB_0001300 # device
@@ -2052,9 +2059,66 @@ subClassOf http://purl.obolibrary.org/obo/OBI_0002088 # container
 http://purl.obolibrary.org/obo/NCIT_C16143 # Repository
 subClassOf http://purl.obolibrary.org/obo/ENVO_00000073 # building
 
+http://purl.obolibrary.org/obo/NCIT_C48187 # Material
+subClassOf http://purl.obolibrary.org/obo/BFO_0000040 # material entity
 
+http://purl.obolibrary.org/obo/NCIT_C25709 # Unit of Measure
+subClassOf http://purl.obolibrary.org/obo/BFO_0000141 # immaterial entity; sibling to UO:0000000 unit
 
-subClassOf http://purl.obolibrary.org/obo/ENVO_00000073 # building
+http://purl.obolibrary.org/obo/NCIT_C41009 # Qualifier
+subClassOf http://purl.obolibrary.org/obo/COB_0000502 # characteristic
+
+http://purl.obolibrary.org/obo/NCIT_C25341 # Location
+subClassOf http://purl.obolibrary.org/obo/BFO_0000029 # site
+
+http://purl.obolibrary.org/obo/NCIT_C26548 # Gene Product
+subClassOf http://purl.obolibrary.org/obo/GO_0003674 # molecular function (aka gene product or complex activity)
+
+http://purl.obolibrary.org/obo/NCIT_C25162 # Code
+subClassOf http://purl.obolibrary.org/obo/IAO_0000030 # information content entity
+
+http://purl.obolibrary.org/obo/NCIT_C25499 # Event
+subClassOf http://purl.obolibrary.org/obo/BFO_0000015 # process
+
+http://purl.obolibrary.org/obo/NCIT_C62574 # Facility
+subClassOf http://purl.obolibrary.org/obo/BFO_0000040 # material entity
+
+http://purl.obolibrary.org/obo/NCIT_C16632 # Geographic Area
+subClassOf http://purl.obolibrary.org/obo/BFO_0000040 # material entity
+
+http://purl.obolibrary.org/obo/NCIT_C43359 # Group
+subClassOf http://purl.obolibrary.org/obo/IAO_0000030 # information content entity
+
+http://purl.obolibrary.org/obo/NCIT_C48191 # Information
+subClassOf http://purl.obolibrary.org/obo/IAO_0000030 # information content entity
+
+http://purl.obolibrary.org/obo/NCIT_C97331 # Intellectual Property
+subClassOf http://purl.obolibrary.org/obo/IAO_0000030 # information content entity
+
+http://purl.obolibrary.org/obo/NCIT_C47955 # Means
+subClassOf http://purl.obolibrary.org/obo/IAO_0000030 # information content entity
+
+http://purl.obolibrary.org/obo/NCIT_C16866 # Model
+subClassOf http://purl.obolibrary.org/obo/IAO_0000030 # information content entity
+
+http://purl.obolibrary.org/obo/NCIT_C42614 # Name
+subClassOf http://purl.obolibrary.org/obo/IAO_0000030 # information content entity
+
+http://purl.obolibrary.org/obo/NCIT_C19160 # Occupation or Discipline
+subClassOf http://purl.obolibrary.org/obo/IAO_0000030 # information content entity
+
+http://purl.obolibrary.org/obo/NCIT_C20200 # Outcome
+subClassOf http://purl.obolibrary.org/obo/IAO_0000030 # information content entity
+
+http://purl.obolibrary.org/obo/NCIT_C25198 # Record
+subClassOf http://purl.obolibrary.org/obo/IAO_0000030 # information content entity
+
+http://purl.obolibrary.org/obo/NCIT_C48835 # Role
+subClassOf http://purl.obolibrary.org/obo/BFO_0000023 # role
+
+http://purl.obolibrary.org/obo/NCIT_C19067 # Title
+subClassOf http://purl.obolibrary.org/obo/IAO_0000030 # information content entity
+
 
 [Source term retrieval setting]
 includeAllIntermediates
@@ -2295,10 +2359,13 @@ http://purl.obolibrary.org/obo/PATO_0001779 # decreased strength / weakness
 http://purl.obolibrary.org/obo/IAO_0000030 # information
 
 http://purl.obolibrary.org/obo/PATO_0000001 # characteristic
-subClassOf http://purl.obolibrary.org/obo/COB_0000502
+subClassOf http://purl.obolibrary.org/obo/COB_0000502 #characteristic
 http://purl.obolibrary.org/obo/BFO_0000141 # immaterial entity
 http://purl.obolibrary.org/obo/BFO_0000040 # material entity
 http://purl.obolibrary.org/obo/BFO_0000015 # process
+
+http://purl.obolibrary.org/obo/PATO_0000460
+subClassOf http://purl.obolibrary.org/obo/COB_0000502 # characteristic
 
 [Source term retrieval setting]
 includeAllIntermediates

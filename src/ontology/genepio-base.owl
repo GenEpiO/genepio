@@ -20,13 +20,13 @@
      xmlns:NCBITaxon="http://purl.obolibrary.org/obo/NCBITaxon#"
      xmlns:apollo_sv="http://purl.obolibrary.org/obo/apollo_sv.owl/">
     <owl:Ontology rdf:about="http://purl.obolibrary.org/obo/genepio/genepio-base.owl">
-        <owl:versionIRI rdf:resource="http://purl.obolibrary.org/obo/genepio/releases/2025-10-03/genepio-base.owl"/>
+        <owl:versionIRI rdf:resource="http://purl.obolibrary.org/obo/genepio/releases/2026-02-13/genepio-base.owl"/>
         <dc:type rdf:resource="http://purl.obolibrary.org/obo/IAO_8000001"/>
         <dcterms:description xml:lang="en">The Genomic Epidemiology Ontology aims to provide a comprehensive controlled vocabulary for infectious disease surveillance and outbreak investigations. It is an application ontology that draws on many other ontologies including anatomy, taxonomy, disease, symptoms, environment and food types for foodborn pathogen metadata.</dcterms:description>
         <dcterms:license rdf:resource="http://creativecommons.org/licenses/by/3.0/"/>
         <dcterms:title xml:lang="en">Genomic Epidemiology Ontology</dcterms:title>
         <oboInOwl:default-namespace>GENEPIO</oboInOwl:default-namespace>
-        <owl:versionInfo>2025-10-03</owl:versionInfo>
+        <owl:versionInfo>2026-02-13</owl:versionInfo>
     </owl:Ontology>
     
 
@@ -549,12 +549,6 @@ I believe time dependency relations (conditions) don&apos;t imply existence by t
     
 
 
-    <!-- http://www.w3.org/2004/02/skos/core#exactMatch -->
-
-    <owl:ObjectProperty rdf:about="http://www.w3.org/2004/02/skos/core#exactMatch"/>
-    
-
-
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
@@ -570,7 +564,6 @@ I believe time dependency relations (conditions) don&apos;t imply existence by t
 
     <owl:DatatypeProperty rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001605">
         <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
-        <obo:IAO_0100001 rdf:resource="https://w3id.org/linkml/type_uri"/>
         <rdfs:label xml:lang="en">obsolete: has primitive data type</rdfs:label>
         <owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
     </owl:DatatypeProperty>
@@ -580,18 +573,6 @@ I believe time dependency relations (conditions) don&apos;t imply existence by t
     <!-- http://purl.obolibrary.org/obo/OBI_0002135 -->
 
     <owl:DatatypeProperty rdf:about="http://purl.obolibrary.org/obo/OBI_0002135"/>
-    
-
-
-    <!-- https://w3id.org/linkml/name -->
-
-    <owl:DatatypeProperty rdf:about="https://w3id.org/linkml/name"/>
-    
-
-
-    <!-- https://w3id.org/linkml/type_uri -->
-
-    <owl:DatatypeProperty rdf:about="https://w3id.org/linkml/type_uri"/>
     
 
 
@@ -723,6 +704,24 @@ I believe time dependency relations (conditions) don&apos;t imply existence by t
     <!-- http://purl.obolibrary.org/obo/CLO_0000001 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/CLO_0000001"/>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/COB_0000022 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/COB_0000022"/>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/COB_0000026 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/COB_0000026"/>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/COB_0001300 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/COB_0001300"/>
     
 
 
@@ -1821,7 +1820,7 @@ NCIT:C28554 # deceased</obo:GENEPIO_0001763>
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0000065 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0000065">
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/OBI_0000968"/>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/COB_0001300"/>
         <obo:IAO_0000115 xml:lang="en">A device that generates an automated genetic fingerprint of a bacterium from a bacterial suspension.</obo:IAO_0000115>
         <obo:IAO_0000119 rdf:resource="http://www.ncbi.nlm.nih.gov/pmc/articles/PMC92620/"/>
         <oboInOwl:inSubset rdf:resource="http://purl.obolibrary.org/obo/genepio/core_slim.owl"/>
@@ -2074,7 +2073,7 @@ NCIT:C28554 # deceased</obo:GENEPIO_0001763>
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0000081 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0000081">
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/OBI_0000047"/>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/COB_0000026"/>
         <obo:GENEPIO_0000001>Sequencing</obo:GENEPIO_0000001>
         <obo:GENEPIO_0000004>Sequencing Kit</obo:GENEPIO_0000004>
         <obo:GENEPIO_0000005>Derived from Illumina Sample Sheet</obo:GENEPIO_0000005>
@@ -5128,7 +5127,7 @@ GENEPIO:0002181 # antimicrobial resistance phenotype - ECOFF</obo:GENEPIO_000176
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000136"/>
-                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/OBI_0100026"/>
+                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/COB_0000022"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:label xml:lang="en">organism datum</rdfs:label>
@@ -5155,7 +5154,7 @@ GENEPIO:0002181 # antimicrobial resistance phenotype - ECOFF</obo:GENEPIO_000176
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0000052"/>
-                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/OBI_0100026"/>
+                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/COB_0000022"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000115 xml:lang="en">A role which inheres in an organism and is realized by the process of being alive.</obo:IAO_0000115>
@@ -9857,7 +9856,7 @@ or https://www.ncbi.nlm.nih.gov/mesh/1000067</rdfs:comment>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0003001"/>
-                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/OBI_0100026"/>
+                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/COB_0000022"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000428"/>
@@ -10985,7 +10984,7 @@ NCIT:C25621 # postal code</obo:GENEPIO_0001763>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000219"/>
-                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/OBI_0100026"/>
+                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/COB_0000022"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000112 xml:lang="en">human; dog; horse</obo:IAO_0000112>
@@ -11576,35 +11575,6 @@ GENEPIO:0001896 # phone type</obo:GENEPIO_0001763>
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001778">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000106"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002180"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onClass>
-                    <owl:Class>
-                        <owl:intersectionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0002468"/>
-                            <owl:Restriction>
-                                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/OBI_0001927"/>
-                                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001559"/>
-                            </owl:Restriction>
-                            <owl:Restriction>
-                                <owl:onProperty rdf:resource="http://www.w3.org/2004/02/skos/core#exactMatch"/>
-                                <owl:hasValue rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0002201"/>
-                            </owl:Restriction>
-                            <owl:Restriction>
-                                <owl:onProperty rdf:resource="https://w3id.org/linkml/type_uri"/>
-                                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-                            </owl:Restriction>
-                            <owl:Restriction>
-                                <owl:onProperty rdf:resource="https://w3id.org/linkml/name"/>
-                                <owl:hasValue>PulseNet:Outbreak</owl:hasValue>
-                            </owl:Restriction>
-                        </owl:intersectionOf>
-                    </owl:Class>
-                </owl:onClass>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000428"/>
         <obo:IAO_0000115 xml:lang="en">The PulseNet Canada Salmonella submission standard details the fields required in a PuseNet Canada pathogen submission report for Salmonella in spreadsheet format</obo:IAO_0000115>
         <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
@@ -11710,20 +11680,20 @@ GENEPIO:0001896 # phone type</obo:GENEPIO_0001763>
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001785">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0002162"/>
-        <rdfs:subClassOf rdf:nodeID="genid176"/>
+        <rdfs:subClassOf rdf:nodeID="genid165"/>
         <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000428"/>
         <obo:IAO_0000115 xml:lang="en">The city where a specimen was collected (taken) from a subject or environment</obo:IAO_0000115>
         <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
         <rdfs:label xml:lang="en">specimen collection location - city</rdfs:label>
     </owl:Class>
-    <owl:Restriction rdf:nodeID="genid176">
+    <owl:Restriction rdf:nodeID="genid165">
         <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/OBI_0001927"/>
         <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/NCIT_C80234"/>
     </owl:Restriction>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001785"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget rdf:nodeID="genid176"/>
+        <owl:annotatedTarget rdf:nodeID="genid165"/>
         <obo:GENEPIO_0001763>lookup</obo:GENEPIO_0001763>
     </owl:Axiom>
     
@@ -11802,17 +11772,14 @@ GENEPIO:0001896 # phone type</obo:GENEPIO_0001763>
         <obo:IAO_0000115 xml:lang="en">This is a catch-all category for listing specimen related terms</obo:IAO_0000115>
         <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
         <rdfs:label xml:lang="en">specimen datum</rdfs:label>
-        <rdfs:seeAlso rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000027"/>
         <rdfs:seeAlso rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001196"/>
         <rdfs:seeAlso rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001429"/>
-        <rdfs:seeAlso rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001532"/>
         <rdfs:seeAlso rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001724"/>
-        <rdfs:seeAlso rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001808"/>
-        <rdfs:seeAlso rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0002094"/>
         <rdfs:seeAlso rdf:resource="http://purl.obolibrary.org/obo/OBI_0000659"/>
         <rdfs:seeAlso rdf:resource="http://purl.obolibrary.org/obo/OBI_0001884"/>
         <rdfs:seeAlso rdf:resource="http://purl.obolibrary.org/obo/OBI_0001889"/>
         <rdfs:seeAlso rdf:resource="http://purl.obolibrary.org/obo/OBI_0001903"/>
+        <rdfs:seeAlso rdf:resource="http://purl.obolibrary.org/obo/OBI_0002814"/>
         <rdfs:seeAlso rdf:resource="http://purl.obolibrary.org/obo/OBI_0100051"/>
         <rdfs:seeAlso xml:lang="en">http://purl.obolibrary.org/obo/GENEPIO_0002105</rdfs:seeAlso>
         <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://purl.obolibrary.org/obo/OBI_0001616</rdfs:seeAlso>
@@ -12101,7 +12068,7 @@ GENEPIO:0001896 # phone type</obo:GENEPIO_0001763>
                 <owl:someValuesFrom>
                     <owl:Class>
                         <owl:intersectionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/OBI_0100026"/>
+                            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/COB_0000022"/>
                             <owl:Restriction>
                                 <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0000087"/>
                                 <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/OBI_0000093"/>
@@ -12412,8 +12379,8 @@ GENEPIO:0001212 # subject disease outcome</obo:GENEPIO_0001763>
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0001836">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0000115"/>
-        <rdfs:subClassOf rdf:nodeID="genid198"/>
-        <rdfs:subClassOf rdf:nodeID="genid204"/>
+        <rdfs:subClassOf rdf:nodeID="genid187"/>
+        <rdfs:subClassOf rdf:nodeID="genid193"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002180"/>
@@ -12438,7 +12405,7 @@ GENEPIO:0001212 # subject disease outcome</obo:GENEPIO_0001763>
                 </owl:onClass>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:subClassOf rdf:nodeID="genid212"/>
+        <rdfs:subClassOf rdf:nodeID="genid201"/>
         <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000120"/>
         <obo:IAO_0000115 xml:lang="en">The National Center for Biotechnology Information BioProject standard is a collection of datums that describe biological data related to a single initiative, originating from a single organization or from a consortium.  A BioProject record provides users a single place to find links to the diverse data types generated for that project.</obo:IAO_0000115>
         <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
@@ -12446,7 +12413,7 @@ GENEPIO:0001212 # subject disease outcome</obo:GENEPIO_0001763>
         <rdfs:comment xml:lang="en">NCBI lists project data type and other controlled vocabulary fields at : https://www.ncbi.nlm.nih.gov/books/NBK54364/</rdfs:comment>
         <rdfs:label xml:lang="en">NCBI BioProject standard</rdfs:label>
     </owl:Class>
-    <owl:Restriction rdf:nodeID="genid198">
+    <owl:Restriction rdf:nodeID="genid187">
         <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002180"/>
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
         <owl:onClass>
@@ -12461,12 +12428,12 @@ GENEPIO:0001212 # subject disease outcome</obo:GENEPIO_0001763>
             </owl:Class>
         </owl:onClass>
     </owl:Restriction>
-    <owl:Restriction rdf:nodeID="genid204">
+    <owl:Restriction rdf:nodeID="genid193">
         <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002180"/>
         <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
         <owl:onClass rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0002128"/>
     </owl:Restriction>
-    <owl:Restriction rdf:nodeID="genid212">
+    <owl:Restriction rdf:nodeID="genid201">
         <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002180"/>
         <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
         <owl:onClass>
@@ -12484,20 +12451,20 @@ GENEPIO:0001212 # subject disease outcome</obo:GENEPIO_0001763>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001836"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget rdf:nodeID="genid198"/>
+        <owl:annotatedTarget rdf:nodeID="genid187"/>
         <rdfs:label xml:lang="en">Objective</rdfs:label>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001836"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget rdf:nodeID="genid204"/>
+        <owl:annotatedTarget rdf:nodeID="genid193"/>
         <rdfs:comment xml:lang="en">The format of the BioProject Accession is five alpha-letters followed by one to six numbers. For example PRJNA43021</rdfs:comment>
         <rdfs:label xml:lang="en">Project Accession</rdfs:label>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0001836"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget rdf:nodeID="genid212"/>
+        <owl:annotatedTarget rdf:nodeID="genid201"/>
         <rdfs:label xml:lang="en">Methodology</rdfs:label>
     </owl:Axiom>
     
@@ -12670,7 +12637,7 @@ GENEPIO:0001212 # subject disease outcome</obo:GENEPIO_0001763>
                 <owl:someValuesFrom>
                     <owl:Class>
                         <owl:intersectionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/OBI_0100026"/>
+                            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/COB_0000022"/>
                             <owl:Restriction>
                                 <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0000087"/>
                                 <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/OBI_0000093"/>
@@ -15471,7 +15438,7 @@ http://www.nature.com/ng/journal/v45/n10/full/ng.2744.html</rdfs:seeAlso>
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0002047 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0002047">
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/OBI_0000968"/>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/COB_0001300"/>
         <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000428"/>
         <obo:IAO_0000115 xml:lang="en">The commercial kit or product used to determine the MIC e.g. E-Test. If a commercial product was not used, include the type of media used.</obo:IAO_0000115>
         <obo:IAO_0000117 xml:lang="en">Damion Dooley</obo:IAO_0000117>
@@ -16179,7 +16146,7 @@ GENEPIO:0000110 # subject health status</obo:GENEPIO_0001763>
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0002097">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0002162"/>
-        <rdfs:subClassOf rdf:nodeID="genid312"/>
+        <rdfs:subClassOf rdf:nodeID="genid301"/>
         <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000122"/>
         <obo:IAO_0000115 xml:lang="en">An ontology identifier or textual name of the most precise geographical location available for the site of a specimen collection event.</obo:IAO_0000115>
         <obo:IAO_0000117>Damion Dooley</obo:IAO_0000117>
@@ -16187,7 +16154,7 @@ GENEPIO:0000110 # subject health status</obo:GENEPIO_0001763>
         <obo:IAO_0000600 xml:lang="en">Note that this is expressed in a particular format in some standards.</obo:IAO_0000600>
         <rdfs:label xml:lang="en">specimen collection location - state/province/territory/region</rdfs:label>
     </owl:Class>
-    <owl:Restriction rdf:nodeID="genid312">
+    <owl:Restriction rdf:nodeID="genid301">
         <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/OBI_0001927"/>
         <owl:someValuesFrom>
             <owl:Class>
@@ -16203,7 +16170,7 @@ GENEPIO:0000110 # subject health status</obo:GENEPIO_0001763>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/GENEPIO_0002097"/>
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <owl:annotatedTarget rdf:nodeID="genid312"/>
+        <owl:annotatedTarget rdf:nodeID="genid301"/>
         <obo:GENEPIO_0001763>lookup</obo:GENEPIO_0001763>
     </owl:Axiom>
     
@@ -18106,7 +18073,7 @@ contamination.</obo:IAO_0000115>
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0004318 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0004318">
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/OBI_0000047"/>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/COB_0000026"/>
         <obo:IAO_0000115 xml:lang="en">A low flat-bottomed laboratory container for growing a layer of organisms such as bacteria, molds, and cells on a thin layer of nutrient medium.</obo:IAO_0000115>
         <obo:IAO_0000119 xml:lang="en">https://en.wikipedia.org/wiki/Culture_plate</obo:IAO_0000119>
         <dcterms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2022-09-23T10:59:09Z</dcterms:date>
@@ -20007,7 +19974,7 @@ contamination.</obo:IAO_0000115>
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0100104 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0100104">
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/OBI_0000047"/>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/COB_0000026"/>
         <obo:IAO_0000114>requires discussion</obo:IAO_0000114>
         <obo:IAO_0000115 xml:lang="en">An extract which is the output of an extraction process in which messenger RNA molecules are isolated from a specimen.</obo:IAO_0000115>
         <obo:IAO_0000116>Planned Obsolescence: this term is a placeholder for a term requested in another ontology. Once the appropriate ontology term is available, this term’s identifier will be obsoleted with a “term replaced by” id of the other term.</obo:IAO_0000116>
@@ -26709,7 +26676,7 @@ contamination.</obo:IAO_0000115>
     <!-- http://purl.obolibrary.org/obo/GENEPIO_0100614 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/GENEPIO_0100614">
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/OBI_0000047"/>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/COB_0000026"/>
         <obo:IAO_0000111>virus transport medium</obo:IAO_0000111>
         <obo:IAO_0000114 rdf:resource="http://purl.obolibrary.org/obo/IAO_0000122"/>
         <obo:IAO_0000115>A processed material which is a medium designed to promote longevity of a viral sample.</obo:IAO_0000115>
@@ -28771,12 +28738,6 @@ contamination.</obo:IAO_0000115>
     
 
 
-    <!-- http://purl.obolibrary.org/obo/OBI_0000047 -->
-
-    <owl:Class rdf:about="http://purl.obolibrary.org/obo/OBI_0000047"/>
-    
-
-
     <!-- http://purl.obolibrary.org/obo/OBI_0000070 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/OBI_0000070"/>
@@ -28822,12 +28783,6 @@ contamination.</obo:IAO_0000115>
     <!-- http://purl.obolibrary.org/obo/OBI_0000938 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/OBI_0000938"/>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/OBI_0000968 -->
-
-    <owl:Class rdf:about="http://purl.obolibrary.org/obo/OBI_0000968"/>
     
 
 
@@ -28978,12 +28933,6 @@ contamination.</obo:IAO_0000115>
     <!-- http://purl.obolibrary.org/obo/OBI_0002824 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/OBI_0002824"/>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/OBI_0100026 -->
-
-    <owl:Class rdf:about="http://purl.obolibrary.org/obo/OBI_0100026"/>
     
 
 

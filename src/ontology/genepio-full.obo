@@ -1,5 +1,5 @@
 format-version: 1.2
-data-version: genepio/releases/2026-02-13/genepio-full.owl
+data-version: genepio/releases/2026-03-20/genepio-full.owl
 subsetdef: http://purl.obolibrary.org/obo/valid_for_go_annotation_extension ""
 subsetdef: http://purl.obolibrary.org/obo/valid_for_go_gp2term ""
 subsetdef: http://purl.obolibrary.org/obo/valid_for_go_ontology ""
@@ -21,7 +21,7 @@ ontology: genepio/genepio-full
 property_value: dcterms:description "The Genomic Epidemiology Ontology aims to provide a comprehensive controlled vocabulary for infectious disease surveillance and outbreak investigations. It is an application ontology that draws on many other ontologies including anatomy, taxonomy, disease, symptoms, environment and food types for foodborn pathogen metadata." xsd:string
 property_value: dcterms:license http://creativecommons.org/licenses/by/3.0/
 property_value: dcterms:title "Genomic Epidemiology Ontology" xsd:string
-property_value: owl:versionInfo "2026-02-13" xsd:string
+property_value: owl:versionInfo "2026-03-20" xsd:string
 
 [Term]
 id: APOLLO_SV:00000016
@@ -72,7 +72,7 @@ property_value: IAO:0000412 apollo:sv.owl
 id: APOLLO_SV:00000022
 name: count of simulated population
 def: "The count of (simulated organisms) in a simulated population." []
-comment: MW: I know this causes problems with our set-theoretic definition.  Unfortunately the compartmental models produce fractional counts at each of their time steps, including the final step.  \n\nAny ideas?  I’ve considered and rejected allowing individual organisms to be fractional.  Perhaps if we just replace the term “cardinality” in the definition with ‘computed size’\n
+comment: MW: I know this causes problems with our set-theoretic definition.  Unfortunately the compartmental models produce fractional counts at each of their time steps, including the final step.  \n\nAny ideas?  I’ve considered and rejected allowing individual organisms to be fractional.  Perhaps if we just replace the term “cardinality” in the definition with ‘computed size’
 is_a: STATO:0000047 ! count
 property_value: IAO:0000117 "Mathias Brochhausen" xsd:string
 property_value: IAO:0000412 apollo:sv.owl
@@ -114,7 +114,7 @@ property_value: IAO:0000412 apollo:sv.owl
 [Term]
 id: APOLLO_SV:00000070
 name: simulation
-def: "A purely intentional entity that simulates an entity and its properties.\n\n" []
+def: "A purely intentional entity that simulates an entity and its properties." []
 is_a: IAO:0000030 ! information entity
 property_value: IAO:0000412 apollo:sv.owl
 
@@ -137,9 +137,9 @@ property_value: IAO:0000412 apollo:sv.owl
 [Term]
 id: APOLLO_SV:00000115
 name: infection acquisition
-def: "The biological process of pathogen organism(s) of a particular biological taxon entering (the tissues of the body of) a host organism of another taxon from a contagious host or a contaminated thing and reproducing using host resources" []
-comment: Apollo-SV defines infection acquisition rather than infection transmission, which is the direction of movement of a pathogen in current use.  The Apollo-SV conceptualization is simpler when accounting for infections acquired from contaminated things.\nThe likelihood of acquisition is expressed by parameters such as the basic reproduction rate and transmission coefficient.   \nAn infection is acquired from an infectious organism or a contaminated thing. \n
-comment: Cannot acquire from colonized host directly - contamination results from colonized or contaminated thing and new host picks it up from contaminated thing
+def: "The biological process of pathogen organism(s) of a particular biological taxon entering (the tissues of the body of) a host organism of another taxon from a contagious host or a contaminated thing and reproducing using host resources." []
+comment: Apollo-SV defines infection acquisition rather than infection transmission, which is the direction of movement of a pathogen in current use.  The Apollo-SV conceptualization is simpler when accounting for infections acquired from contaminated things.\nThe likelihood of acquisition is expressed by parameters such as the basic reproduction rate and transmission coefficient.   \nAn infection is acquired from an infectious organism or a contaminated thing.
+comment: Cannot acquire from colonized host directly - contamination results from colonized or contaminated thing and new host picks it up from contaminated thing.
 is_a: GO:0044409 ! entry into host
 property_value: IAO:0000117 "Mathias Brochhausen" xsd:string
 property_value: IAO:0000412 apollo:sv.owl
@@ -48763,6 +48763,7 @@ synonym: "invasion of host" EXACT []
 synonym: "penetration into host" EXACT []
 synonym: "penetration into host via a specialized structure" NARROW []
 synonym: "penetration into host via a specialized structure during symbiotic interaction" NARROW []
+xref: Reactome:R-HSA-173107
 is_a: GO:0051701 ! biological process involved in interaction with host
 is_a: GO:0051704 ! multi-organism process
 property_value: IAO:0000412 apollo:sv.owl
@@ -48778,6 +48779,7 @@ synonym: "interaction with another species" EXACT []
 synonym: "interspecies interaction" EXACT []
 synonym: "interspecies interaction between organisms" EXACT []
 synonym: "interspecies interaction with other organisms" EXACT []
+xref: Reactome:R-HSA-9824443
 is_a: GO:0008150 ! biological process
 property_value: IAO:0000412 apollo:sv.owl
 
@@ -48834,6 +48836,8 @@ synonym: "growth of symbiont in host cell" NARROW []
 synonym: "growth of symbiont in host organelle" NARROW []
 synonym: "growth of symbiont in host vacuole" NARROW []
 synonym: "interaction with host" EXACT []
+xref: Reactome:R-HSA-9635486
+xref: Reactome:R-HSA-9658195
 is_a: GO:0044403 ! biological process involved in symbiotic interaction
 property_value: IAO:0000412 apollo:sv.owl
 
@@ -58614,6 +58618,7 @@ xref: Orphanet:377788
 xref: SCTID:64572001
 xref: UMLS:C0012634
 is_a: BFO:0000016 ! disposition
+property_value: IAO:0000412 efo:efo.owl
 property_value: IAO:0000412 http://purl.obolibrary.org/obo/mondo.owl
 
 [Term]
@@ -59139,6 +59144,7 @@ subset: rare
 synonym: "central nervous system vasculitis" EXACT []
 synonym: "vasculitis of central nervous system" EXACT []
 xref: DOID:525
+xref: GARD:0023462
 xref: MEDGEN:148408
 xref: MESH:D020293
 xref: NCIT:C84622
@@ -59188,11 +59194,14 @@ property_value: IAO:0000412 http://purl.obolibrary.org/obo/mondo.owl
 id: MONDO:0003780
 name: T-cell immunodeficiency
 def: "A broad classification of disorders that affect the cell-mediated aspect of the immune response. Circulating numbers of T lymphocytes are decreased or ineffective." []
+subset: gard_rare
 subset: otar
+subset: rare
 synonym: "T-cell immunodeficiency" EXACT []
 synonym: "T-lymphocyte deficiency (finding)" EXACT []
 synonym: "T-lymphocyte immunodeficiency" EXACT []
 xref: DOID:613
+xref: GARD:0005107
 xref: MEDGEN:226894
 xref: NCIT:C27145
 xref: SCTID:402792003
@@ -59563,6 +59572,7 @@ xref: SCTID:362968007
 xref: UMLS:C0178829
 xref: Wikipedia:Reproductive_system_disease
 is_a: MONDO:0700096 ! human disease
+property_value: IAO:0000412 efo:efo.owl
 property_value: IAO:0000412 http://purl.obolibrary.org/obo/mondo.owl
 
 [Term]
@@ -59739,6 +59749,31 @@ xref: NCIT:C26871
 xref: SCTID:50043002
 xref: UMLS:C0035204
 is_a: MONDO:0700096 ! human disease
+property_value: IAO:0000412 http://purl.obolibrary.org/obo/mondo.owl
+
+[Term]
+id: MONDO:0005098
+name: stroke disorder
+def: "A sudden loss of neurological function secondary to hemorrhage or ischemia in the brain parenchyma due to a vascular event." []
+comment: Stroke includes two main types, hemorrhagic and ischemic. Both types of stroke can cause acute seizures at the time of the acute event, as well as epilepsy as a long-term complication. In the elderly, cerebrovascular disease and stroke are the most common cause of acute seizures and epilepsy. (https://www.epilepsydiagnosis.org/etiology/stroke-overview.html, https://orcid.org/0000-0001-5208-3432)
+subset: otar
+synonym: "cerebrovascular accident" EXACT []
+synonym: "cerebrovascular accident, (CVA)" EXACT []
+synonym: "CVA" EXACT []
+synonym: "CVA, cerebrovascular accident" EXACT []
+synonym: "stroke" EXACT []
+synonym: "stroke syndrome" EXACT []
+synonym: "syndrome, stroke" EXACT []
+synonym: "undetermined stroke" EXACT []
+xref: birnlex:12783
+xref: EFO:0000712
+xref: HP:0001297
+xref: MEDGEN:52522
+xref: MESH:D020521
+xref: NCIT:C3390
+xref: SCTID:230690007
+xref: UMLS:C0038454
+is_a: MONDO:0011057 ! cerebrovascular disorder
 property_value: IAO:0000412 http://purl.obolibrary.org/obo/mondo.owl
 
 [Term]
@@ -60539,7 +60574,8 @@ property_value: IAO:0000412 http://purl.obolibrary.org/obo/mondo.owl
 [Term]
 id: MONDO:0009061
 name: cystic fibrosis
-def: "Cystic fibrosis (CF) is a genetic disorder characterized by the production of sweat with a high salt content and mucus secretions with an abnormal viscosity." []
+def: "Autosomal recessive disorder caused by pathogenic variants in the CFTR gene (cystic fibrosis transmembrane conductance regulator), which encodes a chloride and bicarbonate channel expressed in epithelial cells, and follow the diagnosis criteria. Diagnosis requires evidence of CFTR dysfunction, defined as a sweat chloride concentration of 60 mmol/L or greater, or identification of two CF-causing CFTR pathogenic variants, or an abnormal nasal potential difference measurement. CF is a progressive, multi-organ disease characterized by chronic obstructive lung disease with recurrent infections, exocrine pancreatic insufficiency, intestinal obstruction (including meconium ileus in neonates), male infertility due to obstructive azoospermia, hepatobiliary complications, and elevated sweat chloride concentrations." []
+comment: Diagnosis of CF requires **one clinical indicator** (positive newborn screen, symptoms consistent with CF, or family history) **plus one functional/genetic indicator**:\n1. Sweat chloride concentration ≥60 mmol/L, or\n2. Identification of two CF-causing CFTR pathogenic variants, or\n3. Abnormal nasal potential difference measurement\n\nSee also CFTR-related disorders (MONDO:7770004), which involve CFTR dysfunction limited to a single organ system and do not meet CF diagnostic criteria.
 subset: gard_rare
 subset: nord_rare
 subset: omim_susceptibility
@@ -60553,7 +60589,7 @@ synonym: "cystic fibrosis lung disease, modifier of" EXACT []
 synonym: "mucoviscidosis" EXACT []
 synonym: "pseudomonas aeruginosa, susceptibility to chronic infection by, in cystic fibrosis" EXACT []
 xref: DOID:1485
-xref: GARD:6233
+xref: GARD:0006233
 xref: ICD10CM:E84
 xref: ICD10WHO:E84
 xref: icd11.foundation:514403112
@@ -60588,7 +60624,7 @@ synonym: "RDS of prematurity" EXACT []
 synonym: "respiratory distress syndrome" BROAD []
 synonym: "respiratory distress syndrome in premature infants" EXACT []
 synonym: "Respiratory Distress Syndrome, Infant" EXACT []
-xref: GARD:112
+xref: GARD:0000112
 xref: icd11.foundation:343716587
 xref: MEDGEN:368840
 xref: MESH:C566881
@@ -60675,7 +60711,7 @@ synonym: "sickling disorder due to Haemoglobin S" EXACT []
 synonym: "sickling disorder due to Hemoglobin S" EXACT []
 xref: DOID:0081445
 xref: DOID:10923
-xref: GARD:8614
+xref: GARD:0008614
 xref: ICD10CM:D57.2
 xref: ICD9:282.6
 xref: ICD9:282.60
@@ -60697,7 +60733,9 @@ property_value: IAO:0000412 http://purl.obolibrary.org/obo/mondo.owl
 id: MONDO:0012268
 name: AIDS
 def: "A syndrome resulting from the acquired deficiency of cellular immunity caused by the human immunodeficiency virus (HIV). It is characterized by the reduction of the Helper T-lymphocytes in the peripheral blood and the lymph nodes. Symptoms include generalized lymphadenopathy, fever, weight loss, and chronic diarrhea. Patients with AIDS are especially susceptible to opportunistic infections (usually pneumocystis carinii pneumonia, cytomegalovirus (CMV) infections, tuberculosis, candida infections, and cryptococcosis), and the development of malignant neoplasms (usually non-Hodgkin lymphoma and Kaposi sarcoma). The human immunodeficiency virus is transmitted through sexual contact, sharing of contaminated needles, or transfusion of contaminated blood." []
+subset: inferred_rare
 subset: otar
+subset: rare
 synonym: "acquired immune deficiency" EXACT []
 synonym: "acquired immunodeficiency disease" EXACT []
 synonym: "acquired immunodeficiency syndrome, AIDS" EXACT []
@@ -60736,7 +60774,7 @@ synonym: "MLNS" EXACT []
 synonym: "mucocutaneous lymph node syndrome" EXACT []
 xref: DOID:13378
 xref: EFO:0004246
-xref: GARD:6816
+xref: GARD:0006816
 xref: ICD10CM:M30.3
 xref: icd11.foundation:540285662
 xref: ICD9:446.1
@@ -60765,21 +60803,19 @@ xref: MEDGEN:423648
 xref: MESH:D002543
 xref: SCTID:274100004
 xref: UMLS:C2937358
-is_a: MONDO:0011057 ! cerebrovascular disorder
+is_a: MONDO:1060199 ! hemorrhagic stroke
 property_value: IAO:0000412 http://purl.obolibrary.org/obo/mondo.owl
 
 [Term]
 id: MONDO:0015796
 name: acute lung injury
 def: "A condition of lung damage that is characterized by bilateral pulmonary infiltrates (pulmonary edema) rich in neutrophils, and in the absence of clinical heart failure. This can represent a spectrum of pulmonary lesions, endothelial and epithelial, due to numerous factors (physical, chemical, or biological)." []
-subset: gard_rare
 subset: ordo_clinical_situation
 subset: ordo_disorder
 subset: orphanet_rare
 subset: otar
 subset: rare
 xref: EFO:0004610
-xref: GARD:20146
 xref: MedDRA:10069351
 xref: MESH:D055371
 xref: NCIT:C155766
@@ -60834,7 +60870,7 @@ synonym: "post-infective polyneuritis" NARROW []
 synonym: "postinfectious polyneuritis" NARROW []
 xref: DOID:12842
 xref: EFO:0007292
-xref: GARD:6554
+xref: GARD:0006554
 xref: ICD10CM:G61.0
 xref: MedDRA:10018767
 xref: MEDGEN:5399
@@ -60879,7 +60915,7 @@ subset: otar
 subset: rare
 synonym: "primary ILD specific to childhood" EXACT []
 synonym: "primary interstitial lung disease specific to childhood" EXACT []
-xref: GARD:10559
+xref: GARD:0010559
 xref: icd11.foundation:1408868257
 xref: MEDGEN:853969
 xref: Orphanet:264665
@@ -60899,7 +60935,7 @@ subset: rare
 synonym: "active tuberculosis" NARROW []
 synonym: "tuberculosis disease" EXACT []
 xref: DOID:399
-xref: GARD:7827
+xref: GARD:0007827
 xref: ICD10CM:A15-A19
 xref: ICD10WHO:A15-A19
 xref: icd11.foundation:2072728114
@@ -60931,7 +60967,7 @@ subset: rare
 synonym: "systemic vasculitis" NARROW []
 xref: DOID:865
 xref: EFO:0006803
-xref: GARD:18844
+xref: GARD:0018844
 xref: icd11.foundation:572581721
 xref: MedDRA:10036023
 xref: MedDRA:10047115
@@ -60958,7 +60994,7 @@ synonym: "hemoglobinopathies" EXACT []
 synonym: "Hemoglobinopathies / iron metabolism" EXACT []
 synonym: "hereditary hemoglobinopathy" EXACT []
 xref: DOID:2860
-xref: GARD:18883
+xref: GARD:0018883
 xref: ICD10CM:D58.0
 xref: ICD10CM:D58.1
 xref: ICD9:282.7
@@ -61472,6 +61508,7 @@ synonym: "central nervous system infectious disease" EXACT []
 synonym: "central nervous system infectious disorder" EXACT []
 synonym: "infectious disease of central nervous system" EXACT []
 xref: EFO:1001456
+xref: GARD:0025438
 xref: ICD9:349.89
 xref: MEDGEN:1684837
 xref: MESH:D002494
@@ -61618,7 +61655,7 @@ subset: ordo_disorder
 subset: orphanet_rare
 subset: rare
 synonym: "MIS-C/A" EXACT []
-xref: GARD:22403
+xref: GARD:0022403
 xref: MEDGEN:1842571
 xref: Orphanet:598363
 xref: UMLS:C5680268
@@ -61657,9 +61694,7 @@ property_value: IAO:0000412 http://purl.obolibrary.org/obo/mondo.owl
 id: MONDO:0044347
 name: erythrocyte disorder
 def: "A disease or disorder that involves the erythrocyte." []
-subset: gard_rare
 subset: otar
-subset: rare
 synonym: "disease of erythrocyte" EXACT []
 synonym: "disease or disorder of erythrocyte" EXACT []
 synonym: "disorder of erythrocyte" EXACT []
@@ -61677,11 +61712,8 @@ property_value: IAO:0000412 http://purl.obolibrary.org/obo/mondo.owl
 [Term]
 id: MONDO:0044348
 name: hemoglobinopathy
-subset: gard_rare
 subset: otar
-subset: rare
 synonym: "hemoglobinopathy" EXACT []
-xref: GARD:12455
 xref: ICD9:282.7
 xref: MEDGEN:42400
 xref: SCTID:80141007
@@ -61739,11 +61771,13 @@ property_value: IAO:0000412 http://purl.obolibrary.org/obo/mondo.owl
 id: MONDO:0100131
 name: pediatric acute respiratory distress syndrome
 def: "Acute respiratory distress syndromet that occurs in pediatric patients and includes findings of new infiltrates (unilateral or bilateral) consistent with acute parenchymal disease, edema not fully explained by fluid overload or cardiac failure, and may present as new acute lung disease in setting of chronic lung disease and/or heart disease, and perinatal lung disease is excluded." []
+subset: gard_rare
 subset: ordo_disorder
 subset: orphanet_rare
 subset: otar
 subset: rare
 synonym: "PARDS" EXACT []
+xref: GARD:0027370
 xref: MEDGEN:1876564
 xref: Orphanet:685082
 xref: UMLS:C6012346
@@ -61780,6 +61814,7 @@ synonym: "PIMS-TS" EXACT []
 synonym: "PMIS" EXACT []
 synonym: "SARS-CoV-2 Kawasaki-like syndrome" EXACT []
 xref: DOID:0080711
+xref: GARD:0026069
 xref: NCIT:C172127
 is_a: MONDO:0005108 ! viral infectious disease
 is_a: MONDO:0035375 ! multisystem inflammatory syndrome in children and adults
@@ -61824,6 +61859,7 @@ def: "A inflammatory syndrome in adults infected by the SARS-CoV-2 with severe i
 subset: gard_rare
 subset: rare
 synonym: "MIS-A" EXACT []
+xref: GARD:0026142
 is_a: MONDO:0035375 ! multisystem inflammatory syndrome in children and adults
 property_value: IAO:0000412 http://purl.obolibrary.org/obo/mondo.owl
 
@@ -61895,6 +61931,7 @@ synonym: "respiratory distress syndrome Of newborns (RDS)" EXACT []
 synonym: "syndrome Of newborns (RDS), respiratory distress" EXACT []
 xref: DOID:12716
 xref: EFO:1000644
+xref: GARD:0026349
 xref: ICD10CM:P22.0
 xref: ICD9:769
 xref: NCIT:C27560
@@ -61909,6 +61946,14 @@ name: human disease
 subset: rare_grouping
 synonym: "human disease or disorder" EXACT []
 is_a: MONDO:0000001 ! disease
+property_value: IAO:0000412 http://purl.obolibrary.org/obo/mondo.owl
+
+[Term]
+id: MONDO:1060199
+name: hemorrhagic stroke
+def: "A stroke disorder caused by bleeding into the brain parenchyma or surrounding spaces. Hemorrhagic stroke includes intracerebral hemorrhage (bleeding within the brain tissue) and subarachnoid hemorrhage (bleeding in the space between the brain and the surrounding membrane)." []
+synonym: "haemorrhagic stroke" EXACT []
+is_a: MONDO:0005098 ! stroke disorder
 property_value: IAO:0000412 http://purl.obolibrary.org/obo/mondo.owl
 
 [Term]
@@ -68791,8 +68836,8 @@ def: "is a material entity bearing the disposition to infect an organism" []
 comment: Note: testing use of 'transmitted by' relation; issue to be resolved is whether appropriate domain and range are involved.  This use would place 'transmitted by' as a subclass of 'participates in'
 is_a: COB:0000022 ! organism
 intersection_of: COB:0000022 ! organism
-intersection_of: RO:0002451 TRANS:0000000 ! transmitted by transmission process
-relationship: RO:0002451 TRANS:0000000 ! transmitted by transmission process
+intersection_of: RO:0002451 TRANS:0000000 ! transmitted by transmission of infection
+relationship: RO:0002451 TRANS:0000000 ! transmitted by transmission of infection
 property_value: IAO:0000111 "infectious agent" xsd:string
 property_value: IAO:0000114 IAO:0000123
 property_value: IAO:0000117 "IEDB" xsd:string
@@ -72900,7 +72945,7 @@ id: TRANS:0000001
 name: direct transmission
 def: "Direct and essentially immediate transfer of infectious agents to a receptive portal of entry through which human or animal infection may take place. This may be by direct contact such as touching, kissing, biting, or sexual intercourse or by the direct projection (droplet spread) of droplet spray onto the conjunctiva or the mucous membranes of the eyes, nose, or mouth. It may also be by direct exposure of susceptible tissue to an agent in soil, compost, or decaying vegetable matter or by the bite of a rabid animal. Transplacental transmission is another form of direct transmission." []
 def: "Direct transmission is a transmission process that is the means during which the pathogen is transmitted immediately from a reservoir, source or host to another host." []
-is_a: TRANS:0000000 ! transmission process
+is_a: TRANS:0000000 ! transmission of infection
 property_value: IAO:0000119 "https://www.ebi.ac.uk/ols/ontologies/trans" xsd:anyURI
 property_value: IAO:0000412 http://purl.obolibrary.org/obo/trans.owl
 
@@ -72908,7 +72953,7 @@ property_value: IAO:0000412 http://purl.obolibrary.org/obo/trans.owl
 id: TRANS:0000002
 name: indirect transmission
 def: "Indirect transmission is a transmission process during which the pathogen is indirectly transferred from a reservoir, source or host to another host by intermediary vehicles, vectors or as airborne dust particles." []
-is_a: TRANS:0000000 ! transmission process
+is_a: TRANS:0000000 ! transmission of infection
 property_value: IAO:0000119 "https://www.ebi.ac.uk/ols/ontologies/trans" xsd:anyURI
 
 [Term]
@@ -84278,39 +84323,6 @@ property_value: IAO:0000117 "Tomasz Adamusiak" xsd:string
 property_value: IAO:0000412 efo:efo.owl
 
 [Term]
-id: efo:EFO_0000408
-name: disease
-def: "A disease is a disposition that describes states of disease associated with a particular sample and/or organism." []
-def: "A disease is a disposition to undergo pathological processes that exists in an organism because of one or more disorders in that organism." []
-synonym: "condition" EXACT []
-synonym: "disease" EXACT []
-synonym: "disease or disorder" EXACT []
-synonym: "disease or disorder, non-neoplastic" EXACT []
-synonym: "diseases" EXACT []
-synonym: "diseases and disorders" EXACT []
-synonym: "disorder" EXACT []
-synonym: "disorders" EXACT []
-synonym: "Homo sapiens disease" EXACT []
-synonym: "human disease" EXACT []
-synonym: "medical condition" EXACT []
-synonym: "other disease" EXACT []
-xref: DOID:4
-xref: ICD10:R69
-xref: ICD9:799.9
-xref: MEDGEN:4347
-xref: MESH:D004194
-xref: MONDO:0000001
-xref: NCIT:C2991
-xref: OGMS:0000031
-xref: Orphanet:377788
-xref: SCTID:64572001
-xref: SNOMEDCT:64572001
-xref: UMLS:C0012634
-is_a: BFO:0000016 ! disposition
-property_value: IAO:0000117 "James Malone" xsd:string
-property_value: IAO:0000412 efo:efo.owl
-
-[Term]
 id: efo:EFO_0000409
 name: disease free survival
 def: "A temporal measurement of the period after successful treatment in which there is no appearance of the symptoms or effects of the disease." []
@@ -84351,37 +84363,6 @@ def: "Is the survival of a subject (or group of subjects) measured from the date
 is_a: efo:EFO_0000714 ! survival time
 property_value: IAO:0000117 "James Malone" xsd:string
 property_value: IAO:0000119 "http://en.wikibooks.org/wiki/Radiation_Oncology/Survival_curve_terminology" xsd:string
-property_value: IAO:0000412 efo:efo.owl
-
-[Term]
-id: efo:EFO_0000512
-name: reproductive system disease
-def: "A disease involving the reproductive system." []
-def: "Any disease of the reproductive system." []
-synonym: "disease of reproductive system" EXACT []
-synonym: "disease or disorder of reproductive system" EXACT []
-synonym: "Disorder of reproductive system" EXACT []
-synonym: "disorder of reproductive system" EXACT []
-synonym: "Disorder of reproductive system (disorder)" EXACT []
-synonym: "genital disorders" EXACT []
-synonym: "genital system disease" EXACT []
-synonym: "Non-neoplastic Reproductive system disease" EXACT []
-synonym: "reproductive disease" EXACT []
-synonym: "reproductive system disease" EXACT []
-synonym: "reproductive system disease or disorder" EXACT []
-synonym: "reproductive system disorder" EXACT []
-xref: DOID:15
-xref: MEDGEN:61253
-xref: MONDO:0005039
-xref: NCIT:C4875
-xref: SCTID:362968007
-xref: SNOMEDCT:362968007
-xref: UMLS:C0178829
-xref: Wikipedia:Reproductive_system_disease
-is_a: efo:EFO_0000408 ! disease
-property_value: IAO:0000117 "James Malone" xsd:string
-property_value: IAO:0000117 "Sirarat Sarntivijai" xsd:string
-property_value: IAO:0000117 "Tomasz Adamusiak" xsd:string
 property_value: IAO:0000412 efo:efo.owl
 
 [Term]
@@ -84802,36 +84783,6 @@ property_value: IAO:0000117 "Dani Welter" xsd:string
 property_value: IAO:0000412 efo:efo.owl
 
 [Term]
-id: efo:EFO_0009549
-name: female reproductive system disease
-def: "A disease involving the female reproductive system." []
-synonym: "disease of female reproductive system" EXACT []
-synonym: "disease or disorder of female reproductive system" EXACT []
-synonym: "disorder of female genital system" EXACT []
-synonym: "disorder of female reproductive system" EXACT []
-synonym: "female reproductive disease" EXACT []
-synonym: "female reproductive system disease" EXACT []
-synonym: "female reproductive system disease or disorder" EXACT []
-synonym: "female reproductive system disorder" EXACT []
-xref: DOID:229
-xref: ICD10:N85
-xref: ICD10:N88
-xref: ICD10:N89
-xref: ICD10:N90
-xref: ICD10:N94
-xref: ICD9:629.9
-xref: MEDGEN:65928
-xref: MESH:D005831
-xref: MONDO:0002263
-xref: NCIT:C27020
-xref: NCIt:C27020
-xref: SCTID:310789003
-xref: UMLS:C0236100
-is_a: efo:EFO_0000512 ! reproductive system disease
-property_value: IAO:0000119 "SCTID:310789003" xsd:string
-property_value: IAO:0000412 efo:efo.owl
-
-[Term]
 id: efo:EFO_0009642
 name: follow-up
 def: "The process by which information about the health status of an individual is obtained after a study has officially closed; an activity that continues something that has already begun or that repeats something that has already been done. [def-source: NCI]" []
@@ -84976,7 +84927,7 @@ xref: ICD10:O06
 xref: MedDRA:10000210
 xref: MESH:D000028
 xref: Wikipedia:Abortion
-is_a: efo:EFO_0009549 ! female reproductive system disease
+is_a: MONDO:0005039 ! reproductive system disorder
 property_value: IAO:0000117 "Sirarat Sarntivijai" xsd:string
 property_value: IAO:0000412 efo:efo.owl
 

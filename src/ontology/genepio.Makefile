@@ -30,7 +30,16 @@ imports/ncbitaxon_import.owl: imports/ncbitaxon_ontofox.txt
 
 .PRECIOUS: imports/ncbitaxon_import.owl
 
+# OBI
+mirror/obi_import.owl:
+	echo "No mirror for $@"
 
+# Only fetches .owl if it doesn't exist or if .txt has later timestamp.
+imports/obi_import.owl: imports/obi_ontofox.txt
+	if [ $(IMP) = true ]; then curl -s -F file=@imports/obi_ontofox.txt -o $@ https://ontofox.hegroup.org/service.php; \
+	$(ROBOT) reduce -i "$@" -r ELK --xml-entities -o "$@"; fi
+
+.PRECIOUS: imports/obi_import.owl
 
 # General
 mirror/general_import.owl:

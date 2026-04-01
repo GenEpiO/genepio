@@ -5,8 +5,27 @@ repo: genepio
 release_artefacts:
   - base
   - full
-  - simple
+#  - simple
 primary_release: full
+export_formats:
+  - owl
+ci:
+  - github_actions
+documentation:
+  documentation_system: mkdocs
+reasoner: ELK
+#report_fail_on: ERROR
+#report_fail_on: None
+robot_report:
+  fail_on: None
+#  custom_profile: TRUE
+  report_on:
+    - genepio-base.owl
+release_artefacts:
+  - base
+  - full
+##   - simple ##
+
 import_group:
   annotation_properties:
     - rdfs:label
@@ -35,5 +54,14 @@ import_group:
 
     - id: general
       use_custom_import_module: TRUE
+# NEW
+    - id: deprecation
+#      use_custom_import_module: TRUE
+#      mirror_type: none
+#      manage_import_declarations: false
+#      filename: deprecation_import.owl
+#      use_custom_import_module: TRUE
+
+
 
 robot_java_args: -Xmx2048m

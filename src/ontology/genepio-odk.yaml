@@ -8,6 +8,7 @@ release_artefacts:
 #  - simple
 primary_release: full
 edit_format: ofn
+use_templates: TRUE
 export_formats:
   - owl
 ci:
@@ -36,14 +37,15 @@ components:
     - filename: hardcoded.ofn
 
 # ROBOT CONTROLLED TEMPLATES, see https://obofoundry.org/COB/odk-workflows/RepoManagement/#adding-a-new-component-based-on-a-robot-template
+# CURRENT ODK BUG: Makefile hardcoded some .owl commands; it can't apply robot to .ofn files 
 # test a particular template via: 
     - filename: specification_enum.ofn
     - filename: specification_field.ofn
-    - filename: specification.ofn
+#    - filename: specification.ofn
+    - filename: specification.owl
       use_template: TRUE
 #      template_options: --input "genepio-merged.owl"
 #      import_component_format: ofn
-      #templates:
     - filename: specification_mint.ofn
     - filename: temporary_mint.ofn
 

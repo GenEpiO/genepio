@@ -41,13 +41,19 @@ components:
 # test a particular template via: 
     - filename: specification_enum.ofn
     - filename: specification_field.ofn
-#    - filename: specification.ofn
+    - filename: specification_mint.ofn
+    - filename: temporary_mint.ofn
+
+#   - filename: specification.ofn    
     - filename: specification.owl
       use_template: TRUE
 #      template_options: --input "genepio-merged.owl"
 #      import_component_format: ofn
-    - filename: specification_mint.ofn
-    - filename: temporary_mint.ofn
+
+#    $(ROBOT) template --template $< \
+#    --input "genepio-merged.owl" \
+#    --ontology-iri "http://purl.obolibrary.org/obo/genepio/$@" \
+#    --output "$@"
 
 
 import_group:

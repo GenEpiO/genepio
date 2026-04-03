@@ -21,7 +21,6 @@ These are the current imports in GENEPIO
 | chebi | http://purl.obolibrary.org/obo/chebi.owl | slme |
 | ncbitaxon | http://purl.obolibrary.org/obo/ncbitaxon.owl | slme |
 | general | http://purl.obolibrary.org/obo/general.owl | slme |
-| deprecation | http://purl.obolibrary.org/obo/deprecation.owl | slme |
 ## Components
 Components, in contrast to imports, are considered full members of the ontology. This means that any axiom in a component is also included in the ontology base - which means it is considered _native_ to the ontology. While this sounds complicated, consider this: conceptually, no component should be part of more than one ontology. If that seems to be the case, we are most likely talking about an import. Components are often not needed for ontologies, but there are some use cases:
 
@@ -29,3 +28,16 @@ Components, in contrast to imports, are considered full members of the ontology.
 2. A part of the ontology is managed in ROBOT templates
 3. The expressivity of the component is higher than the format of the edit file. For example, people still choose to manage their ontology in OBO format (they should not) missing out on a lot of owl features. They may choose to manage logic that is beyond OBO in a specific OWL component.
 
+These are the components in GENEPIO
+
+| Filename | URL |
+| -------- | --- |
+| deprecation.ofn | None |
+| gazetteer.ofn | None |
+| gaz_insdc_mapping.ofn | None |
+| hardcoded.ofn | None |
+| specification_enum.ofn | None |
+| specification_field.ofn | None |
+| specification.owl | None |
+| specification_mint.ofn | None |
+| temporary_mint.ofn | None |

@@ -49,14 +49,3 @@ imports/general_import.owl: imports/general_ontofox.txt
 #		annotate --ontology-iri $(ONTBASE)/$@ $(ANNOTATE_ONTOLOGY_VERSION) --output $@.tmp.owl && mv $@.tmp.owl $@; fi
 #
 #.PRECIOUS: imports/chebi_import.owl
-
-# Deprecated terms
-#mirror/deprecation_import.owl:
-#	echo "No mirror for $@"
-
-#imports/deprecation_import.owl: 
-#	echo "No need to download $@"
-	
-#.PRECIOUS: imports/deprecation_import.owl
-
-

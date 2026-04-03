@@ -10,7 +10,7 @@
 # More information: https://github.com/INCATools/ontology-development-kit/
 
 # Fingerprint of the configuration file when this Makefile was last generated
-CONFIG_HASH=                2cc13432b2ec7a1d39c88d480e00dd9364c35cfd09bdf2461285514fd35a717b
+CONFIG_HASH=                35d9fa0864905b2664b29b1aa471734c4712f60aa5e1dbbb315fce45527d8aaa
 
 
 # ----------------------------------------
@@ -22,7 +22,7 @@ OBOBASE=                    http://purl.obolibrary.org/obo
 URIBASE=                    http://purl.obolibrary.org/obo
 ONT=                        genepio
 ONTBASE=                    http://purl.obolibrary.org/obo/genepio
-EDIT_FORMAT=                owl
+EDIT_FORMAT=                ofn
 SRC =                       $(ONT)-edit.$(EDIT_FORMAT)
 MAKE_FAST=                  $(MAKE) IMP=false PAT=false COMP=false MIR=false
 CATALOG=                    catalog-v001.xml
@@ -57,7 +57,7 @@ OBODATE ?=                  $(shell date +'%d:%m:%Y %H:%M')
 VERSION=                    $(TODAY)
 ANNOTATE_ONTOLOGY_VERSION = annotate -V $(ONTBASE)/releases/$(VERSION)/$@ --annotation owl:versionInfo $(VERSION)
 ANNOTATE_CONVERT_FILE =     annotate --ontology-iri $(ONTBASE)/$@ $(ANNOTATE_ONTOLOGY_VERSION) convert -f ofn --output $@.tmp.owl && mv $@.tmp.owl $@
-OTHER_SRC =                 
+OTHER_SRC =                 $(COMPONENTSDIR)/deprecation.ofn $(COMPONENTSDIR)/gazetteer.ofn $(COMPONENTSDIR)/gaz_insdc_mapping.ofn $(COMPONENTSDIR)/hardcoded.ofn $(COMPONENTSDIR)/specification_enum.ofn $(COMPONENTSDIR)/specification_field.ofn $(COMPONENTSDIR)/specification.owl $(COMPONENTSDIR)/specification_mint.ofn $(COMPONENTSDIR)/temporary_mint.ofn 
 ONTOLOGYTERMS =             $(TMPDIR)/ontologyterms.txt
 EDIT_PREPROCESSED =         $(TMPDIR)/$(ONT)-preprocess.owl
 
@@ -187,7 +187,7 @@ all_main: $(MAIN_FILES)
 # ----------------------------------------
 
 
-IMPORTS =  ro obi chebi ncbitaxon general deprecation
+IMPORTS =  ro obi chebi ncbitaxon general
 
 IMPORT_ROOTS = $(patsubst %, $(IMPORTDIR)/%_import, $(IMPORTS))
 IMPORT_OWL_FILES = $(foreach n,$(IMPORT_ROOTS), $(n).owl)
@@ -474,6 +474,66 @@ no-mirror-refresh-%:
 		IMP=true IMP_LARGE=true MIR=false PAT=false $(IMPORTDIR)/$*_import.owl
 
 # ----------------------------------------
+# Components
+# ----------------------------------------
+# Some ontologies contain external and internal components. A component is included in the ontology in its entirety.
+
+ifeq ($(COMP),true)
+.PHONY: all_components
+all_components: $(OTHER_SRC)
+
+.PHONY: recreate-components
+recreate-components:
+	$(MAKE) --assume-new=$(TMPDIR)/stamp-component-deprecation.ofn \
+		--assume-new=$(TMPDIR)/stamp-component-gazetteer.ofn \
+		--assume-new=$(TMPDIR)/stamp-component-gaz_insdc_mapping.ofn \
+		--assume-new=$(TMPDIR)/stamp-component-hardcoded.ofn \
+		--assume-new=$(TMPDIR)/stamp-component-specification_enum.ofn \
+		--assume-new=$(TMPDIR)/stamp-component-specification_field.ofn \
+		--assume-new=$(TMPDIR)/stamp-component-specification.owl \
+		--assume-new=$(TMPDIR)/stamp-component-specification_mint.ofn \
+		--assume-new=$(TMPDIR)/stamp-component-temporary_mint.ofn \
+		COMP=true IMP=false MIR=true PAT=true all_components
+
+.PHONY: no-mirror-recreate-components
+no-mirror-recreate-components:
+	$(MAKE) --assume-new=$(TMPDIR)/stamp-component-deprecation.ofn \
+		--assume-new=$(TMPDIR)/stamp-component-gazetteer.ofn \
+		--assume-new=$(TMPDIR)/stamp-component-gaz_insdc_mapping.ofn \
+		--assume-new=$(TMPDIR)/stamp-component-hardcoded.ofn \
+		--assume-new=$(TMPDIR)/stamp-component-specification_enum.ofn \
+		--assume-new=$(TMPDIR)/stamp-component-specification_field.ofn \
+		--assume-new=$(TMPDIR)/stamp-component-specification.owl \
+		--assume-new=$(TMPDIR)/stamp-component-specification_mint.ofn \
+		--assume-new=$(TMPDIR)/stamp-component-temporary_mint.ofn \
+		COMP=true IMP=false MIR=false PAT=true all_components
+
+.PHONY: recreate-%
+recreate-%:
+	$(MAKE) --assume-new=$(TMPDIR)/stamp-component-$*.owl \
+		COMP=true IMP=false MIR=true PAT=true $(COMPONENTSDIR)/$*.owl
+
+.PHONY: no-mirror-recreate-%
+no-mirror-recreate-%:
+	$(MAKE) --assume-new=$(TMPDIR)/stamp-component-$*.owl \
+		COMP=true IMP=false MIR=false PAT=true $(COMPONENTSDIR)/$*.owl
+
+$(COMPONENTSDIR)/%.owl: $(TMPDIR)/stamp-component-%.owl | $(COMPONENTSDIR)
+	test -f $@ || touch $@
+.PRECIOUS: $(COMPONENTSDIR)/%.owl
+
+$(TMPDIR)/stamp-component-%.owl: | $(TMPDIR)
+	touch $@
+.PRECIOUS: $(TMPDIR)/stamp-component-%.owl
+
+$(COMPONENTSDIR)/specification.owl: $(TEMPLATEDIR)/specification.tsv $(TMPDIR)/stamp-component-specification.owl
+	$(ROBOT) template  \
+		 --template $(TEMPLATEDIR)/specification.tsv \
+		 $(ANNOTATE_CONVERT_FILE)
+.PRECIOUS: $(COMPONENTSDIR)/specification.owl
+
+endif # COMP=true
+# ----------------------------------------
 # Mirroring upstream ontologies
 # ----------------------------------------
 
@@ -518,14 +578,6 @@ mirror-ncbitaxon: | $(TMPDIR)
 mirror-general: | $(TMPDIR)
 	curl -L $(OBOBASE)/general.owl --create-dirs -o $(TMPDIR)/general-download.owl --retry 4 --max-time 200 && \
 	$(ROBOT) convert -i $(TMPDIR)/general-download.owl -o $(TMPDIR)/$@.owl
-
-
-## ONTOLOGY: deprecation
-.PHONY: mirror-deprecation
-.PRECIOUS: $(MIRRORDIR)/deprecation.owl
-mirror-deprecation: | $(TMPDIR)
-	curl -L $(OBOBASE)/deprecation.owl --create-dirs -o $(TMPDIR)/deprecation-download.owl --retry 4 --max-time 200 && \
-	$(ROBOT) convert -i $(TMPDIR)/deprecation-download.owl -o $(TMPDIR)/$@.owl
 
 
 $(MIRRORDIR)/%.owl: mirror-% | $(MIRRORDIR)

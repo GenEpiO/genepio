@@ -7,6 +7,7 @@ release_artefacts:
   - full
 #  - simple
 primary_release: full
+edit_format: ofn
 export_formats:
   - owl
 ci:
@@ -25,6 +26,27 @@ release_artefacts:
   - base
   - full
 ##   - simple ##
+
+
+components:
+  products:
+    - filename: deprecation.ofn
+    - filename: gazetteer.ofn
+    - filename: gaz_insdc_mapping.ofn
+    - filename: hardcoded.ofn
+
+# ROBOT CONTROLLED TEMPLATES, see https://obofoundry.org/COB/odk-workflows/RepoManagement/#adding-a-new-component-based-on-a-robot-template
+# test a particular template via: 
+    - filename: specification_enum.ofn
+    - filename: specification_field.ofn
+    - filename: specification.ofn
+      use_template: TRUE
+#      template_options: --input "genepio-merged.owl"
+#      import_component_format: ofn
+      #templates:
+    - filename: specification_mint.ofn
+    - filename: temporary_mint.ofn
+
 
 import_group:
   annotation_properties:
@@ -54,14 +76,6 @@ import_group:
 
     - id: general
       use_custom_import_module: TRUE
-# NEW
-    - id: deprecation
-#      use_custom_import_module: TRUE
-#      mirror_type: none
-#      manage_import_declarations: false
-#      filename: deprecation_import.owl
-#      use_custom_import_module: TRUE
-
 
 
 robot_java_args: -Xmx2048m

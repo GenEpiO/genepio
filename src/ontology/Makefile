@@ -10,7 +10,7 @@
 # More information: https://github.com/INCATools/ontology-development-kit/
 
 # Fingerprint of the configuration file when this Makefile was last generated
-CONFIG_HASH=                35d9fa0864905b2664b29b1aa471734c4712f60aa5e1dbbb315fce45527d8aaa
+CONFIG_HASH=                a889367253a12cde0972be2096be014e870cf6aec92cb6c251d44df4a75f0a6c
 
 
 # ----------------------------------------
@@ -57,7 +57,7 @@ OBODATE ?=                  $(shell date +'%d:%m:%Y %H:%M')
 VERSION=                    $(TODAY)
 ANNOTATE_ONTOLOGY_VERSION = annotate -V $(ONTBASE)/releases/$(VERSION)/$@ --annotation owl:versionInfo $(VERSION)
 ANNOTATE_CONVERT_FILE =     annotate --ontology-iri $(ONTBASE)/$@ $(ANNOTATE_ONTOLOGY_VERSION) convert -f ofn --output $@.tmp.owl && mv $@.tmp.owl $@
-OTHER_SRC =                 $(COMPONENTSDIR)/deprecation.ofn $(COMPONENTSDIR)/gazetteer.ofn $(COMPONENTSDIR)/gaz_insdc_mapping.ofn $(COMPONENTSDIR)/hardcoded.ofn $(COMPONENTSDIR)/specification_enum.ofn $(COMPONENTSDIR)/specification_field.ofn $(COMPONENTSDIR)/specification.owl $(COMPONENTSDIR)/specification_mint.ofn $(COMPONENTSDIR)/temporary_mint.ofn 
+OTHER_SRC =                 $(COMPONENTSDIR)/deprecation.ofn $(COMPONENTSDIR)/gazetteer.ofn $(COMPONENTSDIR)/gaz_insdc_mapping.ofn $(COMPONENTSDIR)/hardcoded.ofn $(COMPONENTSDIR)/specification.owl 
 ONTOLOGYTERMS =             $(TMPDIR)/ontologyterms.txt
 EDIT_PREPROCESSED =         $(TMPDIR)/$(ONT)-preprocess.owl
 
@@ -488,11 +488,7 @@ recreate-components:
 		--assume-new=$(TMPDIR)/stamp-component-gazetteer.ofn \
 		--assume-new=$(TMPDIR)/stamp-component-gaz_insdc_mapping.ofn \
 		--assume-new=$(TMPDIR)/stamp-component-hardcoded.ofn \
-		--assume-new=$(TMPDIR)/stamp-component-specification_enum.ofn \
-		--assume-new=$(TMPDIR)/stamp-component-specification_field.ofn \
 		--assume-new=$(TMPDIR)/stamp-component-specification.owl \
-		--assume-new=$(TMPDIR)/stamp-component-specification_mint.ofn \
-		--assume-new=$(TMPDIR)/stamp-component-temporary_mint.ofn \
 		COMP=true IMP=false MIR=true PAT=true all_components
 
 .PHONY: no-mirror-recreate-components
@@ -501,11 +497,7 @@ no-mirror-recreate-components:
 		--assume-new=$(TMPDIR)/stamp-component-gazetteer.ofn \
 		--assume-new=$(TMPDIR)/stamp-component-gaz_insdc_mapping.ofn \
 		--assume-new=$(TMPDIR)/stamp-component-hardcoded.ofn \
-		--assume-new=$(TMPDIR)/stamp-component-specification_enum.ofn \
-		--assume-new=$(TMPDIR)/stamp-component-specification_field.ofn \
 		--assume-new=$(TMPDIR)/stamp-component-specification.owl \
-		--assume-new=$(TMPDIR)/stamp-component-specification_mint.ofn \
-		--assume-new=$(TMPDIR)/stamp-component-temporary_mint.ofn \
 		COMP=true IMP=false MIR=false PAT=true all_components
 
 .PHONY: recreate-%
@@ -526,9 +518,13 @@ $(TMPDIR)/stamp-component-%.owl: | $(TMPDIR)
 	touch $@
 .PRECIOUS: $(TMPDIR)/stamp-component-%.owl
 
-$(COMPONENTSDIR)/specification.owl: $(TEMPLATEDIR)/specification.tsv $(TMPDIR)/stamp-component-specification.owl
-	$(ROBOT) template  \
+$(COMPONENTSDIR)/specification.owl: $(TEMPLATEDIR)/specification.tsv $(TEMPLATEDIR)/specification_enum.tsv $(TEMPLATEDIR)/specification_field.tsv $(TEMPLATEDIR)/specification_mint.tsv $(TEMPLATEDIR)/temporary_mint.tsv $(TMPDIR)/stamp-component-specification.owl
+	$(ROBOT) template --input genepio-edit.ofn --xml-entities \
 		 --template $(TEMPLATEDIR)/specification.tsv \
+		 --template $(TEMPLATEDIR)/specification_enum.tsv \
+		 --template $(TEMPLATEDIR)/specification_field.tsv \
+		 --template $(TEMPLATEDIR)/specification_mint.tsv \
+		 --template $(TEMPLATEDIR)/temporary_mint.tsv \
 		 $(ANNOTATE_CONVERT_FILE)
 .PRECIOUS: $(COMPONENTSDIR)/specification.owl
 

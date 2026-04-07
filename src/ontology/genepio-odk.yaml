@@ -37,18 +37,34 @@ components:
     - filename: hardcoded.ofn
 
 # ROBOT CONTROLLED TEMPLATES, see https://obofoundry.org/COB/odk-workflows/RepoManagement/#adding-a-new-component-based-on-a-robot-template
-# CURRENT ODK BUG: Makefile hardcoded some .owl commands; it can't apply robot to .ofn files 
-# test a particular template via: 
-    - filename: specification_enum.owl
-      use_template: TRUE
-    - filename: specification_field.owl
-      use_template: TRUE
-    - filename: specification_mint.owl
-      use_template: TRUE
-    - filename: temporary_mint.owl 
-      use_template: TRUE 
+# CURRENT ODK BUG: Makefile hardcoded some .owl commands; it can't apply robot to .ofn files
+# But one can use ofn files which have .owl suffix!
+# Also, need to do --input genepio-edit.ofn to get lookup for object properties like 'mentions' and 'is about' 
     - filename: specification.owl
       use_template: TRUE
+      template_options: --input genepio-edit.ofn --xml-entities
+      templates: 
+        - specification.tsv
+        - specification_enum.tsv
+        - specification_field.tsv
+        - specification_mint.tsv
+        - temporary_mint.tsv
+
+#    - filename: specification_enum.owl
+#      use_template: TRUE
+#      template_options: --input genepio-edit.ofn
+#    - filename: specification_field.owl
+#      use_template: TRUE
+#      template_options: --input genepio-edit.ofn
+#    - filename: specification_mint.owl
+#      use_template: TRUE
+#      template_options: --input genepio-edit.ofn
+#    - filename: temporary_mint.owl
+#      use_template: TRUE  
+#      template_options: --input genepio-edit.ofn
+
+
+
 #    $(ROBOT) template --template $< \
 #    --input "genepio-merged.owl" \
 #    --ontology-iri "http://purl.obolibrary.org/obo/genepio/$@" \

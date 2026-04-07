@@ -36,8 +36,4 @@ These are the components in GENEPIO
 | gazetteer.ofn | None |
 | gaz_insdc_mapping.ofn | None |
 | hardcoded.ofn | None |
-| specification_enum.ofn | None |
-| specification_field.ofn | None |
 | specification.owl | None |
-| specification_mint.ofn | None |
-| temporary_mint.ofn | None |

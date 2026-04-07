@@ -39,17 +39,16 @@ components:
 # ROBOT CONTROLLED TEMPLATES, see https://obofoundry.org/COB/odk-workflows/RepoManagement/#adding-a-new-component-based-on-a-robot-template
 # CURRENT ODK BUG: Makefile hardcoded some .owl commands; it can't apply robot to .ofn files 
 # test a particular template via: 
-    - filename: specification_enum.ofn
-    - filename: specification_field.ofn
-    - filename: specification_mint.ofn
-    - filename: temporary_mint.ofn
-
-#   - filename: specification.ofn    
+    - filename: specification_enum.owl
+      use_template: TRUE
+    - filename: specification_field.owl
+      use_template: TRUE
+    - filename: specification_mint.owl
+      use_template: TRUE
+    - filename: temporary_mint.owl 
+      use_template: TRUE 
     - filename: specification.owl
       use_template: TRUE
-#      template_options: --input "genepio-merged.owl"
-#      import_component_format: ofn
-
 #    $(ROBOT) template --template $< \
 #    --input "genepio-merged.owl" \
 #    --ontology-iri "http://purl.obolibrary.org/obo/genepio/$@" \

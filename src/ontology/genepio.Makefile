@@ -49,4 +49,3 @@ imports/general_import.owl: imports/general_ontofox.txt
 #		annotate --ontology-iri $(ONTBASE)/$@ $(ANNOTATE_ONTOLOGY_VERSION) --output $@.tmp.owl && mv $@.tmp.owl $@; fi
 #
 #.PRECIOUS: imports/chebi_import.owl
-

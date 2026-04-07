@@ -5,8 +5,72 @@ repo: genepio
 release_artefacts:
   - base
   - full
-  - simple
+#  - simple
 primary_release: full
+edit_format: ofn
+use_templates: TRUE
+export_formats:
+  - owl
+ci:
+  - github_actions
+documentation:
+  documentation_system: mkdocs
+reasoner: ELK
+#report_fail_on: ERROR
+#report_fail_on: None
+robot_report:
+  fail_on: None
+#  custom_profile: TRUE
+  report_on:
+    - genepio-base.owl
+release_artefacts:
+  - base
+  - full
+##   - simple ##
+
+
+components:
+  products:
+    - filename: deprecation.ofn
+    - filename: gazetteer.ofn
+    - filename: gaz_insdc_mapping.ofn
+    - filename: hardcoded.ofn
+
+# ROBOT CONTROLLED TEMPLATES, see https://obofoundry.org/COB/odk-workflows/RepoManagement/#adding-a-new-component-based-on-a-robot-template
+# CURRENT ODK BUG: Makefile hardcoded some .owl commands; it can't apply robot to .ofn files
+# But one can use ofn files which have .owl suffix!
+# Also, need to do --input genepio-edit.ofn to get lookup for object properties like 'mentions' and 'is about' 
+    - filename: specification.owl
+      use_template: TRUE
+      template_options: --input genepio-edit.ofn --xml-entities
+      templates: 
+        - specification.tsv
+        - specification_enum.tsv
+        - specification_field.tsv
+        - specification_mint.tsv
+        - temporary_mint.tsv
+
+#    - filename: specification_enum.owl
+#      use_template: TRUE
+#      template_options: --input genepio-edit.ofn
+#    - filename: specification_field.owl
+#      use_template: TRUE
+#      template_options: --input genepio-edit.ofn
+#    - filename: specification_mint.owl
+#      use_template: TRUE
+#      template_options: --input genepio-edit.ofn
+#    - filename: temporary_mint.owl
+#      use_template: TRUE  
+#      template_options: --input genepio-edit.ofn
+
+
+
+#    $(ROBOT) template --template $< \
+#    --input "genepio-merged.owl" \
+#    --ontology-iri "http://purl.obolibrary.org/obo/genepio/$@" \
+#    --output "$@"
+
+
 import_group:
   annotation_properties:
     - rdfs:label
@@ -35,5 +99,6 @@ import_group:
 
     - id: general
       use_custom_import_module: TRUE
+
 
 robot_java_args: -Xmx2048m

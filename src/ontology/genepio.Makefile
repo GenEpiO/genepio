@@ -14,7 +14,7 @@ mirror/chebi_import.owl:
 # Only fetches .owl if it doesn't exist or if .txt has later timestamp.
 imports/chebi_import.owl: imports/chebi_ontofox.txt
 	if [ $(IMP) = true ]; then curl -s -F file=@imports/chebi_ontofox.txt -o $@ https://ontofox.hegroup.org/service.php; \
-	$(ROBOT) reduce -i "$@" -r ELK --xml-entities -o "$@"; fi
+	$(ROBOT) reduce -i "$@" -r ELK --prefix "obo: http://purl.obolibrary.org/obo/" --xml-entities -o "$@"; fi
 
 .PRECIOUS: imports/chebi_import.owl
 
@@ -26,7 +26,7 @@ mirror/ncbitaxon_import.owl:
 # Only fetches .owl if it doesn't exist or if .txt has later timestamp.
 imports/ncbitaxon_import.owl: imports/ncbitaxon_ontofox.txt
 	if [ $(IMP) = true ]; then curl -s -F file=@imports/ncbitaxon_ontofox.txt -o $@ https://ontofox.hegroup.org/service.php; \
-	$(ROBOT) reduce -i "$@" -r ELK --xml-entities -o "$@"; fi
+	$(ROBOT) reduce -i "$@" -r ELK --prefix "obo: http://purl.obolibrary.org/obo/" --xml-entities -o "$@"; fi
 
 .PRECIOUS: imports/ncbitaxon_import.owl
 
@@ -40,7 +40,7 @@ mirror/general_import.owl:
 # Blocks bad rdf:type as annotation from coming in ontofox
 imports/general_import.owl: imports/general_ontofox.txt
 	if [ $(IMP) = true ]; then curl -s -F file=@imports/general_ontofox.txt -o $@ https://ontofox.hegroup.org/service.php; \
-	$(ROBOT) reduce -i "$@" -r ELK --xml-entities remove --term "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" -o "$@"; fi
+	$(ROBOT) reduce -i "$@" -r ELK --prefix "obo: http://purl.obolibrary.org/obo/" --xml-entities remove --term "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" -o "$@"; fi
 #	$(ROBOT) reduce -i "$@" -r ELK --xml-entities remove --term rdf:type annotate --ontology-iri "$(ONTBASE)/$@" convert --format ofn -o "$@"; fi
 
 .PRECIOUS: imports/general_import.owl

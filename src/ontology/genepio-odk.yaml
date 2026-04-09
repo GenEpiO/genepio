@@ -1,7 +1,22 @@
 id: genepio
 title: Genomic Epidemiology Ontology
-github_org: GenEpiO
+description: The Genomic Epidemiology Ontology aims to provide a comprehensive controlled vocabulary for infectious disease surveillance and outbreak investigations. It is an application ontology that draws on many other ontologies including anatomy, taxonomy, disease, symptoms, environment and food types for foodborn pathogen metadata.
+contact:  info [at] genepio [.] org
+creators:
+  - Centre for Infectious Disease Genomics and One Health, SFU.ca
+license: https://creativecommons.org/licenses/by/4.0/
+
+## general ODK Settings ##
 repo: genepio
+git_main_branch: master
+github_org: GenEpiO
+ci:
+  - github_actions
+documentation:
+  documentation_system: mkdocs  
+export_formats:
+  - owl
+reasoner: ELK
 release_artefacts:
   - base
   - full
@@ -9,13 +24,7 @@ release_artefacts:
 primary_release: full
 edit_format: ofn
 use_templates: TRUE
-export_formats:
-  - owl
-ci:
-  - github_actions
-documentation:
-  documentation_system: mkdocs
-reasoner: ELK
+
 #report_fail_on: ERROR
 #report_fail_on: None
 robot_report:
@@ -23,14 +32,12 @@ robot_report:
 #  custom_profile: TRUE
   report_on:
     - genepio-base.owl
-release_artefacts:
-  - base
-  - full
 ##   - simple ##
 
 
 components:
   products:
+# Note that for some products, if they have makefile template processing then only use .owl suffix for them
     - filename: deprecation.ofn
     - filename: gazetteer.ofn
     - filename: gaz_insdc_mapping.ofn
@@ -39,7 +46,7 @@ components:
 # ROBOT CONTROLLED TEMPLATES, see https://obofoundry.org/COB/odk-workflows/RepoManagement/#adding-a-new-component-based-on-a-robot-template
 # CURRENT ODK BUG: Makefile hardcoded some .owl commands; it can't apply robot to .ofn files
 # But one can use ofn files which have .owl suffix!
-# Also, need to do --input genepio-edit.ofn to get lookup for object properties like 'mentions' and 'is about' 
+# Also, need to do --input genepio-edit.owl to get lookup for object properties like 'mentions' and 'is about' and annotations.  If this file doesn't have them then "make" robot step spits out errors like http://robot.obolibrary.org/template#annotation-property-error
     - filename: specification.owl
       use_template: TRUE
       template_options: --input genepio-edit.ofn --xml-entities

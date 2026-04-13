@@ -10,7 +10,7 @@
 # More information: https://github.com/INCATools/ontology-development-kit/
 
 # Fingerprint of the configuration file when this Makefile was last generated
-CONFIG_HASH=                8db4a4af21f7be683586b40bef7a6e46e201bb5942660f22dbf6eed0e4650570
+CONFIG_HASH=                c15f9028e4981c1c60bf6f9ceb80bef0a9a6a01015ee184fd5aa85ba719f56d4
 
 
 # ----------------------------------------
@@ -379,7 +379,7 @@ $(IMPORTSEED): $(PRESEED) | $(TMPDIR)
 
 T_IMPORTSEED = --term-file $(IMPORTSEED)
 
-ANNOTATION_PROPERTIES=rdfs:label dc:description dc:source IAO:0000115 IAO:0000114 IAO:0000119 OBI:0001886 IAO:0000111 oboInOwl:hasAlternativeId 
+ANNOTATION_PROPERTIES=rdfs:label dc:description dc:source OBI:0001886 oboInOwl:hasAlternativeId owl:deprecated IAO:0000115 IAO:0000114 IAO:0000119 IAO:0000111 IAO:0100001 
 
 # ----------------------------------------
 # Import modules
@@ -519,7 +519,7 @@ $(TMPDIR)/stamp-component-%.owl: | $(TMPDIR)
 .PRECIOUS: $(TMPDIR)/stamp-component-%.owl
 
 $(COMPONENTSDIR)/specification.owl: $(TEMPLATEDIR)/specification.tsv $(TEMPLATEDIR)/specification_enum.tsv $(TEMPLATEDIR)/specification_field.tsv $(TEMPLATEDIR)/specification_mint.tsv $(TEMPLATEDIR)/temporary_mint.tsv $(TMPDIR)/stamp-component-specification.owl
-	$(ROBOT) template --input genepio-edit.ofn --xml-entities \
+	$(ROBOT) template --input genepio-edit.ofn --xml-entities --ontology-iri "http://purl.obolibrary.org/obo/genepio/components/specification.owl" \
 		 --template $(TEMPLATEDIR)/specification.tsv \
 		 --template $(TEMPLATEDIR)/specification_enum.tsv \
 		 --template $(TEMPLATEDIR)/specification_field.tsv \

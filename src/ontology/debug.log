@@ -1,0 +1,970 @@
+Command: sh -c echo "ODK Makefile v1.6.1"
+Elapsed time: 0:00.00
+Peak memory: 1408 kb
+Command: sh -c odk-info --tools
+Elapsed time: 0:03.53
+Peak memory: 144968 kb
+Command: sh -c if [ "$(tr -d '' < genepio-odk.yaml | sha256sum | cut -c1-64)" = "c15f9028e4981c1c60bf6f9ceb80bef0a9a6a01015ee184fd5aa85ba719f56d4" ]; then \
+	echo "Repository is up-to-date." ; else \
+	echo "Your ODK configuration has changed since this Makefile was generated. You may need to run 'make update_repo'." ; fi
+Elapsed time: 0:00.00
+Peak memory: 3020 kb
+Command: sh -c if [ -f genepio-idranges.owl ]; then \
+	dicer-cli policy --assume-manchester --show-owlapi-error genepio-idranges.owl ; \
+fi
+Elapsed time: 0:00.36
+Peak memory: 92228 kb
+Command: sh -c robot --catalog catalog-v001.xml convert --input genepio-edit.ofn --format ofn --output tmp/genepio-preprocess.owl
+Elapsed time: 0:01.97
+Peak memory: 305552 kb
+Command: sh -c robot --catalog catalog-v001.xml reason --input tmp/genepio-preprocess.owl --reasoner ELK --equivalent-classes-allowed asserted-only \
+	--exclude-tautologies structural --output test.owl && rm test.owl
+Elapsed time: 0:03.38
+Peak memory: 424856 kb
+Command: sh -c date +%Y-%m-%d
+Elapsed time: 0:00.00
+Peak memory: 1536 kb
+Command: sh -c date +%Y-%m-%d
+Elapsed time: 0:00.00
+Peak memory: 1576 kb
+Command: sh -c robot --catalog catalog-v001.xml template --input genepio-edit.ofn --xml-entities --ontology-iri "http://purl.obolibrary.org/obo/genepio/components/specification.owl" \
+	 --template ../templates/specification.tsv \
+	 --template ../templates/specification_enum.tsv \
+	 --template ../templates/specification_field.tsv \
+	 --template ../templates/specification_mint.tsv \
+	 --template ../templates/temporary_mint.tsv \
+	 annotate --ontology-iri http://purl.obolibrary.org/obo/genepio/components/specification.owl annotate -V http://purl.obolibrary.org/obo/genepio/releases/2026-05-16/components/specification.owl --annotation owl:versionInfo 2026-05-16 convert -f ofn --output components/specification.owl.tmp.owl && mv components/specification.owl.tmp.owl components/specification.owl
+Elapsed time: 0:02.96
+Peak memory: 397388 kb
+Command: sh -c robot --catalog catalog-v001.xml remove --input tmp/genepio-preprocess.owl --select imports --trim false \
+	 merge  --input components/deprecation.ofn  --input components/gazetteer.ofn  --input components/gaz_insdc_mapping.ofn  --input components/hardcoded.ofn  --input components/specification.owl \
+	       --output tmp/merged-genepio-edit.ofn
+Elapsed time: 0:02.12
+Peak memory: 374556 kb
+Command: sh -c robot --catalog catalog-v001.xml verify -i tmp/merged-genepio-edit.ofn --queries ../sparql/owldef-self-reference-violation.sparql ../sparql/iri-range-violation.sparql ../sparql/label-with-iri-violation.sparql ../sparql/multiple-replaced_by-violation.sparql -O reports
+Elapsed time: 0:01.56
+Peak memory: 274580 kb
+Command: sh -c curl -L http://purl.obolibrary.org/obo/ro.owl --create-dirs -o tmp/ro-download.owl --retry 4 --max-time 200 && \
+robot --catalog catalog-v001.xml convert -i tmp/ro-download.owl -o tmp/mirror-ro.owl
+Elapsed time: 0:02.01
+Peak memory: 196236 kb
+Command: sh -c if [ -f tmp/mirror-ro.owl ]; then if cmp -s tmp/mirror-ro.owl mirror/ro.owl ; then echo "Mirror identical, ignoring."; else echo "Mirrors different, updating." &&\
+	cp tmp/mirror-ro.owl mirror/ro.owl; fi; fi
+Elapsed time: 0:00.00
+Peak memory: 1460 kb
+Command: sh -c robot --catalog catalog-v001.xml query --input tmp/merged-genepio-edit.ofn --format --csv \
+	       --query ../sparql/terms.sparql tmp/pre_seed.txt
+Elapsed time: 0:01.58
+Peak memory: 282296 kb
+Command: sh -c cat tmp/pre_seed.txt | sort | uniq > tmp/seed.txt
+Elapsed time: 0:00.00
+Peak memory: 5220 kb
+Command: sh -c date +%Y-%m-%d
+Elapsed time: 0:00.00
+Peak memory: 1584 kb
+Command: sh -c date +%Y-%m-%d
+Elapsed time: 0:00.00
+Peak memory: 1580 kb
+Command: sh -c robot --catalog catalog-v001.xml annotate --input mirror/ro.owl --remove-annotations \
+	 odk:normalize --add-source true \
+	 extract --term-file imports/ro_terms.txt --term-file tmp/seed.txt \
+	         --copy-ontology-annotations true --force true --method BOT \
+	 remove --axioms external --preserve-structure false --trim false \
+	        --base-iri http://purl.obolibrary.org/obo/RO \
+	 remove  --term rdfs:label  --term dc:description  --term dc:source  --term OBI:0001886  --term oboInOwl:hasAlternativeId  --term owl:deprecated  --term IAO:0000115  --term IAO:0000114  --term IAO:0000119  --term IAO:0000111  --term IAO:0100001 \
+	        --term rdfs:label \
+	        --term IAO:0000115 \
+	        --term OMO:0002000 \
+	        --term-file imports/ro_terms.txt --term-file tmp/seed.txt \
+	        --select complement \
+	 odk:normalize --base-iri http://purl.obolibrary.org/obo \
+	               --subset-decls true --synonym-decls true \
+	 repair --merge-axiom-annotations true \
+	 annotate --ontology-iri http://purl.obolibrary.org/obo/genepio/imports/ro_import.owl annotate -V http://purl.obolibrary.org/obo/genepio/releases/2026-05-16/imports/ro_import.owl --annotation owl:versionInfo 2026-05-16 convert -f ofn --output imports/ro_import.owl.tmp.owl && mv imports/ro_import.owl.tmp.owl imports/ro_import.owl
+Elapsed time: 0:01.00
+Peak memory: 220604 kb
+Command: sh -c curl -L http://purl.obolibrary.org/obo/obi.owl --create-dirs -o tmp/obi-download.owl --retry 4 --max-time 200 && \
+robot --catalog catalog-v001.xml convert -i tmp/obi-download.owl -o tmp/mirror-obi.owl
+Elapsed time: 0:03.28
+Peak memory: 443224 kb
+Command: sh -c if [ -f tmp/mirror-obi.owl ]; then if cmp -s tmp/mirror-obi.owl mirror/obi.owl ; then echo "Mirror identical, ignoring."; else echo "Mirrors different, updating." &&\
+	cp tmp/mirror-obi.owl mirror/obi.owl; fi; fi
+Elapsed time: 0:00.01
+Peak memory: 1460 kb
+Command: sh -c date +%Y-%m-%d
+Elapsed time: 0:00.00
+Peak memory: 1580 kb
+Command: sh -c date +%Y-%m-%d
+Elapsed time: 0:00.00
+Peak memory: 1584 kb
+Command: sh -c robot --catalog catalog-v001.xml annotate --input mirror/obi.owl --remove-annotations \
+	 odk:normalize --add-source true \
+	 extract --term-file imports/obi_terms.txt --term-file tmp/seed.txt \
+	         --copy-ontology-annotations true --force true --method BOT \
+	 remove --axioms external --preserve-structure false --trim false \
+	        --base-iri http://purl.obolibrary.org/obo/OBI \
+	 remove  --term rdfs:label  --term dc:description  --term dc:source  --term OBI:0001886  --term oboInOwl:hasAlternativeId  --term owl:deprecated  --term IAO:0000115  --term IAO:0000114  --term IAO:0000119  --term IAO:0000111  --term IAO:0100001 \
+	        --term rdfs:label \
+	        --term IAO:0000115 \
+	        --term OMO:0002000 \
+	        --term-file imports/obi_terms.txt --term-file tmp/seed.txt \
+	        --select complement \
+	 odk:normalize --base-iri http://purl.obolibrary.org/obo \
+	               --subset-decls true --synonym-decls true \
+	 repair --merge-axiom-annotations true \
+	 annotate --ontology-iri http://purl.obolibrary.org/obo/genepio/imports/obi_import.owl annotate -V http://purl.obolibrary.org/obo/genepio/releases/2026-05-16/imports/obi_import.owl --annotation owl:versionInfo 2026-05-16 convert -f ofn --output imports/obi_import.owl.tmp.owl && mv imports/obi_import.owl.tmp.owl imports/obi_import.owl
+Elapsed time: 0:01.84
+Peak memory: 401936 kb
+Command: sh -c if [ true = true ]; then curl -s -F file=@imports/general_ontofox.txt -o imports/general_import.owl https://ontofox.hegroup.org/service.php; \
+robot --catalog catalog-v001.xml reduce -i "imports/general_import.owl" -r ELK --prefix "obo: http://purl.obolibrary.org/obo/" --xml-entities remove --term "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" -o "imports/general_import.owl"; fi
+Elapsed time: 1:15.42
+Peak memory: 410464 kb
+Command: sh -c date +%Y-%m-%d
+Elapsed time: 0:00.00
+Peak memory: 1616 kb
+Command: sh -c date +%Y-%m-%d
+Elapsed time: 0:00.00
+Peak memory: 1584 kb
+Command: sh -c robot --catalog catalog-v001.xml merge --input tmp/genepio-preprocess.owl  \
+reason --reasoner ELK --equivalent-classes-allowed asserted-only --exclude-tautologies structural --annotate-inferred-axioms false \
+relax --include-subclass-of true \
+reduce -r ELK --include-subproperties true \
+remove --base-iri http://purl.obolibrary.org/obo/GENEPIO --axioms external --preserve-structure false --trim false \
+ \
+annotate --link-annotation http://purl.org/dc/elements/1.1/type http://purl.obolibrary.org/obo/IAO_8000001 \
+	--ontology-iri http://purl.obolibrary.org/obo/genepio/genepio-base.owl annotate -V http://purl.obolibrary.org/obo/genepio/releases/2026-05-16/genepio-base.owl --annotation owl:versionInfo 2026-05-16 \
+	--output genepio-base.owl.tmp.owl && mv genepio-base.owl.tmp.owl genepio-base.owl
+Elapsed time: 0:04.30
+Peak memory: 572012 kb
+Command: sh -c robot --catalog catalog-v001.xml report -i genepio-base.owl -l true  --fail-on None --print 5 -o reports/genepio-base.owl-obo-report.tsv
+Elapsed time: 0:02.22
+Peak memory: 370012 kb
+Command: sh -c date +%Y-%m-%d
+Elapsed time: 0:00.00
+Peak memory: 1580 kb
+Command: sh -c date +%Y-%m-%d
+Elapsed time: 0:00.00
+Peak memory: 1584 kb
+Command: sh -c robot --catalog catalog-v001.xml merge --input tmp/genepio-preprocess.owl  \
+	reason --reasoner ELK --equivalent-classes-allowed asserted-only --exclude-tautologies structural \
+	relax --include-subclass-of true \
+	reduce -r ELK --include-subproperties true \
+	 annotate --ontology-iri http://purl.obolibrary.org/obo/genepio/genepio-full.owl annotate -V http://purl.obolibrary.org/obo/genepio/releases/2026-05-16/genepio-full.owl --annotation owl:versionInfo 2026-05-16 --output genepio-full.owl.tmp.owl && mv genepio-full.owl.tmp.owl genepio-full.owl
+Elapsed time: 0:04.53
+Peak memory: 544648 kb
+Command: sh -c date +%Y-%m-%d
+Elapsed time: 0:00.00
+Peak memory: 1584 kb
+Command: sh -c date +%Y-%m-%d
+Elapsed time: 0:00.00
+Peak memory: 1584 kb
+Command: sh -c robot --catalog catalog-v001.xml annotate --input genepio-full.owl --ontology-iri http://purl.obolibrary.org/obo/genepio.owl annotate -V http://purl.obolibrary.org/obo/genepio/releases/2026-05-16/genepio.owl --annotation owl:versionInfo 2026-05-16 \
+	convert -o genepio.owl.tmp.owl && mv genepio.owl.tmp.owl genepio.owl
+Elapsed time: 0:02.24
+Peak memory: 428232 kb
+Command: sh -c robot --catalog catalog-v001.xml merge -i genepio.owl convert -f ofn -o tmp/validate.ofn
+Elapsed time: 0:01.83
+Peak memory: 367608 kb
+Command: sh -c robot --catalog catalog-v001.xml validate-profile --profile DL -i tmp/validate.ofn -o reports/validate_profile_owl2dl_genepio.owl.txt || { cat reports/validate_profile_owl2dl_genepio.owl.txt && exit 1; }
+Elapsed time: 0:01.28
+Peak memory: 268604 kb
+Command: sh -c echo "Finished running all tests successfully."
+Elapsed time: 0:00.00
+Peak memory: 1420 kb
+Command: sh -c robot --catalog catalog-v001.xml query -f tsv --use-graphs true -i tmp/genepio-preprocess.owl -s ../sparql/basic-report.sparql reports/basic-report.tsv -s ../sparql/class-count-by-prefix.sparql reports/class-count-by-prefix.tsv -s ../sparql/edges.sparql reports/edges.tsv -s ../sparql/xrefs.sparql reports/xrefs.tsv -s ../sparql/obsoletes.sparql reports/obsoletes.tsv -s ../sparql/synonyms.sparql reports/synonyms.tsv
+Elapsed time: 0:03.42
+Peak memory: 468912 kb
+Command: sh -c check-rdfxml  genepio.owl
+Elapsed time: 0:00.16
+Peak memory: 13068 kb
+Command: sh -c check-rdfxml  genepio-base.owl
+Elapsed time: 0:00.05
+Peak memory: 12700 kb
+Command: sh -c check-rdfxml  genepio-full.owl
+Elapsed time: 0:00.15
+Peak memory: 12828 kb
+Command: sh -c echo "ODK Makefile v1.6.1"
+Elapsed time: 0:00.00
+Peak memory: 1420 kb
+Command: sh -c odk-info --tools
+Elapsed time: 0:03.51
+Peak memory: 144716 kb
+Command: sh -c if [ "$(tr -d '' < genepio-odk.yaml | sha256sum | cut -c1-64)" = "c15f9028e4981c1c60bf6f9ceb80bef0a9a6a01015ee184fd5aa85ba719f56d4" ]; then \
+	echo "Repository is up-to-date." ; else \
+	echo "Your ODK configuration has changed since this Makefile was generated. You may need to run 'make update_repo'." ; fi
+Elapsed time: 0:00.00
+Peak memory: 3068 kb
+Command: sh -c if [ -f genepio-idranges.owl ]; then \
+	dicer-cli policy --assume-manchester --show-owlapi-error genepio-idranges.owl ; \
+fi
+Elapsed time: 0:00.40
+Peak memory: 90792 kb
+Command: sh -c robot --catalog catalog-v001.xml reason --input tmp/genepio-preprocess.owl --reasoner ELK --equivalent-classes-allowed asserted-only \
+	--exclude-tautologies structural --output test.owl && rm test.owl
+Elapsed time: 0:03.54
+Peak memory: 429820 kb
+Command: sh -c date +%Y-%m-%d
+Elapsed time: 0:00.00
+Peak memory: 1536 kb
+Command: sh -c date +%Y-%m-%d
+Elapsed time: 0:00.00
+Peak memory: 1584 kb
+Command: sh -c robot --catalog catalog-v001.xml template --input genepio-edit.ofn --xml-entities --ontology-iri "http://purl.obolibrary.org/obo/genepio/components/specification.owl" \
+	 --template ../templates/specification.tsv \
+	 --template ../templates/specification_enum.tsv \
+	 --template ../templates/specification_field.tsv \
+	 --template ../templates/specification_mint.tsv \
+	 --template ../templates/temporary_mint.tsv \
+	 annotate --ontology-iri http://purl.obolibrary.org/obo/genepio/components/specification.owl annotate -V http://purl.obolibrary.org/obo/genepio/releases/2026-05-17/components/specification.owl --annotation owl:versionInfo 2026-05-17 convert -f ofn --output components/specification.owl.tmp.owl && mv components/specification.owl.tmp.owl components/specification.owl
+Elapsed time: 0:03.03
+Peak memory: 436108 kb
+Command: sh -c robot --catalog catalog-v001.xml remove --input tmp/genepio-preprocess.owl --select imports --trim false \
+	 merge  --input components/deprecation.ofn  --input components/gazetteer.ofn  --input components/gaz_insdc_mapping.ofn  --input components/hardcoded.ofn  --input components/specification.owl \
+	       --output tmp/merged-genepio-edit.ofn
+Elapsed time: 0:02.14
+Peak memory: 370452 kb
+Command: sh -c robot --catalog catalog-v001.xml verify -i tmp/merged-genepio-edit.ofn --queries ../sparql/owldef-self-reference-violation.sparql ../sparql/iri-range-violation.sparql ../sparql/label-with-iri-violation.sparql ../sparql/multiple-replaced_by-violation.sparql -O reports
+Elapsed time: 0:01.58
+Peak memory: 274360 kb
+Command: sh -c curl -L http://purl.obolibrary.org/obo/ro.owl --create-dirs -o tmp/ro-download.owl --retry 4 --max-time 200 && \
+robot --catalog catalog-v001.xml convert -i tmp/ro-download.owl -o tmp/mirror-ro.owl
+Elapsed time: 0:01.65
+Peak memory: 196764 kb
+Command: sh -c if [ -f tmp/mirror-ro.owl ]; then if cmp -s tmp/mirror-ro.owl mirror/ro.owl ; then echo "Mirror identical, ignoring."; else echo "Mirrors different, updating." &&\
+	cp tmp/mirror-ro.owl mirror/ro.owl; fi; fi
+Elapsed time: 0:00.00
+Peak memory: 1472 kb
+Command: sh -c robot --catalog catalog-v001.xml query --input tmp/merged-genepio-edit.ofn --format --csv \
+	       --query ../sparql/terms.sparql tmp/pre_seed.txt
+Elapsed time: 0:01.63
+Peak memory: 294456 kb
+Command: sh -c cat tmp/pre_seed.txt | sort | uniq > tmp/seed.txt
+Elapsed time: 0:00.00
+Peak memory: 3188 kb
+Command: sh -c date +%Y-%m-%d
+Elapsed time: 0:00.00
+Peak memory: 1584 kb
+Command: sh -c date +%Y-%m-%d
+Elapsed time: 0:00.00
+Peak memory: 1568 kb
+Command: sh -c robot --catalog catalog-v001.xml annotate --input mirror/ro.owl --remove-annotations \
+	 odk:normalize --add-source true \
+	 extract --term-file imports/ro_terms.txt --term-file tmp/seed.txt \
+	         --copy-ontology-annotations true --force true --method BOT \
+	 remove --axioms external --preserve-structure false --trim false \
+	        --base-iri http://purl.obolibrary.org/obo/RO \
+	 remove  --term rdfs:label  --term dc:description  --term dc:source  --term OBI:0001886  --term oboInOwl:hasAlternativeId  --term owl:deprecated  --term IAO:0000115  --term IAO:0000114  --term IAO:0000119  --term IAO:0000111  --term IAO:0100001 \
+	        --term rdfs:label \
+	        --term IAO:0000115 \
+	        --term OMO:0002000 \
+	        --term-file imports/ro_terms.txt --term-file tmp/seed.txt \
+	        --select complement \
+	 odk:normalize --base-iri http://purl.obolibrary.org/obo \
+	               --subset-decls true --synonym-decls true \
+	 repair --merge-axiom-annotations true \
+	 annotate --ontology-iri http://purl.obolibrary.org/obo/genepio/imports/ro_import.owl annotate -V http://purl.obolibrary.org/obo/genepio/releases/2026-05-17/imports/ro_import.owl --annotation owl:versionInfo 2026-05-17 convert -f ofn --output imports/ro_import.owl.tmp.owl && mv imports/ro_import.owl.tmp.owl imports/ro_import.owl
+Elapsed time: 0:01.05
+Peak memory: 219264 kb
+Command: sh -c curl -L http://purl.obolibrary.org/obo/obi.owl --create-dirs -o tmp/obi-download.owl --retry 4 --max-time 200 && \
+robot --catalog catalog-v001.xml convert -i tmp/obi-download.owl -o tmp/mirror-obi.owl
+Elapsed time: 0:03.00
+Peak memory: 432640 kb
+Command: sh -c if [ -f tmp/mirror-obi.owl ]; then if cmp -s tmp/mirror-obi.owl mirror/obi.owl ; then echo "Mirror identical, ignoring."; else echo "Mirrors different, updating." &&\
+	cp tmp/mirror-obi.owl mirror/obi.owl; fi; fi
+Elapsed time: 0:00.00
+Peak memory: 1472 kb
+Command: sh -c date +%Y-%m-%d
+Elapsed time: 0:00.00
+Peak memory: 1576 kb
+Command: sh -c date +%Y-%m-%d
+Elapsed time: 0:00.00
+Peak memory: 1572 kb
+Command: sh -c robot --catalog catalog-v001.xml annotate --input mirror/obi.owl --remove-annotations \
+	 odk:normalize --add-source true \
+	 extract --term-file imports/obi_terms.txt --term-file tmp/seed.txt \
+	         --copy-ontology-annotations true --force true --method BOT \
+	 remove --axioms external --preserve-structure false --trim false \
+	        --base-iri http://purl.obolibrary.org/obo/OBI \
+	 remove  --term rdfs:label  --term dc:description  --term dc:source  --term OBI:0001886  --term oboInOwl:hasAlternativeId  --term owl:deprecated  --term IAO:0000115  --term IAO:0000114  --term IAO:0000119  --term IAO:0000111  --term IAO:0100001 \
+	        --term rdfs:label \
+	        --term IAO:0000115 \
+	        --term OMO:0002000 \
+	        --term-file imports/obi_terms.txt --term-file tmp/seed.txt \
+	        --select complement \
+	 odk:normalize --base-iri http://purl.obolibrary.org/obo \
+	               --subset-decls true --synonym-decls true \
+	 repair --merge-axiom-annotations true \
+	 annotate --ontology-iri http://purl.obolibrary.org/obo/genepio/imports/obi_import.owl annotate -V http://purl.obolibrary.org/obo/genepio/releases/2026-05-17/imports/obi_import.owl --annotation owl:versionInfo 2026-05-17 convert -f ofn --output imports/obi_import.owl.tmp.owl && mv imports/obi_import.owl.tmp.owl imports/obi_import.owl
+Elapsed time: 0:01.88
+Peak memory: 407992 kb
+Command: sh -c date +%Y-%m-%d
+Elapsed time: 0:00.00
+Peak memory: 1584 kb
+Command: sh -c date +%Y-%m-%d
+Elapsed time: 0:00.00
+Peak memory: 1572 kb
+Command: sh -c robot --catalog catalog-v001.xml merge --input tmp/genepio-preprocess.owl  \
+reason --reasoner ELK --equivalent-classes-allowed asserted-only --exclude-tautologies structural --annotate-inferred-axioms false \
+relax --include-subclass-of true \
+reduce -r ELK --include-subproperties true \
+remove --base-iri http://purl.obolibrary.org/obo/GENEPIO --axioms external --preserve-structure false --trim false \
+ \
+annotate --link-annotation http://purl.org/dc/elements/1.1/type http://purl.obolibrary.org/obo/IAO_8000001 \
+	--ontology-iri http://purl.obolibrary.org/obo/genepio/genepio-base.owl annotate -V http://purl.obolibrary.org/obo/genepio/releases/2026-05-17/genepio-base.owl --annotation owl:versionInfo 2026-05-17 \
+	--output genepio-base.owl.tmp.owl && mv genepio-base.owl.tmp.owl genepio-base.owl
+Elapsed time: 0:04.42
+Peak memory: 600816 kb
+Command: sh -c robot --catalog catalog-v001.xml report -i genepio-base.owl -l true  --fail-on None --print 5 -o reports/genepio-base.owl-obo-report.tsv
+Elapsed time: 0:02.22
+Peak memory: 372352 kb
+Command: sh -c date +%Y-%m-%d
+Elapsed time: 0:00.00
+Peak memory: 1584 kb
+Command: sh -c date +%Y-%m-%d
+Elapsed time: 0:00.00
+Peak memory: 1584 kb
+Command: sh -c robot --catalog catalog-v001.xml merge --input tmp/genepio-preprocess.owl  \
+	reason --reasoner ELK --equivalent-classes-allowed asserted-only --exclude-tautologies structural \
+	relax --include-subclass-of true \
+	reduce -r ELK --include-subproperties true \
+	 annotate --ontology-iri http://purl.obolibrary.org/obo/genepio/genepio-full.owl annotate -V http://purl.obolibrary.org/obo/genepio/releases/2026-05-17/genepio-full.owl --annotation owl:versionInfo 2026-05-17 --output genepio-full.owl.tmp.owl && mv genepio-full.owl.tmp.owl genepio-full.owl
+Elapsed time: 0:04.45
+Peak memory: 583844 kb
+Command: sh -c date +%Y-%m-%d
+Elapsed time: 0:00.00
+Peak memory: 1572 kb
+Command: sh -c date +%Y-%m-%d
+Elapsed time: 0:00.00
+Peak memory: 1584 kb
+Command: sh -c robot --catalog catalog-v001.xml annotate --input genepio-full.owl --ontology-iri http://purl.obolibrary.org/obo/genepio.owl annotate -V http://purl.obolibrary.org/obo/genepio/releases/2026-05-17/genepio.owl --annotation owl:versionInfo 2026-05-17 \
+	convert -o genepio.owl.tmp.owl && mv genepio.owl.tmp.owl genepio.owl
+Elapsed time: 0:02.26
+Peak memory: 400276 kb
+Command: sh -c robot --catalog catalog-v001.xml merge -i genepio.owl convert -f ofn -o tmp/validate.ofn
+Elapsed time: 0:01.86
+Peak memory: 355472 kb
+Command: sh -c robot --catalog catalog-v001.xml validate-profile --profile DL -i tmp/validate.ofn -o reports/validate_profile_owl2dl_genepio.owl.txt || { cat reports/validate_profile_owl2dl_genepio.owl.txt && exit 1; }
+Elapsed time: 0:01.40
+Peak memory: 283988 kb
+Command: sh -c echo "Finished running all tests successfully."
+Elapsed time: 0:00.00
+Peak memory: 1420 kb
+Command: sh -c robot --catalog catalog-v001.xml query -f tsv --use-graphs true -i tmp/genepio-preprocess.owl -s ../sparql/basic-report.sparql reports/basic-report.tsv -s ../sparql/class-count-by-prefix.sparql reports/class-count-by-prefix.tsv -s ../sparql/edges.sparql reports/edges.tsv -s ../sparql/xrefs.sparql reports/xrefs.tsv -s ../sparql/obsoletes.sparql reports/obsoletes.tsv -s ../sparql/synonyms.sparql reports/synonyms.tsv
+Elapsed time: 0:03.36
+Peak memory: 529568 kb
+Command: sh -c check-rdfxml  genepio.owl
+Elapsed time: 0:00.15
+Peak memory: 13068 kb
+Command: sh -c check-rdfxml  genepio-base.owl
+Elapsed time: 0:00.05
+Peak memory: 12700 kb
+Command: sh -c check-rdfxml  genepio-full.owl
+Elapsed time: 0:00.15
+Peak memory: 12828 kb
+Command: sh -c echo "ODK Makefile v1.6.1"
+Elapsed time: 0:00.00
+Peak memory: 1420 kb
+Command: sh -c odk-info --tools
+Elapsed time: 0:02.66
+Peak memory: 150212 kb
+Command: sh -c if [ "$(tr -d '' < genepio-odk.yaml | sha256sum | cut -c1-64)" = "c15f9028e4981c1c60bf6f9ceb80bef0a9a6a01015ee184fd5aa85ba719f56d4" ]; then \
+	echo "Repository is up-to-date." ; else \
+	echo "Your ODK configuration has changed since this Makefile was generated. You may need to run 'make update_repo'." ; fi
+Elapsed time: 0:00.00
+Peak memory: 3056 kb
+Command: sh -c if [ -f genepio-idranges.owl ]; then \
+	dicer-cli policy --assume-manchester --show-owlapi-error genepio-idranges.owl ; \
+fi
+Elapsed time: 0:00.30
+Peak memory: 92036 kb
+Command: sh -c robot --catalog catalog-v001.xml reason --input tmp/genepio-preprocess.owl --reasoner ELK --equivalent-classes-allowed asserted-only \
+	--exclude-tautologies structural --output test.owl && rm test.owl
+Elapsed time: 0:03.37
+Peak memory: 543676 kb
+Command: sh -c date +%Y-%m-%d
+Elapsed time: 0:00.00
+Peak memory: 1584 kb
+Command: sh -c date +%Y-%m-%d
+Elapsed time: 0:00.00
+Peak memory: 1572 kb
+Command: sh -c robot --catalog catalog-v001.xml template --input genepio-edit.ofn --xml-entities --ontology-iri "http://purl.obolibrary.org/obo/genepio/components/specification.owl" \
+	 --template ../templates/specification.tsv \
+	 --template ../templates/specification_enum.tsv \
+	 --template ../templates/specification_field.tsv \
+	 --template ../templates/specification_mint.tsv \
+	 --template ../templates/temporary_mint.tsv \
+	 annotate --ontology-iri http://purl.obolibrary.org/obo/genepio/components/specification.owl annotate -V http://purl.obolibrary.org/obo/genepio/releases/2026-05-17/components/specification.owl --annotation owl:versionInfo 2026-05-17 convert -f ofn --output components/specification.owl.tmp.owl && mv components/specification.owl.tmp.owl components/specification.owl
+Elapsed time: 0:02.96
+Peak memory: 432716 kb
+Command: sh -c robot --catalog catalog-v001.xml remove --input tmp/genepio-preprocess.owl --select imports --trim false \
+	 merge  --input components/deprecation.ofn  --input components/gazetteer.ofn  --input components/gaz_insdc_mapping.ofn  --input components/hardcoded.ofn  --input components/specification.owl \
+	       --output tmp/merged-genepio-edit.ofn
+Elapsed time: 0:02.14
+Peak memory: 358036 kb
+Command: sh -c robot --catalog catalog-v001.xml verify -i tmp/merged-genepio-edit.ofn --queries ../sparql/owldef-self-reference-violation.sparql ../sparql/iri-range-violation.sparql ../sparql/label-with-iri-violation.sparql ../sparql/multiple-replaced_by-violation.sparql -O reports
+Elapsed time: 0:01.51
+Peak memory: 277048 kb
+Command: sh -c curl -L http://purl.obolibrary.org/obo/ro.owl --create-dirs -o tmp/ro-download.owl --retry 4 --max-time 200 && \
+robot --catalog catalog-v001.xml convert -i tmp/ro-download.owl -o tmp/mirror-ro.owl
+Elapsed time: 0:01.39
+Peak memory: 197020 kb
+Command: sh -c if [ -f tmp/mirror-ro.owl ]; then if cmp -s tmp/mirror-ro.owl mirror/ro.owl ; then echo "Mirror identical, ignoring."; else echo "Mirrors different, updating." &&\
+	cp tmp/mirror-ro.owl mirror/ro.owl; fi; fi
+Elapsed time: 0:00.00
+Peak memory: 1472 kb
+Command: sh -c robot --catalog catalog-v001.xml query --input tmp/merged-genepio-edit.ofn --format --csv \
+	       --query ../sparql/terms.sparql tmp/pre_seed.txt
+Elapsed time: 0:01.61
+Peak memory: 284028 kb
+Command: sh -c cat tmp/pre_seed.txt | sort | uniq > tmp/seed.txt
+Elapsed time: 0:00.00
+Peak memory: 5252 kb
+Command: sh -c date +%Y-%m-%d
+Elapsed time: 0:00.00
+Peak memory: 1616 kb
+Command: sh -c date +%Y-%m-%d
+Elapsed time: 0:00.00
+Peak memory: 1584 kb
+Command: sh -c robot --catalog catalog-v001.xml annotate --input mirror/ro.owl --remove-annotations \
+	 odk:normalize --add-source true \
+	 extract --term-file imports/ro_terms.txt --term-file tmp/seed.txt \
+	         --copy-ontology-annotations true --force true --method BOT \
+	 remove --axioms external --preserve-structure false --trim false \
+	        --base-iri http://purl.obolibrary.org/obo/RO \
+	 remove  --term rdfs:label  --term dc:description  --term dc:source  --term OBI:0001886  --term oboInOwl:hasAlternativeId  --term owl:deprecated  --term IAO:0000115  --term IAO:0000114  --term IAO:0000119  --term IAO:0000111  --term IAO:0100001 \
+	        --term rdfs:label \
+	        --term IAO:0000115 \
+	        --term OMO:0002000 \
+	        --term-file imports/ro_terms.txt --term-file tmp/seed.txt \
+	        --select complement \
+	 odk:normalize --base-iri http://purl.obolibrary.org/obo \
+	               --subset-decls true --synonym-decls true \
+	 repair --merge-axiom-annotations true \
+	 annotate --ontology-iri http://purl.obolibrary.org/obo/genepio/imports/ro_import.owl annotate -V http://purl.obolibrary.org/obo/genepio/releases/2026-05-17/imports/ro_import.owl --annotation owl:versionInfo 2026-05-17 convert -f ofn --output imports/ro_import.owl.tmp.owl && mv imports/ro_import.owl.tmp.owl imports/ro_import.owl
+Elapsed time: 0:00.99
+Peak memory: 210524 kb
+Command: sh -c curl -L http://purl.obolibrary.org/obo/obi.owl --create-dirs -o tmp/obi-download.owl --retry 4 --max-time 200 && \
+robot --catalog catalog-v001.xml convert -i tmp/obi-download.owl -o tmp/mirror-obi.owl
+Elapsed time: 0:02.73
+Peak memory: 430336 kb
+Command: sh -c if [ -f tmp/mirror-obi.owl ]; then if cmp -s tmp/mirror-obi.owl mirror/obi.owl ; then echo "Mirror identical, ignoring."; else echo "Mirrors different, updating." &&\
+	cp tmp/mirror-obi.owl mirror/obi.owl; fi; fi
+Elapsed time: 0:00.00
+Peak memory: 1472 kb
+Command: sh -c date +%Y-%m-%d
+Elapsed time: 0:00.00
+Peak memory: 1584 kb
+Command: sh -c date +%Y-%m-%d
+Elapsed time: 0:00.00
+Peak memory: 1584 kb
+Command: sh -c robot --catalog catalog-v001.xml annotate --input mirror/obi.owl --remove-annotations \
+	 odk:normalize --add-source true \
+	 extract --term-file imports/obi_terms.txt --term-file tmp/seed.txt \
+	         --copy-ontology-annotations true --force true --method BOT \
+	 remove --axioms external --preserve-structure false --trim false \
+	        --base-iri http://purl.obolibrary.org/obo/OBI \
+	 remove  --term rdfs:label  --term dc:description  --term dc:source  --term OBI:0001886  --term oboInOwl:hasAlternativeId  --term owl:deprecated  --term IAO:0000115  --term IAO:0000114  --term IAO:0000119  --term IAO:0000111  --term IAO:0100001 \
+	        --term rdfs:label \
+	        --term IAO:0000115 \
+	        --term OMO:0002000 \
+	        --term-file imports/obi_terms.txt --term-file tmp/seed.txt \
+	        --select complement \
+	 odk:normalize --base-iri http://purl.obolibrary.org/obo \
+	               --subset-decls true --synonym-decls true \
+	 repair --merge-axiom-annotations true \
+	 annotate --ontology-iri http://purl.obolibrary.org/obo/genepio/imports/obi_import.owl annotate -V http://purl.obolibrary.org/obo/genepio/releases/2026-05-17/imports/obi_import.owl --annotation owl:versionInfo 2026-05-17 convert -f ofn --output imports/obi_import.owl.tmp.owl && mv imports/obi_import.owl.tmp.owl imports/obi_import.owl
+Elapsed time: 0:01.86
+Peak memory: 393808 kb
+Command: sh -c date +%Y-%m-%d
+Elapsed time: 0:00.00
+Peak memory: 1584 kb
+Command: sh -c date +%Y-%m-%d
+Elapsed time: 0:00.00
+Peak memory: 1584 kb
+Command: sh -c robot --catalog catalog-v001.xml merge --input tmp/genepio-preprocess.owl  \
+reason --reasoner ELK --equivalent-classes-allowed asserted-only --exclude-tautologies structural --annotate-inferred-axioms false \
+relax --include-subclass-of true \
+reduce -r ELK --include-subproperties true \
+remove --base-iri http://purl.obolibrary.org/obo/GENEPIO --axioms external --preserve-structure false --trim false \
+ \
+annotate --link-annotation http://purl.org/dc/elements/1.1/type http://purl.obolibrary.org/obo/IAO_8000001 \
+	--ontology-iri http://purl.obolibrary.org/obo/genepio/genepio-base.owl annotate -V http://purl.obolibrary.org/obo/genepio/releases/2026-05-17/genepio-base.owl --annotation owl:versionInfo 2026-05-17 \
+	--output genepio-base.owl.tmp.owl && mv genepio-base.owl.tmp.owl genepio-base.owl
+Command exited with non-zero status 1
+Elapsed time: 0:03.08
+Peak memory: 442496 kb
+Command: sh -c echo "ODK Makefile v1.6.1"
+Elapsed time: 0:00.00
+Peak memory: 1412 kb
+Command: sh -c odk-info --tools
+Elapsed time: 0:02.65
+Peak memory: 144880 kb
+Command: sh -c if [ "$(tr -d '' < genepio-odk.yaml | sha256sum | cut -c1-64)" = "c15f9028e4981c1c60bf6f9ceb80bef0a9a6a01015ee184fd5aa85ba719f56d4" ]; then \
+	echo "Repository is up-to-date." ; else \
+	echo "Your ODK configuration has changed since this Makefile was generated. You may need to run 'make update_repo'." ; fi
+Elapsed time: 0:00.00
+Peak memory: 3068 kb
+Command: sh -c if [ -f genepio-idranges.owl ]; then \
+	dicer-cli policy --assume-manchester --show-owlapi-error genepio-idranges.owl ; \
+fi
+Elapsed time: 0:00.31
+Peak memory: 92344 kb
+Command: sh -c robot --catalog catalog-v001.xml reason --input tmp/genepio-preprocess.owl --reasoner ELK --equivalent-classes-allowed asserted-only \
+	--exclude-tautologies structural --output test.owl && rm test.owl
+Command exited with non-zero status 1
+Elapsed time: 0:02.86
+Peak memory: 402344 kb
+Command: sh -c echo "ODK Makefile v1.6.1"
+Elapsed time: 0:00.00
+Peak memory: 1416 kb
+Command: sh -c odk-info --tools
+Elapsed time: 0:02.67
+Peak memory: 156332 kb
+Command: sh -c if [ "$(tr -d '' < genepio-odk.yaml | sha256sum | cut -c1-64)" = "c15f9028e4981c1c60bf6f9ceb80bef0a9a6a01015ee184fd5aa85ba719f56d4" ]; then \
+	echo "Repository is up-to-date." ; else \
+	echo "Your ODK configuration has changed since this Makefile was generated. You may need to run 'make update_repo'." ; fi
+Elapsed time: 0:00.00
+Peak memory: 3068 kb
+Command: sh -c if [ -f genepio-idranges.owl ]; then \
+	dicer-cli policy --assume-manchester --show-owlapi-error genepio-idranges.owl ; \
+fi
+Elapsed time: 0:00.32
+Peak memory: 92432 kb
+Command: sh -c robot --catalog catalog-v001.xml reason --input tmp/genepio-preprocess.owl --reasoner ELK --equivalent-classes-allowed asserted-only \
+	--exclude-tautologies structural --output test.owl && rm test.owl
+Command exited with non-zero status 1
+Elapsed time: 0:02.85
+Peak memory: 399428 kb
+Command: sh -c echo "ODK Makefile v1.6.1"
+Elapsed time: 0:00.00
+Peak memory: 1420 kb
+Command: sh -c odk-info --tools
+Elapsed time: 0:02.65
+Peak memory: 143584 kb
+Command: sh -c if [ "$(tr -d '' < genepio-odk.yaml | sha256sum | cut -c1-64)" = "c15f9028e4981c1c60bf6f9ceb80bef0a9a6a01015ee184fd5aa85ba719f56d4" ]; then \
+	echo "Repository is up-to-date." ; else \
+	echo "Your ODK configuration has changed since this Makefile was generated. You may need to run 'make update_repo'." ; fi
+Elapsed time: 0:00.00
+Peak memory: 3068 kb
+Command: sh -c if [ -f genepio-idranges.owl ]; then \
+	dicer-cli policy --assume-manchester --show-owlapi-error genepio-idranges.owl ; \
+fi
+Elapsed time: 0:00.31
+Peak memory: 91892 kb
+Command: sh -c robot --catalog catalog-v001.xml reason --input tmp/genepio-preprocess.owl --reasoner ELK --equivalent-classes-allowed asserted-only \
+	--exclude-tautologies structural --output test.owl && rm test.owl
+Command exited with non-zero status 1
+Elapsed time: 0:02.85
+Peak memory: 401856 kb
+Command: sh -c echo "ODK Makefile v1.6.1"
+Elapsed time: 0:00.00
+Peak memory: 1420 kb
+Command: sh -c odk-info --tools
+Elapsed time: 0:03.20
+Peak memory: 148424 kb
+Command: sh -c if [ "$(tr -d '' < genepio-odk.yaml | sha256sum | cut -c1-64)" = "c15f9028e4981c1c60bf6f9ceb80bef0a9a6a01015ee184fd5aa85ba719f56d4" ]; then \
+	echo "Repository is up-to-date." ; else \
+	echo "Your ODK configuration has changed since this Makefile was generated. You may need to run 'make update_repo'." ; fi
+Elapsed time: 0:00.00
+Peak memory: 3068 kb
+Command: sh -c if [ -f genepio-idranges.owl ]; then \
+	dicer-cli policy --assume-manchester --show-owlapi-error genepio-idranges.owl ; \
+fi
+Elapsed time: 0:00.34
+Peak memory: 89992 kb
+Command: sh -c robot --catalog catalog-v001.xml reason --input tmp/genepio-preprocess.owl --reasoner ELK --equivalent-classes-allowed asserted-only \
+	--exclude-tautologies structural --output test.owl && rm test.owl
+Command exited with non-zero status 1
+Elapsed time: 0:03.04
+Peak memory: 429904 kb
+Command: sh -c echo "ODK Makefile v1.6.1"
+Elapsed time: 0:00.00
+Peak memory: 1420 kb
+Command: sh -c odk-info --tools
+Elapsed time: 0:03.17
+Peak memory: 146180 kb
+Command: sh -c if [ "$(tr -d '' < genepio-odk.yaml | sha256sum | cut -c1-64)" = "c15f9028e4981c1c60bf6f9ceb80bef0a9a6a01015ee184fd5aa85ba719f56d4" ]; then \
+	echo "Repository is up-to-date." ; else \
+	echo "Your ODK configuration has changed since this Makefile was generated. You may need to run 'make update_repo'." ; fi
+Elapsed time: 0:00.00
+Peak memory: 3060 kb
+Command: sh -c if [ -f genepio-idranges.owl ]; then \
+	dicer-cli policy --assume-manchester --show-owlapi-error genepio-idranges.owl ; \
+fi
+Elapsed time: 0:00.36
+Peak memory: 92360 kb
+Command: sh -c robot --catalog catalog-v001.xml reason --input tmp/genepio-preprocess.owl --reasoner ELK --equivalent-classes-allowed asserted-only \
+	--exclude-tautologies structural --output test.owl && rm test.owl
+Command exited with non-zero status 1
+Elapsed time: 0:03.03
+Peak memory: 466240 kb
+Command: sh -c echo "ODK Makefile v1.6.1"
+Elapsed time: 0:00.00
+Peak memory: 1420 kb
+Command: sh -c odk-info --tools
+Elapsed time: 0:02.67
+Peak memory: 143836 kb
+Command: sh -c if [ "$(tr -d '' < genepio-odk.yaml | sha256sum | cut -c1-64)" = "c15f9028e4981c1c60bf6f9ceb80bef0a9a6a01015ee184fd5aa85ba719f56d4" ]; then \
+	echo "Repository is up-to-date." ; else \
+	echo "Your ODK configuration has changed since this Makefile was generated. You may need to run 'make update_repo'." ; fi
+Elapsed time: 0:00.00
+Peak memory: 3068 kb
+Command: sh -c if [ -f genepio-idranges.owl ]; then \
+	dicer-cli policy --assume-manchester --show-owlapi-error genepio-idranges.owl ; \
+fi
+Elapsed time: 0:00.31
+Peak memory: 92348 kb
+Command: sh -c robot --catalog catalog-v001.xml reason --input tmp/genepio-preprocess.owl --reasoner ELK --equivalent-classes-allowed asserted-only \
+	--exclude-tautologies structural --output test.owl && rm test.owl
+Elapsed time: 0:03.35
+Peak memory: 482664 kb
+Command: sh -c robot --catalog catalog-v001.xml remove --input tmp/genepio-preprocess.owl --select imports --trim false \
+	 merge  --input components/deprecation.ofn  --input components/gazetteer.ofn  --input components/gaz_insdc_mapping.ofn  --input components/hardcoded.ofn  --input components/specification.owl \
+	       --output tmp/merged-genepio-edit.ofn
+Elapsed time: 0:02.26
+Peak memory: 383644 kb
+Command: sh -c robot --catalog catalog-v001.xml verify -i tmp/merged-genepio-edit.ofn --queries ../sparql/owldef-self-reference-violation.sparql ../sparql/iri-range-violation.sparql ../sparql/label-with-iri-violation.sparql ../sparql/multiple-replaced_by-violation.sparql -O reports
+Elapsed time: 0:01.53
+Peak memory: 276392 kb
+Command: sh -c curl -L http://purl.obolibrary.org/obo/ro.owl --create-dirs -o tmp/ro-download.owl --retry 4 --max-time 200 && \
+robot --catalog catalog-v001.xml convert -i tmp/ro-download.owl -o tmp/mirror-ro.owl
+Elapsed time: 0:01.59
+Peak memory: 193556 kb
+Command: sh -c if [ -f tmp/mirror-ro.owl ]; then if cmp -s tmp/mirror-ro.owl mirror/ro.owl ; then echo "Mirror identical, ignoring."; else echo "Mirrors different, updating." &&\
+	cp tmp/mirror-ro.owl mirror/ro.owl; fi; fi
+Elapsed time: 0:00.00
+Peak memory: 1468 kb
+Command: sh -c robot --catalog catalog-v001.xml query --input tmp/merged-genepio-edit.ofn --format --csv \
+	       --query ../sparql/terms.sparql tmp/pre_seed.txt
+Elapsed time: 0:01.63
+Peak memory: 284224 kb
+Command: sh -c cat tmp/pre_seed.txt | sort | uniq > tmp/seed.txt
+Elapsed time: 0:00.00
+Peak memory: 3188 kb
+Command: sh -c date +%Y-%m-%d
+Elapsed time: 0:00.00
+Peak memory: 1536 kb
+Command: sh -c date +%Y-%m-%d
+Elapsed time: 0:00.00
+Peak memory: 1584 kb
+Command: sh -c robot --catalog catalog-v001.xml annotate --input mirror/ro.owl --remove-annotations \
+	 odk:normalize --add-source true \
+	 extract --term-file imports/ro_terms.txt --term-file tmp/seed.txt \
+	         --copy-ontology-annotations true --force true --method BOT \
+	 remove --axioms external --preserve-structure false --trim false \
+	        --base-iri http://purl.obolibrary.org/obo/RO \
+	 remove  --term rdfs:label  --term dc:description  --term dc:source  --term OBI:0001886  --term oboInOwl:hasAlternativeId  --term owl:deprecated  --term IAO:0000115  --term IAO:0000114  --term IAO:0000119  --term IAO:0000111  --term IAO:0100001 \
+	        --term rdfs:label \
+	        --term IAO:0000115 \
+	        --term OMO:0002000 \
+	        --term-file imports/ro_terms.txt --term-file tmp/seed.txt \
+	        --select complement \
+	 odk:normalize --base-iri http://purl.obolibrary.org/obo \
+	               --subset-decls true --synonym-decls true \
+	 repair --merge-axiom-annotations true \
+	 annotate --ontology-iri http://purl.obolibrary.org/obo/genepio/imports/ro_import.owl annotate -V http://purl.obolibrary.org/obo/genepio/releases/2026-05-17/imports/ro_import.owl --annotation owl:versionInfo 2026-05-17 convert -f ofn --output imports/ro_import.owl.tmp.owl && mv imports/ro_import.owl.tmp.owl imports/ro_import.owl
+Elapsed time: 0:01.00
+Peak memory: 209412 kb
+Command: sh -c curl -L http://purl.obolibrary.org/obo/obi.owl --create-dirs -o tmp/obi-download.owl --retry 4 --max-time 200 && \
+robot --catalog catalog-v001.xml convert -i tmp/obi-download.owl -o tmp/mirror-obi.owl
+Elapsed time: 0:03.31
+Peak memory: 443256 kb
+Command: sh -c if [ -f tmp/mirror-obi.owl ]; then if cmp -s tmp/mirror-obi.owl mirror/obi.owl ; then echo "Mirror identical, ignoring."; else echo "Mirrors different, updating." &&\
+	cp tmp/mirror-obi.owl mirror/obi.owl; fi; fi
+Elapsed time: 0:00.00
+Peak memory: 1464 kb
+Command: sh -c date +%Y-%m-%d
+Elapsed time: 0:00.00
+Peak memory: 1576 kb
+Command: sh -c date +%Y-%m-%d
+Elapsed time: 0:00.00
+Peak memory: 1584 kb
+Command: sh -c robot --catalog catalog-v001.xml annotate --input mirror/obi.owl --remove-annotations \
+	 odk:normalize --add-source true \
+	 extract --term-file imports/obi_terms.txt --term-file tmp/seed.txt \
+	         --copy-ontology-annotations true --force true --method BOT \
+	 remove --axioms external --preserve-structure false --trim false \
+	        --base-iri http://purl.obolibrary.org/obo/OBI \
+	 remove  --term rdfs:label  --term dc:description  --term dc:source  --term OBI:0001886  --term oboInOwl:hasAlternativeId  --term owl:deprecated  --term IAO:0000115  --term IAO:0000114  --term IAO:0000119  --term IAO:0000111  --term IAO:0100001 \
+	        --term rdfs:label \
+	        --term IAO:0000115 \
+	        --term OMO:0002000 \
+	        --term-file imports/obi_terms.txt --term-file tmp/seed.txt \
+	        --select complement \
+	 odk:normalize --base-iri http://purl.obolibrary.org/obo \
+	               --subset-decls true --synonym-decls true \
+	 repair --merge-axiom-annotations true \
+	 annotate --ontology-iri http://purl.obolibrary.org/obo/genepio/imports/obi_import.owl annotate -V http://purl.obolibrary.org/obo/genepio/releases/2026-05-17/imports/obi_import.owl --annotation owl:versionInfo 2026-05-17 convert -f ofn --output imports/obi_import.owl.tmp.owl && mv imports/obi_import.owl.tmp.owl imports/obi_import.owl
+Elapsed time: 0:01.88
+Peak memory: 408092 kb
+Command: sh -c date +%Y-%m-%d
+Elapsed time: 0:00.00
+Peak memory: 1572 kb
+Command: sh -c date +%Y-%m-%d
+Elapsed time: 0:00.00
+Peak memory: 1584 kb
+Command: sh -c robot --catalog catalog-v001.xml merge --input tmp/genepio-preprocess.owl  \
+reason --reasoner ELK --equivalent-classes-allowed asserted-only --exclude-tautologies structural --annotate-inferred-axioms false \
+relax --include-subclass-of true \
+reduce -r ELK --include-subproperties true \
+remove --base-iri http://purl.obolibrary.org/obo/GENEPIO --axioms external --preserve-structure false --trim false \
+ \
+annotate --link-annotation http://purl.org/dc/elements/1.1/type http://purl.obolibrary.org/obo/IAO_8000001 \
+	--ontology-iri http://purl.obolibrary.org/obo/genepio/genepio-base.owl annotate -V http://purl.obolibrary.org/obo/genepio/releases/2026-05-17/genepio-base.owl --annotation owl:versionInfo 2026-05-17 \
+	--output genepio-base.owl.tmp.owl && mv genepio-base.owl.tmp.owl genepio-base.owl
+Elapsed time: 0:04.36
+Peak memory: 582752 kb
+Command: sh -c robot --catalog catalog-v001.xml report -i genepio-base.owl -l true  --fail-on None --print 5 -o reports/genepio-base.owl-obo-report.tsv
+Elapsed time: 0:02.17
+Peak memory: 383136 kb
+Command: sh -c date +%Y-%m-%d
+Elapsed time: 0:00.00
+Peak memory: 1608 kb
+Command: sh -c date +%Y-%m-%d
+Elapsed time: 0:00.00
+Peak memory: 1568 kb
+Command: sh -c robot --catalog catalog-v001.xml merge --input tmp/genepio-preprocess.owl  \
+	reason --reasoner ELK --equivalent-classes-allowed asserted-only --exclude-tautologies structural \
+	relax --include-subclass-of true \
+	reduce -r ELK --include-subproperties true \
+	 annotate --ontology-iri http://purl.obolibrary.org/obo/genepio/genepio-full.owl annotate -V http://purl.obolibrary.org/obo/genepio/releases/2026-05-17/genepio-full.owl --annotation owl:versionInfo 2026-05-17 --output genepio-full.owl.tmp.owl && mv genepio-full.owl.tmp.owl genepio-full.owl
+Elapsed time: 0:04.37
+Peak memory: 582528 kb
+Command: sh -c date +%Y-%m-%d
+Elapsed time: 0:00.00
+Peak memory: 1584 kb
+Command: sh -c date +%Y-%m-%d
+Elapsed time: 0:00.00
+Peak memory: 1584 kb
+Command: sh -c robot --catalog catalog-v001.xml annotate --input genepio-full.owl --ontology-iri http://purl.obolibrary.org/obo/genepio.owl annotate -V http://purl.obolibrary.org/obo/genepio/releases/2026-05-17/genepio.owl --annotation owl:versionInfo 2026-05-17 \
+	convert -o genepio.owl.tmp.owl && mv genepio.owl.tmp.owl genepio.owl
+Elapsed time: 0:02.24
+Peak memory: 417804 kb
+Command: sh -c robot --catalog catalog-v001.xml merge -i genepio.owl convert -f ofn -o tmp/validate.ofn
+Elapsed time: 0:01.83
+Peak memory: 375364 kb
+Command: sh -c robot --catalog catalog-v001.xml validate-profile --profile DL -i tmp/validate.ofn -o reports/validate_profile_owl2dl_genepio.owl.txt || { cat reports/validate_profile_owl2dl_genepio.owl.txt && exit 1; }
+Elapsed time: 0:01.31
+Peak memory: 259736 kb
+Command: sh -c echo "Finished running all tests successfully."
+Elapsed time: 0:00.00
+Peak memory: 1420 kb
+Command: sh -c robot --catalog catalog-v001.xml query -f tsv --use-graphs true -i tmp/genepio-preprocess.owl -s ../sparql/basic-report.sparql reports/basic-report.tsv -s ../sparql/class-count-by-prefix.sparql reports/class-count-by-prefix.tsv -s ../sparql/edges.sparql reports/edges.tsv -s ../sparql/xrefs.sparql reports/xrefs.tsv -s ../sparql/obsoletes.sparql reports/obsoletes.tsv -s ../sparql/synonyms.sparql reports/synonyms.tsv
+Elapsed time: 0:03.32
+Peak memory: 480948 kb
+Command: sh -c check-rdfxml  genepio.owl
+Elapsed time: 0:00.15
+Peak memory: 13068 kb
+Command: sh -c check-rdfxml  genepio-base.owl
+Elapsed time: 0:00.06
+Peak memory: 12700 kb
+Command: sh -c check-rdfxml  genepio-full.owl
+Elapsed time: 0:00.15
+Peak memory: 12772 kb
+Command: sh -c echo "ODK Makefile v1.6.1"
+Elapsed time: 0:00.00
+Peak memory: 1420 kb
+Command: sh -c odk-info --tools
+Elapsed time: 0:02.64
+Peak memory: 144648 kb
+Command: sh -c if [ "$(tr -d '' < genepio-odk.yaml | sha256sum | cut -c1-64)" = "c15f9028e4981c1c60bf6f9ceb80bef0a9a6a01015ee184fd5aa85ba719f56d4" ]; then \
+	echo "Repository is up-to-date." ; else \
+	echo "Your ODK configuration has changed since this Makefile was generated. You may need to run 'make update_repo'." ; fi
+Elapsed time: 0:00.00
+Peak memory: 3068 kb
+Command: sh -c if [ -f genepio-idranges.owl ]; then \
+	dicer-cli policy --assume-manchester --show-owlapi-error genepio-idranges.owl ; \
+fi
+Elapsed time: 0:00.32
+Peak memory: 94484 kb
+Command: sh -c robot --catalog catalog-v001.xml reason --input tmp/genepio-preprocess.owl --reasoner ELK --equivalent-classes-allowed asserted-only \
+	--exclude-tautologies structural --output test.owl && rm test.owl
+Elapsed time: 0:03.32
+Peak memory: 413880 kb
+Command: sh -c robot --catalog catalog-v001.xml remove --input tmp/genepio-preprocess.owl --select imports --trim false \
+	 merge  --input components/deprecation.ofn  --input components/gazetteer.ofn  --input components/gaz_insdc_mapping.ofn  --input components/hardcoded.ofn  --input components/specification.owl \
+	       --output tmp/merged-genepio-edit.ofn
+Elapsed time: 0:02.11
+Peak memory: 389828 kb
+Command: sh -c robot --catalog catalog-v001.xml verify -i tmp/merged-genepio-edit.ofn --queries ../sparql/owldef-self-reference-violation.sparql ../sparql/iri-range-violation.sparql ../sparql/label-with-iri-violation.sparql ../sparql/multiple-replaced_by-violation.sparql -O reports
+Elapsed time: 0:01.53
+Peak memory: 283716 kb
+Command: sh -c curl -L http://purl.obolibrary.org/obo/ro.owl --create-dirs -o tmp/ro-download.owl --retry 4 --max-time 200 && \
+robot --catalog catalog-v001.xml convert -i tmp/ro-download.owl -o tmp/mirror-ro.owl
+Elapsed time: 0:01.67
+Peak memory: 206184 kb
+Command: sh -c if [ -f tmp/mirror-ro.owl ]; then if cmp -s tmp/mirror-ro.owl mirror/ro.owl ; then echo "Mirror identical, ignoring."; else echo "Mirrors different, updating." &&\
+	cp tmp/mirror-ro.owl mirror/ro.owl; fi; fi
+Elapsed time: 0:00.00
+Peak memory: 1472 kb
+Command: sh -c robot --catalog catalog-v001.xml query --input tmp/merged-genepio-edit.ofn --format --csv \
+	       --query ../sparql/terms.sparql tmp/pre_seed.txt
+Elapsed time: 0:01.62
+Peak memory: 289684 kb
+Command: sh -c cat tmp/pre_seed.txt | sort | uniq > tmp/seed.txt
+Elapsed time: 0:00.00
+Peak memory: 3188 kb
+Command: sh -c date +%Y-%m-%d
+Elapsed time: 0:00.00
+Peak memory: 1584 kb
+Command: sh -c date +%Y-%m-%d
+Elapsed time: 0:00.00
+Peak memory: 1616 kb
+Command: sh -c robot --catalog catalog-v001.xml annotate --input mirror/ro.owl --remove-annotations \
+	 odk:normalize --add-source true \
+	 extract --term-file imports/ro_terms.txt --term-file tmp/seed.txt \
+	         --copy-ontology-annotations true --force true --method BOT \
+	 remove --axioms external --preserve-structure false --trim false \
+	        --base-iri http://purl.obolibrary.org/obo/RO \
+	 remove  --term rdfs:label  --term dc:description  --term dc:source  --term OBI:0001886  --term oboInOwl:hasAlternativeId  --term owl:deprecated  --term IAO:0000115  --term IAO:0000114  --term IAO:0000119  --term IAO:0000111  --term IAO:0100001 \
+	        --term rdfs:label \
+	        --term IAO:0000115 \
+	        --term OMO:0002000 \
+	        --term-file imports/ro_terms.txt --term-file tmp/seed.txt \
+	        --select complement \
+	 odk:normalize --base-iri http://purl.obolibrary.org/obo \
+	               --subset-decls true --synonym-decls true \
+	 repair --merge-axiom-annotations true \
+	 annotate --ontology-iri http://purl.obolibrary.org/obo/genepio/imports/ro_import.owl annotate -V http://purl.obolibrary.org/obo/genepio/releases/2026-05-17/imports/ro_import.owl --annotation owl:versionInfo 2026-05-17 convert -f ofn --output imports/ro_import.owl.tmp.owl && mv imports/ro_import.owl.tmp.owl imports/ro_import.owl
+Elapsed time: 0:00.99
+Peak memory: 214572 kb
+Command: sh -c curl -L http://purl.obolibrary.org/obo/obi.owl --create-dirs -o tmp/obi-download.owl --retry 4 --max-time 200 && \
+robot --catalog catalog-v001.xml convert -i tmp/obi-download.owl -o tmp/mirror-obi.owl
+Elapsed time: 0:02.81
+Peak memory: 431708 kb
+Command: sh -c if [ -f tmp/mirror-obi.owl ]; then if cmp -s tmp/mirror-obi.owl mirror/obi.owl ; then echo "Mirror identical, ignoring."; else echo "Mirrors different, updating." &&\
+	cp tmp/mirror-obi.owl mirror/obi.owl; fi; fi
+Elapsed time: 0:00.00
+Peak memory: 1472 kb
+Command: sh -c date +%Y-%m-%d
+Elapsed time: 0:00.00
+Peak memory: 1584 kb
+Command: sh -c date +%Y-%m-%d
+Elapsed time: 0:00.00
+Peak memory: 1584 kb
+Command: sh -c robot --catalog catalog-v001.xml annotate --input mirror/obi.owl --remove-annotations \
+	 odk:normalize --add-source true \
+	 extract --term-file imports/obi_terms.txt --term-file tmp/seed.txt \
+	         --copy-ontology-annotations true --force true --method BOT \
+	 remove --axioms external --preserve-structure false --trim false \
+	        --base-iri http://purl.obolibrary.org/obo/OBI \
+	 remove  --term rdfs:label  --term dc:description  --term dc:source  --term OBI:0001886  --term oboInOwl:hasAlternativeId  --term owl:deprecated  --term IAO:0000115  --term IAO:0000114  --term IAO:0000119  --term IAO:0000111  --term IAO:0100001 \
+	        --term rdfs:label \
+	        --term IAO:0000115 \
+	        --term OMO:0002000 \
+	        --term-file imports/obi_terms.txt --term-file tmp/seed.txt \
+	        --select complement \
+	 odk:normalize --base-iri http://purl.obolibrary.org/obo \
+	               --subset-decls true --synonym-decls true \
+	 repair --merge-axiom-annotations true \
+	 annotate --ontology-iri http://purl.obolibrary.org/obo/genepio/imports/obi_import.owl annotate -V http://purl.obolibrary.org/obo/genepio/releases/2026-05-17/imports/obi_import.owl --annotation owl:versionInfo 2026-05-17 convert -f ofn --output imports/obi_import.owl.tmp.owl && mv imports/obi_import.owl.tmp.owl imports/obi_import.owl
+Elapsed time: 0:01.87
+Peak memory: 415540 kb
+Command: sh -c date +%Y-%m-%d
+Elapsed time: 0:00.00
+Peak memory: 1584 kb
+Command: sh -c date +%Y-%m-%d
+Elapsed time: 0:00.00
+Peak memory: 1572 kb
+Command: sh -c robot --catalog catalog-v001.xml merge --input tmp/genepio-preprocess.owl  \
+reason --reasoner ELK --equivalent-classes-allowed asserted-only --exclude-tautologies structural --annotate-inferred-axioms false \
+relax --include-subclass-of true \
+reduce -r ELK --include-subproperties true \
+remove --base-iri http://purl.obolibrary.org/obo/GENEPIO --axioms external --preserve-structure false --trim false \
+ \
+annotate --link-annotation http://purl.org/dc/elements/1.1/type http://purl.obolibrary.org/obo/IAO_8000001 \
+	--ontology-iri http://purl.obolibrary.org/obo/genepio/genepio-base.owl annotate -V http://purl.obolibrary.org/obo/genepio/releases/2026-05-17/genepio-base.owl --annotation owl:versionInfo 2026-05-17 \
+	--output genepio-base.owl.tmp.owl && mv genepio-base.owl.tmp.owl genepio-base.owl
+Elapsed time: 0:04.25
+Peak memory: 536456 kb
+Command: sh -c robot --catalog catalog-v001.xml report -i genepio-base.owl -l true  --fail-on None --print 5 -o reports/genepio-base.owl-obo-report.tsv
+Elapsed time: 0:02.18
+Peak memory: 365544 kb
+Command: sh -c date +%Y-%m-%d
+Elapsed time: 0:00.00
+Peak memory: 1584 kb
+Command: sh -c date +%Y-%m-%d
+Elapsed time: 0:00.00
+Peak memory: 1584 kb
+Command: sh -c robot --catalog catalog-v001.xml merge --input tmp/genepio-preprocess.owl  \
+	reason --reasoner ELK --equivalent-classes-allowed asserted-only --exclude-tautologies structural \
+	relax --include-subclass-of true \
+	reduce -r ELK --include-subproperties true \
+	 annotate --ontology-iri http://purl.obolibrary.org/obo/genepio/genepio-full.owl annotate -V http://purl.obolibrary.org/obo/genepio/releases/2026-05-17/genepio-full.owl --annotation owl:versionInfo 2026-05-17 --output genepio-full.owl.tmp.owl && mv genepio-full.owl.tmp.owl genepio-full.owl
+Elapsed time: 0:04.39
+Peak memory: 533604 kb
+Command: sh -c date +%Y-%m-%d
+Elapsed time: 0:00.00
+Peak memory: 1584 kb
+Command: sh -c date +%Y-%m-%d
+Elapsed time: 0:00.00
+Peak memory: 1584 kb
+Command: sh -c robot --catalog catalog-v001.xml annotate --input genepio-full.owl --ontology-iri http://purl.obolibrary.org/obo/genepio.owl annotate -V http://purl.obolibrary.org/obo/genepio/releases/2026-05-17/genepio.owl --annotation owl:versionInfo 2026-05-17 \
+	convert -o genepio.owl.tmp.owl && mv genepio.owl.tmp.owl genepio.owl
+Elapsed time: 0:02.27
+Peak memory: 428140 kb
+Command: sh -c robot --catalog catalog-v001.xml merge -i genepio.owl convert -f ofn -o tmp/validate.ofn
+Elapsed time: 0:01.80
+Peak memory: 357008 kb
+Command: sh -c robot --catalog catalog-v001.xml validate-profile --profile DL -i tmp/validate.ofn -o reports/validate_profile_owl2dl_genepio.owl.txt || { cat reports/validate_profile_owl2dl_genepio.owl.txt && exit 1; }
+Elapsed time: 0:01.40
+Peak memory: 286444 kb
+Command: sh -c echo "Finished running all tests successfully."
+Elapsed time: 0:00.00
+Peak memory: 1420 kb
+Command: sh -c robot --catalog catalog-v001.xml query -f tsv --use-graphs true -i tmp/genepio-preprocess.owl -s ../sparql/basic-report.sparql reports/basic-report.tsv -s ../sparql/class-count-by-prefix.sparql reports/class-count-by-prefix.tsv -s ../sparql/edges.sparql reports/edges.tsv -s ../sparql/xrefs.sparql reports/xrefs.tsv -s ../sparql/obsoletes.sparql reports/obsoletes.tsv -s ../sparql/synonyms.sparql reports/synonyms.tsv
+Elapsed time: 0:03.35
+Peak memory: 503608 kb
+Command: sh -c check-rdfxml  genepio.owl
+Elapsed time: 0:00.15
+Peak memory: 12828 kb
+Command: sh -c check-rdfxml  genepio-base.owl
+Elapsed time: 0:00.06
+Peak memory: 12700 kb
+Command: sh -c check-rdfxml  genepio-full.owl
+Elapsed time: 0:00.15
+Peak memory: 12828 kb
+Command: sh -c echo "ODK Makefile v1.6.1"
+Elapsed time: 0:00.00
+Peak memory: 1412 kb
+Command: sh -c odk-info --tools
+Elapsed time: 0:03.13
+Peak memory: 149276 kb
+Command: sh -c if [ "$(tr -d '' < genepio-odk.yaml | sha256sum | cut -c1-64)" = "c15f9028e4981c1c60bf6f9ceb80bef0a9a6a01015ee184fd5aa85ba719f56d4" ]; then \
+	echo "Repository is up-to-date." ; else \
+	echo "Your ODK configuration has changed since this Makefile was generated. You may need to run 'make update_repo'." ; fi
+Elapsed time: 0:00.00
+Peak memory: 3068 kb
+Command: sh -c if [ -f genepio-idranges.owl ]; then \
+	dicer-cli policy --assume-manchester --show-owlapi-error genepio-idranges.owl ; \
+fi
+Elapsed time: 0:00.35
+Peak memory: 93284 kb
+Command: sh -c robot --catalog catalog-v001.xml reason --input tmp/genepio-preprocess.owl --reasoner ELK --equivalent-classes-allowed asserted-only \
+	--exclude-tautologies structural --output test.owl && rm test.owl
+Elapsed time: 0:03.53
+Peak memory: 449668 kb
+Command: sh -c date +%Y-%m-%d
+Elapsed time: 0:00.00
+Peak memory: 1524 kb
+Command: sh -c date +%Y-%m-%d
+Elapsed time: 0:00.00
+Peak memory: 1584 kb
+Command: sh -c robot --catalog catalog-v001.xml template --input genepio-edit.ofn --xml-entities --ontology-iri "http://purl.obolibrary.org/obo/genepio/components/specification.owl" \
+	 --template ../templates/specification.tsv \
+	 --template ../templates/specification_enum.tsv \
+	 --template ../templates/specification_field.tsv \
+	 --template ../templates/specification_mint.tsv \
+	 --template ../templates/temporary_mint.tsv \
+	 annotate --ontology-iri http://purl.obolibrary.org/obo/genepio/components/specification.owl annotate -V http://purl.obolibrary.org/obo/genepio/releases/2026-05-17/components/specification.owl --annotation owl:versionInfo 2026-05-17 convert -f ofn --output components/specification.owl.tmp.owl && mv components/specification.owl.tmp.owl components/specification.owl
+Elapsed time: 0:02.89
+Peak memory: 407048 kb
+Command: sh -c robot --catalog catalog-v001.xml remove --input tmp/genepio-preprocess.owl --select imports --trim false \
+	 merge  --input components/deprecation.ofn  --input components/gazetteer.ofn  --input components/gaz_insdc_mapping.ofn  --input components/hardcoded.ofn  --input components/specification.owl \
+	       --output tmp/merged-genepio-edit.ofn
+Elapsed time: 0:02.12
+Peak memory: 382508 kb
+Command: sh -c robot --catalog catalog-v001.xml verify -i tmp/merged-genepio-edit.ofn --queries ../sparql/owldef-self-reference-violation.sparql ../sparql/iri-range-violation.sparql ../sparql/label-with-iri-violation.sparql ../sparql/multiple-replaced_by-violation.sparql -O reports
+Command exited with non-zero status 1
+Elapsed time: 0:01.52
+Peak memory: 279924 kb
